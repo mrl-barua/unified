@@ -5,6 +5,7 @@ import HR from '../views/HR.vue'
 import OSP from '../views/OSP.vue'
 import SWDA from '../views/SWDA.vue'
 import ERROR from '../views/404.vue'
+import { isAuthenticated } from '../auth'; // Import the authentication function
 
 const routes = [
   {
@@ -15,7 +16,17 @@ const routes = [
   {
     path: '/dashboard',
     name: 'dashboard',
-    component: Dashboard
+    component: Dashboard,
+    beforeEnter: (to, from, next) => {
+      // Check if the user is authenticated
+      if (isAuthenticated()) {
+        // User is authenticated, allow access to the route
+        next();
+      } else {
+        // User is not authenticated, redirect to the login page or handle it as needed
+        next('/');
+      }
+    },
   },
 
   {

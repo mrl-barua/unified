@@ -2,7 +2,11 @@
 <div>
     <Sidebar />
     <br><br><br>
-    <h1> CBSS DASHBOARD</h1>
+    <div class="container-fluid wrapper">
+      <!-- INSERT CODE HERE -->
+      <h1 > CBSS DASHBOARD</h1>
+    </div>
+    
 </div>
 
 </template>
@@ -17,3 +21,9 @@ export default {
   },
 };
 </script>
+
+
+<style scoped> 
+
+
+</style>
