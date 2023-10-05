@@ -4,6 +4,7 @@ import Dashboard from '../views/Dashboard.vue'
 import HR from '../views/HR.vue'
 import OSP from '../views/OSP.vue'
 import SWDA from '../views/SWDA.vue'
+import ERROR from '../views/404.vue'
 
 const routes = [
   {
@@ -34,6 +35,13 @@ const routes = [
     name: 'swda',
     component: SWDA
   },
+
+    //catch-all route for 404 errors
+  {
+    path: '/:catchAll(.*)', // Matches any URL
+    name: 'error',
+    component: ERROR
+  }
 ]
 
 const router = createRouter({
