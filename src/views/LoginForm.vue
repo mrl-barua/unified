@@ -49,7 +49,7 @@ export default {
     username: '',
     password: '',
     error: false,
-    loading: false, // Add this property
+    loading: false, 
   };
 },
 

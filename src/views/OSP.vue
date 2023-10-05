@@ -1,19 +1,19 @@
 <template>
-<div>
     <Sidebar />
-    <br><br><br>
-    <h1> CBSS DASHBOARD</h1>
-</div>
 
+    <br><br><br>
+
+    <h1>OPERATIONAL STAFF DASHBOARD</h1>
 </template>
 
 <script>
 import Sidebar from '@/components/Sidebar.vue'; 
 
 export default {
-  name: 'Dashboard',
-  components: {
-    Sidebar, 
-  },
-};
+    name: 'OSP',
+    components: {
+        Sidebar
+    }
+    
+}
 </script>
