@@ -26,7 +26,11 @@
           <input v-model="password" type="password" placeholder="Password">
           <br><br>
           <div v-if="error" class="error-message">User not found, Please enter correct credentials</div>
-          <button type="submit">LOG-IN</button>
+          <button type="submit" :disabled="loading">
+            <span v-if="!loading">LOG-IN</span>
+            <span v-else>Loading...</span>
+          </button>
+
         </form>
         
       </div>
@@ -41,14 +45,21 @@
 export default {
   name: 'LoginForm',
   data() {
-    return {
-      username: '',
-      password: '',
-      error: false,
-    };
-  },
-  methods: {
-    login() {
+  return {
+    username: '',
+    password: '',
+    error: false,
+    loading: false, // Add this property
+  };
+},
+
+methods: {
+  login() {
+    // Set loading state to true
+    this.loading = true;
+
+    // Simulate a delay to mimic a server response (remove this in a real scenario)
+    setTimeout(() => {
       // Perform authentication logic here (e.g., check username and password)
       if (this.username === 'Admin' && this.password === 'admin') {
         // Authentication successful, navigate to the dashboard
@@ -57,8 +68,13 @@ export default {
         // Authentication failed, display error message
         this.error = true;
       }
-    },
+
+      // Reset loading state to false after authentication logic
+      this.loading = false;
+    }, 1000); // Simulated delay of 1 second
   },
+},
+
 };
 </script>
 
