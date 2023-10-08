@@ -8,3 +8,5 @@
 
 ## ver 0.0.4 added temporary 404 page
 
+## ver 0.0.5 added temporary chart components (Bar, Pie and Line Charts)
+

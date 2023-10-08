@@ -27,5 +27,22 @@
    color: #2c3e50;
    margin-top: 60px;
  }
+
+
+ /* CSS RESPONSIVE GLOBAL STYLES START */
+ * { box-sizing: border-box; }
+
+
+[class*="col-"]{
+    float: left;
+	border:1px solid red;  
+}
+
+.row::after{
+    content: "";
+    clear:both; }
+
+
+ /* CSS RESPONSIVE GLOBAL STYLES END */
  </style>
  
