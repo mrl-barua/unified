@@ -1,10 +1,10 @@
 <template>
-
+<!-- <Header /> -->
 <div class="parent clearfix">
     <div class="bg-illustration">
 
         <!-- <img src="https://i.ibb.co/Pcg0Pk1/logo.png" alt="logo"> -->
-      <img class="DSWDLogo" src="@/assets/DSWDLogo.png" alt="logo" />
+      <!-- <img class="DSWDLogo" src="@/assets/DSWDLogo.png" alt="logo" /> -->
 
       <!-- <img class="BagongPilipinas" src="@/assets/BagongPilipinas.png" alt="logo" /> -->
 
@@ -14,12 +14,38 @@
         <span></span>
       </div> -->
 
-    </div>
-    
-    <div class="login">
-    <div class="container">
-      <h1>Login to access your account</h1>
+    <!-- <div id="carouselExampleIndicators" class="carousel slide carouselbox" data-bs-touch="false" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="@/assets/dswd_carousel1.png" class="d-block w-100" alt="dswd">
+        </div>
+        <div class="carousel-item active">
+          <img src="@/assets/dswd_carousel1.png" class="d-block w-100" alt="dswd">
+        </div>
+        <div class="carousel-item active">
+          <img src="@/assets/dswd_carousel1.png" class="d-block w-100" alt="dswd">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div> -->
 
+  </div>
+
+  <div class="login">
+    <div class="container">
+      <h1>Login</h1>
       <div class="login-form">
         <form @submit.prevent="login">
           <input v-model="username" type="Username" placeholder="Username">
@@ -30,20 +56,22 @@
             <span v-if="!loading">LOG-IN</span>
             <span v-else>Loading...</span>
           </button>
-
         </form>
-        
       </div>
     </div>
   </div>
-  </div>
-  
-
+</div>
+<Footer />
 </template>
 
 <script>
+import Footer from '@/components/Footer'; 
+import Header from '@/components/Header'
+
+
 export default {
   name: 'LoginForm',
+  components: { Footer, Header },
   data() {
   return {
     username: '',
@@ -52,6 +80,8 @@ export default {
     loading: false, 
   };
 },
+
+
 
 methods: {
   login() {
@@ -102,6 +132,8 @@ body {
 .error-message{
   color: red;
   text-align: left;
+  margin-bottom: 20px;
+  margin-top: -50px;
 }
 
 article,
@@ -145,12 +177,21 @@ img {
   clear: both;
 }
 
+.carouselbox{
+  margin-right: 50px;
+  margin-left: 30px;
+  position: relative;
+  top: 3em;
+}
+
+
 .bg-illustration {
   margin-top: -3.73em;
   position: relative;
   height: 100vh;
   width: 1194px;
-  background: url("https://i.ibb.co/RhMZprS/jony-Image2-1.png") no-repeat center center scroll;
+  /* background: url("https://i.ibb.co/RhMZprS/jony-Image2-1.png") no-repeat center center scroll; */
+  background: #294D9C;
   background-size: cover;
   float: left;
   -webkit-animation: bgslide 2.3s forwards;
@@ -214,8 +255,8 @@ img {
   position: relative;
 }
 .login .container h1 {
-  margin-top: 100px;
-  font-size: 35px;
+  margin-top: 60px;
+  font-size: 45px;
   font-weight: bolder;
 }
 .login .container .login-form {
@@ -240,7 +281,7 @@ img {
   background: -o-linear-gradient(110deg, #f794a4 0%, #fdd6bd 100%);
   background: linear-gradient(-20deg, #f794a4 0%, #fdd6bd 100%);
   border: none;
-  margin-top: 60px;
+  margin-top: -20px;
   margin-bottom: 20px;
   width: 241px;
   height: 58px;
@@ -252,6 +293,21 @@ img {
   font-weight: bold;
   font-size: 20px;
 }
+
+@media only screen and (min-width: 375px) {
+  .login .container .login-form form button[type=submit] {
+    width: 300px;
+  }
+  
+}
+
+@media only screen and (min-width: 1024px) {
+  .login .container .login-form form button[type=submit] {
+    width: 481px;
+  }
+  
+}
+
 .login .container .login-form form button[type=submit]:hover::after {
   opacity: 1;
 }
@@ -370,14 +426,15 @@ img {
     }
   }
   .bg-illustration {
-    margin-left: -10px;
+    /* margin-left: -10px; */
 
     float: none;
-    background: url("https://i.ibb.co/rwncw7s/bg-mobile.png") center center;
+    /* background: url("https://i.ibb.co/rwncw7s/bg-mobile.png") center center; */
+    background: #294D9C;
     background-size: cover;
     -webkit-animation: slideIn 0.8s ease-in-out forwards;
             animation: slideIn 0.8s ease-in-out forwards;
-    width: 110%;
+    width: 100%;
     height: 190px;
     text-align: center;
   }
@@ -432,7 +489,7 @@ img {
   }
   .login .container .login-form form button[type=submit] {
     height: 45px;
-    margin-top: 100px;
+    margin-top: 10px;
   }
   .login .container .login-form .remember-form {
     position: relative;

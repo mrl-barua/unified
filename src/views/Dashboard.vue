@@ -11,6 +11,8 @@
       <div class="graphs col-12 col-md-6"><LineChart /></div>
       <div class="graphs col-12 col-md-6"><PieChart /></div>
       <div class="graphs col-12 col-md-6"><PieChart /></div>
+      <!-- <div class="graphs col-12 col-md-6"><DoughnutChart /></div> -->
+      <!-- <div class="graphs col-12 col-md-6"><DoughnutChart /></div> -->
     </div>
     
 </div>
@@ -19,9 +21,10 @@
 
 <script>
 import Sidebar from '@/components/Sidebar'; 
-import BarChart from '@/components/Barchart';
-import PieChart from '@/components/PieChart';
-import LineChart from '@/components/LineChart'
+import BarChart from '@/components/ChartJS/Barchart';
+import PieChart from '@/components/ChartJS/PieChart';
+import LineChart from '@/components/ChartJS/LineChart';
+// import DoughnutChart from '@/components/Doughnut';
 
 export default {
   name: 'Dashboard',
@@ -30,6 +33,7 @@ export default {
     BarChart,
     PieChart,
     LineChart,
+    // DoughnutChart,
   },
 };
 </script>
