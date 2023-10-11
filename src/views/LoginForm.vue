@@ -14,32 +14,38 @@
         <span></span>
       </div> -->
 
-    <!-- <div id="carouselExampleIndicators" class="carousel slide carouselbox" data-bs-touch="false" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      </div>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="@/assets/dswd_carousel1.png" class="d-block w-100" alt="dswd">
+
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="@/assets/dswd_carousel1.png" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="@/assets/dswd_carousel1.png" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="@/assets/dswd_carousel1.png" class="d-block w-100" alt="...">
+            </div>
+          </div>
+          <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button> -->
         </div>
-        <div class="carousel-item active">
-          <img src="@/assets/dswd_carousel1.png" class="d-block w-100" alt="dswd">
-        </div>
-        <div class="carousel-item active">
-          <img src="@/assets/dswd_carousel1.png" class="d-block w-100" alt="dswd">
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div> -->
+
+        <p class="lead text-start text-white text-bold text-wrap">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+        </p>
+
 
   </div>
 
@@ -113,6 +119,47 @@ methods: {
 
 <style scoped>
 
+.lead {
+  padding: 0px 60px 0px 60px;
+}
+
+
+.carousel {
+  position: relative;
+  top: 0; /* Reset the top position */
+  margin: 0 auto; /* Center the element horizontally */
+  border-radius: 20px;
+  padding: 10px; /* Add padding for spacing */
+  width: 80%; /* Set a default width */
+
+  @media only screen and (min-width: 400px) {
+    width: 60%;
+  }
+
+  @media only screen and (min-width: 524px) {
+    width: 40%;
+  }
+
+  @media only screen and (min-width: 720px) {
+    width: 38%;
+    margin-left: 10px; /* Adjust margin if necessary */
+  }
+
+  @media only screen and (min-width: 1024px) {
+    padding-top: 40px;
+    margin-left: 20px; /* Adjust margin if necessary */
+    width: 90%;
+  }
+}
+
+
+
+
+
+
+
+
+
 * {
   margin: 0;
   padding: 0;
@@ -175,13 +222,6 @@ img {
   content: "";
   display: table;
   clear: both;
-}
-
-.carouselbox{
-  margin-right: 50px;
-  margin-left: 30px;
-  position: relative;
-  top: 3em;
 }
 
 
@@ -536,4 +576,4 @@ img {
   }
 }
 
-</style>
+  </style>
