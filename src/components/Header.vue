@@ -1,7 +1,7 @@
 <template>
-    <header class="headerComponent">
-      <img src="@/assets/Header.png" alt="Header Image">
-    </header>
+    <div class="headerComponent">
+        <img src="@/assets/DSWDLogo.png" alt="dswdLogo">
+    </div>
   </template>
   
   <script>
@@ -11,25 +11,24 @@
   </script>
   
   <style scoped>
-  .headerComponent {
-    display: none;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .headerComponent img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-  }
-  
-  @media only screen and (min-width: 414px) {
-    .headerComponent {
-      display: block;
-      position: relative;
+
+    .headerComponent{
+      position: sticky;
+      
+      height: 80px;
+      background: linear-gradient(to right, #EE1C25, white, #294D9C);
+
       z-index: 999;
-      margin-top: -60px;
+      margin-top:-60px;
+      margin-bottom: 20px;
+      padding: 0;
     }
-  }
+
+    .headerComponent img{
+      height: 70px;
+      padding-top: 10px;
+    }
+
+
   </style>
   

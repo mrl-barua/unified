@@ -1,5 +1,5 @@
 <template>
-<!-- <Header /> -->
+<Header />
 <div class="parent clearfix">
     <div class="bg-illustration">
 
@@ -129,15 +129,25 @@ methods: {
   top: 0; /* Reset the top position */
   margin: 0 auto; /* Center the element horizontally */
   border-radius: 20px;
-  padding: 10px; /* Add padding for spacing */
-  width: 80%; /* Set a default width */
+  /* padding-top: 10px;  */
+  padding-bottom: 10px;
+  width: 100%; /* Set a default width */
 
   @media only screen and (min-width: 400px) {
     width: 60%;
   }
 
+  @media only screen and (min-width: 504px) {
+    width: 50%;
+  }
+
   @media only screen and (min-width: 524px) {
-    width: 40%;
+    width: 50%;
+  }
+
+  @media only screen and (min-width: 590px) {
+    width: 50%;
+    margin-left: 10px; /* Adjust margin if necessary */
   }
 
   @media only screen and (min-width: 720px) {
@@ -228,7 +238,7 @@ img {
 .bg-illustration {
   margin-top: -3.73em;
   position: relative;
-  height: 100vh;
+  height: 91vh;
   width: 1194px;
   /* background: url("https://i.ibb.co/RhMZprS/jony-Image2-1.png") no-repeat center center scroll; */
   background: #294D9C;
@@ -283,7 +293,7 @@ img {
 
 
 .login {
-  max-height: 100vh;
+  max-height: 90vh;
   overflow-Y: auto;
   float: left;
   margin: 0 auto;

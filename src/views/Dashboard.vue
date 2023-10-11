@@ -1,4 +1,5 @@
 <template>
+  <Header />
 <div>
     <Sidebar />
     <br><br><br>
@@ -20,6 +21,9 @@
 </template>
 
 <script>
+import Footer from '@/components/Footer'; 
+import Header from '@/components/Header'
+
 import Sidebar from '@/components/Sidebar'; 
 import BarChart from '@/components/ChartJS/Barchart';
 import PieChart from '@/components/ChartJS/PieChart';
@@ -29,6 +33,8 @@ import LineChart from '@/components/ChartJS/LineChart';
 export default {
   name: 'Dashboard',
   components: {
+    Footer,
+    Header,
     Sidebar, 
     BarChart,
     PieChart,
