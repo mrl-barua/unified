@@ -72,7 +72,7 @@
 
 <script>
 import Footer from '@/components/Footer'; 
-import Header from '@/components/Header'
+import Header from '@/components/Header';
 
 
 export default {
