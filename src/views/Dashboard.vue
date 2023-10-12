@@ -83,12 +83,19 @@
   </script>
   
   <style scoped> 
+ .graphs {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+@media only screen and (min-width: 1024px) {
   .graphs {
-    margin-top: 50px;
-    margin-bottom: 50px;
     padding-right: 80px;
     padding-left: 80px;
-   
   }
+}
+
   </style>
   
