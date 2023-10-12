@@ -18,4 +18,6 @@
 
 ## ver 0.8 Added multiple charts (Polar, Doughnut, Area), Added SLP Dashboard - MARLO BARUA
 
+## ver 0.9 Customize the BarChart so that It will read multiple data with props
+
 
