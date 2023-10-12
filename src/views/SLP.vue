@@ -3,7 +3,8 @@
 
     <br><br><br>
 
-    <h1>OPERATIONAL STAFF DASHBOARD</h1>
+    <h1>SLP DASHBOARD</h1>
+
     <Footer />
 </template>
 
@@ -12,7 +13,7 @@ import Sidebar from '@/components/Sidebar.vue';
 import Footer from '@/components/Footer';
 
 export default {
-    name: 'OSP',
+    name: 'SLP',
     components: {
         Sidebar,
         Footer,

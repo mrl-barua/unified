@@ -14,6 +14,8 @@
 
 ## ver 0.6 edited login page, added footer, header, image carousel and text template - MARLO BARUA
 
-
 ## ver 0.7 optimize the mobile version of the login page and the dashboard header - MARLO BARUA
+
+## ver 0.8 Added multiple charts (Polar, Doughnut, Area), Added SLP Dashboard - MARLO BARUA
+
 

@@ -4,6 +4,7 @@ import Dashboard from '../views/Dashboard.vue'
 import HR from '../views/HR.vue'
 import OSP from '../views/OSP.vue'
 import SWDA from '../views/SWDA.vue'
+import SLP from '../views/SLP.vue'
 import ERROR from '../views/404.vue'
 import { isAuthenticated } from '../auth'; // Import the authentication function
 
@@ -32,7 +33,7 @@ const routes = [
   {
     path: '/HR',
     name: 'hr',
-    component: HR
+    component: HR,
   },
 
   {
@@ -47,6 +48,11 @@ const routes = [
     component: SWDA
   },
 
+  {
+    path: '/SLP',
+    name: 'slp',
+    component: SLP
+  },
     //catch-all route for 404 errors
   {
     path: '/:catchAll(.*)', // Matches any URL

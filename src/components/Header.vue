@@ -18,7 +18,7 @@
       position: sticky;
       
       height: 80px;
-      background: linear-gradient(to right, white, #EE1C25);
+      background: linear-gradient(to right, white 15%, #EE1C25 85%);
 
       z-index: 999;
       margin-top:-60px;

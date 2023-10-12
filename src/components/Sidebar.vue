@@ -53,13 +53,16 @@
             </li>
             </router-link>
 
-            <!-- <li class="list">
+            <router-link to="/slp" class="custom-link">
+             <li class="list">
               <a href="#" class="nav-link">
                 <i class="bx bx-pie-chart-alt-2 icon"></i>
-                <span class="link">Analytics</span>
+                <span class="link">SLP</span>
               </a>
             </li>
-            <li class="list">
+          </router-link>
+
+           <!-- <li class="list">
               <a href="#" class="nav-link">
                 <i class="bx bx-heart icon"></i>
                 <span class="link">Likes</span>
@@ -148,7 +151,7 @@ nav {
   width: 100%;
   display: flex;
   align-items: center;
-  background: linear-gradient(to right, white, #EE1C25);
+  background: linear-gradient(to right, white 20%, #EE1C25 80%);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
 }
 
@@ -161,9 +164,15 @@ nav .logo {
   margin: 0 24px;
 }
 
-nav .logo  img{
-  height: 70px;
+nav .logo img {
+  height: 50px;
+
+  @media screen and (min-width: 1024px) {
+    height: 70px;
+  }
 }
+
+
 .logo .menu-icon {
   color: #333;
   font-size: 24px;
