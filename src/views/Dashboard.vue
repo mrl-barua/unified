@@ -1,5 +1,4 @@
 <template>
-  <Header />
 <div>
     <Sidebar />
     <br><br><br>

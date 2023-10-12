@@ -14,3 +14,6 @@
 
 ## ver 0.6 edited login page, added footer, header, image carousel and text template - MARLO BARUA
 
+
+## ver 0.7 optimize the mobile version of the login page and the dashboard header - MARLO BARUA
+

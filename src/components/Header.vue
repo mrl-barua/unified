@@ -1,6 +1,6 @@
 <template>
     <div class="headerComponent">
-        <img src="@/assets/DSWDLogo.png" alt="dswdLogo">
+        <img class="float-start header-image" src="@/assets/DSWDLogo.png" alt="dswdLogo">
     </div>
   </template>
   
@@ -11,12 +11,14 @@
   </script>
   
   <style scoped>
-
+    .header-image{
+      padding-left: 2em;
+    }
     .headerComponent{
       position: sticky;
       
       height: 80px;
-      background: linear-gradient(to right, #EE1C25, white, #294D9C);
+      background: linear-gradient(to right, white, #EE1C25);
 
       z-index: 999;
       margin-top:-60px;

@@ -4,7 +4,8 @@
     <nav>
       <div class="logo">
         <i class="bx bx-menu menu-icon"></i>
-        <span class="logo-name">UNIFIED</span>
+        <!-- <span class="logo-name">UNIFIED</span> -->
+        <img class="float-start header-image" src="@/assets/DSWDLogo.png" alt="dswdLogo">
       </div>
 
       <div class="sidebar">
@@ -137,15 +138,17 @@ body {
   min-height: 100%;
   background: #e3f2fd;
 }
+
+
 nav {
   position: fixed;
   top: 0;
   left: 0;
-  height: 70px;
+  height: 80px;
   width: 100%;
   display: flex;
   align-items: center;
-  background: gray;
+  background: linear-gradient(to right, white, #EE1C25);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
 }
 
@@ -156,6 +159,10 @@ nav .logo {
   display: flex;
   align-items: center;
   margin: 0 24px;
+}
+
+nav .logo  img{
+  height: 70px;
 }
 .logo .menu-icon {
   color: #333;

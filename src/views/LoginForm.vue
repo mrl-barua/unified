@@ -132,6 +132,7 @@ methods: {
   /* padding-top: 10px;  */
   padding-bottom: 10px;
   width: 100%; /* Set a default width */
+  visibility: hidden;
 
   @media only screen and (min-width: 400px) {
     width: 60%;
@@ -156,9 +157,14 @@ methods: {
   }
 
   @media only screen and (min-width: 1024px) {
+    visibility: visible;
     padding-top: 40px;
     margin-left: 20px; /* Adjust margin if necessary */
     width: 90%;
+  }
+
+  @media only screen and (min-width: 1244px) {
+
   }
 }
 
@@ -238,7 +244,7 @@ img {
 .bg-illustration {
   margin-top: -3.73em;
   position: relative;
-  height: 91vh;
+  height: 100vh;
   width: 1194px;
   /* background: url("https://i.ibb.co/RhMZprS/jony-Image2-1.png") no-repeat center center scroll; */
   background: #294D9C;
@@ -293,7 +299,7 @@ img {
 
 
 .login {
-  max-height: 90vh;
+  max-height: 100vh;
   overflow-Y: auto;
   float: left;
   margin: 0 auto;
