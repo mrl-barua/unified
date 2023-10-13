@@ -54,6 +54,7 @@
       return {
         MonthData: {
           labels: ['WEDC', 'OTHERS', 'FHONA', 'PWD', 'OLDER PERSONS', 'OFW'],
+          label: ['CHART1'],
           values: [39, 18, 13, 4, 3, 1],
           backgroundColor: [
           'rgba(25, 82, 105, 0.6',  
@@ -66,6 +67,7 @@
         
         NameData: {
           labels: ['CNSP', 'EMOTIONALLY/PSYCHO DISTRESS', 'OFW'],
+          label: ['CHART2'],
           values: [42, 23, 12, 2],
           backgroundColor: [
           'rgba(75, 192, 192, 0.2',

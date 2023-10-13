@@ -32,6 +32,7 @@ export default {
         labels: data.labels,
         datasets: [
           {
+            label: data.label,
             data: data.values,
             backgroundColor: data.backgroundColor,
           },
