@@ -1,6 +1,12 @@
 <template>
-<Header />
+<!-- <Header /> -->
 <div class="parent clearfix">
+
+    <div class="headerComponent">
+        <img class="float-start header-image" src="@/assets/DSWDLogo.png" alt="dswdLogo">
+    </div>
+
+
     <div class="bg-illustration">
 
         <!-- <img src="https://i.ibb.co/Pcg0Pk1/logo.png" alt="logo"> -->
@@ -72,12 +78,11 @@
 
 <script>
 import Footer from '@/components/Footer'; 
-import Header from '@/components/Header';
 
 
 export default {
   name: 'LoginForm',
-  components: { Footer, Header },
+  components: { Footer},
   data() {
   return {
     username: '',
@@ -97,7 +102,7 @@ methods: {
     // Simulate a delay to mimic a server response (remove this in a real scenario)
     setTimeout(() => {
       // Perform authentication logic here (e.g., check username and password)
-      if (this.username === 'Admin' && this.password === 'admin') {
+      if (this.username === 'Admin' && this.password === 'admin' ) {
         // Authentication successful, navigate to the dashboard
         this.$router.push('/dashboard');
       } else {
@@ -171,11 +176,6 @@ methods: {
 
 
 
-
-
-
-
-
 * {
   margin: 0;
   padding: 0;
@@ -185,6 +185,29 @@ methods: {
   -o-transition: 0.3s;
   transition: 0.3s;
 }
+
+
+    .header-image{
+      padding-left: 50px;
+    }
+    .headerComponent{
+      position: relative;
+
+      height: 5em;
+      background: linear-gradient(to right, white 15%, #EE1C25 85%);
+      z-index: 999;
+      margin-top:-60px;
+      margin-bottom: 20px;
+      padding: 0;
+    }
+
+    .headerComponent img{
+      height: 70px;
+      padding-top: 10px;
+    }
+
+
+
 
 body {
   background-color: #fff;
@@ -252,6 +275,15 @@ img {
   float: left;
   -webkit-animation: bgslide 2.3s forwards;
           animation: bgslide 2.3s forwards;
+
+
+ @media only screen and (min-width: 1280px) {
+    height: 95vh; 
+  }
+
+  @media only screen and (min-width: 2160px) {
+    height: 100vh; 
+  }
 }
 .bg-illustration img {
   width: 248px;
@@ -299,11 +331,16 @@ img {
 
 
 .login {
-  max-height: 100vh;
+  max-height: 70vh;
   overflow-Y: auto;
   float: left;
   margin: 0 auto;
   width: calc(100% - 1194px);
+
+@media only screen and (min-width: 1024px) {
+  max-height: 100vh;
+}
+
 }
 .login .container {
   width: 505px;

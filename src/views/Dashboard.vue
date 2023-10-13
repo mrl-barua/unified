@@ -15,12 +15,19 @@
           <BarChart :data="NameData" />
         </div>
 
-      
-        
+
+        <div class="last col-12 col-md-6">
+          <LineChart :data="MonthData"/>
+        </div>
+
+        <div class="last col-12 col-md-6">
+          <LineChart :data="NameData"/>
+        </div>
+
         <!-- Rest of your chart components -->
-        <!-- <div class="col-12 col-md-6"><LineChart /></div> -->
+      
         <!-- <div class="col-12 col-md-6"><PieChart /></div> -->
-        <!-- <div class="col-12 col-md-6"><DougnutChart /></div> -->
+        
         <!-- <div class="col-12 col-md-6"><PolarAreaChart /></div> -->
         <!-- <div class="col-12 col-md-6"><RadarChart /></div> -->
       </div>
@@ -84,7 +91,12 @@
   };
   </script>
   
-  <style scoped> 
+  <style scoped>
+
+  .last{
+    margin-bottom: 100px;
+    margin-top: 50px;
+  }
  .graphs {
   margin-top: 50px;
   margin-bottom: 50px;

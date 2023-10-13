@@ -18,6 +18,6 @@
 
 ## ver 0.8 Added multiple charts (Polar, Doughnut, Area), Added SLP Dashboard - MARLO BARUA
 
-## ver 0.9 Customize the BarChart so that It will read multiple data with props
+## ver 0.9 Customize the BarChart so that It will read multiple data with props - MARLO BARUA
 
-
+## ver 0.10 Customize (Line, Doughnut, Pie Charts) so that it will read multiple data properties with vue props - MARLO BARUA
