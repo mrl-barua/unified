@@ -13,7 +13,7 @@
         <div class="col-12 col-md-6">
           <DougnutChart :data="MonthData" />
         </div>
-    <Footer />
+    <!-- <Footer /> -->
 </template>
 
 <script>

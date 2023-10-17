@@ -96,24 +96,32 @@ export default {
 
 methods: {
   login() {
-    // Set loading state to true
-    this.loading = true;
+  // Set loading state to true
+  this.loading = true;
 
-    // Simulate a delay to mimic a server response (remove this in a real scenario)
-    setTimeout(() => {
-      // Perform authentication logic here (e.g., check username and password)
-      if (this.username === 'Admin' && this.password === 'admin' ) {
-        // Authentication successful, navigate to the dashboard
-        this.$router.push('/dashboard');
-      } else {
-        // Authentication failed, display error message
-        this.error = true;
-      }
+  // Simulate a delay to mimic a server response (remove this in a real scenario)
+  setTimeout(() => {
+    // Perform authentication logic here (e.g., check username and password)
+    if (this.username === 'Admin' && this.password === 'admin') {
+      // Authentication successful, set user as authenticated in localStorage
+      localStorage.setItem('user', 'authenticated');
 
-      // Reset loading state to false after authentication logic
-      this.loading = false;
-    }, 1000); // Simulated delay of 1 second
+      // Navigate to the dashboard
+      this.$router.push('/dashboard');
+    } else {
+      // Authentication failed, display error message
+      this.error = true;
+    }
+
+    // Reset loading state to false after authentication logic
+    this.loading = false;
+  }, 1000); // Simulated delay of 1 second
+},
+created() {
+    // Clear the user's authentication status in localStorage when the login page is visited
+    localStorage.removeItem('user');
   },
+
 },
 
 };

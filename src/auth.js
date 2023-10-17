@@ -1,8 +1,6 @@
 // auth.js
 export function isAuthenticated() {
-  // For the sake of simplicity, we'll use a boolean variable to represent
-  // the user's authentication status.
-  const loggedIn = true; // Change to 'false' to simulate an unauthenticated user.
-
-  return loggedIn;
+  // Check if the user is authenticated (you can customize this logic)
+  const user = localStorage.getItem('user');
+  return user !== null;
 }

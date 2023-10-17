@@ -1,7 +1,8 @@
 <template>
-    <div class="headerComponent">
-        <img class="float-start header-image" src="@/assets/DSWDLogo.png" alt="dswdLogo">
-    </div>
+  
+    <header class="d-flex flex-wrap justify-content-start  ">
+      <img src="../assets/DSWDLogo.png" alt="">
+    </header>
   </template>
   
   <script>
@@ -11,7 +12,7 @@
   </script>
   
   <style scoped>
-    .header-image{
+    /* .header-image{
       padding-left: 2em;
     }
     .headerComponent{
@@ -29,8 +30,23 @@
     .headerComponent img{
       height: 70px;
       padding-top: 10px;
+    } */
+
+
+    header{
+      background: linear-gradient(to right, white 20%, #EE1C25 80%);
+      width: 100%;
+      position: fixed;
+      top: 0;
+  
     }
 
+    header img{
+      width: 280px;
+   
+      margin: 20px 0px 10px 20px;
+      
+    }
 
   </style>
   

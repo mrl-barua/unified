@@ -13,7 +13,7 @@
         <PieChart :data="MonthData"/>
     </div>
 
-    <Footer />
+    <!-- <Footer /> -->
 </template>
 
 <script>

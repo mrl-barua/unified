@@ -5,7 +5,7 @@
 
     <h1>SLP DASHBOARD</h1>
 
-    <Footer />
+    <!-- <Footer /> -->
 </template>
 
 <script>

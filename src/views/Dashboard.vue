@@ -1,5 +1,6 @@
 <template>
   <div>
+     
       <Sidebar />
       <br><br><br>
       <div class="container-fluid wrapper">
@@ -24,6 +25,7 @@
           <LineChart :data="NameData"/>
         </div>
 
+        
         <!-- Rest of your chart components -->
       
         <!-- <div class="col-12 col-md-6"><PieChart /></div> -->
@@ -32,7 +34,7 @@
         <!-- <div class="col-12 col-md-6"><RadarChart /></div> -->
       </div>
   </div>
-  <Footer />
+  <!-- <Footer /> -->
   </template>
   
   <script>

@@ -1,6 +1,6 @@
 <template>
     <div class="footerWrapper">
-      <div class="footerComponent text-white">
+      <div class="footerComponent text-white text-center">
         © Department of Social Welfare and Development. 2023 All rights reserved.
       </div>
     </div>
@@ -14,7 +14,7 @@
   
   <style scoped>
   .footerWrapper {
-    position: fixed;
+    position: relative;
     bottom: 0;
     left: 0;
     width: 100%;

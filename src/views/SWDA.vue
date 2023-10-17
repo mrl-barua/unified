@@ -5,7 +5,7 @@
 
     <h1>SWDA DASHBOARD</h1>
 
-    <Footer />
+    <!-- <Footer /> -->
 </template>
 
 <script>
