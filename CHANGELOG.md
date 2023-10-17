@@ -23,3 +23,5 @@
 ## ver 0.10 Customize (Line, Doughnut, Pie Charts) so that it will read multiple data properties with vue props - MARLO BARUA
 
 ## ver 1.0 Partially done with the header and sidebar for the dashboard, temporarily removed the footer for some fixings, Fix the route guard protection for authentication - MARLO BARUA
+
+## ver 1.1 Added Horizontal Bar Chart, Started the Development for SWDA Dashboard - MARLO BARUA

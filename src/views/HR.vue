@@ -1,7 +1,7 @@
 <template>
     <Sidebar />
 
-    <br><br><br>
+    <br><br><br><br>
 
     <h1>HR DASHBOARD</h1>
 

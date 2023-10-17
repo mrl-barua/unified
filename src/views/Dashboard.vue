@@ -2,13 +2,17 @@
   <div>
      
       <Sidebar />
-      <br><br><br>
+      <br><br><br><br>
       <div class="container-fluid wrapper">
         <!-- INSERT CODE HERE -->
         <h1>CBSS DASHBOARD</h1>
         
         <!-- Insert the BarChart component here -->
         <div class="graphs col-12 col-md-6">
+          <div class="div">
+            
+          </div>
+
           <BarChart :data="MonthData" />
         </div>
 
@@ -25,6 +29,15 @@
           <LineChart :data="NameData"/>
         </div>
 
+        <div class="last col-12 col-md-6">
+          <HBarchart :data="MonthData"/>
+        </div>
+
+        <div class="last col-12 col-md-6">
+          <HBarchart :data="NameData"/>
+        </div>
+
+     
         
         <!-- Rest of your chart components -->
       
@@ -46,6 +59,8 @@
   import DougnutChart from '@/components/ChartJS/DoughnutChart';
   import PolarAreaChart from '@/components/ChartJS/PolarArea';
   import RadarChart from '@/components/ChartJS/Radar';
+  import HBarchart from '@/components/ChartJS/HBarchart'
+
   
   export default {
     name: 'Dashboard',
@@ -58,6 +73,8 @@
       DougnutChart,
       PolarAreaChart,
       RadarChart,
+      HBarchart,
+  
     },
     data() {
       return {

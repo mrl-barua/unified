@@ -1,9 +1,105 @@
 <template>
     <Sidebar />
 
-    <br><br><br>
+    <br><br><br><br>
 
-    <h1>SWDA DASHBOARD</h1>
+    
+    <div class=wrapper container-fluid>
+        <div class="col-12 col-md-3">
+          <div class="filters">
+            test
+          </div>
+
+        </div>
+
+
+
+        <div class="col-12 col-md-9">
+                <div class="agencies col-12 col-md-3">
+                  <div class="shadow">
+                    <h4>ACTIVE AGENCIES</h4>
+                   <p class="col-4">
+                    Registered <br>
+                    <span id="active-registered" class="active-agencies">24</span>
+                   </p>
+                   <p class="col-4">
+                    Licensed <br>
+                    <span id="active-licensed" class="active-agencies">23</span>
+                   </p>
+                   <p class="col-4">
+                    Accredited <br>
+                    <span id="active-accredited" class="active-agencies">22</span>
+                   </p>
+                  </div> 
+                </div>
+
+
+                <div class="agencies col-12 col-md-4">
+                  <div class="shadow">
+                    <h4>EXPIRED AGENCIES</h4>
+                    <p class="col-3">
+                    Registered <br>
+                    <span id="expired-registered" class="expired-agencies">24</span>
+                   </p>
+                   <p class="col-3">
+                    Licensed <br>
+                    <span id="expired-licensed" class="expired-agencies">23</span>
+                   </p>
+                   <p class="col-3">
+                    Accreditation <br>
+                    <span id="expired-accreditation" class="expired-agencies">22</span>
+                   </p>
+                   <p class="col-3">
+                    Delisted <br>
+                    <span id="expired-accreditation" class="expired-agencies">22</span>
+                   </p>
+                  </div>
+                </div>
+
+
+                <div class="agencies col-12 col-md-4"> 
+                  <div class="shadow">
+                    <h4>MODE OF DELIVERY </h4>
+                    <p class="col-3">
+                    Community <br>
+                    <span id="community-based" class="modeDelivery">24</span>
+                   </p>
+                   <p class="col-3">
+                    Auxillary SWDA <br>
+                    <span id="auxillary" class="modeDelivery">23</span>
+                   </p>
+                   <p class="col-3">
+                    Residential <br>
+                    <span id="residential" class="modeDelivery">22</span>
+                   </p>
+                   <p class="col-3">
+                    Non-Residential <br>
+                    <span id="non-residential" class="modeDelivery">22</span>
+                   </p>
+                  </div>
+                </div>
+
+
+                <div class="agencies col-12 col-md-1">
+                  <div class="shadow">
+                    <h5>Number of Agencies</h5> 
+                   <p class="col-12">
+                    <span id="numberAgencies" class="numberAgencies">22</span>
+                   </p>
+                  </div>
+                </div>
+                  
+        <div class="col-12">
+          <div class="safehaven">
+            test
+          </div>
+        
+        
+        
+        </div>
+        
+        </div>
+    </div>
 
     <!-- <Footer /> -->
 </template>
@@ -21,3 +117,55 @@ export default {
     
 }
 </script>
+
+<style scoped>
+
+.filters{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+  height: 46em;
+  border-radius: 20px;
+  margin: 10px 10px 0px 10px;
+  padding: 10px 0px 130px 0px;
+}
+
+
+.shadow{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+  height: 120px;
+  border-radius: 20px;
+  margin: 10px 10px 0px 10px;
+  padding: 10px 0px 130px 0px;
+}
+.active-agencies {
+  font-weight: bold; 
+  font-size: 34px; 
+
+}
+
+.expired-agencies {
+  font-weight: bold; 
+  font-size: 34px; 
+}
+
+.modeDelivery {
+  font-weight: bold; 
+  font-size: 34px; 
+  
+}
+
+.numberAgencies {
+  font-weight: bold; 
+  font-size: 34px; 
+}
+
+
+.safehaven{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+  height: 35em;
+  border-radius: 20px;
+  margin: 10px 10px 0px 10px;
+  padding: 10px 0px 130px 0px;
+}
+
+
+</style>
