@@ -14,28 +14,30 @@
   
   <style scoped>
   .footerWrapper {
-    position: relative;
-    bottom: 0;
     left: 0;
     width: 100%;
     z-index: 999;
   }
   
   .footerComponent {
+    position: relative;
     height: 50px;
     background: red;
     padding: 5px 0;
+    bottom: -115px;
   }
   
   @media only screen and (min-width: 414px) {
     .footerComponent {
-      height: 60px;
+      height: 50px;
+      bottom: -395px;
     }
   }
   
   @media only screen and (min-width: 1024px) {
     .footerComponent {
       height: 30px;
+      bottom: -7px;
     }
   }
   </style>

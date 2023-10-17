@@ -91,11 +91,44 @@
                   
         <div class="col-12">
           <div class="safehaven">
-            test
+
+            <div class="col-12 col-md-6">
+              <h4>A SAFE HAVEN CHILDREN"S HOME FOUNDATION, INC</h4>
+              <br><br>
+              <hr class="horizontal-line">
+
+                  <div class="col-4">
+                    <p class="fw-bold"> <span class="status-box" id="dynamic-box"></span> Registration Status</p>
+                    <br>
+                    <p>Former Name: </p>
+                  </div>
+                  <div class="col-4">
+                    <p class="fw-bold"><span class="status-box" id="dynamic-box"> </span>Licensed Status</p>
+                    <br>
+                    <p>Cluster: </p>
+                  </div>
+                  <div class="col-4">
+                    <p class="fw-bold"> <span class="status-box" id="dynamic-box"> </span>Accreditation Status</p>
+                    <br>
+                    <p>Type: </p>
+                  </div>
+
+              <br><br>
+              <hr class="horizontal-line">
+                
+
+            </div>
+
+
+
+            <div class="col-12 col-md-6">
+              test
+            </div>
+
+
+
+            
           </div>
-        
-        
-        
         </div>
         
         </div>
@@ -120,9 +153,14 @@ export default {
 
 <style scoped>
 
+.wrapper{
+  margin: 0;
+  padding: 0;
+  height: 70vh;
+}
 .filters{
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
-  height: 46em;
+  height: 48em;
   border-radius: 20px;
   margin: 10px 10px 0px 10px;
   padding: 10px 0px 130px 0px;
@@ -161,10 +199,44 @@ export default {
 
 .safehaven{
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
-  height: 35em;
+  height: 38em;
   border-radius: 20px;
-  margin: 10px 10px 0px 10px;
+  margin: 10px 10px 10px 10px;
   padding: 10px 0px 130px 0px;
+
+}
+
+.horizontal-line {
+    border: none; /* Remove the default line */
+    background: black;
+    height: 2px;  /* Set the height of the line */
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 1); /* Add the box shadow */
+    margin-left: 20px;
+    width: 16em;
+
+    @media only screen and (min-width: 375px) {
+      margin-left: 29px;
+      width: 18em;
+    }
+
+    @media only screen and (min-width: 414px) {
+      margin-left: 29px;
+      width: 21em;
+    }
+
+    @media only screen and (min-width: 1020px) {
+      margin-left: 50px;
+      width: 90%;
+    }
+}
+
+.status-box {
+    width: 15px; /* Set the width of the box */
+    height: 15px; /* Set the height of the box */
+    display: inline-block; /* Make it inline with the text */
+    margin-left: 10px; /* Add some spacing between the text and the box */
+    margin-right: 5px; /* Add some spacing between the text and the box */
+    background-color: red; /* Initial color is red */
 }
 
 
