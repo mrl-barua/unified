@@ -2,111 +2,116 @@
   <div>
     <Sidebar />
 
-    <br><br><br><br>
+    <br /><br /><br /><br />
 
     <div class="col-12 col-md-6">
       <div class="dashboard-box">
-        <div style="background-color: red; color: white; padding: 10px;">
-          EMPLOYMENT
+        <div style="background-color: ; color: black; padding: 10px; font-weight: bold; font-size: 20px; text-align: center;">
+          EMPLOYMENT DATA
         </div>
+
         <div style="display: flex;">
-          <div style="background-color: ; color: black; flex: 1; padding: 10px;">
+          <div style="background-color: ; color: black; flex: 1; padding: 10px; text-align: center;">
             IP GROUP
           </div>
-          <div style="background-color: ; color: black; flex: 1; padding: 10px;">
+
+          <div style="background-color: ; color: black; flex: 1; padding: 10px; text-align: center;">
             PWD
           </div>
-          <div style="background-color: ; color: black; flex: 1; padding: 10px;">
+          <div style="background-color: ; color: black; flex: 1; padding: 10px; text-align: center;">
             SOLO PARENT
           </div>
         </div>
-        <div>
-          0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0
+        <div style="display: flex;">
+          <div style="flex: 1; padding: 10px; text-align: center;">
+            <span style="font-size: 40px; font-weight: bold;">0</span>
+          </div>
+          <div style="flex: 1; padding: 10px; text-align: center;">
+            <span style="font-size: 40px; font-weight: bold;">0</span>
+          </div>
+          <div style="flex: 1; padding: 10px; text-align: center;">
+            <span style="font-size: 40px; font-weight: bold;">0</span>
+          </div>
         </div>
-        <!-- More content here -->
+        <!-- Gray line to separate sections -->
+        <hr style="border: 2px solid #a9a9a9;">
+
+        <div style="text-align: center;">
+          <span style="background-color: ; color: black; padding: 10px; font-weight: bold; font-size: 20px; text-align: center;">EMPLOYMENT STATUS</span>
+        </div>
+        
+      
+        
+        <!-- Container for PieChart and employment choices -->
+        <div style="display: flex; align-items: center; justify-content: center;">
+          <PieChart :data="MonthData" />
+          <div>
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="col-12 col-md-6">
       <div class="dashboard-box">
-        <div style="background-color: red; color: white; padding: 10px;">
+        <div style="background-color: ; color: black; padding: 10px; font-weight: bold; font-size: 20px; text-align: center;">
           DIVISION
         </div>
-        <div style="background-color: ; color: black; padding: 10px;">
+        <div style="background-color: ; color: black; padding: 10px; text-align: center;">
           RECORD COUNT
         </div>
-        <div>
+        <div style="text-align: center;">
           <div>
-            Division #1 
+            Division #1
           </div>
           <div>
-            Division #2 
+            Division #2
           </div>
           <div>
-            Division #3 
+            Division #3
           </div>
           <div>
-            Division #4 
+            Division #4
           </div>
+        </div>
+        <div style="background-color: ; color: black; padding: 10px; text-align: center;">
+          STATUS FILLED/UNFILLED
+        </div>
+        <div style="text-align: center;">
+          <span style="font-size: 20px; font-weight: bold;">0</span>
         </div>
       </div>
     </div>
 
-    <div class="col-12 col-md-6">
-      <DougnutChart :data="NameData" />
-    </div>
-
-    <div class="col-12 col-md-6">
-      <DougnutChart :data="MonthData" />
-    </div>
+    
   </div>
 </template>
 
 <script>
-import Sidebar from '@/components/Sidebar.vue'; 
+import Sidebar from '@/components/Sidebar.vue';
 import Footer from '@/components/Footer';
-
-import DougnutChart from '@/components/ChartJS/DoughnutChart';
+import PieChart from '@/components/ChartJS/PieChart'; //Import the PieChart component
 
 export default {
   name: 'OSP',
   components: {
     Sidebar,
     Footer,
-    DougnutChart,
+    PieChart, //PieChart to the components
   },
-
   data() {
     return {
       MonthData: {
-        labels: ['WEDC', 'OTHERS', 'FHONA', 'PWD', 'OLDER PERSONS', 'OFW'],
-        label: ['CHART1'],
-        values: [39, 18, 13, 4, 3, 1],
+        labels: ['Permanent', 'MOA', 'Contractual'], //choices
+        values: [80, 15, 20], //values 
         backgroundColor: [
-          'rgba(25, 82, 105, 0.6',  
-          'rgba(85, 25, 44, 0.6',  
-          'rgba(135, 146, 56, 0.6',
-          'rgba(25, 61, 95, 0.6', 
-          'rgba(105, 82, 105, 0.6', 
-        ],
-      },
-      
-      NameData: {
-        labels: ['CNSP', 'EMOTIONALLY/PSYCHO DISTRESS', 'OFW'],
-        label: ['CHART2'],
-        values: [42, 23, 12, 2],
-        backgroundColor: [
-          'rgba(75, 192, 192, 0.2',
-          'rgba(255, 99, 132, 0.2',
-          'rgba(255, 206, 86, 0.2',
-          'rgba(54, 162, 235, 0.2',
-          'rgba(153, 102, 255, 0.2',
-          'rgba(255, 159, 64, 0.2',
+          'rgba(19, 63, 92, 1)',
+          'rgba(89, 80, 141, 1)',
+          'rgba(243, 165, 51, 1)',
         ],
       },
     };
   },
-}
+};
 </script>
 
 <style>
