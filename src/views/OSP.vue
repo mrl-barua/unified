@@ -42,7 +42,7 @@
         
       
         
-        <!-- Container for PieChart and employment choices -->
+        <!-- Container for PieChart and Employment choices -->
         <div style="display: flex; align-items: center; justify-content: center;">
           <PieChart :data="MonthData" />
           <div>
