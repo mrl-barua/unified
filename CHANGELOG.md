@@ -14,3 +14,4 @@
 
 ## ver 0.6 edited login page, added footer, header, image carousel and text template - MARLO BARUA
 
+## ver 1.2 Added Employment data on OSP - MARA SUERTE
