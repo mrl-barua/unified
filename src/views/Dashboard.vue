@@ -1,54 +1,134 @@
 <template>
-  <Header />
-<div>
-    <Sidebar />
-    <br><br><br>
-    <div class="container-fluid wrapper">
-      <!-- INSERT CODE HERE -->
-      <h1 > CBSS DASHBOARD</h1>
-      <div class="col-12 col-md-6"><BarChart /></div>
-      <div class="col-12 col-md-6"><BarChart /></div>
-      <div class="graphs col-12 col-md-6"><LineChart /></div>
-      <div class="graphs col-12 col-md-6"><LineChart /></div>
-      <div class="graphs col-12 col-md-6"><PieChart /></div>
-      <div class="graphs col-12 col-md-6"><PieChart /></div>
-      <!-- <div class="graphs col-12 col-md-6"><DoughnutChart /></div> -->
-      <!-- <div class="graphs col-12 col-md-6"><DoughnutChart /></div> -->
-    </div>
-    
-</div>
+  <div>
+     
+      <Sidebar />
+      <br><br><br><br>
+      <div class="container-fluid wrapper">
+        <!-- INSERT CODE HERE -->
+        <h1>CBSS DASHBOARD</h1>
+        
+        <!-- Insert the BarChart component here -->
+        <div class="graphs col-12 col-md-6">
+          <div class="div">
+            
+          </div>
 
-</template>
+          <BarChart :data="MonthData" />
+        </div>
 
-<script>
-import Footer from '@/components/Footer'; 
-import Header from '@/components/Header'
-
-import Sidebar from '@/components/Sidebar'; 
-import BarChart from '@/components/ChartJS/Barchart';
-import PieChart from '@/components/ChartJS/PieChart';
-import LineChart from '@/components/ChartJS/LineChart';
-// import DoughnutChart from '@/components/Doughnut';
-
-export default {
-  name: 'Dashboard',
-  components: {
-    Footer,
-    Header,
-    Sidebar, 
-    BarChart,
-    PieChart,
-    LineChart,
-    // DoughnutChart,
-  },
-};
-</script>
+        <div class="graphs col-12 col-md-6">
+          <BarChart :data="NameData" />
+        </div>
 
 
-<style scoped> 
-.graphs{
-  margin-top: 100px;
-  margin-bottom: 100px;
+        <div class="last col-12 col-md-6">
+          <LineChart :data="MonthData"/>
+        </div>
+
+        <div class="last col-12 col-md-6">
+          <LineChart :data="NameData"/>
+        </div>
+
+        <div class="last col-12 col-md-6">
+          <HBarchart :data="MonthData"/>
+        </div>
+
+        <div class="last col-12 col-md-6">
+          <HBarchart :data="NameData"/>
+        </div>
+
+     
+        
+        <!-- Rest of your chart components -->
+      
+        <!-- <div class="col-12 col-md-6"><PieChart /></div> -->
+        
+        <!-- <div class="col-12 col-md-6"><PolarAreaChart /></div> -->
+        <!-- <div class="col-12 col-md-6"><RadarChart /></div> -->
+      </div>
+  </div>
+  <!-- <Footer /> -->
+  </template>
+  
+  <script>
+  import Footer from '@/components/Footer'; 
+  import Sidebar from '@/components/Sidebar'; 
+  import BarChart from '@/components/ChartJS/Barchart';
+  import PieChart from '@/components/ChartJS/PieChart';
+  import LineChart from '@/components/ChartJS/LineChart';
+  import DougnutChart from '@/components/ChartJS/DoughnutChart';
+  import PolarAreaChart from '@/components/ChartJS/PolarArea';
+  import RadarChart from '@/components/ChartJS/Radar';
+  import HBarchart from '@/components/ChartJS/HBarchart'
+
+  
+  export default {
+    name: 'Dashboard',
+    components: {
+      Footer,
+      Sidebar, 
+      BarChart,
+      PieChart,
+      LineChart,
+      DougnutChart,
+      PolarAreaChart,
+      RadarChart,
+      HBarchart,
+  
+    },
+    data() {
+      return {
+        MonthData: {
+          labels: ['WEDC', 'OTHERS', 'FHONA', 'PWD', 'OLDER PERSONS', 'OFW'],
+          label: ['CHART1'],
+          values: [39, 18, 13, 4, 3, 1],
+          backgroundColor: [
+          'rgba(25, 82, 105, 0.6',  
+          'rgba(85, 25, 44, 0.6',  
+          'rgba(135, 146, 56, 0.6',
+          'rgba(25, 61, 95, 0.6', 
+          'rgba(105, 82, 105, 0.6', 
+        ],
+        },
+        
+        NameData: {
+          labels: ['CNSP', 'EMOTIONALLY/PSYCHO DISTRESS', 'OFW'],
+          label: ['CHART2'],
+          values: [42, 23, 12, 2],
+          backgroundColor: [
+          'rgba(75, 192, 192, 0.2',
+          'rgba(255, 99, 132, 0.2',
+          'rgba(255, 206, 86, 0.2',
+          'rgba(54, 162, 235, 0.2',
+          'rgba(153, 102, 255, 0.2',
+          'rgba(255, 159, 64, 0.2',
+        ],
+        },
+
+      };
+    },
+  };
+  </script>
+  
+  <style scoped>
+
+  .last{
+    margin-bottom: 100px;
+    margin-top: 50px;
+  }
+ .graphs {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding-right: 0px;
+  padding-left: 0px;
 }
 
-</style>
+@media only screen and (min-width: 1024px) {
+  .graphs {
+    padding-right: 80px;
+    padding-left: 80px;
+  }
+}
+
+  </style>
+  

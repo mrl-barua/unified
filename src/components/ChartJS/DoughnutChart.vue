@@ -1,18 +1,19 @@
 <template>
-    <Pie 
-    :data="chartData" 
-    :options="chartOptions" />
+    <Doughnut
+      :options="chartOptions"
+      :data="chartData"
+    />
   </template>
   
   <script>
-  import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
-  import { Pie } from 'vue-chartjs'
+  import { Doughnut } from 'vue-chartjs'
+  import { Chart as ChartJS, Title, Tooltip, Legend, ArcElement } from 'chart.js'
   
-  ChartJS.register(ArcElement, Tooltip, Legend)
+  ChartJS.register(Title, Tooltip, Legend, ArcElement)
   
   export default {
-    name: 'App',
-    components: { Pie },
+    name: 'DoughnutChart',
+    components: { Doughnut },
     props: {
       data: {
         type: Object,
@@ -25,8 +26,8 @@
         chartOptions: {
           responsive: true,
           maintainAspectRatio: false
-        }
-      }
+        },
+      };
     },
     methods: {
     prepareChartData(data) {
@@ -43,7 +44,6 @@
       };
     },
   },
-  }
+  };
   </script>
-  
 

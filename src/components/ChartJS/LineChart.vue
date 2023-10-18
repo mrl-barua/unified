@@ -25,27 +25,38 @@
   
   export default {
     name: 'App',
-    components: {
-      Line
+    components: { Line },
+    props: {
+      data:{
+        type: Object,
+        required: true
+      }
     },
     data() {
       return {
-        chartData: {
-          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-          datasets: [
-            {
-              label: 'Data One',
-              backgroundColor: '#f87979',
-              data: [40, 39, 10, 40, 39, 80, 40]
-            }
-          ]
-        },
+        chartData: this.prepareChartData(this.data),
         chartOptions: {
           responsive: true,
           maintainAspectRatio: false
         }
       }
-    }
-  }
+    },
+    methods: {
+    prepareChartData(data) {
+      // You can modify this function to format the data as needed for the chart.
+      return {
+        labels: data.labels,
+        datasets: [
+          {
+            label: data.label,
+            data: data.values,
+            backgroundColor: data.backgroundColor,
+          },
+        ],
+      };
+    },
+  },
+}
   </script>
   
+

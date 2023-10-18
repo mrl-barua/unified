@@ -1,16 +1,19 @@
 <template>
     
 <div>
+  <Header />
     <nav>
+      <div class="blue-header">
       <div class="logo">
         <i class="bx bx-menu menu-icon"></i>
-        <span class="logo-name">UNIFIED</span>
+        <!-- <span class="logo-name">UNIFIED</span> -->
+        <!-- <img class="float-start header-image" src="@/assets/DSWDLogo.png" alt="dswdLogo"> -->
       </div>
 
       <div class="sidebar">
         <div class="logo">
-          <i class="bx bx-menu menu-icon"></i>
-          <span class="logo-name">UNIFIED</span>
+          <i class="bx bx-x menu-icon"></i>
+          <!-- <span class="logo-name">UNIFIED</span> -->
         </div>
 
         <div class="sidebar-content">
@@ -52,13 +55,16 @@
             </li>
             </router-link>
 
-            <!-- <li class="list">
+            <router-link to="/slp" class="custom-link">
+             <li class="list">
               <a href="#" class="nav-link">
                 <i class="bx bx-pie-chart-alt-2 icon"></i>
-                <span class="link">Analytics</span>
+                <span class="link">SLP</span>
               </a>
             </li>
-            <li class="list">
+          </router-link>
+
+           <!-- <li class="list">
               <a href="#" class="nav-link">
                 <i class="bx bx-heart icon"></i>
                 <span class="link">Likes</span>
@@ -81,7 +87,7 @@
             </li> -->
             <router-link to="/" class="custom-link">
             <li class="list">
-              <div class="nav-link">
+              <div @click="logout" class="nav-link">
                 <i class="bx bx-log-out icon"></i>
                 <span class="link">
                     Logout 
@@ -92,6 +98,7 @@
           </div>
         </div>
       </div>
+    </div>
     </nav>
 
     <section class="overlay"></section>
@@ -102,8 +109,14 @@
 </template>
 
 <script>
+import Header from '@/components/Header'
+
 export default {
   name: 'sidebar',
+  components :{
+    Header,
+
+  },
   mounted() {
     const navBar = document.querySelector("nav");
     const menuBtns = document.querySelectorAll(".menu-icon");
@@ -119,6 +132,16 @@ export default {
       navBar.classList.remove("open");
     });
   },
+  methods: {
+    logout() {
+      // Clear the user's authentication status in localStorage
+      localStorage.removeItem('user');
+
+      // Redirect the user to the login page
+      this.$router.push('/'); // Change the path to match your login route
+    }
+  }
+
 };
 </script>
 
@@ -137,15 +160,18 @@ body {
   min-height: 100%;
   background: #e3f2fd;
 }
+
+
 nav {
   position: fixed;
-  top: 0;
+  top: 6em;
   left: 0;
-  height: 70px;
+  height: 50px;
   width: 100%;
   display: flex;
   align-items: center;
-  background: gray;
+  /* background: linear-gradient(to right, white 20%, #EE1C25 80%); */
+  background: #294D9C;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
 }
 
@@ -157,12 +183,27 @@ nav .logo {
   align-items: center;
   margin: 0 24px;
 }
+
+nav .logo img {
+  height: 50px;
+
+  @media screen and (min-width: 1024px) {
+    height: 70px;
+  }
+}
+
+
 .logo .menu-icon {
   color: #333;
   font-size: 24px;
   margin-right: 14px;
   cursor: pointer;
 }
+
+.bx-x{
+  margin-left: 180px;
+}
+
 .logo .logo-name {
   color: #333;
   font-size: 22px;
@@ -170,9 +211,9 @@ nav .logo {
 }
 nav .sidebar {
   position: fixed;
-  top: 0;
+  top: 6em;
   left: -100%;
-  height: 100%;
+  height: 90%;
   width: 260px;
   padding: 20px 0;
   background-color: #fff;
@@ -203,6 +244,8 @@ nav.open .sidebar {
 .lists .nav-link:hover {
   background-color: #4070f4;
 }
+
+
 .nav-link .icon {
   margin-right: 14px;
   font-size: 20px;
@@ -219,7 +262,7 @@ nav.open .sidebar {
 }
 .overlay {
   position: fixed;
-  top: 0;
+  top: 6em;
   left: -100%;
   height: 1000vh;
   width: 200%;
