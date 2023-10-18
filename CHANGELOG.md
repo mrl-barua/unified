@@ -28,3 +28,4 @@
 
 ## ver 1.1.1 Fix the footer in Login Page and Input details in SWDA Dashboard - MARLO BARUA
 ## ver 1.2  Added EMPLOYMENT DATA on OSP Dashboard- MARA SUERTE
+## ver 1.2.1 change description on LOG IN Form- MARA SUERTE
