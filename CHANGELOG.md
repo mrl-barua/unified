@@ -33,3 +33,5 @@
 ## ver 1.2.1 change description on LOG IN Form- MARA SUERTE
 
 ## ver 1.2.2 Modified Employment Data ( fixed numerical data and pie chart) - MARA SUERTE
+
+## ver 1.3 Fix route.js wherein when user is in the default page '/' the localStorage will be automatically cleared - MARLO BARUA
