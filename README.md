@@ -15,5 +15,10 @@ npm run serve
 npm run build
 ```
 
+### Install ChartJs dependencies
+```
+npm install vue-chartjs chart.js
+```
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
