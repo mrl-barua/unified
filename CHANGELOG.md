@@ -27,4 +27,5 @@
 ## ver 1.1 Added Horizontal Bar Chart, Started the Development for SWDA Dashboard - MARLO BARUA
 
 ## ver 1.1.1 Fix the footer in Login Page and Input details in SWDA Dashboard - MARLO BARUA
+
 ## ver 1.2  Added EMPLOYMENT DATA on OSP Dashboard- MARA SUERTE
