@@ -5,9 +5,11 @@
     <div class="container-fluid wrapper">
       <h1>CBSS DASHBOARD</h1>
       <div class="graphs col-12 col-md-6">
+          <!-- Render BarChart component only when barChartData is not null -->
         <BarChart v-if="ClusterData" :data="ClusterData" />
       </div>
       <div class="graphs col-12 col-md-6">
+          <!-- Render BarChart component only when barChartData is not null -->
         <BarChart v-if="ClusterData" :data="ClusterData" />
       </div>
     </div>
@@ -20,6 +22,7 @@ import Footer from '@/components/Footer';
 import Sidebar from '@/components/Sidebar'; 
 import BarChart from '@/components/ChartJS/Barchart';
 
+
 export default {
   name: 'Dashboard',
   components: {
@@ -29,7 +32,6 @@ export default {
   },
   data() {
     return {
-      // a: 11,
       ClusterData: null, // Initialize barChartData as null
     };
   },
@@ -83,7 +85,7 @@ export default {
           const seniorLength = senior.length;
 
           // Prepare and return data
-          const data = {
+          const clusterdata = {
             labels: ['Unclustered', 'Cluster 1', 'North Cluster', 'South Cluster', 'Senior Citizen', 'Cluster 2'],
             label: ['Chart'],
             values: [unclusteredLength, cluster1Length, northClusterLength, southClusterLength, seniorLength, cluster2Length],
@@ -95,10 +97,27 @@ export default {
           ],
           };
           // Set barChartData to the computed data
-          this.ClusterData = data;
+          this.ClusterData = clusterdata;
         })
         .catch(error => {
           console.error('Error fetching data:', error);
+
+         // Prepare and return data if in case there is an api catch error
+            const clusterdata = {
+            labels: ['Unclustered', 'Cluster 1', 'North Cluster', 'South Cluster', 'Senior Citizen', 'Cluster 2'],
+            label: ['Chart'],
+            values: [0, 0, 0, 0, 0,0 ],
+            backgroundColor: ['rgba(25, 82, 105, 0.6)',
+                              'rgba(0, 255, 0, 0.6)',
+                              'rgba(0, 0, 255, 0.6)',
+                              'rgba(0, 0, 255, 0.6)',
+                              'rgba(128, 0, 128, 0.6',
+          ],
+          };
+          // Set catcc error barChartData to the computed data
+          this.ClusterData = clusterdata;
+
+
         });
     },
 
