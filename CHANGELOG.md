@@ -29,6 +29,13 @@
 ## ver 1.1.1 Fix the footer in Login Page and Input details in SWDA Dashboard - MARLO BARUA
 
 ## ver 1.2  Added EMPLOYMENT DATA on OSP Dashboard- MARA SUERTE
+
 ## ver 1.2.1 change description on LOG IN Form- MARA SUERTE
+
 ## ver 1.2.2 Modified Employment Data ( fixed numerical data and pie chart) - MARA SUERTE
-## ver 1.2.3 Added( Division, Record Count and Status) - MARA SUERTE
+
+## ver 1.3 Fix route.js wherein when user is in the default page '/' the localStorage will be automatically cleared - MARLO BARUA
+
+## ver 1.4 Implemented Api fetch and Chart Components can now use the fetch data from axios
+
+## ver 1.5 OSD Added(Division, Status,Employment Type and Gender Charts)- MARA SUERTE

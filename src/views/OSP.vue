@@ -39,14 +39,11 @@
         <div style="text-align: center;">
           <span style="background-color: ; color: black; padding: 10px; font-weight: bold; font-size: 20px; text-align: center;">EMPLOYMENT STATUS</span>
         </div>
-        
-      
-        
+
         <!-- Container for PieChart and Employment choices -->
         <div style="display: flex; align-items: center; justify-content: center;">
           <PieChart :data="MonthData" />
-          <div>
-          </div>
+          <div></div>
         </div>
       </div>
     </div>
@@ -66,61 +63,73 @@
         </div>
 
         <!-- Division records with bar graphs -->
-        <div v-for="division in divisions" :key="division" style="background-color: ; color: black; padding: 10px; display: flex; align-items: center; justify-content: space-between;">
+        <div
+          v-for="division in divisions"
+          :key="division"
+          style="background-color: ; color: black; padding: 10px; display: flex; align-items: center; justify-content: space-between;"
+        >
           <span>{{ division }}</span>
           <div style="background-color: #808080; width: 100px; height: 20px; margin: 0 10px;">
             <div style="background-color: orange; width: 50%; height: 100%;"></div>
           </div>
-         <span style="margin-right: 50px;">0</span>
+          <span style="margin-right: 50px;">0</span>
         </div>
       </div>
     </div>
-  </div><!-- New box for Status -->
-<div class="col-12 col-md-6">
-  <div class="dashboard-box" style="height: 193px; width: 633px;">
-    <div style="background-color: ; color: black; padding: 10px; font-weight: bold; font-size: 20px; text-align: center;">
-      STATUS (FILLED/UNFILLED)
-    </div>
-    <div style="flex: 1; padding: 10px; text-align: center;">
-            <span style="font-size: 40px; font-weight: bold;">0</span>
-          </div>
-          
-  </div>
-</div>
-<!-- New box below Employment Data -->
+
+    <!-- New box for Status -->
     <div class="col-12 col-md-6">
-     <div class="dashboard-box" style="height: 300px; width: 633px;">
+      <div class="dashboard-box" style="height: 195px; width: 633px;">
+        <div
+          style="background-color: ; color: black; padding: 10px; font-weight: bold; font-size: 20px; text-align: center;"
+        >
+          STATUS (FILLED/UNFILLED)
+        </div>
+        <div style="flex: 1; padding: 10px; text-align: center;">
+          <span style="font-size: 40px; font-weight: bold;">0</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gender and Age Box -->
+    <div class="col-12 col-md-6">
+      <div class="dashboard-box" style="height: 300px; width: 648px; position:">
         <div style="background-color: ; color: black; padding: 10px; font-weight: bold; font-size: 20px; text-align: center;">
           GENDER AND AGE
         </div>
         <!-- Content for the new box here -->
       </div>
     </div>
-    <!-- New layout for boxes 2 and 3 -->
+
+    <!-- Employment Type and Gender Boxes -->
     <div class="col-12 col-md-6" style="display: flex; justify-content: space-between;">
       <div class="dashboard-box" style="height: 300px; width: 310px;">
         <div style="background-color: ; color: black; padding: 10px; font-weight: bold; font-size: 20px; text-align: center;">
-         EMPLOYMENT TYPE
+          EMPLOYMENT TYPE
         </div>
-        <!-- Content for the new box here -->
+        <div style="display: flex; align-items: center; justify-content: center;">
+          <PieChart :data="employmentType" style="height: 200px; width: 200px;" />
+          <div></div>
+        </div>
       </div>
 
       <div class="dashboard-box" style="height: 300px; width: 310px;">
         <div style="background-color: ; color: black; padding: 10px; font-weight: bold; font-size: 20px; text-align: center;">
           GENDER
         </div>
-        <!-- Content for the new box here -->
+        <div style="display: flex; align-items: center; justify-content: center;">
+          <PieChart :data="genderData" style="height: 200px; width: 200px;" />
+          <div></div>
+        </div>
       </div>
     </div>
-    <!-- End of new layout -->
-    
+  </div>
 </template>
 
 <script>
 import Sidebar from '@/components/Sidebar.vue';
 import Footer from '@/components/Footer';
 import PieChart from '@/components/ChartJS/PieChart'; //Import the PieChart component
-
 
 export default {
   name: 'OSP',
@@ -133,14 +142,27 @@ export default {
     return {
       divisions: ['Division #1', 'Division #2', 'Division #3', 'Division #4'], // Add the division data here
       MonthData: {
-        labels: ['Permanent', 'MOA', 'Contractual'], //choices
-        values: [80, 15, 20], //values 
+        labels: ['Permanent', 'MOA', 'Contractual'], 
+        values: [80, 15, 20, ], // Update the values accordingly
         backgroundColor: [
           'rgba(19, 63, 92, 1)',
           'rgba(89, 80, 141, 1)',
           'rgba(243, 165, 51, 1)',
+          
         ],
       },
+      employmentType: {
+        labels: [], // Add two choices for gender
+        values: [30, 10, 20, 40, ], // Update the values accordingly
+        backgroundColor: ['rgba(235, 95, 94)', 'rgba(243,165,51)', 'rgba(89,80,141)', 'rgba(188,80,144)'], // Add colors for each gender
+      },
+      genderData: {
+        labels: [], // Add two choices for gender
+        values: [50, 50], // Update the values accordingly
+        backgroundColor: ['rgba(235, 95, 94)', 'rgba(89,80,141)'], // Add colors for each gender
+        
+      },
+      
     };
   },
 };
