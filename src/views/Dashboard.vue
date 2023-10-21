@@ -33,6 +33,11 @@ export default {
   data() {
     return {
       ClusterData: null, // Initialize barChartData as null
+
+
+
+
+      
     };
   },
   methods: {
@@ -106,7 +111,7 @@ export default {
             const clusterdata = {
             labels: ['Unclustered', 'Cluster 1', 'North Cluster', 'South Cluster', 'Senior Citizen', 'Cluster 2'],
             label: ['Chart'],
-            values: [0, 0, 0, 0, 0,0 ],
+            values: [1, 1, 1, 1, 1, 1 ],
             backgroundColor: ['rgba(25, 82, 105, 0.6)',
                               'rgba(0, 255, 0, 0.6)',
                               'rgba(0, 0, 255, 0.6)',

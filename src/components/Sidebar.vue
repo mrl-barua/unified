@@ -195,14 +195,22 @@ nav .logo img {
 
 
 .logo .menu-icon {
-  color: #333;
-  font-size: 24px;
+  color: white;
+  font-size: 32px;
   margin-right: 14px;
   cursor: pointer;
 }
 
+.logo .bx-x{
+  color: #333;
+  font-size: 42px;
+  margin-right: 14px;
+  cursor: pointer;
+}
+
+
 .bx-x{
-  margin-left: 180px;
+  margin-left: 220px;
 }
 
 .logo .logo-name {
@@ -215,7 +223,7 @@ nav .sidebar {
   top: 6em;
   left: -100%;
   height: 90%;
-  width: 260px;
+  width: 303px;
   padding: 20px 0;
   background-color: #fff;
   box-shadow: 0 5px 1px rgba(0, 0, 0, 0.1);
@@ -238,11 +246,14 @@ nav.open .sidebar {
   display: flex;
   align-items: center;
   margin: 8px 0;
-  padding: 14px 12px;
+  padding: 14px 1px;
   border-radius: 8px;
   text-decoration: none;
+
 }
 .lists .nav-link:hover {
+  padding-left: 20px;
+  padding-right: 20px;
   background-color: #4070f4;
 }
 
@@ -255,7 +266,8 @@ nav.open .sidebar {
 .nav-link .link {
   font-size: 16px;
   color: #707070;
-  font-weight: 400;
+  font-weight: 600;
+  line-height: 14.52px;
 }
 .lists .nav-link:hover .icon,
 .lists .nav-link:hover .link {
