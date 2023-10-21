@@ -31,3 +31,4 @@
 ## ver 1.2  Added EMPLOYMENT DATA on OSP Dashboard- MARA SUERTE
 ## ver 1.2.1 change description on LOG IN Form- MARA SUERTE
 ## ver 1.2.2 Modified Employment Data ( fixed numerical data and pie chart) - MARA SUERTE
+## ver 1.2.3 Added( Division, Record Count and Status) - MARA SUERTE

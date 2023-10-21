@@ -5,7 +5,7 @@
     <br /><br /><br /><br />
 
     <div class="col-12 col-md-6">
-      <div class="dashboard-box">
+      <div class="dashboard-box" style="height: 580px; width: 650px;">
         <div style="background-color: ; color: black; padding: 10px; font-weight: bold; font-size: 20px; text-align: center;">
           EMPLOYMENT DATA
         </div>
@@ -51,45 +51,76 @@
       </div>
     </div>
 
+    <!-- Modified "DIVISION" section -->
     <div class="col-12 col-md-6">
       <div class="dashboard-box">
         <div style="background-color: ; color: black; padding: 10px; font-weight: bold; font-size: 20px; text-align: center;">
-          DIVISION
+          <span>DIVISION</span>
         </div>
-        <div style="background-color: ; color: black; padding: 10px; text-align: center;">
-          RECORD COUNT
-        </div>
-        <div style="text-align: center;">
-          <div>
-            Division #1
-          </div>
-          <div>
-            Division #2
-          </div>
-          <div>
-            Division #3
-          </div>
-          <div>
-            Division #4
+        <hr style="border: 2px solid #a9a9a9;">
+        <div style="background-color: ; color: black; padding: 10px;">
+          <div style="display: flex; justify-content: space-between;">
+            <div><b>DIVISION</b></div>
+            <div><b>RECORD COUNT</b></div>
           </div>
         </div>
-        <div style="background-color: ; color: black; padding: 10px; text-align: center;">
-          STATUS FILLED/UNFILLED
-        </div>
-        <div style="text-align: center;">
-          <span style="font-size: 20px; font-weight: bold;">0</span>
+
+        <!-- Division records with bar graphs -->
+        <div v-for="division in divisions" :key="division" style="background-color: ; color: black; padding: 10px; display: flex; align-items: center; justify-content: space-between;">
+          <span>{{ division }}</span>
+          <div style="background-color: #808080; width: 100px; height: 20px; margin: 0 10px;">
+            <div style="background-color: orange; width: 50%; height: 100%;"></div>
+          </div>
+         <span style="margin-right: 50px;">0</span>
         </div>
       </div>
     </div>
-
-    
+  </div><!-- New box for Status -->
+<div class="col-12 col-md-6">
+  <div class="dashboard-box" style="height: 193px; width: 633px;">
+    <div style="background-color: ; color: black; padding: 10px; font-weight: bold; font-size: 20px; text-align: center;">
+      STATUS (FILLED/UNFILLED)
+    </div>
+    <div style="flex: 1; padding: 10px; text-align: center;">
+            <span style="font-size: 40px; font-weight: bold;">0</span>
+          </div>
+          
   </div>
+</div>
+<!-- New box below Employment Data -->
+    <div class="col-12 col-md-6">
+     <div class="dashboard-box" style="height: 300px; width: 633px;">
+        <div style="background-color: ; color: black; padding: 10px; font-weight: bold; font-size: 20px; text-align: center;">
+          GENDER AND AGE
+        </div>
+        <!-- Content for the new box here -->
+      </div>
+    </div>
+    <!-- New layout for boxes 2 and 3 -->
+    <div class="col-12 col-md-6" style="display: flex; justify-content: space-between;">
+      <div class="dashboard-box" style="height: 300px; width: 310px;">
+        <div style="background-color: ; color: black; padding: 10px; font-weight: bold; font-size: 20px; text-align: center;">
+         EMPLOYMENT TYPE
+        </div>
+        <!-- Content for the new box here -->
+      </div>
+
+      <div class="dashboard-box" style="height: 300px; width: 310px;">
+        <div style="background-color: ; color: black; padding: 10px; font-weight: bold; font-size: 20px; text-align: center;">
+          GENDER
+        </div>
+        <!-- Content for the new box here -->
+      </div>
+    </div>
+    <!-- End of new layout -->
+    
 </template>
 
 <script>
 import Sidebar from '@/components/Sidebar.vue';
 import Footer from '@/components/Footer';
 import PieChart from '@/components/ChartJS/PieChart'; //Import the PieChart component
+
 
 export default {
   name: 'OSP',
@@ -100,6 +131,7 @@ export default {
   },
   data() {
     return {
+      divisions: ['Division #1', 'Division #2', 'Division #3', 'Division #4'], // Add the division data here
       MonthData: {
         labels: ['Permanent', 'MOA', 'Contractual'], //choices
         values: [80, 15, 20], //values 
