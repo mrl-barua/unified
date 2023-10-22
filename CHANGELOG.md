@@ -43,3 +43,5 @@
 ## ver 1.6 Temporarily Remove slide animation from login, optimize sidebar, Added function wherein user cant right click and inspect element - MARLO BARUA
 
 ## ver 1.7 Added Regional Operation Fetch method in Dashboard view - MARLO BARUA
+
+
