@@ -189,7 +189,7 @@ nav {
   /* background: linear-gradient(to right, white 20%, #EE1C25 80%); */
   background: #294D9C;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
-  z-index: 99;
+  z-index: 100;
 }
 
 .custom-link {
@@ -239,6 +239,7 @@ nav .sidebar {
   top: 6em;
   left: -100%;
   height: 90%;
+  
   width: 303px;
   padding: 20px 0;
   background-color: #fff;
