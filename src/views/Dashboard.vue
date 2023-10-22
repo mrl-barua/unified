@@ -1,121 +1,228 @@
 <template>
   <div>
-     
-      <Sidebar />
-      <br><br><br><br>
-      <div class="container-fluid wrapper">
-        <!-- INSERT CODE HERE -->
-        <h1>CBSS DASHBOARD</h1>
-        
-        <!-- Insert the BarChart component here -->
-        <div class="graphs col-12 col-md-6">
-          <div class="div">
-            
-          </div>
-
-          <BarChart :data="MonthData" />
-        </div>
-
-        <div class="graphs col-12 col-md-6">
-          <BarChart :data="NameData" />
-        </div>
-
-
-        <div class="last col-12 col-md-6">
-          <LineChart :data="MonthData"/>
-        </div>
-
-        <div class="last col-12 col-md-6">
-          <LineChart :data="NameData"/>
-        </div>
-
-        <div class="last col-12 col-md-6">
-          <HBarchart :data="MonthData"/>
-        </div>
-
-        <div class="last col-12 col-md-6">
-          <HBarchart :data="NameData"/>
-        </div>
-
-     
-        
-        <!-- Rest of your chart components -->
-      
-        <!-- <div class="col-12 col-md-6"><PieChart /></div> -->
-        
-        <!-- <div class="col-12 col-md-6"><PolarAreaChart /></div> -->
-        <!-- <div class="col-12 col-md-6"><RadarChart /></div> -->
+    <Sidebar />
+    <br><br><br><br>
+    <div class="container-fluid wrapper">
+      <h1>CBSS DASHBOARD</h1>
+      <div class="graphs col-12 col-md-6">
+          <!-- Render BarChart component only when barChartData is not null -->
+        <BarChart v-if="ClusterData" :data="ClusterData" />
       </div>
+      <div class="graphs col-12 col-md-6">
+          <!-- Render BarChart component only when barChartData is not null -->
+        <BarChart v-if="RegionData" :data="RegionData" />
+      </div>
+    </div>
   </div>
-  <!-- <Footer /> -->
-  </template>
-  
-  <script>
-  import Footer from '@/components/Footer'; 
-  import Sidebar from '@/components/Sidebar'; 
-  import BarChart from '@/components/ChartJS/Barchart';
-  import PieChart from '@/components/ChartJS/PieChart';
-  import LineChart from '@/components/ChartJS/LineChart';
-  import DougnutChart from '@/components/ChartJS/DoughnutChart';
-  import PolarAreaChart from '@/components/ChartJS/PolarArea';
-  import RadarChart from '@/components/ChartJS/Radar';
-  import HBarchart from '@/components/ChartJS/HBarchart'
+</template>
 
-  
-  export default {
-    name: 'Dashboard',
-    components: {
-      Footer,
-      Sidebar, 
-      BarChart,
-      PieChart,
-      LineChart,
-      DougnutChart,
-      PolarAreaChart,
-      RadarChart,
-      HBarchart,
-  
+<script>
+import axios from 'axios';
+import Footer from '@/components/Footer'; 
+import Sidebar from '@/components/Sidebar'; 
+import BarChart from '@/components/ChartJS/Barchart';
+
+
+export default {
+  name: 'Dashboard',
+  components: {
+    Footer,
+    Sidebar,
+    BarChart,
+  },
+  data() {
+    return {
+      ClusterData: null, // Initialize barChartData as null
+      RegionData: null,
+    };
+  },
+  methods: {
+    ClusterFetchData() {
+      return axios
+        .get('http://127.0.0.1:8000/api/cluster')
+        .then(response => {
+          // Initialize data arrays
+          const southCluster = [];
+          const cluster1 = [];
+          const northCluster = [];
+          const unclustered = [];
+          const cluster2 = [];
+          const senior = [];
+
+          response.data.forEach(item => {
+            const clusterName = item.Cluster;
+
+            switch (clusterName) {
+              case 'South Cluster':
+                southCluster.push(item);
+                break;
+              case 'Cluster 1':
+                cluster1.push(item);
+                break;
+              case 'North Cluster':
+                northCluster.push(item);
+                break;
+              case 'Unclustered':
+                unclustered.push(item);
+                break;
+              case 'Cluster 2':
+                cluster2.push(item);
+                break;
+              case 'Senior Citizens Center':
+                senior.push(item);
+                break;
+              default:
+                // Handle other cases if necessary
+                break;
+            }
+          });
+
+          // Calculate data lengths
+          const southClusterLength = southCluster.length;
+          const cluster1Length = cluster1.length;
+          const northClusterLength = northCluster.length;
+          const unclusteredLength = unclustered.length;
+          const cluster2Length = cluster2.length;
+          const seniorLength = senior.length;
+
+          // Prepare and return data
+          const clusterdata = {
+            labels: ['Unclustered', 'Cluster 1', 'North Cluster', 'South Cluster', 'Senior Citizen', 'Cluster 2'],
+            label: ['Cluster'],
+            values: [unclusteredLength, cluster1Length, northClusterLength, southClusterLength, seniorLength, cluster2Length],
+            backgroundColor: ['rgba(25, 82, 105, 0.6)',
+                              'rgba(0, 255, 0, 0.6)',
+                              'rgba(0, 0, 255, 0.6)',
+                              'rgba(0, 0, 255, 0.6)',
+                              'rgba(128, 0, 128, 0.6',
+          ],
+          };
+          // Set barChartData to the computed data
+          this.ClusterData = clusterdata;
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+
+         // Prepare and return data if in case there is an api catch error
+            const clusterdata = {
+            labels: ['Unclustered', 'Cluster 1', 'North Cluster', 'South Cluster', 'Senior Citizen', 'Cluster 2'],
+            label: ['Cluster'],
+            values: [1, 1, 1, 1, 1, 1 ],
+            backgroundColor: ['rgba(25, 82, 105, 0.6)',
+                              'rgba(0, 255, 0, 0.6)',
+                              'rgba(0, 0, 255, 0.6)',
+                              'rgba(0, 0, 255, 0.6)',
+                              'rgba(128, 0, 128, 0.6',
+          ],
+          };
+          // Set catcc error barChartData to the computed data
+          this.ClusterData = clusterdata;
+        });
     },
-    data() {
-      return {
-        MonthData: {
-          labels: ['WEDC', 'OTHERS', 'FHONA', 'PWD', 'OLDER PERSONS', 'OFW'],
-          label: ['CHART1'],
-          values: [39, 18, 13, 4, 3, 1],
-          backgroundColor: [
-          'rgba(25, 82, 105, 0.6',  
-          'rgba(85, 25, 44, 0.6',  
-          'rgba(135, 146, 56, 0.6',
-          'rgba(25, 61, 95, 0.6', 
-          'rgba(105, 82, 105, 0.6', 
-        ],
-        },
+
+    RegionFetchData() {
+      return axios
+        .get('http://127.0.0.1:8000/api/regionaloperation')
+        .then(response => {
+          // Initialize data arrays
+          const davaoCity = [];
+          const davaodelSur = [];
+          const davaodelNorte = [];
+          const davaodeOro = [];
+          const davaoOriental = [];
+          const others = [];
+          const regionXI = [];
+         
+
+          response.data.forEach(item => {
+            const regionName = item.RegionalOperation;
+
+            switch (regionName) {
+              case 'Davao City':
+                  davaoCity.push(item);
+                break;
+              case 'Davao del Sur':
+                  davaodelSur.push(item);
+                break;
+              case 'Davao del Norte':
+                  davaodelNorte.push(item);
+                break;
+              case null:
+                   others.push(item);
+                break;
+              case 'Region XI':
+                  regionXI.push(item);
+                break;
+              case 'Davao Oriental':
+                davaoOriental.push(item);
+                break;
+              case 'Davao de Oro':
+                davaodeOro.push(item);
+                break;
+              default:
+                // Handle other cases if necessary
+                break;
+            }
+          });
+
+          // Calculate data lengths
+          const  davaoCityLength = davaoCity.length;
+          const davaodelSurLength = davaodelSur.length;
+          const davaodelNorteLength = davaodelNorte.length;
+          const othersLength = others.length;
+          const regionXILength = regionXI.length;
+          const davaoOrientalLength = davaoOriental.length;
+          const davaodeOroLength = davaodeOro.length;
         
-        NameData: {
-          labels: ['CNSP', 'EMOTIONALLY/PSYCHO DISTRESS', 'OFW'],
-          label: ['CHART2'],
-          values: [42, 23, 12, 2],
-          backgroundColor: [
-          'rgba(75, 192, 192, 0.2',
-          'rgba(255, 99, 132, 0.2',
-          'rgba(255, 206, 86, 0.2',
-          'rgba(54, 162, 235, 0.2',
-          'rgba(153, 102, 255, 0.2',
-          'rgba(255, 159, 64, 0.2',
-        ],
-        },
+          // Prepare and return data
+          const regiondata = {
+            labels: ['Davao City', 'Davao del Sur', 'Davao del Norte', 'Others', 'Region XI', 'Davao Oriental', 'Davao de Oro'],
+            label: ['Regional Operation'],
+            values: [davaoCityLength, davaodelSurLength, davaodelNorteLength, othersLength, regionXILength, davaoOrientalLength, davaodeOroLength],
+            backgroundColor: [
+                'rgba(255, 0, 0, 0.6)',  
+                'rgba(0, 255, 0, 0.6)',     
+                'rgba(0, 0, 255, 0.6)',   
+                'rgba(255, 255, 0, 0.6)',  
+                'rgba(128, 0, 128, 0.6)',   
+              ],
+          };
+          // Set barChartData to the computed data
+          this.RegionData = regiondata;
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
 
-      };
-    },
-  };
-  </script>
+         // Prepare and return data if in case there is an api catch error
+         const regiondata = {
+            labels: ['Davao City', 'Davao del Sur', 'Davao del Norte', 'Others', 'Region XI', 'Davao Oriental', 'Davao de Oro'],
+            label: ['Regional Operation'],
+            values: [1, 1, 1, 1, 1, 1],
+            backgroundColor: [
+                'rgba(255, 0, 0, 0.6)',  
+                'rgba(0, 255, 0, 0.6)',     
+                'rgba(0, 0, 255, 0.6)',   
+                'rgba(255, 255, 0, 0.6)',  
+                'rgba(128, 0, 128, 0.6)',   
+              ],
+          };
+          // Set catcc error barChartData to the computed data
+          this.RegionData = regiondata;
+        });
+    }, 
+  },
+  mounted() {
+    // Automatically fetch data when the component is mounted
+    this.ClusterFetchData();
+    this.RegionFetchData();
+  },
+};
+</script>
   
-  <style scoped>
 
-  .last{
-    margin-bottom: 100px;
-    margin-top: 50px;
-  }
+
+
+<style scoped>
  .graphs {
   margin-top: 50px;
   margin-bottom: 50px;
