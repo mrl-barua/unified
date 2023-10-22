@@ -28,14 +28,30 @@
             </li>
             </router-link>
 
-            <router-link to="/hr" class="custom-link">
-            <li class="list">
+           
+            <!-- <li class="list">
               <a href="#" class="nav-link">
                 <i class="bx bx-bar-chart-alt-2 icon"></i>
                 <span class="link">HR</span>
               </a>
             </li>
-            </router-link>
+             -->
+
+            
+            <li class="list">  
+                  <div class="dropdown">
+                      <a class=" nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bx bx-bar-chart-alt-2 icon"></i>
+                        <span class="link">HR</span>
+                      </a>
+
+                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <router-link to="/hr" class="custom-link"> <li><a class="dropdown-item" href="#">Main Dashboard</a></li> </router-link>
+                            <li><a class="dropdown-item" href="#">Eligibility</a></li>
+                          </ul>
+                    </div>
+            </li> 
+         
 
             <router-link to="/osp" class="custom-link">
             <li class="list">

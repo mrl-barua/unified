@@ -36,6 +36,8 @@
 
 ## ver 1.3 Fix route.js wherein when user is in the default page '/' the localStorage will be automatically cleared - MARLO BARUA
 
-## ver 1.4 Implemented Api fetch and Chart Components can now use the fetch data from axios
+## ver 1.4 Implemented Api fetch and Chart Components can now use the fetch data from axios - MARLO BARUA
 
-## ver 1.5 Temporarily Remove slide animation from login, optimize sidebar, Added function wherein user cant right click and inspect element
+## ver 1.5 Temporarily Remove slide animation from login, optimize sidebar, Added function wherein user cant right click and inspect element - MARLO BARUA
+
+## ver 1.6 Added Regional Operation Fetch method in Dashboard view - MARLO BARUA
