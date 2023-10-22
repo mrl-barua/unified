@@ -89,66 +89,81 @@
                   </div>
                 </div>
                   
-        <div class="col-12">
-          <div class="safehaven">
+                <div class="col-10">
+                        <div class="safehaven">
 
-            <!-- FIRST COLUMN -->
-            <div class="col-12 col-md-6">
-              <h4>A SAFE HAVEN CHILDREN"S HOME FOUNDATION, INC</h4>
-              <br>
-              <hr class="horizontal-line">
+                              
+                                <!-- <div class="col-12 col-md-6">
+                                  <h4>A SAFE HAVEN CHILDREN"S HOME FOUNDATION, INC</h4>
+                                  <br>
+                                  <hr class="horizontal-line">
 
-                  <div class="col-4">
-                    <p class="fw-bold"> <span class="status-box" id="dynamic-box"></span> Registration Status</p>
-                    <br>
-                        <p class="box-color fw-bold">Former Name: </p>
-                    <p>Children</p>
-                  </div>
-                  <div class="col-4">
-                    <p class="fw-bold"><span class="status-box" id="dynamic-box"> </span>Licensed Status</p>
-                    <br>
-                        <p class="box-color fw-bold">Cluster: </p>
-                    <p>Cluster 1</p>
-                  </div>
-                  <div class="col-4">
-                    <p class="fw-bold"> <span class="status-box" id="dynamic-box"> </span>Accreditation Status</p>
-                    <br>
-                        <p class="box-color fw-bold">Type: </p>
-                    <p>Private</p>
-                  </div>
-              <br>
-              <hr class="horizontal-line">
-              <h4>CONTACT INFORMATION</h4>
-              <br>
-              <p class="box-color fw-bold">Address</p>
-              <p>No data</p>
-              <br>
-                  <div class="col-6">
-                    <p class="box-color fw-bold">Contact Number</p>
-                    <p>No data</p>
-                  </div>
-                  <div class="col-6">
-                    <p class="box-color fw-bold">Email</p>
-                    <p>No data</p>
-                  </div>
-              <br><br><br>
-              <p class="box-color fw-bold">Website</p><br>
-              <p>No data</p>
-            </div>
-
-
-
-
-            <!-- SECOND COLUMN -->
-            <div class="col-12 col-md-6">
-              test
-            </div>
+                                      <div class="col-4">
+                                        <p class="fw-bold"> <span class="status-box" id="dynamic-box"></span> Registration Status</p>
+                                        <br>
+                                            <p class="box-color fw-bold">Former Name: </p>
+                                        <p>Children</p>
+                                      </div>
+                                      <div class="col-4">
+                                        <p class="fw-bold"><span class="status-box" id="dynamic-box"> </span>Licensed Status</p>
+                                        <br>
+                                            <p class="box-color fw-bold">Cluster: </p>
+                                        <p>Cluster 1</p>
+                                      </div>
+                                      <div class="col-4">
+                                        <p class="fw-bold"> <span class="status-box" id="dynamic-box"> </span>Accreditation Status</p>
+                                        <br>
+                                            <p class="box-color fw-bold">Type: </p>
+                                        <p>Private</p>
+                                      </div>
+                                  <br>
+                                  <hr class="horizontal-line">
+                                  <h4>CONTACT INFORMATION</h4>
+                                  <br>
+                                  <p class="box-color fw-bold">Address</p>
+                                  <p>No data</p>
+                                  <br>
+                                      <div class="col-6">
+                                        <p class="box-color fw-bold">Contact Number</p>
+                                        <p>No data</p>
+                                      </div>
+                                      <div class="col-6">
+                                        <p class="box-color fw-bold">Email</p>
+                                        <p>No data</p>
+                                      </div>
+                                  <br><br><br>
+                                  <p class="box-color fw-bold">Website</p><br>
+                                  <p>No data</p>
+                                </div> -->
 
 
 
-            
-          </div>
-        </div>
+                                <!-- FIRST COLUMN -->
+                                <div class="col-12 col-md-12">
+
+                                  <div class="col-12">
+                                    test
+                                  </div>
+
+                                  <div class="col-7">
+                                    test
+                                  </div>
+
+                                  <div class="col-5">
+                                      test
+                                  </div>
+                                
+                                </div>
+                                <!-- SECOND COLUMN -->
+                                <div class="col-12 col-md-12">
+                                  test
+                                </div>
+                        </div>
+                        
+                        <div class="col-2">
+
+                        </div>
+                </div>
         
         </div>
     </div>

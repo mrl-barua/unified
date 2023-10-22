@@ -189,9 +189,9 @@ created() {
   padding: 0;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  -webkit-transition: 0.3s;
+  /* -webkit-transition: 0.3s;
   -o-transition: 0.3s;
-  transition: 0.3s;
+  transition: 0.3s; */
 }
 
 
@@ -281,8 +281,8 @@ img {
   background: #294D9C;
   background-size: cover;
   float: left;
-  -webkit-animation: bgslide 2.3s forwards;
-          animation: bgslide 2.3s forwards;
+  /* -webkit-animation: bgslide 2.3s forwards;
+          animation: bgslide 2.3s forwards; */
 
 
  @media only screen and (min-width: 1280px) {

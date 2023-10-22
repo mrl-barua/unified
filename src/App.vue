@@ -14,7 +14,30 @@
    components: {
      LoginForm,
      Dashboard
-   }
+   },
+
+   mounted() {
+    // // Event Listener to disable right-click mouse
+    // document.addEventListener('contextmenu', event => event.preventDefault());
+
+    // // Event listener that prevents access to the dev tools for visitors
+    // document.addEventListener("keydown", function (event) {
+    //   if (event.ctrlKey) {
+    //     event.preventDefault();
+    //   }
+    //   if (event.keyCode == 123) {
+    //     event.preventDefault();
+    //   }
+    // });
+
+    // // Event listener to disable screen capture
+    // document.addEventListener('keyup', (e) => {
+    //   if (e.key == 'PrintScreen') {
+    //     navigator.clipboard.writeText('');
+    //     alert('Screenshots disabled!');
+    //   }
+    // });
+  }
  }
  </script>
  
