@@ -8,105 +8,74 @@ import SLP from '../views/SLP.vue'
 import ERROR from '../views/404.vue'
 import { isAuthenticated } from '../auth'; // Import the authentication function
 
+
+
+const requireAuth = (to, from, next) => {
+  if (isAuthenticated()) {
+    // User is authenticated, allow access to the route
+    next();
+  } else {
+    // User is not authenticated, redirect to the login page or handle it as needed
+    next({
+      name: 'login',
+      query: { redirect: to.fullPath },
+    });
+  }
+};
+
+
+
 const routes = [
   {
     path: '/',
     name: 'login',
-    component: LoginForm
+    component: LoginForm,
+    beforeEnter: (to, from, next) => {
+      // Check if the user is authenticated
+      if (isAuthenticated()) {
+        // User is authenticated, clear the token in localStorage
+        localStorage.removeItem('user');
+        // Allow access to the route
+        next();
+      } else {
+        // User is not authenticated, proceed to the login page
+        next();
+      }
+    }
   },
   {
     path: '/dashboard',
     name: 'dashboard',
     component: Dashboard,
-    beforeEnter: (to, from, next) => {
-      // Check if the user is authenticated
-      if (isAuthenticated()) {
-        // User is authenticated, allow access to the route
-        next();
-      } else {
-        // User is not authenticated, redirect to the login page or handle it as needed
-        next({
-          name: 'login',
-          query: { redirect: to.fullPath }, // Pass the intended destination as a query parameter
-        });
-      }
-    },
+    beforeEnter: requireAuth,
   },
 
   {
     path: '/HR',
     name: 'hr',
     component: HR,
-    beforeEnter: (to, from, next) => {
-      // Check if the user is authenticated
-      if (isAuthenticated()) {
-        // User is authenticated, allow access to the route
-        next();
-      } else {
-        // User is not authenticated, redirect to the login page or handle it as needed
-        next({
-          name: 'login',
-          query: { redirect: to.fullPath }, // Pass the intended destination as a query parameter
-        });
-      }
-    },
+    beforeEnter: requireAuth,
   },
 
   {
     path: '/OSP',
     name: 'osp',
     component: OSP,
-    beforeEnter: (to, from, next) => {
-      // Check if the user is authenticated
-      if (isAuthenticated()) {
-        // User is authenticated, allow access to the route
-        next();
-      } else {
-        // User is not authenticated, redirect to the login page or handle it as needed
-        next({
-          name: 'login',
-          query: { redirect: to.fullPath }, // Pass the intended destination as a query parameter
-        });
-      }
-    },
+    beforeEnter: requireAuth,
   },
 
   {
     path: '/SWDA',
     name: 'swda',
     component: SWDA,
-    beforeEnter: (to, from, next) => {
-      // Check if the user is authenticated
-      if (isAuthenticated()) {
-        // User is authenticated, allow access to the route
-        next();
-      } else {
-        // User is not authenticated, redirect to the login page or handle it as needed
-        next({
-          name: 'login',
-          query: { redirect: to.fullPath }, // Pass the intended destination as a query parameter
-        });
-      }
-    },
+    beforeEnter: requireAuth,
   },
 
   {
     path: '/SLP',
     name: 'slp',
     component: SLP,
-    beforeEnter: (to, from, next) => {
-      // Check if the user is authenticated
-      if (isAuthenticated()) {
-        // User is authenticated, allow access to the route
-        next();
-      } else {
-        // User is not authenticated, redirect to the login page or handle it as needed
-        next({
-          name: 'login',
-          query: { redirect: to.fullPath }, // Pass the intended destination as a query parameter
-        });
-      }
-    },
+    beforeEnter: requireAuth,
   },
     //catch-all route for 404 errors
   {
