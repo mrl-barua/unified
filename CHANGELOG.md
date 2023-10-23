@@ -39,4 +39,5 @@
 ## ver 1.4 Implemented Api fetch and Chart Components can now use the fetch data from axios
 
 ## ver 1.5 OSD Added(Division, Status,Employment Type and Gender Charts)- MARA SUERTE
+
 ## ver 1.5.1 OSD Added ELIGIBILITY Record Count ( Css and Others, Licensed, Highest Level of Eligibility and with/without Eligibility ) - MARA SUERTE
