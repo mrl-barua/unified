@@ -4,13 +4,13 @@
     <br><br><br><br>
 
     <div class="col-12 col-md-7">
-        <div class="shadow">
+        <div class="shadow2">
           <p>NUMBER OF RECORDS PER MONTH</p>
           <div class="Barchart1"><BarChart :data="MonthData" /></div>
         </div>
     </div>
     <div class="col-12 col-md-5">
-      <div class="shadow">
+      <div class="shadow2">
         text
       </div>
     </div>
@@ -18,19 +18,49 @@
     <div class="col-12 col-md-6">
         <div class="shadow2">
           <p>TOTAL NUMBER OF CATEGORIES REQUEST</p>
-          <div class="Barchart1"><PieChart :data="MonthData" /></div>
+          <div class="Piechart1"><PieChart :data="NameData" /></div>
         </div>
     </div>
     <div class="col-12 col-md-6">
       <div class="shadow2">
           <p>PERCENTAGE OF REQUESTING EMPLOYEES STATUS</p>
-          <div class="Barchart1"><PieChart :data="MonthData" /></div>
+          <div class="Piechart1"><PieChart :data="NameData" /></div>
         </div>
     </div>
 
     <div class="col-12">
       <div class="shadow2">
-        text
+        <h3>DETAILS OF REQUESTING EMPLOYEE</h3>
+
+        <div class="d-flex justify-content-around">
+         <h4>NAME</h4>
+         <h4>OFFICE / UNIT</h4>
+         <h4>RECORD COUNT</h4>
+        </div>
+        <hr class="hr" />
+        <div class="d-flex justify-content-around">
+         <p>text</p>
+         <p>text</p>
+         <p>text</p>
+        </div>
+        <hr class="hr" />
+        <div class="d-flex justify-content-around">
+         <p>text</p>
+         <p>text</p>
+         <p>text</p>
+        </div>
+        <hr class="hr" />
+        <div class="d-flex justify-content-around">
+         <p>text</p>
+         <p>text</p>
+         <p>text</p>
+        </div>
+        <hr class="hr" />
+        <div class="d-flex justify-content-around">
+         <p>text</p>
+         <p>text</p>
+         <p>text</p>
+        </div>
       </div>
     </div>
 
@@ -67,15 +97,11 @@ export default {
     data() {
       return {
         MonthData: {
-          labels: ['WEDC', 'OTHERS', 'FHONA', 'PWD', 'OLDER PERSONS', 'OFW'],
-          label: ['CHART1'],
-          values: [39, 18, 13, 4, 3, 1],
+          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November' , 'December'],
+          label: ['Months'],
+          values: [39, 18, 13, 4, 3, 1, 2, 3, 4, 5, 4, 2],
           backgroundColor: [
-          'rgba(25, 82, 105, 0.6',  
-          'rgba(85, 25, 44, 0.6',  
-          'rgba(135, 146, 56, 0.6',
-          'rgba(25, 61, 95, 0.6', 
-          'rgba(105, 82, 105, 0.6', 
+          'rgba(19, 63, 92, 1)'
         ],
         },
         
@@ -102,28 +128,28 @@ export default {
 
 <style scoped>
 
-
-.shadow{
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
-  height: 450px;
-  border-radius: 20px;
-  margin: auto;
-  margin:0px 20px 0px 20px;
-  padding: 10px 0px 10px 0px;
-}
-
 .shadow2{
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
-  height: 370px;
+  height: 400px;
   border-radius: 20px;
-  margin: auto;
-  margin:20px 20px 20px 20px;
+  margin:10px 15px 10px 20px;
   padding: 10px 0px 10px 0px;
+  
 }
 
 .Barchart1{
-  height: 300px;
-  margin:auto;  
+  
+  height: 340px;
+  margin: auto;
+  margin:0px;  
+  
+  @media only screen and (min-width: 1110px) {
+    margin-left: 10px;
+  }
+
+  @media only screen and (min-width: 1280px) {
+    margin-left: 240px;
+  }
 }
 </style>
 
