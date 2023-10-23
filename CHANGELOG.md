@@ -46,4 +46,6 @@
 
 ## ver 1.7 Added Regional Operation Fetch method in Dashboard view - MARLO BARUA
 
+## ver 1.8 Added Template for HR (partial implementation without actual Data)
+
 
