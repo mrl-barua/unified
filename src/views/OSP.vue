@@ -48,7 +48,7 @@
       </div>
     </div>
 
-    <!-- Modified "DIVISION" section -->
+    <!-- DIVISION section -->
     <div class="col-12 col-md-6">
       <div class="dashboard-box">
         <div style="background-color: ; color: black; padding: 10px; font-weight: bold; font-size: 20px; text-align: center;">
@@ -77,7 +77,7 @@
       </div>
     </div>
 
-    <!-- New box for Status -->
+    <!-- Status -->
     <div class="col-12 col-md-6">
       <div class="dashboard-box" style="height: 195px; width: 633px;">
         <div
@@ -97,11 +97,11 @@
         <div style="background-color: ; color: black; padding: 10px; font-weight: bold; font-size: 20px; text-align: center;">
           GENDER AND AGE
         </div>
-        <!-- Content for the new box here -->
+        <!-- SHOULD HAVE STACKED UP BAR CHART HERE -->
       </div>
     </div>
 
-    <!-- Employment Type and Gender Boxes -->
+    <!-- Employment Type and Gender Box -->
     <div class="col-12 col-md-6" style="display: flex; justify-content: space-between;">
       <div class="dashboard-box" style="height: 300px; width: 310px;">
         <div style="background-color: ; color: black; padding: 10px; font-weight: bold; font-size: 20px; text-align: center;">
@@ -122,28 +122,162 @@
           <div></div>
         </div>
       </div>
+      </div> </div>
+
+      <!-- ELIGIBILITY header -->
+
+    <div class="col-12">
+      <h2 style="margin-left: 60px; margin-right: 60px;background-color: #294D9C; color: white; font-weight: bold; padding: 10px; text-align: center;">
+        ELIGIBILITY
+      </h2>
     </div>
-  </div>
+    
+
+    <!-- CSS and Others -->
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <div class="dashboard-box" style="width: 648px; height: 220px;">
+          <div style="display: flex; justify-content: space-between;padding: 10px;">
+            <div><b>CSS AND OTHERS</b></div>
+            <div><b>RECORD COUNT</b></div>
+          </div>
+          <div style="border-bottom: 2px solid #a9a9a9;"></div>
+          <div style="background-color: ; color: black; padding: 10px;">
+            <div style="display: flex; justify-content: space-between;">
+              <div>1. lorem ipsum</div>
+              <div style="display: flex; align-items: center; margin-right: 50px;">0</div>
+            </div>
+            <div style="border-bottom: 1px solid #a9a9a9; margin-top: 10px;"></div>
+            <div style="display: flex; justify-content: space-between;">
+              <div>2. lorem ipsum</div>
+              <div style="display: flex; align-items: center; margin-right: 50px;">0</div>
+            </div>
+            <div style="border-bottom: 1px solid #a9a9a9; margin-top: 10px;"></div>
+            <div style="display: flex; justify-content: space-between;">
+              <div>3. lorem ipsum</div>
+              <div style="display: flex; align-items: center; margin-right: 50px;">0</div>
+            </div>
+            <div style="border-bottom: 1px solid #a9a9a9; margin-top: 10px;"></div>
+            <div style="display: flex; justify-content: space-between;">
+              <div>4. lorem ipsum</div>
+              <div style="display: flex; align-items: center; margin-right: 50px;">0</div>
+            </div>
+            <div style="border-bottom: 2px solid #a9a9a9; margin-top: 10px;"></div>
+          </div>
+        </div>
+      </div>
+
+     <!-- Licensed -->
+      <div class="col-12 col-md-6">
+        <div class="dashboard-box" style="width: 620px; height: 220px;">
+          <div style="display: flex; justify-content: space-between;padding: 10px;">
+            <div><b>LICENSED</b></div>
+            <div><b>RECORD COUNT</b></div>
+          </div>
+          <div style="border-bottom: 2px solid #a9a9a9;"></div>
+          <div style="background-color: ; color: black; padding: 10px;">
+            <div style="display: flex; justify-content: space-between;">
+              <div>1. lorem ipsum</div>
+              <div style="display: flex; align-items: center; margin-right: 50px;">0</div>
+            </div>
+            <div style="border-bottom: 1px solid #a9a9a9; margin-top: 10px;"></div>
+            <div style="display: flex; justify-content: space-between;">
+              <div>2. lorem ipsum</div>
+              <div style="display: flex; align-items: center; margin-right: 50px;">0</div>
+            </div>
+            <div style="border-bottom: 1px solid #a9a9a9; margin-top: 10px;"></div>
+            <div style="display: flex; justify-content: space-between;">
+              <div>3. lorem ipsum</div>
+              <div style="display: flex; align-items: center; margin-right: 50px;">0</div>
+            </div>
+            <div style="border-bottom: 1px solid #a9a9a9; margin-top: 10px;"></div>
+            <div style="display: flex; justify-content: space-between;">
+              <div>4. lorem ipsum</div>
+              <div style="display: flex; align-items: center; margin-right: 50px;">0</div>
+            </div>
+            <div style="border-bottom: 2px solid #a9a9a9; margin-top: 10px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HIGHEST LEVEL OF ELIGIBILITY -->
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <div class="dashboard-box" style="width: 648px; height: 220px;">
+          <div style="display: flex; justify-content:center;padding: 10px; ">
+            <div><b>HIGHEST LEVEL OF ELIGIBILITY</b></div>
+          
+          </div>
+          <div style="border-bottom: 2px solid #a9a9a9;"></div>
+          <div style="background-color: ; color: black; padding: 10px;">
+            <div style="display: flex; justify-content: space-between;">
+              <div>1. lorem ipsum</div>
+              
+            </div>
+            <div style="border-bottom: 1px solid #a9a9a9; margin-top: 10px;"></div>
+            <div style="display: flex; justify-content: space-between;">
+              <div>2. lorem ipsum</div>
+            
+            </div>
+            <div style="border-bottom: 1px solid #a9a9a9; margin-top: 10px;"></div>
+            <div style="display: flex; justify-content: space-between;">
+              <div>3. lorem ipsum</div>
+              
+            </div>
+            <div style="border-bottom: 1px solid #a9a9a9; margin-top: 10px;"></div>
+            <div style="display: flex; justify-content: space-between;">
+              <div>4. lorem ipsum</div>
+           
+            </div>
+            <div style="border-bottom: 2px solid #a9a9a9; margin-top: 10px;"></div>
+          </div>
+        </div>
+      </div>
+
+     
+      <!-- W/WO ELIGIBILITY -->
+   <div class="col-12 col-md-6">
+  <div class="dashboard-box" style="height: 220px; width: 620px;">
+    <div style="display: flex; justify-content: space-between;">
+      <div style="flex: 1; padding: 10px; text-align: center;">
+        <span style="font-size: 20px; font-weight: bold; color: black;">WITH ELIGIBILITY</span>
+      </div>
+      <div style="flex: 1; padding: 10px; text-align: center;">
+        <span style="font-size: 20px; font-weight: bold; color: black;">WITHOUT ELIGIBILITY</span>
+      </div>
+    </div>
+    <div style="display: flex; justify-content: space-between;">
+      <div style="flex: 1; padding: 10px; text-align: center;">
+        <span style="font-size: 60px; font-weight: bold; color: red;">0</span>
+      </div>
+      <div style="flex: 1; padding: 10px; text-align: center;">
+        <span style="font-size: 60px; font-weight: bold; color: #292D96;">0</span>
+      </div>
+    </div>
+  </div></div>
+</div>
+    
 </template>
 
 <script>
 import Sidebar from '@/components/Sidebar.vue';
 import Footer from '@/components/Footer';
-import PieChart from '@/components/ChartJS/PieChart'; //Import the PieChart component
+import PieChart from '@/components/ChartJS/PieChart'; 
 
 export default {
   name: 'OSP',
   components: {
     Sidebar,
     Footer,
-    PieChart, //PieChart to the components
+    PieChart, 
   },
   data() {
     return {
-      divisions: ['Division #1', 'Division #2', 'Division #3', 'Division #4'], // Add the division data here
+      divisions: ['Division #1', 'Division #2', 'Division #3', 'Division #4'], //division data 
       MonthData: {
         labels: ['Permanent', 'MOA', 'Contractual'], 
-        values: [80, 15, 20, ], // Update the values accordingly
+        values: [80, 15, 20, ], //  values 
         backgroundColor: [
           'rgba(19, 63, 92, 1)',
           'rgba(89, 80, 141, 1)',
@@ -152,14 +286,14 @@ export default {
         ],
       },
       employmentType: {
-        labels: [], // Add two choices for gender
-        values: [30, 10, 20, 40, ], // Update the values accordingly
+        labels: [], //  two choices for gender
+        values: [30, 10, 20, 40, ], //values 
         backgroundColor: ['rgba(235, 95, 94)', 'rgba(243,165,51)', 'rgba(89,80,141)', 'rgba(188,80,144)'], // Add colors for each gender
       },
       genderData: {
-        labels: [], // Add two choices for gender
-        values: [50, 50], // Update the values accordingly
-        backgroundColor: ['rgba(235, 95, 94)', 'rgba(89,80,141)'], // Add colors for each gender
+        labels: [], //two choices for gender
+        values: [50, 50], //values accordingly
+        backgroundColor: ['rgba(235, 95, 94)', 'rgba(89,80,141)'], // colors for each gender
         
       },
       

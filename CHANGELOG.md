@@ -40,6 +40,8 @@
 
 ## ver 1.5 OSD Added(Division, Status,Employment Type and Gender Charts)- MARA SUERTE
 
+## ver 1.5.1 OSD Added ELIGIBILITY Record Count ( Css and Others, Licensed, Highest Level of Eligibility and with/without Eligibility ) - MARA SUERTE
+
 ## ver 1.6 Temporarily Remove slide animation from login, optimize sidebar, Added function wherein user cant right click and inspect element - MARLO BARUA
 
 ## ver 1.7 Added Regional Operation Fetch method in Dashboard view - MARLO BARUA
