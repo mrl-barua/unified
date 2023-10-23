@@ -46,6 +46,8 @@
 
 ## ver 1.7 Added Regional Operation Fetch method in Dashboard view - MARLO BARUA
 
-## ver 1.8 Added Template for HR (partial implementation without actual Data)
+## ver 1.8 Added Template for HR (partial implementation without actual Data) - MARLO BARUA
 
-## ver 1.9 Added finished Template for HR (partial implementation without actual Data)
+## ver 1.9 Added finished Template for HR (partial implementation without actual Data) - MARLO BARUA
+
+## ver 2.0 Added PERCENTAGE OF REQUESTING EMPLOYEES STATUS actual data from database through AxiosJS - MARLO BARUA

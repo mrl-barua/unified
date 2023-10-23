@@ -4,18 +4,13 @@
     <br><br><br><br>
 
     <div class="col-12 col-md-7">
-        <div class="shadow2">
+        <div class="shadow2 forbarchart">
           <p>NUMBER OF RECORDS PER MONTH</p>
           <div class="Barchart1"><BarChart :data="MonthData" /></div>
         </div>
     </div>
+  
     <div class="col-12 col-md-5">
-      <div class="shadow2">
-        text
-      </div>
-    </div>
-
-    <div class="col-12 col-md-6">
         <div class="shadow2">
           <p>TOTAL NUMBER OF CATEGORIES REQUEST</p>
           <div class="Piechart1"><PieChart :data="NameData" /></div>
@@ -24,18 +19,20 @@
     <div class="col-12 col-md-6">
       <div class="shadow2">
           <p>PERCENTAGE OF REQUESTING EMPLOYEES STATUS</p>
-          <div class="Piechart1"><PieChart :data="NameData" /></div>
+          <div class="Piechart1">
+            <DoughnutChart v-if="EmploymentData" :data="EmploymentData" />
+          </div>
         </div>
     </div>
 
-    <div class="col-12">
+    <div class="col-12 col-md-6">
       <div class="shadow2">
         <h3>DETAILS OF REQUESTING EMPLOYEE</h3>
 
         <div class="d-flex justify-content-around">
-         <h4>NAME</h4>
-         <h4>OFFICE / UNIT</h4>
-         <h4>RECORD COUNT</h4>
+         <h5 class="fw-bold">NAME</h5>
+         <h5 class="fw-bold">OFFICE / UNIT</h5>
+         <h5 class="fw-bold">RECORD COUNT</h5>
         </div>
         <hr class="hr" />
         <div class="d-flex justify-content-around">
@@ -71,15 +68,13 @@
 </template>
 
 <script>
+import axios from 'axios';
 import Sidebar from '@/components/Sidebar.vue'; 
 import Footer from '@/components/Footer';
+import BarChart from '@/components/ChartJS/Barchart';
+import PieChart from '@/components/ChartJS/PieChart';
+import DoughnutChart from '@/components/ChartJS/DoughnutChart';
 
-  import BarChart from '@/components/ChartJS/Barchart';
-  import PieChart from '@/components/ChartJS/PieChart';
-  import LineChart from '@/components/ChartJS/LineChart';
-  import DougnutChart from '@/components/ChartJS/DoughnutChart';
-  import PolarAreaChart from '@/components/ChartJS/PolarArea';
-  import RadarChart from '@/components/ChartJS/Radar';
 
 export default {
     name: 'HR',
@@ -88,10 +83,8 @@ export default {
         Footer,
         BarChart,
         PieChart,
-        LineChart,
-        DougnutChart,
-        PolarAreaChart,
-        RadarChart,
+        DoughnutChart
+    
     },
 
     data() {
@@ -103,8 +96,7 @@ export default {
           backgroundColor: [
           'rgba(19, 63, 92, 1)'
         ],
-        },
-        
+        },    
         NameData: {
           labels: ['CNSP', 'EMOTIONALLY/PSYCHO DISTRESS', 'OFW'],
           label: ['CHART2'],
@@ -119,8 +111,83 @@ export default {
         ],
         },
 
+
+        EmploymentData: null,
       };
     },
+
+ methods:{
+  EmploymentFetchData() {
+      return axios
+        .get('http://127.0.0.1:8000/api/employmentStatus')
+        .then(response => {
+          // Initialize data arrays
+          const moa = [];
+          const permanent = [];
+          const contractual = [];
+          const coterminos = [];
+          const casual = [];
+         
+
+          response.data.forEach(item => {
+            const employmentstatus = item.EMPLOYMENT_STATUS;
+
+            switch (employmentstatus) {
+              case 'MOA':
+                  moa.push(item);
+                break;
+              case 'PERMANENT':
+                  permanent.push(item);
+                break;
+              case 'CONTRACTUAL':
+                 contractual.push(item);
+                break; 
+              case 'COTERMINOS':
+                coterminos.push(item);
+                break; 
+              case 'CASUAL':
+                casual.push(item);
+                break; 
+              default:
+                // Handle other cases if necessary
+                break;
+            }
+          });
+
+          // Calculate data lengths
+          const moaLength = moa.length;
+          const permanentLength = permanent.length;
+          const contractualLength = contractual.length;
+          const coterminosLength = coterminos.length;
+          const casualLength = casual.length;
+          // Prepare and return data
+          const employmentdata = {
+            labels: ['MOA', 'PERMANENT', 'CONTRACTUAL', 'COTERMINOS', 'CASUAL'],
+            label: ['Employment Data'],
+            values: [moaLength, permanentLength, contractualLength, coterminosLength, casualLength],
+            backgroundColor: ['rgba(25, 82, 105, 0.6)',
+                              'rgba(0, 255, 0, 0.6)',
+                              'rgba(0, 0, 255, 0.6)',
+                            
+          ],
+          };
+          // Set barChartData to the computed data
+          this.EmploymentData = employmentdata;
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+
+        });
+    },
+
+ },
+
+
+
+  mounted() {
+    // Automatically fetch data when the component is mounted
+    this.EmploymentFetchData();
+  },
 
     
 }
@@ -134,22 +201,33 @@ export default {
   border-radius: 20px;
   margin:10px 15px 10px 20px;
   padding: 10px 0px 10px 0px;
-  
 }
+
+.forbarchart{
+  height: 250px;
+  @media only screen and (min-width: 500px) {
+    height: 350px;
+  }
+  @media only screen and (min-width: 720px) {
+    height: 400px;
+  }
+}
+
 
 .Barchart1{
   
-  height: 340px;
-  margin: auto;
-  margin:0px;  
+  
   
   @media only screen and (min-width: 1110px) {
     margin-left: 10px;
   }
 
   @media only screen and (min-width: 1280px) {
-    margin-left: 240px;
+    margin-left: 16%;
+    /* margin-right: 50; */
+    height: 340px; 
   }
 }
+
 </style>
 
