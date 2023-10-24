@@ -78,7 +78,7 @@
 
 <script>
 import Footer from '@/components/Footer'; 
-
+import axios from 'axios';
 
 export default {
   name: 'LoginForm',
@@ -117,12 +117,52 @@ methods: {
     this.loading = false;
   }, 1000); // Simulated delay of 1 second
 },
+
+// login() {
+//   // Set loading state to true
+//   this.loading = true;
+
+//   // Define the API URL
+//   const apiUrl = 'http://127.0.0.1:8000/api/loginCredentials';
+
+//   // Make an Axios GET request to fetch user data
+//   axios
+//     .get(apiUrl)
+//     .then((response) => {
+//       // Find the user with matching empid and qr_code
+//       const user = response.data.find(
+//         (user) => user.empid === this.username && user.qr_code === this.password
+//       );
+
+//       if (user) {
+//         // Authentication successful, set user as authenticated in localStorage
+//         localStorage.setItem('user', 'authenticated');
+
+//         // Navigate to the dashboard
+//         this.$router.push('/dashboard');
+//       } else {
+//         // Authentication failed, display error message
+//         this.error = true;
+//       }
+//     })
+//     .catch((error) => {
+//       // Handle API request error, e.g., display an error message
+//       console.error('API request failed:', error);
+//       this.error = true;
+//     })
+//     .finally(() => {
+//       // Reset loading state to false after the request
+//       this.loading = false;
+//     });
+// },
+
+
+},
+
 created() {
     // Clear the user's authentication status in localStorage when the login page is visited
     localStorage.removeItem('user');
   },
-
-},
 
 };
 </script>

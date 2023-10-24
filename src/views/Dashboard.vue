@@ -12,6 +12,8 @@
           <!-- Render BarChart component only when barChartData is not null -->
         <BarChart v-if="RegionData" :data="RegionData" />
       </div>
+
+     
     </div>
   </div>
 </template>
@@ -34,6 +36,7 @@ export default {
     return {
       ClusterData: null, // Initialize barChartData as null
       RegionData: null,
+      
     };
   },
   methods: {

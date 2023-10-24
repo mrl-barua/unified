@@ -40,8 +40,16 @@
 
 ## ver 1.5 OSD Added(Division, Status,Employment Type and Gender Charts)- MARA SUERTE
 
+## ver 1.5.1 OSD Added ELIGIBILITY Record Count ( Css and Others, Licensed, Highest Level of Eligibility and with/without Eligibility ) - MARA SUERTE
+
 ## ver 1.6 Temporarily Remove slide animation from login, optimize sidebar, Added function wherein user cant right click and inspect element - MARLO BARUA
 
 ## ver 1.7 Added Regional Operation Fetch method in Dashboard view - MARLO BARUA
 
+## ver 1.8 Added Template for HR (partial implementation without actual Data) - MARLO BARUA
 
+## ver 1.9 Added finished Template for HR (partial implementation without actual Data) - MARLO BARUA
+
+## ver 2.0 Added PERCENTAGE OF REQUESTING EMPLOYEES STATUS actual data from database through AxiosJS - MARLO BARUA
+
+## ver 2.1 Added in LOGIN SECTION, fetch data from database the login credentials - MARLO BARUA
