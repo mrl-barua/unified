@@ -225,7 +225,7 @@
     .lists .nav-link:hover {
       padding-left: 20px;
       padding-right: 20px;
-      background-color: #4070f4;
+      background-color: #EE1C25;
     }
     
     

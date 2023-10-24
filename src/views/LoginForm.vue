@@ -111,7 +111,7 @@ methods: {
     } 
    else if (this.username === 'Admin' && this.password === 'admin') {
       // Authentication successful, set user as authenticated in localStorage
-      localStorage.setItem('user', 'authenticated');
+      localStorage.setItem('admin', 'authenticated');
 
       // Navigate to the dashboard
       this.$router.push('/admindashboard');
@@ -169,10 +169,7 @@ methods: {
 
 },
 
-created() {
-    // Clear the user's authentication status in localStorage when the login page is visited
-    localStorage.removeItem('user');
-  },
+
 
 };
 </script>

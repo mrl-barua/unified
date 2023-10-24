@@ -55,3 +55,5 @@
 ## ver 2.1 Added in LOGIN SECTION, fetch data from database the login credentials - MARLO BARUA
 
 ## ver 2.2 Added ADMIN PAGE (CBSS, HR, OSP, SWDA, SLP), Added Login credential for USER VIEW and ADMIN VIEW - MARLO BARUA
+
+## ver 2.3 Implemented Route Guard Protection between ADMIN and USER Dashboards - MARLO BARUA
