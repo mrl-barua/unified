@@ -7,7 +7,7 @@
  
  <script>
  import LoginForm from './views/LoginForm'
- import Dashboard from './views/Dashboard'
+ import Dashboard from './views/User/Dashboard'
 
  export default {
    name: 'App',

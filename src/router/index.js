@@ -1,10 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LoginForm from '../views/LoginForm.vue'
-import Dashboard from '../views/Dashboard.vue'
-import HR from '../views/HR.vue'
-import OSP from '../views/OSP.vue'
-import SWDA from '../views/SWDA.vue'
-import SLP from '../views/SLP.vue'
+import Dashboard from '../views/User/Dashboard.vue'
+import HR from '../views/User/HR.vue'
+import OSP from '../views/User/OSP.vue'
+import SWDA from '../views/User/SWDA.vue'
+import SLP from '../views/User/SLP.vue'
+import AdminDashboard from '../views/Admin/AdminDashboard.vue'
+import AdminHR from '../views/Admin/AdminHR.vue'
+import AdminSLP from '../views/Admin/AdminSLP.vue'
+import AdminOSP from '../views/Admin/AdminOSP.vue'
+import AdminSWDA from '../views/Admin/AdminSWDA.vue'
 import ERROR from '../views/404.vue'
 import { isAuthenticated } from '../auth'; // Import the authentication function
 
@@ -43,6 +48,45 @@ const routes = [
       }
     }
   },
+
+  // ADMIN DASHBOARD START
+  {
+    path: '/admindashboard',
+    name: 'admindashboard',
+    component: AdminDashboard,
+    beforeEnter: requireAuth,
+  },
+
+  {
+    path: '/adminhr',
+    name: 'adminhr',
+    component: AdminHR,
+    beforeEnter: requireAuth,
+  },
+
+  {
+    path: '/adminslp',
+    name: 'adminslp',
+    component: AdminSLP,
+    beforeEnter: requireAuth,
+  },
+
+  {
+    path: '/adminosp',
+    name: 'adminosp',
+    component: AdminOSP,
+    beforeEnter: requireAuth,
+  },
+
+  {
+    path: '/adminswda',
+    name: 'adminswda',
+    component: AdminSWDA,
+    beforeEnter: requireAuth,
+  },
+  // ADMIN DASHBOARD END
+
+
   {
     path: '/dashboard',
     name: 'dashboard',
