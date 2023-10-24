@@ -165,7 +165,9 @@ export default {
             labels: ['MOA', 'PERMANENT', 'CONTRACTUAL', 'COTERMINOS', 'CASUAL'],
             label: ['Employment Data'],
             values: [moaLength, permanentLength, contractualLength, coterminosLength, casualLength],
-            backgroundColor: ['rgba(25, 82, 105, 0.6)',
+            backgroundColor: ['rgba(19, 63, 92, 1)',
+                              'rgba(243, 165, 51, 1)',
+                              'rgba(235, 95, 94, 1)',
                               'rgba(0, 255, 0, 0.6)',
                               'rgba(0, 0, 255, 0.6)',
                             
@@ -176,6 +178,20 @@ export default {
         })
         .catch(error => {
           console.error('Error fetching data:', error);
+
+
+          const employmentdata = {
+            labels: ['MOA', 'PERMANENT', 'CONTRACTUAL', 'COTERMINOS', 'CASUAL'],
+            label: ['Employment Data'],
+            values: [1, 1, 1, 1, 1],
+            backgroundColor: ['rgba(25, 82, 105, 0.6)',
+                              'rgba(0, 255, 0, 0.6)',
+                              'rgba(0, 0, 255, 0.6)',
+                            
+          ],
+          };
+          // Set barChartData to the computed data
+          this.EmploymentData = employmentdata;
 
         });
     },

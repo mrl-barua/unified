@@ -51,3 +51,5 @@
 ## ver 1.9 Added finished Template for HR (partial implementation without actual Data) - MARLO BARUA
 
 ## ver 2.0 Added PERCENTAGE OF REQUESTING EMPLOYEES STATUS actual data from database through AxiosJS - MARLO BARUA
+
+## ver 2.1 Added in LOGIN SECTION, fetch data from database the login credentials - MARLO BARUA
