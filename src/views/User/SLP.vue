@@ -1,294 +1,242 @@
 <template>
     
-    <div> 
     <Sidebar />
 
     <br><br><br><br>
    
     <h1><b> SUSTAINABLE LIVELIHOOD PROGRAM (SLP)</b></h1>
 
-<!--  -->
-   <div class="col-12 col-md-7">
-      <div class="dashboard-box" style="width: 800px; height: 428px; flex-shrink: 0;">
-        <div style="width: 549px;color: #252525; text-align: center; font-family: Inter; font-size: 20px; font-style: normal; font-weight: 600;line-height: normal;">
-          TOTAL ACCOMPLISHMENT VS PHYSICAL TARGET
+<!-- 1 -->
+    <div class="col-12 col-md-6">
+        <div class="shadow2 forbarchart">
+          <p><b>TOTAL ACCOMPLISHMENT VS PHYSICAL TARGET</b></p>
+          <div class="Barchart1"><HBarChart :data="SLPData" /></div>
         </div>
-            <div class="shadow2 forbarchart">
-            <div class="Barchart1"><HBarChart :data="MonthData" /></div>
+    </div>
+<!-- 2 -->
+    <div class="col-12 col-md-6">
+        <div class="shadow2 forbarchart">
+           <p><b>REFERRALS</b></p>
+          <div class="Barchart1"><HBarChart :data="SLPData" /></div>
         </div>
-        
-
-
-        <!-- Gray line to separate sections -->
-        <hr style="border: 2px solid #a9a9a9;">
-
-      </div>
     </div>
 
-    <!-- DIVISION section -->
-    <div class="col-12 col-md-5">
-      <div class="dashboard-box">
-        <div style="background-color: ; color: black; padding: 10px; font-weight: bold; font-size: 20px; text-align: center;">
-          <span>DIVISION</span>
-        </div>
-        <hr style="border: 2px solid #a9a9a9;">
-        <div style="background-color: ; color: black; padding: 10px;">
-          <div style="display: flex; justify-content: space-between;">
-            <div><b>DIVISION</b></div>
-            <div><b>RECORD COUNT</b></div>
+<!-- 3 -->
+    <div class="col-12 col-md-6">
+      <div class="shadow2">
+           <p><b>SECTORAL ACCOMPLISHMENT</b></p>
+          <div class="Piechart1">
+            <DoughnutChart v-if="EmploymentData" :data="EmploymentData" />
           </div>
         </div>
-
-        <!-- Division records with bar graphs -->
-        <div
-          v-for="division in divisions"
-          :key="division"
-          style="background-color: ; color: black; padding: 10px; display: flex; align-items: center; justify-content: space-between;"
-        >
-          <span>{{ division }}</span>
-          <div style="background-color: #808080; width: 100px; height: 20px; margin: 0 10px;">
-            <div style="background-color: orange; width: 50%; height: 100%;"></div>
-          </div>
-          <span style="margin-right: 50px;">0</span>
-        </div>
-      </div>
     </div>
 
-    <!-- Status -->
+<!-- 4 -->
     <div class="col-12 col-md-6">
-      <div class="dashboard-box" style="height: 195px; width: 633px;">
-        <div
-          style="background-color: ; color: black; padding: 10px; font-weight: bold; font-size: 20px; text-align: center;"
-        >
-          STATUS (FILLED/UNFILLED)
+        <div class="shadow2 forbarchart">
+           <p><b>BREAKDOWN OF REGIONAL ACCOMPLISHMENT</b></p>
+          <div class="Barchart1"><HBarChart :data="SLPData" /></div>
         </div>
-        <div style="flex: 1; padding: 10px; text-align: center;">
-          <span style="font-size: 40px; font-weight: bold;">0</span>
-        </div>
-      </div>
     </div>
 
-    <!-- Gender and Age Box -->
-    <div class="col-12 col-md-6">
-      <div class="dashboard-box" style="height: 300px; width: 648px; position:">
-        <div style="background-color: ; color: black; padding: 10px; font-weight: bold; font-size: 20px; text-align: center;">
-          GENDER AND AGE
-        </div>
-        <!-- SHOULD HAVE STACKED UP BAR CHART HERE -->
-      </div>
-    </div>
+ <!-- Can be use as reference for piechart -->
+   
 
-    <!-- Employment Type and Gender Box -->
-    <div class="col-12 col-md-6" style="display: flex; justify-content: space-between;">
-      <div class="dashboard-box" style="height: 300px; width: 310px;">
-        <div style="background-color: ; color: black; padding: 10px; font-weight: bold; font-size: 20px; text-align: center;">
-          EMPLOYMENT TYPE
-        </div>
-        <div style="display: flex; align-items: center; justify-content: center;">
-          <PieChart :data="employmentType" style="height: 200px; width: 200px;" />
-          <div></div>
-        </div>
-      </div>
 
-      <div class="dashboard-box" style="height: 300px; width: 310px;">
-        <div style="background-color: ; color: black; padding: 10px; font-weight: bold; font-size: 20px; text-align: center;">
-          GENDER
-        </div>
-        <div style="display: flex; align-items: center; justify-content: center;">
-          <PieChart :data="genderData" style="height: 200px; width: 200px;" />
-        </div>
-      </div>
-    </div>
-</div>
 
-      <!-- ELIGIBILITY header -->
 
-    <div class="col-12">
-      <h2 style="margin-left: 60px; margin-right: 60px;background-color: #294D9C; color: white; font-weight: bold; padding: 10px; text-align: center;">
-        ELIGIBILITY
-      </h2>
-    </div>
     
 
-    <!-- CSS and Others -->
-    <div class="row">
-      <div class="col-12 col-md-6">
-        <div class="dashboard-box" style="width: 648px; height: 220px;">
-          <div style="display: flex; justify-content: space-between;padding: 10px;">
-            <div><b>CSS AND OTHERS</b></div>
-            <div><b>RECORD COUNT</b></div>
-          </div>
-          <div style="border-bottom: 2px solid #a9a9a9;"></div>
-          <div style="background-color: ; color: black; padding: 10px;">
-            <div style="display: flex; justify-content: space-between;">
-              <div>1. lorem ipsum</div>
-              <div style="display: flex; align-items: center; margin-right: 50px;">0</div>
-            </div>
-            <div style="border-bottom: 1px solid #a9a9a9; margin-top: 10px;"></div>
-            <div style="display: flex; justify-content: space-between;">
-              <div>2. lorem ipsum</div>
-              <div style="display: flex; align-items: center; margin-right: 50px;">0</div>
-            </div>
-            <div style="border-bottom: 1px solid #a9a9a9; margin-top: 10px;"></div>
-            <div style="display: flex; justify-content: space-between;">
-              <div>3. lorem ipsum</div>
-              <div style="display: flex; align-items: center; margin-right: 50px;">0</div>
-            </div>
-            <div style="border-bottom: 1px solid #a9a9a9; margin-top: 10px;"></div>
-            <div style="display: flex; justify-content: space-between;">
-              <div>4. lorem ipsum</div>
-              <div style="display: flex; align-items: center; margin-right: 50px;">0</div>
-            </div>
-            <div style="border-bottom: 2px solid #a9a9a9; margin-top: 10px;"></div>
-          </div>
-        </div>
-      </div>
-
-     <!-- Licensed -->
-      <div class="col-12 col-md-6">
-        <div class="dashboard-box" style="width: 620px; height: 220px;">
-          <div style="display: flex; justify-content: space-between;padding: 10px;">
-            <div><b>LICENSED</b></div>
-            <div><b>RECORD COUNT</b></div>
-          </div>
-          <div style="border-bottom: 2px solid #a9a9a9;"></div>
-          <div style="background-color: ; color: black; padding: 10px;">
-            <div style="display: flex; justify-content: space-between;">
-              <div>1. lorem ipsum</div>
-              <div style="display: flex; align-items: center; margin-right: 50px;">0</div>
-            </div>
-            <div style="border-bottom: 1px solid #a9a9a9; margin-top: 10px;"></div>
-            <div style="display: flex; justify-content: space-between;">
-              <div>2. lorem ipsum</div>
-              <div style="display: flex; align-items: center; margin-right: 50px;">0</div>
-            </div>
-            <div style="border-bottom: 1px solid #a9a9a9; margin-top: 10px;"></div>
-            <div style="display: flex; justify-content: space-between;">
-              <div>3. lorem ipsum</div>
-              <div style="display: flex; align-items: center; margin-right: 50px;">0</div>
-            </div>
-            <div style="border-bottom: 1px solid #a9a9a9; margin-top: 10px;"></div>
-            <div style="display: flex; justify-content: space-between;">
-              <div>4. lorem ipsum</div>
-              <div style="display: flex; align-items: center; margin-right: 50px;">0</div>
-            </div>
-            <div style="border-bottom: 2px solid #a9a9a9; margin-top: 10px;"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- HIGHEST LEVEL OF ELIGIBILITY -->
-    <div class="row">
-      <div class="col-12 col-md-6">
-        <div class="dashboard-box" style="width: 648px; height: 220px;">
-          <div style="display: flex; justify-content:center;padding: 10px; ">
-            <div><b>HIGHEST LEVEL OF ELIGIBILITY</b></div>
-          
-          </div>
-          <div style="border-bottom: 2px solid #a9a9a9;"></div>
-          <div style="background-color: ; color: black; padding: 10px;">
-            <div style="display: flex; justify-content: space-between;">
-              <div>1. lorem ipsum</div>
-              
-            </div>
-            <div style="border-bottom: 1px solid #a9a9a9; margin-top: 10px;"></div>
-            <div style="display: flex; justify-content: space-between;">
-              <div>2. lorem ipsum</div>
-            
-            </div>
-            <div style="border-bottom: 1px solid #a9a9a9; margin-top: 10px;"></div>
-            <div style="display: flex; justify-content: space-between;">
-              <div>3. lorem ipsum</div>
-              
-            </div>
-            <div style="border-bottom: 1px solid #a9a9a9; margin-top: 10px;"></div>
-            <div style="display: flex; justify-content: space-between;">
-              <div>4. lorem ipsum</div>
-           
-            </div>
-            <div style="border-bottom: 2px solid #a9a9a9; margin-top: 10px;"></div>
-          </div>
-        </div>
-      </div>
-
-     
-      <!-- W/WO ELIGIBILITY -->
-   <div class="col-12 col-md-6">
-  <div class="dashboard-box" style="height: 220px; width: 620px;">
-    <div style="display: flex; justify-content: space-between;">
-      <div style="flex: 1; padding: 10px; text-align: center;">
-        <span style="font-size: 20px; font-weight: bold; color: black;">WITH ELIGIBILITY</span>
-      </div>
-      <div style="flex: 1; padding: 10px; text-align: center;">
-        <span style="font-size: 20px; font-weight: bold; color: black;">WITHOUT ELIGIBILITY</span>
-      </div>
-    </div>
-    <div style="display: flex; justify-content: space-between;">
-      <div style="flex: 1; padding: 10px; text-align: center;">
-        <span style="font-size: 60px; font-weight: bold; color: red;">0</span>
-      </div>
-      <div style="flex: 1; padding: 10px; text-align: center;">
-        <span style="font-size: 60px; font-weight: bold; color: #292D96;">0</span>
-      </div>
-    </div>
-  </div></div>
-</div>
-    
+    <!-- <Footer /> -->
 </template>
 
 <script>
-import Sidebar from '@/components/Sidebar.vue';
+import axios from 'axios';
+import Sidebar from '@/components/Sidebar.vue'; 
 import Footer from '@/components/Footer';
-import PieChart from '@/components/ChartJS/PieChart'; 
-import HBarChart from '@/components/ChartJS/HBarchart';
+import BarChart from '@/components/ChartJS/Barchart';
+import PieChart from '@/components/ChartJS/PieChart';
+import DoughnutChart from '@/components/ChartJS/DoughnutChart';
+
 
 export default {
-  name: 'OSP',
-  components: {
-    Sidebar,
-    Footer,
-    PieChart, 
-    HBarChart
-  },
-  data() {
-    return {
-      divisions: ['Division #1', 'Division #2', 'Division #3', 'Division #4'], //division data 
-      
-      MonthData: {
-        labels: ['EO70', 'CVA', 'SLP', 'Regular', 'Zero', 'Hunger', 'EO70','FRs', 'Referral'], 
-        values: [80, 15, 90, 20, ], //  values 
-        backgroundColor: [
-          'rgba(19, 63, 92, 1)',
-          'rgba(89, 80, 141, 1)',
-          'rgba(243, 165, 51, 1)',
-          
+    name: 'HR',
+    components: {
+        Sidebar,
+        Footer,
+        BarChart,
+        PieChart,
+        DoughnutChart
+    
+    },
+
+    data() {
+      return {
+
+         MonthData: {
+          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November' , 'December'],
+          label: ['Months'],
+          values: [39, 18, 13, 4, 3, 1, 2, 3, 4, 5, 4, 2],
+          backgroundColor: [
+          'rgba(19, 63, 92, 1)'
         ],
-      },
-      employmentType: {
-        labels: [], //  two choices for gender
-        values: [30, 10, 20, 40, ], //values 
-        backgroundColor: ['rgba(235, 95, 94)', 'rgba(243,165,51)', 'rgba(89,80,141)', 'rgba(188,80,144)'], // Add colors for each gender
-      },
-      genderData: {
-        labels: [], //two choices for gender
-        values: [50, 50], //values accordingly
-        backgroundColor: ['rgba(235, 95, 94)', 'rgba(89,80,141)'], // colors for each gender
-        
-      },
-      
-    };
+        },
+
+        SLPData: {
+          labels: ['Jan', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November' , 'December'],
+          label: ['Months'],
+          values: [39, 18, 13, 4, 3, 1, 2, 3, 4, 5, 4, 2],
+          backgroundColor: [
+          'rgba(19, 63, 92, 1)'
+        ],
+        },   
+
+        NameData: {
+          labels: ['CNSP', 'EMOTIONALLY/PSYCHO DISTRESS', 'OFW'],
+          label: ['CHART2'],
+          values: [42, 23, 12, 2],
+          backgroundColor: [
+          'rgba(75, 192, 192, 0.2',
+          'rgba(255, 99, 132, 0.2',
+          'rgba(255, 206, 86, 0.2',
+          'rgba(54, 162, 235, 0.2',
+          'rgba(153, 102, 255, 0.2',
+          'rgba(255, 159, 64, 0.2',
+        ],
+        },
+
+
+        EmploymentData: null,
+      };
+    },
+
+ methods:{
+  EmploymentFetchData() {
+      return axios
+        .get('http://127.0.0.1:8000/api/employmentStatus')
+        .then(response => {
+          // Initialize data arrays
+          const moa = [];
+          const permanent = [];
+          const contractual = [];
+          const coterminos = [];
+          const casual = [];
+         
+
+          response.data.forEach(item => {
+            const employmentstatus = item.EMPLOYMENT_STATUS;
+
+            switch (employmentstatus) {
+              case 'MOA':
+                  moa.push(item);
+                break;
+              case 'PERMANENT':
+                  permanent.push(item);
+                break;
+              case 'CONTRACTUAL':
+                 contractual.push(item);
+                break; 
+              case 'COTERMINOS':
+                coterminos.push(item);
+                break; 
+              case 'CASUAL':
+                casual.push(item);
+                break; 
+              default:
+                // Handle other cases if necessary
+                break;
+            }
+          });
+
+          // Calculate data lengths
+          const moaLength = moa.length;
+          const permanentLength = permanent.length;
+          const contractualLength = contractual.length;
+          const coterminosLength = coterminos.length;
+          const casualLength = casual.length;
+          // Prepare and return data
+          const employmentdata = {
+            labels: ['MOA', 'PERMANENT', 'CONTRACTUAL', 'COTERMINOS', 'CASUAL'],
+            label: ['Employment Data'],
+            values: [moaLength, permanentLength, contractualLength, coterminosLength, casualLength],
+            backgroundColor: ['rgba(19, 63, 92, 1)',
+                              'rgba(243, 165, 51, 1)',
+                              'rgba(235, 95, 94, 1)',
+                              'rgba(0, 255, 0, 0.6)',
+                              'rgba(0, 0, 255, 0.6)',
+                            
+          ],
+          };
+          // Set barChartData to the computed data
+          this.EmploymentData = employmentdata;
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+
+
+          const employmentdata = {
+            labels: ['MOA', 'PERMANENT', 'CONTRACTUAL', 'COTERMINOS', 'CASUAL'],
+            label: ['Employment Data'],
+            values: [1, 1, 1, 1, 1],
+            backgroundColor: ['rgba(25, 82, 105, 0.6)',
+                              'rgba(0, 255, 0, 0.6)',
+                              'rgba(0, 0, 255, 0.6)',
+                            
+          ],
+          };
+          // Set barChartData to the computed data
+          this.EmploymentData = employmentdata;
+
+        });
+    },
+
+ },
+
+
+
+  mounted() {
+    // Automatically fetch data when the component is mounted
+    this.EmploymentFetchData();
   },
-};
+
+    
+}
 </script>
 
-<style>
-.dashboard-box {
-  background-color: #f0f0f0;
-  padding: 20px;
-  margin: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+<style scoped>
+
+.shadow2{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+  height: 400px;
+  border-radius: 20px;
+  margin:10px 15px 10px 20px;
+  padding: 10px 0px 10px 0px;
 }
+
+.forbarchart{
+  height: 250px;
+  @media only screen and (min-width: 500px) {
+    height: 350px;
+  }
+  @media only screen and (min-width: 720px) {
+    height: 400px;
+  }
+}
+
+
+.Barchart1{
+  
+  
+  
+  @media only screen and (min-width: 1110px) {
+    margin-left: 10px;
+  }
+
+  @media only screen and (min-width: 1280px) {
+    margin-left: 16%;
+    /* margin-right: 50; */
+    height: 340px; 
+  }
+}
+
 </style>
