@@ -6,8 +6,8 @@
  </template>
  
  <script>
- import LoginForm from './views/LoginForm'
- import Dashboard from './views/Dashboard'
+ import LoginForm from './views/LoginForm.vue'
+ import Dashboard from './views/User/Dashboard.vue'
 
  export default {
    name: 'App',

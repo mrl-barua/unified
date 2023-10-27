@@ -5,7 +5,7 @@
     <br /><br /><br /><br />
 
     <div class="col-12 col-md-6">
-      <div class="dashboard-box" style="height: 580px; width: 650px;">
+      <div class="dashboard-box" style="height: 580px;">
         <div style="background-color: ; color: black; padding: 10px; font-weight: bold; font-size: 20px; text-align: center;">
           EMPLOYMENT DATA
         </div>
@@ -69,8 +69,8 @@
           style="background-color: ; color: black; padding: 10px; display: flex; align-items: center; justify-content: space-between;"
         >
           <span>{{ division }}</span>
-          <div style="background-color: #808080; width: 100px; height: 20px; margin: 0 10px;">
-            <div style="background-color: orange; width: 50%; height: 100%;"></div>
+          <div style="background-color: #808080;  height: 20px; margin: 0 10px;">
+            <div style="background-color: orange;  height: 100%;"></div>
           </div>
           <span style="margin-right: 50px;">0</span>
         </div>
@@ -79,7 +79,7 @@
 
     <!-- Status -->
     <div class="col-12 col-md-6">
-      <div class="dashboard-box" style="height: 195px; width: 633px;">
+      <div class="dashboard-box" style="height: 195px;">
         <div
           style="background-color: ; color: black; padding: 10px; font-weight: bold; font-size: 20px; text-align: center;"
         >
@@ -93,7 +93,7 @@
 
     <!-- Gender and Age Box -->
     <div class="col-12 col-md-6">
-      <div class="dashboard-box" style="height: 300px; width: 648px; position:">
+      <div class="dashboard-box" style="height: 300px; ">
         <div style="background-color: ; color: black; padding: 10px; font-weight: bold; font-size: 20px; text-align: center;">
           GENDER AND AGE
         </div>
@@ -102,26 +102,32 @@
     </div>
 
     <!-- Employment Type and Gender Box -->
-    <div class="col-12 col-md-6" style="display: flex; justify-content: space-between;">
-      <div class="dashboard-box" style="height: 300px; width: 310px;">
+    <div class="col-12 col-md-6" style=" justify-content: space-between;">
+      
+      
+      <div class="col-12">
+      <div class="dashboard-box" style="height: 300px;">
         <div style="background-color: ; color: black; padding: 10px; font-weight: bold; font-size: 20px; text-align: center;">
           EMPLOYMENT TYPE
         </div>
         <div style="display: flex; align-items: center; justify-content: center;">
-          <PieChart :data="employmentType" style="height: 200px; width: 200px;" />
+          <PieChart :data="employmentType" style="height: 200px; " />
           <div></div>
         </div>
       </div>
-
-      <div class="dashboard-box" style="height: 300px; width: 310px;">
+    </div>
+    <div class="col-12">
+      <div class="dashboard-box" style="height: 300px;">
         <div style="background-color: ; color: black; padding: 10px; font-weight: bold; font-size: 20px; text-align: center;">
           GENDER
         </div>
         <div style="display: flex; align-items: center; justify-content: center;">
-          <PieChart :data="genderData" style="height: 200px; width: 200px;" />
+          <PieChart :data="genderData" style="height: 200px; " />
           <div></div>
         </div>
       </div>
+    </div>
+
       </div> </div>
 
       <!-- ELIGIBILITY header -->
@@ -136,7 +142,7 @@
     <!-- CSS and Others -->
     <div class="row">
       <div class="col-12 col-md-6">
-        <div class="dashboard-box" style="width: 648px; height: 220px;">
+        <div class="dashboard-box" style=" height: 220px;">
           <div style="display: flex; justify-content: space-between;padding: 10px;">
             <div><b>CSS AND OTHERS</b></div>
             <div><b>RECORD COUNT</b></div>
@@ -169,7 +175,7 @@
 
      <!-- Licensed -->
       <div class="col-12 col-md-6">
-        <div class="dashboard-box" style="width: 620px; height: 220px;">
+        <div class="dashboard-box" style=" height: 220px;">
           <div style="display: flex; justify-content: space-between;padding: 10px;">
             <div><b>LICENSED</b></div>
             <div><b>RECORD COUNT</b></div>
@@ -204,7 +210,7 @@
     <!-- HIGHEST LEVEL OF ELIGIBILITY -->
     <div class="row">
       <div class="col-12 col-md-6">
-        <div class="dashboard-box" style="width: 648px; height: 220px;">
+        <div class="dashboard-box" style=" height: 220px;">
           <div style="display: flex; justify-content:center;padding: 10px; ">
             <div><b>HIGHEST LEVEL OF ELIGIBILITY</b></div>
           
@@ -238,7 +244,7 @@
      
       <!-- W/WO ELIGIBILITY -->
    <div class="col-12 col-md-6">
-  <div class="dashboard-box" style="height: 220px; width: 620px;">
+  <div class="dashboard-box" style="height: 220px;">
     <div style="display: flex; justify-content: space-between;">
       <div style="flex: 1; padding: 10px; text-align: center;">
         <span style="font-size: 20px; font-weight: bold; color: black;">WITH ELIGIBILITY</span>
@@ -302,7 +308,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .dashboard-box {
   background-color: #f0f0f0;
   padding: 20px;

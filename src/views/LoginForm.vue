@@ -102,13 +102,23 @@ methods: {
   // Simulate a delay to mimic a server response (remove this in a real scenario)
   setTimeout(() => {
     // Perform authentication logic here (e.g., check username and password)
-    if (this.username === 'Admin' && this.password === 'admin') {
+    if (this.username === 'User' && this.password === 'user') {
       // Authentication successful, set user as authenticated in localStorage
       localStorage.setItem('user', 'authenticated');
 
       // Navigate to the dashboard
       this.$router.push('/dashboard');
-    } else {
+    } 
+   else if (this.username === 'Admin' && this.password === 'admin') {
+      // Authentication successful, set user as authenticated in localStorage
+      localStorage.setItem('admin', 'authenticated');
+
+      // Navigate to the dashboard
+      this.$router.push('/admindashboard');
+    } 
+    
+    
+    else {
       // Authentication failed, display error message
       this.error = true;
     }
@@ -159,10 +169,7 @@ methods: {
 
 },
 
-created() {
-    // Clear the user's authentication status in localStorage when the login page is visited
-    localStorage.removeItem('user');
-  },
+
 
 };
 </script>
@@ -380,7 +387,6 @@ img {
 
 .login {
   max-height: 70vh;
-  overflow-Y: auto;
   float: left;
   margin: 0 auto;
   width: calc(100% - 1194px);
