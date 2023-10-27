@@ -55,5 +55,9 @@
 ## ver 2.1 Added in LOGIN SECTION, fetch data from database the login credentials - MARLO BARUA
 
 ## ver 2.2 Added ADMIN PAGE (CBSS, HR, OSP, SWDA, SLP), Added Login credential for USER VIEW and ADMIN VIEW - MARLO BARUA
+
 ## ver 2.3 Implemented Route Guard Protection between ADMIN and USER Dashboards - MARLO BARUA
-## ver 2.4 Added SLP dropdown function, started referencing the hr to slp - Mark Test
+
+## ver 2.4 MAJOR UPDATE => Migrated from VUE CLI to VITE for Developer Experience Improvement in Module Compilation
+
+## ver 2.5 Added SLP dropdown function, started referencing the hr to slp - Mark Test
