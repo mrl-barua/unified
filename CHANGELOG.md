@@ -53,3 +53,5 @@
 ## ver 2.0 Added PERCENTAGE OF REQUESTING EMPLOYEES STATUS actual data from database through AxiosJS - MARLO BARUA
 
 ## ver 2.1 Added in LOGIN SECTION, fetch data from database the login credentials - MARLO BARUA
+
+## ver 2.2 Added SLP dropdown function, started referencing the hr to slp - Mark Test
