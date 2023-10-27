@@ -387,7 +387,6 @@ img {
 
 .login {
   max-height: 70vh;
-  overflow-Y: auto;
   float: left;
   margin: 0 auto;
   width: calc(100% - 1194px);
