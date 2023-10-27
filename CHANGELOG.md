@@ -57,3 +57,5 @@
 ## ver 2.2 Added ADMIN PAGE (CBSS, HR, OSP, SWDA, SLP), Added Login credential for USER VIEW and ADMIN VIEW - MARLO BARUA
 
 ## ver 2.3 Implemented Route Guard Protection between ADMIN and USER Dashboards - MARLO BARUA
+
+## ver 2.4 MAJOR UPDATE => Migrated from VUE CLI to VITE for Developer Experience Improvement in Module Compilation
