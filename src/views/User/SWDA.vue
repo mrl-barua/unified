@@ -94,8 +94,44 @@
                 </div>
                   
                 <div class="col-12">
-                        <div class="Clusters">    
-                          test
+                        <div class="Clusters"> 
+                          <div class="col-12" >
+                            <h4>CLUSTER</h4>
+                          </div>
+                          <div class="col-12 col-md-3 clusterdiv">
+                            <div class="color text-white" style="background-color: #133F5C;">
+                              <p>CLUSTER 1</p>
+                              <div class="hover-text" style="background-color: #133F5C;">{{ cluster1Length }}</div>
+                            </div>
+                          </div>
+                          <div class="col-12 col-md-3 clusterdiv">
+                              <div class="color text-white" style="background-color: #59508D;">
+                                <p>UNCLUSTERED</p>
+                                <div class="hover-text" style="background-color: #59508D;">{{ unclusteredLength }}</div>
+                              </div>
+                          </div>
+                          <div class="col-12 col-md-2 clusterdiv">
+                            <div class="color text-white" style="background-color: #BC5090;">
+                                <p>CLUSTER 2</p>
+                                <div class="hover-text" style="background-color: #BC5090;">{{ cluster2Length }}</div>
+                              </div>
+                          </div>
+                          <div class="col-12 col-md-2 clusterdiv">
+                            <div class="color text-white" style="background-color: #EB5F5E;">
+                                <p>NORTH CLUSTER</p>
+                                <div class="hover-text" style="background-color: #EB5F5E;">{{ northClusterLength }}</div>
+                              </div>
+                          </div>
+                          <div class="col-12 col-md-2 clusterdiv2">
+                              <div class="col-12 clusterdiv clusterdiv3 text-white" style="background-color: #F3A533;">
+                                <p>SOUTH CLUSTER</p>
+                                <div class="hover-text2" style="background-color: #F3A533;">{{ southClusterLength }}</div>
+                              </div>
+                              <div class="col-12 clusterdiv clusterdiv3 text-white" style="background-color: #999999;">
+                                <p>SENIOR CITIZENS CLUSTER</p>
+                                <div class="hover-text2" style="background-color: #999999;">{{ seniorLength }}</div>
+                              </div>
+                          </div>   
                         </div>
                 </div>
                 <div class="col-12 col-md-6">
@@ -109,7 +145,6 @@
                          <DoughnutChart v-if="ClusterData" :data="ClusterData" />
                      </div>
                 </div>
-
                 <div class="col-12">
                   <div class="Regional">    
                     <HBarchart v-if="RegionData" :data="RegionData" />
@@ -143,7 +178,6 @@ export default {
     return {
       ClusterData: null, // Initialize barChartData as null
       RegionData: null,
-      
     };
   },
   methods: {
@@ -195,6 +229,15 @@ export default {
           const cluster2Length = cluster2.length;
           const seniorLength = senior.length;
 
+          // Create and set component properties to make them accessible in template literals
+          this.southClusterLength = southClusterLength;
+          this.cluster1Length = cluster1Length;
+          this.northClusterLength = northClusterLength;
+          this.unclusteredLength = unclusteredLength;
+          this.cluster2Length = cluster2Length;
+          this.seniorLength = seniorLength;
+          
+          
           // Prepare and return data
           const clusterdata = {
             labels: ['Unclustered', 'Cluster 1', 'North Cluster', 'South Cluster', 'Senior Citizen', 'Cluster 2'],
@@ -331,7 +374,6 @@ export default {
 </script>
 
 <style scoped>
-
 .wrapper{
   margin: 0;
   padding: 0;
@@ -344,8 +386,33 @@ export default {
   margin: 10px 10px 10px 10px;
   padding: 10px 0px 130px 0px;
 }
+.clusterdiv{
+  height: 80%;
+}
+.color{
+  width: 95%;
+  height: 100%;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;
+  margin: auto ;
+}
 
+.clusterdiv2{
+  height: 80%;
+  padding: 0px 5px 0px 5px;
+}
 
+.clusterdiv3{
+  height: 40%;
+  margin: 8px 5px 8px 0px;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  
+}
 .shadow{
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
   height: 120px;
@@ -356,7 +423,6 @@ export default {
 .active-agencies {
   font-weight: bold; 
   font-size: 34px; 
-
 }
 
 .expired-agencies {
@@ -367,7 +433,6 @@ export default {
 .modeDelivery {
   font-weight: bold; 
   font-size: 34px; 
-  
 }
 
 .numberAgencies {
@@ -378,11 +443,10 @@ export default {
 
 .Clusters, .Sectors, .Client, .Regional{
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
-  height: 12em;
+  height: 15em;
   border-radius: 20px;
   margin: 5px 10px 5px 10px;
   padding: 10px 0px 10px 0px;
-
 }
 
 .Sectors, .Client{
@@ -391,44 +455,48 @@ export default {
 .Regional{
   height: 17em;
 }
-
-.horizontal-line {
-    border: none; /* Remove the default line */
-    background: black;
-    height: 2px;  /* Set the height of the line */
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 1); /* Add the box shadow */
-    margin-left: 20px;
-    width: 16em;
-
-    @media only screen and (min-width: 375px) {
-      margin-left: 29px;
-      width: 18em;
-    }
-
-    @media only screen and (min-width: 414px) {
-      margin-left: 29px;
-      width: 21em;
-    }
-
-    @media only screen and (min-width: 1020px) {
-      margin-left: 50px;
-      width: 90%;
-    }
+.clusterdiv {
+  position: relative; /* Necessary for positioning the text */
 }
-
-.status-box {
-    width: 15px; /* Set the width of the box */
-    height: 15px; /* Set the height of the box */
-    display: inline-block; /* Make it inline with the text */
-    margin-left: 10px; /* Add some spacing between the text and the box */
-    margin-right: 5px; /* Add some spacing between the text and the box */
-    background-color: red; /* Initial color is red */
-}
-
-.box-color{
-  background: #BBDEFB;
+.hover-text {
+  position: absolute;
+  top: 45%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Center the text within its parent */
+  
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  visibility: visible;
+  opacity: 0; /* Initially transparent */
+  transition: visibility 0s, opacity 0.3s ease; /* Transition effect */
+  font-size: 80px;
   width: 90%;
-  margin: auto;
+}
+.clusterdiv:hover .hover-text {
+  visibility: visible; /* Show the text on hover */
+  opacity: 1; /* Fully visible on hover */
 }
 
+
+.hover-text2 {
+  position: absolute;
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Center the text within its parent */
+  background-color: rgba(0, 0, 0, 1);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  visibility: visible;
+  opacity: 0; /* Initially transparent */
+  transition: visibility 0s, opacity 0.3s ease; /* Transition effect */
+  font-size: 20px; 
+  width: 100%;
+}
+
+.clusterdiv:hover .hover-text2 {
+  visibility: visible; /* Show the text on hover */
+  opacity: 1; /* Fully visible on hover */
+}
 </style>

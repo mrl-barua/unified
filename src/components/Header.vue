@@ -38,12 +38,12 @@
       width: 100%;
       position: fixed;
       top: 0;
-  
+      z-index: 100;
     }
 
     header img{
       width: 280px;
-   
+      
       margin: 20px 0px 10px 20px;
       
     }

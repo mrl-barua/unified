@@ -206,7 +206,7 @@ nav {
   /* background: linear-gradient(to right, white 20%, #EE1C25 80%); */
   background: #294D9C;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
-  z-index: 100;
+  z-index: 999;
 }
 
 .custom-link {
