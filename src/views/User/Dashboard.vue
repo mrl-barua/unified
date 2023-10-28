@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Sidebar />
+    <Sidebar :iconText="PageTitle" />
     <br><br><br><br>
     <div class="container-fluid wrapper">
       <h1>CBSS DASHBOARD</h1>
@@ -34,6 +34,7 @@ export default {
   },
   data() {
     return {
+      PageTitle: "CBSS",
       ClusterData: null, // Initialize barChartData as null
       RegionData: null,
       

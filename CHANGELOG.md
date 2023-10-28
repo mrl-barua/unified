@@ -65,3 +65,5 @@
 ## ver 2.6 Fix the alignment of BARCHART and HBARCHART COMPONENT, Added temporary Charts in SWDA USER DASHBOARD - MARLO BARUA
 
 ## ver 2.7 Added Charts in the SWDA Section - MARLO BARUA
+
+## ver 2.8 Added fetch data from agencies for the SWDA Dashboard - MARLO BARUA

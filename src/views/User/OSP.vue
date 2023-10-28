@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Sidebar />
+    <Sidebar :iconText="PageTitle" />
 
     <br /><br /><br /><br />
 
@@ -280,6 +280,8 @@ export default {
   },
   data() {
     return {
+      PageTitle: "OSP",
+
       divisions: ['Division #1', 'Division #2', 'Division #3', 'Division #4'], //division data 
       MonthData: {
         labels: ['Permanent', 'MOA', 'Contractual'], 

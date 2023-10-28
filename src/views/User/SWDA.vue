@@ -1,5 +1,5 @@
 <template>
-    <Sidebar />
+    <Sidebar :iconText="PageTitle" />
     <br><br><br><br>
     <div class=wrapper container-fluid>
         <div class="col-12 col-md-2">
@@ -24,15 +24,15 @@
                     <h4>ACTIVE AGENCIES</h4>
                    <p class="col-4">
                     Registered <br><br>
-                    <span id="active-registered" class="active-agencies">24</span>
+                    <span id="active-registered" class="active-agencies">{{ activeRegisteredCount }}</span>
                    </p>
                    <p class="col-4">
                     Licensed <br><br>
-                    <span id="active-licensed" class="active-agencies">23</span>
+                    <span id="active-licensed" class="active-agencies">{{ activeLicensedCount }}</span>
                    </p>
                    <p class="col-4">
                     Accredited <br><br>
-                    <span id="active-accredited" class="active-agencies">22</span>
+                    <span id="active-accredited" class="active-agencies">{{ activeAccreditedCount }}</span>
                    </p>
                   </div> 
                 </div>
@@ -43,19 +43,19 @@
                     <h4>EXPIRED AGENCIES</h4>
                     <p class="col-3">
                     Registered <br><br>
-                    <span id="expired-registered" class="expired-agencies">24</span>
+                    <span id="expired-registered" class="expired-agencies">{{ expiredRegisteredCount }}</span>
                    </p>
                    <p class="col-3">
                     Licensed <br><br>
-                    <span id="expired-licensed" class="expired-agencies">23</span>
+                    <span id="expired-licensed" class="expired-agencies">{{ expiredLicensedCount }}</span>
                    </p>
                    <p class="col-3">
                     Accreditation <br><br>
-                    <span id="expired-accreditation" class="expired-agencies">22</span>
+                    <span id="expired-accreditation" class="expired-agencies">{{ expiredAccreditedCount }}</span>
                    </p>
                    <p class="col-3">
                     Delisted <br><br>
-                    <span id="expired-accreditation" class="expired-agencies">22</span>
+                    <span id="expired-accreditation" class="expired-agencies">{{ expiredDelistedCount }}</span>
                    </p>
                   </div>
                 </div>
@@ -66,19 +66,19 @@
                     <h4>MODE OF DELIVERY </h4>
                     <p class="col-3">
                     Community <br><br>
-                    <span id="community-based" class="modeDelivery">24</span>
+                    <span id="community-based" class="modeDelivery">{{ communityBasedCount }}</span>
                    </p>
                    <p class="col-3">
                     Auxillary SWDA <br>
-                    <span id="auxillary" class="modeDelivery">23</span>
+                    <span id="auxillary" class="modeDelivery">{{ auxillarySWDACount }}</span>
                    </p>
                    <p class="col-3">
                     Residential <br><br>
-                    <span id="residential" class="modeDelivery">22</span>
+                    <span id="residential" class="modeDelivery">{{ residentialCount }}</span>
                    </p>
                    <p class="col-3">
                     Non-Residential <br>
-                    <span id="non-residential" class="modeDelivery">22</span>
+                    <span id="non-residential" class="modeDelivery">{{ nonResidentialCount }}</span>
                    </p>
                   </div>
                 </div>
@@ -176,9 +176,31 @@ export default {
     },
     data() {
     return {
+      PageTitle: "SWDA",
       ClusterData: null, // Initialize barChartData as null
       RegionData: null,
 
+      southClusterLength: 0,
+      cluster1Length: 0,
+      northClusterLength: 0,
+      unclusteredLength: 0,
+      cluster2Length: 0,
+      seniorLength: 0,
+
+    activeRegisteredCount: 0,
+    activeLicensedCount: 0,
+    activeAccreditedCount: 0,
+    expiredRegisteredCount: 0,
+    expiredLicensedCount: 0,
+    expiredAccreditedCount: 0,
+    expiredDelistedCount: 0,
+    communityBasedCount: 0,
+    auxillarySWDACount: 0,
+    residentialCount: 0,
+    nonResidentialCount: 0,
+     
+
+      
 
     };
   },
@@ -365,6 +387,82 @@ export default {
         });
     }, 
 
+    AgencyFetchData() {
+  return axios
+    .get('http://127.0.0.1:8000/api/agencies')
+    .then(response => {
+      // Initialize arrays for active and expired agencies
+      const activeRegistered = [];
+      const activeLicensed = [];
+      const activeAccredited = [];
+      const expiredRegistered = [];
+      const expiredLicensed = [];
+      const expiredAccredited = [];
+      const expiredDelisted = [];
+      const communityBased = [];
+      const auxillarySWDA = [];
+      const residential = [];
+      const nonResidential = [];
+
+      response.data.forEach(item => {
+        // Categorize by Registration Status
+        if (item.Registration_Status === 'Active/Valid') {
+          if (item.Registered === 'Yes') activeRegistered.push(item);
+          if (item.Licensed === 'Yes') activeLicensed.push(item);
+          if (item.Accredited === 'Yes') activeAccredited.push(item);
+        } else if (item.Registration_Status === 'Expired') {
+          expiredRegistered.push(item);
+          expiredLicensed.push(item);
+          expiredAccredited.push(item);
+          if (item.Delisted === 'Yes') expiredDelisted.push(item);
+        }
+
+        // Check if Mode_of_Delivery is a string before splitting
+        if (typeof item.Mode_of_Delivery === 'string') {
+          const modes = item.Mode_of_Delivery.split(', ');
+          modes.forEach(mode => {
+            if (mode === 'Community-based') communityBased.push(item);
+            if (mode === 'Auxiliary SWDA') auxillarySWDA.push(item);
+            if (mode === 'Center-based Residential') residential.push(item);
+            if (mode === 'Center-based Non-Residential') nonResidential.push(item);
+          });
+        }
+      });
+
+      // Calculate data lengths
+      const activeRegisteredCount = activeRegistered.length;
+      const activeLicensedCount = activeLicensed.length;
+      const activeAccreditedCount = activeAccredited.length;
+      const expiredRegisteredCount = expiredRegistered.length;
+      const expiredLicensedCount = expiredLicensed.length;
+      const expiredAccreditedCount = expiredAccredited.length;
+      const expiredDelistedCount = expiredDelisted.length;
+      const communityBasedCount = communityBased.length;
+      const auxillarySWDACount = auxillarySWDA.length;
+      const residentialCount = residential.length;
+      const nonResidentialCount = nonResidential.length;
+
+
+     //FOR TEMPLATE LITERAL
+      this.activeRegisteredCount = activeRegisteredCount;
+      this.activeLicensedCount = activeLicensedCount;
+      this.activeAccreditedCount = activeAccreditedCount;
+      this.expiredRegisteredCount = expiredRegisteredCount;
+      this.expiredLicensedCount = expiredLicensedCount;
+      this.expiredAccreditedCount = expiredAccreditedCount;
+      this.expiredDelistedCount = expiredDelistedCount;
+      this.communityBasedCount = communityBasedCount;
+      this.auxillarySWDACount = auxillarySWDACount;
+      this.residentialCount = residentialCount;
+      this.nonResidentialCount = nonResidentialCount;
+
+ 
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+    });
+}
+
 
 
 
@@ -373,6 +471,7 @@ export default {
     // Automatically fetch data when the component is mounted
     this.ClusterFetchData();
     this.RegionFetchData();
+    this.AgencyFetchData();
   },
     
 }
@@ -405,11 +504,11 @@ export default {
 }
 .clusterdiv2{
   height: 80%;
-  padding: 0px 5px 0px 5px;
+  padding: 0px 10px 0px 10px;
 }
 .clusterdiv3{
-  height: 40%;
-  margin: 8px 5px 8px 0px;
+  height: 48%;
+  margin: 0px 5px 4px 0px;
   display: flex;
   justify-content: center;
   align-items: center;}
@@ -461,7 +560,7 @@ export default {
   opacity: 1; /* Fully visible on hover */}
 .hover-text2 {
   position: absolute;
-  top: 50%; /* Center vertically */
+  top: 55%; /* Center vertically */
   left: 50%; /* Center horizontally */
   transform: translate(-50%, -50%); /* Center the text within its parent */
   color: white;
@@ -471,7 +570,7 @@ export default {
   opacity: 0; /* Initially transparent */
   transition: visibility 0s, opacity 0.3s ease; /* Transition effect */
   font-size: 20px; 
-  width: 100%;
+  width: 95%;
   height:80%;}
 .clusterdiv:hover .hover-text2 {
   visibility: visible; /* Show the text on hover */

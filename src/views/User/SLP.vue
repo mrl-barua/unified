@@ -1,6 +1,6 @@
 <template>
     
-    <Sidebar />
+    <Sidebar :iconText="PageTitle" />
 
     <br><br><br><br>
    
@@ -68,6 +68,8 @@ export default {
 
     data() {
       return {
+        PageTitle: "SLP",
+
         SLPData: {
           labels: ['EO 70', 'CVA', 'SLP', 'REGULAR', 'ZERO', 'HUNGER', 'EO 70', 'FRs', 'REFERRAL'],
           label: ['PHYSICAL TARGET']['TOTAL'],
