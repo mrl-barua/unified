@@ -58,4 +58,10 @@
 
 ## ver 2.3 Implemented Route Guard Protection between ADMIN and USER Dashboards - MARLO BARUA
 
-## ver 2.4 MAJOR UPDATE => Migrated from VUE CLI to VITE for Developer Experience Improvement in Module Compilation
+## ver 2.4 MAJOR UPDATE => Migrated from VUE CLI to VITE for Developer Experience Improvement in Module Compilation - MARLO BARUA
+
+## ver 2.5 Added SLP dropdown function, started referencing the hr to slp - MARK PONDOL
+
+## ver 2.6 Fix the alignment of BARCHART and HBARCHART COMPONENT, Added temporary Charts in SWDA USER DASHBOARD - MARLO BARUA
+
+## ver 2.7 Added Charts in the SWDA Section - MARLO BARUA

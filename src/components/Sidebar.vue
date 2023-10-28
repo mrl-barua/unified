@@ -70,15 +70,32 @@
               </a>
             </li>
             </router-link>
+          
+          <!-- reference from HR  -->
+           <li class="list">  
+                  <div class="dropdown">
+                      <a class=" nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bx bx-bar-chart-alt-2 icon"></i>
+                        <span class="link">SLP</span>
+                      </a>
 
-            <router-link to="/slp" class="custom-link">
-             <li class="list">
-              <a href="#" class="nav-link">
-                <i class="bx bx-pie-chart-alt-2 icon"></i>
-                <span class="link">SLP</span>
-              </a>
-            </li>
-          </router-link>
+                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <router-link to="/slp" class="custom-link">
+                            <li><a class="dropdown-item" href="#">General Disaggregated Data</a></li> </router-link>
+                            <li><a class="dropdown-item" href="#">Physical Accomplishments by Portfolio</a></li>
+                            <li><a class="dropdown-item" href="#">Status of Name Matching</a></li>
+                            <li><a class="dropdown-item" href="#">Budget Monitoring Tracker</a></li>
+                            <li><a class="dropdown-item" href="#">SLPA Enterprise Status 2022</a></li>
+                            <li><a class="dropdown-item" href="#">SLP XI Capability Building Activities</a></li>
+                            
+                          </ul>
+                    </div>
+            </li> 
+
+
+
+
+
 
            <!-- <li class="list">
               <a href="#" class="nav-link">
@@ -189,7 +206,7 @@ nav {
   /* background: linear-gradient(to right, white 20%, #EE1C25 80%); */
   background: #294D9C;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
-  z-index: 100;
+  z-index: 999;
 }
 
 .custom-link {

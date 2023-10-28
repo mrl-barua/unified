@@ -138,7 +138,7 @@ export default {
          
 
           response.data.forEach(item => {
-            const regionName = item.RegionalOperation;
+            const regionName = item.Regional_Operation;
 
             switch (regionName) {
               case 'Davao City':
@@ -200,7 +200,7 @@ export default {
          const regiondata = {
             labels: ['Davao City', 'Davao del Sur', 'Davao del Norte', 'Others', 'Region XI', 'Davao Oriental', 'Davao de Oro'],
             label: ['Regional Operation'],
-            values: [1, 1, 1, 1, 1, 1],
+            values: [1, 1, 1, 1, 1, 1, 1],
             backgroundColor: [
                 'rgba(255, 0, 0, 0.6)',  
                 'rgba(0, 255, 0, 0.6)',     
