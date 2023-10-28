@@ -1,5 +1,7 @@
 <template>
+     <div class="chart-container">
     <Bar :options="chartOptions" :data="chartData" />
+  </div>
   </template>
   
   <script>
@@ -51,3 +53,12 @@
   };
   </script>
   
+
+<style scoped>
+.chart-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100%; /* Optional: Set a height for the container */
+}
+</style>

@@ -61,3 +61,5 @@
 ## ver 2.4 MAJOR UPDATE => Migrated from VUE CLI to VITE for Developer Experience Improvement in Module Compilation
 
 ## ver 2.5 Added SLP dropdown function, started referencing the hr to slp - Mark Test
+
+## ver 2.6 Fix the alignment of BARCHART and HBARCHART COMPONENT, Added temporary Charts in SWDA USER DASHBOARD

@@ -1,18 +1,22 @@
 <template>
     <Sidebar />
-
     <br><br><br><br>
-
-    
     <div class=wrapper container-fluid>
         <div class="col-12 col-md-3">
           <div class="filters">
             test
           </div>
 
+          <p>FOR RENEWAL</p>
+      
+        <div class="filters">
+          <p>LICENCE</p>
+        </div>
+        <div class="filters">
+          <p>ACCREDITATION</p>
         </div>
 
-
+        </div>
 
         <div class="col-12 col-md-9">
                 <div class="agencies col-12 col-md-6 col-lg-3">
@@ -89,80 +93,27 @@
                   </div>
                 </div>
                   
-                <div class="col-10">
-                        <div class="safehaven">
-
-                              
-                                <!-- <div class="col-12 col-md-6">
-                                  <h4>A SAFE HAVEN CHILDREN"S HOME FOUNDATION, INC</h4>
-                                  <br>
-                                  <hr class="horizontal-line">
-
-                                      <div class="col-4">
-                                        <p class="fw-bold"> <span class="status-box" id="dynamic-box"></span> Registration Status</p>
-                                        <br>
-                                            <p class="box-color fw-bold">Former Name: </p>
-                                        <p>Children</p>
-                                      </div>
-                                      <div class="col-4">
-                                        <p class="fw-bold"><span class="status-box" id="dynamic-box"> </span>Licensed Status</p>
-                                        <br>
-                                            <p class="box-color fw-bold">Cluster: </p>
-                                        <p>Cluster 1</p>
-                                      </div>
-                                      <div class="col-4">
-                                        <p class="fw-bold"> <span class="status-box" id="dynamic-box"> </span>Accreditation Status</p>
-                                        <br>
-                                            <p class="box-color fw-bold">Type: </p>
-                                        <p>Private</p>
-                                      </div>
-                                  <br>
-                                  <hr class="horizontal-line">
-                                  <h4>CONTACT INFORMATION</h4>
-                                  <br>
-                                  <p class="box-color fw-bold">Address</p>
-                                  <p>No data</p>
-                                  <br>
-                                      <div class="col-6">
-                                        <p class="box-color fw-bold">Contact Number</p>
-                                        <p>No data</p>
-                                      </div>
-                                      <div class="col-6">
-                                        <p class="box-color fw-bold">Email</p>
-                                        <p>No data</p>
-                                      </div>
-                                  <br><br><br>
-                                  <p class="box-color fw-bold">Website</p><br>
-                                  <p>No data</p>
-                                </div> -->
-
-
-
-                                <!-- FIRST COLUMN -->
-                                <div class="col-12 col-md-12">
-
-                                  <div class="col-12">
-                                    test
-                                  </div>
-
-                                  <div class="col-7">
-                                    test
-                                  </div>
-
-                                  <div class="col-5">
-                                      test
-                                  </div>
-                                
-                                </div>
-                                <!-- SECOND COLUMN -->
-                                <div class="col-12 col-md-12">
-                                  test
-                                </div>
+                <div class="col-12">
+                        <div class="Clusters">    
+                          test
                         </div>
-                        
-                        <div class="col-2">
+                </div>
+                <div class="col-12 col-md-6">
+                      <div class="Sectors">    
+                        <DoughnutChart v-if="RegionData" :data="RegionData" />
+                      
+                      </div>
+                </div>
+                <div class="col-12 col-md-6">
+                     <div class="Client">    
+                         <DoughnutChart v-if="ClusterData" :data="ClusterData" />
+                     </div>
+                </div>
 
-                        </div>
+                <div class="col-12">
+                  <div class="Regional">    
+                    <HBarchart v-if="RegionData" :data="RegionData" />
+                     </div>
                 </div>
         
         </div>
@@ -172,15 +123,209 @@
 </template>
 
 <script>
+import axios from 'axios';
 import Sidebar from '@/components/Sidebar.vue'; 
 import Footer from '@/components/Footer'
+import BarChart from '@/components/ChartJS/Barchart';
+import DoughnutChart from '@/components/ChartJS/DoughnutChart';
+import HBarchart from '@/components/ChartJS/HBarchart';
 
 export default {
     name: 'SWDA',
     components: {
         Sidebar,
         Footer,
-    }
+        BarChart,
+        DoughnutChart,
+        HBarchart
+    },
+    data() {
+    return {
+      ClusterData: null, // Initialize barChartData as null
+      RegionData: null,
+      
+    };
+  },
+  methods: {
+    ClusterFetchData() {
+      return axios
+        .get('http://127.0.0.1:8000/api/cluster')
+        .then(response => {
+          // Initialize data arrays
+          const southCluster = [];
+          const cluster1 = [];
+          const northCluster = [];
+          const unclustered = [];
+          const cluster2 = [];
+          const senior = [];
+
+          response.data.forEach(item => {
+            const clusterName = item.Cluster;
+
+            switch (clusterName) {
+              case 'South Cluster':
+                southCluster.push(item);
+                break;
+              case 'Cluster 1':
+                cluster1.push(item);
+                break;
+              case 'North Cluster':
+                northCluster.push(item);
+                break;
+              case 'Unclustered':
+                unclustered.push(item);
+                break;
+              case 'Cluster 2':
+                cluster2.push(item);
+                break;
+              case 'Senior Citizens Center':
+                senior.push(item);
+                break;
+              default:
+                // Handle other cases if necessary
+                break;
+            }
+          });
+
+          // Calculate data lengths
+          const southClusterLength = southCluster.length;
+          const cluster1Length = cluster1.length;
+          const northClusterLength = northCluster.length;
+          const unclusteredLength = unclustered.length;
+          const cluster2Length = cluster2.length;
+          const seniorLength = senior.length;
+
+          // Prepare and return data
+          const clusterdata = {
+            labels: ['Unclustered', 'Cluster 1', 'North Cluster', 'South Cluster', 'Senior Citizen', 'Cluster 2'],
+            label: ['Cluster'],
+            values: [unclusteredLength, cluster1Length, northClusterLength, southClusterLength, seniorLength, cluster2Length],
+            backgroundColor: ['rgba(25, 82, 105, 0.6)',
+                              'rgba(0, 255, 0, 0.6)',
+                              'rgba(0, 0, 255, 0.6)',
+                              'rgba(0, 0, 255, 0.6)',
+                              'rgba(128, 0, 128, 0.6',
+          ],
+          };
+          // Set barChartData to the computed data
+          this.ClusterData = clusterdata;
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+
+         // Prepare and return data if in case there is an api catch error
+            const clusterdata = {
+            labels: ['Unclustered', 'Cluster 1', 'North Cluster', 'South Cluster', 'Senior Citizen', 'Cluster 2'],
+            label: ['Cluster'],
+            values: [1, 1, 1, 1, 1, 1 ],
+            backgroundColor: ['rgba(25, 82, 105, 0.6)',
+                              'rgba(0, 255, 0, 0.6)',
+                              'rgba(0, 0, 255, 0.6)',
+                              'rgba(0, 0, 255, 0.6)',
+                              'rgba(128, 0, 128, 0.6',
+          ],
+          };
+          // Set catcc error barChartData to the computed data
+          this.ClusterData = clusterdata;
+        });
+    },
+
+    RegionFetchData() {
+      return axios
+        .get('http://127.0.0.1:8000/api/regionaloperation')
+        .then(response => {
+          // Initialize data arrays
+          const davaoCity = [];
+          const davaodelSur = [];
+          const davaodelNorte = [];
+          const davaodeOro = [];
+          const davaoOriental = [];
+          const others = [];
+          const regionXI = [];
+         
+
+          response.data.forEach(item => {
+            const regionName = item.RegionalOperation;
+
+            switch (regionName) {
+              case 'Davao City':
+                  davaoCity.push(item);
+                break;
+              case 'Davao del Sur':
+                  davaodelSur.push(item);
+                break;
+              case 'Davao del Norte':
+                  davaodelNorte.push(item);
+                break;
+              case null:
+                   others.push(item);
+                break;
+              case 'Region XI':
+                  regionXI.push(item);
+                break;
+              case 'Davao Oriental':
+                davaoOriental.push(item);
+                break;
+              case 'Davao de Oro':
+                davaodeOro.push(item);
+                break;
+              default:
+                // Handle other cases if necessary
+                break;
+            }
+          });
+
+          // Calculate data lengths
+          const  davaoCityLength = davaoCity.length;
+          const davaodelSurLength = davaodelSur.length;
+          const davaodelNorteLength = davaodelNorte.length;
+          const othersLength = others.length;
+          const regionXILength = regionXI.length;
+          const davaoOrientalLength = davaoOriental.length;
+          const davaodeOroLength = davaodeOro.length;
+        
+          // Prepare and return data
+          const regiondata = {
+            labels: ['Davao City', 'Davao del Sur', 'Davao del Norte', 'Others', 'Region XI', 'Davao Oriental', 'Davao de Oro'],
+            label: ['Regional Operation'],
+            values: [davaoCityLength, davaodelSurLength, davaodelNorteLength, othersLength, regionXILength, davaoOrientalLength, davaodeOroLength],
+            backgroundColor: [
+                'rgba(255, 0, 0, 0.6)',  
+                'rgba(0, 255, 0, 0.6)',     
+                'rgba(0, 0, 255, 0.6)',   
+                'rgba(255, 255, 0, 0.6)',  
+                'rgba(128, 0, 128, 0.6)',   
+              ],
+          };
+          // Set barChartData to the computed data
+          this.RegionData = regiondata;
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+
+         // Prepare and return data if in case there is an api catch error
+         const regiondata = {
+            labels: ['Davao City', 'Davao del Sur', 'Davao del Norte', 'Others', 'Region XI', 'Davao Oriental', 'Davao de Oro'],
+            label: ['Regional Operation'],
+            values: [1, 1, 1, 1, 1, 1, 1],
+            backgroundColor: [
+                'rgba(255, 0, 0, 0.6)',  
+                'rgba(0, 255, 0, 0.6)',     
+                'rgba(0, 0, 255, 0.6)',   
+                'rgba(255, 255, 0, 0.6)',  
+                'rgba(128, 0, 128, 0.6)',   
+              ],
+          };
+          // Set catcc error barChartData to the computed data
+          this.RegionData = regiondata;
+        });
+    }, 
+  },
+  mounted() {
+    // Automatically fetch data when the component is mounted
+    this.ClusterFetchData();
+    this.RegionFetchData();
+  },
     
 }
 </script>
@@ -194,9 +339,9 @@ export default {
 }
 .filters{
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
-  height: 48em;
+  height: 18em;
   border-radius: 20px;
-  margin: 10px 10px 0px 10px;
+  margin: 10px 10px 10px 10px;
   padding: 10px 0px 130px 0px;
 }
 
@@ -231,13 +376,20 @@ export default {
 }
 
 
-.safehaven{
+.Clusters, .Sectors, .Client, .Regional{
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
-  height: 38em;
+  height: 12em;
   border-radius: 20px;
-  margin: 10px 10px 10px 10px;
-  padding: 10px 0px 130px 0px;
+  margin: 5px 10px 5px 10px;
+  padding: 10px 0px 10px 0px;
 
+}
+
+.Sectors, .Client{
+  height: 15em;
+}
+.Regional{
+  height: 17em;
 }
 
 .horizontal-line {

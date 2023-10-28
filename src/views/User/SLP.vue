@@ -142,20 +142,8 @@ export default {
   }
 }
 
-
 .Barchart1{
-  
-  
-  
-  @media only screen and (min-width: 1110px) {
-    margin-left: 10px;
-  }
-
-  @media only screen and (min-width: 1280px) {
-    margin-left: 16%;
-    /* margin-right: 50; */
-    height: 340px; 
-  }
+  height: 340px; 
 }
 
 </style>
