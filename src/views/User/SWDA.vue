@@ -2,7 +2,7 @@
     <Sidebar />
     <br><br><br><br>
     <div class=wrapper container-fluid>
-        <div class="col-12 col-md-3">
+        <div class="col-12 col-md-2">
           <div class="filters">
             test
           </div>
@@ -18,20 +18,20 @@
 
         </div>
 
-        <div class="col-12 col-md-9">
+        <div class="col-12 col-md-10">
                 <div class="agencies col-12 col-md-6 col-lg-3">
                   <div class="shadow">
                     <h4>ACTIVE AGENCIES</h4>
                    <p class="col-4">
-                    Registered <br>
+                    Registered <br><br>
                     <span id="active-registered" class="active-agencies">24</span>
                    </p>
                    <p class="col-4">
-                    Licensed <br>
+                    Licensed <br><br>
                     <span id="active-licensed" class="active-agencies">23</span>
                    </p>
                    <p class="col-4">
-                    Accredited <br>
+                    Accredited <br><br>
                     <span id="active-accredited" class="active-agencies">22</span>
                    </p>
                   </div> 
@@ -42,19 +42,19 @@
                   <div class="shadow">
                     <h4>EXPIRED AGENCIES</h4>
                     <p class="col-3">
-                    Registered <br>
+                    Registered <br><br>
                     <span id="expired-registered" class="expired-agencies">24</span>
                    </p>
                    <p class="col-3">
-                    Licensed <br>
+                    Licensed <br><br>
                     <span id="expired-licensed" class="expired-agencies">23</span>
                    </p>
                    <p class="col-3">
-                    Accreditation <br>
+                    Accreditation <br><br>
                     <span id="expired-accreditation" class="expired-agencies">22</span>
                    </p>
                    <p class="col-3">
-                    Delisted <br>
+                    Delisted <br><br>
                     <span id="expired-accreditation" class="expired-agencies">22</span>
                    </p>
                   </div>
@@ -65,7 +65,7 @@
                   <div class="shadow">
                     <h4>MODE OF DELIVERY </h4>
                     <p class="col-3">
-                    Community <br>
+                    Community <br><br>
                     <span id="community-based" class="modeDelivery">24</span>
                    </p>
                    <p class="col-3">
@@ -73,7 +73,7 @@
                     <span id="auxillary" class="modeDelivery">23</span>
                    </p>
                    <p class="col-3">
-                    Residential <br>
+                    Residential <br><br>
                     <span id="residential" class="modeDelivery">22</span>
                    </p>
                    <p class="col-3">
@@ -86,7 +86,8 @@
 
                 <div class="agencies col-12 col-md-6 col-lg-1">
                   <div class="shadow">
-                    <h5>Number of Agencies</h5> 
+                    <h5>Number of Agencies</h5> <br>
+
                    <p class="col-12">
                     <span id="numberAgencies" class="numberAgencies">22</span>
                    </p>
@@ -147,13 +148,12 @@
                 </div>
                 <div class="col-12">
                   <div class="Regional">    
-                    <HBarchart v-if="RegionData" :data="RegionData" />
+                    <HBarchart v-if="RegionData" :data="RegionData" :aspectRatio="60/10"/>
                      </div>
                 </div>
-        
+  
         </div>
     </div>
-
     <!-- <Footer /> -->
 </template>
 
@@ -178,6 +178,8 @@ export default {
     return {
       ClusterData: null, // Initialize barChartData as null
       RegionData: null,
+
+
     };
   },
   methods: {
@@ -272,7 +274,6 @@ export default {
           this.ClusterData = clusterdata;
         });
     },
-
     RegionFetchData() {
       return axios
         .get('http://127.0.0.1:8000/api/regionaloperation')
@@ -288,7 +289,7 @@ export default {
          
 
           response.data.forEach(item => {
-            const regionName = item.RegionalOperation;
+            const regionName = item.Regional_Operation;
 
             switch (regionName) {
               case 'Davao City':
@@ -363,6 +364,10 @@ export default {
           this.RegionData = regiondata;
         });
     }, 
+
+
+
+
   },
   mounted() {
     // Automatically fetch data when the component is mounted
@@ -374,6 +379,7 @@ export default {
 </script>
 
 <style scoped>
+
 .wrapper{
   margin: 0;
   padding: 0;
@@ -397,73 +403,51 @@ export default {
   align-items: center;
   margin: auto ;
 }
-
 .clusterdiv2{
   height: 80%;
   padding: 0px 5px 0px 5px;
 }
-
 .clusterdiv3{
   height: 40%;
   margin: 8px 5px 8px 0px;
-  
   display: flex;
   justify-content: center;
-  align-items: center;
-  
-  
-}
+  align-items: center;}
 .shadow{
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
-  height: 120px;
+  height: 170px;
   border-radius: 20px;
-  margin: 10px 10px 0px 10px;
-  padding: 10px 0px 130px 0px;
-}
+  margin: 10px 10px 10px 10px;
+  padding: 10px 0px 130px 0px;}
 .active-agencies {
   font-weight: bold; 
-  font-size: 34px; 
-}
-
+  font-size: 34px; }
 .expired-agencies {
   font-weight: bold; 
-  font-size: 34px; 
-}
-
+  font-size: 34px; }
 .modeDelivery {
   font-weight: bold; 
-  font-size: 34px; 
-}
-
+  font-size: 34px; }
 .numberAgencies {
   font-weight: bold; 
-  font-size: 34px; 
-}
-
-
+  font-size: 34px; }
 .Clusters, .Sectors, .Client, .Regional{
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
   height: 15em;
   border-radius: 20px;
   margin: 5px 10px 5px 10px;
-  padding: 10px 0px 10px 0px;
-}
-
+  padding: 10px 0px 10px 0px;}
 .Sectors, .Client{
-  height: 15em;
-}
+  height: 15em;}
 .Regional{
-  height: 17em;
-}
+  height: 17em;}
 .clusterdiv {
-  position: relative; /* Necessary for positioning the text */
-}
+  position: relative; /* Necessary for positioning the text */}
 .hover-text {
   position: absolute;
-  top: 45%; /* Center vertically */
+  top: 50%; /* Center vertically */
   left: 50%; /* Center horizontally */
   transform: translate(-50%, -50%); /* Center the text within its parent */
-  
   color: white;
   padding: 10px 15px;
   border-radius: 5px;
@@ -471,20 +455,15 @@ export default {
   opacity: 0; /* Initially transparent */
   transition: visibility 0s, opacity 0.3s ease; /* Transition effect */
   font-size: 80px;
-  width: 90%;
-}
+  width: 90%;}
 .clusterdiv:hover .hover-text {
   visibility: visible; /* Show the text on hover */
-  opacity: 1; /* Fully visible on hover */
-}
-
-
+  opacity: 1; /* Fully visible on hover */}
 .hover-text2 {
   position: absolute;
   top: 50%; /* Center vertically */
   left: 50%; /* Center horizontally */
   transform: translate(-50%, -50%); /* Center the text within its parent */
-  background-color: rgba(0, 0, 0, 1);
   color: white;
   padding: 10px 15px;
   border-radius: 5px;
@@ -493,10 +472,8 @@ export default {
   transition: visibility 0s, opacity 0.3s ease; /* Transition effect */
   font-size: 20px; 
   width: 100%;
-}
-
+  height:80%;}
 .clusterdiv:hover .hover-text2 {
   visibility: visible; /* Show the text on hover */
-  opacity: 1; /* Fully visible on hover */
-}
+  opacity: 1; /* Fully visible on hover */}
 </style>

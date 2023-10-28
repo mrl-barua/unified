@@ -138,7 +138,7 @@ export default {
          
 
           response.data.forEach(item => {
-            const regionName = item.RegionalOperation;
+            const regionName = item.Regional_Operation;
 
             switch (regionName) {
               case 'Davao City':
