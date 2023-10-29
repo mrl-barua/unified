@@ -49,9 +49,7 @@
 
                   </div> 
                 </div>
-
-              
-      
+            
                 <div class="agencies col-12 col-md-6 col-lg-4">
                   <div class="shadow">
                     <h4>EXPIRED AGENCIES</h4>
@@ -87,13 +85,9 @@
                       <span id="expired-accreditation" class="expired-agencies">
                       {{ expiredDelistedCount }}
                     </span>
-
                     </div>
                   </div>
                 </div>
-
-
-          
 
                 <div class="agencies col-12 col-md-6 col-lg-4"> 
                   <div class="shadow">
@@ -133,15 +127,6 @@
                   </div>
                   </div>
                 </div>
-
-
-              
-
-                    
-                    
-
-                  
-
 
                 <div class="agencies col-12 col-md-6 col-lg-1">
                   <div class="shadow">
