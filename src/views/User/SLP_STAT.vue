@@ -89,7 +89,7 @@ export default {
 
     data() {
       return {
-        PageTitle: "HR",
+        PageTitle: "SLP - Enterprise Status 2022",
 
         MonthData: {
           labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November' , 'December'],

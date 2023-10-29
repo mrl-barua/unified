@@ -1,19 +1,38 @@
 <template>
-    <Sidebar />
+    <Sidebar :iconText="PageTitle" />
     <br><br><br><br>
     <div class=wrapper container-fluid>
         <div class="col-12 col-md-2">
-          <div class="filters">
-            test
+          <div class="agenciesNames" style="background-color: #292D96;">
+            <input style="border-radius: 10px; width: 90%; height: 3em; text-align: center;" type="text" v-model="searchQuery" placeholder="Search for agency names">
+          <div class="agencyfilter">          
+              <table>
+                  <tbody>
+                      <tr v-for="agency in filteredAgencies" :key="agency.Agency">
+                          <td class="text-white">
+                           <div class="hover"> {{ agency.Agency }} </div>
+                            <hr class="hr" />
+                          </td>    
+                      </tr>               
+                  </tbody>
+              </table>
           </div>
+        </div>
 
-          <p>FOR RENEWAL</p>
       
+          <p style="color: rgba(41, 45, 150, 1); font-weight: 800; font-size: 17px; line-height: 20.57px;">FOR RENEWAL</p>
+
         <div class="filters">
-          <p>LICENCE</p>
+          <p class="sidepart">LICENCE</p> <br>
+           <h3 class="sidepartValue">00</h3>
+           <p>DAYS</p>
+           <p>BEFORE EXPIRATION</p>
         </div>
         <div class="filters">
-          <p>ACCREDITATION</p>
+          <p class="sidepart" >ACCREDITATION</p><br>
+          <h3 class="sidepartValue">00</h3>
+           <p>DAYS</p>
+           <p>BEFORE EXPIRATION</p>
         </div>
 
         </div>
@@ -23,66 +42,110 @@
                   <div class="shadow">
                     <h4>ACTIVE AGENCIES</h4>
                    <p class="col-4">
-                    Registered <br><br>
-                    <span id="active-registered" class="active-agencies">24</span>
+                    Registered 
                    </p>
                    <p class="col-4">
-                    Licensed <br><br>
-                    <span id="active-licensed" class="active-agencies">23</span>
+                    Licensed 
                    </p>
                    <p class="col-4">
-                    Accredited <br><br>
-                    <span id="active-accredited" class="active-agencies">22</span>
+                    Accredited
                    </p>
+                   <div class="col-4">
+                    <span id="active-registered" class="active-agencies">
+                      {{ activeRegisteredCount }}
+                    </span>
+                   </div>
+                   <div class="col-4">
+                    <span id="active-licensed" class="active-agencies">
+                      {{ activeLicensedCount }}
+                    </span>
+                  </div>
+                  <div class="col-4">
+                    <span id="active-accredited" class="active-agencies">
+                      {{ activeAccreditedCount }}
+                    </span>
+                  </div>
+
                   </div> 
                 </div>
-
-
+            
                 <div class="agencies col-12 col-md-6 col-lg-4">
                   <div class="shadow">
                     <h4>EXPIRED AGENCIES</h4>
                     <p class="col-3">
-                    Registered <br><br>
-                    <span id="expired-registered" class="expired-agencies">24</span>
+                    Registered 
                    </p>
                    <p class="col-3">
-                    Licensed <br><br>
-                    <span id="expired-licensed" class="expired-agencies">23</span>
+                    Licensed
                    </p>
                    <p class="col-3">
-                    Accreditation <br><br>
-                    <span id="expired-accreditation" class="expired-agencies">22</span>
+                    Accreditation     
                    </p>
                    <p class="col-3">
-                    Delisted <br><br>
-                    <span id="expired-accreditation" class="expired-agencies">22</span>
+                    Delisted   
                    </p>
+
+                   <div class="col-3">
+                    <span id="expired-registered" class="expired-agencies">
+                      {{ expiredRegisteredCount }}
+                    </span>
+                   </div>
+                   <div class="col-3">
+                    <span id="expired-licensed" class="expired-agencies">
+                      {{ expiredLicensedCount }}
+                    </span>
+                    </div>
+                    <div class="col-3">
+                      <span id="expired-accreditation" class="expired-agencies">
+                      {{ expiredAccreditedCount }}
+                    </span>
+                    </div>
+                    <div class="col-3">
+                      <span id="expired-accreditation" class="expired-agencies">
+                      {{ expiredDelistedCount }}
+                    </span>
+                    </div>
                   </div>
                 </div>
-
 
                 <div class="agencies col-12 col-md-6 col-lg-4"> 
                   <div class="shadow">
                     <h4>MODE OF DELIVERY </h4>
                     <p class="col-3">
-                    Community <br><br>
-                    <span id="community-based" class="modeDelivery">24</span>
+                    Community        
                    </p>
                    <p class="col-3">
-                    Auxillary SWDA <br>
-                    <span id="auxillary" class="modeDelivery">23</span>
+                    Auxillary SWDA    
                    </p>
                    <p class="col-3">
-                    Residential <br><br>
-                    <span id="residential" class="modeDelivery">22</span>
+                    Residential
                    </p>
                    <p class="col-3">
-                    Non-Residential <br>
-                    <span id="non-residential" class="modeDelivery">22</span>
+                    Non-Residential    
                    </p>
+
+                   <div class="col-3">
+                    <span id="community-based" class="modeDelivery">
+                      {{ communityBasedCount }}
+                    </span>
+                   </div>
+                   <div class="col-3">
+                    <span id="auxillary" class="modeDelivery">
+                      {{ auxillarySWDACount }}
+                    </span>
+                  </div>
+                  <div class="col-3">
+                    <span id="residential" class="modeDelivery">
+                      {{ residentialCount }}
+                    </span>
+                  </div>
+                  <div class="col-3">
+                    <span id="non-residential" class="modeDelivery">
+                      {{ nonResidentialCount }}
+                    </span>
+                  </div>
                   </div>
                 </div>
-
 
                 <div class="agencies col-12 col-md-6 col-lg-1">
                   <div class="shadow">
@@ -97,7 +160,8 @@
                 <div class="col-12">
                         <div class="Clusters"> 
                           <div class="col-12" >
-                            <h4>CLUSTER</h4>
+                            <p style="font-family: Inter;font-size: 24px;font-weight: 700;line-height: 21px;letter-spacing: 0em;text-align: center;
+                        padding: 4px 0px 0px 24px;">CLUSTERS</p>
                           </div>
                           <div class="col-12 col-md-3 clusterdiv">
                             <div class="color text-white" style="background-color: #133F5C;">
@@ -137,13 +201,17 @@
                 </div>
                 <div class="col-12 col-md-6">
                       <div class="Sectors">    
-                        <DoughnutChart v-if="RegionData" :data="RegionData" />
+                        <p style="font-family: Inter;font-size: 24px;font-weight: 700;line-height: 21px;letter-spacing: 0em;text-align: left;
+                        padding: 4px 0px 0px 24px;">SECTORS</p>
+                        <DoughnutChart v-if="ClusterData" :data="ClusterData" :legendOptions="customLegendOptions"/>
                       
                       </div>
                 </div>
                 <div class="col-12 col-md-6">
-                     <div class="Client">    
-                         <DoughnutChart v-if="ClusterData" :data="ClusterData" />
+                     <div class="Client">  
+                      <p style="font-family: Inter;font-size: 24px;font-weight: 700;line-height: 21px;letter-spacing: 0em;text-align: left;
+                          padding: 4px 0px 0px 24px;">CLIENT</p> 
+                         <DoughnutChart v-if="ClusterData" :data="ClusterData" :legendOptions="customLegendOptions"/>
                      </div>
                 </div>
                 <div class="col-12">
@@ -176,12 +244,66 @@ export default {
     },
     data() {
     return {
-      ClusterData: null, // Initialize barChartData as null
-      RegionData: null,
+      PageTitle: "SWDA", // The title displayed on the page, which is "SWDA"
+
+      customLegendOptions: {
+        position: 'right', // Set the legend position as needed
+      },
+
+      agencies: [], // An array to store agency data fetched from the API
+      searchQuery: '', // A variable to hold the search query entered by the user for filtering agencies
 
 
-    };
+
+      ClusterData: null, // Initialize Chart Data as null
+      RegionData: null, // Initialize Chart Data as null
+      ClienteleData: null,
+
+      // Cluster Lengths
+      southClusterLength: 0, // Number of agencies in the South Cluster
+      cluster1Length: 0, // Number of agencies in Cluster 1
+      northClusterLength: 0, // Number of agencies in the North Cluster
+      unclusteredLength: 0, // Number of unclustered agencies
+      cluster2Length: 0, // Number of agencies in Cluster 2
+      seniorLength: 0, // Number of agencies in the Senior Citizens Cluster
+
+      // Active and Expired Agency Counts
+      activeRegisteredCount: 0, // Number of actively registered agencies
+      activeLicensedCount: 0, // Number of actively licensed agencies
+      activeAccreditedCount: 0, // Number of actively accredited agencies
+      expiredRegisteredCount: 0, // Number of expired registered agencies
+      expiredLicensedCount: 0, // Number of expired licensed agencies
+      expiredAccreditedCount: 0, // Number of expired accredited agencies
+      expiredDelistedCount: 0, // Number of expired and delisted agencies
+
+      // Mode of Delivery Counts
+      communityBasedCount: 0, // Number of agencies with a community-based mode of delivery
+      auxillarySWDACount: 0, // Number of agencies with an auxiliary SWDA mode of delivery
+      residentialCount: 0, // Number of agencies with a center-based residential mode of delivery
+      nonResidentialCount: 0, // Number of agencies with a center-based non-residential mode of delivery
+    };  
   },
+
+  created() {
+                // Fetch data and populate the agencies array
+                axios.get('http://127.0.0.1:8000/api/agenciesName')
+                    .then(response => {
+                        this.agencies = response.data;
+                    })
+                    .catch(error => {
+                        console.error("Error fetching data:", error);
+                    });
+            },
+
+  computed: {
+                filteredAgencies() {
+                    // Filter the agencies based on the searchQuery
+                    return this.agencies.filter(agency => {
+                        return agency.Agency.toLowerCase().includes(this.searchQuery.toLowerCase());
+                    });
+                }
+            },
+
   methods: {
     ClusterFetchData() {
       return axios
@@ -334,11 +456,7 @@ export default {
             label: ['Regional Operation'],
             values: [davaoCityLength, davaodelSurLength, davaodelNorteLength, othersLength, regionXILength, davaoOrientalLength, davaodeOroLength],
             backgroundColor: [
-                'rgba(255, 0, 0, 0.6)',  
-                'rgba(0, 255, 0, 0.6)',     
-                'rgba(0, 0, 255, 0.6)',   
-                'rgba(255, 255, 0, 0.6)',  
-                'rgba(128, 0, 128, 0.6)',   
+                'rgba(19, 63, 92, 1)',   
               ],
           };
           // Set barChartData to the computed data
@@ -353,19 +471,137 @@ export default {
             label: ['Regional Operation'],
             values: [1, 1, 1, 1, 1, 1, 1],
             backgroundColor: [
-                'rgba(255, 0, 0, 0.6)',  
-                'rgba(0, 255, 0, 0.6)',     
-                'rgba(0, 0, 255, 0.6)',   
-                'rgba(255, 255, 0, 0.6)',  
-                'rgba(128, 0, 128, 0.6)',   
+                'rgba(19, 63, 92, 1)',  
               ],
           };
           // Set catcc error barChartData to the computed data
           this.RegionData = regiondata;
         });
     }, 
+    AgencyFetchData() {
+  return axios
+    .get('http://127.0.0.1:8000/api/agencies')
+    .then(response => {
+      // Initialize arrays for active and expired agencies
+      const activeRegistered = [];
+      const activeLicensed = [];
+      const activeAccredited = [];
+      const expiredRegistered = [];
+      const expiredLicensed = [];
+      const expiredAccredited = [];
+      const expiredDelisted = [];
+      const communityBased = [];
+      const auxillarySWDA = [];
+      const residential = [];
+      const nonResidential = [];
+
+      response.data.forEach(item => {
+        // Categorize by Registration Status
+        if (item.Registration_Status === 'Active/Valid') {
+          if (item.Registered === 'Yes') activeRegistered.push(item);
+          if (item.Licensed === 'Yes') activeLicensed.push(item);
+          if (item.Accredited === 'Yes') activeAccredited.push(item);
+        } else if (item.Registration_Status === 'Expired') {
+          expiredRegistered.push(item);
+          expiredLicensed.push(item);
+          expiredAccredited.push(item);
+          if (item.Delisted === 'Yes') expiredDelisted.push(item);
+        }
+
+        // Check if Mode_of_Delivery is a string before splitting
+        if (typeof item.Mode_of_Delivery === 'string') {
+          const modes = item.Mode_of_Delivery.split(', ');
+          modes.forEach(mode => {
+            if (mode === 'Community-based') communityBased.push(item);
+            if (mode === 'Auxiliary SWDA') auxillarySWDA.push(item);
+            if (mode === 'Center-based Residential') residential.push(item);
+            if (mode === 'Center-based Non-Residential') nonResidential.push(item);
+          });
+        }
+      });
+
+      // Calculate data lengths
+      const activeRegisteredCount = activeRegistered.length;
+      const activeLicensedCount = activeLicensed.length;
+      const activeAccreditedCount = activeAccredited.length;
+      const expiredRegisteredCount = expiredRegistered.length;
+      const expiredLicensedCount = expiredLicensed.length;
+      const expiredAccreditedCount = expiredAccredited.length;
+      const expiredDelistedCount = expiredDelisted.length;
+      const communityBasedCount = communityBased.length;
+      const auxillarySWDACount = auxillarySWDA.length;
+      const residentialCount = residential.length;
+      const nonResidentialCount = nonResidential.length;
 
 
+     //FOR TEMPLATE LITERAL
+      this.activeRegisteredCount = activeRegisteredCount;
+      this.activeLicensedCount = activeLicensedCount;
+      this.activeAccreditedCount = activeAccreditedCount;
+      this.expiredRegisteredCount = expiredRegisteredCount;
+      this.expiredLicensedCount = expiredLicensedCount;
+      this.expiredAccreditedCount = expiredAccreditedCount;
+      this.expiredDelistedCount = expiredDelistedCount;
+      this.communityBasedCount = communityBasedCount;
+      this.auxillarySWDACount = auxillarySWDACount;
+      this.residentialCount = residentialCount;
+      this.nonResidentialCount = nonResidentialCount;
+
+ 
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+    });
+    },
+
+    // NEED FIXINGS
+    ClienteleFetchData() {
+  return axios
+    .get('http://127.0.0.1:8000/api/clientele')
+    .then(response => {
+      // Initialize data arrays
+      const children = [];
+      const youth = [];
+      const familiesCommunities = [];
+      const nA = [];
+
+      response.data.forEach(item => {
+        const clienteleName = item.Clientele;
+
+        switch (clienteleName) {
+          case 'Children':
+            children.push(item);
+            break;
+          case 'Children and Youth':
+            youth.push(item);
+            break;
+          case 'Families and Communities':
+            familiesCommunities.push(item);
+            break;
+          case 'N/A':
+            nA.push(item);
+            break;
+          default:
+            // Handle other cases if necessary
+            break;
+        }
+      });
+
+      // Calculate data lengths
+      const childrenLength = children.length;
+      const youthLength = youth.length;
+      const familiesCommunitiesLength = familiesCommunities.length;
+      const nALength = nA.length;
+
+      console.log(childrenLength);
+      console.log(youthLength);
+      console.log(familiesCommunitiesLength);
+      console.log(nALength);
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+    });
+}
 
 
   },
@@ -373,6 +609,8 @@ export default {
     // Automatically fetch data when the component is mounted
     this.ClusterFetchData();
     this.RegionFetchData();
+    this.AgencyFetchData();
+    this.ClienteleFetchData();
   },
     
 }
@@ -392,6 +630,45 @@ export default {
   margin: 10px 10px 10px 10px;
   padding: 10px 0px 130px 0px;
 }
+
+.agenciesNames{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+  height: 25em;
+  border-radius: 20px;
+  margin: 10px 10px 10px 10px;
+  padding: 10px 0px 130px 0px;
+}
+
+.agencyfilter table tbody tr td .hover:hover {
+  background-color: #E70F0F;
+  color: white; /* Change text color to white on hover */
+  cursor: pointer; /* Change cursor to a pointer on hover (optional) */
+  border-radius: 10px;
+  padding: 10px 0px 10px 10px;
+}
+.agencyfilter{
+  font-size: 14px;
+  height: 22em;
+  width: 90%;
+  overflow: auto;
+  margin: 20px 20px 20px 20px;
+  text-align: start;
+}
+/* Styling the scrollbar in WebKit (Chrome, Safari) */
+.agencyfilter::-webkit-scrollbar {
+  width: 4px; /* Adjust the width as desired */
+}
+
+.agencyfilter::-webkit-scrollbar-thumb {
+  background-color: #555; /* Color of the scrollbar thumb */
+  border-radius: 4px; /* Adjust the border-radius to make it smaller or larger */
+}
+
+.agencyfilter::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Color of the scrollbar track */
+}
+
+
 .clusterdiv{
   height: 80%;
 }
@@ -405,11 +682,11 @@ export default {
 }
 .clusterdiv2{
   height: 80%;
-  padding: 0px 5px 0px 5px;
+  padding: 0px 10px 0px 10px;
 }
 .clusterdiv3{
-  height: 40%;
-  margin: 8px 5px 8px 0px;
+  height: 48%;
+  margin: 0px 5px 4px 0px;
   display: flex;
   justify-content: center;
   align-items: center;}
@@ -438,7 +715,8 @@ export default {
   margin: 5px 10px 5px 10px;
   padding: 10px 0px 10px 0px;}
 .Sectors, .Client{
-  height: 15em;}
+  height: 20em;
+  padding-bottom: 50px;}
 .Regional{
   height: 17em;}
 .clusterdiv {
@@ -461,7 +739,7 @@ export default {
   opacity: 1; /* Fully visible on hover */}
 .hover-text2 {
   position: absolute;
-  top: 50%; /* Center vertically */
+  top: 55%; /* Center vertically */
   left: 50%; /* Center horizontally */
   transform: translate(-50%, -50%); /* Center the text within its parent */
   color: white;
@@ -471,9 +749,27 @@ export default {
   opacity: 0; /* Initially transparent */
   transition: visibility 0s, opacity 0.3s ease; /* Transition effect */
   font-size: 20px; 
-  width: 100%;
+  width: 95%;
   height:80%;}
 .clusterdiv:hover .hover-text2 {
   visibility: visible; /* Show the text on hover */
   opacity: 1; /* Fully visible on hover */}
+
+.sidepart{
+  font-family: Inter;
+  font-weight: 600;
+  line-height: 20.57px;
+  font-size: 27px;
+  padding-top: 20px;
+}
+
+.sidepartValue{
+font-family: Inter;
+font-size: 50px;
+font-weight: 600;
+line-height: 30px;
+letter-spacing: 0em;
+text-align: center;
+margin: 20px 0px 20px 0px;
+}
 </style>

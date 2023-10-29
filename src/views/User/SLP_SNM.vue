@@ -62,15 +62,19 @@ export default {
         PieChart,
         HBarChart,
         DoughnutChart
+        
+    
     },
 
     data() {
       return {
-        PageTitle: "SLP - General Disaggregated Data",
+        PageTitle: "SLP - Status of Name Matching",
 
         SLPData: {
           labels: ['EO 70', 'CVA', 'SLP', 'REGULAR', 'ZERO', 'HUNGER', 'EO 70', 'FRs', 'REFERRAL'],
           label: ['PHYSICAL TARGET']['TOTAL'],
+        
+
           values: [25, 18, 13, 4, 3, 1, 2, 3, 4, 5, 4, 2],
           backgroundColor: [
           '#133F5C', '#F11B25'
@@ -99,6 +103,7 @@ export default {
         ],
         },
 
+
        ProvinceData: {
           labels: ['DAVAO ORIENTAL', 'DAVAO DEL SUR', 'DAVAO CITY', 'DAVAO DE ORO', 'DAVAO DEL NORTE', 'DAVAO OCCIDENTAL'],
           label: ['ACCOMPLISHMENT'],
@@ -113,7 +118,9 @@ export default {
 
  methods:{
 //   
-  },  
+  },
+
+    
 }
 </script>
 

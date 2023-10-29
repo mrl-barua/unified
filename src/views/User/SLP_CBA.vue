@@ -89,7 +89,7 @@ export default {
 
     data() {
       return {
-        PageTitle: "HR",
+        PageTitle: "SLP - Capability Building Activities",
 
         MonthData: {
           labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November' , 'December'],

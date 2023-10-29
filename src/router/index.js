@@ -5,6 +5,14 @@ import HR from '../views/User/HR.vue'
 import OSP from '../views/User/OSP.vue'
 import SWDA from '../views/User/SWDA.vue'
 import SLP from '../views/User/SLP.vue'
+// insert SLP ref
+import SLP_PA from '../views/User/SLP_PA.vue'
+import SLP_SNM from '../views/User/SLP_SNM.vue'
+import SLP_BMT from '../views/User/SLP_BMT.vue'
+import SLP_STAT from '../views/User/SLP_STAT.vue'
+import SLP_CBA from '../views/User/SLP_CBA.vue'
+
+
 import AdminDashboard from '../views/Admin/AdminDashboard.vue'
 import AdminHR from '../views/Admin/AdminHR.vue'
 import AdminSLP from '../views/Admin/AdminSLP.vue'
@@ -144,6 +152,37 @@ const routes = [
     component: SLP,
     beforeEnter: userRequireAuth,
   },
+  {
+    path: '/SLP_PA',
+    name: 'slp_pa',
+    component: SLP_PA,
+    beforeEnter: userRequireAuth,
+  },
+  {
+    path: '/SLP_SNM',
+    name: 'slp_snm',
+    component: SLP_SNM,
+    beforeEnter: userRequireAuth,
+  },
+  {
+    path: '/SLP_BMT',
+    name: 'slp_bmt',
+    component: SLP_BMT,
+    beforeEnter: userRequireAuth,
+  },
+  {
+    path: '/SLP_STAT',
+    name: 'slp_stat',
+    component: SLP_STAT,
+    beforeEnter: userRequireAuth,
+  },
+  {
+    path: '/SLP_CBA',
+    name: 'slp_cba',
+    component: SLP_CBA,
+    beforeEnter: userRequireAuth,
+  },
+
   // USER DASHBOARD END
 
     //catch-all route for 404 errors

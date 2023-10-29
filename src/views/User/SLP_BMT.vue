@@ -1,7 +1,9 @@
 <template>
-    <Sidebar :iconText="PageTitle" />
+     <Sidebar :iconText="PageTitle" />
 
     <br><br><br><br>
+    
+    
 
     <div class="col-12 col-md-7">
         <div class="shadow2 forbarchart">
@@ -86,10 +88,10 @@ export default {
         DoughnutChart
     
     },
-
+    
     data() {
       return {
-        PageTitle: "HR",
+        PageTitle: "SLP - Budget Monitoring Tracker",
 
         MonthData: {
           labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November' , 'December'],
