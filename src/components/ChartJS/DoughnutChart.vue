@@ -1,8 +1,10 @@
 <template>
+  <div class="chart-container">
     <Doughnut
       :options="chartOptions"
       :data="chartData"
     />
+  </div>
   </template>
   
   <script>
@@ -18,14 +20,24 @@
       data: {
         type: Object,
         required: true
-      }
+      }, 
+      legendOptions: {
+      type: Object, // Define a prop for legend options
+      default: () => ({
+        position: 'top', // Default legend position
+
+      }),
+    },
     },
     data() {
       return {
         chartData: this.prepareChartData(this.data),
         chartOptions: {
           responsive: true,
-          maintainAspectRatio: false
+          maintainAspectRatio: false,
+          plugins: {
+          legend: this.legendOptions, // Use the prop for legend options
+        },
         },
       };
     },
@@ -47,3 +59,12 @@
   };
   </script>
 
+<style scoped>
+.chart-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100%; /* Optional: Set a height for the container */
+  width: 90%;
+}
+</style>

@@ -73,3 +73,6 @@
 ## ver 2.9 Added Dashboard Indicator in the Header and Sidebar - MARLO BARUA
 
 ## ver 3.0 Added Agencies and Searchbar - MARLO BARUA
+
+## ver 3.1 Fix the Positioning of Doughnut Chart and Added Table Coloumns in the Backend for Agencies - MARLO BARUA
+

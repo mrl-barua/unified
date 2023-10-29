@@ -4,7 +4,7 @@
     <div class=wrapper container-fluid>
         <div class="col-12 col-md-2">
           <div class="agenciesNames" style="background-color: #292D96;">
-            <input style="border-radius: 10px; width: 17em; height: 3em; text-align: center;" type="text" v-model="searchQuery" placeholder="Search for agency names">
+            <input style="border-radius: 10px; width: 90%; height: 3em; text-align: center;" type="text" v-model="searchQuery" placeholder="Search for agency names">
           <div class="agencyfilter">          
               <table>
                   <tbody>
@@ -203,7 +203,7 @@
                       <div class="Sectors">    
                         <p style="font-family: Inter;font-size: 24px;font-weight: 700;line-height: 21px;letter-spacing: 0em;text-align: left;
                         padding: 4px 0px 0px 24px;">SECTORS</p>
-                        <DoughnutChart v-if="RegionData" :data="RegionData" />
+                        <DoughnutChart v-if="ClusterData" :data="ClusterData" :legendOptions="customLegendOptions"/>
                       
                       </div>
                 </div>
@@ -211,7 +211,7 @@
                      <div class="Client">  
                       <p style="font-family: Inter;font-size: 24px;font-weight: 700;line-height: 21px;letter-spacing: 0em;text-align: left;
                           padding: 4px 0px 0px 24px;">CLIENT</p> 
-                         <DoughnutChart v-if="RegionData" :data="RegionData" />
+                         <DoughnutChart v-if="ClusterData" :data="ClusterData" :legendOptions="customLegendOptions"/>
                      </div>
                 </div>
                 <div class="col-12">
@@ -245,6 +245,10 @@ export default {
     data() {
     return {
       PageTitle: "SWDA", // The title displayed on the page, which is "SWDA"
+
+      customLegendOptions: {
+        position: 'right', // Set the legend position as needed
+      },
 
       agencies: [], // An array to store agency data fetched from the API
       searchQuery: '', // A variable to hold the search query entered by the user for filtering agencies
@@ -636,16 +640,16 @@ export default {
 }
 
 .agencyfilter table tbody tr td .hover:hover {
-  background-color: red;
+  background-color: #E70F0F;
   color: white; /* Change text color to white on hover */
   cursor: pointer; /* Change cursor to a pointer on hover (optional) */
   border-radius: 10px;
-  padding: 10px 0px 10px 0px;
+  padding: 10px 0px 10px 10px;
 }
 .agencyfilter{
   font-size: 14px;
   height: 22em;
-  width: 19em;
+  width: 90%;
   overflow: auto;
   margin: 20px 20px 20px 20px;
   text-align: start;
