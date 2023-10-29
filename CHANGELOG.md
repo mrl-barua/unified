@@ -69,3 +69,5 @@
 ## ver 2.8 Added fetch data from agencies for the SWDA Dashboard - MARLO BARUA
 
 ## ver 2.8.1 Minor Layout Changes in SWDA Dashboard - MARLO BARUA
+
+## ver 2.9 Added Dashboard Indicator in the Header and Sidebar - MARLO BARUA

@@ -1,5 +1,5 @@
 <template>
-    <Sidebar />
+    <Sidebar :iconText="PageTitle" />
 
     <br><br><br><br>
 
@@ -89,6 +89,8 @@ export default {
 
     data() {
       return {
+        PageTitle: "SLP - Capability Building Activities",
+
         MonthData: {
           labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November' , 'December'],
           label: ['Months'],
