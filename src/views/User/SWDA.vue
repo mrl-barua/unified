@@ -23,65 +23,124 @@
                   <div class="shadow">
                     <h4>ACTIVE AGENCIES</h4>
                    <p class="col-4">
-                    Registered <br><br>
-                    <span id="active-registered" class="active-agencies">{{ activeRegisteredCount }}</span>
+                    Registered 
                    </p>
                    <p class="col-4">
-                    Licensed <br><br>
-                    <span id="active-licensed" class="active-agencies">{{ activeLicensedCount }}</span>
+                    Licensed 
                    </p>
                    <p class="col-4">
-                    Accredited <br><br>
-                    <span id="active-accredited" class="active-agencies">{{ activeAccreditedCount }}</span>
+                    Accredited
                    </p>
+                   <div class="col-4">
+                    <span id="active-registered" class="active-agencies">
+                      {{ activeRegisteredCount }}
+                    </span>
+                   </div>
+                   <div class="col-4">
+                    <span id="active-licensed" class="active-agencies">
+                      {{ activeLicensedCount }}
+                    </span>
+                  </div>
+                  <div class="col-4">
+                    <span id="active-accredited" class="active-agencies">
+                      {{ activeAccreditedCount }}
+                    </span>
+                  </div>
+
                   </div> 
                 </div>
 
-
+              
+      
                 <div class="agencies col-12 col-md-6 col-lg-4">
                   <div class="shadow">
                     <h4>EXPIRED AGENCIES</h4>
                     <p class="col-3">
-                    Registered <br><br>
-                    <span id="expired-registered" class="expired-agencies">{{ expiredRegisteredCount }}</span>
+                    Registered 
                    </p>
                    <p class="col-3">
-                    Licensed <br><br>
-                    <span id="expired-licensed" class="expired-agencies">{{ expiredLicensedCount }}</span>
+                    Licensed
                    </p>
                    <p class="col-3">
-                    Accreditation <br><br>
-                    <span id="expired-accreditation" class="expired-agencies">{{ expiredAccreditedCount }}</span>
+                    Accreditation     
                    </p>
                    <p class="col-3">
-                    Delisted <br><br>
-                    <span id="expired-accreditation" class="expired-agencies">{{ expiredDelistedCount }}</span>
+                    Delisted   
                    </p>
+
+                   <div class="col-3">
+                    <span id="expired-registered" class="expired-agencies">
+                      {{ expiredRegisteredCount }}
+                    </span>
+                   </div>
+                   <div class="col-3">
+                    <span id="expired-licensed" class="expired-agencies">
+                      {{ expiredLicensedCount }}
+                    </span>
+                    </div>
+                    <div class="col-3">
+                      <span id="expired-accreditation" class="expired-agencies">
+                      {{ expiredAccreditedCount }}
+                    </span>
+                    </div>
+                    <div class="col-3">
+                      <span id="expired-accreditation" class="expired-agencies">
+                      {{ expiredDelistedCount }}
+                    </span>
+
+                    </div>
                   </div>
                 </div>
 
+
+          
 
                 <div class="agencies col-12 col-md-6 col-lg-4"> 
                   <div class="shadow">
                     <h4>MODE OF DELIVERY </h4>
                     <p class="col-3">
-                    Community <br><br>
-                    <span id="community-based" class="modeDelivery">{{ communityBasedCount }}</span>
+                    Community        
                    </p>
                    <p class="col-3">
-                    Auxillary SWDA <br>
-                    <span id="auxillary" class="modeDelivery">{{ auxillarySWDACount }}</span>
+                    Auxillary SWDA    
                    </p>
                    <p class="col-3">
-                    Residential <br><br>
-                    <span id="residential" class="modeDelivery">{{ residentialCount }}</span>
+                    Residential
                    </p>
                    <p class="col-3">
-                    Non-Residential <br>
-                    <span id="non-residential" class="modeDelivery">{{ nonResidentialCount }}</span>
+                    Non-Residential    
                    </p>
+
+                   <div class="col-3">
+                    <span id="community-based" class="modeDelivery">
+                      {{ communityBasedCount }}
+                    </span>
+                   </div>
+                   <div class="col-3">
+                    <span id="auxillary" class="modeDelivery">
+                      {{ auxillarySWDACount }}
+                    </span>
+                  </div>
+                  <div class="col-3">
+                    <span id="residential" class="modeDelivery">
+                      {{ residentialCount }}
+                    </span>
+                  </div>
+                  <div class="col-3">
+                    <span id="non-residential" class="modeDelivery">
+                      {{ nonResidentialCount }}
+                    </span>
+                  </div>
                   </div>
                 </div>
+
+
+              
+
+                    
+                    
+
+                  
 
 
                 <div class="agencies col-12 col-md-6 col-lg-1">

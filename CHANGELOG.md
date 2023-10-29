@@ -67,3 +67,5 @@
 ## ver 2.7 Added Charts in the SWDA Section - MARLO BARUA
 
 ## ver 2.8 Added fetch data from agencies for the SWDA Dashboard - MARLO BARUA
+
+## ver 2.8.1 Minor Layout Changes in SWDA Dashboard - MARLO BARUA
