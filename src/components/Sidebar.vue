@@ -85,11 +85,16 @@
                           <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <router-link to="/slp" class="custom-link">
                             <li><a class="dropdown-item" href="#">General Disaggregated Data</a></li> </router-link>
-                            <li><a class="dropdown-item" href="#">Physical Accomplishments by Portfolio</a></li>
-                            <li><a class="dropdown-item" href="#">Status of Name Matching</a></li>
-                            <li><a class="dropdown-item" href="#">Budget Monitoring Tracker</a></li>
-                            <li><a class="dropdown-item" href="#">SLPA Enterprise Status 2022</a></li>
-                            <li><a class="dropdown-item" href="#">SLP XI Capability Building Activities</a></li>
+                            <router-link to="/slp_pa" class="custom-link">
+                            <li><a class="dropdown-item" href="#">Physical Accomplishments by Portfolio</a></li> </router-link>
+                            <router-link to="/slp_snm" class="custom-link">
+                            <li><a class="dropdown-item" href="#">Status of Name Matching</a></li> </router-link>
+                            <router-link to="/slp_bmt" class="custom-link">
+                            <li><a class="dropdown-item" href="#">Budget Monitoring Tracker</a></li> </router-link>
+                            <router-link to="/slp_stat" class="custom-link">
+                            <li><a class="dropdown-item" href="#">SLPA Enterprise Status 2022</a></li> </router-link>
+                            <router-link to="/slp_cba" class="custom-link">
+                            <li><a class="dropdown-item" href="#">SLP XI Capability Building Activities</a></li> </router-link>
                             
                           </ul>
                     </div>
