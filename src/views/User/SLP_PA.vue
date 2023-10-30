@@ -41,7 +41,9 @@
 
     <div class="col-12 col-md-12">
         <div class="shadow2 forbarchart">
+          <br>
           <h5 class="fw-bold">COST FROM DSWD BY BARANGAY</h5>
+          <br>
           <div class="Barchart1"><BarChart :data="CostData" /></div>
         </div>
     </div>
