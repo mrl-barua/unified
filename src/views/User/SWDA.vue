@@ -10,7 +10,7 @@
                   <tbody>
                       <tr v-for="agency in filteredAgencies" :key="agency.Agency">
                           <td class="text-white">
-                            <router-link to="/swda_agencies" class="custom-link text-white">
+                            <router-link to="/swda_agency" class="custom-link text-white">
                                         <div class="hover"> {{ agency.Agency }} </div>
                                     </router-link>
                             <hr class="hr" />

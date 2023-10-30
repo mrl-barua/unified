@@ -5,61 +5,105 @@
         <div class="col-12 col-md-3">
           <div class="agenciesNames" style="background-color: #292D96;">
             <input style="border-radius: 10px; width: 90%; height: 3em; text-align: center;" type="text" v-model="searchQuery" placeholder="Search for agency names">
-                <div class="agencyfilter">          
-                    <table>
-                        <tbody>
-                            <tr v-for="agency in filteredAgencies" :key="agency.Agency">
-                                <td class="text-white">
-                                    <router-link to="/swda_agencies" class="custom-link text-white">
-                                        <div class="hover"> {{ agency.Agency }} </div>
-                                    </router-link>
-                                    <hr class="hr" />
-                                </td>    
-                            </tr>               
-                        </tbody>
-                    </table>
+                <div class="agencyfilter">   
+
+                   <table>
+                      <tbody>
+                        <tr v-for="agency in filteredAgencies" :key="agency.Agency">
+                          <td class="text-white">
+
+                            
+                          <router-link :to="{
+                          name: 'swda_agency',
+                          query: {
+                            agencyName: JSON.stringify(agency.Agency),
+                            registrationStatus: JSON.stringify(agency.Registration_Status),
+                            licenseStatus: JSON.stringify(agency.License_Status),
+                            accreditationStatus: JSON.stringify(agency.Accreditation_Status),
+                            sector: JSON.stringify(agency.Sector),
+                            cluster: JSON.stringify(agency.Cluster),
+                            type: JSON.stringify(agency.Type),
+                            address: JSON.stringify(agency.Address),
+                            contactNumber: JSON.stringify(agency.Contact_Number),
+                            email: JSON.stringify(agency.Email),
+                            website: JSON.stringify(agency.Website),
+                            contactPerson: JSON.stringify(agency.Contact_Person),
+                            position: JSON.stringify(agency.Position),
+                            mobileNumber: JSON.stringify(agency.Mobile_Number),
+                            servicesOffered: JSON.stringify(agency.Services_Offered),
+                            clientele: JSON.stringify(agency.Clientele),
+                            modeOfDelivery: JSON.stringify(agency.Mode_of_Delivery),
+                            specifiedAreasOfOperation: JSON.stringify(agency.Specified_Areas_of_Operation),
+                            registrationID: JSON.stringify(agency.Registration_ID),
+                            registrationDate: JSON.stringify(agency.Registration_Date),
+                            registrationExpiration: JSON.stringify(agency.Registration_Expiration),
+                            remarks: JSON.stringify(agency.Remarks),
+                            licensedID: JSON.stringify(agency.Licensed_ID),
+                            licenseDateIssued: JSON.stringify(agency.License_Date_Issued),
+                            licenseExpiration: JSON.stringify(agency.License_Expiration),
+                            licensureOverdue: JSON.stringify(agency.Licensure_Overdue),
+                            accreditationID: JSON.stringify(agency.Accreditation_ID),
+                            accreditationDateIssued: JSON.stringify(agency.Accreditation_Date_Issued),
+                            accreditationExpiration: JSON.stringify(agency.Accreditation_Expiration),
+                            accreditationOverdue: JSON.stringify(agency.Accreditation_Overdue)
+                          }
+                        }" class="custom-link text-white">
+                          <div class="hover">{{ agency.Agency }}</div>
+                        </router-link>
+
+
+
+                            <hr class="hr" />
+                          </td>
+                        </tr>
+                      </tbody>
+                </table>
+
+
+
                 </div>
          </div>
         </div>
         <div class="col-12 col-md-9">
             <div class="content">
                 <div class="col-12 agencyHeader">
-                    <p>NAME OF THE AGENCY</p>
-                    <hr class="hr" style="border: 2px solid black;"/>
-                </div>
+                    <p>{{ $route.query.agencyName}}</p>
+                    <hr class="hr" style="border: 2px solid black;" />
+                  </div>
+
                 
                 <div class="col-12 col-md-6">
                     <hr class="hr" style="margin-left: 15px; margin-right: 15px; border: 2px solid black;"/>
                 
                 <div class="status col-4">
                     <p>Registration Status</p>
-                    <p>Registration Data</p>
+                    <p>{{ $route.query.registrationStatus }}</p>
                 </div>
 
                 <div class="status col-4">
                     <p>Licensed Status</p>
-                    <p>Licensed Data</p>      
+                    <p>{{ $route.query.licenseStatus }}</p>      
                 </div>
 
                 <div class="status col-4">
                     <p>Accredication Status</p>
-                    <p>Accredication Data</p>
+                    <p>{{ $route.query.accreditationStatus }}</p>
                 </div>
 
                 <div class="agencySectorClusterType">
                         <div class="agencySCTContent col-4 text-start">
                             <div class="box"> <p>Sector</p>  </div>
-                            <p  class="data">SectorData</p>
+                            <p  class="data">{{ $route.query.sector }}</p>
                         </div>
 
                         <div class="agencySCTContent col-4 text-start" >
                             <div class="box"> <p>Cluster</p> </div>
-                            <p  class="data">ClusterData</p>
+                            <p  class="data">{{ $route.query.cluster }}</p>
                         </div>
 
                         <div class="agencySCTContent col-4 text-start">
                             <div class="box"> <p>Type</p> </div>
-                            <p class="data">TypeData</p>
+                            <p class="data">{{ $route.query.type }}</p>
                         </div>
 
                              <hr class="hr" style="margin-left: 15px; margin-right: 15px; border: 2px solid black;"/>
@@ -67,22 +111,22 @@
                         <div class="col-12">
                             <p>CONTACT INFORMATION</p>
                             <div class="box"><p>Address</p></div>
-                            <p class="data">no data</p>
+                            <p class="data">{{ $route.query.address }}</p>
                         </div>
 
                         <div class="col-5">
                             <div class="box"><p>Contact Number</p></div>
-                            <p class="data">no data</p>
+                            <p class="data">{{ $route.query.contactNumber }}</p>
                         </div>
 
                         <div class="col-7">
                             <div class="box"><p>Email</p></div>
-                            <p class="data">no data</p>
+                            <p class="data">{{ $route.query.email }}</p>
                         </div>
 
                         <div class="col-12">
                             <div class="box"><p>Website</p></div>
-                            <p class="data">no data</p>
+                            <p class="data">{{ $route.query.website }}</p>
                         </div>
                    
                             <hr class="hr" style="margin-left: 15px; margin-right: 15px; border: 2px solid black;"/>
@@ -93,17 +137,17 @@
 
                         <div class="col-6">
                             <div class="box"><p>Name</p></div>
-                            <p class="data">no data</p>
+                            <p class="data">{{ $route.query.contactPerson }}</p>
                         </div>
 
                         <div class="col-6">
                             <div class="box"><p>Position</p></div>
-                            <p class="data">no data</p>
+                            <p class="data">{{ $route.query.position }}</p>
                         </div>
 
                         <div class="col-6">
                             <div class="box"><p>Contact Number</p></div>
-                            <p class="data">no data</p>
+                            <p class="data">{{ $route.query.mobileNumber }}</p>
                         </div>
 
                      </div> 
@@ -118,22 +162,22 @@
 
                         <div class="col-12">
                             <div class="box"><p>Services Offered</p></div>
-                            <p class="data">no data</p>
+                            <p class="data">{{ $route.query.servicesOffered }}</p>
                         </div>
 
                         <div class="col-6">
                             <div class="box"><p>Clientele</p></div>
-                            <p class="data">no data</p>
+                            <p class="data">{{ $route.query.clientele }}</p>
                         </div>
 
                         <div class="col-6">
                             <div class="box"><p>Mode of Delivery</p></div>
-                            <p class="data">no data</p>
+                            <p class="data">{{ $route.query.modeOfDelivery }}</p>
                         </div>
 
                         <div class="col-12" style="margin-bottom: 50px;">
-                            <div class="box"><p>Specified Areas of Operation</p></div>
-                            <p class="data">no data</p>
+                            <div class="box"><p>Specified Area of Operation</p></div>
+                            <p class="data">{{ $route.query.specifiedAreasOfOperation }}</p>
                         </div>
 
                 <hr class="hr" style="margin-left: 15px; margin-right: 15px; border: 2px solid black;"/>
@@ -145,10 +189,10 @@
                                         <span class="col-3"><p>Expiration Date</p></span>
                                         <span class="col-3"><p>Remarks</p></span>
                                     </div>
-                                    <span class="col-3" style="padding-left: 15px;"><p>No Data</p></span>
-                                        <span class="col-3" style="padding-left: 5px;"><p>No Data</p></span>
-                                        <span class="col-3"><p>No Data</p></span>
-                                        <span class="col-3"><p>No Data</p></span>
+                                    <span class="col-3" style="padding-left: 15px;"><p>{{ $route.query.registrationID }}</p></span>
+                                        <span class="col-3" style="padding-left: 5px;"><p>{{ $route.query.registrationDate }}</p></span>
+                                        <span class="col-3"><p>{{ $route.query.registrationExpiration }}</p></span>
+                                        <span class="col-3"><p>{{ $route.query.remarks }}</p></span>
                             </div> 
 
                             <div class="col-12">
@@ -158,10 +202,10 @@
                                         <span class="col-3"><p>Expiration Date</p></span>
                                         <span class="col-3"><p>Day Overdue</p></span>
                                     </div>
-                                    <span class="col-3" style="padding-left: 15px;"><p>No Data</p></span>
-                                        <span class="col-3" style="padding-left: 5px;"><p>No Data</p></span>
-                                        <span class="col-3"><p>No Data</p></span>
-                                        <span class="col-3"><p>No Data</p></span>
+                                    <span class="col-3" style="padding-left: 15px;"><p>{{ $route.query.licensedID }}</p></span>
+                                        <span class="col-3" style="padding-left: 5px;"><p>{{ $route.query.licenseDateIssued }}</p></span>
+                                        <span class="col-3"><p>{{ $route.query.licenseExpiration }}</p></span>
+                                        <span class="col-3"><p>{{ $route.query.licensureOverdue }}</p></span>
                             </div> 
 
                             <div class="col-12">
@@ -171,10 +215,10 @@
                                         <span class="col-3"><p>Expiration Date</p></span>
                                         <span class="col-3"><p>Day Overdue</p></span>
                                     </div>
-                                    <span class="col-3" style="padding-left: 15px;"><p>No Data</p></span>
-                                        <span class="col-3" style="padding-left: 5px;"><p>No Data</p></span>
-                                        <span class="col-3"><p>No Data</p></span>
-                                        <span class="col-3"><p>No Data</p></span>
+                                    <span class="col-3" style="padding-left: 15px;"><p>{{ $route.query.accreditationID }}</p></span>
+                                        <span class="col-3" style="padding-left: 5px;"><p>{{ $route.query.accreditationDateIssued }}</p></span>
+                                        <span class="col-3"><p>{{ $route.query.accreditationExpiration }}</p></span>
+                                        <span class="col-3"><p>{{ $route.query.accreditationOverdue }}</p></span>
                             </div> 
                      </div> 
                 </div>
@@ -215,28 +259,28 @@ export default {
     };  
   },
 
+
   created() {
-                // Fetch data and populate the agencies array
-                axios.get('http://127.0.0.1:8000/api/agenciesName')
-                    .then(response => {
-                        this.agencies = response.data;
-                    })
-                    .catch(error => {
-                        console.error("Error fetching data:", error);
-                    });
+  
+            // Fetch data and populate the agencies array
+            axios.get('http://127.0.0.1:8000/api/agenciesName')
+                .then(response => {
+                     this.agencies = response.data;
+                })
+                .catch(error => {
+                    console.error("Error fetching data:", error);
+                });        
             },
 
   computed: {
-                filteredAgencies() {
-                    // Filter the agencies based on the searchQuery
-                    return this.agencies.filter(agency => {
-                        return agency.Agency.toLowerCase().includes(this.searchQuery.toLowerCase());
-                    });
-                }
+              filteredAgencies() {
+                      // Filter the agencies based on the searchQuery
+                      return this.agencies.filter(agency => {
+                          return agency.Agency.toLowerCase().includes(this.searchQuery.toLowerCase());
+                      });
+                  }
             },
-
-
-    
+  
 }
 </script>
 
