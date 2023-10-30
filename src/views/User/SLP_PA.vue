@@ -3,62 +3,44 @@
 
     <br><br><br><br>
 
-    <div class="col-12 col-md-7">
+    
+  
+    <div class="col-12 col-md-12">
+      <div class="shadow2">
+
+        <h3>DETAILS OF REQUESTING EMPLOYEE</h3>
+  <br> 
+        <div class="d-flex justify-content-around">
+         <h5 class="fw-bold">MODALITY</h5>
+         <h5 class="fw-bold">TOTAL PROJECT COST FROM DSWD</h5>
+         <h5 class="fw-bold">TOTAL</h5>
+        </div>
+        <hr class="hr" />
+        <div class="d-flex justify-content-around">
+         <p>1.Seed Capital Fund Regular Target</p>
+         <p>P 26,000,000.00 </p>
+         <p>178 </p>
+        </div>
+        <hr class="hr" />
+        <div class="d-flex justify-content-around">
+         <p>2.Lorem Ipsum</p>
+         <p>P 000,000.00</p>
+         <p>#</p>
+        </div>
+        <hr class="hr" />
+        <div class="d-flex justify-content-around">
+         <p>Lorem Ipsum</p>
+         <p>P 000,000.00</p>
+         <p>#</p>
+        </div> 
+      </div>
+    </div>
+
+    <div class="col-12 col-md-12">
         <div class="shadow2 forbarchart">
           <p>NUMBER OF RECORDS PER MONTH</p>
           <div class="Barchart1"><BarChart :data="MonthData" /></div>
         </div>
-    </div>
-  
-    <div class="col-12 col-md-5">
-        <div class="shadow2">
-          <p>TOTAL NUMBER OF CATEGORIES REQUEST</p>
-          <div class="Piechart1"><PieChart :data="NameData" /></div>
-        </div>
-    </div>
-    <div class="col-12 col-md-6">
-      <div class="shadow2">
-          <p>PERCENTAGE OF REQUESTING EMPLOYEES STATUS</p>
-          <div class="Piechart1">
-            <DoughnutChart v-if="EmploymentData" :data="EmploymentData" />
-          </div>
-        </div>
-    </div>
-
-    <div class="col-12 col-md-6">
-      <div class="shadow2">
-        <h3>DETAILS OF REQUESTING EMPLOYEE</h3>
-
-        <div class="d-flex justify-content-around">
-         <h5 class="fw-bold">NAME</h5>
-         <h5 class="fw-bold">OFFICE / UNIT</h5>
-         <h5 class="fw-bold">RECORD COUNT</h5>
-        </div>
-        <hr class="hr" />
-        <div class="d-flex justify-content-around">
-         <p>text</p>
-         <p>text</p>
-         <p>text</p>
-        </div>
-        <hr class="hr" />
-        <div class="d-flex justify-content-around">
-         <p>text</p>
-         <p>text</p>
-         <p>text</p>
-        </div>
-        <hr class="hr" />
-        <div class="d-flex justify-content-around">
-         <p>text</p>
-         <p>text</p>
-         <p>text</p>
-        </div>
-        <hr class="hr" />
-        <div class="d-flex justify-content-around">
-         <p>text</p>
-         <p>text</p>
-         <p>text</p>
-        </div>
-      </div>
     </div>
 
 
@@ -215,7 +197,7 @@ export default {
 
 .shadow2{
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
-  height: 400px;
+  height: 350px;
   border-radius: 20px;
   margin:10px 15px 10px 20px;
   padding: 10px 0px 10px 0px;
