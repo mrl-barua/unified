@@ -7,39 +7,42 @@
   
     <div class="col-12 col-md-12">
       <div class="shadow2">
+<br>
+       <div class="d-flex justify-content-around"
+        style=" margin-left: 40px; margin-right: 40px; margin-bottom: 40px; background-color: #133F5C; color: white; padding: 8px; text-align: center; border-radius: 5px;">
 
-        <h3>DETAILS OF REQUESTING EMPLOYEE</h3>
-  <br> 
-        <div class="d-flex justify-content-around">
-         <h5 class="fw-bold">MODALITY</h5>
-         <h5 class="fw-bold">TOTAL PROJECT COST FROM DSWD</h5>
-         <h5 class="fw-bold">TOTAL</h5>
-        </div>
-        <hr class="hr" />
+
+          <h5 class="fw-bold">MODALITY</h5>
+          <h5 class="fw-bold">TOTAL PROJECT COST FROM DSWD</h5>
+          <h5 class="fw-bold">TOTAL</h5>
+      </div>
+
+
+        <hr class="SLPPA" />
         <div class="d-flex justify-content-around">
          <p>1.Seed Capital Fund Regular Target</p>
-         <p>P 26,000,000.00 </p>
+         <p>P26,000,000.00 </p>
          <p>178 </p>
         </div>
-        <hr class="hr" />
+        <hr class="SLPPA" />
         <div class="d-flex justify-content-around">
-         <p>2.Lorem Ipsum</p>
-         <p>P 000,000.00</p>
-         <p>#</p>
+         <p>2. Lorem Ipsum</p>
+         <p>P26,000,000.00</p>
+         <p>178</p>
         </div>
-        <hr class="hr" />
+        <hr class="SLPPA" />
         <div class="d-flex justify-content-around">
-         <p>Lorem Ipsum</p>
-         <p>P 000,000.00</p>
-         <p>#</p>
+         <p>3. Lorem Ipsum</p>
+         <p>P26,000,000.00</p>
+         <p>178</p>
         </div> 
       </div>
     </div>
 
     <div class="col-12 col-md-12">
         <div class="shadow2 forbarchart">
-          <p>NUMBER OF RECORDS PER MONTH</p>
-          <div class="Barchart1"><BarChart :data="MonthData" /></div>
+          <h5 class="fw-bold">COST FROM DSWD BY BARANGAY</h5>
+          <div class="Barchart1"><BarChart :data="CostData" /></div>
         </div>
     </div>
 
@@ -59,7 +62,7 @@ import DoughnutChart from '@/components/ChartJS/DoughnutChart';
 
 
 export default {
-    name: 'HR',
+    name: 'SLPPA',
     components: {
         Sidebar,
         Footer,
@@ -73,120 +76,28 @@ export default {
       return {
         PageTitle: "SLP - Physical Accomplishment by Portfolio",
 
-        MonthData: {
-          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November' , 'December'],
-          label: ['Months'],
-          values: [39, 18, 13, 4, 3, 1, 2, 3, 4, 5, 4, 2],
+        CostData: {
+          labels: ['Sumimao', 'Malabog', 'Langub', 'Calinan Poblacion', '8A, Poblacion A', 'Lasang', 'Bunawan', 'Buhangin Proper', 'Kilate', 'Calinan Proper'],
+          label: ['ASSOCIATION-MANAGED'],
+          values: [450000, 450000, 450000, 450000, 450000, 420000, 360000, 15000, 15000, 15000],
           backgroundColor: [
-          'rgba(19, 63, 92, 1)'
+          '#292D96'
         ],
         },    
-        NameData: {
-          labels: ['CNSP', 'EMOTIONALLY/PSYCHO DISTRESS', 'OFW'],
-          label: ['CHART2'],
-          values: [42, 23, 12, 2],
-          backgroundColor: [
-          'rgba(75, 192, 192, 0.2',
-          'rgba(255, 99, 132, 0.2',
-          'rgba(255, 206, 86, 0.2',
-          'rgba(54, 162, 235, 0.2',
-          'rgba(153, 102, 255, 0.2',
-          'rgba(255, 159, 64, 0.2',
-        ],
-        },
 
-
-        EmploymentData: null,
       };
     },
 
  methods:{
-  EmploymentFetchData() {
-      return axios
-        .get('http://127.0.0.1:8000/api/employmentStatus')
-        .then(response => {
-          // Initialize data arrays
-          const moa = [];
-          const permanent = [];
-          const contractual = [];
-          const coterminos = [];
-          const casual = [];
-         
-
-          response.data.forEach(item => {
-            const employmentstatus = item.EMPLOYMENT_STATUS;
-
-            switch (employmentstatus) {
-              case 'MOA':
-                  moa.push(item);
-                break;
-              case 'PERMANENT':
-                  permanent.push(item);
-                break;
-              case 'CONTRACTUAL':
-                 contractual.push(item);
-                break; 
-              case 'COTERMINOS':
-                coterminos.push(item);
-                break; 
-              case 'CASUAL':
-                casual.push(item);
-                break; 
-              default:
-                // Handle other cases if necessary
-                break;
-            }
-          });
-
-          // Calculate data lengths
-          const moaLength = moa.length;
-          const permanentLength = permanent.length;
-          const contractualLength = contractual.length;
-          const coterminosLength = coterminos.length;
-          const casualLength = casual.length;
-          // Prepare and return data
-          const employmentdata = {
-            labels: ['MOA', 'PERMANENT', 'CONTRACTUAL', 'COTERMINOS', 'CASUAL'],
-            label: ['Employment Data'],
-            values: [moaLength, permanentLength, contractualLength, coterminosLength, casualLength],
-            backgroundColor: ['rgba(19, 63, 92, 1)',
-                              'rgba(243, 165, 51, 1)',
-                              'rgba(235, 95, 94, 1)',
-                              'rgba(0, 255, 0, 0.6)',
-                              'rgba(0, 0, 255, 0.6)',
-                            
-          ],
-          };
-          // Set barChartData to the computed data
-          this.EmploymentData = employmentdata;
-        })
-        .catch(error => {
-          console.error('Error fetching data:', error);
-
-
-          const employmentdata = {
-            labels: ['MOA', 'PERMANENT', 'CONTRACTUAL', 'COTERMINOS', 'CASUAL'],
-            label: ['Employment Data'],
-            values: [1, 1, 1, 1, 1],
-            backgroundColor: ['rgba(25, 82, 105, 0.6)',
-                              'rgba(0, 255, 0, 0.6)',
-                              'rgba(0, 0, 255, 0.6)',
-                            
-          ],
-          };
-          // Set barChartData to the computed data
-          this.EmploymentData = employmentdata;
-
-        });
-    },
+  // inserted data for month 
+  
 
  },
 
 
 
   mounted() {
-    // Automatically fetch data when the component is mounted
-    this.EmploymentFetchData();
+    
   },
 
     
@@ -209,15 +120,15 @@ export default {
     height: 350px;
   }
   @media only screen and (min-width: 720px) {
-    height: 400px;
+    height: 600px;
   }
 }
 
 
 .Barchart1{
-  height: 340px; 
+  height: 480px; 
 
 }
 
-</style>
 
+</style>
