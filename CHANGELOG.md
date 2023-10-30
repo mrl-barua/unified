@@ -76,3 +76,4 @@
 
 ## ver 3.1 Fix the Positioning of Doughnut Chart and Added Table Coloumns in the Backend for Agencies - MARLO BARUA
 
+## ver 3.2 Added Agency Details Page in the SWDA Dashboard - MARLO BARUA

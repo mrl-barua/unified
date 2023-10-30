@@ -4,6 +4,8 @@ import Dashboard from '../views/User/Dashboard.vue'
 import HR from '../views/User/HR.vue'
 import OSP from '../views/User/OSP.vue'
 import SWDA from '../views/User/SWDA.vue'
+import SWDA_AGENCIES from '../views/User/SWDA_AGENCIES.vue'
+
 import SLP from '../views/User/SLP.vue'
 // insert SLP ref
 import SLP_PA from '../views/User/SLP_PA.vue'
@@ -21,6 +23,7 @@ import AdminSWDA from '../views/Admin/AdminSWDA.vue'
 import ERROR from '../views/404.vue' // Import the 404 Error Page
 import { userIsAuthenticated } from '../auth'; // Import the user authentication function
 import { adminIsAuthenticated } from '../auth'; // Import the admin authentication function
+
 
 
 const userRequireAuth = (to, from, next) => {
@@ -145,6 +148,15 @@ const routes = [
     component: SWDA,
     beforeEnter: userRequireAuth,
   },
+
+
+  {
+    path: '/SWDA_AGENCIES',
+    name: 'swda_agencies',
+    component: SWDA_AGENCIES,
+    beforeEnter: userRequireAuth,
+  },
+
 
   {
     path: '/SLP',
