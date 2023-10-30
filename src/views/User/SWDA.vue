@@ -2,7 +2,7 @@
     <Sidebar :iconText="PageTitle" />
     <br><br><br><br>
     <div class=wrapper container-fluid>
-        <div class="col-12 col-md-2">
+        <div class="col-12 col-md-3">
           <div class="agenciesNames" style="background-color: #292D96;">
             <input style="border-radius: 10px; width: 90%; height: 3em; text-align: center;" type="text" v-model="searchQuery" placeholder="Search for agency names">
           <div class="agencyfilter">          
@@ -10,7 +10,9 @@
                   <tbody>
                       <tr v-for="agency in filteredAgencies" :key="agency.Agency">
                           <td class="text-white">
-                           <div class="hover"> {{ agency.Agency }} </div>
+                            <router-link to="/swda_agency" class="custom-link text-white">
+                                        <div class="hover"> {{ agency.Agency }} </div>
+                                    </router-link>
                             <hr class="hr" />
                           </td>    
                       </tr>               
@@ -37,7 +39,7 @@
 
         </div>
 
-        <div class="col-12 col-md-10">
+        <div class="col-12 col-md-9">
                 <div class="agencies col-12 col-md-6 col-lg-3">
                   <div class="shadow">
                     <h4>ACTIVE AGENCIES</h4>
@@ -622,6 +624,10 @@ export default {
   margin: 0;
   padding: 0;
   height: 70vh;
+}
+
+.custom-link {
+  text-decoration: none; 
 }
 .filters{
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
