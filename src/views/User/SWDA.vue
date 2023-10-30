@@ -10,9 +10,44 @@
                   <tbody>
                       <tr v-for="agency in filteredAgencies" :key="agency.Agency">
                           <td class="text-white">
-                            <router-link to="/swda_agency" class="custom-link text-white">
-                                        <div class="hover"> {{ agency.Agency }} </div>
-                                    </router-link>
+                             <router-link :to="{
+                          name: 'swda_agency',
+                          query: {
+                            agencyName: JSON.stringify(agency.Agency),
+                            registrationStatus: JSON.stringify(agency.Registration_Status),
+                            licenseStatus: JSON.stringify(agency.License_Status),
+                            accreditationStatus: JSON.stringify(agency.Accreditation_Status),
+                            sector: JSON.stringify(agency.Sector),
+                            cluster: JSON.stringify(agency.Cluster),
+                            type: JSON.stringify(agency.Type),
+                            address: JSON.stringify(agency.Address),
+                            contactNumber: JSON.stringify(agency.Contact_Number),
+                            email: JSON.stringify(agency.Email),
+                            website: JSON.stringify(agency.Website),
+                            contactPerson: JSON.stringify(agency.Contact_Person),
+                            position: JSON.stringify(agency.Position),
+                            mobileNumber: JSON.stringify(agency.Mobile_Number),
+                            servicesOffered: JSON.stringify(agency.Services_Offered),
+                            clientele: JSON.stringify(agency.Clientele),
+                            modeOfDelivery: JSON.stringify(agency.Mode_of_Delivery),
+                            specifiedAreasOfOperation: JSON.stringify(agency.Specified_Areas_of_Operation),
+                            registrationID: JSON.stringify(agency.Registration_ID),
+                            registrationDate: JSON.stringify(agency.Registration_Date),
+                            registrationExpiration: JSON.stringify(agency.Registration_Expiration),
+                            remarks: JSON.stringify(agency.Remarks),
+                            licensedID: JSON.stringify(agency.Licensed_ID),
+                            licenseDateIssued: JSON.stringify(agency.License_Date_Issued),
+                            licenseExpiration: JSON.stringify(agency.License_Expiration),
+                            licensureOverdue: JSON.stringify(agency.Licensure_Overdue),
+                            accreditationID: JSON.stringify(agency.Accreditation_ID),
+                            accreditationDateIssued: JSON.stringify(agency.Accreditation_Date_Issued),
+                            accreditationExpiration: JSON.stringify(agency.Accreditation_Expiration),
+                            accreditationOverdue: JSON.stringify(agency.Accreditation_Overdue)
+                          }
+                        }" class="custom-link text-white">
+                          <div class="hover">{{ agency.Agency }}</div>
+                        </router-link>
+
                             <hr class="hr" />
                           </td>    
                       </tr>               
