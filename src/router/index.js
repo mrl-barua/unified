@@ -4,6 +4,8 @@ import Dashboard from '../views/User/Dashboard.vue'
 import HR from '../views/User/HR.vue'
 import OSP from '../views/User/OSP.vue'
 import SWDA from '../views/User/SWDA.vue'
+import SWDA_AGENCY from '../views/User/SWDA_AGENCIES.vue'
+
 import SLP from '../views/User/SLP.vue'
 // insert SLP ref
 import SLP_PA from '../views/User/SLP_PA.vue'
@@ -21,6 +23,7 @@ import AdminSWDA from '../views/Admin/AdminSWDA.vue'
 import ERROR from '../views/404.vue' // Import the 404 Error Page
 import { userIsAuthenticated } from '../auth'; // Import the user authentication function
 import { adminIsAuthenticated } from '../auth'; // Import the admin authentication function
+
 
 
 const userRequireAuth = (to, from, next) => {
@@ -126,28 +129,37 @@ const routes = [
   },
 
   {
-    path: '/HR',
+    path: '/hr',
     name: 'hr',
     component: HR,
     beforeEnter: userRequireAuth,
   },
 
   {
-    path: '/OSP',
+    path: '/osp',
     name: 'osp',
     component: OSP,
     beforeEnter: userRequireAuth,
   },
 
   {
-    path: '/SWDA',
+    path: '/swda',
     name: 'swda',
     component: SWDA,
     beforeEnter: userRequireAuth,
   },
 
+
   {
-    path: '/SLP',
+    path: '/swda_agency',
+    name: 'swda_agency',
+    component: SWDA_AGENCY,
+    beforeEnter: userRequireAuth,
+  },
+
+
+  {
+    path: '/slp',
     name: 'slp',
     component: SLP,
     beforeEnter: userRequireAuth,
@@ -159,25 +171,25 @@ const routes = [
     beforeEnter: userRequireAuth,
   },
   {
-    path: '/SLP_SNM',
+    path: '/slp_snm',
     name: 'slp_snm',
     component: SLP_SNM,
     beforeEnter: userRequireAuth,
   },
   {
-    path: '/SLP_BMT',
+    path: '/slp_bmt',
     name: 'slp_bmt',
     component: SLP_BMT,
     beforeEnter: userRequireAuth,
   },
   {
-    path: '/SLP_STAT',
+    path: '/slp_stat',
     name: 'slp_stat',
     component: SLP_STAT,
     beforeEnter: userRequireAuth,
   },
   {
-    path: '/SLP_CBA',
+    path: '/slp_cba',
     name: 'slp_cba',
     component: SLP_CBA,
     beforeEnter: userRequireAuth,
@@ -192,6 +204,8 @@ const routes = [
     component: ERROR
   }
 ]
+
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

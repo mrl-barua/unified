@@ -1,8 +1,12 @@
 <template>
-  
+
     <header class="d-flex flex-wrap justify-content-start  ">
-      <img src="../assets/DSWDLogo.png" alt="">
+       <router-link to="/dashboard" class="custom-link">
+          <img src="../assets/DSWDLogo.png" alt="">
+       </router-link>
     </header>
+
+
   </template>
   
   <script>

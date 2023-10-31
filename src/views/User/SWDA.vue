@@ -2,23 +2,79 @@
     <Sidebar :iconText="PageTitle" />
     <br><br><br><br>
     <div class=wrapper container-fluid>
-        <div class="col-12 col-md-2">
-          <div class="filters">
-            test
+        <div class="col-12 col-md-3">
+          <div class="agenciesNames" style="background-color: #292D96;">
+            <input style="border-radius: 10px; width: 90%; height: 3em; text-align: center;" type="text" v-model="searchQuery" placeholder="Search for agency names">
+          <div class="agencyfilter">          
+              <table>
+                  <tbody>
+                      <tr v-for="agency in filteredAgencies" :key="agency.Agency">
+                          <td class="text-white">
+                             <router-link :to="{
+                          name: 'swda_agency',
+                          query: {
+                            agencyName: JSON.stringify(agency.Agency),
+                            registrationStatus: JSON.stringify(agency.Registration_Status),
+                            licenseStatus: JSON.stringify(agency.License_Status),
+                            accreditationStatus: JSON.stringify(agency.Accreditation_Status),
+                            sector: JSON.stringify(agency.Sector),
+                            cluster: JSON.stringify(agency.Cluster),
+                            type: JSON.stringify(agency.Type),
+                            address: JSON.stringify(agency.Address),
+                            contactNumber: JSON.stringify(agency.Contact_Number),
+                            email: JSON.stringify(agency.Email),
+                            website: JSON.stringify(agency.Website),
+                            contactPerson: JSON.stringify(agency.Contact_Person),
+                            position: JSON.stringify(agency.Position),
+                            mobileNumber: JSON.stringify(agency.Mobile_Number),
+                            servicesOffered: JSON.stringify(agency.Services_Offered),
+                            clientele: JSON.stringify(agency.Clientele),
+                            modeOfDelivery: JSON.stringify(agency.Mode_of_Delivery),
+                            specifiedAreasOfOperation: JSON.stringify(agency.Specified_Areas_of_Operation),
+                            registrationID: JSON.stringify(agency.Registration_ID),
+                            registrationDate: JSON.stringify(agency.Registration_Date),
+                            registrationExpiration: JSON.stringify(agency.Registration_Expiration),
+                            remarks: JSON.stringify(agency.Remarks),
+                            licensedID: JSON.stringify(agency.Licensed_ID),
+                            licenseDateIssued: JSON.stringify(agency.License_Date_Issued),
+                            licenseExpiration: JSON.stringify(agency.License_Expiration),
+                            licensureOverdue: JSON.stringify(agency.Licensure_Overdue),
+                            accreditationID: JSON.stringify(agency.Accreditation_ID),
+                            accreditationDateIssued: JSON.stringify(agency.Accreditation_Date_Issued),
+                            accreditationExpiration: JSON.stringify(agency.Accreditation_Expiration),
+                            accreditationOverdue: JSON.stringify(agency.Accreditation_Overdue)
+                          }
+                        }" class="custom-link text-white">
+                          <div class="hover">{{ agency.Agency }}</div>
+                        </router-link>
+
+                            <hr class="hr" />
+                          </td>    
+                      </tr>               
+                  </tbody>
+              </table>
           </div>
+        </div>
 
-          <p>FOR RENEWAL</p>
       
+          <p style="color: rgba(41, 45, 150, 1); font-weight: 800; font-size: 17px; line-height: 20.57px;">FOR RENEWAL</p>
+
         <div class="filters">
-          <p>LICENCE</p>
+          <p class="sidepart">LICENCE</p> <br>
+           <h3 class="sidepartValue">00</h3>
+           <p>DAYS</p>
+           <p>BEFORE EXPIRATION</p>
         </div>
         <div class="filters">
-          <p>ACCREDITATION</p>
+          <p class="sidepart" >ACCREDITATION</p><br>
+          <h3 class="sidepartValue">00</h3>
+           <p>DAYS</p>
+           <p>BEFORE EXPIRATION</p>
         </div>
 
         </div>
 
-        <div class="col-12 col-md-10">
+        <div class="col-12 col-md-9">
                 <div class="agencies col-12 col-md-6 col-lg-3">
                   <div class="shadow">
                     <h4>ACTIVE AGENCIES</h4>
@@ -141,7 +197,8 @@
                 <div class="col-12">
                         <div class="Clusters"> 
                           <div class="col-12" >
-                            <h4>CLUSTER</h4>
+                            <p style="font-family: Inter;font-size: 24px;font-weight: 700;line-height: 21px;letter-spacing: 0em;text-align: center;
+                        padding: 4px 0px 0px 24px;">CLUSTERS</p>
                           </div>
                           <div class="col-12 col-md-3 clusterdiv">
                             <div class="color text-white" style="background-color: #133F5C;">
@@ -181,13 +238,17 @@
                 </div>
                 <div class="col-12 col-md-6">
                       <div class="Sectors">    
-                        <DoughnutChart v-if="RegionData" :data="RegionData" />
+                        <p style="font-family: Inter;font-size: 24px;font-weight: 700;line-height: 21px;letter-spacing: 0em;text-align: left;
+                        padding: 4px 0px 0px 24px;">SECTORS</p>
+                        <DoughnutChart v-if="ClusterData" :data="ClusterData" :legendOptions="customLegendOptions"/>
                       
                       </div>
                 </div>
                 <div class="col-12 col-md-6">
-                     <div class="Client">    
-                         <DoughnutChart v-if="ClusterData" :data="ClusterData" />
+                     <div class="Client">  
+                      <p style="font-family: Inter;font-size: 24px;font-weight: 700;line-height: 21px;letter-spacing: 0em;text-align: left;
+                          padding: 4px 0px 0px 24px;">CLIENT</p> 
+                         <DoughnutChart v-if="ClusterData" :data="ClusterData" :legendOptions="customLegendOptions"/>
                      </div>
                 </div>
                 <div class="col-12">
@@ -220,34 +281,66 @@ export default {
     },
     data() {
     return {
-      PageTitle: "SWDA",
-      ClusterData: null, // Initialize barChartData as null
-      RegionData: null,
+      PageTitle: "SWDA", // The title displayed on the page, which is "SWDA"
 
-      southClusterLength: 0,
-      cluster1Length: 0,
-      northClusterLength: 0,
-      unclusteredLength: 0,
-      cluster2Length: 0,
-      seniorLength: 0,
+      customLegendOptions: {
+        position: 'right', // Set the legend position as needed
+      },
 
-    activeRegisteredCount: 0,
-    activeLicensedCount: 0,
-    activeAccreditedCount: 0,
-    expiredRegisteredCount: 0,
-    expiredLicensedCount: 0,
-    expiredAccreditedCount: 0,
-    expiredDelistedCount: 0,
-    communityBasedCount: 0,
-    auxillarySWDACount: 0,
-    residentialCount: 0,
-    nonResidentialCount: 0,
-     
+      agencies: [], // An array to store agency data fetched from the API
+      searchQuery: '', // A variable to hold the search query entered by the user for filtering agencies
 
-      
 
-    };
+
+      ClusterData: null, // Initialize Chart Data as null
+      RegionData: null, // Initialize Chart Data as null
+      ClienteleData: null,
+
+      // Cluster Lengths
+      southClusterLength: 0, // Number of agencies in the South Cluster
+      cluster1Length: 0, // Number of agencies in Cluster 1
+      northClusterLength: 0, // Number of agencies in the North Cluster
+      unclusteredLength: 0, // Number of unclustered agencies
+      cluster2Length: 0, // Number of agencies in Cluster 2
+      seniorLength: 0, // Number of agencies in the Senior Citizens Cluster
+
+      // Active and Expired Agency Counts
+      activeRegisteredCount: 0, // Number of actively registered agencies
+      activeLicensedCount: 0, // Number of actively licensed agencies
+      activeAccreditedCount: 0, // Number of actively accredited agencies
+      expiredRegisteredCount: 0, // Number of expired registered agencies
+      expiredLicensedCount: 0, // Number of expired licensed agencies
+      expiredAccreditedCount: 0, // Number of expired accredited agencies
+      expiredDelistedCount: 0, // Number of expired and delisted agencies
+
+      // Mode of Delivery Counts
+      communityBasedCount: 0, // Number of agencies with a community-based mode of delivery
+      auxillarySWDACount: 0, // Number of agencies with an auxiliary SWDA mode of delivery
+      residentialCount: 0, // Number of agencies with a center-based residential mode of delivery
+      nonResidentialCount: 0, // Number of agencies with a center-based non-residential mode of delivery
+    };  
   },
+
+  created() {
+                // Fetch data and populate the agencies array
+                axios.get('http://127.0.0.1:8000/api/agenciesName')
+                    .then(response => {
+                        this.agencies = response.data;
+                    })
+                    .catch(error => {
+                        console.error("Error fetching data:", error);
+                    });
+            },
+
+  computed: {
+                filteredAgencies() {
+                    // Filter the agencies based on the searchQuery
+                    return this.agencies.filter(agency => {
+                        return agency.Agency.toLowerCase().includes(this.searchQuery.toLowerCase());
+                    });
+                }
+            },
+
   methods: {
     ClusterFetchData() {
       return axios
@@ -400,11 +493,7 @@ export default {
             label: ['Regional Operation'],
             values: [davaoCityLength, davaodelSurLength, davaodelNorteLength, othersLength, regionXILength, davaoOrientalLength, davaodeOroLength],
             backgroundColor: [
-                'rgba(255, 0, 0, 0.6)',  
-                'rgba(0, 255, 0, 0.6)',     
-                'rgba(0, 0, 255, 0.6)',   
-                'rgba(255, 255, 0, 0.6)',  
-                'rgba(128, 0, 128, 0.6)',   
+                'rgba(19, 63, 92, 1)',   
               ],
           };
           // Set barChartData to the computed data
@@ -419,18 +508,13 @@ export default {
             label: ['Regional Operation'],
             values: [1, 1, 1, 1, 1, 1, 1],
             backgroundColor: [
-                'rgba(255, 0, 0, 0.6)',  
-                'rgba(0, 255, 0, 0.6)',     
-                'rgba(0, 0, 255, 0.6)',   
-                'rgba(255, 255, 0, 0.6)',  
-                'rgba(128, 0, 128, 0.6)',   
+                'rgba(19, 63, 92, 1)',  
               ],
           };
           // Set catcc error barChartData to the computed data
           this.RegionData = regiondata;
         });
     }, 
-
     AgencyFetchData() {
   return axios
     .get('http://127.0.0.1:8000/api/agencies')
@@ -505,9 +589,56 @@ export default {
     .catch(error => {
       console.error('Error fetching data:', error);
     });
+    },
+
+    // NEED FIXINGS
+    ClienteleFetchData() {
+  return axios
+    .get('http://127.0.0.1:8000/api/clientele')
+    .then(response => {
+      // Initialize data arrays
+      const children = [];
+      const youth = [];
+      const familiesCommunities = [];
+      const nA = [];
+
+      response.data.forEach(item => {
+        const clienteleName = item.Clientele;
+
+        switch (clienteleName) {
+          case 'Children':
+            children.push(item);
+            break;
+          case 'Children and Youth':
+            youth.push(item);
+            break;
+          case 'Families and Communities':
+            familiesCommunities.push(item);
+            break;
+          case 'N/A':
+            nA.push(item);
+            break;
+          default:
+            // Handle other cases if necessary
+            break;
+        }
+      });
+
+      // Calculate data lengths
+      const childrenLength = children.length;
+      const youthLength = youth.length;
+      const familiesCommunitiesLength = familiesCommunities.length;
+      const nALength = nA.length;
+
+      console.log(childrenLength);
+      console.log(youthLength);
+      console.log(familiesCommunitiesLength);
+      console.log(nALength);
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+    });
 }
-
-
 
 
   },
@@ -516,6 +647,7 @@ export default {
     this.ClusterFetchData();
     this.RegionFetchData();
     this.AgencyFetchData();
+    this.ClienteleFetchData();
   },
     
 }
@@ -528,6 +660,10 @@ export default {
   padding: 0;
   height: 70vh;
 }
+
+.custom-link {
+  text-decoration: none; 
+}
 .filters{
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
   height: 18em;
@@ -535,6 +671,45 @@ export default {
   margin: 10px 10px 10px 10px;
   padding: 10px 0px 130px 0px;
 }
+
+.agenciesNames{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+  height: 25em;
+  border-radius: 20px;
+  margin: 10px 10px 10px 10px;
+  padding: 10px 0px 130px 0px;
+}
+
+.agencyfilter table tbody tr td .hover:hover {
+  background-color: #E70F0F;
+  color: white; /* Change text color to white on hover */
+  cursor: pointer; /* Change cursor to a pointer on hover (optional) */
+  border-radius: 10px;
+  padding: 10px 0px 10px 10px;
+}
+.agencyfilter{
+  font-size: 14px;
+  height: 22em;
+  width: 90%;
+  overflow: auto;
+  margin: 20px 20px 20px 20px;
+  text-align: start;
+}
+/* Styling the scrollbar in WebKit (Chrome, Safari) */
+.agencyfilter::-webkit-scrollbar {
+  width: 4px; /* Adjust the width as desired */
+}
+
+.agencyfilter::-webkit-scrollbar-thumb {
+  background-color: #555; /* Color of the scrollbar thumb */
+  border-radius: 4px; /* Adjust the border-radius to make it smaller or larger */
+}
+
+.agencyfilter::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Color of the scrollbar track */
+}
+
+
 .clusterdiv{
   height: 80%;
 }
@@ -581,7 +756,8 @@ export default {
   margin: 5px 10px 5px 10px;
   padding: 10px 0px 10px 0px;}
 .Sectors, .Client{
-  height: 15em;}
+  height: 20em;
+  padding-bottom: 50px;}
 .Regional{
   height: 17em;}
 .clusterdiv {
@@ -619,4 +795,22 @@ export default {
 .clusterdiv:hover .hover-text2 {
   visibility: visible; /* Show the text on hover */
   opacity: 1; /* Fully visible on hover */}
+
+.sidepart{
+  font-family: Inter;
+  font-weight: 600;
+  line-height: 20.57px;
+  font-size: 27px;
+  padding-top: 20px;
+}
+
+.sidepartValue{
+font-family: Inter;
+font-size: 50px;
+font-weight: 600;
+line-height: 30px;
+letter-spacing: 0em;
+text-align: center;
+margin: 20px 0px 20px 0px;
+}
 </style>
