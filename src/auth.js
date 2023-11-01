@@ -3,13 +3,13 @@
 let logoutTimer;
 
 export function userIsAuthenticated() {
-  // Check if the user is authenticated (you can customize this logic)
+  // Check if the user is authenticated
   const user = sessionStorage.getItem('user');
   return user !== null;
 }
 
 export function adminIsAuthenticated() {
-  // Check if the user is authenticated (you can customize this logic)
+  // Check if the user is authenticated 
   const user = sessionStorage.getItem('admin');
   return user !== null;
 }
