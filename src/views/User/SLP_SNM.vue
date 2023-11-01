@@ -1,39 +1,94 @@
 <template>
-    
     <Sidebar :iconText="PageTitle" />
 
     <br><br><br><br>
-   
-    <h1><b> SUSTAINABLE LIVELIHOOD PROGRAM (SLP)</b></h1>
 
-<!-- 1 -->
-    <div class="col-12 col-md-6">
-        <div class="shadow2 forbarchart">
-          <p><b>TOTAL ACCOMPLISHMENT VS PHYSICAL TARGET</b></p>
-          <div class="Barchart1"><HBarChart :data="SLPData" /></div>
+    <div class="stacked-rectangle col-12 col-md-3">
+          <div class="shadow3">
+            <div class="rectangle" style="background-color: #EB5F5E;">
+              <div class="label">POOR</div>
+              <div class="number"><b>282</b></div>
+            </div>
+            <div class="rectangle" style="background-color: #59508D;">
+              <div class="label">NON-POOR</div>
+              <div class="number"><b>224</b> </div>
+            </div>
+            <div class="rectangle" style="background-color: #F3A533;">
+              <div class="label">NO MATCH</div>
+              <div class="number"><b>202</b></div>
+            </div>
+          </div>
+
+      </div>
+
+
+  
+  <div class="col-12 col-md-9">
+      <div class="shadow1">
+<br>
+       <div class="d-flex justify-content-around"
+        style=" margin-left: 40px; margin-right: 40px; margin-bottom: 40px; background-color: #133F5C; color: white; padding: 8px; text-align: center; border-radius: 5px;">
+
+
+          <h5 class="fw-bold">PROVINCE</h5>
+          <h5 class="fw-bold">CITY/MUNICIPALITY</h5>
+          <h5 class="fw-bold">BARANGAY</h5>
+          <h5 class="fw-bold">RECORD COUNT</h5>
+      </div>
+      
+        <hr class="SLPPA" />
+         <div class="d-flex justify-content-around">
+            <p>Lorem Ipsum</p>
+            <p>Lorem Ipsum</p>
+            <p>Lorem Ipsum</p>
+            <p>Lorem Ipsum</p>
+        
         </div>
-    </div>
-<!-- 2 -->
-    <div class="col-12 col-md-6">
-        <div class="shadow2 forbarchart">
-           <p><b>REFERRALS</b></p>
-          <div class="Barchart1"><HBarChart :data="RefData" /></div>
+
+        <hr class="SLPPA" />
+        <div class="d-flex justify-content-around">
+         <p>Lorem Ipsum</p>
+            <p>Lorem Ipsum</p>
+            <p>Lorem Ipsum</p>
+            <p>Lorem Ipsum</p>
         </div>
+
+        <hr class="SLPPA" />
+        <div class="d-flex justify-content-around">
+         <p>Lorem Ipsum</p>
+            <p>Lorem Ipsum</p>
+            <p>Lorem Ipsum</p>
+            <p>Lorem Ipsum</p>
+           
+        </div> 
+        
+        <hr class="SLPPA" />
+        <div class="d-flex justify-content-around">
+         <p>Lorem Ipsum</p>
+            <p>Lorem Ipsum</p>
+            <p>Lorem Ipsum</p>
+            <p>Lorem Ipsum</p>
+           
+        </div> 
+
+        <hr class="SLPPA" />
+        <div class="d-flex justify-content-around">
+         <p>Lorem Ipsum</p>
+            <p>Lorem Ipsum</p>
+            <p>Lorem Ipsum</p>
+            <p>Lorem Ipsum</p>
+           
+        </div> 
+     
+      </div>
     </div>
 
-<!-- 3 -->
-    <div class="col-12 col-md-6">
-        <div class="shadow2">
-          <p><b>SECTORAL ACCOMPLISHMENT</b></p>
-          <div class="DoughnutChart"><DoughnutChart :data="SecData" /></div>
-        </div>
-    </div>
-
-<!-- 4 -->
-    <div class="col-12 col-md-6">
+    <div class="col-12 col-md-12">
         <div class="shadow2 forbarchart">
-           <p><b>BREAKDOWN OF REGIONAL ACCOMPLISHMENT</b></p>
-          <div class="Barchart1"><BarChart :data="ProvinceData" /></div>
+          <br>
+          <h5 class="fw-bold">COST FROM DSWD BY BARANGAY</h5>
+          <br>
+          <div class="Barchart1"><BarChart :data="CostData" /></div>
         </div>
     </div>
 
@@ -50,66 +105,29 @@ import Footer from '@/components/Footer';
 import BarChart from '@/components/ChartJS/Barchart';
 import PieChart from '@/components/ChartJS/PieChart';
 import DoughnutChart from '@/components/ChartJS/DoughnutChart';
-import HBarChart from '@/components/ChartJS/HBarchart';
 
 
 export default {
-    name: 'SLP',
+    name: 'SLPPA',
     components: {
         Sidebar,
         Footer,
         BarChart,
         PieChart,
-        HBarChart,
         DoughnutChart
-        
     
     },
 
     data() {
       return {
-        PageTitle: "SLP - Status of Name Matching",
+        PageTitle: "SLP - Physical Accomplishment by Portfolio",
 
-        SLPData: {
-          labels: ['EO 70', 'CVA', 'SLP', 'REGULAR', 'ZERO', 'HUNGER', 'EO 70', 'FRs', 'REFERRAL'],
-          label: ['PHYSICAL TARGET']['TOTAL'],
-        
-
-          values: [25, 18, 13, 4, 3, 1, 2, 3, 4, 5, 4, 2],
+        CostData: {
+          labels: ['Sumimao', 'Malabog', 'Langub', 'Calinan Poblacion', '8A, Poblacion A', 'Lasang', 'Bunawan', 'Buhangin Proper', 'Kilate', 'Calinan Proper'],
+          label: ['ASSOCIATION-MANAGED'],
+          values: [450000, 450000, 450000, 450000, 450000, 420000, 360000, 15000, 15000, 15000],
           backgroundColor: [
-          '#133F5C', '#F11B25'
-        ],
-        },  
-        RefData: {
-          labels: ['REFERRAL BY PARTNERS', ' ', 'WALK IN', 'OBSUs', ' ', 'THRU EMAIL', ' ', 'NPMO', 'ENDORSEMENT',],
-          label: ['YEAR 2022'],
-          values: [0,0, 18, 13, 4, 3, 1, 20, 40, 4, 5, 4, 2],
-          backgroundColor: [
-          '#F11B25', '#133F5C'
-        ],
-        },    
-
-        SecData: {
-          labels: ['IP', 'SENIOR CITIZENS', 'SOLO PARENT', 'PWD', 'LGBTQ', 'YOUTH'],
-          label: ['CHART2'],
-          values: [10, 23, 15,27,20,24],
-          backgroundColor: [
-          '#59508D',
-          '#BC5090',
-          '#EB5F5E',
-          '#F3A533',
-          '#133F5C',
-          '#252525',
-        ],
-        },
-
-
-       ProvinceData: {
-          labels: ['DAVAO ORIENTAL', 'DAVAO DEL SUR', 'DAVAO CITY', 'DAVAO DE ORO', 'DAVAO DEL NORTE', 'DAVAO OCCIDENTAL'],
-          label: ['ACCOMPLISHMENT'],
-          values: [120, 100, 400, 150, 250, 200],
-          backgroundColor: [
-          'rgba(19, 63, 92, 1)'
+          '#292D96'
         ],
         },    
 
@@ -117,7 +135,15 @@ export default {
     },
 
  methods:{
-//   
+  // inserted data for month 
+  
+
+ },
+
+
+
+  mounted() {
+    
   },
 
     
@@ -126,9 +152,24 @@ export default {
 
 <style scoped>
 
+.shadow1{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+  height: 480px;
+  border-radius: 20px;
+  margin:10px 15px 10px -15px;
+  padding: 10px 0px 10px 0px;
+}
 .shadow2{
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
-  height: 400px;
+  height: 350px;
+  border-radius: 20px;
+  margin:10px 15px 10px 20px;
+  padding: 10px 0px 10px 0px;
+}
+
+/* copy */
+.shadow3{
+  height: 480px;
   border-radius: 20px;
   margin:10px 15px 10px 20px;
   padding: 10px 0px 10px 0px;
@@ -140,13 +181,76 @@ export default {
     height: 350px;
   }
   @media only screen and (min-width: 720px) {
-    height: 400px;
+    height: 600px;
   }
 }
 
+
 .Barchart1{
-  height: 340px; 
+  height: 480px; 
+
 }
 
-</style>
+/* CSS FOR DATA SUMMARY */
 
+.row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.label {
+  width: 200px;
+  text-align: right;
+  font-weight: bold;
+}
+
+.number {
+  width: 100px;
+  text-align: left;
+}
+
+/* css */
+
+.stacked-rectangle {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stacked-rectangle .col-12.col-md-4 {
+  width: 20%;
+}
+
+.stacked-rectangle .shadow2 {
+  background: transparent;
+}
+
+.rectangle {
+  padding: 10px;
+  margin: 10px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 30%;
+  
+}
+
+.rectangle .label {
+  
+  color: #FFF;
+  text-align: center;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.rectangle .number {
+  font-size: 40px;
+  text-align: center;
+}
+
+
+</style>

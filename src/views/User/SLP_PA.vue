@@ -16,14 +16,14 @@
           <h5 class="fw-bold">TOTAL PROJECT COST FROM DSWD</h5>
           <h5 class="fw-bold">TOTAL</h5>
       </div>
-
-
+      
         <hr class="SLPPA" />
-        <div class="d-flex justify-content-around">
-         <p>1.Seed Capital Fund Regular Target</p>
-         <p>P26,000,000.00 </p>
-         <p>178 </p>
+         <div class="d-flex justify-content-around">
+            <p>1.Seed Capital Fund Regular Target</p>
+            <p>P26,000,000.00</p>
+            <p>178</p>
         </div>
+
         <hr class="SLPPA" />
         <div class="d-flex justify-content-around">
          <p>2. Lorem Ipsum</p>
