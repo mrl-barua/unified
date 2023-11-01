@@ -79,3 +79,5 @@
 ## ver 3.2 Added Agency Details Page in the SWDA Dashboard - MARLO BARUA
 
 ## ver 3.3 Agency Details is now Dynamic using Query parameters - MARLO BARUA
+
+## ver 3.4 Added Fetch Data and Table Component in SWDA ADMIN VIEW - MARLO BARUA
