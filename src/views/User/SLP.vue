@@ -4,22 +4,57 @@
 
     <br><br><br><br>
    
-    <h1><b> SUSTAINABLE LIVELIHOOD PROGRAM (SLP)</b></h1>
+    <h1><b>TOTAL ACCOMPLISHMENT VS PHYSICAL TARGET</b></h1>
 
 <!-- 1 -->
-    <div class="col-12 col-md-6">
-        <div class="shadow2 forbarchart">
-          <p><b>TOTAL ACCOMPLISHMENT VS PHYSICAL TARGET</b></p>
-          <div class="Barchart1"><HBarChart :data="SLPData" /></div>
-        </div>
+    <div class="row">
+  <div class="col-12 col-md-8">
+    <div class="shadow2 forbarchart">
+      <div class="Barchart1"><HBarChart :data="SLPData" /></div>
     </div>
+  </div>
+  <div class="col-12 col-md-4">
+   <div class="rectangle" style="background-color: #133F5C;">
+        <div class="label">PHYSICAL TARGET</div>
+        <div class="number"><b>6,521</b></div>
+      </div>
+      <div class="rectangle" style="background-color: #F11B25;">
+        <div class="label">TOTAL</div>
+        <div class="number"><b>956</b></div>
+      </div>
+      <div class="rectangle" style="background-color:#F3A533;">
+        <div class="label">REMAINING</div>
+        <div class="number"><b>5,565</b></div>
+      </div>
+  </div>
+</div>
+
+    
 <!-- 2 -->
-    <div class="col-12 col-md-6">
+<h1><b> REFERRALS</b></h1>
+
+     <div class="col-12 col-md-8">
         <div class="shadow2 forbarchart">
-           <p><b>REFERRALS</b></p>
           <div class="Barchart1"><HBarChart :data="RefData" /></div>
-        </div>
     </div>
+  </div>
+  <div class="col-12 col-md-4">
+   <div class="rectangle" style="background-color: #EB5F5E;">
+        <div class="label">POOR</div>
+        <div class="number"><b>282</b></div>
+      </div>
+      <div class="rectangle" style="background-color: #59508D;">
+        <div class="label">NON-POOR</div>
+        <div class="number"><b>224</b></div>
+      </div>
+      <div class="rectangle" style="background-color: #F3A533;">
+        <div class="label">NO MATCH</div>
+        <div class="number"><b>202</b></div>
+      </div>
+  </div>
+
+
+
 
 <!-- 3 -->
     <div class="col-12 col-md-6">
@@ -140,6 +175,68 @@ export default {
 .Barchart1{
   height: 340px; 
 }
+
+/* CSS FOR DATA SUMMARY */
+
+.row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.label {
+  width: 200px;
+  text-align: right;
+  font-weight: bold;
+}
+
+.number {
+  width: 100px;
+  text-align: left;
+}
+
+/* css */
+
+.stacked-rectangle {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stacked-rectangle .col-12.col-md-4 {
+  width: 20%;
+}
+
+.stacked-rectangle .shadow2 {
+  background: transparent;
+}
+
+.rectangle {
+  padding: 10px;
+  margin: 10px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 20%;
+  
+}
+
+.rectangle .label {
+  
+  color: #FFF;
+  text-align: center;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.rectangle .number {
+  font-size: 40px;
+  text-align: center;
+}
+
 
 </style>
 

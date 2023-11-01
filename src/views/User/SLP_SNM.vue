@@ -156,7 +156,7 @@ export default {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
   height: 480px;
   border-radius: 20px;
-  margin:10px 15px 10px -15px;
+  margin:10px 15px 10px -40px;
   padding: 10px 0px 10px 0px;
 }
 .shadow2{
