@@ -6,7 +6,7 @@
       <!-- <h1>ADMIN SWDA DASHBOARD</h1> -->
       <div class="card">
         <div class="card-header">
-          <router-link to="/swda/create" class="btn btn-primary">
+          <router-link to="/adminswdaCreate" class="btn btn-primary">
             Add New Row
           </router-link>
         </div>
