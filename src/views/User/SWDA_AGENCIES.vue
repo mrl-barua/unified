@@ -265,7 +265,7 @@ export default {
             // Fetch data and populate the agencies array
             axios.get('http://127.0.0.1:8000/api/agenciesName')
                 .then(response => {
-                     this.agencies = response.data;
+                     this.agencies = response.data['Swda Agencies'];
                 })
                 .catch(error => {
                     console.error("Error fetching data:", error);

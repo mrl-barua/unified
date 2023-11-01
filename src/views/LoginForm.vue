@@ -104,14 +104,14 @@ methods: {
     // Perform authentication logic here (e.g., check username and password)
     if (this.username === 'User' && this.password === 'user') {
       // Authentication successful, set user as authenticated in localStorage
-      localStorage.setItem('user', 'authenticated');
+      sessionStorage.setItem('user', 'authenticated');
 
       // Navigate to the dashboard
       this.$router.push('/dashboard');
     } 
    else if (this.username === 'Admin' && this.password === 'admin') {
       // Authentication successful, set user as authenticated in localStorage
-      localStorage.setItem('admin', 'authenticated');
+      sessionStorage.setItem('admin', 'authenticated');
 
       // Navigate to the dashboard
       this.$router.push('/admindashboard');

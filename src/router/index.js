@@ -23,14 +23,16 @@ import AdminSWDA from '../views/Admin/AdminSWDA.vue'
 import ERROR from '../views/404.vue' // Import the 404 Error Page
 import { userIsAuthenticated } from '../auth'; // Import the user authentication function
 import { adminIsAuthenticated } from '../auth'; // Import the admin authentication function
-
+import { startAutoLogout, clearAutoLogout, logout } from '../auth';
 
 
 const userRequireAuth = (to, from, next) => {
   if (userIsAuthenticated()) {
     // User is authenticated, allow access to the route
     next();
-    localStorage.removeItem('admin');
+    sessionStorage.removeItem('admin');
+    clearAutoLogout();
+    startAutoLogout();
   } else {
     // User is not authenticated, redirect to the login page or handle it as needed
     alert('You need to log in to access this page.');
@@ -46,7 +48,9 @@ const adminRequireAuth = (to, from, next) => {
   if (adminIsAuthenticated()) {
     // User is authenticated, allow access to the route
     next();
-    localStorage.removeItem('user');
+    sessionStorage.removeItem('user');
+    clearAutoLogout();
+    startAutoLogout();
   } else {
     // User is not authenticated, redirect to the login page or handle it as needed
     alert('You need to log in to access this page.');
@@ -66,18 +70,19 @@ const routes = [
       // Check if the user is authenticated
       if (userIsAuthenticated()) {
         // User is authenticated, clear the token in localStorage
-        localStorage.removeItem('user');
+        sessionStorage.removeItem('user');
         // Allow access to the route
         next();
       }
       else if(adminIsAuthenticated()){
           // Admin is authenticated, clear the token in localStorage
-          localStorage.removeItem('admin');
+          sessionStorage.removeItem('admin');
           // Allow access to the route
           next();
       }
        else {
         // User is not authenticated, proceed to the login page
+        logout();
         next();
       }
     }

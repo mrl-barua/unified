@@ -322,14 +322,15 @@ export default {
   },
 
   created() {
-                // Fetch data and populate the agencies array
-                axios.get('http://127.0.0.1:8000/api/agenciesName')
-                    .then(response => {
-                        this.agencies = response.data;
-                    })
-                    .catch(error => {
-                        console.error("Error fetching data:", error);
-                    });
+                
+  // Fetch data and populate the agencies array (NEW)
+  axios.get('http://127.0.0.1:8000/api/agenciesName')
+    .then(response => {
+      this.agencies = response.data['Swda Agencies']; // Access data within the 'Swda Agencies' property
+    })
+    .catch(error => {
+      console.error("Error fetching data:", error);
+    });
             },
 
   computed: {
