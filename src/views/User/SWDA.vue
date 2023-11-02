@@ -333,12 +333,19 @@ export default {
             },
 
   computed: {
-                filteredAgencies() {
-                    // Filter the agencies based on the searchQuery
-                    return this.agencies.filter(agency => {
-                        return agency.Agency.toLowerCase().includes(this.searchQuery.toLowerCase());
-                    });
-                }
+             filteredAgencies() {
+                  // Filter the agencies based on the searchQuery, and exclude agencies with null data
+                  return this.agencies.filter(agency => {
+                      // Check if agency and agency.Agency are not null or undefined
+                      if (agency && agency.Agency) {
+                          return agency.Agency.toLowerCase().includes(this.searchQuery.toLowerCase());
+                      } else {
+                          // If agency or agency.Agency is null or undefined, exclude it
+                          return false;
+                      }
+                  });
+              }
+
             },
 
   methods: {

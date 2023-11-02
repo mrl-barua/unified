@@ -15,7 +15,7 @@
                  <div class="mb-3 col-12">
                      <div class="spaceBetween">
                         <label for="agency" >AGENCY</label>
-                        <input type="text" v-model="model.Swda.Agency"  class="form-control centered-placeholder" id="agency">
+                        <input type="text" v-model="model.Swda.Agency" class="form-control centered-placeholder" id="agency" required>
                     </div>
                 </div>
                 <div class="mb-3 col-3">
@@ -456,7 +456,7 @@
                                 CANCEL
                             </button>
                         </router-link>
-                        <button @click="saveSwda" class="btn btn-primary">
+                        <button type="submit" @click="saveSwda" class="btn btn-primary">
                             SAVE
                         </button>
                     </div>
@@ -584,8 +584,6 @@ methods: {
                     if (error.response.status === 422){
                         mythis.errorList = error.response.data.errors;
                     }
-
-
                     console.log(error.response.data);
                     console.log(error.response.status);
                     console.log(error.response.headers);

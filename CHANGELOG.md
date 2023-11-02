@@ -89,3 +89,5 @@
 ## ver 3.7 Added EDIT and UPDATE function in AdminSWDA - MARLO BARUA
 
 ## ver 3.8 Design Partially the SWDA and SWDA Add View - MARLO BARUA
+
+## ver 3.9  Added in filteredAgencies() under SWDA and SWDAW Agencies View in which If agency or agency.Agency is null or undefined, it will exclude it - MARLO BARUA
