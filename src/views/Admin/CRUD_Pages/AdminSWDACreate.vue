@@ -1,190 +1,455 @@
 <template>
+<br><br><br><br>
+ <AdminSidebar :iconText="PageTitle" />
     <div>
-        <div class="container">
-            <div class="card">
-                <div class="card-header">
-                    <h4>Add Rows</h4>
+        <div class="container-fluid">
+                <div class="Header">
                 </div>
-               
-                <div class="card-body">
-
+            
                    <ul class="alert alert-warning" v-if="Object.keys(this.errorList).length > 0">
                         <li class="mb-0 ms-3" v-for="(error, index) in this.errorList" :key="index">
                             {{ error[0] }}
                         </li>
                     </ul>
 
-                        <div class="mb-3 col-3">
-                            <label for="type">Type</label>
-                            <input type="text" v-model="model.Swda.Type" class="form-control" id="type">
+                 <div class="mb-3 col-12">
+                     <div class="spaceBetween">
+                        <label for="agency" >AGENCY</label>
+                        <input type="text" v-model="model.Swda.Agency"  class="form-control centered-placeholder" id="agency">
+                    </div>
+                </div>
+                <div class="mb-3 col-3">
+                    <div class="spaceBetween">
+                    <label  for="type">TYPE</label>
+                    <select v-model="model.Swda.Type" class="form-control centered-placeholder" id="type">
+                        <option value="" disabled selected>
+                         Select an option ⮟
+                        </option>
+                        <option value="PRIVATE">PRIVATE</option>
+                        <option value="PUBLIC">PUBLIC</option>
+                    </select>
+                    </div>
+
+                </div>
+
+                <div class="mb-3 col-3">
+                    <div class="spaceBetween">
+                        <label for="address">ADDRESS</label>
+                         <input type="text" v-model="model.Swda.Address"  class="form-control centered-placeholder" id="address">
+                    </div>
+                   
+                </div>
+
+                <div class="mb-3 col-3">
+                    <div class="spaceBetween">
+                        <label for="contactNumber">CONTACT NUMBER</label>
+                        <input type="text" v-model="model.Swda.Contact_Number"  class="form-control centered-placeholder" id="contactNumber">
+                    </div>
+                            
+                </div>
+
+                <div class="mb-3 col-3">
+                    <div class="spaceBetween">
+                        <label for="formerName">FORMER NAME</label>
+                        <input type="text" v-model="model.Swda.Former_Name" class="form-control centered-placeholder" id="formerName">
+                    </div>
+                            
+                 </div>
+                      
+                <div class="col-12">
+                    <div class="mb-3 col-3">
+                        <div class="spaceBetween">
+                             <label for="cluster">CLUSTER</label>
+                            <select v-model="model.Swda.Cluster" class="form-control centered-placeholder" id="cluster">
+                                <option value="" disabled selected>
+                                Select an option ⮟
+                                </option>
+                                <option value="OPTION 1">OPTION 1</option>
+                                <option value="OPTION 2">OPTION 2</option>
+                                <option value="OPTION 3">OPTION 3</option>
+                                <option value="OPTION 4">OPTION 4</option>
+                            </select>
+                        </div>         
+                    </div>
+                    <div class="mb-3 col-3">
+                        <div class="spaceBetween">
+                            <label for="fax">FAX</label>
+                             <input type="text" v-model="model.Swda.Fax"  class="form-control centered-placeholder" id="fax">
                         </div>
-                        <div class="mb-3 col-3">
-                            <label for="sector">Sector</label>
-                            <input type="text" v-model="model.Swda.Sector" class="form-control" id="sector">
+                               
+                    </div>
+                    <div class="mb-3 col-3">
+                        <div class="spaceBetween">
+                            <label for="email">EMAIL</label>
+                              <input type="text" v-model="model.Swda.Email"   class="form-control centered-placeholder" id="email">
                         </div>
-                        <div class="mb-3 col-3">
-                            <label for="cluster">Cluster</label>
-                            <input type="text" v-model="model.Swda.Cluster" class="form-control" id="cluster">
+                              
+                    </div>
+                    <div class="mb-3 col-3">
+                        <div class="spaceBetween">
+                            <label for="website">WEBSITE</label>
+                            <input type="text" v-model="model.Swda.Website"   class="form-control centered-placeholder" id="website">
+                        </div>                        
+                    </div>                
+                </div>
+
+                <div class="col-12">
+                    <div class="mb-3 col-3">
+                        <div class="spaceBetween">
+                            <label for="sector">SECTOR</label>
+                            <select v-model="model.Swda.Sector" class="form-control centered-placeholder" id="type">
+                            <option value="" disabled selected>
+                            Select an option ⮟
+                            </option>
+                            <option value="OPTION 1">OPTION 1</option>
+                            <option value="OPTION 2">OPTION 2</option>
+                            <option value="OPTION 3">OPTION 3</option>
+                            <option value="OPTION 4">OPTION 4</option>
+                        </select>
                         </div>
-                        <div class="mb-3 col-3">
-                            <label for="agency">Agency</label>
-                            <input type="text" v-model="model.Swda.Agency" class="form-control" id="agency">
+                    </div>
+
+                    <div class="mb-3 col-3">
+                        <div class="spaceBetween">
+                             <label for="contactNumber">CONTACT NUMBER</label>
+                             <input type="text" v-model="model.Swda.Contact_Person" class="form-control centered-placeholder" id="contactPerson">
                         </div>
-                        <div class="mb-3 col-3">
-                            <label for="address">Address</label>
-                            <input type="text" v-model="model.Swda.Address" class="form-control" id="address">
+                               
+                    </div>
+
+                    <div class="mb-3 col-3">
+                        <div class="spaceBetween">
+                              <label for="position">POSITION</label>
+                            <input type="text" v-model="model.Swda.Position" class="form-control centered-placeholder" id="position ">
+                        </div>  
+                    </div>
+
+                    <div class="mb-3 col-3">
+                        <div class="spaceBetween">
+                            <label for="mobileNumber">MOBILE NUMBER</label>
+                            <input type="text" v-model="model.Swda.Mobile_Number" class="form-control centered-placeholder" id="mobileNumber">
+                        </div>        
+                    </div>
+                </div>
+                
+                <div class="col-12">        
+                        <div class="mb-3 col-4">    
+                        <div>
+                            <label for="registered">Registered:</label>
+                            <div class="form-check form-check-inline">
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                v-model="model.Swda.Registered"
+                                value="Yes"
+                                id="registeredYes"
+                            />
+                            <label class="form-check-label" for="registeredYes">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                v-model="model.Swda.Registered"
+                                value="No"
+                                id="registeredNo"
+                            />
+                            <label class="form-check-label" for="registeredNo">No</label>
+                            </div>
                         </div>
-                        <div class="mb-3 col-3">
-                            <label for="formerName">Former Name</label>
-                            <input type="text" v-model="model.Swda.Former_Name" class="form-control" id="formerName">
+                    </div>
+
+
+                    <div class="mb-3 col-4">
+                        <div>
+                            <label for="licensed">Licensed: </label>
+                            <div class="form-check form-check-inline">
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                v-model="model.Swda.Licensed"
+                                value="Yes"
+                                id="registeredYes"
+                            />
+                            <label class="form-check-label" for="licensedNo">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                v-model="model.Swda.Licensed"
+                                value="No"
+                                id="registeredNo"
+                            />
+                            <label class="form-check-label" for="licensedNo">No</label>
+                            </div>
                         </div>
-                        <div class="mb-3 col-3">
-                            <label for="contactNumber">Contact Number</label>
-                            <input type="text" v-model="model.Swda.Contact_Number" class="form-control" id="contactNumber">
+                    </div>
+
+
+                    <div class="mb-3 col-4">
+                        <div>
+                        <label for="accredited">Accredited: </label>
+                            <div class="form-check form-check-inline">
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                v-model="model.Swda.Accredited"
+                                value="Yes"
+                                id="registeredYes"
+                            />
+                            <label class="form-check-label" for="accreditedNo">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                v-model="model.Swda.Accredited"
+                                value="No"
+                                id="registeredNo"
+                            />
+                            <label class="form-check-label" for="accreditedNo">No</label>
+                            </div>
                         </div>
-                        <div class="mb-3 col-3">
-                            <label for="fax">Fax</label>
-                            <input type="text" v-model="model.Swda.Fax" class="form-control" id="fax">
-                        </div>
-                        <div class="mb-3 col-3">
-                            <label for="email">Email</label>
-                            <input type="text" v-model="model.Swda.Email" class="form-control" id="email">
-                        </div>
-                        <div class="mb-3 col-3">
-                            <label for="website">Website</label>
-                            <input type="text" v-model="model.Swda.Website" class="form-control" id="website">
-                        </div>
-                        <div class="mb-3 col-3">
-                            <label for="contactPerson">Contact Person</label>
-                            <input type="text" v-model="model.Swda.Contact_Person" class="form-control" id="contactPerson">
+                    </div>
+
+                </div>
+                    
+
+                <hr class="hr" style="margin-left: 15px; margin-right: 15px; border: 1px solid red;"/><!-- HORIZONTAL LINE -->
+
+                <div class="col-12"> 
+                        <div class="mb-3 col-5">
+                             <div class="spaceBetween">
+                                <label for="servicesOffered">SERVICES OFFERED</label>
+                                <input type="text" v-model="model.Swda.Services_Offered"  class="form-control" id="servicesOffered">
+                             </div>            
                         </div>
                         <div class="mb-3 col-4">
-                            <label for="position">Position</label>
-                            <input type="text" v-model="model.Swda.Position" class="form-control" id="position">
-                        </div>
-                        <div class="mb-3 col-4">
-                            <label for="mobileNumber">Mobile Number</label>
-                            <input type="text" v-model="model.Swda.Mobile_Number" class="form-control" id="mobileNumber">
-                        </div>
-                        <div class="mb-3 col-4">
-                            <label for="registered">Registered</label>
-                            <input type="text" v-model="model.Swda.Registered" class="form-control" id="registered">
-                        </div>
-                        <div class="mb-3 col-6">
-                            <label for="licensed">Licensed</label>
-                            <input type="text" v-model="model.Swda.Licensed" class="form-control" id="licensed">
-                        </div>
-                        <div class="mb-3 col-6">
-                            <label for="accredited">Accredited</label>
-                            <input type="text" v-model="model.Swda.Accredited" class="form-control" id="accredited">
-                        </div>
-                        <div class="mb-3 col-12">
-                            <label for="servicesOffered">Services Offered</label>
-                            <input type="text" v-model="model.Swda.Services_Offered" class="form-control" id="servicesOffered">
+                             <div class="spaceBetween">
+                                 <label for="simplifiedServices">SIMPLIFIED SERVICES</label>
+                                 <input type="text" v-model="model.Swda.Simplified_Services" class="form-control" id="simplifiedServices">
+                             </div>  
                         </div>
                         <div class="mb-3 col-3">
-                            <label for="simplifiedServices">Simplified Services</label>
-                            <input type="text" v-model="model.Swda.Simplified_Services" class="form-control" id="simplifiedServices">
+                             <div class="spaceBetween">
+                                  <label for="clientele">CLIENTELE</label>
+                                <input type="text" v-model="model.Swda.Clientele"  class="form-control" id="clientele">
+                             </div>  
                         </div>
-                        <div class="mb-3 col-3">
-                            <label for="areaOfOperation">Area of Operation</label>
-                            <input type="text" v-model="model.Swda.Area_of_Operation" class="form-control" id="areaOfOperation">
+                </div>
+               
+                <div class="col-12">
+                     <div class="mb-3 col-3">
+                        <div class="spaceBetween">
+                             <label for="areaOfOperation">AREA OF OPERATION</label>
+                            <select v-model="model.Swda.Area_of_Operation" class="form-control centered-placeholder" id="areaOfOperation">
+                                <option value="" disabled selected>
+                                Select an option ⮟
+                                </option>
+                                <option value="OPTION 1">OPTION 1</option>
+                                <option value="OPTION 2">OPTION 2</option>
+                                <option value="OPTION 3">OPTION 3</option>
+                                <option value="OPTION 4">OPTION 4</option>
+                            </select>
                         </div>
-                        <div class="mb-3 col-3">
-                            <label for="regionalOperation">Regional Operation</label>
-                            <input type="text" v-model="model.Swda.Regional_Operation" class="form-control" id="regionalOperation">
+                </div>
+
+                 <div class="mb-3 col-3">
+                        <div class="spaceBetween">
+                             <label for="regionalOperation">REGIONAL OPERATION</label>
+                             <select v-model="model.Swda.Regional_Operation" class="form-control centered-placeholder" id="regionalOperation">
+                                <option value="" disabled selected>
+                                Select an option ⮟
+                                </option>
+                                <option value="OPTION 1">OPTION 1</option>
+                                <option value="OPTION 2">OPTION 2</option>
+                                <option value="OPTION 3">OPTION 3</option>
+                                <option value="OPTION 4">OPTION 4</option>
+                            </select>
                         </div>
-                        <div class="mb-3 col-3">
-                            <label for="specifiedAreasOfOperation">Specified Areas of Operation</label>
-                            <input type="text" v-model="model.Swda.Specified_Areas_of_Operation" class="form-control" id="specifiedAreasOfOperation">
+                </div>
+
+                <div class="mb-3 col-3">
+                        <div class="spaceBetween">
+                            <label for="specifiedAreasOfOperation">SPECIFIED AREA OF OPERATION</label>
+                             <select v-model="model.Swda.Specified_Areas_of_Operation" class="form-control centered-placeholder" id="specifiedAreasOfOperation">
+                                    <option value="" disabled selected>
+                                Select an option ⮟
+                                    </option>
+                                    <option value="OPTION 1">OPTION 1</option>
+                                    <option value="OPTION 2">OPTION 2</option>
+                                    <option value="OPTION 3">OPTION 3</option>
+                                    <option value="OPTION 4">OPTION 4</option>
+                             </select>
                         </div>
-                        <div class="mb-3 col-3">
-                            <label for="modeOfDelivery">Mode of Delivery</label>
-                            <input type="text" v-model="model.Swda.Mode_of_Delivery" class="form-control" id="modeOfDelivery">
+                   
+                </div>
+
+
+                <div class="mb-3 col-3">
+                        <div class="spaceBetween">
+                            <label for="modeOfDelivery">MODE OF DELIVERY</label>
+                            <select v-model="model.Swda.Mode_of_Delivery" class="form-control centered-placeholder" id="modeOfDelivery">
+                                <option value="" disabled selected>
+                            Select an option ⮟
+                                </option>
+                                <option value="OPTION 1">OPTION 1</option>
+                                <option value="OPTION 2">OPTION 2</option>
+                                <option value="OPTION 3">OPTION 3</option>
+                                <option value="OPTION 4">OPTION 4</option>
+                            </select>
                         </div>
-                        <div class="mb-3 col-3">
-                            <label for="clientele">Clientele</label>
-                            <input type="text" v-model="model.Swda.Clientele" class="form-control" id="clientele">
-                        </div>
-                        <div class="mb-3 col-3">
-                            <label for="registrationID">Registration ID</label>
-                            <input type="text" v-model="model.Swda.Registration_ID" class="form-control" id="registrationID">
-                        </div>
-                        <div class="mb-3 col-3">
-                            <label for="registrationDate">Registration Date</label>
-                            <input type="text" v-model="model.Swda.Registration_Date" class="form-control" id="registrationDate">
-                        </div>
-                        <div class="mb-3 col-3">
-                            <label for="registrationExpiration">Registration Expiration</label>
-                            <input type="text" v-model="model.Swda.Registration_Expiration" class="form-control" id="registrationExpiration">
-                        </div>
-                        <div class="mb-3 col-3">
-                            <label for="registrationStatus">Registration Status</label>
-                            <input type="text" v-model="model.Swda.Registration_Status" class="form-control" id="registrationStatus">
-                        </div>
-                        <div class="mb-3 col-3">
-                            <label for="licenseID">License ID</label>
+                    
+                    </div>
+                </div>
+       
+                <div class="col-12">
+                     <div class="col-9">
+                    <div class="mb-3 col-4">
+                            <div class="spaceBetween">
+                                <label for="registrationID">REGISTRATION ID</label>
+                                <input type="text" v-model="model.Swda.Registration_ID"  class="form-control" id="registrationID">
+                            </div>                 
+                     </div>
+                    
+                    <div class="mb-3 col-4">
+                        <div class="spaceBetween">
+                            <label for="registrationDateIssued">REGISTRATION DATE</label>
+                            <input type="date" v-model="model.Swda.Registration_Date"    class="form-control" id="registrationDate">
+                        </div>                         
+                    </div>
+
+                    <div class="mb-3 col-4">
+                        <div class="spaceBetween">
+                            <label for="registrationDateIssued">REGISTRATION EXPIRATION</label>
+                            <input type="date" v-model="model.Swda.Registration_Expiration"  class="form-control" id="registrationExpiration">
+                        </div> 
+                    </div>
+
+
+                    <div class="mb-3 col-4">
+                        <div class="spaceBetween">
+                            <label for="licenseID">LICENSE ID</label>
                             <input type="text" v-model="model.Swda.Licensed_ID" class="form-control" id="licenseID">
                         </div>
-                        <div class="mb-3 col-3">
-                            <label for="licenseDateIssued">License Date Issued</label>
-                            <input type="text" v-model="model.Swda.License_Date_Issued" class="form-control" id="licenseDateIssued">
+                    </div>
+
+                    <div class="mb-3 col-4">
+                        <div class="spaceBetween">
+                             <label for="licenseDateIssued">LICENSE DATA ISSUED</label>
+                            <input type="date" v-model="model.Swda.License_Date_Issued" class="form-control" id="licenseDateIssued">
+                        </div>                           
+                    </div>
+
+                    <div class="mb-3 col-4">
+                        <div class="spaceBetween">
+                            <label for="licenseExpiration">LICENSE EXPIRATION</label>
+                            <input type="date" v-model="model.Swda.License_Expiration" class="form-control" id="licenseExpiration">
                         </div>
-                        <div class="mb-3 col-3">
-                            <label for="licenseExpiration">License Expiration</label>
-                            <input type="text" v-model="model.Swda.License_Expiration" class="form-control" id="licenseExpiration">
-                        </div>
-                        <div class="mb-3 col-3">
-                            <label for="licenseStatus">License Status</label>
-                            <input type="text" v-model="model.Swda.License_Status" class="form-control" id="licenseStatus">
-                        </div>
-                        <div class="mb-3 col-3">
-                            <label for="accreditationID">Accreditation ID</label>
+                    </div>      
+
+                    <div class="mb-3 col-4">
+                        <div class="spaceBetween">
+                            <label for="accreditationID">ACCREDITATION ID</label>
                             <input type="text" v-model="model.Swda.Accreditation_ID" class="form-control" id="accreditationID">
                         </div>
-                        <div class="mb-3 col-3">
-                            <label for="accreditationDateIssued">Accreditation Date Issued</label>
-                            <input type="text" v-model="model.Swda.Accreditation_Date_Issued" class="form-control" id="accreditationDateIssued">
+                    </div>
+
+                    <div class="mb-3 col-4">
+                        <div class="spaceBetween">
+                            <label for="accreditationDateIssued">ACCREDITATION DATE ISSUED</label>
+                            <input type="date" v-model="model.Swda.Accreditation_Date_Issued" class="form-control" id="accreditationDateIssued">
                         </div>
-                        <div class="mb-3 col-3">
-                            <label for="accreditationExpiration">Accreditation Expiration</label>
-                            <input type="text" v-model="model.Swda.Accreditation_Expiration" class="form-control" id="accreditationExpiration">
+                     </div>
+
+                    <div class="mb-3 col-4">
+                        <div class="spaceBetween">
+                            <label for="accreditationExpiration">ACCREDITATION EXPIRATION</label>
+                            <input type="date" v-model="model.Swda.Accreditation_Expiration" class="form-control" id="accreditationExpiration">
                         </div>
-                        <div class="mb-3 col-3">
-                            <label for="accreditationStatus">Accreditation Status</label>
-                            <input type="text" v-model="model.Swda.Accreditation_Status" class="form-control" id="accreditationStatus">
-                        </div>
-                        <div class="mb-3 col-3">
-                            <label for="remarks">Remarks</label>
-                            <input type="text" v-model="model.Swda.Remarks" class="form-control" id="remarks">
-                        </div>
-                        <div class="mb-3 col-3">
-                            <label for="licenseDaysLeft">License Days Left</label>
-                            <input type="text" v-model="model.Swda.License_Days_Left" class="form-control" id="licenseDaysLeft">
-                        </div>
-                        <div class="mb-3 col-3">
-                            <label for="licensureOverdue">Licensure Overdue</label>
-                            <input type="text" v-model="model.Swda.Licensure_Overdue" class="form-control" id="licensureOverdue">
-                        </div>
-                        <div class="mb-3 col-3">
-                            <label for="accreditationDaysLeft">Accreditation Days Left</label>
-                            <input type="text" v-model="model.Swda.Accreditation_Days_Left" class="form-control" id="accreditationDaysLeft">
-                        </div>
-                        <div class="mb-3 col-3">
-                            <label for="accreditationOverdue">Accreditation Overdue</label>
-                            <input type="text" v-model="model.Swda.Accreditation_Overdue" class="form-control" id="accreditationOverdue">
-                        </div>
-                        <div class="md-3 col-12">
-                            <router-link to="/adminswda">
-                            <button @click="saveSwda" class="btn btn-primary col-12">
-                            Save
-                            </button>
-                            </router-link>
-                        </div>
+                     </div>      
+
+
+
+                                <div class="col-9">
+                                      <div class="mb-3 col-12">
+                                             <div class="spaceBetween">
+                                                 <label for="remarks">REMARKS</label>
+                                                 <input type="text" v-model="model.Swda.Remarks" class="form-control custom-input" id="remarks">
+                                             </div>
+                                            
+                                      </div>
+                                </div>   
+
+                                <div class="col-3">
+                                        <div class="mb-3 col-12">
+                                            <div class="spaceBetween"> 
+                                                    <label for="licenseDaysLeft">LICENSE DAYS LEFT</label>
+                                                    <input type="number" v-model="model.Swda.License_Days_Left" class="form-control" id="licenseDaysLeft">
+                                             </div>
+                                        </div>
+
+
+                                        <div class="mb-3 col-12">
+                                            <div class="spaceBetween">
+                                                 <label for="accreditationDaysLeft">ACCREDITATION  DAYS LEFT</label>
+                                                  <input type="text" v-model="model.Swda.Accreditation_Days_Left" class="form-control" id="accreditationDaysLeft">
+                                            </div>
+                                                               
+                                        </div>
+                                </div>             
+                </div>
+
+                <div class="col-3">
+                            <div class="mb-3 col-12">
+                                <div class="spaceBetween">
+                                    <label for="registrationStatus">REGISTRATION STATUS</label>
+                                    <input type="text" v-model="model.Swda.Registration_Status" class="form-control" id="registrationStatus">
+                                </div>
                         </div>
 
-                    
-            </div>
+                        <div class="mb-3 col-12">
+                                <div class="spaceBetween">
+                                    <label for="licenseStatus">LICENSE STATUS</label>
+                                    <input type="text" v-model="model.Swda.License_Status" class="form-control" id="licenseStatus">
+                                </div>
+                        </div>
+
+                        <div class="mb-3 col-12">
+                            <div class="spaceBetween">     
+                                    <label for="accreditationStatus">ACCREDITATION STATUS</label>
+                                    <input type="text" v-model="model.Swda.Accreditation_Status" class="form-control" id="accreditationStatus">
+                            </div>
+                        </div>
+
+                        <div class="mb-3 col-12">
+                                <div class="spaceBetween">
+                                    <label for="licensureOverdue">LICENSURE OVERDUE</label>
+                                    <input type="text" v-model="model.Swda.Licensure_Overdue" class="form-control" id="licensureOverdue">
+                                </div>
+                        </div>
+
+                        <div class="mb-3 col-12">
+                                <div class="spaceBetween">
+                                    <label for="accreditationOverdue">ACCREDITATION OVERDUE</label>
+                                    <input type="text" v-model="model.Swda.Accreditation_Overdue" class="form-control" id="accreditationOverdue">
+                                </div>
+                        </div>
+                </div>
+
+                </div>
+
+                      <div class="md-3 col-12 buttons d-flex justify-content-end">
+                        <router-link to="/adminswda">
+                            <button class="btn btn-secondary">
+                                CANCEL
+                            </button>
+                        </router-link>
+                        <button @click="saveSwda" class="btn btn-primary">
+                            SAVE
+                        </button>
+                    </div>
         </div>
     </div>
 </template>
@@ -192,11 +457,18 @@
 
 <script>
 import axios from 'axios';
+import AdminSidebar from '@/components/AdminSidebar';
 
 export default {
     name: 'AdminSWDACreate',
+    components: {
+        AdminSidebar
+    },
    data() {
         return {
+            PageTitle: "ADMIN SWDA > ADD",
+
+
             errorList: '',
             model: {
             Swda: {
@@ -319,3 +591,38 @@ methods: {
 
 }
 </script>
+
+<style scoped>
+.container{
+    padding-bottom: 100px;
+}
+
+.centered-placeholder::placeholder {
+  text-align: center;
+}
+
+.spaceBetween{
+    margin: 0px 10px 0px 10px;
+    /* font-family: Inter; */
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.spaceBetween label{
+    padding-left: 10px;
+    font-weight: bold;
+}
+
+.custom-input {
+    height: 113px; /* Adjust the height value as needed */
+}
+
+.btn{
+    margin-right: 20px;
+    width: 180px;
+    margin-bottom: 20px;
+}
+</style>

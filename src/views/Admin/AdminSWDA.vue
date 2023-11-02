@@ -1,13 +1,13 @@
 <template>
   <div>
-    <AdminSidebar />
+    <AdminSidebar :iconText="PageTitle"  />
     <br /><br /><br /><br />
     <div class="container-fluid wrapper">
       <!-- <h1>ADMIN SWDA DASHBOARD</h1> -->
       <div class="card">
         <div class="card-header">
           <router-link to="/adminswda/create" class="btn btn-primary float-end">
-            Add Data
+            Add New
           </router-link>
         </div>
 
@@ -56,7 +56,7 @@
                 <th>Licensure Overdue</th>
                 <th>Accreditation Days Left</th>
                 <th>Accreditation Overdue</th>
-                <th>Action</th>
+                <th class="text-black">Action</th>
               </tr>
             </thead>
             <tbody v-if="this.swda.length > 0">
@@ -121,13 +121,14 @@
 
           </table> 
         </div>
-     <!-- Pagination Start -->
+      </div>
+        <!-- Pagination Start -->
         <div class="text-center mx-auto">
           <nav>
                <ul class="pagination mx-auto">
                     <li class="page-item" :class="{ disabled: currentPage === 1 }">
                         <a class="page-link" @click="currentPage -= 1" aria-label="Previous">
-                          <span aria-hidden="true">&laquo;</span>
+                          <span aria-hidden="true">&laquo; previous</span>
                         </a>
                     </li>
                        <li class="page-item" v-for="page in totalPageCount" :key="page" :class="{ active: currentPage === page }">
@@ -135,14 +136,13 @@
                       </li>
                     <li class="page-item" :class="{ disabled: currentPage === totalPageCount }">
                         <a class="page-link" @click="currentPage += 1" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
+                            <span aria-hidden="true">next &raquo;</span>
                         </a>
                     </li>
               </ul>
           </nav>
         </div>
         <!-- Pagination End -->
-      </div>
     </div>
   </div>
 </template>
@@ -164,6 +164,8 @@
     },
     data() {
       return {
+         PageTitle: "ADMIN SWDA", // The title displayed on the page, which is "ADMIN SWDA"
+
         swda: [],
         currentPage: 1,
         itemsPerPage: 10,
@@ -224,10 +226,14 @@
 /* Optionally, you can reduce the height of the table header cells */
 .table-content th {
   padding: 5px 8px; /* Adjust the padding as needed */
+  background: #292D96;
+  color: white;
 }
 /* Optionally, you can reduce the height of the table header cells */
 .table-content td {
-  padding: 0px; /* Adjust the padding as needed */
+  padding: 0px 10px 0px 10px; /* Adjust the padding as needed */
+  height: 10px;
+  justify-content: center;
 }
 
 /* Optionally, reduce font size for action buttons */
@@ -272,23 +278,26 @@
   justify-content: center;
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin-top: 60px;
 }
 
 .page-item {
-  margin: 0 2px;
+  margin: 0 1px;
   display: inline-block;
-  font-size: 12px;
+ 
 }
 
 .page-link {
-  color: #007BFF; /* Text color */
+  color: black; /* Text color */
   text-decoration: none;
   padding: 5px 10px;
   background-color: #fff; /* Background color */
-  border: 1px solid #ccc; /* Border color */
   border-radius: 20px;
   transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 15px;
+  font-weight: 700px;
+
+
 }
 
 .page-link:hover {
@@ -301,6 +310,8 @@
   color: #fff; /* Active text color */
   cursor: default;
 }
-
+.text-black {
+  color: black;
+}
  </style>
     
