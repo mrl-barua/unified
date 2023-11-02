@@ -64,10 +64,12 @@
                                 <option value="" disabled selected>
                                 Select an option ⮟
                                 </option>
-                                <option value="OPTION 1">OPTION 1</option>
-                                <option value="OPTION 2">OPTION 2</option>
-                                <option value="OPTION 3">OPTION 3</option>
-                                <option value="OPTION 4">OPTION 4</option>
+                                <option value="Cluster 1">Cluster 1</option>
+                                <option value="Cluster 2">Cluster 2</option>
+                                <option value="Unclustered 3">Unclustered</option>
+                                <option value="South Cluster">South Cluster</option>
+                                <option value="North Cluster">North Cluster</option>
+                                <option value="Senior Citizens Center">Senior Citizens Center</option>
                             </select>
                         </div>         
                     </div>
@@ -101,10 +103,17 @@
                             <option value="" disabled selected>
                             Select an option ⮟
                             </option>
-                            <option value="OPTION 1">OPTION 1</option>
-                            <option value="OPTION 2">OPTION 2</option>
-                            <option value="OPTION 3">OPTION 3</option>
-                            <option value="OPTION 4">OPTION 4</option>
+                            <option value="Children">Children</option>
+                            <option value="Children and Youth">Children and Youth</option>
+                            <option value="Families and Communities">Families and Communities</option>
+                            <option value="Youth">Youth</option>
+                            <option value="Elderly">Elderly</option>
+                            <option value="Persons with Disability">Persons with Disability</option>
+                            <option value="Women">Women</option>
+                            <option value="Special Group">Special Group</option>
+                            <option value="Women and Children">Women and Children</option>
+                            <option value="Indigenous Peoples">Indigenous Peoples</option>
+                            <option value="Drug Dependents">Drug Dependents</option>
                         </select>
                         </div>
                     </div>
@@ -247,10 +256,9 @@
                                 <option value="" disabled selected>
                                 Select an option ⮟
                                 </option>
-                                <option value="OPTION 1">OPTION 1</option>
-                                <option value="OPTION 2">OPTION 2</option>
-                                <option value="OPTION 3">OPTION 3</option>
-                                <option value="OPTION 4">OPTION 4</option>
+                                <option value="Regional">Regional</option>
+                                <option value="National">National</option>
+                                <option value="Unspecified">Unspecified</option>
                             </select>
                         </div>
                 </div>
@@ -262,10 +270,11 @@
                                 <option value="" disabled selected>
                                 Select an option ⮟
                                 </option>
-                                <option value="OPTION 1">OPTION 1</option>
-                                <option value="OPTION 2">OPTION 2</option>
-                                <option value="OPTION 3">OPTION 3</option>
-                                <option value="OPTION 4">OPTION 4</option>
+                                <option value="Davao City">Davao City</option>
+                                <option value="Davao del Oro">Davao del Oro</option>
+                                <option value="Davao del Norte">Davao del Norte</option>
+                                <option value="Davao del Sur">Davao del Sur</option>
+                                <option value="Davao Oriental">Davao Oriental</option>
                             </select>
                         </div>
                 </div>
@@ -277,10 +286,11 @@
                                     <option value="" disabled selected>
                                 Select an option ⮟
                                     </option>
-                                    <option value="OPTION 1">OPTION 1</option>
-                                    <option value="OPTION 2">OPTION 2</option>
-                                    <option value="OPTION 3">OPTION 3</option>
-                                    <option value="OPTION 4">OPTION 4</option>
+                                    <option value="Davao City">Davao City</option>
+                                    <option value="Davao del Oro">Davao del Oro</option>
+                                    <option value="Davao del Norte">Davao del Norte</option>
+                                    <option value="Davao del Sur">Davao del Sur</option>
+                                    <option value="Davao Oriental">Davao Oriental</option>
                              </select>
                         </div>
                    
@@ -294,10 +304,10 @@
                                 <option value="" disabled selected>
                             Select an option ⮟
                                 </option>
-                                <option value="OPTION 1">OPTION 1</option>
-                                <option value="OPTION 2">OPTION 2</option>
-                                <option value="OPTION 3">OPTION 3</option>
-                                <option value="OPTION 4">OPTION 4</option>
+                                <option value="Community-based">Community-based</option>
+                                <option value="Center-based Residential">Center-based Residential</option>
+                                <option value="Auxiliary SWDA">Auxiliary SWDA</option>
+
                             </select>
                         </div>
                     
@@ -386,7 +396,7 @@
                                         <div class="mb-3 col-12">
                                             <div class="spaceBetween"> 
                                                     <label for="licenseDaysLeft">LICENSE DAYS LEFT</label>
-                                                    <input type="number" v-model="model.Swda.License_Days_Left" class="form-control" id="licenseDaysLeft">
+                                                    <input type="number" v-model="model.Swda.License_Days_Left" class="form-control" id="licenseDaysLeft" required>
                                              </div>
                                         </div>
 
@@ -394,7 +404,7 @@
                                         <div class="mb-3 col-12">
                                             <div class="spaceBetween">
                                                  <label for="accreditationDaysLeft">ACCREDITATION  DAYS LEFT</label>
-                                                  <input type="text" v-model="model.Swda.Accreditation_Days_Left" class="form-control" id="accreditationDaysLeft">
+                                                  <input type="number" v-model="model.Swda.Accreditation_Days_Left"  class="form-control" id="accreditationDaysLeft" required>
                                             </div>
                                                                
                                         </div>
@@ -426,14 +436,14 @@
                         <div class="mb-3 col-12">
                                 <div class="spaceBetween">
                                     <label for="licensureOverdue">LICENSURE OVERDUE</label>
-                                    <input type="text" v-model="model.Swda.Licensure_Overdue" class="form-control" id="licensureOverdue">
+                                    <input type="text" v-model="model.Swda.Licensure_Overdue" class="form-control" id="licensureOverdue" required>
                                 </div>
                         </div>
 
                         <div class="mb-3 col-12">
                                 <div class="spaceBetween">
                                     <label for="accreditationOverdue">ACCREDITATION OVERDUE</label>
-                                    <input type="text" v-model="model.Swda.Accreditation_Overdue" class="form-control" id="accreditationOverdue">
+                                    <input type="text" v-model="model.Swda.Accreditation_Overdue" class="form-control" id="accreditationOverdue" required>
                                 </div>
                         </div>
                 </div>

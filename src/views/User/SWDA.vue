@@ -288,8 +288,7 @@ export default {
       },
 
       agencies: [], // An array to store agency data fetched from the API
-      searchQuery: '', // A variable to hold the search query entered by the user for filtering agencies
-
+       searchQuery: '', // A variable to hold the search query entered by the user for filtering agencies
 
 
       ClusterData: null, // Initialize Chart Data as null
