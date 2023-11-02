@@ -6,6 +6,7 @@
           <div class="blue-header">
           <div class="logo">
             <i class="bx bx-menu menu-icon"></i>
+            <h3 class="text-white">{{ iconText }}</h3>
             <!-- <span class="logo-name">UNIFIED</span> -->
             <!-- <img class="float-start header-image" src="@/assets/DSWDLogo.png" alt="dswdLogo"> -->
           </div>
@@ -85,8 +86,10 @@
       name: 'sidebar',
       components :{
         Header,
-    
       },
+       props: {
+                iconText: String,
+              },
       mounted() {
         const navBar = document.querySelector("nav");
         const menuBtns = document.querySelectorAll(".menu-icon");

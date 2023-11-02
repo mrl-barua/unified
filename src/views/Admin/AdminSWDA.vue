@@ -1,13 +1,13 @@
 <template>
   <div>
-    <AdminSidebar />
+    <AdminSidebar :iconText="PageTitle"  />
     <br /><br /><br /><br />
     <div class="container-fluid wrapper">
       <!-- <h1>ADMIN SWDA DASHBOARD</h1> -->
       <div class="card">
         <div class="card-header">
-          <router-link to="/swda/create" class="btn btn-primary">
-            Add New Row
+          <router-link to="/adminswda/create" class="btn btn-primary float-end">
+            Add New
           </router-link>
         </div>
 
@@ -56,7 +56,7 @@
                 <th>Licensure Overdue</th>
                 <th>Accreditation Days Left</th>
                 <th>Accreditation Overdue</th>
-                <th>Action</th>
+                <th class="text-black">Action</th>
               </tr>
             </thead>
             <tbody v-if="this.swda.length > 0">
@@ -104,10 +104,10 @@
                   <td>{{ item.Accreditation_Overdue }}</td>
 
                 <td>
-                  <router-link to="/" class="btn btn-success">
+                  <router-link :to="{ path: '/adminswda/' + item.ID + '/edit' }" class="btn btn-success col-12 mb-1 mt-3 ">
                     Edit
                   </router-link>
-                  <button type="button" class="btn btn-danger">
+                  <button type="button" @click="deleteSwda(item.ID)" class="btn btn-danger col-12  mb-3">
                     Delete
                   </button>
                 </td>
@@ -119,30 +119,30 @@
             </tr>
           </tbody>
 
-          </table>
+          </table> 
         </div>
-        
-        <!-- Pagination -->
+      </div>
+        <!-- Pagination Start -->
         <div class="text-center mx-auto">
           <nav>
                <ul class="pagination mx-auto">
-      <li class="page-item" :class="{ disabled: currentPage === 1 }">
-        <a class="page-link" @click="currentPage -= 1" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-        </a>
-      </li>
-      <li class="page-item" v-for="page in totalPageCount" :key="page" :class="{ active: currentPage === page }">
-        <a class="page-link" @click="currentPage = page">{{ page }}</a>
-      </li>
-      <li class="page-item" :class="{ disabled: currentPage === totalPageCount }">
-        <a class="page-link" @click="currentPage += 1" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-        </a>
-      </li>
-    </ul>
+                    <li class="page-item" :class="{ disabled: currentPage === 1 }">
+                        <a class="page-link" @click="currentPage -= 1" aria-label="Previous">
+                          <span aria-hidden="true">&laquo; previous</span>
+                        </a>
+                    </li>
+                       <li class="page-item" v-for="page in totalPageCount" :key="page" :class="{ active: currentPage === page }">
+                          <a class="page-link" @click="currentPage = page">{{ page }}</a>
+                      </li>
+                    <li class="page-item" :class="{ disabled: currentPage === totalPageCount }">
+                        <a class="page-link" @click="currentPage += 1" aria-label="Next">
+                            <span aria-hidden="true">next &raquo;</span>
+                        </a>
+                    </li>
+              </ul>
           </nav>
         </div>
-      </div>
+        <!-- Pagination End -->
     </div>
   </div>
 </template>
@@ -164,6 +164,8 @@
     },
     data() {
       return {
+         PageTitle: "ADMIN SWDA", // The title displayed on the page, which is "ADMIN SWDA"
+
         swda: [],
         currentPage: 1,
         itemsPerPage: 10,
@@ -196,26 +198,94 @@
           console.log(res);
         });
       },
+
+      deleteSwda(SwdaID) {
+        // console.log(SwdaID);
+          if(confirm('Are you sure, you want to delete this data?')){
+            axios.delete(`http://127.0.0.1:8000/api/swdalist/${SwdaID}/delete`)
+            .then(res => {
+              alert(res.data.message);
+               // Reload the page after a successful deletion
+               window.location.reload();
+            })
+            .catch(function (error) {
+                      if (error.response) {
+                          if (error.response.status === 422) {
+                              mythis.errorList = error.response.data.errors;
+                          }
+                          if (error.response.status === 404) {
+                              alert(error.response.data.message);
+                          }
+                      } else if (error.request) {
+                          console.log(error.request);
+                      } else {
+                          console.log('error', error.message);
+                      }
+             });  
+          }
+      },
     },
   };
 </script>
   
   
 <style scoped>
+
+/* Reduce the font size for the table */
+.table-content table {
+  font-size: 12px; /* Adjust the font size as needed */
+}
+
+/* Add a max-height to limit the row height */
+.row-max-height {
+  max-height: 20px; /* Adjust the maximum row height as needed */
+  overflow: hidden;
+}
+
+/* Add ellipsis for overflowing content */
+.row-max-height td {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/* Optionally, you can reduce the height of the table header cells */
+.table-content th {
+  padding: 5px 8px; /* Adjust the padding as needed */
+  background: #292D96;
+  color: white;
+}
+/* Optionally, you can reduce the height of the table header cells */
+.table-content td {
+  padding: 0px 10px 0px 10px; /* Adjust the padding as needed */
+  height: 10px;
+  justify-content: center;
+}
+
+/* Optionally, reduce font size for action buttons */
+.table-content .btn {
+  font-size: 12px; /* Adjust the font size as needed */
+  padding: 10px 30px 10px 30px;
+}
+
+
+
+
+
 .row-max-height {
   max-height: 100px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-
 .table-container {
   max-height: 400px; /* Set the maximum height for the header cells */
   overflow-y: scroll;
 }
 
 .table-content {
-  height: 70vh; /* Set the maximum height for the content */
+  width: 100%;
+  height: 62vh; /* Set the maximum height for the content */
   overflow-y: scroll;
 }
 
@@ -225,7 +295,49 @@
   position: sticky;
   right: 0;
   background-color: white;
-  box-shadow: 7px 0 5px -5px rgba(0, 0, 0, 0.1);
+  box-shadow: 7px 0 5px -5px rgba(0, 0, 0, 0.9);
+}
+
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin-top: 60px;
+}
+
+.page-item {
+  margin: 0 1px;
+  display: inline-block;
+ 
+}
+
+.page-link {
+  color: black; /* Text color */
+  text-decoration: none;
+  padding: 5px 10px;
+  background-color: #fff; /* Background color */
+  border-radius: 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 15px;
+  font-weight: 700px;
+
+
+}
+
+.page-link:hover {
+  background-color: red; /* Hover background color */
+  color: #fff; /* Hover text color */
+}
+
+.page-link.active {
+  background-color: #007BFF; /* Active background color */
+  color: #fff; /* Active text color */
+  cursor: default;
+}
+.text-black {
+  color: black;
 }
  </style>
     

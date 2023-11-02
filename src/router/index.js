@@ -20,6 +20,10 @@ import AdminHR from '../views/Admin/AdminHR.vue'
 import AdminSLP from '../views/Admin/AdminSLP.vue'
 import AdminOSP from '../views/Admin/AdminOSP.vue'
 import AdminSWDA from '../views/Admin/AdminSWDA.vue'
+
+import AdminSWDACreate from '../views/Admin/CRUD_Pages/AdminSWDACreate'
+import AdminSWDAEdit from '../views/Admin/CRUD_Pages/AdminSWDAEdit'
+
 import ERROR from '../views/404.vue' // Import the 404 Error Page
 import { userIsAuthenticated } from '../auth'; // Import the user authentication function
 import { adminIsAuthenticated } from '../auth'; // Import the admin authentication function
@@ -123,7 +127,27 @@ const routes = [
     component: AdminSWDA,
     beforeEnter: adminRequireAuth,
   },
+
+  {
+    path: '/adminswda/create',
+    name: 'AdminSWDACreate',
+    component: AdminSWDACreate,
+    beforeEnter: adminRequireAuth,
+  },
+
+  {
+    path: '/adminswda/:ID/edit',
+    name: 'AdminSWDAEdit',
+    component: AdminSWDAEdit,
+    beforeEnter: adminRequireAuth,
+  },
   // ADMIN DASHBOARD END
+
+
+
+
+
+
 
   //  USER DASHBOARD START
   {

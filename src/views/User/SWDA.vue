@@ -288,8 +288,7 @@ export default {
       },
 
       agencies: [], // An array to store agency data fetched from the API
-      searchQuery: '', // A variable to hold the search query entered by the user for filtering agencies
-
+       searchQuery: '', // A variable to hold the search query entered by the user for filtering agencies
 
 
       ClusterData: null, // Initialize Chart Data as null
@@ -334,12 +333,19 @@ export default {
             },
 
   computed: {
-                filteredAgencies() {
-                    // Filter the agencies based on the searchQuery
-                    return this.agencies.filter(agency => {
-                        return agency.Agency.toLowerCase().includes(this.searchQuery.toLowerCase());
-                    });
-                }
+             filteredAgencies() {
+                  // Filter the agencies based on the searchQuery, and exclude agencies with null data
+                  return this.agencies.filter(agency => {
+                      // Check if agency and agency.Agency are not null or undefined
+                      if (agency && agency.Agency) {
+                          return agency.Agency.toLowerCase().includes(this.searchQuery.toLowerCase());
+                      } else {
+                          // If agency or agency.Agency is null or undefined, exclude it
+                          return false;
+                      }
+                  });
+              }
+
             },
 
   methods: {
