@@ -6,8 +6,8 @@
       <!-- <h1>ADMIN SWDA DASHBOARD</h1> -->
       <div class="card">
         <div class="card-header">
-          <router-link to="/adminswdaCreate" class="btn btn-primary">
-            Add New Row
+          <router-link to="/adminswda/create" class="btn btn-primary float-end">
+            Add Data
           </router-link>
         </div>
 
@@ -104,10 +104,10 @@
                   <td>{{ item.Accreditation_Overdue }}</td>
 
                 <td>
-                  <router-link to="/" class="btn btn-success">
+                  <router-link :to="{ path: '/adminswda/' + item.ID + '/edit' }" class="btn btn-success col-12 mb-1 mt-3 ">
                     Edit
                   </router-link>
-                  <button type="button" class="btn btn-danger">
+                  <button type="button" class="btn btn-danger col-12  mb-3">
                     Delete
                   </button>
                 </td>
@@ -119,29 +119,29 @@
             </tr>
           </tbody>
 
-          </table>
+          </table> 
         </div>
-        
-        <!-- Pagination -->
+     <!-- Pagination Start -->
         <div class="text-center mx-auto">
           <nav>
                <ul class="pagination mx-auto">
-      <li class="page-item" :class="{ disabled: currentPage === 1 }">
-        <a class="page-link" @click="currentPage -= 1" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-        </a>
-      </li>
-      <li class="page-item" v-for="page in totalPageCount" :key="page" :class="{ active: currentPage === page }">
-        <a class="page-link" @click="currentPage = page">{{ page }}</a>
-      </li>
-      <li class="page-item" :class="{ disabled: currentPage === totalPageCount }">
-        <a class="page-link" @click="currentPage += 1" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-        </a>
-      </li>
-    </ul>
+                    <li class="page-item" :class="{ disabled: currentPage === 1 }">
+                        <a class="page-link" @click="currentPage -= 1" aria-label="Previous">
+                          <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                       <li class="page-item" v-for="page in totalPageCount" :key="page" :class="{ active: currentPage === page }">
+                          <a class="page-link" @click="currentPage = page">{{ page }}</a>
+                      </li>
+                    <li class="page-item" :class="{ disabled: currentPage === totalPageCount }">
+                        <a class="page-link" @click="currentPage += 1" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+              </ul>
           </nav>
         </div>
+        <!-- Pagination End -->
       </div>
     </div>
   </div>
@@ -202,20 +202,58 @@
   
   
 <style scoped>
+
+/* Reduce the font size for the table */
+.table-content table {
+  font-size: 12px; /* Adjust the font size as needed */
+}
+
+/* Add a max-height to limit the row height */
+.row-max-height {
+  max-height: 20px; /* Adjust the maximum row height as needed */
+  overflow: hidden;
+}
+
+/* Add ellipsis for overflowing content */
+.row-max-height td {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/* Optionally, you can reduce the height of the table header cells */
+.table-content th {
+  padding: 5px 8px; /* Adjust the padding as needed */
+}
+/* Optionally, you can reduce the height of the table header cells */
+.table-content td {
+  padding: 0px; /* Adjust the padding as needed */
+}
+
+/* Optionally, reduce font size for action buttons */
+.table-content .btn {
+  font-size: 12px; /* Adjust the font size as needed */
+  padding: 10px 30px 10px 30px;
+}
+
+
+
+
+
 .row-max-height {
   max-height: 100px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-
 .table-container {
   max-height: 400px; /* Set the maximum height for the header cells */
   overflow-y: scroll;
 }
 
 .table-content {
-  height: 70vh; /* Set the maximum height for the content */
+  width: 100%;
+  height: 62vh; /* Set the maximum height for the content */
   overflow-y: scroll;
 }
 
@@ -225,7 +263,44 @@
   position: sticky;
   right: 0;
   background-color: white;
-  box-shadow: 7px 0 5px -5px rgba(0, 0, 0, 0.1);
+  box-shadow: 7px 0 5px -5px rgba(0, 0, 0, 0.9);
 }
+
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.page-item {
+  margin: 0 2px;
+  display: inline-block;
+  font-size: 12px;
+}
+
+.page-link {
+  color: #007BFF; /* Text color */
+  text-decoration: none;
+  padding: 5px 10px;
+  background-color: #fff; /* Background color */
+  border: 1px solid #ccc; /* Border color */
+  border-radius: 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.page-link:hover {
+  background-color: red; /* Hover background color */
+  color: #fff; /* Hover text color */
+}
+
+.page-link.active {
+  background-color: #007BFF; /* Active background color */
+  color: #fff; /* Active text color */
+  cursor: default;
+}
+
  </style>
     

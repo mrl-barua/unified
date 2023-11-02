@@ -175,9 +175,11 @@
                             <input type="text" v-model="model.Swda.Accreditation_Overdue" class="form-control" id="accreditationOverdue">
                         </div>
                         <div class="md-3 col-12">
+                            <router-link to="/adminswda">
                             <button @click="saveSwda" class="btn btn-primary col-12">
                             Save
                             </button>
+                            </router-link>
                         </div>
                         </div>
 

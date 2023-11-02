@@ -82,6 +82,8 @@
 
 ## ver 3.4 Added Fetch Data and Table Component in SWDA ADMIN VIEW - MARLO BARUA
 
-## ver 3.5 IMPORTANT(SECURITY FEATURES) - Change LocalStorage to SessionStorage in which User will automatically log out for specific duration
+## ver 3.5 IMPORTANT(SECURITY FEATURES) - Change LocalStorage to SessionStorage in which User will automatically log out for specific duration - MARLO BARUA
 
-## ver 3.6 Added Add function in AdminSWDA - MARLO BARUA
+## ver 3.6 Added ADD function in AdminSWDA - MARLO BARUA
+
+## ver 3.7 Added EDIT and UPDATE function in AdminSWDA - MARLO BARUA
