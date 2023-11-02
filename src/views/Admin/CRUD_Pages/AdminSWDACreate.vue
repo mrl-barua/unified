@@ -25,8 +25,8 @@
                         <option value="" disabled selected>
                          Select an option ⮟
                         </option>
-                        <option value="PRIVATE">PRIVATE</option>
-                        <option value="PUBLIC">PUBLIC</option>
+                        <option value="Private">Private</option>
+                        <option value="Public">Public</option>
                     </select>
                     </div>
 

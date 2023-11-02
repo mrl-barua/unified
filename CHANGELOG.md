@@ -93,3 +93,5 @@
 ## version 3.9  Added in filteredAgencies() under SWDA and SWDAW Agencies View in which If agency or agency.Agency is null or undefined, it will exclude it - MARLO BARUA
 
 ## version 4.0 Added DELETE function in AdminSWDA - MARLO BARUA
+
+## version 4.1 Styled EDIT VIEW IN AdminSWDA - MARLO BARUA
