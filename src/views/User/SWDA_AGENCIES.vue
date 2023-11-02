@@ -265,7 +265,7 @@ export default {
             // Fetch data and populate the agencies array
             axios.get('http://127.0.0.1:8000/api/agenciesName')
                 .then(response => {
-                     this.agencies = response.data;
+                     this.agencies = response.data['Swda Agencies'];
                 })
                 .catch(error => {
                     console.error("Error fetching data:", error);
@@ -274,11 +274,17 @@ export default {
 
   computed: {
               filteredAgencies() {
-                      // Filter the agencies based on the searchQuery
-                      return this.agencies.filter(agency => {
+                  // Filter the agencies based on the searchQuery, and exclude agencies with null data
+                  return this.agencies.filter(agency => {
+                      // Check if agency and agency.Agency are not null or undefined
+                      if (agency && agency.Agency) {
                           return agency.Agency.toLowerCase().includes(this.searchQuery.toLowerCase());
-                      });
-                  }
+                      } else {
+                          // If agency or agency.Agency is null or undefined, exclude it
+                          return false;
+                      }
+                  });
+              }
             },
   
 }
