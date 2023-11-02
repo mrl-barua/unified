@@ -107,7 +107,7 @@
                   <router-link :to="{ path: '/adminswda/' + item.ID + '/edit' }" class="btn btn-success col-12 mb-1 mt-3 ">
                     Edit
                   </router-link>
-                  <button type="button" class="btn btn-danger col-12  mb-3">
+                  <button type="button" @click="deleteSwda(item.ID)" class="btn btn-danger col-12  mb-3">
                     Delete
                   </button>
                 </td>
@@ -197,6 +197,32 @@
           this.swda = res.data.Swda;
           console.log(res);
         });
+      },
+
+      deleteSwda(SwdaID) {
+        // console.log(SwdaID);
+          if(confirm('Are you sure, you want to delete this data?')){
+            axios.delete(`http://127.0.0.1:8000/api/swdalist/${SwdaID}/delete`)
+            .then(res => {
+              alert(res.data.message);
+               // Reload the page after a successful deletion
+               window.location.reload();
+            })
+            .catch(function (error) {
+                      if (error.response) {
+                          if (error.response.status === 422) {
+                              mythis.errorList = error.response.data.errors;
+                          }
+                          if (error.response.status === 404) {
+                              alert(error.response.data.message);
+                          }
+                      } else if (error.request) {
+                          console.log(error.request);
+                      } else {
+                          console.log('error', error.message);
+                      }
+             });  
+          }
       },
     },
   };
