@@ -6,13 +6,20 @@
       <!-- <h1>ADMIN SWDA DASHBOARD</h1> -->
       <div class="card">
         <div class="card-header">
-          <router-link to="/adminswda/create" class="btn btn-primary float-end">
-            Add New
+          <router-link to="/adminswda/create" class="btn btn-primary float-start" style="background-color: #133F5C;   font-size: 12px; /* Adjust the font size as needed */
+  padding: 10px 30px 10px 30px;">
+            ADD NEW
           </router-link>
+
+          <button @click="exportToExcel" class="btn btn-primary float-end" style="background-color: Green;   font-size: 12px; /* Adjust the font size as needed */
+  padding: 10px 30px 10px 30px;">
+           EXPORT DATA
+          </button>
         </div>
 
         <div class="table-content">
-          <table class="table table-bordered">
+          <table class="table table-bordered" >
+
               <thead>
               <tr>
                 <th>ID</th>
@@ -59,7 +66,7 @@
                 <th class="text-black">Action</th>
               </tr>
             </thead>
-            <tbody v-if="this.swda.length > 0">
+            <tbody v-if="this.swda.length > 0" >
               <tr v-for="(item, index) in paginatedData" :key="index"  class="row-max-height">
                  <td>{{ item.ID }}</td>
                  <td>{{ item.Type }}</td>
@@ -105,10 +112,10 @@
 
                 <td>
                   <router-link :to="{ path: '/adminswda/' + item.ID + '/edit' }" class="btn btn-success col-12 mb-1 mt-3 ">
-                    Edit
+                    EDIT
                   </router-link>
                   <button type="button" @click="deleteSwda(item.ID)" class="btn btn-danger col-12  mb-3">
-                    Delete
+                    DELETE
                   </button>
                 </td>
               </tr>
@@ -118,7 +125,6 @@
               <td colspan="38">Loading...</td>
             </tr>
           </tbody>
-
           </table> 
         </div>
       </div>
@@ -154,6 +160,8 @@
   import Footer from '@/components/Footer';
   import AdminSidebar from '@/components/AdminSidebar';
   import BarChart from '@/components/ChartJS/Barchart';
+  import ExcelJS from 'exceljs';
+
 
   export default {
     name: 'AdminSWDA',
@@ -192,38 +200,84 @@
       this.getSwda();
     },
     methods: {
+       exportToExcel() {
+                const workbook = new ExcelJS.Workbook();
+                const worksheet = workbook.addWorksheet('SwdaData');
+
+                // Add headers
+                const headers = [
+                  'ID', 'Type', 'Sector', 'Cluster', 'Agency', 'Address', 'Former Name', 'Contact Number',
+                  'Fax', 'Email', 'Website', 'Contact Person', 'Position', 'Mobile Number', 'Registered',
+                  'Licensed', 'Accredited', 'Services Offered', 'Simplified Services', 'Area of Operation',
+                  'Regional Operation', 'Specified Areas of Operation', 'Mode of Delivery', 'Clientele',
+                  'Registration ID', 'Registration Date', 'Registration Expiration', 'Registration Status',
+                  'License ID', 'License Date Issued', 'License Expiration', 'License Status', 'Accreditation ID',
+                  'Accreditation Date Issued', 'Accreditation Expiration', 'Accreditation Status', 'Remarks',
+                  'License Days Left', 'Licensure Overdue', 'Accreditation Days Left', 'Accreditation Overdue',
+                ];
+
+                worksheet.addRow(headers);
+
+                // Add data from this.swda
+                this.swda.forEach(item => {
+                  const rowData = [
+                    item.ID, item.Type, item.Sector, item.Cluster, item.Agency, item.Address, item.Former_Name,
+                    item.Contact_Number, item.Fax, item.Email, item.Website, item.Contact_Person, item.Position,
+                    item.Mobile_Number, item.Registered, item.Licensed, item.Accredited, item.Services_Offered,
+                    item.Simplified_Services, item.Area_of_Operation, item.Regional_Operation,
+                    item.Specified_Areas_of_Operation, item.Mode_of_Delivery, item.Clientele, item.Registration_ID,
+                    item.Registration_Date, item.Registration_Expiration, item.Registration_Status, item.License_ID,
+                    item.License_Date_Issued, item.License_Expiration, item.License_Status, item.Accreditation_ID,
+                    item.Accreditation_Date_Issued, item.Accreditation_Expiration, item.Accreditation_Status,
+                    item.Remarks, item.License_Days_Left, item.Licensure_Overdue, item.Accreditation_Days_Left,
+                    item.Accreditation_Overdue,
+                  ];
+
+                  worksheet.addRow(rowData);
+                });
+
+                // Create a blob and initiate the download
+                workbook.xlsx.writeBuffer().then(buffer => {
+                  const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+                  const url = window.URL.createObjectURL(blob);
+                  const a = document.createElement('a');
+                  a.href = url;
+                  a.download = 'swda_data.xlsx';
+                  a.click();
+                });
+              },
       getSwda() {
-        axios.get('http://127.0.0.1:8000/api/swdalist').then((res) => {
-          this.swda = res.data.Swda;
-          console.log(res);
-        });
-      },
+              axios.get('http://127.0.0.1:8000/api/swdalist').then((res) => {
+                this.swda = res.data.Swda;
+                console.log(res);
+              });
+            },
 
       deleteSwda(SwdaID) {
-        // console.log(SwdaID);
-          if(confirm('Are you sure, you want to delete this data?')){
-            axios.delete(`http://127.0.0.1:8000/api/swdalist/${SwdaID}/delete`)
-            .then(res => {
-              alert(res.data.message);
-               // Reload the page after a successful deletion
-               window.location.reload();
-            })
-            .catch(function (error) {
-                      if (error.response) {
-                          if (error.response.status === 422) {
-                              mythis.errorList = error.response.data.errors;
-                          }
-                          if (error.response.status === 404) {
-                              alert(error.response.data.message);
-                          }
-                      } else if (error.request) {
-                          console.log(error.request);
-                      } else {
-                          console.log('error', error.message);
-                      }
-             });  
-          }
-      },
+                  // console.log(SwdaID);
+                    if(confirm('Are you sure, you want to delete this data?')){
+                      axios.delete(`http://127.0.0.1:8000/api/swdalist/${SwdaID}/delete`)
+                      .then(res => {
+                        alert(res.data.message);
+                        // Reload the page after a successful deletion
+                        window.location.reload();
+                      })
+                      .catch(function (error) {
+                                if (error.response) {
+                                    if (error.response.status === 422) {
+                                        mythis.errorList = error.response.data.errors;
+                                    }
+                                    if (error.response.status === 404) {
+                                        alert(error.response.data.message);
+                                    }
+                                } else if (error.request) {
+                                    console.log(error.request);
+                                } else {
+                                    console.log('error', error.message);
+                                }
+                      });  
+                    }
+                },
     },
   };
 </script>
@@ -233,7 +287,8 @@
 
 /* Reduce the font size for the table */
 .table-content table {
-  font-size: 12px; /* Adjust the font size as needed */
+  font-size: 15px; /* Adjust the font size as needed */
+  font-weight: bolder;
 }
 
 /* Add a max-height to limit the row height */
@@ -252,7 +307,7 @@
 /* Optionally, you can reduce the height of the table header cells */
 .table-content th {
   padding: 5px 8px; /* Adjust the padding as needed */
-  background: #292D96;
+  background: #133F5C;
   color: white;
 }
 /* Optionally, you can reduce the height of the table header cells */
@@ -304,7 +359,7 @@
   justify-content: center;
   list-style: none;
   padding: 0;
-  margin-top: 60px;
+  margin-top: 10px;
 }
 
 .page-item {
