@@ -31,43 +31,89 @@
 
     
 <!-- 2 -->
-<h1><b> REFERRALS</b></h1>
-
+<h1><b> REFERRALS</b></h1> 
+  <div class="row">
      <div class="col-12 col-md-8">
-        <div class="shadow2 forbarchart">
+        <div class="shadow3 forbarchart">
           <div class="Barchart1"><HBarChart :data="RefData" /></div>
     </div>
   </div>
   <div class="col-12 col-md-4">
-   <div class="rectangle" style="background-color: #EB5F5E;">
-        <div class="label">POOR</div>
-        <div class="number"><b>282</b></div>
-      </div>
-      <div class="rectangle" style="background-color: #59508D;">
-        <div class="label">NON-POOR</div>
-        <div class="number"><b>224</b></div>
-      </div>
-      <div class="rectangle" style="background-color: #F3A533;">
-        <div class="label">NO MATCH</div>
-        <div class="number"><b>202</b></div>
-      </div>
+    <div class="rectangle1" style="background-color: #F3A533;">
+          <div class="label">PHYSICAL TARGET</div>
+          <div class="number"><b>20</b></div>
+        </div>
+        <div class="rectangle1" style="background-color: #F11B25;">
+          <div class="label">YEAR 2022</div>
+          <div class="number"><b>13</b></div>
+        </div>
+         <div class="rectangle1" style="background-color:#133F5C">
+          <div class="label">YEAR 2023</div>
+          <div class="number"><b>12</b></div>
+        </div>
+        <div class="rectangle1" style="background-color:#252525;">
+          <div class="label">QUALIFIED / SERVED</div>
+          <div class="number"><b>13</b></div>
+        </div>
+        <div class="rectangle1" style="background-color:#252525;">
+          <div class="label">FUNDED</div>
+          <div class="number"><b>8</b></div>
+        </div>
+        <div class="rectangle1" style="background-color:#252525;">
+          <div class="label">ENDORSED TO PARTNERS</div>
+          <div class="number"><b>0</b></div>
+        </div>
+   </div>
   </div>
+
 
 
 
 
 <!-- 3 -->
-    <div class="col-12 col-md-6">
-        <div class="shadow2">
-          <p><b>SECTORAL ACCOMPLISHMENT</b></p>
-          <div class="DoughnutChart"><DoughnutChart :data="SecData" /></div>
+ <br>
+ <h1><b>SECTORAL ACCOMPLISHMENT</b></h1>
+ <br>
+  <div class="row">
+
+
+    <div class="col-12 col-md-4">
+     <div class="rectangle4">
+          <div class="label">DISAGGREGATED</div>
+          <div class="label1"><b>DATA</b></div>
+        </div>  
+
+    <div class="rectangle" style="background-color:#59508D;">
+          <div class="label">MALE</div>
+          <div class="number"><b>267</b></div>
+        </div>
+        <div class="rectangle" style="background-color: #BC5090;">
+          <div class="label">FEMALE</div>
+          <div class="number"><b>589</b></div>
+        </div>
+        <div class="rectangle" style="background-color:#F3A533;">
+          <div class="label">TOTAL</div>
+          <div class="number"><b>856</b></div>
+        </div>
+  </div>
+
+    <div class="col-12 col-md-8">
+        <div class="shadow5">
+          
+          <div class="DoughnutChart" style="    height: 370px;">
+            <DoughnutChart :data="SecData" /></div>
         </div>
     </div>
-
+  </div>
 <!-- 4 -->
-    <div class="col-12 col-md-6">
+
+<br>
+  <h1><b>BREAKDOWN OF REGIONAL ACCOMPLISHMENT</b></h1>
+<br>
+    <div class="col-12 col-md-12">
+      
         <div class="shadow2 forbarchart">
-           <p><b>BREAKDOWN OF REGIONAL ACCOMPLISHMENT</b></p>
+           
           <div class="Barchart1"><BarChart :data="ProvinceData" /></div>
         </div>
     </div>
@@ -139,7 +185,7 @@ export default {
           label: ['ACCOMPLISHMENT'],
           values: [120, 100, 400, 150, 250, 200],
           backgroundColor: [
-          'rgba(19, 63, 92, 1)'
+          '#59508D'
         ],
         },    
 
@@ -237,6 +283,109 @@ export default {
   text-align: center;
 }
 
+.shadow3{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+  height: 495px;
+  border-radius: 20px;
+  margin:50px 15px 10px 20px;
+  padding: 10px 0px 10px 0px;
+}
 
+.shadow4{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+  height: 550px;
+  border-radius: 20px;
+  margin:50px 15px 10px 20px;
+  padding: 10px 0px 10px 0px;
+}
+.shadow5{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+  height: 440px;
+  border-radius: 20px;
+  margin:20px 15px 10px 20px;
+  padding: 10px 0px 10px 0px;
+}
+
+.rectangle4 {
+  padding: 10px;
+  margin: 10px;
+  color: #133F5C;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 20%;
+  
+}
+
+.rectangle4 .label {
+  
+  color: #133F5C;
+  text-align: center;
+  font-size: 35px;
+  font-style: bold;
+  font-weight: 700;
+  line-height: normal;
+}
+.label[data-v-c2f0b4a5] {
+    width: 304px;
+}
+
+.rectangle4 .label1 {
+  
+  color: #133F5C;
+  text-align: center;
+  font-size: 35px;
+  font-style: bold;
+  font-weight: 700;
+  line-height: normal;
+}
+.chart-container[data-v-3aa086d9] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120%;
+}
+
+/* referrals */
+
+.stacked-rectangle1 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stacked-rectangle1 .col-12.col-md-4 {
+  width: 20%;
+}
+
+.stacked-rectangle1 .shadow2 {
+  background: transparent;
+}
+
+.rectangle1 {
+ padding: 5px;
+    margin: 10px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 20%;
+}
+
+.rectangle1 .label {
+  
+  color: #FFF;
+  text-align: center;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.rectangle1 .number {
+  font-size: 35px;
+  text-align: center;
+}
 </style>
 
