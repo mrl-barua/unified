@@ -226,7 +226,7 @@
                     item.Mobile_Number, item.Registered, item.Licensed, item.Accredited, item.Services_Offered,
                     item.Simplified_Services, item.Area_of_Operation, item.Regional_Operation,
                     item.Specified_Areas_of_Operation, item.Mode_of_Delivery, item.Clientele, item.Registration_ID,
-                    item.Registration_Date, item.Registration_Expiration, item.Registration_Status, item.License_ID,
+                    item.Registration_Date, item.Registration_Expiration, item.Registration_Status, item.Licensed_ID,
                     item.License_Date_Issued, item.License_Expiration, item.License_Status, item.Accreditation_ID,
                     item.Accreditation_Date_Issued, item.Accreditation_Expiration, item.Accreditation_Status,
                     item.Remarks, item.License_Days_Left, item.Licensure_Overdue, item.Accreditation_Days_Left,
