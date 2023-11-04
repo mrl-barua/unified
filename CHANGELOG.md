@@ -1,7 +1,5 @@
 # UNIFIED CHANGELOGS
 
-##
-
 ## version 0.1 Setup environment (VueJS) - MARLO BARUA
 
 ## version 0.2 install packages (bootstrap, axios) - MARLO BARUA
