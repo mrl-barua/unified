@@ -16,11 +16,18 @@ import SLP_CBA from '../views/User/SLP_CBA.vue'
 
 
 import AdminDashboard from '../views/Admin/AdminDashboard.vue'
+
+
 import AdminHR from '../views/Admin/AdminHR.vue'
+import AdminHRACreate from '../views/Admin/CRUD_Pages/AdminHRCreate'
+import AdminHREdit from '../views/Admin/CRUD_Pages/AdminHREdit'
+
+
 import AdminSLP from '../views/Admin/AdminSLP.vue'
 import AdminOSP from '../views/Admin/AdminOSP.vue'
-import AdminSWDA from '../views/Admin/AdminSWDA.vue'
 
+
+import AdminSWDA from '../views/Admin/AdminSWDA.vue'
 import AdminSWDACreate from '../views/Admin/CRUD_Pages/AdminSWDACreate'
 import AdminSWDAEdit from '../views/Admin/CRUD_Pages/AdminSWDAEdit'
 
@@ -100,12 +107,35 @@ const routes = [
     beforeEnter: adminRequireAuth,
   },
 
+
+
+
+
   {
     path: '/adminhr',
     name: 'adminhr',
     component: AdminHR,
     beforeEnter: adminRequireAuth,
   },
+
+
+  {
+    path: '/adminhr/create',
+    name: 'AdminHRCreate',
+    component: AdminHRACreate,
+    beforeEnter: adminRequireAuth,
+  },
+
+  {
+    path: '/adminhr/:ID/edit',
+    name: 'AdminHREdit',
+    component: AdminHREdit,
+    beforeEnter: adminRequireAuth,
+  },
+
+
+
+
 
   {
     path: '/adminslp',
@@ -120,6 +150,11 @@ const routes = [
     component: AdminOSP,
     beforeEnter: adminRequireAuth,
   },
+
+
+
+
+
 
   {
     path: '/adminswda',
@@ -141,6 +176,8 @@ const routes = [
     component: AdminSWDAEdit,
     beforeEnter: adminRequireAuth,
   },
+
+
   // ADMIN DASHBOARD END
 
 
