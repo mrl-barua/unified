@@ -749,6 +749,8 @@ export default {
             Accreditation_Days_Left: "",
             Accreditation_Overdue: "",
           };
+
+          window.location.reload(); // RELOAD THE PAGE TO REMOVE THE ERRORS
         })
         .catch(function (error) {
           if (error.response) {

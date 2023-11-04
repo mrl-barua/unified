@@ -201,14 +201,14 @@
                 <td>
                   <router-link
                     :to="{ path: '/adminhr/' + item.ID + '/edit' }"
-                    class="btn btn-success col-12 mb-1 mt-3"
+                    class="btn btn-success col-12 mb-1 mt-1"
                   >
                     EDIT
                   </router-link>
                   <button
                     type="button"
                     @click="deleteHr(item.ID)"
-                    class="btn btn-danger col-12 mb-3"
+                    class="btn btn-danger col-12 mb-1"
                   >
                     DELETE
                   </button>
