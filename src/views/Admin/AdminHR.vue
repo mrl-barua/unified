@@ -139,8 +139,8 @@
                       <td>{{ item.HIGHEST_EDUCATION_COMPLETED }}</td>
                       <td>{{ item.DEGREE_AND_COURSE_1st_Course_Vocational }}</td>
                       <td>{{ item.DEGREE_AND_COURSE_2nd_Course }}</td>
-                      <td>{{ item.OTHER_COURSE_S }}</td>
-                      <td>{{ item.MASTERS_OR_DOCTORAL_DEGREE_Specify }}</td>
+                      <td>{{ item.OTHER_COURSE }}</td>
+                      <td>{{ item.MASTERS_OR_DOCTORAL_DEGREE }}</td>
                       <td>{{ item.GENDER }}</td>
                       <td>{{ item.DATE_OF_BIRTH }}</td>
                       <td>{{ item.AGE }}</td>
@@ -172,12 +172,12 @@
                       <td>{{ item.BIR_TIN_NO }}</td>
                       <td>{{ item.PHILHEALTH_NUMBER }}</td>
                       <td>{{ item.SSS_NUMBER }}</td>
-                      <td>{{ item.PAG_IBIG_NUMBER }}</td>
+                      <td>{{ item.PAGIBIG_NUMBER }}</td>
                       <td>{{ item.GSIS_NUMBER }}</td>
                       <td>{{ item.BLOOD_TYPE }}</td>
-                      <td>{{ item.HIGHEST_ELIGIBILITY }}</td>
-                      <td>{{ item.HIGHEST_LEVEL_ELIGIBILITY }}</td>
-                      <td>{{ item.ELIGIBILITY }}</td>
+                      <td>{{ item.HIGHEST_LEVEL_OF_ELIGIBILITY_1ST_AND_2ND }}</td>
+                      <td>{{ item.HIGHEST_LEVEL__ELIGIBILITY_1ST_AND_2ND }}</td>
+                      <td>{{ item.ELIGIBILITY_CSC_and_other_eligibilities  }}</td>
                       <td>
                           <router-link :to="{ path: '/adminhr/' + item.ID + '/edit' }" class="btn btn-success col-12 mb-1 mt-3 ">
                               EDIT
@@ -278,17 +278,17 @@
                 'ID',
                 'DIVISION',
                 'SECTION/UNIT',
-                'OFFICE_LOCATION',
-                'ITEM_NUMBER',
-                'DATE_POSITION',
-                'POSITION_TITLE',
-                'PARENTHETICAL_TITLE',
+                'OFFICE LOCATION',
+                'ITEM NUMBER',
+                'DATE POSITION',
+                'POSITION TITLE',
+                'PARENTHETICAL TITLE',
                 'POSITION_LEVEL',
                 'SG',
-                'SALARY_STEP_INCREMENT',
+                'SALARY STEP INCREMENT',
                 'MONTHLY_RATE',
                 'DESIGNATION',
-                'DATE_OF_DESIGNATION',
+                'DATE OF DESIGNATION',
                 'SPECIAL_ORDER_NO.',
                 'OFFICE_BUREAU_SERVICE_PROGRAM',
                 'FUND_SOURCE_FOR_CONTRACTUAL',
@@ -432,9 +432,9 @@
                   item.PAG_IBIG_NUMBER,
                   item.GSIS_NUMBER,
                   item.BLOOD_TYPE,
-                  item.HIGHEST_ELIGIBILITY,
-                  item.HIGHEST_LEVEL_ELIGIBILITY,
-                  item.ELIGIBILITY
+                  item.HIGHEST_LEVEL_OF_ELIGIBILITY_1ST_AND_2ND,
+                  item.HIGHEST_LEVEL__ELIGIBILITY_1ST_AND_2ND,
+                  item.ELIGIBILITY_CSC_and_other_eligibilities
                 ];
 
 
@@ -527,9 +527,6 @@
   font-size: 12px; /* Adjust the font size as needed */
   padding: 10px 30px 10px 30px;
 }
-
-
-
 
 
 .row-max-height {

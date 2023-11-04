@@ -98,4 +98,4 @@
 
 ## version 4.2 Added EXPORT TO EXCEL Function in AdminSWDA - MARLO BARUA
 
-## version 4.2 Added Fetch Table in AdminHR including EXPORT DATA and DELETE DATA
+## version 4.2 Added Fetch Table in AdminHR including EXPORT DATA and DELETE DATA - MARLI BARUA

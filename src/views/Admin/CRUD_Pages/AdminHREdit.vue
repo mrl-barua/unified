@@ -14,9 +14,12 @@ export default {
     name: 'AdminHrEdit',
     components: {
             AdminSidebar,
-},
+    },
     data() {
-        PageTitle: "ADMIN HR > EDIT"
+        return{
+            PageTitle: "ADMIN HR > EDIT"
+        }
+        
     }
 }
 

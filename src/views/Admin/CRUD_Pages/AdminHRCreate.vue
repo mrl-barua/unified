@@ -1,6 +1,6 @@
 <template>
 <br><br><br><br>
- <AdminSidebar :iconText="PageTitle" />
+ <AdminSidebar :iconText="PageTitle"  />
     <div>
         TEST ADMIN CREATE
     </div>
@@ -17,7 +17,9 @@ export default {
     },
 
     data() {
-        PageTitle: "ADMIN HR > ADD"
+          return {
+      PageTitle: "ADMIN HR > ADD"
+    };
     }
 }
 </script>
