@@ -1,6 +1,6 @@
 # UNIFIED CHANGELOGS
 
-## 
+##
 
 ## version 0.1 Setup environment (VueJS) - MARLO BARUA
 
@@ -28,7 +28,7 @@
 
 ## version 1.1.1 Fix the footer in Login Page and Input details in SWDA Dashboard - MARLO BARUA
 
-## version 1.2  Added EMPLOYMENT DATA on OSP Dashboard- MARA SUERTE
+## version 1.2 Added EMPLOYMENT DATA on OSP Dashboard- MARA SUERTE
 
 ## version 1.2.1 change description on LOG IN Form- MARA SUERTE
 
@@ -90,7 +90,7 @@
 
 ## version 3.8 Design Partially the SWDA and SWDA Add View - MARLO BARUA
 
-## version 3.9  Added in filteredAgencies() under SWDA and SWDAW Agencies View in which If agency or agency.Agency is null or undefined, it will exclude it - MARLO BARUA
+## version 3.9 Added in filteredAgencies() under SWDA and SWDAW Agencies View in which If agency or agency.Agency is null or undefined, it will exclude it - MARLO BARUA
 
 ## version 4.0 Added DELETE function in AdminSWDA - MARLO BARUA
 
@@ -98,4 +98,6 @@
 
 ## version 4.2 Added EXPORT TO EXCEL Function in AdminSWDA - MARLO BARUA
 
-## version 4.2 Added Fetch Table in AdminHR including EXPORT DATA and DELETE DATA - MARLI BARUA
+## version 4.2 Added Fetch Table in AdminHR including EXPORT DATA and DELETE DATA - MARLO BARUA
+
+## version 4.3 Implented Code Formatter which is Prettier for consistent codebase implementation - MARLO BARUA
