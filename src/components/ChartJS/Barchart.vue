@@ -1,23 +1,38 @@
 <template>
-<div class="chart-container">
-  <Bar :options="chartOptions" :data="chartData" />
-</div>
+  <div class="chart-container">
+    <Bar :options="chartOptions" :data="chartData" />
+  </div>
 </template>
 
 <script>
-import { Bar } from 'vue-chartjs'
-import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
+import { Bar } from "vue-chartjs";
+import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
+  BarElement,
+  CategoryScale,
+  LinearScale,
+} from "chart.js";
 
-ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
+ChartJS.register(
+  Title,
+  Tooltip,
+  Legend,
+  BarElement,
+  CategoryScale,
+  LinearScale
+);
 
 export default {
-  name: 'BarChart',
+  name: "BarChart",
   components: { Bar },
   props: {
     data: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
@@ -25,7 +40,7 @@ export default {
       chartOptions: {
         responsive: true,
       },
-    }
+    };
   },
   methods: {
     prepareChartData(data) {
@@ -44,7 +59,6 @@ export default {
   },
 };
 </script>
-
 
 <style scoped>
 .chart-container {

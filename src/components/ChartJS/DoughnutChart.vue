@@ -1,47 +1,43 @@
 <template>
   <div class="chart-container">
-    <Doughnut
-      :options="chartOptions"
-      :data="chartData"
-    />
+    <Doughnut :options="chartOptions" :data="chartData" />
   </div>
-  </template>
-  
-  <script>
-  import { Doughnut } from 'vue-chartjs'
-  import { Chart as ChartJS, Title, Tooltip, Legend, ArcElement } from 'chart.js'
-  
-  ChartJS.register(Title, Tooltip, Legend, ArcElement)
-  
-  export default {
-    name: 'DoughnutChart',
-    components: { Doughnut },
-    props: {
-      data: {
-        type: Object,
-        required: true
-      }, 
-      legendOptions: {
+</template>
+
+<script>
+import { Doughnut } from "vue-chartjs";
+import { Chart as ChartJS, Title, Tooltip, Legend, ArcElement } from "chart.js";
+
+ChartJS.register(Title, Tooltip, Legend, ArcElement);
+
+export default {
+  name: "DoughnutChart",
+  components: { Doughnut },
+  props: {
+    data: {
+      type: Object,
+      required: true,
+    },
+    legendOptions: {
       type: Object, // Define a prop for legend options
       default: () => ({
-        position: 'top', // Default legend position
-
+        position: "top", // Default legend position
       }),
     },
-    },
-    data() {
-      return {
-        chartData: this.prepareChartData(this.data),
-        chartOptions: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
+  },
+  data() {
+    return {
+      chartData: this.prepareChartData(this.data),
+      chartOptions: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
           legend: this.legendOptions, // Use the prop for legend options
         },
-        },
-      };
-    },
-    methods: {
+      },
+    };
+  },
+  methods: {
     prepareChartData(data) {
       // You can modify this function to format the data as needed for the chart.
       return {
@@ -56,8 +52,8 @@
       };
     },
   },
-  };
-  </script>
+};
+</script>
 
 <style scoped>
 .chart-container {
