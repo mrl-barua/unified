@@ -126,9 +126,9 @@
       <div class="agencies col-12 col-md-6 col-lg-3">
         <div class="shadow">
           <h4>ACTIVE AGENCIES</h4>
-          <p class="col-4">Registered</p>
-          <p class="col-4">Licensed</p>
-          <p class="col-4">Accredited</p>
+          <p class="col-4 textAgencies">Registered</p>
+          <p class="col-4 textAgencies">Licensed</p>
+          <p class="col-4 textAgencies">Accredited</p>
           <div class="col-4">
             <span id="active-registered" class="active-agencies">
               {{ activeRegisteredCount }}
@@ -150,10 +150,10 @@
       <div class="agencies col-12 col-md-6 col-lg-4">
         <div class="shadow">
           <h4>EXPIRED AGENCIES</h4>
-          <p class="col-3">Registered</p>
-          <p class="col-3">Licensed</p>
-          <p class="col-3">Accreditation</p>
-          <p class="col-3">Delisted</p>
+          <p class="col-3 textAgencies">Registered</p>
+          <p class="col-3 textAgencies">Licensed</p>
+          <p class="col-3 textAgencies">Accreditation</p>
+          <p class="col-3 textAgencies">Delisted</p>
 
           <div class="col-3">
             <span id="expired-registered" class="expired-agencies">
@@ -178,13 +178,13 @@
         </div>
       </div>
 
-      <div class="agencies col-12 col-md-6 col-lg-4">
+      <div class="agencies col-12 col-md-6 col-lg-5">
         <div class="shadow">
           <h4>MODE OF DELIVERY</h4>
-          <p class="col-3">Community</p>
-          <p class="col-3">Auxillary SWDA</p>
-          <p class="col-3">Residential</p>
-          <p class="col-3">Non-Residential</p>
+          <p class="col-3 textAgencies">Community</p>
+          <p class="col-3 textAgencies">Auxillary SWDA</p>
+          <p class="col-3 textAgencies">Residential</p>
+          <p class="col-3 textAgencies">Non-Residential</p>
 
           <div class="col-3">
             <span id="community-based" class="modeDelivery">
@@ -209,9 +209,9 @@
         </div>
       </div>
 
-      <div class="agencies col-12 col-md-6 col-lg-1">
-        <div class="shadow">
-          <h5>Number of Agencies</h5>
+      <div class="agencies col-12 col-md-12">
+        <div class="agencyNumbers">
+          <h5>NUMBER OF AGENCIES</h5>
           <br />
 
           <p class="col-12">
@@ -724,7 +724,7 @@ export default {
         });
     },
 
-    // NEED FIXINGS
+    //! NEED FIXINGS
     ClienteleFetchData() {
       return axios
         .get("http://127.0.0.1:8000/api/clientele")
@@ -796,6 +796,14 @@ export default {
 .filters {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   height: 18em;
+  border-radius: 20px;
+  margin: 10px 10px 10px 10px;
+  padding: 10px 0px 130px 0px;
+}
+
+.agencyNumbers {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  height: 1em;
   border-radius: 20px;
   margin: 10px 10px 10px 10px;
   padding: 10px 0px 130px 0px;
@@ -958,5 +966,9 @@ export default {
   letter-spacing: 0em;
   text-align: center;
   margin: 20px 0px 20px 0px;
+}
+
+.textAgencies {
+  font-size: 15px;
 }
 </style>

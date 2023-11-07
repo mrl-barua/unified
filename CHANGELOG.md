@@ -99,3 +99,7 @@
 ## version 4.2 Added Fetch Table in AdminHR including EXPORT DATA and DELETE DATA - MARLO BARUA
 
 ## version 4.3 Implented Code Formatter which is Prettier for consistent codebase implementation - MARLO BARUA
+
+## version 4.4 Fixed the issue regarding error still showing up after creating a data in SWDA ADMIN PAGE - MARLO BARUA
+
+## version 4.5 Added js bundled build configuration in vite.config,js and Fix some aspect ratios in AdminSideBar, Swda and LoginForm - MARLO BARUA

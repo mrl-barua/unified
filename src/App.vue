@@ -53,7 +53,7 @@ export default {
 
 [class*="col-"] {
   float: left;
-  /* border:1px solid red;   */
+  /* border: 1px solid red; */
 }
 
 .row::after {

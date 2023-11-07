@@ -269,8 +269,12 @@ export default {
   background: linear-gradient(to right, white 15%, #ee1c25 85%);
   z-index: 999;
   margin-top: -60px;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
   padding: 0;
+
+  @media only screen and (min-width: 1680px) {
+    margin-bottom: 20px;
+  }
 }
 
 .headerComponent img {
