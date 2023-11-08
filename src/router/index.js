@@ -31,6 +31,8 @@ import AdminSWDA from '../views/Admin/AdminSWDA.vue'
 import AdminSWDACreate from '../views/Admin/CRUD_Pages/AdminSWDACreate'
 import AdminSWDAEdit from '../views/Admin/CRUD_Pages/AdminSWDAEdit'
 
+import SettingDashboard from '../views/Admin/Settings_Pages/SettingDashboard'
+
 import ERROR from '../views/404.vue' // Import the 404 Error Page
 import { userIsAuthenticated } from '../auth'; // Import the user authentication function
 import { adminIsAuthenticated } from '../auth'; // Import the admin authentication function
@@ -85,13 +87,13 @@ const routes = [
         // Allow access to the route
         next();
       }
-      else if(adminIsAuthenticated()){
-          // Admin is authenticated, clear the token in localStorage
-          sessionStorage.removeItem('admin');
-          // Allow access to the route
-          next();
+      else if (adminIsAuthenticated()) {
+        // Admin is authenticated, clear the token in localStorage
+        sessionStorage.removeItem('admin');
+        // Allow access to the route
+        next();
       }
-       else {
+      else {
         // User is not authenticated, proceed to the login page
         logout();
         next();
@@ -178,6 +180,13 @@ const routes = [
   },
 
 
+  {
+    path: '/adminSettings',
+    name: 'SettingDashboard',
+    component: SettingDashboard,
+    beforeEnter: adminRequireAuth,
+  },
+
   // ADMIN DASHBOARD END
 
 
@@ -263,7 +272,7 @@ const routes = [
 
   // USER DASHBOARD END
 
-    //catch-all route for 404 errors
+  //catch-all route for 404 errors
   {
     path: '/:catchAll(.*)', // Matches any URL
     name: 'error',

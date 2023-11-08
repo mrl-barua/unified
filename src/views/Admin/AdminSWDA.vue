@@ -137,9 +137,9 @@
                   <button
                     type="button"
                     @click="deleteSwda(item.ID)"
-                    class="btn btn-danger col-12 mb-1"
+                    class="btn btn-warning col-12 mb-1"
                   >
-                    DELETE
+                    ARCHIVE
                   </button>
                 </td>
               </tr>
@@ -354,7 +354,7 @@ export default {
 
     deleteSwda(SwdaID) {
       // console.log(SwdaID);
-      if (confirm("Are you sure, you want to delete this data?")) {
+      if (confirm("Are you sure, you want to archive this data?")) {
         axios
           .delete(`http://127.0.0.1:8000/api/swdalist/${SwdaID}/delete`)
           .then((res) => {

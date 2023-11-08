@@ -105,3 +105,5 @@
 ## version 4.5 Added js bundled build configuration in vite.config,js and Fix some aspect ratios in AdminSideBar, Swda and LoginForm - MARLO BARUA
 
 ## version 4.6 Added Sector and Clientele Fetch with filtered data in SWDA - MARLO BARUA
+
+## version 4.7 Configured Auth.js, Added ADMIN SETTINGS view - MARLO BARUA

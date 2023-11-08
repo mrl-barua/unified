@@ -60,12 +60,14 @@
               </router-link>
             </ul>
             <div class="bottom-cotent">
-              <li class="list">
-                <a href="#" class="nav-link">
-                  <i class="bx bx-cog icon"></i>
-                  <span class="link">Settings</span>
-                </a>
-              </li>
+              <router-link to="/adminSettings" class="custom-link">
+                <li class="list">
+                  <a href="#" class="nav-link">
+                    <i class="bx bx-cog icon"></i>
+                    <span class="link">Settings</span>
+                  </a>
+                </li>
+              </router-link>
               <li class="list">
                 <div @click="logout" class="nav-link">
                   <i class="bx bx-log-out icon"></i>
