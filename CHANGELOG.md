@@ -107,3 +107,5 @@
 ## version 4.6 Added Sector and Clientele Fetch with filtered data in SWDA - MARLO BARUA
 
 ## version 4.7 Configured Auth.js, Added ADMIN SETTINGS view - MARLO BARUA
+
+## version 4.8 Adjust padding and styling in AdminSidebar, Sidebar, 404, and LoginForm components - MARLO BARUA
