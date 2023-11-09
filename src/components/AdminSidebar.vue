@@ -211,7 +211,7 @@ nav.open .sidebar {
   height: 100%;
   flex-direction: column;
   justify-content: space-between;
-  padding: 30px 16px;
+  padding: 0px 16px 30px 16px;
 }
 .sidebar-content .list {
   list-style: none;

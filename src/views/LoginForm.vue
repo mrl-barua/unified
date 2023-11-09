@@ -416,12 +416,12 @@ img {
   position: relative;
 }
 .login .container h1 {
-  margin-top: 60px;
+  margin-top: 70px;
   font-size: 45px;
   font-weight: bolder;
 }
 .login .container .login-form {
-  margin-top: 112px;
+  margin-top: 50px;
 }
 .login .container .login-form form {
   display: -ms-grid;
