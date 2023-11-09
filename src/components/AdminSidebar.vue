@@ -60,12 +60,14 @@
               </router-link>
             </ul>
             <div class="bottom-cotent">
-              <li class="list">
-                <a href="#" class="nav-link">
-                  <i class="bx bx-cog icon"></i>
-                  <span class="link">Settings</span>
-                </a>
-              </li>
+              <router-link to="/adminSettings" class="custom-link">
+                <li class="list">
+                  <a href="#" class="nav-link">
+                    <i class="bx bx-cog icon"></i>
+                    <span class="link">Settings</span>
+                  </a>
+                </li>
+              </router-link>
               <li class="list">
                 <div @click="logout" class="nav-link">
                   <i class="bx bx-log-out icon"></i>
@@ -209,7 +211,7 @@ nav.open .sidebar {
   height: 100%;
   flex-direction: column;
   justify-content: space-between;
-  padding: 30px 16px;
+  padding: 0px 16px 30px 16px;
 }
 .sidebar-content .list {
   list-style: none;

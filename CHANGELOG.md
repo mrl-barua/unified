@@ -103,3 +103,9 @@
 ## version 4.4 Fixed the issue regarding error still showing up after creating a data in SWDA ADMIN PAGE - MARLO BARUA
 
 ## version 4.5 Added js bundled build configuration in vite.config,js and Fix some aspect ratios in AdminSideBar, Swda and LoginForm - MARLO BARUA
+
+## version 4.6 Added Sector and Clientele Fetch with filtered data in SWDA - MARLO BARUA
+
+## version 4.7 Configured Auth.js, Added ADMIN SETTINGS view - MARLO BARUA
+
+## version 4.8 Adjust padding and styling in AdminSidebar, Sidebar, 404, and LoginForm components - MARLO BARUA
