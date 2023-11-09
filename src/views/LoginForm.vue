@@ -203,50 +203,7 @@ export default {
 
 <style scoped>
 .lead {
-  padding: 0px 60px 0px 60px;
-}
-
-.carousel {
-  position: relative;
-  top: 0; /* Reset the top position */
-  margin: 0 auto; /* Center the element horizontally */
-  border-radius: 20px;
-  /* padding-top: 10px;  */
-  padding-bottom: 10px;
-  width: 100%; /* Set a default width */
-  visibility: hidden;
-
-  @media only screen and (min-width: 400px) {
-    width: 60%;
-  }
-
-  @media only screen and (min-width: 504px) {
-    width: 50%;
-  }
-
-  @media only screen and (min-width: 524px) {
-    width: 50%;
-  }
-
-  @media only screen and (min-width: 590px) {
-    width: 50%;
-    margin-left: 10px; /* Adjust margin if necessary */
-  }
-
-  @media only screen and (min-width: 720px) {
-    width: 38%;
-    margin-left: 10px; /* Adjust margin if necessary */
-  }
-
-  @media only screen and (min-width: 1024px) {
-    visibility: visible;
-    padding-top: 40px;
-    margin-left: 20px; /* Adjust margin if necessary */
-    width: 90%;
-  }
-
-  @media only screen and (min-width: 1244px) {
-  }
+  padding: 0px 60px 0px 80px;
 }
 
 * {
@@ -356,14 +313,58 @@ img {
     height: 100vh;
   }
 }
+
+#carouselExampleIndicators {
+  width: 85%;
+  margin: auto;
+}
+
+.carousel {
+  position: relative;
+  top: 0; /* Reset the top position */
+  margin: 0 auto; /* Center the element horizontally */
+  border-radius: 20px;
+  /* padding-top: 10px;  */
+  padding-bottom: 10px;
+  width: 100%; /* Set a default width */
+  visibility: hidden;
+
+  @media only screen and (min-width: 400px) {
+    width: 60%;
+  }
+
+  @media only screen and (min-width: 504px) {
+    width: 50%;
+  }
+
+  @media only screen and (min-width: 524px) {
+    width: 50%;
+  }
+
+  @media only screen and (min-width: 590px) {
+    width: 50%;
+    margin-left: 10px; /* Adjust margin if necessary */
+  }
+
+  @media only screen and (min-width: 720px) {
+    width: 38%;
+    margin-left: 10px; /* Adjust margin if necessary */
+  }
+
+  @media only screen and (min-width: 1024px) {
+    visibility: visible;
+    padding-top: 40px;
+    margin-left: 20px; /* Adjust margin if necessary */
+    width: 90%;
+  }
+
+  @media only screen and (min-width: 1244px) {
+  }
+}
+
 .bg-illustration img {
-  width: 248px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  height: auto;
-  margin: 19px 0 0 25px;
+  margin: 30px 0 0 0px;
+  border-radius: 5%;
 }
 
 .DSWDLogo img {
