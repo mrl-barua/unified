@@ -364,7 +364,7 @@ img {
 
 .bg-illustration img {
   margin: 30px 0 0 0px;
-  border-radius: 5%;
+  border-radius: 2%;
 }
 
 .DSWDLogo img {
