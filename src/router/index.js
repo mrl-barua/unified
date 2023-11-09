@@ -30,6 +30,8 @@ import AdminOSP from '../views/Admin/AdminOSP.vue'
 import AdminSWDA from '../views/Admin/AdminSWDA.vue'
 import AdminSWDACreate from '../views/Admin/CRUD_Pages/AdminSWDACreate'
 import AdminSWDAEdit from '../views/Admin/CRUD_Pages/AdminSWDAEdit'
+import AdminSWDAView from '../views/Admin/CRUD_Pages/AdminSwdaView'
+
 
 import SettingDashboard from '../views/Admin/Settings_Pages/SettingDashboard'
 
@@ -171,6 +173,15 @@ const routes = [
     component: AdminSWDACreate,
     beforeEnter: adminRequireAuth,
   },
+
+
+  {
+    path: '/adminswda/:ID/view',
+    name: 'AdminSWDAView',
+    component: AdminSWDAView,
+    beforeEnter: adminRequireAuth,
+  },
+
 
   {
     path: '/adminswda/:ID/edit',

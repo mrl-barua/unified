@@ -6,9 +6,18 @@ import 'bootstrap/dist/js/bootstrap.bundle'; // Import Bootstrap JavaScript
 import { Chart } from 'vue-chartjs'
 
 
+// Import DataTables
+import 'datatables.net-bs5/css/dataTables.bootstrap5.css'
+import 'datatables.net-bs5/css/dataTables.bootstrap5.min.css'
+import 'datatables.net-bs5/js/dataTables.bootstrap5.js'
+import 'datatables.net-bs5/js/dataTables.bootstrap5.min.js'
+import 'datatables.net-bs5/js/dataTables.bootstrap5.min.mjs'
+import 'datatables.net-bs5/js/dataTables.bootstrap5.min.mjs'
 
-
-
+import 'datatables.net/js/jquery.dataTables'
+// import 'datatables.net/js/jquery.dataTables.min.js'
+// import 'datatables.net/js/jquery.dataTables.min.mjs'
+// import 'datatables.net/js/jquery.dataTables.mjs'
 
 
 

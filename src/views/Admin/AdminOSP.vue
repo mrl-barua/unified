@@ -3,40 +3,89 @@
     <AdminSidebar />
     <br /><br /><br /><br />
     <div class="container-fluid wrapper">
-      <h1>ADMIN OSP DASHBOARD</h1>
+      <div class="card">
+        <div class="card-header">
+          <router-link
+            to="/adminswda/create"
+            class="btn btn-primary float-start"
+            style="
+              background-color: #133f5c;
+              font-size: 12px; /* Adjust the font size as needed */
+              padding: 10px 30px 10px 30px;
+            "
+          >
+            ADD NEW
+          </router-link>
 
-      <DataTable style="width: 100%" class="display">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Type</th>
-            <th>Sector</th>
-            <th>Cluster</th>
-            <th>Agency</th>
-            <th>Address</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="item in swda" :key="item.ID">
-            <td>{{ item.ID }}</td>
-            <td>{{ item.Type }}</td>
-            <td>{{ item.Sector }}</td>
-            <td>{{ item.Cluster }}</td>
-            <td>{{ item.Agency }}</td>
-            <td>{{ item.Address }}</td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <th>ID</th>
-            <th>Type</th>
-            <th>Sector</th>
-            <th>Cluster</th>
-            <th>Agency</th>
-            <th>Address</th>
-          </tr>
-        </tfoot>
-      </DataTable>
+          <button
+            @click="exportToExcel"
+            class="btn btn-primary float-end"
+            style="
+              background-color: Green;
+              font-size: 12px; /* Adjust the font size as needed */
+              padding: 10px 30px 10px 30px;
+            "
+          >
+            EXPORT DATA
+          </button>
+        </div>
+        <div class="card-body">
+          <DataTable
+            v-if="this.swda.length > 0"
+            style="width: 100%"
+            class="display stripe order-column cell-border hover compact"
+            id="swdaTable"
+          >
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Type</th>
+                <th>Sector</th>
+                <th>Cluster</th>
+                <th>Agency</th>
+                <th>Address</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="item in swda" :key="item.ID">
+                <td>{{ item.ID }}</td>
+                <td>{{ item.Type }}</td>
+                <td>{{ item.Sector }}</td>
+                <td>{{ item.Cluster }}</td>
+                <td>{{ item.Agency }}</td>
+                <td>{{ item.Address }}</td>
+                <td>
+                  <i class="bx bx-low-vision table-icon custom-link"></i>
+                  <router-link
+                    :to="{ path: '/adminswda/' + item.ID + '/edit' }"
+                    class="custom-link"
+                  >
+                    <i class="bx bx-edit icon table-icon"></i>
+                  </router-link>
+                  <i
+                    @click="deleteSwda(item.ID)"
+                    class="bx bx-archive-in icon table-icon custom-link"
+                  ></i>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th>ID</th>
+                <th>Type</th>
+                <th>Sector</th>
+                <th>Cluster</th>
+                <th>Agency</th>
+                <th>Address</th>
+                <th>Actions</th>
+              </tr>
+            </tfoot>
+          </DataTable>
+        </div>
+      </div>
+
+      <br /><br />
     </div>
   </div>
 </template>
@@ -49,7 +98,7 @@ import BarChart from "@/components/ChartJS/Barchart";
 
 import DataTable from "datatables.net-vue3";
 import DataTablesCore from "datatables.net";
-// import "datatables.net-responsive";
+import "datatables.net-responsive";
 DataTable.use(DataTablesCore);
 
 export default {
@@ -69,6 +118,8 @@ export default {
   mounted() {
     this.getSwda();
   },
+
+  created() {},
   methods: {
     getSwda() {
       axios.get("http://127.0.0.1:8000/api/swdalist").then((res) => {
@@ -84,12 +135,24 @@ export default {
 @import "datatables.net-dt";
 @import "datatables.net-bs5";
 
+.dataTables_paginate a {
+  color: black !important;
+}
+
+div.dataTables_wrapper a.paginate_button {
+  color: black !important;
+}
+
 * {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: left;
-  color: #2c3e50;
-  margin: 0;
+  text-align: justify;
+}
+
+.table-icon {
+  margin: 0px 3px 0px 3px;
+}
+
+.custom-link {
+  text-decoration: none !important;
+  color: black;
 }
 </style>
