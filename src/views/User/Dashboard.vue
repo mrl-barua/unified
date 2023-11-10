@@ -56,6 +56,8 @@
 
 <script>
 import axios from "axios";
+import { backendURL } from "@/config.js";
+
 import Footer from "@/components/Footer";
 import Sidebar from "@/components/Sidebar";
 import BarChart from "@/components/ChartJS/Barchart";
@@ -77,7 +79,7 @@ export default {
   methods: {
     ClusterFetchData() {
       return axios
-        .get("http://127.0.0.1:8000/api/cluster")
+        .get(`${backendURL}/api/cluster`)
         .then((response) => {
           // Initialize data arrays
           const southCluster = [];

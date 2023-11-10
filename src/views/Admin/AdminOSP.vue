@@ -92,6 +92,7 @@
 
 <script>
 import axios from "axios";
+import { backendURL } from "@/config.js";
 import Footer from "@/components/Footer";
 import AdminSidebar from "@/components/AdminSidebar";
 import BarChart from "@/components/ChartJS/Barchart";
@@ -122,7 +123,7 @@ export default {
   created() {},
   methods: {
     getSwda() {
-      axios.get("http://127.0.0.1:8000/api/swdalist").then((res) => {
+      axios.get(`${backendURL}/api/swdalist`).then((res) => {
         this.swda = res.data.Swda;
         console.log(res);
       });

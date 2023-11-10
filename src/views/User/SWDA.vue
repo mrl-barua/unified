@@ -353,6 +353,7 @@
 
 <script>
 import axios from "axios";
+import { backendURL } from "@/config.js";
 import Sidebar from "@/components/Sidebar.vue";
 import Footer from "@/components/Footer";
 import BarChart from "@/components/ChartJS/Barchart";
@@ -413,7 +414,7 @@ export default {
   created() {
     // Fetch data and populate the agencies array (NEW)
     axios
-      .get("http://127.0.0.1:8000/api/agenciesName")
+      .get(`${backendURL}/api/agenciesName`)
       .then((response) => {
         this.agencies = response.data["Swda Agencies"]; // Access data within the 'Swda Agencies' property
       })
@@ -443,7 +444,7 @@ export default {
     // *ALREADY FUNCTIONAL
     ClusterFetchData() {
       return axios
-        .get("http://127.0.0.1:8000/api/cluster")
+        .get(`${backendURL}/api/cluster`)
         .then((response) => {
           // Initialize data arrays
           const southCluster = [];
@@ -557,7 +558,7 @@ export default {
     // *ALREADY FUNCTIONAL
     RegionFetchData() {
       return axios
-        .get("http://127.0.0.1:8000/api/regionaloperation")
+        .get(`${backendURL}/api/regionaloperation`)
         .then((response) => {
           // Initialize data arrays
           const davaoCity = [];
@@ -659,7 +660,7 @@ export default {
     // *ALREADY FUNCTIONAL
     AgencyFetchData() {
       return axios
-        .get("http://127.0.0.1:8000/api/agencies")
+        .get(`${backendURL}/api/agencies`)
         .then((response) => {
           // Initialize arrays for active and expired agencies
           const activeRegistered = [];
@@ -733,7 +734,7 @@ export default {
     // *ALREADY FUNCTIONAL
     SectorFetchData() {
       return axios
-        .get("http://127.0.0.1:8000/api/sector")
+        .get(`${backendURL}/api/sector`)
         .then((response) => {
           // Initialize arrays for active and expired agencies
           const children = [];
@@ -890,7 +891,7 @@ export default {
     // ! NEED FIXING BEFORE DEPLOYING
     ClienteleFetchData() {
       return axios
-        .get("http://127.0.0.1:8000/api/clientele")
+        .get(`${backendURL}/api/clientele`)
         .then((response) => {
           // Initialize arrays for active and expired agencies
           const childrenclientele = [];
