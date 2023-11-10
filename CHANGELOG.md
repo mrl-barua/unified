@@ -107,3 +107,9 @@
 ## version 4.6 Change the Login Screen - MARLO BARUA
 
 ## version 4.7 Update backend URLs and Vite dev script - MARLO BARUA
+
+## version 4.8 Added Sector and Clientele Fetch with filtered data in SWDA - MARLO BARUA
+
+## version 4.9 Configured Auth.js, Added ADMIN SETTINGS view - MARLO BARUA
+
+## version 4.10 Adjust padding and styling in AdminSidebar, Sidebar, 404, and LoginForm components - MARLO BARUA
