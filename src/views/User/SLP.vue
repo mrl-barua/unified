@@ -113,6 +113,7 @@
 
 <script>
 import axios from "axios";
+import { backendURL } from "@/config.js";
 import Sidebar from "@/components/Sidebar.vue";
 import Footer from "@/components/Footer";
 import BarChart from "@/components/ChartJS/Barchart";

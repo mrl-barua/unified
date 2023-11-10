@@ -66,6 +66,7 @@
 
 <script>
 import axios from "axios";
+import { backendURL } from "@/config.js";
 import Sidebar from "@/components/Sidebar.vue";
 import Footer from "@/components/Footer";
 import BarChart from "@/components/ChartJS/Barchart";
@@ -126,7 +127,7 @@ export default {
   methods: {
     EmploymentFetchData() {
       return axios
-        .get("http://127.0.0.1:8000/api/employmentStatus")
+        .get(`${backendURL}/api/employmentStatus`)
         .then((response) => {
           // Initialize data arrays
           const moa = [];

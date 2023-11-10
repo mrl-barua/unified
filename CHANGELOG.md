@@ -103,3 +103,7 @@
 ## version 4.4 Fixed the issue regarding error still showing up after creating a data in SWDA ADMIN PAGE - MARLO BARUA
 
 ## version 4.5 Added js bundled build configuration in vite.config,js and Fix some aspect ratios in AdminSideBar, Swda and LoginForm - MARLO BARUA
+
+## version 4.6 Change the Login Screen - MARLO BARUA
+
+## version 4.7 Update backend URLs and Vite dev script - MARLO BARUA

@@ -99,6 +99,7 @@
 
 <script>
 import axios from "axios";
+import { backendURL } from "@/config.js";
 import Footer from "@/components/Footer";
 import AdminSidebar from "@/components/AdminSidebar";
 import BarChart from "@/components/ChartJS/Barchart";
@@ -242,7 +243,7 @@ export default {
       });
     },
     getSwda() {
-      axios.get("http://127.0.0.1:8000/api/swdalist").then((res) => {
+      axios.get(`${backendURL}/api/swdalist`).then((res) => {
         this.swda = res.data.Swda;
         console.log(res);
       });
@@ -252,7 +253,7 @@ export default {
       // console.log(SwdaID);
       if (confirm("Are you sure, you want to archive this data?")) {
         axios
-          .delete(`http://127.0.0.1:8000/api/swdalist/${SwdaID}/delete`)
+          .delete(`${backendURL}/api/swdalist/${SwdaID}/delete`)
           .then((res) => {
             alert(res.data.message);
             // Reload the page after a successful deletion

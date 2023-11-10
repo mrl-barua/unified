@@ -65,6 +65,7 @@
 <script>
 import Footer from "@/components/Footer";
 import axios from "axios";
+import { backendURL } from "@/config.js";
 
 export default {
   name: "LoginForm",
@@ -158,7 +159,7 @@ export default {
     //   this.loading = true;
 
     //   // Define the API URL
-    //   const apiUrl = 'http://127.0.0.1:8000/api/loginCredentials';
+    //   const apiUrl = `${backendURL}/api/loginCredentials`;
 
     //   // Make an Axios GET request to fetch user data
     //   axios
@@ -233,8 +234,13 @@ body {
 .error-message {
   color: red;
   text-align: center;
-  margin-bottom: 20px;
-  margin-top: -45px;
+  margin-bottom: 10px;
+  margin-top: -10px;
+
+  @media only screen and (min-width: 680px) {
+    margin-bottom: 20px;
+    margin-top: -45px;
+  }
 }
 
 .container-fluid {
@@ -255,7 +261,7 @@ body {
   padding: 30px;
   background-color: #ffffff;
   border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
   color: #ffffff;
 }
 
@@ -267,7 +273,8 @@ h1 {
   font-weight: 600;
 }
 
-p {
+p,
+label {
   color: black;
 }
 
