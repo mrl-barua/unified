@@ -1040,6 +1040,37 @@ export default {
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
+
+          // Prepare and return data
+          const clientdata = {
+            labels: [
+              "Children",
+              "Families and Communities",
+              "Children and Youth",
+              "Children Youth and Families",
+              "Senior Citizens",
+              "Persons With Disability",
+              "Indigenous Peples",
+              "Women",
+              "Others",
+            ],
+            label: ["Clientele"],
+            values: [1, 1, 1, 1, 1, 1, 1, 1, 1],
+            backgroundColor: [
+              "rgba(19, 63, 92, 1)",
+              "rgba(255, 0, 0, 1)", // Red
+              "rgba(0, 255, 0, 1)", // Green
+              "rgba(0, 0, 255, 1)", // Blue
+              "rgba(255, 255, 0, 1)", // Yellow
+              "rgba(255, 0, 255, 1)", // Magenta
+              "rgba(0, 255, 255, 1)", // Cyan
+              "rgba(128, 128, 128, 1)", // Gray
+              "rgba(255, 165, 0, 1)", // Orange
+              "rgba(0, 128, 0, 1)", // Dark Green],
+            ],
+          };
+          // Set barChartData to the computed data
+          this.ClientData = clientdata;
         });
     },
   },

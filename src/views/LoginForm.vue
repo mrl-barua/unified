@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid" style="bac">
     <div class="images">
       <img src="/src/assets/DSWDLogo.png" alt="" />
     </div>
@@ -11,7 +11,11 @@
     >
       <h4 class="text-start">Weclome</h4>
       <h1 class="text-start">Sign in to</h1>
-      <h4 class="text-start">UNIFIED XI</h4>
+      <h4 class="text-start">
+        <span>UNIFIED</span>
+        <span style="font-weight: bold; color: blue"> X</span
+        ><span style="font-weight: bold; color: red">I</span>
+      </h4>
       <br />
       <form @submit.prevent="login">
         <input
@@ -250,7 +254,7 @@ body {
   align-items: center;
   height: 100vh;
   margin-top: -60px;
-  /* background-image: url("../src/assets/dswd_carousel1.png");  */
+  background-image: url("../assets/dswd_background.png");
   background-size: cover; /* Optional: adjust to your needs */
   background-repeat: no-repeat; /* Optional: adjust to your needs */
 }

@@ -21,7 +21,7 @@
               <router-link to="/dashboard" class="custom-link">
                 <li class="list">
                   <a href="#" class="nav-link">
-                    <i class="bx bx-home-alt icon"></i>
+                    <i class="bx bx-bar-chart-square icon"></i>
                     <span class="link">CBSS</span>
                   </a>
                 </li>
@@ -54,7 +54,7 @@
               <router-link to="/osp" class="custom-link">
                 <li class="list">
                   <a href="#" class="nav-link">
-                    <i class="bx bx-bell icon"></i>
+                    <i class="bx bx-bar-chart icon"></i>
                     <span class="link">OSP</span>
                   </a>
                 </li>
@@ -63,7 +63,7 @@
               <router-link to="/swda" class="custom-link">
                 <li class="list">
                   <a href="#" class="nav-link">
-                    <i class="bx bx-message-rounded icon"></i>
+                    <i class="bx bx-doughnut-chart icon"></i>
                     <span class="link">SWDA</span>
                   </a>
                 </li>
@@ -80,7 +80,7 @@
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    <i class="bx bx-bar-chart-alt-2 icon"></i>
+                    <i class="bx bx-line-chart icon"></i>
                     <span class="link">SLP</span>
                   </a>
 
@@ -154,7 +154,7 @@
             </li> -->
               <router-link to="/" class="custom-link">
                 <li class="list">
-                  <div @click="logout" class="nav-link">
+                  <div @click="logout" class="nav-link" style="cursor: pointer">
                     <i class="bx bx-log-out icon"></i>
                     <span class="link"> Logout </span>
                   </div>
