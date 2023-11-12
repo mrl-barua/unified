@@ -4,7 +4,7 @@
     <br><br><br><br>
 
     <div class="col-12 col-md-12">
-      <div class="shadow1">
+      <div class="shadow2">
       <br>
        <div class="d-flex justify-content-around"
         style=" margin-left: 40px; margin-right: 40px; margin-bottom: 40px; background-color: #133F5C; color: white; padding: 8px; text-align: center; border-radius: 5px;">
@@ -63,13 +63,51 @@
     </div>
     
  
-   <div class="col-12 col-md-12">
+   <div class="col-12 col-md-6">
       
-        <div class="shadow3 forbarchart">
-            <h1><b>BREAKDOWN OF REGIONAL ACCOMPLISHMENT</b></h1>           
+    <div class="shadow3">
+            <h1><b>NUMBER OF PDO PER CLUSTER</b></h1>           
           <div class="Barchart1"><BarChart :data="ProvinceData" /></div>
         </div>
     </div>
+
+    <div class="col-12 col-md-6">
+      <div class="shadow3">
+              <h1><b>SUBMITTED REPORTS PER CLUSTER</b></h1>           
+              <div class="parent">
+      <div class="rectangle" style="background-color: #EB5F5E">
+        <div class="label">DAVAO CITY</div>
+        <div class="number"><b>75</b></div>
+      </div>
+
+      <div class="rectangle" style="background-color: #59508D">
+        <div class="label">DAVAO DEL NORTE</div>
+        <div class="number"><b>44</b></div>
+      </div>
+
+      <div class="rectangle" style="background-color: #BC5090">
+        <div class="label">DAVAO DEL SUR</div>
+        <div class="number"><b>41</b></div>
+      </div>
+
+      <div class="rectangle" style="background-color: #EB5F5E">
+        <div class="label">DAVAO ORIENTAL</div>
+        <div class="number"><b>65</b></div>
+      </div>
+
+      <div class="rectangle" style="background-color: #59508D">
+        <div class="label">DAVAO DE ORO</div>
+        <div class="number"><b>48</b></div>
+      </div>
+
+      <div class="rectangle" style="background-color: #BC5090">
+        <div class="label">DAVAO OCCIDENTAL</div>
+        <div class="number"><b>27</b></div>
+      </div>
+          </div>
+      </div>
+      </div>
+
     
     <!-- <Footer /> -->
 </template>
@@ -106,9 +144,9 @@ export default {
           'rgba(19, 63, 92, 1)'
         ],
         },    
-        NameData: {
+        ProvinceData: {
           labels: ['CNSP', 'EMOTIONALLY/PSYCHO DISTRESS', 'OFW'],
-          label: ['CHART2'],
+          label: [''],
           values: [42, 23, 12, 2],
           backgroundColor: [
           'rgba(75, 192, 192, 0.2',
@@ -119,7 +157,6 @@ export default {
           'rgba(255, 159, 64, 0.2',
         ],
         },
-
 
         EmploymentData: null,
       };
@@ -222,7 +259,7 @@ export default {
 
 .shadow2{
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
-  height: 400px;
+  height: 500px;
   border-radius: 20px;
   margin:10px 15px 10px 20px;
   padding: 10px 0px 10px 0px;
@@ -231,9 +268,9 @@ export default {
 
 .shadow3{
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
-  height: 400px;
+  height: 480px;
   border-radius: 20px;
-  margin:30px 15px 10px 20px;
+  margin:30px 15px 20px 20px;
   padding: 10px 0px 10px 0px;
 }
 .forbarchart{
@@ -250,6 +287,42 @@ export default {
 .Barchart1{
   height: 340px; 
 
+}
+
+.rectangle {
+  margin: 20px;
+  padding: 10px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 150px; 
+  border-radius: 5px;
+}
+
+
+
+.rectangle .label {
+  color: #fff;
+  text-align: center;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.rectangle .number {
+  font-size: 40px;
+  text-align: center;
+}
+
+.parent {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+grid-template-rows: repeat(2, 1fr);
+grid-column-gap: 0px;
+grid-row-gap: 0px;
 }
 
 </style>
