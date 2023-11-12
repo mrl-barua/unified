@@ -116,4 +116,6 @@
 
 ## version 5.0 Update UI styles and add new features - MARLO BARUA
 
-## version 5.1 Updated the Temporary Layout for SLP CBA VIEW - GABRIEL ENOBIO
+## version 5.1 Fix typo and update login functionality, Added functional Login with role specificity (user, admin) in LOGIN VIEW - MARLO BARUA
+
+## version 5.2 Updated the Temporary Layout for SLP CBA VIEW - GABRIEL ENOBIO
