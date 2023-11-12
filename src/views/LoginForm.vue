@@ -158,7 +158,7 @@ export default {
     //   }, 1000); // Simulated delay of 1 second
     // },
 
-    // TODO  WORKING LOGIN FOR ADMIN DASHBOARD ONLY- USER DASHBOARD LOGIN TODO
+    //* WORKING LOGIN FOR ADMIN DASHBOARD - USER DASHBOARD LOGIN 
     login() {
       this.loading = true; // Set loading state to true
 
