@@ -1,15 +1,16 @@
 <template>
-<!-- <Header /> -->
-<div class="parent clearfix">
-
+  <!-- <Header /> -->
+  <div class="parent clearfix">
     <div class="headerComponent">
-        <img class="float-start header-image" src="@/assets/DSWDLogo.png" alt="dswdLogo">
+      <img
+        class="float-start header-image"
+        src="@/assets/DSWDLogo.png"
+        alt="dswdLogo"
+      />
     </div>
 
-
     <div class="bg-illustration">
-
-        <!-- <img src="https://i.ibb.co/Pcg0Pk1/logo.png" alt="logo"> -->
+      <!-- <img src="https://i.ibb.co/Pcg0Pk1/logo.png" alt="logo"> -->
       <!-- <img class="DSWDLogo" src="@/assets/DSWDLogo.png" alt="logo" /> -->
 
       <!-- <img class="BagongPilipinas" src="@/assets/BagongPilipinas.png" alt="logo" /> -->
@@ -20,25 +21,57 @@
         <span></span>
       </div> -->
 
-
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <div
+        id="carouselExampleIndicators"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              src="@/assets/dswd_carousel1.png"
+              class="d-block w-100"
+              alt="..."
+            />
           </div>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="@/assets/dswd_carousel1.png" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-              <img src="@/assets/dswd_carousel1.png" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-              <img src="@/assets/dswd_carousel1.png" class="d-block w-100" alt="...">
-            </div>
+          <div class="carousel-item">
+            <img
+              src="@/assets/dswd_carousel1.png"
+              class="d-block w-100"
+              alt="..."
+            />
           </div>
-          <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <div class="carousel-item">
+            <img
+              src="@/assets/dswd_carousel1.png"
+              class="d-block w-100"
+              alt="..."
+            />
+          </div>
+        </div>
+        <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
           </button>
@@ -46,143 +79,132 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button> -->
+      </div>
+
+      <p class="lead text-start text-white text-bold text-wrap">
+        DSWD envisions an empowered and resilient society where Filipinos enjoy
+        an improved quality of life, are free from hunger, poverty, abuse, and
+        exploitation, have equitable access to development opportunities,
+        enabled by a fair, just, and peaceful governance. DSWD is committed to
+        fostering this vision through its comprehensive social welfare and
+        development programs.
+      </p>
+    </div>
+
+    <div class="login">
+      <div class="container">
+        <h1>Login</h1>
+        <div class="login-form">
+          <form @submit.prevent="login">
+            <input v-model="username" type="Username" placeholder="Username" />
+            <input v-model="password" type="password" placeholder="Password" />
+            <br /><br />
+            <div v-if="error" class="error-message">
+              User not found, Please enter correct credentials
+            </div>
+            <button type="submit" :disabled="loading">
+              <span v-if="!loading">LOG-IN</span>
+              <span v-else>Loading...</span>
+            </button>
+          </form>
         </div>
-
-        <p class="lead text-start text-white text-bold text-wrap">
-          DSWD envisions an empowered and resilient society where Filipinos enjoy an improved quality of life, are free from hunger, poverty, abuse, and exploitation, have equitable access to development opportunities, enabled by a fair, just, and peaceful governance. DSWD is committed to fostering this vision through its comprehensive social welfare and development programs.
-         </p>
-
-
-  </div>
-
-  <div class="login">
-    <div class="container">
-      <h1>Login</h1>
-      <div class="login-form">
-        <form @submit.prevent="login">
-          <input v-model="username" type="Username" placeholder="Username">
-          <input v-model="password" type="password" placeholder="Password">
-          <br><br>
-          <div v-if="error" class="error-message">User not found, Please enter correct credentials</div>
-          <button type="submit" :disabled="loading">
-            <span v-if="!loading">LOG-IN</span>
-            <span v-else>Loading...</span>
-          </button>
-        </form>
       </div>
     </div>
   </div>
-</div>
-<Footer />
+  <Footer />
 </template>
 
 <script>
-import Footer from '@/components/Footer'; 
-import axios from 'axios';
+import Footer from "@/components/Footer";
+import axios from "axios";
 
 export default {
-  name: 'LoginForm',
-  components: { Footer},
+  name: "LoginForm",
+  components: { Footer },
   data() {
-  return {
-    username: '',
-    password: '',
-    error: false,
-    loading: false, 
-  };
-},
+    return {
+      username: "",
+      password: "",
+      error: false,
+      loading: false,
+    };
+  },
 
+  methods: {
+    login() {
+      // Set loading state to true
+      this.loading = true;
 
+      // Simulate a delay to mimic a server response (remove this in a real scenario)
+      setTimeout(() => {
+        // Perform authentication logic here (e.g., check username and password)
+        if (this.username === "User" && this.password === "user") {
+          // Authentication successful, set user as authenticated in localStorage
+          sessionStorage.setItem("user", "authenticated");
 
-methods: {
-  login() {
-  // Set loading state to true
-  this.loading = true;
+          // Navigate to the dashboard
+          this.$router.push("/dashboard");
+        } else if (this.username === "Admin" && this.password === "admin") {
+          // Authentication successful, set user as authenticated in localStorage
+          sessionStorage.setItem("admin", "authenticated");
 
-  // Simulate a delay to mimic a server response (remove this in a real scenario)
-  setTimeout(() => {
-    // Perform authentication logic here (e.g., check username and password)
-    if (this.username === 'User' && this.password === 'user') {
-      // Authentication successful, set user as authenticated in localStorage
-      sessionStorage.setItem('user', 'authenticated');
+          // Navigate to the dashboard
+          this.$router.push("/admindashboard");
+        } else {
+          // Authentication failed, display error message
+          this.error = true;
+        }
 
-      // Navigate to the dashboard
-      this.$router.push('/dashboard');
-    } 
-   else if (this.username === 'Admin' && this.password === 'admin') {
-      // Authentication successful, set user as authenticated in localStorage
-      sessionStorage.setItem('admin', 'authenticated');
+        // Reset loading state to false after authentication logic
+        this.loading = false;
+      }, 1000); // Simulated delay of 1 second
+    },
 
-      // Navigate to the dashboard
-      this.$router.push('/admindashboard');
-    } 
-    
-    
-    else {
-      // Authentication failed, display error message
-      this.error = true;
-    }
+    // login() {
+    //   // Set loading state to true
+    //   this.loading = true;
 
-    // Reset loading state to false after authentication logic
-    this.loading = false;
-  }, 1000); // Simulated delay of 1 second
-},
+    //   // Define the API URL
+    //   const apiUrl = 'http://127.0.0.1:8000/api/loginCredentials';
 
-// login() {
-//   // Set loading state to true
-//   this.loading = true;
+    //   // Make an Axios GET request to fetch user data
+    //   axios
+    //     .get(apiUrl)
+    //     .then((response) => {
+    //       // Find the user with matching empid and qr_code
+    //       const user = response.data.find(
+    //         (user) => user.empid === this.username && user.qr_code === this.password
+    //       );
 
-//   // Define the API URL
-//   const apiUrl = 'http://127.0.0.1:8000/api/loginCredentials';
+    //       if (user) {
+    //         // Authentication successful, set user as authenticated in localStorage
+    //         localStorage.setItem('user', 'authenticated');
 
-//   // Make an Axios GET request to fetch user data
-//   axios
-//     .get(apiUrl)
-//     .then((response) => {
-//       // Find the user with matching empid and qr_code
-//       const user = response.data.find(
-//         (user) => user.empid === this.username && user.qr_code === this.password
-//       );
-
-//       if (user) {
-//         // Authentication successful, set user as authenticated in localStorage
-//         localStorage.setItem('user', 'authenticated');
-
-//         // Navigate to the dashboard
-//         this.$router.push('/dashboard');
-//       } else {
-//         // Authentication failed, display error message
-//         this.error = true;
-//       }
-//     })
-//     .catch((error) => {
-//       // Handle API request error, e.g., display an error message
-//       console.error('API request failed:', error);
-//       this.error = true;
-//     })
-//     .finally(() => {
-//       // Reset loading state to false after the request
-//       this.loading = false;
-//     });
-// },
-
-
-},
-
-
-
+    //         // Navigate to the dashboard
+    //         this.$router.push('/dashboard');
+    //       } else {
+    //         // Authentication failed, display error message
+    //         this.error = true;
+    //       }
+    //     })
+    //     .catch((error) => {
+    //       // Handle API request error, e.g., display an error message
+    //       console.error('API request failed:', error);
+    //       this.error = true;
+    //     })
+    //     .finally(() => {
+    //       // Reset loading state to false after the request
+    //       this.loading = false;
+    //     });
+    // },
+  },
 };
 </script>
 
-
-
-
 <style scoped>
-
 .lead {
   padding: 0px 60px 0px 60px;
 }
-
 
 .carousel {
   position: relative;
@@ -224,12 +246,8 @@ methods: {
   }
 
   @media only screen and (min-width: 1244px) {
-
   }
 }
-
-
-
 
 * {
   margin: 0;
@@ -241,28 +259,24 @@ methods: {
   transition: 0.3s; */
 }
 
+.header-image {
+  padding-left: 50px;
+}
+.headerComponent {
+  position: relative;
 
-    .header-image{
-      padding-left: 50px;
-    }
-    .headerComponent{
-      position: relative;
+  height: 5em;
+  background: linear-gradient(to right, white 15%, #ee1c25 85%);
+  z-index: 999;
+  margin-top: -60px;
+  margin-bottom: 20px;
+  padding: 0;
+}
 
-      height: 5em;
-      background: linear-gradient(to right, white 15%, #EE1C25 85%);
-      z-index: 999;
-      margin-top:-60px;
-      margin-bottom: 20px;
-      padding: 0;
-    }
-
-    .headerComponent img{
-      height: 70px;
-      padding-top: 10px;
-    }
-
-
-
+.headerComponent img {
+  height: 70px;
+  padding-top: 10px;
+}
 
 body {
   background-color: #fff;
@@ -270,7 +284,7 @@ body {
   overflow-x: hidden;
 }
 
-.error-message{
+.error-message {
   color: red;
   text-align: left;
   margin-bottom: 20px;
@@ -318,43 +332,41 @@ img {
   clear: both;
 }
 
-
 .bg-illustration {
   margin-top: -3.73em;
   position: relative;
   height: 100vh;
   width: 1194px;
   /* background: url("https://i.ibb.co/RhMZprS/jony-Image2-1.png") no-repeat center center scroll; */
-  background: #294D9C;
+  background: #294d9c;
   background-size: cover;
   float: left;
   /* -webkit-animation: bgslide 2.3s forwards;
           animation: bgslide 2.3s forwards; */
 
-
- @media only screen and (min-width: 1280px) {
-    height: 95vh; 
+  @media only screen and (min-width: 1280px) {
+    height: 95vh;
   }
 
   @media only screen and (min-width: 2160px) {
-    height: 100vh; 
+    height: 100vh;
   }
 }
 .bg-illustration img {
   width: 248px;
   -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   height: auto;
   margin: 19px 0 0 25px;
 }
 
-.DSWDLogo img{
-    margin-top: 3em;
+.DSWDLogo img {
+  margin-top: 3em;
 }
 
-.BagongPilipinas img{
+.BagongPilipinas img {
   max-width: 3em;
 }
 
@@ -384,17 +396,15 @@ img {
   }
 }
 
-
 .login {
   max-height: 70vh;
   float: left;
   margin: 0 auto;
   width: calc(100% - 1194px);
 
-@media only screen and (min-width: 1024px) {
-  max-height: 100vh;
-}
-
+  @media only screen and (min-width: 1024px) {
+    max-height: 100vh;
+  }
 }
 .login .container {
   width: 505px;
@@ -423,7 +433,7 @@ img {
   padding: 0 30px;
   border-radius: 10px;
 }
-.login .container .login-form form button[type=submit] {
+.login .container .login-form form button[type="submit"] {
   background: -webkit-linear-gradient(110deg, #f794a4 0%, #fdd6bd 100%);
   background: -o-linear-gradient(110deg, #f794a4 0%, #fdd6bd 100%);
   background: linear-gradient(-20deg, #f794a4 0%, #fdd6bd 100%);
@@ -442,23 +452,21 @@ img {
 }
 
 @media only screen and (min-width: 375px) {
-  .login .container .login-form form button[type=submit] {
+  .login .container .login-form form button[type="submit"] {
     width: 300px;
   }
-  
 }
 
 @media only screen and (min-width: 1024px) {
-  .login .container .login-form form button[type=submit] {
+  .login .container .login-form form button[type="submit"] {
     width: 481px;
   }
-  
 }
 
-.login .container .login-form form button[type=submit]:hover::after {
+.login .container .login-form form button[type="submit"]:hover::after {
   opacity: 1;
 }
-.login .container .login-form form button[type=submit]::after {
+.login .container .login-form form button[type="submit"]::after {
   content: "";
   position: absolute;
   z-index: -1;
@@ -471,7 +479,13 @@ img {
   transition: 0.3s ease-in-out;
   right: 0;
   bottom: 0;
-  background: -webkit-gradient(linear, left bottom, left top, from(#09203f), to(#537895));
+  background: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    from(#09203f),
+    to(#537895)
+  );
   background: -webkit-linear-gradient(bottom, #09203f 0%, #537895 100%);
   background: -o-linear-gradient(bottom, #09203f 0%, #537895 100%);
   background: linear-gradient(to top, #09203f 0%, #537895 100%);
@@ -480,7 +494,7 @@ img {
   position: relative;
   margin-top: -30px;
 }
-.login .container .remember-form input[type=checkbox] {
+.login .container .remember-form input[type="checkbox"] {
   margin-top: 9px;
 }
 .login .container .remember-form span {
@@ -488,7 +502,7 @@ img {
   font-weight: normal;
   position: absolute;
   top: 32px;
-  color: #3B3B3B;
+  color: #3b3b3b;
   margin-left: 15px;
 }
 .login .container .forget-pass {
@@ -500,7 +514,7 @@ img {
   font-size: 16px;
   position: relative;
   font-weight: normal;
-  color: #918F8F;
+  color: #918f8f;
 }
 .login .container .forget-pass a::after {
   content: "";
@@ -527,7 +541,7 @@ img {
   .bg-illustration {
     width: 50%;
     -webkit-animation: none;
-            animation: none;
+    animation: none;
   }
 
   .login {
@@ -537,13 +551,10 @@ img {
 
 @media only screen and (min-width: 1024px) {
   .bg-illustration {
-    margin-left:-10px;
+    margin-left: -10px;
     margin-bottom: -30px;
   }
-
 }
-
-
 
 /* Display 12", iPad PRO Portrait, iPad landscape */
 @media only screen and (max-width: 1024px) {
@@ -577,10 +588,10 @@ img {
 
     float: none;
     /* background: url("https://i.ibb.co/rwncw7s/bg-mobile.png") center center; */
-    background: #294D9C;
+    background: #294d9c;
     background-size: cover;
     -webkit-animation: slideIn 0.8s ease-in-out forwards;
-            animation: slideIn 0.8s ease-in-out forwards;
+    animation: slideIn 0.8s ease-in-out forwards;
     width: 100%;
     height: 190px;
     text-align: center;
@@ -620,7 +631,7 @@ img {
   }
   .login .container {
     -webkit-animation: slideIn 0.8s ease-in-out forwards;
-            animation: slideIn 0.8s ease-in-out forwards;
+    animation: slideIn 0.8s ease-in-out forwards;
     width: 85%;
     float: none;
   }
@@ -634,7 +645,7 @@ img {
   .login .container .login-form form input {
     height: 45px;
   }
-  .login .container .login-form form button[type=submit] {
+  .login .container .login-form form button[type="submit"] {
     height: 45px;
     margin-top: 10px;
   }
@@ -659,7 +670,7 @@ img {
     font-size: 16px;
     position: relative;
     font-weight: normal;
-    color: #918F8F;
+    color: #918f8f;
   }
   .forget-pass a::after {
     content: "";
@@ -682,5 +693,4 @@ img {
     opacity: 1;
   }
 }
-
-  </style>
+</style>

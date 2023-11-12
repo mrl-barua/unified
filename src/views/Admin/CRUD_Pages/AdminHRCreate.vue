@@ -1,23 +1,23 @@
 <template>
-<br><br><br><br>
- <AdminSidebar :iconText="PageTitle" />
-    <div>
-        TEST ADMIN CREATE
-    </div>
+  <br /><br /><br /><br />
+  <AdminSidebar :iconText="PageTitle" />
+  <div>TEST ADMIN CREATE</div>
 </template>
 <script>
-import axios from 'axios';
-import AdminSidebar from '@/components/AdminSidebar';
+import axios from "axios";
+import AdminSidebar from "@/components/AdminSidebar";
 
 export default {
-    name: 'AdminHRCreate',
+  name: "AdminHRCreate",
 
-    components: {
-                AdminSidebar,
-    },
+  components: {
+    AdminSidebar,
+  },
 
-    data() {
-        PageTitle: "ADMIN HR > ADD"
-    }
-}
+  data() {
+    return {
+      PageTitle: "ADMIN HR > ADD",
+    };
+  },
+};
 </script>

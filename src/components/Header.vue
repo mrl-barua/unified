@@ -1,22 +1,19 @@
 <template>
+  <header class="d-flex flex-wrap justify-content-start">
+    <router-link to="/dashboard" class="custom-link">
+      <img src="../assets/DSWDLogo.png" alt="" />
+    </router-link>
+  </header>
+</template>
 
-    <header class="d-flex flex-wrap justify-content-start  ">
-       <router-link to="/dashboard" class="custom-link">
-          <img src="../assets/DSWDLogo.png" alt="">
-       </router-link>
-    </header>
+<script>
+export default {
+  name: "Header",
+};
+</script>
 
-
-  </template>
-  
-  <script>
-  export default {
-    name: 'Header',
-  }
-  </script>
-  
-  <style scoped>
-    /* .header-image{
+<style scoped>
+/* .header-image{
       padding-left: 2em;
     }
     .headerComponent{
@@ -36,21 +33,17 @@
       padding-top: 10px;
     } */
 
+header {
+  background: linear-gradient(to right, white 20%, #ee1c25 80%);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+}
 
-    header{
-      background: linear-gradient(to right, white 20%, #EE1C25 80%);
-      width: 100%;
-      position: fixed;
-      top: 0;
-      z-index: 100;
-    }
+header img {
+  width: 280px;
 
-    header img{
-      width: 280px;
-      
-      margin: 20px 0px 10px 20px;
-      
-    }
-
-  </style>
-  
+  margin: 20px 0px 10px 20px;
+}
+</style>

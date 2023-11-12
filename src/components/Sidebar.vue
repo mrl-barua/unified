@@ -1,47 +1,42 @@
 <template>
-    
-<div>
-  <Header />
+  <div>
+    <Header />
     <nav>
       <div class="blue-header">
-      <div class="logo">
-        <i class="bx bx-menu menu-icon"></i>
-        <h3 class="text-white">{{ iconText }}</h3>
-        <!-- <span class="logo-name">UNIFIED</span> -->
-        <!-- <img class="float-start header-image" src="@/assets/DSWDLogo.png" alt="dswdLogo"> -->
-        
-      </div>
-
-      <div class="sidebar">
         <div class="logo">
-          <i class="bx bx-x menu-icon"></i>
+          <i class="bx bx-menu menu-icon"></i>
+          <h3 class="text-white">{{ iconText }}</h3>
           <!-- <span class="logo-name">UNIFIED</span> -->
-       
+          <!-- <img class="float-start header-image" src="@/assets/DSWDLogo.png" alt="dswdLogo"> -->
         </div>
 
-        <div class="sidebar-content">
-          <ul class="lists">
+        <div class="sidebar">
+          <div class="logo">
+            <i class="bx bx-x menu-icon"></i>
+            <!-- <span class="logo-name">UNIFIED</span> -->
+          </div>
 
-            <router-link to="/dashboard" class="custom-link">
-            <li class="list">
-              <a href="#" class="nav-link">
-                <i class="bx bx-home-alt icon"></i>
-                <span class="link">CBSS</span>
-              </a>
-            </li>
-            </router-link>
+          <div class="sidebar-content">
+            <ul class="lists">
+              <router-link to="/dashboard" class="custom-link">
+                <li class="list">
+                  <a href="#" class="nav-link">
+                    <i class="bx bx-home-alt icon"></i>
+                    <span class="link">CBSS</span>
+                  </a>
+                </li>
+              </router-link>
 
-            <router-link to="/hr" class="custom-link">
-            <li class="list">
-              <a href="#" class="nav-link">
-                <i class="bx bx-bar-chart-alt-2 icon"></i>
-                <span class="link">HR</span>
-              </a>
-            </li>
-          </router-link>
+              <router-link to="/hr" class="custom-link">
+                <li class="list">
+                  <a href="#" class="nav-link">
+                    <i class="bx bx-bar-chart-alt-2 icon"></i>
+                    <span class="link">HR</span>
+                  </a>
+                </li>
+              </router-link>
 
-            
-            <!-- <li class="list">  
+              <!-- <li class="list">  
                   <div class="dropdown">
                       <a class=" nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="bx bx-bar-chart-alt-2 icon"></i>
@@ -56,56 +51,87 @@
             </li> 
           -->
 
-            <router-link to="/osp" class="custom-link">
-            <li class="list">
-              <a href="#" class="nav-link">
-                <i class="bx bx-bell icon"></i>
-                <span class="link">OSP</span>
-              </a>
-            </li>
-            </router-link>
+              <router-link to="/osp" class="custom-link">
+                <li class="list">
+                  <a href="#" class="nav-link">
+                    <i class="bx bx-bell icon"></i>
+                    <span class="link">OSP</span>
+                  </a>
+                </li>
+              </router-link>
 
-            <router-link to="/swda" class="custom-link">
-            <li class="list">
-              <a href="#" class="nav-link">
-                <i class="bx bx-message-rounded icon"></i>
-                <span class="link">SWDA</span>
-              </a>
-            </li>
-            </router-link>
-          
-          <!-- reference from HR  -->
-           <li class="list">  
-                  <div class="dropdown">
-                      <a class=" nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bx bx-bar-chart-alt-2 icon"></i>
-                        <span class="link">SLP</span>
-                      </a>
+              <router-link to="/swda" class="custom-link">
+                <li class="list">
+                  <a href="#" class="nav-link">
+                    <i class="bx bx-message-rounded icon"></i>
+                    <span class="link">SWDA</span>
+                  </a>
+                </li>
+              </router-link>
 
-                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <router-link to="/slp" class="custom-link">
-                            <li><a class="dropdown-item" href="#">General Disaggregated Data</a></li> </router-link>
-                            <router-link to="/slp_pa" class="custom-link">
-                            <li><a class="dropdown-item" href="#">Physical Accomplishments by Portfolio</a></li> </router-link>
-                            <router-link to="/slp_snm" class="custom-link">
-                            <li><a class="dropdown-item" href="#">Status of Name Matching</a></li> </router-link>
-                            <router-link to="/slp_bmt" class="custom-link">
-                            <li><a class="dropdown-item" href="#">Budget Monitoring Tracker</a></li> </router-link>
-                            <router-link to="/slp_stat" class="custom-link">
-                            <li><a class="dropdown-item" href="#">SLPA Enterprise Status 2022</a></li> </router-link>
-                            <router-link to="/slp_cba" class="custom-link">
-                            <li><a class="dropdown-item" href="#">SLP XI Capability Building Activities</a></li> </router-link>
-                            
-                          </ul>
-                    </div>
-            </li> 
+              <!-- reference from HR  -->
+              <li class="list">
+                <div class="dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    role="button"
+                    id="dropdownMenuLink"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <i class="bx bx-bar-chart-alt-2 icon"></i>
+                    <span class="link">SLP</span>
+                  </a>
 
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <router-link to="/slp" class="custom-link">
+                      <li>
+                        <a class="dropdown-item" href="#"
+                          >General Disaggregated Data</a
+                        >
+                      </li>
+                    </router-link>
+                    <router-link to="/slp_pa" class="custom-link">
+                      <li>
+                        <a class="dropdown-item" href="#"
+                          >Physical Accomplishments by Portfolio</a
+                        >
+                      </li>
+                    </router-link>
+                    <router-link to="/slp_snm" class="custom-link">
+                      <li>
+                        <a class="dropdown-item" href="#"
+                          >Status of Name Matching</a
+                        >
+                      </li>
+                    </router-link>
+                    <router-link to="/slp_bmt" class="custom-link">
+                      <li>
+                        <a class="dropdown-item" href="#"
+                          >Budget Monitoring Tracker</a
+                        >
+                      </li>
+                    </router-link>
+                    <router-link to="/slp_stat" class="custom-link">
+                      <li>
+                        <a class="dropdown-item" href="#"
+                          >SLPA Enterprise Status 2022</a
+                        >
+                      </li>
+                    </router-link>
+                    <router-link to="/slp_cba" class="custom-link">
+                      <li>
+                        <a class="dropdown-item" href="#"
+                          >SLP XI Capability Building Activities</a
+                        >
+                      </li>
+                    </router-link>
+                  </ul>
+                </div>
+              </li>
 
-
-
-
-
-           <!-- <li class="list">
+              <!-- <li class="list">
               <a href="#" class="nav-link">
                 <i class="bx bx-heart icon"></i>
                 <span class="link">Likes</span>
@@ -117,44 +143,39 @@
                 <span class="link">Files</span>
               </a>
             </li> -->
-          </ul>
+            </ul>
 
-          <div class="bottom-cotent">
-            <!-- <li class="list">
+            <div class="bottom-cotent">
+              <!-- <li class="list">
               <a href="#" class="nav-link">
                 <i class="bx bx-cog icon"></i>
                 <span class="link">Settings</span>
               </a>
             </li> -->
-            <router-link to="/" class="custom-link">
-            <li class="list">
-              <div @click="logout" class="nav-link">
-                <i class="bx bx-log-out icon"></i>
-                <span class="link">
-                    Logout 
-                </span>
+              <router-link to="/" class="custom-link">
+                <li class="list">
+                  <div @click="logout" class="nav-link">
+                    <i class="bx bx-log-out icon"></i>
+                    <span class="link"> Logout </span>
+                  </div>
+                </li>
+              </router-link>
             </div>
-            </li>
-        </router-link>
           </div>
         </div>
       </div>
-    </div>
     </nav>
 
     <section class="overlay"></section>
-
-</div>
-
-
+  </div>
 </template>
 
 <script>
-import Header from '@/components/Header'
+import Header from "@/components/Header";
 
 export default {
-  name: 'sidebar',
-  components :{
+  name: "sidebar",
+  components: {
     Header,
   },
   props: {
@@ -178,16 +199,14 @@ export default {
   methods: {
     logout() {
       // Clear the user's authentication status in localStorage
-      localStorage.removeItem('user');
+      localStorage.removeItem("user");
 
       // Redirect the user to the login page
-      this.$router.push('/'); // Change the path to match your login route
-    }
-  }
-
+      this.$router.push("/"); // Change the path to match your login route
+    },
+  },
 };
 </script>
-
 
 <style scoped>
 /* Google Fonts - Poppins */
@@ -204,7 +223,6 @@ body {
   background: #e3f2fd;
 }
 
-
 nav {
   position: fixed;
   top: 6em;
@@ -214,13 +232,13 @@ nav {
   display: flex;
   align-items: center;
   /* background: linear-gradient(to right, white 20%, #EE1C25 80%); */
-  background: #294D9C;
+  background: #294d9c;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
   z-index: 999;
 }
 
 .custom-link {
-  text-decoration: none; 
+  text-decoration: none;
 }
 nav .logo {
   display: flex;
@@ -236,7 +254,6 @@ nav .logo img {
   }
 }
 
-
 .logo .menu-icon {
   color: white;
   font-size: 32px;
@@ -244,15 +261,14 @@ nav .logo img {
   cursor: pointer;
 }
 
-.logo .bx-x{
+.logo .bx-x {
   color: #333;
   font-size: 42px;
   margin-right: 14px;
   cursor: pointer;
 }
 
-
-.bx-x{
+.bx-x {
   margin-left: 220px;
 }
 
@@ -266,7 +282,7 @@ nav .sidebar {
   top: 6em;
   left: -100%;
   height: 90%;
-  
+
   width: 303px;
   padding: 20px 0;
   background-color: #fff;
@@ -293,14 +309,12 @@ nav.open .sidebar {
   padding: 14px 1px;
   border-radius: 8px;
   text-decoration: none;
-
 }
 .lists .nav-link:hover {
   padding-left: 20px;
   padding-right: 20px;
   background-color: #4070f4;
 }
-
 
 .nav-link .icon {
   margin-right: 14px;
@@ -333,5 +347,4 @@ nav.open ~ .overlay {
   left: 260px;
   pointer-events: auto;
 }
-
 </style>
