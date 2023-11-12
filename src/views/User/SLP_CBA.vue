@@ -3,67 +3,74 @@
 
     <br><br><br><br>
 
-    <div class="col-12 col-md-7">
-        <div class="shadow2 forbarchart">
-          <p>NUMBER OF RECORDS PER MONTH</p>
-          <div class="Barchart1"><BarChart :data="MonthData" /></div>
-        </div>
-    </div>
-  
-    <div class="col-12 col-md-5">
-        <div class="shadow2">
-          <p>TOTAL NUMBER OF CATEGORIES REQUEST</p>
-          <div class="Piechart1"><PieChart :data="NameData" /></div>
-        </div>
-    </div>
-    <div class="col-12 col-md-6">
-      <div class="shadow2">
-          <p>PERCENTAGE OF REQUESTING EMPLOYEES STATUS</p>
-          <div class="Piechart1">
-            <DoughnutChart v-if="EmploymentData" :data="EmploymentData" />
-          </div>
-        </div>
-    </div>
+    <div class="col-12 col-md-12">
+      <div class="shadow1">
+      <br>
+       <div class="d-flex justify-content-around"
+        style=" margin-left: 40px; margin-right: 40px; margin-bottom: 40px; background-color: #133F5C; color: white; padding: 8px; text-align: center; border-radius: 5px;">
 
-    <div class="col-12 col-md-6">
-      <div class="shadow2">
-        <h3>DETAILS OF REQUESTING EMPLOYEE</h3>
 
-        <div class="d-flex justify-content-around">
-         <h5 class="fw-bold">NAME</h5>
-         <h5 class="fw-bold">OFFICE / UNIT</h5>
-         <h5 class="fw-bold">RECORD COUNT</h5>
+          <h5 class="fw-bold">PDO</h5>
+          <h5 class="fw-bold">PROVINCE</h5>
+          <h5 class="fw-bold">DOCUMENT TITLE</h5>
+          <h5 class="fw-bold">TIMESTAMP</h5>
+      </div>
+      
+        <hr class="SLPPA" />
+         <div class="d-flex justify-content-around">
+            <p>Lorem Ipsum</p>
+            <p>Lorem Ipsum</p>
+            <p>Lorem Ipsum</p>
+            <p>Lorem Ipsum</p>
+        
         </div>
-        <hr class="hr" />
+
+        <hr class="SLPPA" />
         <div class="d-flex justify-content-around">
-         <p>text</p>
-         <p>text</p>
-         <p>text</p>
+         <p>Lorem Ipsum</p>
+            <p>Lorem Ipsum</p>
+            <p>Lorem Ipsum</p>
+            <p>Lorem Ipsum</p>
         </div>
-        <hr class="hr" />
+
+        <hr class="SLPPA" />
         <div class="d-flex justify-content-around">
-         <p>text</p>
-         <p>text</p>
-         <p>text</p>
-        </div>
-        <hr class="hr" />
+         <p>Lorem Ipsum</p>
+            <p>Lorem Ipsum</p>
+            <p>Lorem Ipsum</p>
+            <p>Lorem Ipsum</p>
+           
+        </div> 
+        
+        <hr class="SLPPA" />
         <div class="d-flex justify-content-around">
-         <p>text</p>
-         <p>text</p>
-         <p>text</p>
-        </div>
-        <hr class="hr" />
+         <p>Lorem Ipsum</p>
+            <p>Lorem Ipsum</p>
+            <p>Lorem Ipsum</p>
+            <p>Lorem Ipsum</p>
+           
+        </div> 
+
+        <hr class="SLPPA" />
         <div class="d-flex justify-content-around">
-         <p>text</p>
-         <p>text</p>
-         <p>text</p>
-        </div>
+         <p>Lorem Ipsum</p>
+            <p>Lorem Ipsum</p>
+            <p>Lorem Ipsum</p>
+            <p>Lorem Ipsum</p>
+           
+        </div> 
       </div>
     </div>
-
-
     
-
+ 
+   <div class="col-12 col-md-12">
+      
+        <div class="shadow3 forbarchart">
+            <h1><b>BREAKDOWN OF REGIONAL ACCOMPLISHMENT</b></h1>           
+          <div class="Barchart1"><BarChart :data="ProvinceData" /></div>
+        </div>
+    </div>
+    
     <!-- <Footer /> -->
 </template>
 
@@ -221,6 +228,14 @@ export default {
   padding: 10px 0px 10px 0px;
 }
 
+
+.shadow3{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+  height: 400px;
+  border-radius: 20px;
+  margin:30px 15px 10px 20px;
+  padding: 10px 0px 10px 0px;
+}
 .forbarchart{
   height: 250px;
   @media only screen and (min-width: 500px) {

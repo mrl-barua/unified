@@ -25,7 +25,7 @@
   
   <div class="col-12 col-md-9">
       <div class="shadow1">
-<br>
+      <br>
        <div class="d-flex justify-content-around"
         style=" margin-left: 40px; margin-right: 40px; margin-bottom: 40px; background-color: #133F5C; color: white; padding: 8px; text-align: center; border-radius: 5px;">
 
@@ -86,7 +86,7 @@
     <div class="col-12 col-md-12">
         <div class="shadow2 forbarchart">
           <br>
-          <h5 class="fw-bold">COST FROM DSWD BY BARANGAY</h5>
+          <h5 class="fw-bold">STATUS BY MUNICIPALITY</h5>
           <br>
           <div class="Barchart1"><BarChart :data="CostData" /></div>
         </div>
@@ -123,11 +123,11 @@ export default {
         PageTitle: "SLP - Physical Accomplishment by Portfolio",
 
         CostData: {
-          labels: ['Sumimao', 'Malabog', 'Langub', 'Calinan Poblacion', '8A, Poblacion A', 'Lasang', 'Bunawan', 'Buhangin Proper', 'Kilate', 'Calinan Proper'],
-          label: ['ASSOCIATION-MANAGED'],
+          labels: ['Padada', 'Magsaysay', 'Manay', 'Cateel', 'Caraga', 'Governor Generoso', 'City of Mati', 'Sta. Cruz', 'Sulop', 'Baganga', 'Maragusan', 'Laak', 'Digos', 'Tarragona', 'San Isidro'],
+          label: ['POOR'],
           values: [450000, 450000, 450000, 450000, 450000, 420000, 360000, 15000, 15000, 15000],
           backgroundColor: [
-          '#292D96'
+          '#59508D'
         ],
         },    
 

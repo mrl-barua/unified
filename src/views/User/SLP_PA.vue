@@ -87,8 +87,16 @@ export default {
         ],
         },    
 
+
+
+
+
+
       };
     },
+
+
+
 
  methods:{
   // inserted data for month 
