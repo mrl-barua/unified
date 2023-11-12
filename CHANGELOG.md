@@ -115,3 +115,5 @@
 ## version 4.10 Adjust padding and styling in AdminSidebar, Sidebar, 404, and LoginForm components - MARLO BARUA
 
 ## version 5.0 Update UI styles and add new features - MARLO BARUA
+
+## version 5.1 Updated the Temporary Layout for SLP CBA VIEW - GABRIEL ENOBIO
