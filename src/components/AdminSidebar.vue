@@ -69,7 +69,7 @@
                 </li>
               </router-link>
               <li class="list">
-                <div @click="logout" class="nav-link">
+                <div @click="logout" class="nav-link" style="cursor: pointer">
                   <i class="bx bx-log-out icon"></i>
                   <span class="link"> Logout </span>
                 </div>

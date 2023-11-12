@@ -13,36 +13,21 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Active
+            Inactive
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <router-link to="/adminswda/archive" style="text-decoration: none">
-              <li>
-                <a class="dropdown-item" href="#">Inactive</a>
+            <router-link to="/adminswda" style="text-decoration: none"
+              ><li>
+                <a class="dropdown-item" href="#">Active</a>
               </li></router-link
             >
           </ul>
         </div>
-
-        <router-link to="/adminswda/create">
-          <button
-            class="btn btn-primary float-start"
-            style="
-              background-color: #133f5c;
-              font-size: 12px; /* Adjust the font size as needed */
-              padding: 10px 30px 10px 30px;
-              margin-left: 20px;
-            "
-          >
-            ADD NEW
-          </button>
-        </router-link>
-
         <button
           @click="exportToExcel"
           class="btn btn-primary float-end"
           style="
-            background-color: green;
+            background-color: Green;
             font-size: 12px; /* Adjust the font size as needed */
             padding: 10px 30px 10px 30px;
             margin-left: auto;
@@ -51,7 +36,6 @@
           EXPORT DATA
         </button>
       </div>
-
       <div class="card-body">
         <DataTable
           v-if="this.swda.length > 0"
@@ -59,7 +43,7 @@
           class="display stripe order-column cell-border hover compact"
           id="swdaTable"
         >
-          <thead style="background: #133f5c" class="text-white">
+          <thead style="background: #cb0e16" class="text-white">
             <tr>
               <th>ID</th>
               <th>Type</th>
@@ -78,24 +62,21 @@
               <td>{{ item.Cluster }}</td>
               <td>{{ item.Agency }}</td>
               <td>{{ item.Address }}</td>
-              <td>
-                <router-link
+              <td style="display: flex; justify-content: space-around">
+                <i
+                  class="bx bxs-up-arrow-square custom-link"
+                  @click="restoreSwda(item.ID)"
+                ></i>
+
+                <!-- <router-link
                   :to="{ path: '/adminswda/' + item.ID + '/view' }"
                   class="custom-link"
                 >
                   <i class="bx bx-low-vision table-icon custom-link"></i
-                ></router-link>
-
-                <router-link
-                  :to="{ path: '/adminswda/' + item.ID + '/edit' }"
-                  class="custom-link"
-                >
-                  <i class="bx bx-edit icon table-icon"></i>
-                </router-link>
+                ></router-link> -->
 
                 <i
-                  @click="deleteSwda(item.ID)"
-                  class="bx bx-archive-in icon table-icon custom-link"
+                  class="bx bx-trash icon table-icon custom-link"
                   style="cursor: pointer"
                 ></i>
               </td>
@@ -134,7 +115,7 @@ import "datatables.net-responsive";
 DataTable.use(DataTablesCore);
 
 export default {
-  name: "AdminSWDA",
+  name: "AdminSWDA_Archive",
   components: {
     Footer,
     AdminSidebar,
@@ -143,14 +124,14 @@ export default {
   },
   data() {
     return {
-      PageTitle: "ADMIN SWDA", // The title displayed on the page, which is "ADMIN SWDA"
+      PageTitle: "ADMIN SWDA ARCHIVE", // The title displayed on the page, which is "ADMIN SWDA"
 
       swda: [],
     };
   },
   computed: {},
   mounted() {
-    this.getSwda();
+    this.getSwdaArchive();
   },
   methods: {
     exportToExcel() {
@@ -265,18 +246,18 @@ export default {
         a.click();
       });
     },
-    getSwda() {
-      axios.get(`${backendURL}/api/swdalist`).then((res) => {
-        this.swda = res.data.Swda;
+    getSwdaArchive() {
+      axios.get(`${backendURL}/api/swdaArchived`).then((res) => {
+        this.swda = res.data.ArchivedSwda;
         console.log(res);
       });
     },
 
-    deleteSwda(SwdaID) {
+    restoreSwda(SwdaID) {
       // console.log(SwdaID);
-      if (confirm("Are you sure, you want to archive this data?")) {
+      if (confirm("Are you sure, you want to restore this data?")) {
         axios
-          .delete(`${backendURL}/api/swdalist/${SwdaID}/delete`)
+          .post(`${backendURL}/api/swdaArchived/${SwdaID}/restore`)
           .then((res) => {
             alert(res.data.message);
             // Reload the page after a successful deletion
@@ -284,9 +265,6 @@ export default {
           })
           .catch(function (error) {
             if (error.response) {
-              if (error.response.status === 422) {
-                mythis.errorList = error.response.data.errors;
-              }
               if (error.response.status === 404) {
                 alert(error.response.data.message);
               }

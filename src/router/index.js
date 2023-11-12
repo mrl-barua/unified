@@ -28,6 +28,7 @@ import AdminOSP from '../views/Admin/AdminOSP.vue'
 
 
 import AdminSWDA from '../views/Admin/AdminSWDA.vue'
+import AdminSWDA_Archive from '../views/Admin/AdminSWDA_Archive.vue'
 import AdminSWDACreate from '../views/Admin/CRUD_Pages/AdminSWDACreate'
 import AdminSWDAEdit from '../views/Admin/CRUD_Pages/AdminSWDAEdit'
 import AdminSWDAView from '../views/Admin/CRUD_Pages/AdminSwdaView'
@@ -164,6 +165,14 @@ const routes = [
     path: '/adminswda',
     name: 'adminswda',
     component: AdminSWDA,
+    beforeEnter: adminRequireAuth,
+  },
+
+
+  {
+    path: '/adminswda/archive',
+    name: 'adminswdaArchive',
+    component: AdminSWDA_Archive,
     beforeEnter: adminRequireAuth,
   },
 

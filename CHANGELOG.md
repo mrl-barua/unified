@@ -113,3 +113,5 @@
 ## version 4.9 Configured Auth.js, Added ADMIN SETTINGS view - MARLO BARUA
 
 ## version 4.10 Adjust padding and styling in AdminSidebar, Sidebar, 404, and LoginForm components - MARLO BARUA
+
+## version 5.0 Update UI styles and add new features - MARLO BARUA
