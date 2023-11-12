@@ -126,9 +126,9 @@
       <div class="agencies col-12 col-md-6 col-lg-3">
         <div class="shadow">
           <h4>ACTIVE AGENCIES</h4>
-          <p class="col-4">Registered</p>
-          <p class="col-4">Licensed</p>
-          <p class="col-4">Accredited</p>
+          <p class="col-4 textAgencies">Registered</p>
+          <p class="col-4 textAgencies">Licensed</p>
+          <p class="col-4 textAgencies">Accredited</p>
           <div class="col-4">
             <span id="active-registered" class="active-agencies">
               {{ activeRegisteredCount }}
@@ -150,10 +150,10 @@
       <div class="agencies col-12 col-md-6 col-lg-4">
         <div class="shadow">
           <h4>EXPIRED AGENCIES</h4>
-          <p class="col-3">Registered</p>
-          <p class="col-3">Licensed</p>
-          <p class="col-3">Accreditation</p>
-          <p class="col-3">Delisted</p>
+          <p class="col-3 textAgencies">Registered</p>
+          <p class="col-3 textAgencies">Licensed</p>
+          <p class="col-3 textAgencies">Accreditation</p>
+          <p class="col-3 textAgencies">Delisted</p>
 
           <div class="col-3">
             <span id="expired-registered" class="expired-agencies">
@@ -178,13 +178,13 @@
         </div>
       </div>
 
-      <div class="agencies col-12 col-md-6 col-lg-4">
+      <div class="agencies col-12 col-md-12 col-lg-5">
         <div class="shadow">
           <h4>MODE OF DELIVERY</h4>
-          <p class="col-3">Community</p>
-          <p class="col-3">Auxillary SWDA</p>
-          <p class="col-3">Residential</p>
-          <p class="col-3">Non-Residential</p>
+          <p class="col-3 textAgencies">Community</p>
+          <p class="col-3 textAgencies">Auxillary SWDA</p>
+          <p class="col-3 textAgencies">Residential</p>
+          <p class="col-3 textAgencies">Non-Residential</p>
 
           <div class="col-3">
             <span id="community-based" class="modeDelivery">
@@ -209,13 +209,15 @@
         </div>
       </div>
 
-      <div class="agencies col-12 col-md-6 col-lg-1">
-        <div class="shadow">
-          <h5>Number of Agencies</h5>
+      <div class="agencies col-12 col-md-12">
+        <div class="agencyNumbers">
+          <h5>NUMBER OF AGENCIES</h5>
           <br />
 
           <p class="col-12">
-            <span id="numberAgencies" class="numberAgencies">22</span>
+            <span id="numberAgencies" class="numberAgencies"
+              >{{ agencies.length }}
+            </span>
           </p>
         </div>
       </div>
@@ -307,8 +309,8 @@
             SECTORS
           </p>
           <DoughnutChart
-            v-if="ClusterData"
-            :data="ClusterData"
+            v-if="SectorData"
+            :data="SectorData"
             :legendOptions="customLegendOptions"
           />
         </div>
@@ -329,8 +331,8 @@
             CLIENT
           </p>
           <DoughnutChart
-            v-if="ClusterData"
-            :data="ClusterData"
+            v-if="ClientData"
+            :data="ClientData"
             :legendOptions="customLegendOptions"
           />
         </div>
@@ -351,6 +353,7 @@
 
 <script>
 import axios from "axios";
+import { backendURL } from "@/config.js";
 import Sidebar from "@/components/Sidebar.vue";
 import Footer from "@/components/Footer";
 import BarChart from "@/components/ChartJS/Barchart";
@@ -380,6 +383,8 @@ export default {
       ClusterData: null, // Initialize Chart Data as null
       RegionData: null, // Initialize Chart Data as null
       ClienteleData: null,
+      SectorData: null,
+      ClientData: null,
 
       // Cluster Lengths
       southClusterLength: 0, // Number of agencies in the South Cluster
@@ -409,7 +414,7 @@ export default {
   created() {
     // Fetch data and populate the agencies array (NEW)
     axios
-      .get("http://127.0.0.1:8000/api/agenciesName")
+      .get(`${backendURL}/api/agenciesName`)
       .then((response) => {
         this.agencies = response.data["Swda Agencies"]; // Access data within the 'Swda Agencies' property
       })
@@ -436,9 +441,10 @@ export default {
   },
 
   methods: {
+    // *ALREADY FUNCTIONAL
     ClusterFetchData() {
       return axios
-        .get("http://127.0.0.1:8000/api/cluster")
+        .get(`${backendURL}/api/cluster`)
         .then((response) => {
           // Initialize data arrays
           const southCluster = [];
@@ -549,9 +555,10 @@ export default {
           this.ClusterData = clusterdata;
         });
     },
+    // *ALREADY FUNCTIONAL
     RegionFetchData() {
       return axios
-        .get("http://127.0.0.1:8000/api/regionaloperation")
+        .get(`${backendURL}/api/regionaloperation`)
         .then((response) => {
           // Initialize data arrays
           const davaoCity = [];
@@ -650,9 +657,10 @@ export default {
           this.RegionData = regiondata;
         });
     },
+    // *ALREADY FUNCTIONAL
     AgencyFetchData() {
       return axios
-        .get("http://127.0.0.1:8000/api/agencies")
+        .get(`${backendURL}/api/agencies`)
         .then((response) => {
           // Initialize arrays for active and expired agencies
           const activeRegistered = [];
@@ -723,33 +731,60 @@ export default {
           console.error("Error fetching data:", error);
         });
     },
-
-    // NEED FIXINGS
-    ClienteleFetchData() {
+    // *ALREADY FUNCTIONAL
+    SectorFetchData() {
       return axios
-        .get("http://127.0.0.1:8000/api/clientele")
+        .get(`${backendURL}/api/sector`)
         .then((response) => {
-          // Initialize data arrays
+          // Initialize arrays for active and expired agencies
           const children = [];
+          const childrenAndYouth = [];
+          const familiesAndCommunities = [];
           const youth = [];
-          const familiesCommunities = [];
-          const nA = [];
+          const elderly = [];
+          const personsWithDisability = [];
+          const women = [];
+          const specialGroup = [];
+          const womenAndChildren = [];
+          const indigenousPeoples = [];
+          const drugDependents = [];
 
           response.data.forEach((item) => {
-            const clienteleName = item.Clientele;
+            const sector = item.Sector;
 
-            switch (clienteleName) {
+            switch (sector) {
               case "Children":
                 children.push(item);
                 break;
               case "Children and Youth":
-                youth.push(item);
+                childrenAndYouth.push(item);
                 break;
               case "Families and Communities":
-                familiesCommunities.push(item);
+                familiesAndCommunities.push(item);
                 break;
-              case "N/A":
-                nA.push(item);
+              case "Youth":
+                youth.push(item);
+                break;
+              case "Elderly":
+                elderly.push(item);
+                break;
+              case "Persons with Disability":
+                personsWithDisability.push(item);
+                break;
+              case "Women":
+                women.push(item);
+                break;
+              case "Special Group":
+                specialGroup.push(item);
+                break;
+              case "Women and Children":
+                womenAndChildren.push(item);
+                break;
+              case "Indigenous Peoples":
+                indigenousPeoples.push(item);
+                break;
+              case "Drug Dependents":
+                drugDependents.push(item);
                 break;
               default:
                 // Handle other cases if necessary
@@ -759,14 +794,249 @@ export default {
 
           // Calculate data lengths
           const childrenLength = children.length;
+          const childrenAndYouthLength = childrenAndYouth.length;
+          const familiesAndCommunitiesLength = familiesAndCommunities.length;
           const youthLength = youth.length;
-          const familiesCommunitiesLength = familiesCommunities.length;
-          const nALength = nA.length;
+          const elderlyLength = elderly.length;
+          const personsWithDisabilityLength = personsWithDisability.length;
+          const womenLength = women.length;
+          const specialGroupLength = specialGroup.length;
+          const womenAndChildrenLength = womenAndChildren.length;
+          const indigenousPeoplesLength = indigenousPeoples.length;
+          const drugDependentsLength = drugDependents.length;
 
-          console.log(childrenLength);
-          console.log(youthLength);
-          console.log(familiesCommunitiesLength);
-          console.log(nALength);
+          // Prepare and return data
+          const sectordata = {
+            labels: [
+              "Children",
+              "Children and Youth",
+              "Families and Communities",
+              "Youth",
+              "Elderly",
+              "Persons with Disability",
+              "Women",
+              "Special Group",
+              "Women and Children",
+              "Indigenous Peoples",
+              "Drug Dependents",
+            ],
+            label: ["Regional Operation"],
+            values: [
+              childrenLength,
+              childrenAndYouthLength,
+              familiesAndCommunitiesLength,
+              youthLength,
+              elderlyLength,
+              personsWithDisabilityLength,
+              womenLength,
+              specialGroupLength,
+              womenAndChildrenLength,
+              indigenousPeoplesLength,
+              drugDependentsLength,
+            ],
+            backgroundColor: [
+              "rgba(19, 63, 92, 1)",
+              "rgba(255, 0, 0, 1)", // Red
+              "rgba(0, 255, 0, 1)", // Green
+              "rgba(0, 0, 255, 1)", // Blue
+              "rgba(255, 255, 0, 1)", // Yellow
+              "rgba(255, 0, 255, 1)", // Magenta
+              "rgba(0, 255, 255, 1)", // Cyan
+              "rgba(128, 128, 128, 1)", // Gray
+              "rgba(255, 165, 0, 1)", // Orange
+              "rgba(0, 128, 0, 1)", // Dark Green],
+            ],
+          };
+          // Set barChartData to the computed data
+          this.SectorData = sectordata;
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+
+          // Prepare and return data
+          const sectordata = {
+            labels: [
+              "Children",
+              "Children and Youth",
+              "Families and Communities",
+              "Youth",
+              "Elderly",
+              "Persons with Disability",
+              "Women",
+              "Special Group",
+              "Women and Children",
+              "Indigenous Peoples",
+              "Drug Dependents",
+            ],
+            label: ["Regional Operation"],
+            values: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            backgroundColor: [
+              "rgba(19, 63, 92, 1)",
+              "rgba(255, 0, 0, 1)", // Red
+              "rgba(0, 255, 0, 1)", // Green
+              "rgba(0, 0, 255, 1)", // Blue
+              "rgba(255, 255, 0, 1)", // Yellow
+              "rgba(255, 0, 255, 1)", // Magenta
+              "rgba(0, 255, 255, 1)", // Cyan
+              "rgba(128, 128, 128, 1)", // Gray
+              "rgba(255, 165, 0, 1)", // Orange
+              "rgba(0, 128, 0, 1)", // Dark Green],
+            ],
+          };
+          // Set barChartData to the computed data
+          this.SectorData = sectordata;
+        });
+    },
+
+    // ! NEED FIXING BEFORE DEPLOYING
+    ClienteleFetchData() {
+      return axios
+        .get(`${backendURL}/api/clientele`)
+        .then((response) => {
+          // Initialize arrays for active and expired agencies
+          const childrenclientele = [];
+          const familiesAndCommunitiesclientele = [];
+          const childrenAndYouthclientele = [];
+          const childrenYouthFamiliesCommunities = [];
+          const SeniorCitizensclientele = [];
+          const personsWithDisabilityclientele = [];
+          const indigenousPeoplesclientele = [];
+          const womenclientele = [];
+          const others = [];
+
+          response.data.forEach((item) => {
+            const client = item.Clientele;
+
+            switch (client) {
+              case "Children":
+                childrenclientele.push(item);
+                break;
+              case "Children (0-6 years old Abandoned, orphaned, surrendered or temporary sheltered)":
+                childrenclientele.push(item);
+                break;
+              case "Children and Youth":
+              case "Children (3-7 years old abandoned, neglected, orphaned) Youth":
+              case "Children (Male abandoned and neglected)":
+              case "Children (0-12 years old abandoned, neglected, foundling)":
+              case "Children (Children In Need of Special Protection/ CNSP)":
+              case "Children (Abandoned, neglected, dependent, orphaned)":
+              case "Children (Critical and Chronically-ill patients both cancer and non-cancer)":
+              case "Children (Abandoned, Indigent, In-difficult situation)":
+              case "Children (0-5 years old dependent, neglected, foundling, abandoned, orphaned)":
+              case "Children (Street, Girls), Parents, Families, Communities":
+              case "Children diagnosed with cancer (0-18 y/old)":
+              case "Children (0-8 years old abandoned, orphaned, neglected)":
+              case "Children and Youth (Poor, Indigent, Neglected)":
+                childrenAndYouthclientele.push(item);
+                break;
+              case "Children (Disadvantaged) Youth (Out-of-School/OSY) Families and Communities":
+              case "Children (With Special Needs)":
+              case "Children (Street, Neglected)":
+              case "Children (4-13 years old) Families and Communities":
+              case "Children and Youth (Children In Need of Special Protection/CNSP)":
+              case "Children and Youth (Disadvantaged) (Out-of-School-Youth/OSY) Communities":
+                childrenYouthFamiliesCommunities.push(item);
+                break;
+              case "Families and Communities":
+              case "Families (Disadvantaged/displaced)":
+              case "Poor, vulnerable, marginalized, disadvantaged Children, Individuals, Families, and Communities":
+              case "Disadvantaged and marginalized Children, Youth, Indigenous Peoples, Families, and Communities":
+              case "Marginalized, Disadvantaged Individuals, Families and communities, Children, Youth Women, Victims-survivors of natural and human-induced calamities/disasters":
+                familiesAndCommunitiesclientele.push(item);
+                break;
+              case "Senior Citizens":
+                SeniorCitizensclientele.push(item);
+                break;
+              case "Persons with Disability":
+                personsWithDisabilityclientele.push(item);
+                break;
+              case "Indigenous Peoples":
+                indigenousPeoplesclientele.push(item);
+                break;
+              case "Women":
+              case "Women and Children":
+                womenclientele.push(item);
+                break;
+              case "Day Care Workers":
+              case "Drug Dependents":
+              case "Filipino seafarers, disadvantaged children, youth, families and communities":
+              case "N/A":
+                others.push(item);
+                break;
+              default:
+                others.push(item);
+                break;
+            }
+          });
+
+          // Calculate data lengths
+          const childrenclienteleLength = childrenclientele.length;
+          const familiesAndCommunitiesclienteleLength =
+            familiesAndCommunitiesclientele.length;
+          const childrenAndYouthclienteleLength =
+            childrenAndYouthclientele.length;
+          const childrenYouthFamiliesCommunitiesLength =
+            childrenYouthFamiliesCommunities.length;
+          const SeniorCitizensclienteleLength = SeniorCitizensclientele.length;
+          const personsWithDisabilityclienteleLength =
+            personsWithDisabilityclientele.length;
+          const indigenousPeoplesclienteleGroupLength =
+            indigenousPeoplesclientele.length;
+          const womenclienteleLength = womenclientele.length;
+          const othersLength = others.length;
+
+          console.log("TEST START");
+          console.log(childrenclienteleLength);
+          console.log(familiesAndCommunitiesclienteleLength);
+          console.log(childrenAndYouthclienteleLength);
+          console.log(childrenYouthFamiliesCommunitiesLength);
+          console.log(SeniorCitizensclienteleLength);
+          console.log(personsWithDisabilityclienteleLength);
+          console.log(indigenousPeoplesclienteleGroupLength);
+          console.log(womenclienteleLength);
+          console.log(othersLength);
+          console.log("TEST END");
+
+          // Prepare and return data
+          const clientdata = {
+            labels: [
+              "Children",
+              "Families and Communities",
+              "Children and Youth",
+              "Children Youth and Families",
+              "Senior Citizens",
+              "Persons With Disability",
+              "Indigenous Peples",
+              "Women",
+              "Others",
+            ],
+            label: ["Clientele"],
+            values: [
+              childrenclienteleLength,
+              familiesAndCommunitiesclienteleLength,
+              childrenAndYouthclienteleLength,
+              childrenYouthFamiliesCommunitiesLength,
+              SeniorCitizensclienteleLength,
+              personsWithDisabilityclienteleLength,
+              indigenousPeoplesclienteleGroupLength,
+              womenclienteleLength,
+              othersLength,
+            ],
+            backgroundColor: [
+              "rgba(19, 63, 92, 1)",
+              "rgba(255, 0, 0, 1)", // Red
+              "rgba(0, 255, 0, 1)", // Green
+              "rgba(0, 0, 255, 1)", // Blue
+              "rgba(255, 255, 0, 1)", // Yellow
+              "rgba(255, 0, 255, 1)", // Magenta
+              "rgba(0, 255, 255, 1)", // Cyan
+              "rgba(128, 128, 128, 1)", // Gray
+              "rgba(255, 165, 0, 1)", // Orange
+              "rgba(0, 128, 0, 1)", // Dark Green],
+            ],
+          };
+          // Set barChartData to the computed data
+          this.ClientData = clientdata;
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
@@ -778,6 +1048,9 @@ export default {
     this.ClusterFetchData();
     this.RegionFetchData();
     this.AgencyFetchData();
+    this.SectorFetchData();
+
+    // ! NEED FIXINGS BEFORE DEPLOYING
     this.ClienteleFetchData();
   },
 };
@@ -796,6 +1069,14 @@ export default {
 .filters {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   height: 18em;
+  border-radius: 20px;
+  margin: 10px 10px 10px 10px;
+  padding: 10px 0px 130px 0px;
+}
+
+.agencyNumbers {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  height: 1em;
   border-radius: 20px;
   margin: 10px 10px 10px 10px;
   padding: 10px 0px 130px 0px;
@@ -958,5 +1239,9 @@ export default {
   letter-spacing: 0em;
   text-align: center;
   margin: 20px 0px 20px 0px;
+}
+
+.textAgencies {
+  font-size: 15px;
 }
 </style>

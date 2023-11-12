@@ -9,5 +9,8 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)) // Use './src' instead of '.src'
     }
-  }
+  },
+  build: {
+    chunkSizeWarningLimit: 16000,
+  },
 })

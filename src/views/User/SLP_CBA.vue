@@ -75,13 +75,13 @@
 </template>
 
 <script>
-import axios from 'axios';
-import Sidebar from '@/components/Sidebar.vue'; 
-import Footer from '@/components/Footer';
-import BarChart from '@/components/ChartJS/Barchart';
-import PieChart from '@/components/ChartJS/PieChart';
-import DoughnutChart from '@/components/ChartJS/DoughnutChart';
-
+import axios from "axios";
+import { backendURL } from "@/config.js";
+import Sidebar from "@/components/Sidebar.vue";
+import Footer from "@/components/Footer";
+import BarChart from "@/components/ChartJS/Barchart";
+import PieChart from "@/components/ChartJS/PieChart";
+import DoughnutChart from "@/components/ChartJS/DoughnutChart";
 
 export default {
     name: 'HR',
@@ -128,8 +128,8 @@ export default {
  methods:{
   EmploymentFetchData() {
       return axios
-        .get('http://127.0.0.1:8000/api/employmentStatus')
-        .then(response => {
+        .get(`${backendURL}/api/employmentStatus`)
+        .then((response) => {
           // Initialize data arrays
           const moa = [];
           const permanent = [];

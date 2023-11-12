@@ -173,6 +173,9 @@
           "
         >
           GENDER AND AGE
+          <div style="height: 230px">
+            <BarChart :data="MonthData" :aspectRatio="60 / 10" />
+          </div>
         </div>
         <!-- SHOULD HAVE STACKED UP BAR CHART HERE -->
       </div>
@@ -180,7 +183,7 @@
 
     <!-- Employment Type and Gender Box -->
     <div class="col-12 col-md-6" style="justify-content: space-between">
-      <div class="col-12">
+      <div class="col-6">
         <div class="dashboard-box" style="height: 300px">
           <div
             style="
@@ -202,7 +205,7 @@
           </div>
         </div>
       </div>
-      <div class="col-12">
+      <div class="col-6">
         <div class="dashboard-box" style="height: 300px">
           <div
             style="
@@ -232,6 +235,8 @@
   <div class="col-12">
     <h2
       style="
+        margin-top: 20px;
+        margin-bottom: 20px;
         margin-left: 60px;
         margin-right: 60px;
         background-color: #294d9c;
@@ -398,6 +403,7 @@
 import Sidebar from "@/components/Sidebar.vue";
 import Footer from "@/components/Footer";
 import PieChart from "@/components/ChartJS/PieChart";
+import BarChart from "@/components/ChartJS/Barchart.vue";
 
 export default {
   name: "OSP",
@@ -405,6 +411,7 @@ export default {
     Sidebar,
     Footer,
     PieChart,
+    BarChart,
   },
   data() {
     return {

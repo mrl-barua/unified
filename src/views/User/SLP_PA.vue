@@ -1,4 +1,4 @@
-<template>
+<template>div
   <Sidebar :iconText="PageTitle" />
 
   <br /><br /><br /><br />
@@ -51,7 +51,9 @@
       <br />
       <h5 class="fw-bold">COST FROM DSWD BY BARANGAY</h5>
       <br />
-      <div class="Barchart1"><BarChart :data="CostData" /></div>
+      <div class="Barchart1">
+        <BarChart :data="CostData" :aspectRatio="60 / 10" />
+      </div>
     </div>
   </div>
 
@@ -60,6 +62,7 @@
 
 <script>
 import axios from "axios";
+import { backendURL } from "@/config.js";
 import Sidebar from "@/components/Sidebar.vue";
 import Footer from "@/components/Footer";
 import BarChart from "@/components/ChartJS/Barchart";

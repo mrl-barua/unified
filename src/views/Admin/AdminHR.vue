@@ -201,14 +201,14 @@
                 <td>
                   <router-link
                     :to="{ path: '/adminhr/' + item.ID + '/edit' }"
-                    class="btn btn-success col-12 mb-1 mt-3"
+                    class="btn btn-success col-12 mb-1 mt-1"
                   >
                     EDIT
                   </router-link>
                   <button
                     type="button"
                     @click="deleteHr(item.ID)"
-                    class="btn btn-danger col-12 mb-3"
+                    class="btn btn-danger col-12 mb-1"
                   >
                     DELETE
                   </button>
@@ -262,6 +262,8 @@
 
 <script>
 import axios from "axios";
+import { backendURL } from "@/config.js";
+
 import Footer from "@/components/Footer";
 import AdminSidebar from "@/components/AdminSidebar";
 import BarChart from "@/components/ChartJS/Barchart";
@@ -487,7 +489,7 @@ export default {
       });
     },
     getHr() {
-      axios.get("http://127.0.0.1:8000/api/hrlist").then((res) => {
+      axios.get(`${backendURL}/api/hrlist`).then((res) => {
         this.hr = res.data.Hr;
         console.log(res);
       });
@@ -497,7 +499,7 @@ export default {
       // console.log(HrID);
       if (confirm("Are you sure, you want to delete this data?")) {
         axios
-          .delete(`http://127.0.0.1:8000/api/hrlist/${HrID}/delete`)
+          .delete(`${backendURL}api/hrlist/${HrID}/delete`)
           .then((res) => {
             alert(res.data.message);
             // Reload the page after a successful deletion
