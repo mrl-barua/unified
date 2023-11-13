@@ -415,7 +415,7 @@ export default {
   },
   data() {
     return {
-      PageTitle: "OSP",
+      PageTitle: "OPERATIONAL STAFF DATABASE",
 
       divisions: ["Division #1", "Division #2", "Division #3", "Division #4"], //division data
       MonthData: {

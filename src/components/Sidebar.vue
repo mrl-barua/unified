@@ -5,9 +5,12 @@
       <div class="blue-header">
         <div class="logo">
           <i class="bx bx-menu menu-icon"></i>
-          <h3 class="text-white">{{ iconText }}</h3>
-          <!-- <span class="logo-name">UNIFIED</span> -->
-          <!-- <img class="float-start header-image" src="@/assets/DSWDLogo.png" alt="dswdLogo"> -->
+          <div class="text-start">
+            <h4 class="text-white iconText">{{ iconText }}</h4>
+            <p class="text-white iconDetails">
+              {{ iconDetails }}
+            </p>
+          </div>
         </div>
 
         <div class="sidebar">
@@ -180,6 +183,7 @@ export default {
   },
   props: {
     iconText: String,
+    iconDetails: String,
   },
   mounted() {
     const navBar = document.querySelector("nav");
@@ -227,7 +231,7 @@ nav {
   position: fixed;
   top: 6em;
   left: 0;
-  height: 50px;
+  height: 55px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -240,6 +244,7 @@ nav {
 .custom-link {
   text-decoration: none;
 }
+
 nav .logo {
   display: flex;
   align-items: center;
@@ -251,6 +256,25 @@ nav .logo img {
 
   @media screen and (min-width: 1024px) {
     height: 70px;
+  }
+}
+
+nav .logo .iconText {
+  color: #333;
+  font-size: 20px;
+  font-weight: 500;
+  padding-top: 70px;
+
+  @media screen and (min-width: 1024px) {
+    padding-top: 0;
+  }
+}
+
+.iconDetails {
+  visibility: hidden;
+
+  @media screen and (min-width: 1024px) {
+    visibility: visible;
   }
 }
 
@@ -282,7 +306,6 @@ nav .sidebar {
   top: 6em;
   left: -100%;
   height: 90%;
-
   width: 303px;
   padding: 20px 0;
   background-color: #fff;

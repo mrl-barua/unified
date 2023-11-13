@@ -1,5 +1,5 @@
 <template>
-  <Sidebar :iconText="PageTitle" />
+  <Sidebar :iconText="PageTitle" :iconDetails="PageDetail" />
   <br /><br /><br /><br />
   <div class="wrapper" container-fluid>
     <div class="col-12 col-md-3">
@@ -337,6 +337,9 @@ export default {
   data() {
     return {
       PageTitle: "SWDA - AGENCIES", // The title displayed on the page, which is "SWDA"
+      PageDetail:
+        "List of Registration, Licensing, and Accreditation of Social Welfare and Development Agencies (SWDA)      ", // The subtitle displayed on the page, which is "SWDA"
+
       customLegendOptions: {
         position: "right", // Set the legend position as needed
       },
@@ -413,8 +416,8 @@ export default {
   background-color: #e70f0f;
   color: white;
   cursor: pointer;
-  border-radius: 10px;
-  padding: 10px 0 10px 10px;
+  border-radius: 5px;
+  padding: 0px 0 0px 10px;
 }
 
 .agencyfilter {
