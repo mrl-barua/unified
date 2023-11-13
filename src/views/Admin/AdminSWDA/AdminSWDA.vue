@@ -4,31 +4,54 @@
     <br /><br /><br /><br />
     <div class="container-fluid wrapper"></div>
     <div class="card">
-      <div class="card-header">
-        <router-link
-          to="/adminswda/create"
-          class="btn btn-primary float-start"
-          style="
-            background-color: #133f5c;
-            font-size: 12px; /* Adjust the font size as needed */
-            padding: 10px 30px 10px 30px;
-          "
-        >
-          ADD NEW
+      <div class="card-header" style="display: flex">
+        <div class="dropdown">
+          <button
+            class="btn btn-secondary dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton1"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Active
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <router-link to="/adminswda/archive" style="text-decoration: none">
+              <li>
+                <a class="dropdown-item" href="#">Inactive</a>
+              </li></router-link
+            >
+          </ul>
+        </div>
+
+        <router-link to="/adminswda/create">
+          <button
+            class="btn btn-primary float-start"
+            style="
+              background-color: #133f5c;
+              font-size: 12px; /* Adjust the font size as needed */
+              padding: 10px 30px 10px 30px;
+              margin-left: 20px;
+            "
+          >
+            ADD NEW
+          </button>
         </router-link>
 
         <button
           @click="exportToExcel"
           class="btn btn-primary float-end"
           style="
-            background-color: Green;
+            background-color: green;
             font-size: 12px; /* Adjust the font size as needed */
             padding: 10px 30px 10px 30px;
+            margin-left: auto;
           "
         >
           EXPORT DATA
         </button>
       </div>
+
       <div class="card-body">
         <DataTable
           v-if="this.swda.length > 0"

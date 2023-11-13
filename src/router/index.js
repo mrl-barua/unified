@@ -1,36 +1,37 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LoginForm from '../views/LoginForm.vue'
-import Dashboard from '../views/User/Dashboard.vue'
-import HR from '../views/User/HR.vue'
-import OSP from '../views/User/OSP.vue'
-import SWDA from '../views/User/SWDA.vue'
-import SWDA_AGENCY from '../views/User/SWDA_AGENCIES.vue'
+import Dashboard from '../views/User/CBSS/Dashboard.vue'
+import HR from '../views/User/HR/HR.vue'
+import OSP from '../views/User/OSP/OSP.vue'
+import SWDA from '../views/User/SWDA/SWDA.vue'
+import SWDA_AGENCY from '../views/User/SWDA/SWDA_AGENCIES.vue'
 
-import SLP from '../views/User/SLP.vue'
+import SLP from '../views/User/SLP/SLP.vue'
 // insert SLP ref
-import SLP_PA from '../views/User/SLP_PA.vue'
-import SLP_SNM from '../views/User/SLP_SNM.vue'
-import SLP_BMT from '../views/User/SLP_BMT.vue'
-import SLP_STAT from '../views/User/SLP_STAT.vue'
-import SLP_CBA from '../views/User/SLP_CBA.vue'
+import SLP_PA from '../views/User/SLP/SLP_PA.vue'
+import SLP_SNM from '../views/User/SLP/SLP_SNM.vue'
+import SLP_BMT from '../views/User/SLP/SLP_BMT.vue'
+import SLP_STAT from '../views/User/SLP/SLP_STAT.vue'
+import SLP_CBA from '../views/User/SLP/SLP_CBA.vue'
 
 
-import AdminDashboard from '../views/Admin/AdminDashboard.vue'
+import AdminDashboard from '../views/Admin/AdminCBSS/AdminDashboard.vue'
 
 
-import AdminHR from '../views/Admin/AdminHR.vue'
-import AdminHRACreate from '../views/Admin/CRUD_Pages/AdminHRCreate'
-import AdminHREdit from '../views/Admin/CRUD_Pages/AdminHREdit'
+import AdminHR from '../views/Admin/AdminHR/AdminHR.vue'
+import AdminHRACreate from '../views/Admin/AdminHR/AdminHRCreate'
+import AdminHREdit from '../views/Admin/AdminHR/AdminHREdit'
 
 
-import AdminSLP from '../views/Admin/AdminSLP.vue'
-import AdminOSP from '../views/Admin/AdminOSP.vue'
+import AdminSLP from '../views/Admin/AdminSLP/AdminSLP.vue'
+import AdminOSP from '../views/Admin/AdminOSP/AdminOSP.vue'
 
 
-import AdminSWDA from '../views/Admin/AdminSWDA.vue'
-import AdminSWDACreate from '../views/Admin/CRUD_Pages/AdminSWDACreate'
-import AdminSWDAEdit from '../views/Admin/CRUD_Pages/AdminSWDAEdit'
-import AdminSWDAView from '../views/Admin/CRUD_Pages/AdminSwdaView'
+import AdminSWDA from '../views/Admin/AdminSWDA/AdminSWDA.vue'
+import AdminSWDA_Archive from '../views/Admin/AdminSWDA/AdminSWDA_Archive.vue'
+import AdminSWDACreate from '../views/Admin/AdminSWDA/AdminSWDACreate'
+import AdminSWDAEdit from '../views/Admin/AdminSWDA/AdminSWDAEdit'
+import AdminSWDAView from '../views/Admin/AdminSWDA/AdminSwdaView'
 
 
 import SettingDashboard from '../views/Admin/Settings_Pages/SettingDashboard'
@@ -164,6 +165,14 @@ const routes = [
     path: '/adminswda',
     name: 'adminswda',
     component: AdminSWDA,
+    beforeEnter: adminRequireAuth,
+  },
+
+
+  {
+    path: '/adminswda/archive',
+    name: 'adminswdaArchive',
+    component: AdminSWDA_Archive,
     beforeEnter: adminRequireAuth,
   },
 

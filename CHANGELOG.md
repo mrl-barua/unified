@@ -113,3 +113,11 @@
 ## version 4.9 Configured Auth.js, Added ADMIN SETTINGS view - MARLO BARUA
 
 ## version 4.10 Adjust padding and styling in AdminSidebar, Sidebar, 404, and LoginForm components - MARLO BARUA
+
+## version 5.0 Update UI styles and add new features - MARLO BARUA
+
+## version 5.1 Fix typo and update login functionality, Added functional Login with role specificity (user, admin) in LOGIN VIEW - MARLO BARUA
+
+## version 5.2 Updated the Temporary Layout for SLP CBA VIEW - GABRIEL ENOBIO
+
+## version 5.3 Update views and components, Sorted the Views by folders, Added IconDetails in Sidebar Component (USER VIEW) - MARLO BARUA

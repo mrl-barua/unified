@@ -4,7 +4,7 @@
 
 <script>
 import LoginForm from "./views/LoginForm.vue";
-import Dashboard from "./views/User/Dashboard.vue";
+import Dashboard from "./views/User/CBSS/Dashboard.vue";
 
 export default {
   name: "App",

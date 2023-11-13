@@ -1,5 +1,5 @@
 <template>
-  <Sidebar :iconText="PageTitle" />
+  <Sidebar :iconText="PageTitle" :iconDetails="PageDetail" />
   <br /><br /><br /><br />
   <div class="wrapper" container-fluid>
     <div class="col-12 col-md-3">
@@ -125,7 +125,7 @@
     <div class="col-12 col-md-9">
       <div class="agencies col-12 col-md-6 col-lg-3">
         <div class="shadow">
-          <h4>ACTIVE AGENCIES</h4>
+          <h4 class="headerAgencies">ACTIVE AGENCIES</h4>
           <p class="col-4 textAgencies">Registered</p>
           <p class="col-4 textAgencies">Licensed</p>
           <p class="col-4 textAgencies">Accredited</p>
@@ -149,7 +149,7 @@
 
       <div class="agencies col-12 col-md-6 col-lg-4">
         <div class="shadow">
-          <h4>EXPIRED AGENCIES</h4>
+          <h4 class="headerAgencies">EXPIRED AGENCIES</h4>
           <p class="col-3 textAgencies">Registered</p>
           <p class="col-3 textAgencies">Licensed</p>
           <p class="col-3 textAgencies">Accreditation</p>
@@ -180,7 +180,7 @@
 
       <div class="agencies col-12 col-md-12 col-lg-5">
         <div class="shadow">
-          <h4>MODE OF DELIVERY</h4>
+          <h4 class="headerAgencies">MODE OF DELIVERY</h4>
           <p class="col-3 textAgencies">Community</p>
           <p class="col-3 textAgencies">Auxillary SWDA</p>
           <p class="col-3 textAgencies">Residential</p>
@@ -211,7 +211,7 @@
 
       <div class="agencies col-12 col-md-12">
         <div class="agencyNumbers">
-          <h5>NUMBER OF AGENCIES</h5>
+          <h4 class="headerAgencies">NUMBER OF AGENCIES</h4>
           <br />
 
           <p class="col-12">
@@ -339,6 +339,19 @@
       </div>
       <div class="col-12">
         <div class="Regional">
+          <p
+            style="
+              font-family: Inter;
+              font-size: 24px;
+              font-weight: 700;
+              line-height: 21px;
+              letter-spacing: 0em;
+              text-align: left;
+              padding: 4px 0px 0px 24px;
+            "
+          >
+            REGIONAL OPERATION
+          </p>
           <HBarchart
             v-if="RegionData"
             :data="RegionData"
@@ -371,7 +384,9 @@ export default {
   },
   data() {
     return {
-      PageTitle: "SWDA", // The title displayed on the page, which is "SWDA"
+      PageTitle: "POLICY AND PLANS DIVISION", // The title displayed on the page, which is "SWDA"
+      PageDetail:
+        "List of Registration, Licensing, and Accreditation of Social Welfare and Development Agencies (SWDA)      ", // The subtitle displayed on the page, which is "SWDA"
 
       customLegendOptions: {
         position: "right", // Set the legend position as needed
@@ -1040,6 +1055,37 @@ export default {
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
+
+          // Prepare and return data
+          const clientdata = {
+            labels: [
+              "Children",
+              "Families and Communities",
+              "Children and Youth",
+              "Children Youth and Families",
+              "Senior Citizens",
+              "Persons With Disability",
+              "Indigenous Peples",
+              "Women",
+              "Others",
+            ],
+            label: ["Clientele"],
+            values: [1, 1, 1, 1, 1, 1, 1, 1, 1],
+            backgroundColor: [
+              "rgba(19, 63, 92, 1)",
+              "rgba(255, 0, 0, 1)", // Red
+              "rgba(0, 255, 0, 1)", // Green
+              "rgba(0, 0, 255, 1)", // Blue
+              "rgba(255, 255, 0, 1)", // Yellow
+              "rgba(255, 0, 255, 1)", // Magenta
+              "rgba(0, 255, 255, 1)", // Cyan
+              "rgba(128, 128, 128, 1)", // Gray
+              "rgba(255, 165, 0, 1)", // Orange
+              "rgba(0, 128, 0, 1)", // Dark Green],
+            ],
+          };
+          // Set barChartData to the computed data
+          this.ClientData = clientdata;
         });
     },
   },
@@ -1094,8 +1140,8 @@ export default {
   background-color: #e70f0f;
   color: white; /* Change text color to white on hover */
   cursor: pointer; /* Change cursor to a pointer on hover (optional) */
-  border-radius: 10px;
-  padding: 10px 0px 10px 10px;
+  border-radius: 5px;
+  padding: 0px 0px 0px 10px;
 }
 .agencyfilter {
   font-size: 14px;
@@ -1176,7 +1222,7 @@ export default {
 }
 .Sectors,
 .Client {
-  height: 20em;
+  height: 22em;
   padding-bottom: 50px;
 }
 .Regional {
@@ -1243,5 +1289,14 @@ export default {
 
 .textAgencies {
   font-size: 15px;
+}
+
+.headerAgencies {
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: center;
 }
 </style>

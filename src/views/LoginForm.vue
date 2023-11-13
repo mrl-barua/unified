@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid" style="bac">
     <div class="images">
       <img src="/src/assets/DSWDLogo.png" alt="" />
     </div>
@@ -9,13 +9,17 @@
       :style="{ display: loginFormVisible ? 'block' : 'none' }"
       id="login-form"
     >
-      <h4 class="text-start">Weclome</h4>
+      <h4 class="text-start">Welcome</h4>
       <h1 class="text-start">Sign in to</h1>
-      <h4 class="text-start">UNIFIED XI</h4>
+      <h4 class="text-start">
+        <span>UNIFIED</span>
+        <span style="font-weight: bold; color: blue"> X</span
+        ><span style="font-weight: bold; color: red">I</span>
+      </h4>
       <br />
       <form @submit.prevent="login">
         <input
-          v-model="username"
+          v-model="email"
           type="Username"
           placeholder="Enter your Username"
         />
@@ -72,7 +76,7 @@ export default {
   components: { Footer },
   data() {
     return {
-      username: "",
+      email: "",
       password: "",
       error: false,
       loading: false,
@@ -125,72 +129,70 @@ export default {
       this.signupFormVisible = true;
     },
 
-    login() {
-      // Set loading state to true
-      this.loading = true;
-
-      // Simulate a delay to mimic a server response (remove this in a real scenario)
-      setTimeout(() => {
-        // Perform authentication logic here (e.g., check username and password)
-        if (this.username === "User" && this.password === "user") {
-          // Authentication successful, set user as authenticated in localStorage
-          sessionStorage.setItem("user", "authenticated");
-
-          // Navigate to the dashboard
-          this.$router.push("/dashboard");
-        } else if (this.username === "Admin" && this.password === "admin") {
-          // Authentication successful, set user as authenticated in localStorage
-          sessionStorage.setItem("admin", "authenticated");
-
-          // Navigate to the dashboard
-          this.$router.push("/admindashboard");
-        } else {
-          // Authentication failed, display error message
-          this.error = true;
-        }
-
-        // Reset loading state to false after authentication logic
-        this.loading = false;
-      }, 1000); // Simulated delay of 1 second
-    },
-
     // login() {
     //   // Set loading state to true
     //   this.loading = true;
 
-    //   // Define the API URL
-    //   const apiUrl = `${backendURL}/api/loginCredentials`;
+    //   // Simulate a delay to mimic a server response (remove this in a real scenario)
+    //   setTimeout(() => {
+    //     // Perform authentication logic here (e.g., check username and password)
+    //     if (this.username === "User" && this.password === "user") {
+    //       // Authentication successful, set user as authenticated in localStorage
+    //       sessionStorage.setItem("user", "authenticated");
 
-    //   // Make an Axios GET request to fetch user data
-    //   axios
-    //     .get(apiUrl)
-    //     .then((response) => {
-    //       // Find the user with matching empid and qr_code
-    //       const user = response.data.find(
-    //         (user) => user.empid === this.username && user.qr_code === this.password
-    //       );
+    //       // Navigate to the dashboard
+    //       this.$router.push("/dashboard");
+    //     } else if (this.username === "Admin" && this.password === "admin") {
+    //       // Authentication successful, set user as authenticated in localStorage
+    //       sessionStorage.setItem("admin", "authenticated");
 
-    //       if (user) {
-    //         // Authentication successful, set user as authenticated in localStorage
-    //         localStorage.setItem('user', 'authenticated');
-
-    //         // Navigate to the dashboard
-    //         this.$router.push('/dashboard');
-    //       } else {
-    //         // Authentication failed, display error message
-    //         this.error = true;
-    //       }
-    //     })
-    //     .catch((error) => {
-    //       // Handle API request error, e.g., display an error message
-    //       console.error('API request failed:', error);
+    //       // Navigate to the dashboard
+    //       this.$router.push("/admindashboard");
+    //     } else {
+    //       // Authentication failed, display error message
     //       this.error = true;
-    //     })
-    //     .finally(() => {
-    //       // Reset loading state to false after the request
-    //       this.loading = false;
-    //     });
+    //     }
+
+    //     // Reset loading state to false after authentication logic
+    //     this.loading = false;
+    //   }, 1000); // Simulated delay of 1 second
     // },
+
+    //* WORKING LOGIN FOR ADMIN DASHBOARD - USER DASHBOARD LOGIN 
+    login() {
+      this.loading = true; // Set loading state to true
+
+      axios
+        .post(`${backendURL}/api/adminLogin`, {
+          email: this.email,
+          password: this.password,
+        })
+        .then((response) => {
+          console.log("Request Payload:", this.email, this.password);
+          console.log("Server Response:", response);
+
+          if (response.data.Role === "admin") {
+            sessionStorage.setItem("admin", "authenticated");
+            this.$router.push("/admindashboard");
+          } else if (response.data.Role === "user") {
+            sessionStorage.setItem("user", "authenticated");
+            this.$router.push("/dashboard");
+          } else {
+            // Handle unexpected role or scenario
+            console.error("Unexpected role:", response.data.Role);
+            this.error = "Unexpected role. Please contact support.";
+          }
+
+          this.error = null; // Reset error state on successful login
+        })
+        .catch((error) => {
+          // Handle errors or invalid credentials
+          this.error = "User not found. Please enter correct credentials.";
+        })
+        .finally(() => {
+          this.loading = false; // Reset loading state after the request
+        });
+    },
   },
 };
 </script>
@@ -250,7 +252,7 @@ body {
   align-items: center;
   height: 100vh;
   margin-top: -60px;
-  /* background-image: url("../src/assets/dswd_carousel1.png");  */
+  background-image: url("../assets/dswd_background.png");
   background-size: cover; /* Optional: adjust to your needs */
   background-repeat: no-repeat; /* Optional: adjust to your needs */
 }
