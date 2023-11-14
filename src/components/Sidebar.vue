@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header />
-    <nav>
+    <nav :class="{ sticky: isSticky }">
       <div class="blue-header">
         <div class="logo">
           <i class="bx bx-menu menu-icon"></i>
@@ -181,11 +181,17 @@ export default {
   components: {
     Header,
   },
+  data() {
+    return {
+      isSticky: false,
+    };
+  },
   props: {
     iconText: String,
     iconDetails: String,
   },
   mounted() {
+    window.addEventListener("scroll", this.handleScroll);
     const navBar = document.querySelector("nav");
     const menuBtns = document.querySelectorAll(".menu-icon");
     const overlay = document.querySelector(".overlay");
@@ -200,7 +206,24 @@ export default {
       navBar.classList.remove("open");
     });
   },
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.handleScroll);
+  },
+
   methods: {
+    handleScroll() {
+      // Check if the user has scrolled down beyond a certain point
+      const scrollThreshold = 6 * 16; // Assuming 1em = 16px
+      this.isSticky = window.scrollY > scrollThreshold;
+
+      // Check if this.$refs.nav is defined before accessing its properties
+      if (this.$refs.nav) {
+        // Adjust the top value dynamically based on the scroll position
+        this.$refs.nav.style.top = this.isSticky
+          ? "0"
+          : `calc(6em - ${window.scrollY}px)`;
+      }
+    },
     logout() {
       // Clear the user's authentication status in localStorage
       localStorage.removeItem("user");
@@ -228,17 +251,33 @@ body {
 }
 
 nav {
-  position: fixed;
+  position: absolute;
   top: 6em;
-  left: 0;
   height: 55px;
   width: 100%;
   display: flex;
   align-items: center;
-  /* background: linear-gradient(to right, white 20%, #EE1C25 80%); */
   background: #294d9c;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
   z-index: 999;
+  /* transition: top 0.3s ease-in-out;  */
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  /* animation: fadeInDown 0.3s ease-in-out;  */
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .custom-link {

@@ -19,7 +19,7 @@ export function startAutoLogout() {
   logoutTimer = setTimeout(() => {
     // Log the user out when the timer expires
     logout();
-  }, 600000); // 1 Hour Session
+  }, 60000000); // 1 Hour Session
 
 }
 
