@@ -94,37 +94,11 @@
           </table>
         </div>
       </div>
-
-      <p
-        style="
-          color: rgba(41, 45, 150, 1);
-          font-weight: 800;
-          font-size: 17px;
-          line-height: 20.57px;
-        "
-      >
-        FOR RENEWAL
-      </p>
-
-      <div class="filters">
-        <p class="sidepart">LICENCE</p>
-        <br />
-        <h3 class="sidepartValue">00</h3>
-        <p>DAYS</p>
-        <p>BEFORE EXPIRATION</p>
-      </div>
-      <div class="filters">
-        <p class="sidepart">ACCREDITATION</p>
-        <br />
-        <h3 class="sidepartValue">00</h3>
-        <p>DAYS</p>
-        <p>BEFORE EXPIRATION</p>
-      </div>
     </div>
 
     <div class="col-12 col-md-9">
       <div class="agencies col-12 col-md-6 col-lg-3">
-        <div class="shadow">
+        <div class="shadow-agencies">
           <h4 class="headerAgencies">ACTIVE AGENCIES</h4>
           <p class="col-4 textAgencies">Registered</p>
           <p class="col-4 textAgencies">Licensed</p>
@@ -154,7 +128,7 @@
       </div>
 
       <div class="agencies col-12 col-md-6 col-lg-4">
-        <div class="shadow">
+        <div class="shadow-agencies">
           <h4 class="headerAgencies">EXPIRED AGENCIES</h4>
           <p class="col-3 textAgencies">Registered</p>
           <p class="col-3 textAgencies">Licensed</p>
@@ -193,7 +167,7 @@
       </div>
 
       <div class="agencies col-12 col-md-12 col-lg-5">
-        <div class="shadow">
+        <div class="shadow-agencies">
           <h4 class="headerAgencies">MODE OF DELIVERY</h4>
           <p class="col-3 textAgencies">Community</p>
           <p class="col-3 textAgencies">Auxillary SWDA</p>
@@ -719,9 +693,9 @@ export default {
               if (item.Licensed === "Yes") activeLicensed.push(item);
               if (item.Accredited === "Yes") activeAccredited.push(item);
             } else if (item.Registration_Status === "Expired") {
-              expiredRegistered.push(item);
-              expiredLicensed.push(item);
-              expiredAccredited.push(item);
+              if (item.Registered === "Yes") expiredRegistered.push(item);
+              if (item.Licensed === "Yes") expiredLicensed.push(item);
+              if (item.Accredited === "Yes") expiredAccredited.push(item);
               if (item.Delisted === "Yes") expiredDelisted.push(item);
             }
 
@@ -1136,25 +1110,28 @@ export default {
   color: black;
 }
 .filters {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 8px 1px #00000026;
+
   height: 18em;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   margin: 10px 10px 10px 10px;
   padding: 10px 0px 130px 0px;
 }
 
 .agencyNumbers {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 8px 1px #00000026;
+
   height: 1em;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   margin: 10px 10px 10px 10px;
   padding: 10px 0px 130px 0px;
 }
 
 .agenciesNames {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  height: 25em;
-  border-radius: 20px;
+  box-shadow: 0px 0px 8px 1px #00000026;
+
+  height: 77em;
+  /* border-radius: 20px; */
   margin: 10px 10px 10px 10px;
   padding: 10px 0px 130px 0px;
 }
@@ -1163,12 +1140,12 @@ export default {
   background-color: #e70f0f;
   color: white; /* Change text color to white on hover */
   cursor: pointer; /* Change cursor to a pointer on hover (optional) */
-  border-radius: 5px;
+  /* border-radius: 5px; */
   padding: 0px 0px 0px 10px;
 }
 .agencyfilter {
   font-size: 14px;
-  height: 22em;
+  height: 80em;
   width: 90%;
   overflow: auto;
   margin: 20px 20px 20px 20px;
@@ -1181,7 +1158,7 @@ export default {
 
 .agencyfilter::-webkit-scrollbar-thumb {
   background-color: #555; /* Color of the scrollbar thumb */
-  border-radius: 4px; /* Adjust the border-radius to make it smaller or larger */
+  /* border-radius: 4px;  */
 }
 
 .agencyfilter::-webkit-scrollbar-track {
@@ -1210,13 +1187,25 @@ export default {
   justify-content: center;
   align-items: center;
 }
-.shadow {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  height: 170px;
-  border-radius: 20px;
+
+.shadow-agencies {
+  box-shadow: 0px 0px 8px 1px #00000026;
+
+  height: 150px;
+  /* border-radius: 20px; */
   margin: 10px 10px 10px 10px;
   padding: 10px 0px 130px 0px;
 }
+
+.shadow {
+  box-shadow: 0px 0px 8px 1px #00000026;
+
+  height: 170px;
+  /* border-radius: 20px; */
+  margin: 10px 10px 10px 10px;
+  padding: 10px 0px 130px 0px;
+}
+
 .active-agencies {
   font-weight: bold;
   font-size: 34px;
@@ -1237,9 +1226,10 @@ export default {
 .Sectors,
 .Client,
 .Regional {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 8px 1px #00000026;
+
   height: 15em;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   margin: 5px 10px 5px 10px;
   padding: 10px 0px 10px 0px;
 }
@@ -1279,7 +1269,7 @@ export default {
   transform: translate(-50%, -50%); /* Center the text within its parent */
   color: white;
   padding: 10px 15px;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   visibility: visible;
   opacity: 0; /* Initially transparent */
   transition: visibility 0s, opacity 0.3s ease; /* Transition effect */

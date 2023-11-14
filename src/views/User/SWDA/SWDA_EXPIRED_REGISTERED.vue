@@ -1,16 +1,11 @@
 <template>
-  <Sidebar />
+  <Sidebar :iconText="PageTitle" :iconDetails="PageDetail" />
   <br /><br /><br /><br />
   <div class="wrapper container-fluid">
     <div class="col-12 col-md-3">
       <div class="agenciesNames" style="background-color: #292d96">
         <input
-          style="
-            border-radius: 10px;
-            width: 90%;
-            height: 3em;
-            text-align: center;
-          "
+          style="width: 90%; height: 3em; text-align: center"
           type="text"
           v-model="searchQuery"
           placeholder="Search for agency names"
@@ -94,37 +89,11 @@
           </table>
         </div>
       </div>
-
-      <p
-        style="
-          color: rgba(41, 45, 150, 1);
-          font-weight: 800;
-          font-size: 17px;
-          line-height: 20.57px;
-        "
-      >
-        FOR RENEWAL
-      </p>
-
-      <div class="filters">
-        <p class="sidepart">LICENCE</p>
-        <br />
-        <h3 class="sidepartValue">00</h3>
-        <p>DAYS</p>
-        <p>BEFORE EXPIRATION</p>
-      </div>
-      <div class="filters">
-        <p class="sidepart">ACCREDITATION</p>
-        <br />
-        <h3 class="sidepartValue">00</h3>
-        <p>DAYS</p>
-        <p>BEFORE EXPIRATION</p>
-      </div>
     </div>
 
     <div class="col-12 col-md-9">
       <div class="agencies col-12 col-md-6 col-lg-3">
-        <div class="shadow">
+        <div class="shadow-agencies">
           <h4 class="headerAgencies">ACTIVE AGENCIES</h4>
           <p class="col-4 textAgencies">Registered</p>
           <p class="col-4 textAgencies">Licensed</p>
@@ -154,7 +123,7 @@
       </div>
 
       <div class="agencies col-12 col-md-6 col-lg-4">
-        <div class="shadow">
+        <div class="shadow-agencies">
           <h4 class="headerAgencies">EXPIRED AGENCIES</h4>
           <p class="col-3 textAgencies">Registered</p>
           <p class="col-3 textAgencies">Licensed</p>
@@ -193,7 +162,7 @@
       </div>
 
       <div class="agencies col-12 col-md-12 col-lg-5">
-        <div class="shadow">
+        <div class="shadow-agencies">
           <h4 class="headerAgencies">MODE OF DELIVERY</h4>
           <p class="col-3 textAgencies">Community</p>
           <p class="col-3 textAgencies">Auxillary SWDA</p>
@@ -231,16 +200,58 @@
         </div>
       </div>
 
-      <div class="agencies col-12 col-md-12">
-        <div class="agencyNumbers">
-          <h4 class="headerAgencies">NUMBER OF AGENCIES</h4>
-          <br />
-
-          <p class="col-12">
-            <span id="numberAgencies" class="numberAgencies"
-              >{{ agencies.length }}
-            </span>
-          </p>
+      <div class="tableOutside col-12">
+        <div class="tableHeading">
+          <p>REGISTERED EXPIRED AGENCIES</p>
+        </div>
+        <div class="tableInside">
+          <DataTable
+            v-if="this.swda.length > 0"
+            style="width: 100%"
+            class="display stripe order-column cell-border hover compact"
+            id="swdaTable"
+          >
+            <thead style="background: #133f5c" class="text-white">
+              <tr>
+                <th>ID</th>
+                <th>Type</th>
+                <th>Sector</th>
+                <th>Cluster</th>
+                <th>Agency</th>
+                <th>Address</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="item in swda" :key="item.ID">
+                <td>{{ item.ID }}</td>
+                <td>{{ item.Type }}</td>
+                <td>{{ item.Sector }}</td>
+                <td>{{ item.Cluster }}</td>
+                <td>{{ item.Agency }}</td>
+                <td>{{ item.Address }}</td>
+                <td>
+                  <router-link
+                    :to="{ path: '/adminswda/' + item.ID + '/view' }"
+                    class="custom-link"
+                  >
+                    <i class="bx bx-low-vision table-icon custom-link"></i
+                  ></router-link>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th>ID</th>
+                <th>Type</th>
+                <th>Sector</th>
+                <th>Cluster</th>
+                <th>Agency</th>
+                <th>Address</th>
+                <th>Actions</th>
+              </tr>
+            </tfoot>
+          </DataTable>
         </div>
       </div>
     </div>
@@ -252,13 +263,23 @@ import axios from "axios";
 import { backendURL } from "@/config.js";
 import Sidebar from "@/components/Sidebar.vue";
 
+import DataTable from "datatables.net-vue3";
+import DataTablesCore from "datatables.net";
+import "datatables.net-responsive";
+DataTable.use(DataTablesCore);
+
 export default {
-  name: "SWDA_EXPIRED_REGISTERED",
+  name: "SWDA_ACTIVE_LICENSED",
   components: {
     Sidebar,
+    DataTable,
   },
   data() {
     return {
+      PageTitle: "POLICY AND PLANS DIVISION",
+      PageDetail: "Registered Expired Agencies",
+
+      swda: [],
       agencies: [], // An array to store agency data fetched from the API
       searchQuery: "", // A variable to hold the search query entered by the user for filtering agencies
 
@@ -331,9 +352,9 @@ export default {
               if (item.Licensed === "Yes") activeLicensed.push(item);
               if (item.Accredited === "Yes") activeAccredited.push(item);
             } else if (item.Registration_Status === "Expired") {
-              expiredRegistered.push(item);
-              expiredLicensed.push(item);
-              expiredAccredited.push(item);
+              if (item.Registered === "Yes") expiredRegistered.push(item);
+              if (item.Licensed === "Yes") expiredLicensed.push(item);
+              if (item.Accredited === "Yes") expiredAccredited.push(item);
               if (item.Delisted === "Yes") expiredDelisted.push(item);
             }
 
@@ -380,14 +401,26 @@ export default {
           console.error("Error fetching data:", error);
         });
     },
+    getSwda() {
+      axios.get(`${backendURL}/api/swdalist`).then((res) => {
+        this.swda = res.data.Swda.filter(
+          (item) =>
+            item.Registration_Status === "Expired" && item.Registered === "Yes"
+        );
+        console.log(res);
+      });
+    },
   },
   mounted() {
     this.AgencyFetchData();
+    this.getSwda();
   },
 };
 </script>
 
 <style scoped>
+@import "datatables.net-dt";
+@import "datatables.net-bs5";
 .wrapper {
   margin: 0;
   padding: 0;
@@ -401,7 +434,7 @@ export default {
 .filters {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   height: 18em;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   margin: 10px 10px 10px 10px;
   padding: 10px 0px 130px 0px;
 }
@@ -409,15 +442,35 @@ export default {
 .agencyNumbers {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   height: 1em;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   margin: 10px 10px 10px 10px;
   padding: 10px 0px 130px 0px;
 }
 
+.tableOutside {
+  margin: 20px 0px 20px 0px;
+  border: 2px solid #e0e0e0;
+  /* border-radius: 20px; */
+}
+
+.tableInside {
+  margin: 20px 30px 20px 30px;
+}
+
+.tableHeading {
+  margin-top: 20px;
+  font-family: Inter;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 36px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
 .agenciesNames {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  height: 25em;
-  border-radius: 20px;
+  height: 67em;
+  /* border-radius: 20px; */
   margin: 10px 10px 10px 10px;
   padding: 10px 0px 130px 0px;
 }
@@ -426,12 +479,12 @@ export default {
   background-color: #e70f0f;
   color: white; /* Change text color to white on hover */
   cursor: pointer; /* Change cursor to a pointer on hover (optional) */
-  border-radius: 5px;
+  /* border-radius: 5px; */
   padding: 0px 0px 0px 10px;
 }
 .agencyfilter {
   font-size: 14px;
-  height: 22em;
+  height: 69em;
   width: 90%;
   overflow: auto;
   margin: 20px 20px 20px 20px;
@@ -444,17 +497,26 @@ export default {
 
 .agencyfilter::-webkit-scrollbar-thumb {
   background-color: #555; /* Color of the scrollbar thumb */
-  border-radius: 4px; /* Adjust the border-radius to make it smaller or larger */
+  /* border-radius: 4px;  */
 }
 
 .agencyfilter::-webkit-scrollbar-track {
   background-color: #f1f1f1; /* Color of the scrollbar track */
 }
 
+.shadow-agencies {
+  box-shadow: 0px 0px 8px 1px #00000026;
+
+  height: 150px;
+  /* border-radius: 20px; */
+  margin: 10px 10px 10px 10px;
+  padding: 10px 0px 130px 0px;
+}
+
 .shadow {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   height: 170px;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   margin: 10px 10px 10px 10px;
   padding: 10px 0px 130px 0px;
 }

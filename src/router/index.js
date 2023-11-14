@@ -8,7 +8,7 @@ import OSP from '../views/User/OSP/OSP.vue'
 import SWDA from '../views/User/SWDA/SWDA.vue'
 import SWDA_AGENCY from '../views/User/SWDA/SWDA_AGENCIES.vue'
 import SWDA_ACTIVE_ACCREDITED from '../views/User/SWDA/SWDA_ACTIVE_ACCREDITED.vue'
-import SWDA_ACTIVE_LICENSED from '../views/User/SWDA/SWDA_ACTIVE_LICENCED.vue'
+import SWDA_ACTIVE_LICENSED from '../views/User/SWDA/SWDA_ACTIVE_LICENSED.vue'
 import SWDA_ACTIVE_REGISTERED from '../views/User/SWDA/SWDA_ACTIVE_REGISTERED.vue'
 
 import SWDA_EXPIRED_ACCREDITED from '../views/User/SWDA/SWDA_EXPIRED_ACCREDITED.vue'
