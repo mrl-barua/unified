@@ -1,37 +1,52 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LoginForm from '../views/LoginForm.vue'
-import Dashboard from '../views/User/Dashboard.vue'
-import HR from '../views/User/HR.vue'
-import OSP from '../views/User/OSP.vue'
-import SWDA from '../views/User/SWDA.vue'
-import SWDA_AGENCY from '../views/User/SWDA_AGENCIES.vue'
+import Dashboard from '../views/User/CBSS/Dashboard.vue'
+import HR from '../views/User/HR/HR.vue'
+import OSP from '../views/User/OSP/OSP.vue'
 
-import SLP from '../views/User/SLP.vue'
+
+import SWDA from '../views/User/SWDA/SWDA.vue'
+import SWDA_AGENCY from '../views/User/SWDA/SWDA_AGENCIES.vue'
+import SWDA_ACTIVE_ACCREDITED from '../views/User/SWDA/SWDA_ACTIVE_ACCREDITED.vue'
+import SWDA_ACTIVE_LICENSED from '../views/User/SWDA/SWDA_ACTIVE_LICENSED.vue'
+import SWDA_ACTIVE_REGISTERED from '../views/User/SWDA/SWDA_ACTIVE_REGISTERED.vue'
+
+import SWDA_EXPIRED_ACCREDITED from '../views/User/SWDA/SWDA_EXPIRED_ACCREDITED.vue'
+import SWDA_EXPIRED_DELISTED from '../views/User/SWDA/SWDA_EXPIRED_DELISTED.vue'
+import SWDA_EXPIRED_LICENSED from '../views/User/SWDA/SWDA_EXPIRED_LICENCED.vue'
+import SWDA_EXPIRED_REGISTERED from '../views/User/SWDA/SWDA_EXPIRED_REGISTERED.vue'
+import SWDA_MOD_AUXILLARY from '../views/User/SWDA/SWDA_MOD_AUXILLARY.vue'
+import SWDA_MOD_COMBASED from '../views/User/SWDA/SWDA_MOD_COMBASED.vue'
+import SWDA_MOD_NRESIDENTIAL from '../views/User/SWDA/SWDA_MOD_NRESIDENTIAL.vue'
+import SWDA_MOD_RESIDENTIAL from '../views/User/SWDA/SWDA_MOD_RESIDENTIAL.vue'
+
+
+import SLP from '../views/User/SLP/SLP.vue'
 // insert SLP ref
-import SLP_PA from '../views/User/SLP_PA.vue'
-import SLP_SNM from '../views/User/SLP_SNM.vue'
-import SLP_BMT from '../views/User/SLP_BMT.vue'
-import SLP_STAT from '../views/User/SLP_STAT.vue'
-import SLP_CBA from '../views/User/SLP_CBA.vue'
+import SLP_PA from '../views/User/SLP/SLP_PA.vue'
+import SLP_SNM from '../views/User/SLP/SLP_SNM.vue'
+import SLP_BMT from '../views/User/SLP/SLP_BMT.vue'
+import SLP_STAT from '../views/User/SLP/SLP_STAT.vue'
+import SLP_CBA from '../views/User/SLP/SLP_CBA.vue'
 
 
-import AdminDashboard from '../views/Admin/AdminDashboard.vue'
+import AdminDashboard from '../views/Admin/AdminCBSS/AdminDashboard.vue'
 
 
-import AdminHR from '../views/Admin/AdminHR.vue'
-import AdminHRACreate from '../views/Admin/CRUD_Pages/AdminHRCreate'
-import AdminHREdit from '../views/Admin/CRUD_Pages/AdminHREdit'
+import AdminHR from '../views/Admin/AdminHR/AdminHR.vue'
+import AdminHRACreate from '../views/Admin/AdminHR/AdminHRCreate'
+import AdminHREdit from '../views/Admin/AdminHR/AdminHREdit'
 
 
-import AdminSLP from '../views/Admin/AdminSLP.vue'
-import AdminOSP from '../views/Admin/AdminOSP.vue'
+import AdminSLP from '../views/Admin/AdminSLP/AdminSLP.vue'
+import AdminOSP from '../views/Admin/AdminOSP/AdminOSP.vue'
 
 
-import AdminSWDA from '../views/Admin/AdminSWDA.vue'
-import AdminSWDA_Archive from '../views/Admin/AdminSWDA_Archive.vue'
-import AdminSWDACreate from '../views/Admin/CRUD_Pages/AdminSWDACreate'
-import AdminSWDAEdit from '../views/Admin/CRUD_Pages/AdminSWDAEdit'
-import AdminSWDAView from '../views/Admin/CRUD_Pages/AdminSwdaView'
+import AdminSWDA from '../views/Admin/AdminSWDA/AdminSWDA.vue'
+import AdminSWDA_Archive from '../views/Admin/AdminSWDA/AdminSWDA_Archive.vue'
+import AdminSWDACreate from '../views/Admin/AdminSWDA/AdminSWDACreate'
+import AdminSWDAEdit from '../views/Admin/AdminSWDA/AdminSWDAEdit'
+import AdminSWDAView from '../views/Admin/AdminSWDA/AdminSwdaView'
 
 
 import SettingDashboard from '../views/Admin/Settings_Pages/SettingDashboard'
@@ -237,6 +252,8 @@ const routes = [
     beforeEnter: userRequireAuth,
   },
 
+
+  // USER SWDA START
   {
     path: '/swda',
     name: 'swda',
@@ -251,6 +268,102 @@ const routes = [
     component: SWDA_AGENCY,
     beforeEnter: userRequireAuth,
   },
+
+
+  {
+    path: '/swda/activeAccredited',
+    name: 'swda_active_accredited',
+    component: SWDA_ACTIVE_ACCREDITED,
+    beforeEnter: userRequireAuth,
+  },
+
+
+
+  {
+    path: '/swda/activeLicensed',
+    name: 'swda_active_licensed',
+    component: SWDA_ACTIVE_LICENSED,
+    beforeEnter: userRequireAuth,
+  },
+
+  {
+    path: '/swda/activeRegistered',
+    name: 'swda_active_Registered',
+    component: SWDA_ACTIVE_REGISTERED,
+    beforeEnter: userRequireAuth,
+  },
+
+
+
+
+
+
+  {
+    path: '/swda/expiredAccredited',
+    name: 'swda_expired_accredited',
+    component: SWDA_EXPIRED_ACCREDITED,
+    beforeEnter: userRequireAuth,
+  },
+
+
+  {
+    path: '/swda/expiredDelisted',
+    name: 'swda_expired_delisted',
+    component: SWDA_EXPIRED_DELISTED,
+    beforeEnter: userRequireAuth,
+  },
+
+
+  {
+    path: '/swda/expiredLicensed',
+    name: 'swda_expired_licensed',
+    component: SWDA_EXPIRED_LICENSED,
+    beforeEnter: userRequireAuth,
+  },
+
+
+
+  {
+    path: '/swda/expiredRegistered',
+    name: 'swda_active_registered',
+    component: SWDA_EXPIRED_REGISTERED,
+    beforeEnter: userRequireAuth,
+  },
+
+
+
+  {
+    path: '/swda/modAuxillary',
+    name: 'swda_mod_auxillary',
+    component: SWDA_MOD_AUXILLARY,
+    beforeEnter: userRequireAuth,
+  },
+
+  {
+    path: '/swda/modCombased',
+    name: 'swda_mod_combased',
+    component: SWDA_MOD_COMBASED,
+    beforeEnter: userRequireAuth,
+  },
+
+  {
+    path: '/swda/modNResidential',
+    name: 'swda_mod_nresidential',
+    component: SWDA_MOD_NRESIDENTIAL,
+    beforeEnter: userRequireAuth,
+  },
+
+  {
+    path: '/swda/modResidential',
+    name: 'swda_mod_residential',
+    component: SWDA_MOD_RESIDENTIAL,
+    beforeEnter: userRequireAuth,
+  },
+
+  // USER SWDA END
+
+
+
 
 
   {

@@ -37,7 +37,7 @@ header {
   /* background: linear-gradient(to right, white 20%, #ee1c25 80%); */
   background: linear-gradient(-45deg, #ee1c25 10%, yellow 75%, white 20%);
   width: 100%;
-  position: fixed;
+  position: absolute;
   top: 0;
   z-index: 100;
 }

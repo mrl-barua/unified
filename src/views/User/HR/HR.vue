@@ -1,5 +1,5 @@
 <template>
-  <Sidebar :iconText="PageTitle" />
+  <Sidebar :iconText="PageTitle" :iconDetails="PageDetail" />
 
   <br /><br /><br /><br />
 
@@ -85,7 +85,8 @@ export default {
 
   data() {
     return {
-      PageTitle: "HR",
+      PageTitle: "EMPLOYEE WELFARE AND RELATIONS",
+      PageDetail: "Employee Assistance/Support Services",
 
       MonthData: {
         labels: [
