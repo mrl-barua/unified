@@ -1,7 +1,7 @@
 <template>
   <Sidebar :iconText="PageTitle" :iconDetails="PageDetail" />
   <br /><br /><br /><br />
-  <div class="wrapper" container-fluid>
+  <div class="wrapper container-fluid">
     <div class="col-12 col-md-3">
       <div class="agenciesNames" style="background-color: #292d96">
         <input
@@ -130,19 +130,25 @@
           <p class="col-4 textAgencies">Licensed</p>
           <p class="col-4 textAgencies">Accredited</p>
           <div class="col-4">
-            <span id="active-registered" class="active-agencies">
-              {{ activeRegisteredCount }}
-            </span>
+            <router-link to="/swda/activeRegistered" class="custom-link">
+              <span id="active-registered" class="active-agencies">
+                {{ activeRegisteredCount }}
+              </span>
+            </router-link>
           </div>
           <div class="col-4">
-            <span id="active-licensed" class="active-agencies">
-              {{ activeLicensedCount }}
-            </span>
+            <router-link to="/swda/activeLicensed" class="custom-link">
+              <span id="active-licensed" class="active-agencies">
+                {{ activeLicensedCount }}
+              </span>
+            </router-link>
           </div>
           <div class="col-4">
-            <span id="active-accredited" class="active-agencies">
-              {{ activeAccreditedCount }}
-            </span>
+            <router-link to="/swda/activeAccredited" class="custom-link">
+              <span id="active-accredited" class="active-agencies">
+                {{ activeAccreditedCount }}
+              </span>
+            </router-link>
           </div>
         </div>
       </div>
@@ -156,24 +162,32 @@
           <p class="col-3 textAgencies">Delisted</p>
 
           <div class="col-3">
-            <span id="expired-registered" class="expired-agencies">
-              {{ expiredRegisteredCount }}
-            </span>
+            <router-link to="/swda/expiredRegistered" class="custom-link">
+              <span id="expired-registered" class="expired-agencies">
+                {{ expiredRegisteredCount }}
+              </span>
+            </router-link>
           </div>
           <div class="col-3">
-            <span id="expired-licensed" class="expired-agencies">
-              {{ expiredLicensedCount }}
-            </span>
+            <router-link to="/swda/expiredLicensed" class="custom-link">
+              <span id="expired-licensed" class="expired-agencies">
+                {{ expiredLicensedCount }}
+              </span>
+            </router-link>
           </div>
           <div class="col-3">
-            <span id="expired-accreditation" class="expired-agencies">
-              {{ expiredAccreditedCount }}
-            </span>
+            <router-link to="/swda/expiredAccreditation" class="custom-link">
+              <span id="expired-accreditation" class="expired-agencies">
+                {{ expiredAccreditedCount }}
+              </span>
+            </router-link>
           </div>
           <div class="col-3">
-            <span id="expired-accreditation" class="expired-agencies">
-              {{ expiredDelistedCount }}
-            </span>
+            <router-link to="/swda/expiredDelisted" class="custom-link">
+              <span id="expired-delisted" class="expired-agencies">
+                {{ expiredDelistedCount }}
+              </span>
+            </router-link>
           </div>
         </div>
       </div>
@@ -187,24 +201,32 @@
           <p class="col-3 textAgencies">Non-Residential</p>
 
           <div class="col-3">
-            <span id="community-based" class="modeDelivery">
-              {{ communityBasedCount }}
-            </span>
+            <router-link to="/swda/modCombased" class="custom-link">
+              <span id="community-based" class="modeDelivery">
+                {{ communityBasedCount }}
+              </span>
+            </router-link>
           </div>
           <div class="col-3">
-            <span id="auxillary" class="modeDelivery">
-              {{ auxillarySWDACount }}
-            </span>
+            <router-link to="/swda/modAuxillary" class="custom-link">
+              <span id="auxillary" class="modeDelivery">
+                {{ auxillarySWDACount }}
+              </span>
+            </router-link>
           </div>
           <div class="col-3">
-            <span id="residential" class="modeDelivery">
-              {{ residentialCount }}
-            </span>
+            <router-link to="/swda/modResidential" class="custom-link">
+              <span id="residential" class="modeDelivery">
+                {{ residentialCount }}
+              </span>
+            </router-link>
           </div>
           <div class="col-3">
-            <span id="non-residential" class="modeDelivery">
-              {{ nonResidentialCount }}
-            </span>
+            <router-link to="/swda/modNResidential" class="custom-link">
+              <span id="non-residential" class="modeDelivery">
+                {{ nonResidentialCount }}
+              </span>
+            </router-link>
           </div>
         </div>
       </div>
@@ -1111,6 +1133,7 @@ export default {
 
 .custom-link {
   text-decoration: none;
+  color: black;
 }
 .filters {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);

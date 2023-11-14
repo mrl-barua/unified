@@ -3,8 +3,23 @@ import LoginForm from '../views/LoginForm.vue'
 import Dashboard from '../views/User/CBSS/Dashboard.vue'
 import HR from '../views/User/HR/HR.vue'
 import OSP from '../views/User/OSP/OSP.vue'
+
+
 import SWDA from '../views/User/SWDA/SWDA.vue'
 import SWDA_AGENCY from '../views/User/SWDA/SWDA_AGENCIES.vue'
+import SWDA_ACTIVE_ACCREDITED from '../views/User/SWDA/SWDA_ACTIVE_ACCREDITED.vue'
+import SWDA_ACTIVE_LICENSED from '../views/User/SWDA/SWDA_ACTIVE_LICENCED.vue'
+import SWDA_ACTIVE_REGISTERED from '../views/User/SWDA/SWDA_ACTIVE_REGISTERED.vue'
+
+import SWDA_EXPIRED_ACCREDITED from '../views/User/SWDA/SWDA_EXPIRED_ACCREDITED.vue'
+import SWDA_EXPIRED_DELISTED from '../views/User/SWDA/SWDA_EXPIRED_DELISTED.vue'
+import SWDA_EXPIRED_LICENSED from '../views/User/SWDA/SWDA_EXPIRED_LICENCED.vue'
+import SWDA_EXPIRED_REGISTERED from '../views/User/SWDA/SWDA_EXPIRED_REGISTERED.vue'
+import SWDA_MOD_AUXILLARY from '../views/User/SWDA/SWDA_MOD_AUXILLARY.vue'
+import SWDA_MOD_COMBASED from '../views/User/SWDA/SWDA_MOD_COMBASED.vue'
+import SWDA_MOD_NRESIDENTIAL from '../views/User/SWDA/SWDA_MOD_NRESIDENTIAL.vue'
+import SWDA_MOD_RESIDENTIAL from '../views/User/SWDA/SWDA_MOD_RESIDENTIAL.vue'
+
 
 import SLP from '../views/User/SLP/SLP.vue'
 // insert SLP ref
@@ -237,6 +252,8 @@ const routes = [
     beforeEnter: userRequireAuth,
   },
 
+
+  // USER SWDA START
   {
     path: '/swda',
     name: 'swda',
@@ -251,6 +268,102 @@ const routes = [
     component: SWDA_AGENCY,
     beforeEnter: userRequireAuth,
   },
+
+
+  {
+    path: '/swda/activeAccredited',
+    name: 'swda_active_accredited',
+    component: SWDA_ACTIVE_ACCREDITED,
+    beforeEnter: userRequireAuth,
+  },
+
+
+
+  {
+    path: '/swda/activeLicensed',
+    name: 'swda_active_licensed',
+    component: SWDA_ACTIVE_LICENSED,
+    beforeEnter: userRequireAuth,
+  },
+
+  {
+    path: '/swda/activeRegistered',
+    name: 'swda_active_Registered',
+    component: SWDA_ACTIVE_REGISTERED,
+    beforeEnter: userRequireAuth,
+  },
+
+
+
+
+
+
+  {
+    path: '/swda/expiredAccredited',
+    name: 'swda_expired_accredited',
+    component: SWDA_EXPIRED_ACCREDITED,
+    beforeEnter: userRequireAuth,
+  },
+
+
+  {
+    path: '/swda/expiredDelisted',
+    name: 'swda_expired_delisted',
+    component: SWDA_EXPIRED_DELISTED,
+    beforeEnter: userRequireAuth,
+  },
+
+
+  {
+    path: '/swda/expiredLicensed',
+    name: 'swda_expired_licensed',
+    component: SWDA_EXPIRED_LICENSED,
+    beforeEnter: userRequireAuth,
+  },
+
+
+
+  {
+    path: '/swda/expiredRegistered',
+    name: 'swda_active_registered',
+    component: SWDA_EXPIRED_REGISTERED,
+    beforeEnter: userRequireAuth,
+  },
+
+
+
+  {
+    path: '/swda/modAuxillary',
+    name: 'swda_mod_auxillary',
+    component: SWDA_MOD_AUXILLARY,
+    beforeEnter: userRequireAuth,
+  },
+
+  {
+    path: '/swda/modCombased',
+    name: 'swda_mod_combased',
+    component: SWDA_MOD_COMBASED,
+    beforeEnter: userRequireAuth,
+  },
+
+  {
+    path: '/swda/modNResidential',
+    name: 'swda_mod_nresidential',
+    component: SWDA_MOD_NRESIDENTIAL,
+    beforeEnter: userRequireAuth,
+  },
+
+  {
+    path: '/swda/modResidential',
+    name: 'swda_mod_residential',
+    component: SWDA_MOD_RESIDENTIAL,
+    beforeEnter: userRequireAuth,
+  },
+
+  // USER SWDA END
+
+
+
 
 
   {
