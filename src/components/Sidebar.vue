@@ -250,6 +250,7 @@ body {
   background: #e3f2fd;
 }
 
+/* Styles for non-sticky nav */
 nav {
   position: absolute;
   top: 6em;
@@ -260,7 +261,44 @@ nav {
   background: #294d9c;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
   z-index: 999;
-  /* transition: top 0.3s ease-in-out;  */
+}
+
+.overlay {
+  position: fixed;
+  top: 3.4em;
+  left: -100%;
+  height: 1000vh;
+  width: 200%;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s ease;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+nav .sidebar {
+  position: fixed;
+  top: 9.4em;
+  left: -100%;
+  height: 90%;
+  width: 303px;
+  padding-top: 1%;
+  padding-bottom: 4%;
+  background-color: #fff;
+  box-shadow: 0 5px 1px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+}
+/* Styles for sticky nav */
+nav.sticky .sidebar {
+  position: fixed;
+  top: 3.4em; /* Updated value */
+  height: 95%;
+  padding-bottom: 1%;
+}
+
+nav.open ~ .overlay {
+  opacity: 1;
+  left: 260px;
+  pointer-events: auto;
 }
 
 .sticky {
@@ -340,17 +378,7 @@ nav .logo .iconText {
   font-size: 22px;
   font-weight: 500;
 }
-nav .sidebar {
-  position: fixed;
-  top: 6em;
-  left: -100%;
-  height: 90%;
-  width: 303px;
-  padding: 20px 0;
-  background-color: #fff;
-  box-shadow: 0 5px 1px rgba(0, 0, 0, 0.1);
-  transition: all 0.4s ease;
-}
+
 nav.open .sidebar {
   left: 0;
 }
@@ -392,21 +420,5 @@ nav.open .sidebar {
 .lists .nav-link:hover .icon,
 .lists .nav-link:hover .link {
   color: #fff;
-}
-.overlay {
-  position: fixed;
-  top: 6em;
-  left: -100%;
-  height: 1000vh;
-  width: 200%;
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.4s ease;
-  background: rgba(0, 0, 0, 0.3);
-}
-nav.open ~ .overlay {
-  opacity: 1;
-  left: 260px;
-  pointer-events: auto;
 }
 </style>

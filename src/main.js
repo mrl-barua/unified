@@ -5,6 +5,8 @@ import 'bootstrap/dist/css/bootstrap.css'; // Import Bootstrap CSS
 import 'bootstrap/dist/js/bootstrap.bundle'; // Import Bootstrap JavaScript
 import { Chart } from 'vue-chartjs'
 
+// In your JavaScript file (e.g., main.js)
+import 'boxicons/css/boxicons.min.css';
 
 // Import DataTables
 import 'datatables.net-bs5/css/dataTables.bootstrap5.css'
