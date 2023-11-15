@@ -60,6 +60,8 @@ export default {
   content: "";
   clear: both;
 }
-
+body {
+  overflow-x: hidden;
+}
 /* CSS RESPONSIVE GLOBAL STYLES END */
 </style>

@@ -3,7 +3,19 @@
   <br /><br /><br /><br />
   <div class="wrapper container-fluid">
     <div class="col-12 col-md-3">
-      <div class="agenciesNames" style="background-color: #292d96">
+      <div class="agenciesNames" style="background-color: white">
+        <p
+          style="
+            font-family: Inter;
+            font-size: 25px;
+            font-weight: 700;
+            line-height: 30px;
+            letter-spacing: 0em;
+            text-align: center;
+          "
+        >
+          AGENCY
+        </p>
         <input
           style="
             border-radius: 10px;
@@ -19,7 +31,7 @@
           <table>
             <tbody>
               <tr v-for="agency in filteredAgencies" :key="agency.Agency">
-                <td class="text-white">
+                <td class="agency-color">
                   <router-link
                     :to="{
                       name: 'swda_agency',
@@ -82,7 +94,7 @@
                         ),
                       },
                     }"
-                    class="custom-link text-white"
+                    class="custom-link text-color"
                   >
                     <div class="hover">{{ agency.Agency }}</div>
                   </router-link>
@@ -150,7 +162,7 @@
             </router-link>
           </div>
           <div class="col-3">
-            <router-link to="/swda/expiredAccreditation" class="custom-link">
+            <router-link to="/swda/expiredAccredited" class="custom-link">
               <span id="expired-accreditation" class="expired-agencies">
                 {{ expiredAccreditedCount }}
               </span>
@@ -236,33 +248,33 @@
             </p>
           </div>
           <div class="col-12 col-md-3 clusterdiv">
-            <div class="color text-white" style="background-color: #133f5c">
-              <p>CLUSTER 1</p>
-              <div class="hover-text" style="background-color: #133f5c">
+            <div class="color text-white" style="background-color: #ff625e">
+              <p class="clusterText">CLUSTER 1</p>
+              <div class="hover-text" style="background-color: #ff625e">
                 {{ cluster1Length }}
               </div>
             </div>
           </div>
           <div class="col-12 col-md-3 clusterdiv">
-            <div class="color text-white" style="background-color: #59508d">
-              <p>UNCLUSTERED</p>
-              <div class="hover-text" style="background-color: #59508d">
+            <div class="color text-white" style="background-color: #ff9288">
+              <p class="clusterText">UNCLUSTERED</p>
+              <div class="hover-text" style="background-color: #ff9288">
                 {{ unclusteredLength }}
               </div>
             </div>
           </div>
           <div class="col-12 col-md-2 clusterdiv">
-            <div class="color text-white" style="background-color: #bc5090">
-              <p>CLUSTER 2</p>
-              <div class="hover-text" style="background-color: #bc5090">
+            <div class="color text-white" style="background-color: #f5eea5">
+              <p class="clusterText">CLUSTER 2</p>
+              <div class="hover-text" style="background-color: #f5eea5">
                 {{ cluster2Length }}
               </div>
             </div>
           </div>
           <div class="col-12 col-md-2 clusterdiv">
-            <div class="color text-white" style="background-color: #eb5f5e">
-              <p>NORTH CLUSTER</p>
-              <div class="hover-text" style="background-color: #eb5f5e">
+            <div class="color text-white" style="background-color: #fffec3">
+              <p class="clusterText">NORTH CLUSTER</p>
+              <div class="hover-text" style="background-color: #fffec3">
                 {{ northClusterLength }}
               </div>
             </div>
@@ -270,19 +282,19 @@
           <div class="col-12 col-md-2 clusterdiv2">
             <div
               class="col-12 clusterdiv clusterdiv3 text-white"
-              style="background-color: #f3a533"
+              style="background-color: #82c8e2"
             >
-              <p>SOUTH CLUSTER</p>
-              <div class="hover-text2" style="background-color: #f3a533">
+              <p class="clusterText">SOUTH CLUSTER</p>
+              <div class="hover-text2" style="background-color: #82c8e2">
                 {{ southClusterLength }}
               </div>
             </div>
             <div
               class="col-12 clusterdiv clusterdiv3 text-white"
-              style="background-color: #999999"
+              style="background-color: #afe7fe"
             >
-              <p>SENIOR CITIZENS CLUSTER</p>
-              <div class="hover-text2" style="background-color: #999999">
+              <p class="clusterText">SENIOR CITIZENS CLUSTER</p>
+              <div class="hover-text2" style="background-color: #afe7fe">
                 {{ seniorLength }}
               </div>
             </div>
@@ -693,10 +705,10 @@ export default {
               if (item.Licensed === "Yes") activeLicensed.push(item);
               if (item.Accredited === "Yes") activeAccredited.push(item);
             } else if (item.Registration_Status === "Expired") {
-              if (item.Registered === "Yes") expiredRegistered.push(item);
-              if (item.Licensed === "Yes") expiredLicensed.push(item);
-              if (item.Accredited === "Yes") expiredAccredited.push(item);
-              if (item.Delisted === "Yes") expiredDelisted.push(item);
+              if (item.Registered === "No") expiredRegistered.push(item);
+              if (item.Licensed === "No") expiredLicensed.push(item);
+              if (item.Accredited === "No") expiredAccredited.push(item);
+              if (item.Delisted === "No") expiredDelisted.push(item);
             }
 
             // Check if Mode_of_Delivery is a string before splitting
@@ -846,16 +858,16 @@ export default {
               drugDependentsLength,
             ],
             backgroundColor: [
-              "rgba(19, 63, 92, 1)",
-              "rgba(255, 0, 0, 1)", // Red
-              "rgba(0, 255, 0, 1)", // Green
-              "rgba(0, 0, 255, 1)", // Blue
-              "rgba(255, 255, 0, 1)", // Yellow
-              "rgba(255, 0, 255, 1)", // Magenta
-              "rgba(0, 255, 255, 1)", // Cyan
-              "rgba(128, 128, 128, 1)", // Gray
-              "rgba(255, 165, 0, 1)", // Orange
-              "rgba(0, 128, 0, 1)", // Dark Green],
+              "rgba(18, 65, 169, 1)",
+              "rgba(255, 103, 102, 1)",
+              "rgba(255, 51, 52, 1)",
+              "rgba(254, 0, 0, 1)",
+              "rgba(254, 229, 103, 1)",
+              "rgba(255, 219, 53, 1)",
+              "rgba(255, 212, 1, 1)",
+              "rgba(210, 216, 238, 1)",
+              "rgba(112, 140, 205, 1)",
+              "rgba(66, 102, 189, 1)",
             ],
           };
           // Set barChartData to the computed data
@@ -1137,7 +1149,7 @@ export default {
 }
 
 .agencyfilter table tbody tr td .hover:hover {
-  background-color: #e70f0f;
+  background-color: #294d9c;
   color: white; /* Change text color to white on hover */
   cursor: pointer; /* Change cursor to a pointer on hover (optional) */
   /* border-radius: 5px; */
@@ -1158,6 +1170,7 @@ export default {
 
 .agencyfilter::-webkit-scrollbar-thumb {
   background-color: #555; /* Color of the scrollbar thumb */
+  margin-left: 20px;
   /* border-radius: 4px;  */
 }
 
@@ -1311,5 +1324,25 @@ export default {
   line-height: 24px;
   letter-spacing: 0em;
   text-align: center;
+}
+
+.clusterText {
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: black;
+}
+
+.agency-color {
+  color: black;
+  font-family: Inter;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
 }
 </style>

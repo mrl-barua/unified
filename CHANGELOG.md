@@ -260,3 +260,9 @@
 - Done with the SWDA module filtering
 - Added Necessary Tables needed for Data Filtering in SWDA VIEW
 - Modified the Navbar in SIDEBAR.vue so that instead of being sticky all the times, it will turn to absolute when reaching 0em
+
+### version 5.6 - MARLO BARUA
+
+- Add CSS and package dependencies
+- Edited the style in search bar SWDA VIEW
+- Edited the view content in ADMIN SWDA VIEW

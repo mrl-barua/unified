@@ -1,8 +1,8 @@
 <template>
   <header class="d-flex flex-wrap justify-content-start">
-    <router-link to="/dashboard" class="custom-link">
-      <img src="../assets/DSWDLogo.png" alt="" />
-    </router-link>
+    <!-- <router-link to="/dashboard" class="custom-link"> -->
+    <img src="../assets/DSWDLogo.png" alt="" />
+    <!-- </router-link> -->
   </header>
 </template>
 
