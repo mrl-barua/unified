@@ -1,9 +1,21 @@
 <template>
   <Sidebar :iconText="PageTitle" :iconDetails="PageDetail" />
-  <br /><br /><br /><br />
+  <br /><br /><br /><br /><br />
   <div class="wrapper" container-fluid>
     <div class="col-12 col-md-3">
-      <div class="agenciesNames" style="background-color: #292d96">
+      <div class="agenciesNames" style="background-color: white">
+        <p
+          style="
+            font-family: Inter;
+            font-size: 25px;
+            font-weight: 700;
+            line-height: 30px;
+            letter-spacing: 0em;
+            text-align: center;
+          "
+        >
+          AGENCY
+        </p>
         <input
           style="
             border-radius: 10px;
@@ -19,7 +31,7 @@
           <table>
             <tbody>
               <tr v-for="agency in filteredAgencies" :key="agency.Agency">
-                <td class="text-white">
+                <td class="agency-color">
                   <router-link
                     :to="{
                       name: 'swda_agency',
@@ -82,9 +94,9 @@
                         ),
                       },
                     }"
-                    class="custom-link text-white"
+                    class="custom-link text-color"
                   >
-                    <div class="hover">{{ agency.Agency }}</div>
+                    <div class="hover agency-color">{{ agency.Agency }}</div>
                   </router-link>
 
                   <hr class="hr" />
@@ -95,218 +107,438 @@
         </div>
       </div>
     </div>
+
     <div class="col-12 col-md-9">
-      <div class="content">
-        <div class="col-12 agencyHeader">
-          <p>{{ $route.query.agencyName }}</p>
-          <hr class="hr" style="border: 2px solid black" />
-        </div>
+      <div class="col-12">
+        <p class="AgencyTitle">{{ cleanQueryParam("agencyName") }}</p>
+      </div>
 
-        <div class="col-12 col-md-6">
-          <hr
-            class="hr"
-            style="
-              margin-left: 15px;
-              margin-right: 15px;
-              border: 2px solid black;
+      <!-- 1ST COLUMN -->
+      <div class="col-6 columns">
+        <div class="col-12">
+          <p class="agencyHeader">Former Name</p>
+          <p
+            v-if="
+              cleanQueryParam('formerName') &&
+              cleanQueryParam('formerName') !== 'null'
             "
-          />
-
-          <div class="status col-4">
-            <p>Registration Status</p>
-            <p>{{ $route.query.registrationStatus }}</p>
-          </div>
-
-          <div class="status col-4">
-            <p>Licensed Status</p>
-            <p>{{ $route.query.licenseStatus }}</p>
-          </div>
-
-          <div class="status col-4">
-            <p>Accredication Status</p>
-            <p>{{ $route.query.accreditationStatus }}</p>
-          </div>
-
-          <div class="agencySectorClusterType">
-            <div class="agencySCTContent col-4 text-start">
-              <div class="box"><p>Sector</p></div>
-              <p class="data">{{ $route.query.sector }}</p>
-            </div>
-
-            <div class="agencySCTContent col-4 text-start">
-              <div class="box"><p>Cluster</p></div>
-              <p class="data">{{ $route.query.cluster }}</p>
-            </div>
-
-            <div class="agencySCTContent col-4 text-start">
-              <div class="box"><p>Type</p></div>
-              <p class="data">{{ $route.query.type }}</p>
-            </div>
-
-            <hr
-              class="hr"
-              style="
-                margin-left: 15px;
-                margin-right: 15px;
-                border: 2px solid black;
+            class="agencyContent"
+          >
+            {{ cleanQueryParam("formerName") }}
+          </p>
+          <p v-else class="agencyContent">No Data</p>
+        </div>
+        <div class="col-12">
+          <div class="col-4">
+            <p class="agencyHeader">Sector</p>
+            <p
+              v-if="
+                cleanQueryParam('sector') &&
+                cleanQueryParam('sector') !== 'null'
               "
-            />
-
-            <div class="col-12">
-              <p>CONTACT INFORMATION</p>
-              <div class="box"><p>Address</p></div>
-              <p class="data">{{ $route.query.address }}</p>
-            </div>
-
-            <div class="col-5">
-              <div class="box"><p>Contact Number</p></div>
-              <p class="data">{{ $route.query.contactNumber }}</p>
-            </div>
-
-            <div class="col-7">
-              <div class="box"><p>Email</p></div>
-              <p class="data">{{ $route.query.email }}</p>
-            </div>
-
-            <div class="col-12">
-              <div class="box"><p>Website</p></div>
-              <p class="data">{{ $route.query.website }}</p>
-            </div>
-
-            <hr
-              class="hr"
-              style="
-                margin-left: 15px;
-                margin-right: 15px;
-                border: 2px solid black;
+              class="agencyContent"
+            >
+              {{ cleanQueryParam("sector") }}
+            </p>
+            <p v-else class="agencyContent">No Data</p>
+          </div>
+          <div class="col-4">
+            <p class="agencyHeader">Cluster</p>
+            <p
+              v-if="
+                cleanQueryParam('cluster') &&
+                cleanQueryParam('cluster') !== 'null'
               "
-            />
-
-            <div class="col-12" style="margin-top: 50px">
-              <p>CONTACT INFORMATION</p>
-            </div>
-
-            <div class="col-6">
-              <div class="box"><p>Name</p></div>
-              <p class="data">{{ $route.query.contactPerson }}</p>
-            </div>
-
-            <div class="col-6">
-              <div class="box"><p>Position</p></div>
-              <p class="data">{{ $route.query.position }}</p>
-            </div>
-
-            <div class="col-6">
-              <div class="box"><p>Contact Number</p></div>
-              <p class="data">{{ $route.query.mobileNumber }}</p>
-            </div>
+              class="agencyContent"
+            >
+              {{ cleanQueryParam("cluster") }}
+            </p>
+            <p v-else class="agencyContent">No Data</p>
+          </div>
+          <div class="col-4">
+            <p class="agencyHeader">Type</p>
+            <p
+              v-if="
+                cleanQueryParam('type') && cleanQueryParam('type') !== 'null'
+              "
+              class="agencyContent"
+            >
+              {{ cleanQueryParam("type") }}
+            </p>
+            <p v-else class="agencyContent">No Data</p>
           </div>
         </div>
+        <div class="col-12">
+          <p class="agencyHead">CONTACT INFORMATION</p>
 
-        <div class="col-12 col-md-6">
-          <hr
-            class="hr"
-            style="
-              margin-left: 15px;
-              margin-right: 15px;
-              border: 2px solid black;
+          <p class="agencyHeader">Address</p>
+          <p
+            v-if="
+              cleanQueryParam('address') &&
+              cleanQueryParam('address') !== 'null'
             "
-          />
-          <div class="programsServices">
-            <div class="col-12">
-              <p>PROGRAMS AND SERVICES</p>
-            </div>
+            class="agencyContent"
+          >
+            {{ cleanQueryParam("address") }}
+          </p>
+          <p v-else class="agencyContent">No Data</p>
 
-            <div class="col-12">
-              <div class="box"><p>Services Offered</p></div>
-              <p class="data">{{ $route.query.servicesOffered }}</p>
-            </div>
+          <p class="agencyHeader">Contact Number</p>
+          <p
+            v-if="
+              cleanQueryParam('contactNumber') &&
+              cleanQueryParam('contactNumber') !== 'null'
+            "
+            class="agencyContent"
+          >
+            {{ cleanQueryParam("contactNumber") }}
+          </p>
+          <p v-else class="agencyContent">No Data</p>
 
-            <div class="col-6">
-              <div class="box"><p>Clientele</p></div>
-              <p class="data">{{ $route.query.clientele }}</p>
-            </div>
+          <p class="agencyHeader">Email</p>
+          <p
+            v-if="
+              cleanQueryParam('email') && cleanQueryParam('email') !== 'null'
+            "
+            class="agencyContent"
+          >
+            {{ cleanQueryParam("email") }}
+          </p>
+          <p v-else class="agencyContent">No Data</p>
 
-            <div class="col-6">
-              <div class="box"><p>Mode of Delivery</p></div>
-              <p class="data">{{ $route.query.modeOfDelivery }}</p>
-            </div>
+          <p class="agencyHeader">Website</p>
+          <p
+            v-if="
+              cleanQueryParam('website') &&
+              cleanQueryParam('website') !== 'null'
+            "
+            class="agencyContent"
+          >
+            {{ cleanQueryParam("website") }}
+          </p>
+          <p v-else class="agencyContent">No Data</p>
 
-            <div class="col-12" style="margin-bottom: 50px">
-              <div class="box"><p>Specified Area of Operation</p></div>
-              <p class="data">{{ $route.query.specifiedAreasOfOperation }}</p>
-            </div>
+          <hr class="hr" />
 
-            <hr
-              class="hr"
-              style="
-                margin-left: 15px;
-                margin-right: 15px;
-                border: 2px solid black;
+          <p class="agencyHead">CONTACT PERSON</p>
+
+          <p class="agencyHeader">Name</p>
+          <p
+            v-if="
+              cleanQueryParam('agencyName') &&
+              cleanQueryParam('agencyName') !== 'null'
+            "
+            class="agencyContent"
+          >
+            {{ cleanQueryParam("agencyName") }}
+          </p>
+          <p v-else class="agencyContent">No Data</p>
+
+          <p class="agencyHeader">Position</p>
+          <p
+            v-if="
+              cleanQueryParam('position') &&
+              cleanQueryParam('position') !== 'null'
+            "
+            class="agencyContent"
+          >
+            {{ cleanQueryParam("position") }}
+          </p>
+          <p v-else class="agencyContent">No Data</p>
+
+          <p class="agencyHeader">Contact Number</p>
+          <p
+            v-if="
+              cleanQueryParam('mobileNumber') &&
+              cleanQueryParam('mobileNumber') !== 'null'
+            "
+            class="agencyContent"
+          >
+            {{ cleanQueryParam("mobileNumber") }}
+          </p>
+          <p v-else class="agencyContent">No Data</p>
+        </div>
+      </div>
+      <!-- 2ND COLUMN -->
+      <div class="col-6 columns">
+        <div class="col-12">
+          <div class="col-6">
+            <p class="agencyHeader">Registration Status</p>
+            <p
+              style="color: red"
+              v-if="cleanQueryParam('registrationStatus') === 'Expired'"
+              class="agencyContent"
+            >
+              {{ cleanQueryParam("registrationStatus") }}
+            </p>
+            <p
+              style="color: green"
+              v-else-if="
+                cleanQueryParam('registrationStatus') === 'Active/Valid'
               "
-            />
+              class="agencyContent"
+            >
+              {{ cleanQueryParam("registrationStatus") }}
+            </p>
+            <p v-else class="agencyContent">No Data</p>
 
-            <div class="col-12" style="margin-top: 50px">
-              <div class="box">
-                <span class="col-3"><p>Registration ID</p></span>
-                <span class="col-3"><p>Date Issued</p></span>
-                <span class="col-3"><p>Expiration Date</p></span>
-                <span class="col-3"><p>Remarks</p></span>
-              </div>
-              <span class="col-3" style="padding-left: 15px"
-                ><p>{{ $route.query.registrationID }}</p></span
+            <p class="agencyHeader">Accreditation Status</p>
+
+            <p
+              style="color: red"
+              v-if="cleanQueryParam('accreditationStatus') === 'Expired'"
+              class="agencyContent"
+            >
+              {{ cleanQueryParam("accreditationStatus") }}
+            </p>
+            <p
+              style="color: green"
+              v-else-if="
+                cleanQueryParam('accreditationStatus') === 'Active/Valid'
+              "
+              class="agencyContent"
+            >
+              {{ cleanQueryParam("accreditationStatus") }}
+            </p>
+            <p v-else class="agencyContent">No Data</p>
+          </div>
+          <div class="col-6">
+            <p class="agencyHeader">License Status</p>
+
+            <p
+              style="color: red"
+              v-if="cleanQueryParam('licenseStatus') === 'Expired'"
+              class="agencyContent"
+            >
+              {{ cleanQueryParam("licenseStatus") }}
+            </p>
+            <p
+              style="color: green"
+              v-else-if="cleanQueryParam('licenseStatus') === 'Active/Valid'"
+              class="agencyContent"
+            >
+              {{ cleanQueryParam("licenseStatus") }}
+            </p>
+            <p v-else class="agencyContent">No Data</p>
+          </div>
+        </div>
+        <div class="col-12">
+          <p class="agencyHead">PROGRAMS AND SERVICES</p>
+          <p class="agencyHeader">Services Offered</p>
+          <p
+            v-if="
+              cleanQueryParam('servicesOffered') &&
+              cleanQueryParam('servicesOffered') !== 'null'
+            "
+            class="agencyContent"
+          >
+            {{ cleanQueryParam("servicesOffered") }}
+          </p>
+          <p v-else class="agencyContent">No Data</p>
+        </div>
+        <div class="col-12">
+          <div class="col-6">
+            <p class="agencyHeader">Clientele</p>
+            <p
+              v-if="
+                cleanQueryParam('clientele') &&
+                cleanQueryParam('clientele') !== 'null'
+              "
+              class="agencyContent"
+            >
+              {{ cleanQueryParam("clientele") }}
+            </p>
+            <p v-else class="agencyContent">No Data</p>
+          </div>
+          <div class="col-6">
+            <p class="agencyHeader">Mode of Delivery</p>
+            <p
+              v-if="
+                cleanQueryParam('modeOfDelivery') &&
+                cleanQueryParam('modeOfDelivery') !== 'null'
+              "
+              class="agencyContent"
+            >
+              {{ cleanQueryParam("modeOfDelivery") }}
+            </p>
+            <p v-else class="agencyContent">No Data</p>
+          </div>
+        </div>
+        <div class="col-12">
+          <p class="agencyHeader">Specified Areas of Operation</p>
+          <p
+            v-if="
+              cleanQueryParam('specifiedAreasOfOperation') &&
+              cleanQueryParam('specifiedAreasOfOperation') !== 'null'
+            "
+            class="agencyContent"
+          >
+            {{ cleanQueryParam("specifiedAreasOfOperation") }}
+          </p>
+          <p v-else class="agencyContent">No Data</p>
+        </div>
+        <div class="col-12">
+          <p class="agencyHead">STATUS</p>
+          <div class="col-12">
+            <div class="col-3">
+              <p class="agencyHeader">Registration ID</p>
+              <p
+                v-if="
+                  cleanQueryParam('registrationID') &&
+                  cleanQueryParam('registrationID') !== 'null'
+                "
+                class="agencyContent"
               >
-              <span class="col-3" style="padding-left: 5px"
-                ><p>{{ $route.query.registrationDate }}</p></span
-              >
-              <span class="col-3"
-                ><p>{{ $route.query.registrationExpiration }}</p></span
-              >
-              <span class="col-3"
-                ><p>{{ $route.query.remarks }}</p></span
-              >
+                {{ cleanQueryParam("registrationID") }}
+              </p>
+              <p v-else class="agencyContent">No Data</p>
             </div>
-
-            <div class="col-12">
-              <div class="box">
-                <span class="col-3"><p>Licensed ID</p></span>
-                <span class="col-3"><p>Date Issued</p></span>
-                <span class="col-3"><p>Expiration Date</p></span>
-                <span class="col-3"><p>Day Overdue</p></span>
-              </div>
-              <span class="col-3" style="padding-left: 15px"
-                ><p>{{ $route.query.licensedID }}</p></span
+            <div class="col-3">
+              <p class="agencyHeader">Date Issued</p>
+              <p
+                v-if="
+                  cleanQueryParam('registrationDate') &&
+                  cleanQueryParam('registrationDate') !== 'null'
+                "
+                class="agencyContent"
               >
-              <span class="col-3" style="padding-left: 5px"
-                ><p>{{ $route.query.licenseDateIssued }}</p></span
-              >
-              <span class="col-3"
-                ><p>{{ $route.query.licenseExpiration }}</p></span
-              >
-              <span class="col-3"
-                ><p>{{ $route.query.licensureOverdue }}</p></span
-              >
+                {{ cleanQueryParam("registrationDate") }}
+              </p>
+              <p v-else class="agencyContent">No Data</p>
             </div>
-
-            <div class="col-12">
-              <div class="box">
-                <span class="col-3"><p>Accredication ID</p></span>
-                <span class="col-3"><p>Date Issued</p></span>
-                <span class="col-3"><p>Expiration Date</p></span>
-                <span class="col-3"><p>Day Overdue</p></span>
-              </div>
-              <span class="col-3" style="padding-left: 15px"
-                ><p>{{ $route.query.accreditationID }}</p></span
+            <div class="col-3">
+              <p class="agencyHeader">Expiration Date</p>
+              <p
+                v-if="
+                  cleanQueryParam('registrationExpiration') &&
+                  cleanQueryParam('registrationExpiration') !== 'null'
+                "
+                class="agencyContent"
               >
-              <span class="col-3" style="padding-left: 5px"
-                ><p>{{ $route.query.accreditationDateIssued }}</p></span
+                {{ cleanQueryParam("registrationExpiration") }}
+              </p>
+              <p v-else class="agencyContent">No Data</p>
+            </div>
+            <div class="col-3">
+              <p class="agencyHeader">Remarks</p>
+              <p
+                v-if="
+                  cleanQueryParam('remarks') &&
+                  cleanQueryParam('remarks') !== 'null'
+                "
+                class="agencyContent"
               >
-              <span class="col-3"
-                ><p>{{ $route.query.accreditationExpiration }}</p></span
+                {{ cleanQueryParam("remarks") }}
+              </p>
+              <p v-else class="agencyContent">No Data</p>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="col-3">
+              <p class="agencyHeader">License ID</p>
+              <p
+                v-if="
+                  cleanQueryParam('licensedID') &&
+                  cleanQueryParam('licensedID') !== 'null'
+                "
+                class="agencyContent"
               >
-              <span class="col-3"
-                ><p>{{ $route.query.accreditationOverdue }}</p></span
+                {{ cleanQueryParam("licensedID") }}
+              </p>
+              <p v-else class="agencyContent">No Data</p>
+            </div>
+            <div class="col-3">
+              <p class="agencyHeader">Date Issued</p>
+              <p
+                v-if="
+                  cleanQueryParam('licenseDateIssued') &&
+                  cleanQueryParam('licenseDateIssued') !== 'null'
+                "
+                class="agencyContent"
               >
+                {{ cleanQueryParam("licenseDateIssued") }}
+              </p>
+              <p v-else class="agencyContent">No Data</p>
+            </div>
+            <div class="col-3">
+              <p class="agencyHeader">Expiration Date</p>
+              <p
+                v-if="
+                  cleanQueryParam('licenseExpiration') &&
+                  cleanQueryParam('licenseExpiration') !== 'null'
+                "
+                class="agencyContent"
+              >
+                {{ cleanQueryParam("licenseExpiration") }}
+              </p>
+              <p v-else class="agencyContent">No Data</p>
+            </div>
+            <div class="col-3">
+              <p class="agencyHeader">Overdue</p>
+              <p
+                v-if="
+                  cleanQueryParam('licensureOverdue') &&
+                  cleanQueryParam('licensureOverdue') !== 'null'
+                "
+                class="agencyContent"
+              >
+                {{ cleanQueryParam("licensureOverdue") }}
+              </p>
+              <p v-else class="agencyContent">No Data</p>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="col-3">
+              <p class="agencyHeader">Accreditation ID</p>
+              <p
+                v-if="
+                  cleanQueryParam('accreditationID') &&
+                  cleanQueryParam('accreditationID') !== 'null'
+                "
+                class="agencyContent"
+              >
+                {{ cleanQueryParam("accreditationID") }}
+              </p>
+              <p v-else class="agencyContent">No Data</p>
+            </div>
+            <div class="col-3">
+              <p class="agencyHeader">Date Issued</p>
+              <p
+                v-if="
+                  cleanQueryParam('accreditationDateIssued') &&
+                  cleanQueryParam('accreditationDateIssued') !== 'null'
+                "
+                class="agencyContent"
+              >
+                {{ cleanQueryParam("accreditationDateIssued") }}
+              </p>
+              <p v-else class="agencyContent">No Data</p>
+            </div>
+            <div class="col-3">
+              <p class="agencyHeader">Expiration Date</p>
+              <p
+                v-if="
+                  cleanQueryParam('accreditationExpiration') &&
+                  cleanQueryParam('accreditationExpiration') !== 'null'
+                "
+                class="agencyContent"
+              >
+                {{ cleanQueryParam("accreditationExpiration") }}
+              </p>
+              <p v-else class="agencyContent">No Data</p>
+            </div>
+            <div class="col-3">
+              <p class="agencyHeader">Overdue</p>
+              <p
+                v-if="
+                  cleanQueryParam('accreditationOverdue') &&
+                  cleanQueryParam('accreditationOverdue') !== 'null'
+                "
+                class="agencyContent"
+              >
+                {{ cleanQueryParam("accreditationOverdue") }}
+              </p>
+              <p v-else class="agencyContent">No Data</p>
             </div>
           </div>
         </div>
@@ -348,10 +580,23 @@ export default {
       searchQuery: "", // A variable to hold the search query entered by the user for filtering agencies
     };
   },
-
+  methods: {
+    debugRegistrationStatus() {
+      console.log(this.$route.query.registrationStatus);
+    },
+    cleanQueryParam(paramName) {
+      if (this.$route.query[paramName]) {
+        return this.$route.query[paramName].replace(/\"/g, "");
+      }
+      return null;
+    },
+  },
   created() {
+    this.debugRegistrationStatus();
+    console.log(this.$route.query);
     // Fetch data and populate the agencies array
     axios
+
       .get(`${backendURL}/api/agenciesName`)
       .then((response) => {
         this.agencies = response.data["Swda Agencies"];
@@ -375,6 +620,9 @@ export default {
           return false;
         }
       });
+    },
+    cleanedRegistrationStatus() {
+      return this.$route.query.registrationStatus.replace(/\"/g, "");
     },
   },
 };
@@ -413,7 +661,7 @@ export default {
 }
 
 .agencyfilter table tbody tr td .hover:hover {
-  background-color: #e70f0f;
+  background-color: #294d9c;
   color: white;
   cursor: pointer;
   border-radius: 5px;
@@ -430,7 +678,7 @@ export default {
 
   /* Media queries for different screen widths */
   @media only screen and (min-width: 1240px) {
-    height: 86vh;
+    height: 80vh;
   }
 
   @media only screen and (min-width: 1540px) {
@@ -452,52 +700,53 @@ export default {
   background-color: #f1f1f1;
 }
 
-.content {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  height: 170vh;
-  border-radius: 20px;
-  margin: 0 10px;
-
-  /* Media queries for different screen widths */
-  @media only screen and (min-width: 500px) {
-    height: 120vh;
-  }
-
-  @media only screen and (min-width: 1240px) {
-    height: 100vh;
-  }
-
-  @media only screen and (min-width: 1540px) {
-    height: 80vh;
-  }
-}
-
-.agencyHeader {
-  height: 5em;
-  margin-top: 20px;
-}
-
-.box {
-  background: #319acb;
-  width: 95%;
-  height: 20px;
-  margin: auto;
-  margin-bottom: 10px;
-}
-
-.agencySectorClusterType,
-.status,
-.programsServices {
+.agency-color {
+  color: black;
   font-family: Inter;
-  font-size: 13px;
-  font-weight: 700;
-  line-height: 12px;
-  letter-spacing: 0;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: 0em;
   text-align: left;
 }
 
-.data,
-.status {
-  padding-left: 10px;
+.columns {
+  padding: 0px 20px 0px 20px;
+}
+
+.AgencyTitle {
+  font-family: Inter;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 27px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+.agencyHeader {
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.agencyHead {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.agencyContent {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: left;
 }
 </style>

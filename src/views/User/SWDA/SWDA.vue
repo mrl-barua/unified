@@ -1157,7 +1157,7 @@ export default {
 }
 .agencyfilter {
   font-size: 14px;
-  height: 80em;
+  height: 77em;
   width: 90%;
   overflow: auto;
   margin: 20px 20px 20px 20px;

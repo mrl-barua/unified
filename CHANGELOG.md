@@ -266,3 +266,8 @@
 - Add CSS and package dependencies
 - Edited the style in search bar SWDA VIEW
 - Edited the view content in ADMIN SWDA VIEW
+
+### version 5.7 - MARLO BARUA
+
+- Update styles in Sidebar and SWDA views
+- Updated the query method in SWDA AGENCIES VIEW
