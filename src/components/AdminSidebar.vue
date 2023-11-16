@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header />
-    <nav>
+    <nav :class="{ sticky: isSticky }">
       <div class="blue-header">
         <div class="logo">
           <i class="bx bx-menu menu-icon"></i>
@@ -92,10 +92,17 @@ export default {
   components: {
     Header,
   },
+  data() {
+    return {
+      isSticky: false,
+    };
+  },
   props: {
     iconText: String,
+    iconDetails: String,
   },
   mounted() {
+    window.addEventListener("scroll", this.handleScroll);
     const navBar = document.querySelector("nav");
     const menuBtns = document.querySelectorAll(".menu-icon");
     const overlay = document.querySelector(".overlay");
@@ -110,7 +117,24 @@ export default {
       navBar.classList.remove("open");
     });
   },
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.handleScroll);
+  },
+
   methods: {
+    handleScroll() {
+      // Check if the user has scrolled down beyond a certain point
+      const scrollThreshold = 6 * 16; // Assuming 1em = 16px
+      this.isSticky = window.scrollY > scrollThreshold;
+
+      // Check if this.$refs.nav is defined before accessing its properties
+      if (this.$refs.nav) {
+        // Adjust the top value dynamically based on the scroll position
+        this.$refs.nav.style.top = this.isSticky
+          ? "0"
+          : `calc(6em - ${window.scrollY}px)`;
+      }
+    },
     logout() {
       // Clear the user's authentication status in localStorage
       localStorage.removeItem("user");
@@ -137,23 +161,79 @@ body {
   background: #e3f2fd;
 }
 
+/* Styles for non-sticky nav */
 nav {
-  position: fixed;
+  position: absolute;
   top: 6em;
-  left: 0;
-  height: 50px;
+  height: 55px;
   width: 100%;
   display: flex;
   align-items: center;
-  /* background: linear-gradient(to right, white 20%, #EE1C25 80%); */
   background: #294d9c;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
-  z-index: 100;
+  z-index: 999;
+}
+
+.overlay {
+  position: fixed;
+  top: 3.4em;
+  left: -100%;
+  height: 1000vh;
+  z-index: 1;
+  width: 200%;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s ease;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+nav .sidebar {
+  position: fixed;
+  top: 9.4em;
+  left: -100%;
+  height: 90%;
+  width: 303px;
+  padding-top: 1%;
+  padding-bottom: 4%;
+  background-color: #fff;
+  box-shadow: 0 5px 1px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+}
+/* Styles for sticky nav */
+nav.sticky .sidebar {
+  position: fixed;
+  top: 3.4em; /* Updated value */
+  height: 95%;
+  padding-bottom: 1%;
+}
+
+nav.open ~ .overlay {
+  opacity: 1;
+  left: 260px;
+  pointer-events: auto;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  /* animation: fadeInDown 0.3s ease-in-out;  */
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .custom-link {
   text-decoration: none;
 }
+
 nav .logo {
   display: flex;
   align-items: center;
@@ -165,6 +245,25 @@ nav .logo img {
 
   @media screen and (min-width: 1024px) {
     height: 70px;
+  }
+}
+
+nav .logo .iconText {
+  color: #333;
+  font-size: 20px;
+  font-weight: 500;
+  padding-top: 70px;
+
+  @media screen and (min-width: 1024px) {
+    padding-top: 0;
+  }
+}
+
+.iconDetails {
+  visibility: hidden;
+
+  @media screen and (min-width: 1024px) {
+    visibility: visible;
   }
 }
 
@@ -191,18 +290,7 @@ nav .logo img {
   font-size: 22px;
   font-weight: 500;
 }
-nav .sidebar {
-  position: fixed;
-  top: 6em;
-  left: -100%;
-  height: 90%;
 
-  width: 303px;
-  padding: 20px 0;
-  background-color: #fff;
-  box-shadow: 0 5px 1px rgba(0, 0, 0, 0.1);
-  transition: all 0.4s ease;
-}
 nav.open .sidebar {
   left: 0;
 }
@@ -211,7 +299,7 @@ nav.open .sidebar {
   height: 100%;
   flex-direction: column;
   justify-content: space-between;
-  padding: 0px 16px 30px 16px;
+  padding: 0px 16px 60px 16px;
 }
 .sidebar-content .list {
   list-style: none;
@@ -227,7 +315,7 @@ nav.open .sidebar {
 .lists .nav-link:hover {
   padding-left: 20px;
   padding-right: 20px;
-  background-color: #ee1c25;
+  background-color: #4070f4;
 }
 
 .nav-link .icon {
@@ -244,21 +332,5 @@ nav.open .sidebar {
 .lists .nav-link:hover .icon,
 .lists .nav-link:hover .link {
   color: #fff;
-}
-.overlay {
-  position: fixed;
-  top: 6em;
-  left: -100%;
-  height: 1000vh;
-  width: 200%;
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.4s ease;
-  background: rgba(0, 0, 0, 0.3);
-}
-nav.open ~ .overlay {
-  opacity: 1;
-  left: 260px;
-  pointer-events: auto;
 }
 </style>

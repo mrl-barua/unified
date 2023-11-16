@@ -202,7 +202,7 @@
 
       <div class="tableOutside col-12">
         <div class="tableHeading">
-          <p>REGISTERED ACTIVE AGENCIES</p>
+          <p>ACCREDITED EXPIRED AGENCIES</p>
         </div>
         <div class="tableInside">
           <DataTable
@@ -352,10 +352,10 @@ export default {
               if (item.Licensed === "Yes") activeLicensed.push(item);
               if (item.Accredited === "Yes") activeAccredited.push(item);
             } else if (item.Registration_Status === "Expired") {
-              if (item.Registered === "Yes") expiredRegistered.push(item);
-              if (item.Licensed === "Yes") expiredLicensed.push(item);
-              if (item.Accredited === "Yes") expiredAccredited.push(item);
-              if (item.Delisted === "Yes") expiredDelisted.push(item);
+              if (item.Registered === "No") expiredRegistered.push(item);
+              if (item.Licensed === "No") expiredLicensed.push(item);
+              if (item.Accredited === "No") expiredAccredited.push(item);
+              if (item.Delisted === "No") expiredDelisted.push(item);
             }
 
             // Check if Mode_of_Delivery is a string before splitting
@@ -405,7 +405,7 @@ export default {
       axios.get(`${backendURL}/api/swdalist`).then((res) => {
         this.swda = res.data.Swda.filter(
           (item) =>
-            item.Registration_Status === "Expired" && item.Accredited === "Yes"
+            item.Registration_Status === "Expired" && item.Accredited === "No"
         );
         console.log(res);
       });

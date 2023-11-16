@@ -352,10 +352,10 @@ export default {
               if (item.Licensed === "Yes") activeLicensed.push(item);
               if (item.Accredited === "Yes") activeAccredited.push(item);
             } else if (item.Registration_Status === "Expired") {
-              if (item.Registered === "Yes") expiredRegistered.push(item);
-              if (item.Licensed === "Yes") expiredLicensed.push(item);
-              if (item.Accredited === "Yes") expiredAccredited.push(item);
-              if (item.Delisted === "Yes") expiredDelisted.push(item);
+              if (item.Registered === "No") expiredRegistered.push(item);
+              if (item.Licensed === "No") expiredLicensed.push(item);
+              if (item.Accredited === "No") expiredAccredited.push(item);
+              if (item.Delisted === "No") expiredDelisted.push(item);
             }
 
             // Check if Mode_of_Delivery is a string before splitting
