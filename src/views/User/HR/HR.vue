@@ -20,7 +20,7 @@
     <div class="shadow2">
       <p>PERCENTAGE OF REQUESTING EMPLOYEES STATUS</p>
       <div class="Piechart1">
-        <DoughnutChart v-if="EmploymentData" :data="EmploymentData" />
+        <PieChart v-if="EmploymentData" :data="EmploymentData" />
       </div>
     </div>
   </div>

@@ -271,3 +271,4 @@
 
 - Update styles in Sidebar and SWDA views
 - Updated the query method in SWDA AGENCIES VIEW
+- Fix UI layout and add HR lines in SWDA_AGENCIES.vue

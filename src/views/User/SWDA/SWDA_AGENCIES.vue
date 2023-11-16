@@ -111,6 +111,7 @@
     <div class="col-12 col-md-9">
       <div class="col-12">
         <p class="AgencyTitle">{{ cleanQueryParam("agencyName") }}</p>
+        <hr class="hr" />
       </div>
 
       <!-- 1ST COLUMN -->
@@ -168,7 +169,9 @@
             <p v-else class="agencyContent">No Data</p>
           </div>
         </div>
+
         <div class="col-12">
+          <hr class="hr" />
           <p class="agencyHead">CONTACT INFORMATION</p>
 
           <p class="agencyHeader">Address</p>
@@ -225,12 +228,12 @@
           <p class="agencyHeader">Name</p>
           <p
             v-if="
-              cleanQueryParam('agencyName') &&
-              cleanQueryParam('agencyName') !== 'null'
+              cleanQueryParam('contactPerson') &&
+              cleanQueryParam('contactPerson') !== 'null'
             "
             class="agencyContent"
           >
-            {{ cleanQueryParam("agencyName") }}
+            {{ cleanQueryParam("contactPerson") }}
           </p>
           <p v-else class="agencyContent">No Data</p>
 
@@ -323,6 +326,7 @@
           </div>
         </div>
         <div class="col-12">
+          <hr class="hr" />
           <p class="agencyHead">PROGRAMS AND SERVICES</p>
           <p class="agencyHeader">Services Offered</p>
           <p
@@ -378,6 +382,7 @@
           <p v-else class="agencyContent">No Data</p>
         </div>
         <div class="col-12">
+          <hr class="hr" />
           <p class="agencyHead">STATUS</p>
           <div class="col-12">
             <div class="col-3">
