@@ -271,3 +271,10 @@
 
 - Update styles in Sidebar and SWDA views
 - Updated the query method in SWDA AGENCIES VIEW
+- Fix UI layout and add HR lines in SWDA_AGENCIES.vue
+
+### version 5.8 - MARLO BARUA
+
+- Finished the ADMIN SWDA VIEW page
+- Started the ADMIN HR tables, archive, restore functionalities
+- Modified the System's SCROLLBAR

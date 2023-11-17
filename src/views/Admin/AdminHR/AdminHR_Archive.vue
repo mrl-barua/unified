@@ -13,36 +13,21 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Active
+            Inactive
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <router-link to="/adminhr/archive" style="text-decoration: none">
-              <li>
-                <a class="dropdown-item" href="#">Inactive</a>
+            <router-link to="/adminhr" style="text-decoration: none"
+              ><li>
+                <a class="dropdown-item" href="#">Active</a>
               </li></router-link
             >
           </ul>
         </div>
-
-        <router-link to="/adminhr/create">
-          <button
-            class="btn btn-primary float-start"
-            style="
-              background-color: #133f5c;
-              font-size: 12px; /* Adjust the font size as needed */
-              padding: 10px 30px 10px 30px;
-              margin-left: 20px;
-            "
-          >
-            ADD NEW
-          </button>
-        </router-link>
-
         <button
           @click="exportToExcel"
           class="btn btn-primary float-end"
           style="
-            background-color: green;
+            background-color: Green;
             font-size: 12px; /* Adjust the font size as needed */
             padding: 10px 30px 10px 30px;
             margin-left: auto;
@@ -51,7 +36,6 @@
           EXPORT DATA
         </button>
       </div>
-
       <div class="card-body">
         <DataTable
           v-if="this.hr.length > 0"
@@ -59,7 +43,7 @@
           class="display stripe order-column cell-border hover compact"
           id="hrTable"
         >
-          <thead style="background: #133f5c" class="text-white">
+          <thead style="background: #cb0e16" class="text-white">
             <tr>
               <th>ID</th>
               <th>Division</th>
@@ -78,24 +62,21 @@
               <td>{{ item.office_location }}</td>
               <td>{{ item.position_title }}</td>
               <td>{{ item.position_level }}</td>
-              <td>
-                <router-link
+              <td style="display: flex; justify-content: space-around">
+                <i
+                  class="bx bxs-up-arrow-square custom-link"
+                  @click="restoreHr(item.ID)"
+                ></i>
+
+                <!-- <router-link
                   :to="{ path: '/adminhr/' + item.ID + '/view' }"
                   class="custom-link"
                 >
                   <i class="bx bx-low-vision table-icon custom-link"></i
-                ></router-link>
-
-                <router-link
-                  :to="{ path: '/adminhr' + item.ID + '/edit' }"
-                  class="custom-link"
-                >
-                  <i class="bx bx-edit icon table-icon"></i>
-                </router-link>
+                ></router-link> -->
 
                 <i
-                  @click="deleteHr(item.ID)"
-                  class="bx bx-archive-in icon table-icon custom-link"
+                  class="bx bx-trash icon table-icon custom-link"
                   style="cursor: pointer"
                 ></i>
               </td>
@@ -123,7 +104,6 @@
 <script>
 import axios from "axios";
 import { backendURL } from "@/config.js";
-
 import Footer from "@/components/Footer";
 import AdminSidebar from "@/components/AdminSidebar";
 import BarChart from "@/components/ChartJS/Barchart";
@@ -133,8 +113,9 @@ import DataTable from "datatables.net-vue3";
 import DataTablesCore from "datatables.net";
 import "datatables.net-responsive";
 DataTable.use(DataTablesCore);
+
 export default {
-  name: "AdminHR",
+  name: "AdminHR_Archive",
   components: {
     Footer,
     AdminSidebar,
@@ -143,14 +124,14 @@ export default {
   },
   data() {
     return {
-      PageTitle: "ADMIN HR", // The title displayed on the page, which is "ADMIN HR"
+      PageTitle: "ADMIN HR ARCHIVE", // The title displayed on the page, which is "ADMIN HR"
 
       hr: [],
     };
   },
   computed: {},
   mounted() {
-    this.getHr();
+    this.getHrArchive();
   },
   methods: {
     exportToExcel() {
@@ -336,18 +317,18 @@ export default {
         a.click();
       });
     },
-    getHr() {
-      axios.get(`${backendURL}/api/hrlist`).then((res) => {
-        this.hr = res.data.Hr;
+    getHrArchive() {
+      axios.get(`${backendURL}/api/hrArchived`).then((res) => {
+        this.hr = res.data.ArchivedHr;
         console.log(res);
       });
     },
 
-    deleteHr(HrID) {
+    restoreHr(HrID) {
       // console.log(HrID);
-      if (confirm("Are you sure, you want to archive this data?")) {
+      if (confirm("Are you sure, you want to restore this data?")) {
         axios
-          .delete(`${backendURL}/api/hrlist/${HrID}/delete`)
+          .post(`${backendURL}/api/hrArchived/${HrID}/restore`)
           .then((res) => {
             alert(res.data.message);
             // Reload the page after a successful deletion
@@ -355,9 +336,6 @@ export default {
           })
           .catch(function (error) {
             if (error.response) {
-              if (error.response.status === 422) {
-                mythis.errorList = error.response.data.errors;
-              }
               if (error.response.status === 404) {
                 alert(error.response.data.message);
               }
