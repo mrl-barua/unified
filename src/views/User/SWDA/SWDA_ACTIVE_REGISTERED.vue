@@ -249,7 +249,7 @@
                 <td>{{ item.Address }}</td>
                 <td>
                   <router-link
-                    :to="{ path: '/adminswda/' + item.ID + '/view' }"
+                    :to="{ path: '/swda/' + item.ID + '/view' }"
                     class="custom-link"
                   >
                     <i class="bx bx-low-vision table-icon custom-link"></i

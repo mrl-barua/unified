@@ -249,7 +249,7 @@
                 <td>{{ item.Address }}</td>
                 <td>
                   <router-link
-                    :to="{ path: '/adminswda/' + item.ID + '/view' }"
+                    :to="{ path: '/swda/' + item.ID + '/view' }"
                     class="custom-link"
                   >
                     <i class="bx bx-low-vision table-icon custom-link"></i
@@ -503,7 +503,7 @@ export default {
 }
 
 .agencyfilter table tbody tr td .hover:hover {
-  background-color: #294D9C;
+  background-color: #294d9c;
   color: white; /* Change text color to white on hover */
   cursor: pointer; /* Change cursor to a pointer on hover (optional) */
   /* border-radius: 5px; */

@@ -141,13 +141,13 @@ export default {
           sessionStorage.setItem("user", "authenticated");
 
           // Navigate to the dashboard
-          this.$router.push("/dashboard");
+          this.$router.push("/swda");
         } else if (this.email === "Admin" && this.password === "admin") {
           // Authentication successful, set user as authenticated in localStorage
           sessionStorage.setItem("admin", "authenticated");
 
           // Navigate to the dashboard
-          this.$router.push("/admindashboard");
+          this.$router.push("/adminswda");
         } else {
           // Authentication failed, display error message
           this.error = true;

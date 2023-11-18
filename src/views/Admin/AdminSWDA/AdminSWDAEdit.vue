@@ -152,6 +152,9 @@
               class="form-control centered-placeholder"
               id="type"
             >
+              <option :value="model.Swda.Sector" selected>
+                {{ model.Swda.Sector }}
+              </option>
               <option value="" disabled selected>Select an option ⮟</option>
               <option value="Children">Children</option>
               <option value="Children and Youth">Children and Youth</option>
@@ -340,6 +343,9 @@
               class="form-control centered-placeholder"
               id="areaOfOperation"
             >
+              <option :value="model.Swda.Area_of_Operation" selected>
+                {{ model.Swda.Area_of_Operation }}
+              </option>
               <option value="" disabled selected>Select an option ⮟</option>
               <option value="Regional">Regional</option>
               <option value="National">National</option>
@@ -356,6 +362,9 @@
               class="form-control centered-placeholder"
               id="regionalOperation"
             >
+              <option :value="model.Swda.Regional_Operation" selected>
+                {{ model.Swda.Regional_Operation }}
+              </option>
               <option value="" disabled selected>Select an option ⮟</option>
               <option value="Davao City">Davao City</option>
               <option value="Davao del Oro">Davao del Oro</option>
@@ -376,6 +385,9 @@
               class="form-control centered-placeholder"
               id="specifiedAreasOfOperation"
             >
+              <option :value="model.Swda.Specified_Areas_of_Operation" selected>
+                {{ model.Swda.Specified_Areas_of_Operation }}
+              </option>
               <option value="" disabled selected>Select an option ⮟</option>
               <option value="Davao City">Davao City</option>
               <option value="Davao del Oro">Davao del Oro</option>
@@ -394,6 +406,9 @@
               class="form-control centered-placeholder"
               id="modeOfDelivery"
             >
+              <option :value="model.Swda.Mode_of_Delivery" selected>
+                {{ model.Swda.Mode_of_Delivery }}
+              </option>
               <option value="" disabled selected>Select an option ⮟</option>
               <option value="Community-based">Community-based</option>
               <option value="Center-based Residential">
@@ -570,36 +585,54 @@
           <div class="mb-3 col-12">
             <div class="spaceBetween">
               <label for="registrationStatus">REGISTRATION STATUS</label>
-              <input
-                type="text"
+              <select
                 v-model="model.Swda.Registration_Status"
-                class="form-control"
-                id="registrationStatus"
-              />
+                class="form-control centered-placeholder"
+                id="type"
+              >
+                <option :value="model.Swda.Registration_Status" selected>
+                  {{ model.Swda.Registration_Status }}
+                </option>
+                <option value="" disabled selected>Select an option ⮟</option>
+                <option value="Active/Valid">Active/Valid</option>
+                <option value="Expired">Expired</option>
+              </select>
             </div>
           </div>
 
           <div class="mb-3 col-12">
             <div class="spaceBetween">
               <label for="licenseStatus">LICENSE STATUS</label>
-              <input
-                type="text"
+              <select
                 v-model="model.Swda.License_Status"
-                class="form-control"
-                id="licenseStatus"
-              />
+                class="form-control centered-placeholder"
+                id="type"
+              >
+                <option :value="model.Swda.License_Status" selected>
+                  {{ model.Swda.Cluster }}
+                </option>
+                <option value="" disabled selected>Select an option ⮟</option>
+                <option value="Active/Valid">Active/Valid</option>
+                <option value="Expired">Expired</option>
+              </select>
             </div>
           </div>
 
           <div class="mb-3 col-12">
             <div class="spaceBetween">
               <label for="accreditationStatus">ACCREDITATION STATUS</label>
-              <input
-                type="text"
+              <select
                 v-model="model.Swda.Accreditation_Status"
-                class="form-control"
-                id="accreditationStatus"
-              />
+                class="form-control centered-placeholder"
+                id="type"
+              >
+                <option :value="model.Swda.Accreditation_Status" selected>
+                  {{ model.Swda.Accreditation_Status }}
+                </option>
+                <option value="" disabled selected>Select an option ⮟</option>
+                <option value="Active/Valid">Active/Valid</option>
+                <option value="Expired">Expired</option>
+              </select>
             </div>
           </div>
 
@@ -607,7 +640,7 @@
             <div class="spaceBetween">
               <label for="licensureOverdue">LICENSURE OVERDUE</label>
               <input
-                type="text"
+                type="number"
                 v-model="model.Swda.Licensure_Overdue"
                 class="form-control"
                 id="licensureOverdue"
@@ -620,7 +653,7 @@
             <div class="spaceBetween">
               <label for="accreditationOverdue">ACCREDITATION OVERDUE</label>
               <input
-                type="text"
+                type="number"
                 v-model="model.Swda.Accreditation_Overdue"
                 class="form-control"
                 id="accreditationOverdue"
