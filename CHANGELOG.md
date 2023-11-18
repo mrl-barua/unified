@@ -266,3 +266,21 @@
 - Add CSS and package dependencies
 - Edited the style in search bar SWDA VIEW
 - Edited the view content in ADMIN SWDA VIEW
+
+### version 5.7 - MARLO BARUA
+
+- Update styles in Sidebar and SWDA views
+- Updated the query method in SWDA AGENCIES VIEW
+- Fix UI layout and add HR lines in SWDA_AGENCIES.vue
+
+### version 5.8 - MARLO BARUA
+
+- Finished the ADMIN SWDA VIEW page
+- Started the ADMIN HR tables, archive, restore functionalities
+- Modified the System's SCROLLBAR
+
+### version 5.9 - MARLO BARUA
+
+- Implemented wherein when user log-in, they will be redirected to SWDA and ADMIN SWDA instead of CBSS and ADMIN CBSS
+- Added View page to all Filtering Table in all SWDA PAGES
+- Reconfigured the router.js

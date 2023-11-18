@@ -18,7 +18,15 @@
 
           <div class="sidebar-content">
             <ul class="lists">
-              <router-link to="/admindashboard" class="custom-link">
+              <router-link to="/adminswda" class="custom-link">
+                <li class="list">
+                  <a href="#" class="nav-link">
+                    <i class="bx bx-message-rounded icon"></i>
+                    <span class="link">ADMIN SWDA</span>
+                  </a>
+                </li>
+              </router-link>
+              <router-link to="/admincbss" class="custom-link">
                 <li class="list">
                   <a href="#" class="nav-link">
                     <i class="bx bx-home-alt icon"></i>
@@ -42,14 +50,7 @@
                   </a>
                 </li>
               </router-link>
-              <router-link to="/adminswda" class="custom-link">
-                <li class="list">
-                  <a href="#" class="nav-link">
-                    <i class="bx bx-message-rounded icon"></i>
-                    <span class="link">ADMIN SWDA</span>
-                  </a>
-                </li>
-              </router-link>
+
               <router-link to="/adminslp" class="custom-link">
                 <li class="list">
                   <a href="#" class="nav-link">

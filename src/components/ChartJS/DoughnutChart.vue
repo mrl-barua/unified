@@ -61,6 +61,6 @@ export default {
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
   height: 100%; /* Optional: Set a height for the container */
-  width: 90%;
+  width: 100%;
 }
 </style>

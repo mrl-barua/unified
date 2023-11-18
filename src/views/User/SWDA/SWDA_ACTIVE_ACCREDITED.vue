@@ -3,9 +3,26 @@
   <br /><br /><br /><br />
   <div class="wrapper container-fluid">
     <div class="col-12 col-md-3">
-      <div class="agenciesNames" style="background-color: #292d96">
+      <div class="agenciesNames" style="background-color: white">
+        <p
+          style="
+            font-family: Inter;
+            font-size: 25px;
+            font-weight: 700;
+            line-height: 30px;
+            letter-spacing: 0em;
+            text-align: center;
+          "
+        >
+          AGENCY
+        </p>
         <input
-          style="width: 90%; height: 3em; text-align: center"
+          style="
+            border-radius: 10px;
+            width: 90%;
+            height: 3em;
+            text-align: center;
+          "
           type="text"
           v-model="searchQuery"
           placeholder="Search for agency names"
@@ -14,7 +31,7 @@
           <table>
             <tbody>
               <tr v-for="agency in filteredAgencies" :key="agency.Agency">
-                <td class="text-white">
+                <td class="agency-color">
                   <router-link
                     :to="{
                       name: 'swda_agency',
@@ -77,7 +94,7 @@
                         ),
                       },
                     }"
-                    class="custom-link text-white"
+                    class="custom-link text-color"
                   >
                     <div class="hover">{{ agency.Agency }}</div>
                   </router-link>
@@ -232,7 +249,7 @@
                 <td>{{ item.Address }}</td>
                 <td>
                   <router-link
-                    :to="{ path: '/adminswda/' + item.ID + '/view' }"
+                    :to="{ path: '/swda/' + item.ID + '/view' }"
                     class="custom-link"
                   >
                     <i class="bx bx-low-vision table-icon custom-link"></i
@@ -440,6 +457,15 @@ export default {
   padding: 10px 0px 130px 0px;
 }
 
+.agencyfilter {
+  font-size: 14px;
+  height: 65em;
+  width: 90%;
+  overflow: auto;
+  margin: 20px 20px 20px 20px;
+  text-align: start;
+}
+
 .agencyNumbers {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   height: 1em;
@@ -477,20 +503,13 @@ export default {
 }
 
 .agencyfilter table tbody tr td .hover:hover {
-  background-color: #e70f0f;
+  background-color: #294d9c;
   color: white; /* Change text color to white on hover */
   cursor: pointer; /* Change cursor to a pointer on hover (optional) */
   /* border-radius: 5px; */
   padding: 0px 0px 0px 10px;
 }
-.agencyfilter {
-  font-size: 14px;
-  height: 69em;
-  width: 90%;
-  overflow: auto;
-  margin: 20px 20px 20px 20px;
-  text-align: start;
-}
+
 /* Styling the scrollbar in WebKit (Chrome, Safari) */
 .agencyfilter::-webkit-scrollbar {
   width: 4px; /* Adjust the width as desired */

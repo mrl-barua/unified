@@ -4,7 +4,7 @@
 
 <script>
 import LoginForm from "./views/LoginForm.vue";
-import Dashboard from "./views/User/CBSS/Dashboard.vue";
+import Dashboard from "./views/User/CBSS/CBSS.vue";
 
 export default {
   name: "App",
@@ -63,5 +63,28 @@ export default {
 body {
   overflow-x: hidden;
 }
+
+body {
+  --sb-track-color: #f11b25;
+  --sb-thumb-color: #292d96;
+  --sb-size: 10px;
+
+  scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+}
+
+body::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 18px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 18px;
+}
+
 /* CSS RESPONSIVE GLOBAL STYLES END */
 </style>

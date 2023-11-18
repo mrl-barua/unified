@@ -564,36 +564,45 @@
           <div class="mb-3 col-12">
             <div class="spaceBetween">
               <label for="registrationStatus">REGISTRATION STATUS</label>
-              <input
-                type="text"
+              <select
                 v-model="model.Swda.Registration_Status"
-                class="form-control"
-                id="registrationStatus"
-              />
+                class="form-control centered-placeholder"
+                id="type"
+              >
+                <option value="" disabled selected>Select an option ⮟</option>
+                <option value="Active/Valid">Active/Valid</option>
+                <option value="Expired">Expired</option>
+              </select>
             </div>
           </div>
 
           <div class="mb-3 col-12">
             <div class="spaceBetween">
               <label for="licenseStatus">LICENSE STATUS</label>
-              <input
-                type="text"
+              <select
                 v-model="model.Swda.License_Status"
-                class="form-control"
-                id="licenseStatus"
-              />
+                class="form-control centered-placeholder"
+                id="type"
+              >
+                <option value="" disabled selected>Select an option ⮟</option>
+                <option value="Active/Valid">Active/Valid</option>
+                <option value="Expired">Expired</option>
+              </select>
             </div>
           </div>
 
           <div class="mb-3 col-12">
             <div class="spaceBetween">
               <label for="accreditationStatus">ACCREDITATION STATUS</label>
-              <input
-                type="text"
+              <select
                 v-model="model.Swda.Accreditation_Status"
-                class="form-control"
-                id="accreditationStatus"
-              />
+                class="form-control centered-placeholder"
+                id="type"
+              >
+                <option value="" disabled selected>Select an option ⮟</option>
+                <option value="Active/Valid">Active/Valid</option>
+                <option value="Expired">Expired</option>
+              </select>
             </div>
           </div>
 
@@ -601,7 +610,7 @@
             <div class="spaceBetween">
               <label for="licensureOverdue">LICENSURE OVERDUE</label>
               <input
-                type="text"
+                type="number"
                 v-model="model.Swda.Licensure_Overdue"
                 class="form-control"
                 id="licensureOverdue"
@@ -614,7 +623,7 @@
             <div class="spaceBetween">
               <label for="accreditationOverdue">ACCREDITATION OVERDUE</label>
               <input
-                type="text"
+                type="number"
                 v-model="model.Swda.Accreditation_Overdue"
                 class="form-control"
                 id="accreditationOverdue"

@@ -21,7 +21,15 @@
 
           <div class="sidebar-content">
             <ul class="lists">
-              <router-link to="/dashboard" class="custom-link">
+              <router-link to="/swda" class="custom-link">
+                <li class="list">
+                  <a href="#" class="nav-link">
+                    <i class="bx bx-doughnut-chart icon"></i>
+                    <span class="link">SWDA</span>
+                  </a>
+                </li>
+              </router-link>
+              <router-link to="/cbss" class="custom-link">
                 <li class="list">
                   <a href="#" class="nav-link">
                     <i class="bx bx-bar-chart-square icon"></i>
@@ -59,15 +67,6 @@
                   <a href="#" class="nav-link">
                     <i class="bx bx-bar-chart icon"></i>
                     <span class="link">OSP</span>
-                  </a>
-                </li>
-              </router-link>
-
-              <router-link to="/swda" class="custom-link">
-                <li class="list">
-                  <a href="#" class="nav-link">
-                    <i class="bx bx-doughnut-chart icon"></i>
-                    <span class="link">SWDA</span>
                   </a>
                 </li>
               </router-link>
@@ -273,6 +272,7 @@ nav {
   pointer-events: none;
   transition: all 0.4s ease;
   background: rgba(0, 0, 0, 0.3);
+  z-index: 50;
 }
 
 nav .sidebar {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <AdminSidebar :iconText="PageTitle" />
+    <Sidebar :iconText="PageTitle" />
     <br /><br /><br /><br /><br />
     <div class="container-fluid wrapper">
       <div class="col-12 col-md-12">
@@ -397,17 +397,17 @@
 </template>
 
 <script>
-import AdminSidebar from "@/components/AdminSidebar";
+import Sidebar from "@/components/Sidebar";
 import axios from "axios"; // Import Axios
 
 export default {
-  name: "AdminSWDAView",
+  name: "SWDAView",
   components: {
-    AdminSidebar,
+    Sidebar,
   },
   data() {
     return {
-      PageTitle: "ADMIN SWDA VIEW",
+      PageTitle: "SWDA VIEW",
 
       model: {
         Swda: {
