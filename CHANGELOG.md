@@ -278,3 +278,9 @@
 - Finished the ADMIN SWDA VIEW page
 - Started the ADMIN HR tables, archive, restore functionalities
 - Modified the System's SCROLLBAR
+
+### version 5.9 - MARLO BARUA
+
+- Implemented wherein when user log-in, they will be redirected to SWDA and ADMIN SWDA instead of CBSS and ADMIN CBSS
+- Added View page to all Filtering Table in all SWDA PAGES
+- Reconfigured the router.js

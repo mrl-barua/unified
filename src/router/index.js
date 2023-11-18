@@ -1,12 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LoginForm from '../views/LoginForm.vue'
-import Dashboard from '../views/User/CBSS/Dashboard.vue'
+import CBSS from '../views/User/CBSS/CBSS.vue'
 import HR from '../views/User/HR/HR.vue'
 import OSP from '../views/User/OSP/OSP.vue'
 
 
 import SWDA from '../views/User/SWDA/SWDA.vue'
 import SWDA_AGENCY from '../views/User/SWDA/SWDA_AGENCIES.vue'
+import SWDAView from '../views/User/SWDA/SWDA_VIEW.vue'
+
+
 import SWDA_ACTIVE_ACCREDITED from '../views/User/SWDA/SWDA_ACTIVE_ACCREDITED.vue'
 import SWDA_ACTIVE_LICENSED from '../views/User/SWDA/SWDA_ACTIVE_LICENSED.vue'
 import SWDA_ACTIVE_REGISTERED from '../views/User/SWDA/SWDA_ACTIVE_REGISTERED.vue'
@@ -30,7 +33,7 @@ import SLP_STAT from '../views/User/SLP/SLP_STAT.vue'
 import SLP_CBA from '../views/User/SLP/SLP_CBA.vue'
 
 
-import AdminDashboard from '../views/Admin/AdminCBSS/AdminDashboard.vue'
+import AdminCbss from '../views/Admin/AdminCBSS/AdminCBSS.vue'
 
 
 import AdminHR from '../views/Admin/AdminHR/AdminHR.vue'
@@ -122,9 +125,9 @@ const routes = [
 
   // ADMIN DASHBOARD START
   {
-    path: '/admindashboard',
-    name: 'admindashboard',
-    component: AdminDashboard,
+    path: '/admincbss',
+    name: 'admincbss',
+    component: AdminCbss,
     beforeEnter: adminRequireAuth,
   },
 
@@ -239,9 +242,9 @@ const routes = [
 
   //  USER DASHBOARD START
   {
-    path: '/dashboard',
-    name: 'dashboard',
-    component: Dashboard,
+    path: '/cbss',
+    name: 'cbss',
+    component: CBSS,
     beforeEnter: userRequireAuth,
   },
 
@@ -273,6 +276,14 @@ const routes = [
     path: '/swda_agency',
     name: 'swda_agency',
     component: SWDA_AGENCY,
+    beforeEnter: userRequireAuth,
+  },
+
+
+  {
+    path: '/swda/:ID/view',
+    name: 'SWDAView',
+    component: SWDAView,
     beforeEnter: userRequireAuth,
   },
 

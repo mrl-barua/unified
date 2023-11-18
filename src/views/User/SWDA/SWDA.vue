@@ -1029,7 +1029,7 @@ export default {
               "Children Youth and Families",
               "Senior Citizens",
               "Persons With Disability",
-              "Indigenous Peples",
+              "Indigenous Peoples",
               "Women",
               "Others",
             ],
@@ -1046,16 +1046,16 @@ export default {
               othersLength,
             ],
             backgroundColor: [
-              "rgba(19, 63, 92, 1)",
-              "rgba(255, 0, 0, 1)", // Red
-              "rgba(0, 255, 0, 1)", // Green
-              "rgba(0, 0, 255, 1)", // Blue
-              "rgba(255, 255, 0, 1)", // Yellow
-              "rgba(255, 0, 255, 1)", // Magenta
-              "rgba(0, 255, 255, 1)", // Cyan
-              "rgba(128, 128, 128, 1)", // Gray
-              "rgba(255, 165, 0, 1)", // Orange
-              "rgba(0, 128, 0, 1)", // Dark Green],
+              "rgba(210, 178, 2, 1)",
+              "rgba(238, 202, 6, 1)",
+              "rgba(248, 228, 75, 1)",
+              "rgba(226, 80, 76, 1)",
+              "rgba(255, 105, 97, 1)",
+              "rgba(255, 150, 136, 1)",
+              "rgba(106, 158, 218, 1)",
+              "rgba(132, 182, 244, 1)",
+              "rgba(178, 218, 250, 1)",
+              "rgba(221, 255, 255, 1)",
             ],
           };
           // Set barChartData to the computed data
@@ -1073,23 +1073,23 @@ export default {
               "Children Youth and Families",
               "Senior Citizens",
               "Persons With Disability",
-              "Indigenous Peples",
+              "Indigenous Peoples",
               "Women",
               "Others",
             ],
             label: ["Clientele"],
             values: [1, 1, 1, 1, 1, 1, 1, 1, 1],
             backgroundColor: [
-              "rgba(19, 63, 92, 1)",
-              "rgba(255, 0, 0, 1)", // Red
-              "rgba(0, 255, 0, 1)", // Green
-              "rgba(0, 0, 255, 1)", // Blue
-              "rgba(255, 255, 0, 1)", // Yellow
-              "rgba(255, 0, 255, 1)", // Magenta
-              "rgba(0, 255, 255, 1)", // Cyan
-              "rgba(128, 128, 128, 1)", // Gray
-              "rgba(255, 165, 0, 1)", // Orange
-              "rgba(0, 128, 0, 1)", // Dark Green],
+              "rgba(210, 178, 2, 1)",
+              "rgba(238, 202, 6, 1)",
+              "rgba(248, 228, 75, 1)",
+              "rgba(226, 80, 76, 1)",
+              "rgba(255, 105, 97, 1)",
+              "rgba(255, 150, 136, 1)",
+              "rgba(106, 158, 218, 1)",
+              "rgba(132, 182, 244, 1)",
+              "rgba(178, 218, 250, 1)",
+              "rgba(221, 255, 255, 1)",
             ],
           };
           // Set barChartData to the computed data
@@ -1262,7 +1262,7 @@ export default {
   top: 50%; /* Center vertically */
   left: 50%; /* Center horizontally */
   transform: translate(-50%, -50%); /* Center the text within its parent */
-  color: white;
+  color: black;
   padding: 10px 15px;
   border-radius: 5px;
   visibility: visible;
@@ -1280,7 +1280,7 @@ export default {
   top: 55%; /* Center vertically */
   left: 50%; /* Center horizontally */
   transform: translate(-50%, -50%); /* Center the text within its parent */
-  color: white;
+  color: black;
   padding: 10px 15px;
   /* border-radius: 5px; */
   visibility: visible;
