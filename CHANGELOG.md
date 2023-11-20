@@ -284,3 +284,11 @@
 - Implemented wherein when user log-in, they will be redirected to SWDA and ADMIN SWDA instead of CBSS and ADMIN CBSS
 - Added View page to all Filtering Table in all SWDA PAGES
 - Reconfigured the router.js
+
+### version 5.10 - MARLO BARUA
+
+- Partially implemented the ADMIN CBSS Page
+
+### version 6.0 - MARLO BARUA
+
+- Implemented Edit History Logs and View Edit History Logs
