@@ -51,6 +51,8 @@ import AdminSWDA_Archive from '../views/Admin/AdminSWDA/AdminSWDA_Archive.vue'
 import AdminSWDACreate from '../views/Admin/AdminSWDA/AdminSWDACreate'
 import AdminSWDAEdit from '../views/Admin/AdminSWDA/AdminSWDAEdit'
 import AdminSWDAView from '../views/Admin/AdminSWDA/AdminSwdaView'
+import AdminSWDAViewHistory from '../views/Admin/AdminSWDA/AdminSwda_EditHistory.vue'
+import AdminSWDAViewHistoryVIEW from '../views/Admin/AdminSWDA/AdminSwda_EditHistory_View.vue'
 
 
 import SettingDashboard from '../views/Admin/Settings_Pages/SettingDashboard'
@@ -205,6 +207,23 @@ const routes = [
     path: '/adminswda/create',
     name: 'AdminSWDACreate',
     component: AdminSWDACreate,
+    beforeEnter: adminRequireAuth,
+  },
+
+
+  {
+    path: '/adminswda/:ID/editHistory',
+    name: 'editHistory',
+    component: AdminSWDAViewHistory,
+    beforeEnter: adminRequireAuth,
+  },
+
+
+
+  {
+    path: '/adminswda/:ID/editHistory/view',
+    name: 'editHistoryView',
+    component: AdminSWDAViewHistoryVIEW,
     beforeEnter: adminRequireAuth,
   },
 

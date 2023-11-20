@@ -78,7 +78,7 @@
               <td>{{ item.Cluster }}</td>
               <td>{{ item.Agency }}</td>
               <td>{{ item.Address }}</td>
-              <td>
+              <td class="actions">
                 <router-link
                   :to="{ path: '/adminswda/' + item.ID + '/view' }"
                   class="custom-link"
@@ -98,6 +98,13 @@
                   class="bx bx-archive-in icon table-icon custom-link"
                   style="cursor: pointer"
                 ></i>
+
+                <router-link
+                  :to="{ path: '/adminswda/' + item.ID + '/editHistory' }"
+                  class="custom-link"
+                >
+                  <i class="bx bx-history icon table-icon"></i>
+                </router-link>
               </td>
             </tr>
           </tbody>
@@ -325,5 +332,11 @@ div.dataTables_wrapper a.paginate_button {
 .custom-link {
   text-decoration: none !important;
   color: black;
+}
+
+.actions {
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100px !important;
 }
 </style>
