@@ -115,7 +115,7 @@
       </div>
 
       <!-- 1ST COLUMN -->
-      <div class="col-6 columns">
+      <div class="col-4 columns">
         <div class="col-12">
           <p class="agencyHeader">Former Name</p>
           <p
@@ -263,7 +263,7 @@
         </div>
       </div>
       <!-- 2ND COLUMN -->
-      <div class="col-6 columns">
+      <div class="col-8 columns">
         <div class="col-12">
           <div class="col-6">
             <p class="agencyHeader">Registration Status</p>
