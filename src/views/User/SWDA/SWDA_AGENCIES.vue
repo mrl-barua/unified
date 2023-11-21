@@ -6,7 +6,7 @@
       <div class="agenciesNames" style="background-color: white">
         <p
           style="
-            font-family: Inter;
+            font-family: Arial;
             font-size: 25px;
             font-weight: 700;
             line-height: 30px;
@@ -707,7 +707,7 @@ export default {
 
 .agency-color {
   color: black;
-  font-family: Inter;
+  font-family: Arial;
   font-size: 17px;
   font-weight: 500;
   line-height: 21px;
@@ -720,7 +720,7 @@ export default {
 }
 
 .AgencyTitle {
-  font-family: Inter;
+  font-family: Arial;
   font-size: 22px;
   font-weight: 700;
   line-height: 27px;
@@ -729,7 +729,7 @@ export default {
 }
 
 .agencyHeader {
-  font-family: Inter;
+  font-family: Arial;
   font-size: 14px;
   font-weight: 500;
   line-height: 17px;
@@ -738,7 +738,7 @@ export default {
 }
 
 .agencyHead {
-  font-family: Inter;
+  font-family: Arial;
   font-size: 16px;
   font-weight: 700;
   line-height: 19px;
@@ -747,7 +747,7 @@ export default {
 }
 
 .agencyContent {
-  font-family: Inter;
+  font-family: Arial;
   font-size: 16px;
   font-weight: 700;
   line-height: 19px;

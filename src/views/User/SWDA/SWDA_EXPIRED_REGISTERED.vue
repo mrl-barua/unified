@@ -6,7 +6,7 @@
       <div class="agenciesNames" style="background-color: white">
         <p
           style="
-            font-family: Inter;
+            font-family: Arial;
             font-size: 25px;
             font-weight: 700;
             line-height: 30px;
@@ -475,7 +475,7 @@ export default {
 
 .tableHeading {
   margin-top: 20px;
-  font-family: Inter;
+  font-family: Arial;
   font-size: 30px;
   font-weight: 700;
   line-height: 36px;
@@ -554,7 +554,7 @@ export default {
 }
 
 .sidepart {
-  font-family: Inter;
+  font-family: Arial;
   font-weight: 600;
   line-height: 20.57px;
   font-size: 27px;
@@ -562,7 +562,7 @@ export default {
 }
 
 .sidepartValue {
-  font-family: Inter;
+  font-family: Arial;
   font-size: 50px;
   font-weight: 600;
   line-height: 30px;
@@ -576,7 +576,7 @@ export default {
 }
 
 .headerAgencies {
-  font-family: Inter;
+  font-family: Arial;
   font-size: 24px;
   font-weight: 700;
   line-height: 24px;

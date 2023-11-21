@@ -248,33 +248,33 @@
             </p>
           </div>
           <div class="col-12 col-md-3 clusterdiv">
-            <div class="color text-white" style="background-color: #ff625e">
+            <div class="color text-white" style="background-color: #FF6961">
               <p class="clusterText">Cluster 1</p>
-              <div class="hover-text" style="background-color: #ff625e">
+              <div class="hover-text" style="background-color: #FF6961">
                 {{ cluster1Length }}
               </div>
             </div>
           </div>
           <div class="col-12 col-md-3 clusterdiv">
-            <div class="color text-white" style="background-color: #ff9288">
+            <div class="color text-white" style="background-color: #FF9688">
               <p class="clusterText">Unclustered</p>
-              <div class="hover-text" style="background-color: #ff9288">
+              <div class="hover-text" style="background-color: #FF9688">
                 {{ unclusteredLength }}
               </div>
             </div>
           </div>
           <div class="col-12 col-md-2 clusterdiv">
-            <div class="color text-white" style="background-color: #f5eea5">
+            <div class="color text-white" style="background-color: #EECA06">
               <p class="clusterText">Cluster 2</p>
-              <div class="hover-text" style="background-color: #f5eea5">
+              <div class="hover-text" style="background-color: #EECA06">
                 {{ cluster2Length }}
               </div>
             </div>
           </div>
           <div class="col-12 col-md-2 clusterdiv">
-            <div class="color text-white" style="background-color: #fffec3">
+            <div class="color text-white" style="background-color: #FAE860">
               <p class="clusterText">North Cluster</p>
-              <div class="hover-text" style="background-color: #fffec3">
+              <div class="hover-text" style="background-color: #FAE860">
                 {{ northClusterLength }}
               </div>
             </div>
@@ -282,19 +282,19 @@
           <div class="col-12 col-md-2 clusterdiv2">
             <div
               class="col-12 clusterdiv clusterdiv3 text-white"
-              style="background-color: #82c8e2"
+              style="background-color: #6A9EDA"
             >
               <p class="clusterText">South Cluster</p>
-              <div class="hover-text2" style="background-color: #82c8e2">
+              <div class="hover-text2" style="background-color: #6A9EDA">
                 {{ southClusterLength }}
               </div>
             </div>
             <div
               class="col-12 clusterdiv clusterdiv3 text-white"
-              style="background-color: #afe7fe"
+              style="background-color: #B2DAFA"
             >
               <p class="clusterText">Senior Citizens Cluster</p>
-              <div class="hover-text2" style="background-color: #afe7fe">
+              <div class="hover-text2" style="background-color: #B2DAFA">
                 {{ seniorLength }}
               </div>
             </div>
@@ -541,11 +541,12 @@ export default {
               cluster2Length,
             ],
             backgroundColor: [
-              "rgba(25, 82, 105, 0.6)",
-              "rgba(0, 255, 0, 0.6)",
-              "rgba(0, 0, 255, 0.6)",
-              "rgba(0, 0, 255, 0.6)",
-              "rgba(128, 0, 128, 0.6",
+              "rgba(255, 150, 136, 1)",
+              "rgba(255, 105, 97, 1)",
+              "rgba(248, 228, 75, 1)",
+              "rgba(106, 158, 218, 1)",
+              "rgba(178, 218, 250, 1)",
+              "rgba(238, 202, 6, 1)",
             ],
           };
           // Set barChartData to the computed data
@@ -567,11 +568,12 @@ export default {
             label: ["Cluster"],
             values: [1, 1, 1, 1, 1, 1],
             backgroundColor: [
-              "rgba(25, 82, 105, 0.6)",
-              "rgba(0, 255, 0, 0.6)",
-              "rgba(0, 0, 255, 0.6)",
-              "rgba(0, 0, 255, 0.6)",
-              "rgba(128, 0, 128, 0.6",
+              "rgba(255, 150, 136, 1)",
+              "rgba(255, 105, 97, 1)",
+              "rgba(248, 228, 75, 1)",
+              "rgba(106, 158, 218, 1)",
+              "rgba(178, 218, 250, 1)",
+              "rgba(238, 202, 6, 1)",
             ],
           };
           // Set catcc error barChartData to the computed data
@@ -858,16 +860,17 @@ export default {
               drugDependentsLength,
             ],
             backgroundColor: [
-              "rgba(18, 65, 169, 1)",
-              "rgba(255, 103, 102, 1)",
-              "rgba(255, 51, 52, 1)",
-              "rgba(254, 0, 0, 1)",
-              "rgba(254, 229, 103, 1)",
-              "rgba(255, 219, 53, 1)",
-              "rgba(255, 212, 1, 1)",
-              "rgba(210, 216, 238, 1)",
-              "rgba(112, 140, 205, 1)",
-              "rgba(66, 102, 189, 1)",
+              "rgba(178, 218, 250, 1)",
+              "rgba(132, 182, 244, 1)",
+              "rgba(106, 158, 218, 1)",
+              "rgba(80, 134, 193, 1)",
+              "rgba(255, 150, 136, 1)",
+              "rgba(255, 105, 97, 1)",
+              "rgba(226, 80, 76, 1)",
+              "rgba(248, 228, 75, 1)",
+              "rgba(238, 202, 6, 1)",
+              "rgba(210, 178, 2, 1)",
+              "rgba(183, 154, 0, 1)",
             ],
           };
           // Set barChartData to the computed data
