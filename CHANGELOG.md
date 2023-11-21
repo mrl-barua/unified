@@ -296,3 +296,7 @@
 ### version 6.1 - KIARA HAGUNOB
 
 - Update Column Widths in SWDA_Agencies
+
+### version 6.2 - MARLO BARUA
+
+- Fix license status display and reload page after data update
