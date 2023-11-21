@@ -645,11 +645,11 @@ export default {
 }
 
 .agenciesNames {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  height: 80vh;
-  border-radius: 20px;
-  margin: 0 10px 10px 10px;
-  padding: 10px 0 130px 0;
+  box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.15);
+  height: 67em;
+  /* border-radius: 20px; */
+  margin: 5px 5px 5px 5px;
+  padding: 10px 0px 130px 0px;
 
   /* Media queries for different screen widths */
   @media only screen and (min-width: 500px) {
