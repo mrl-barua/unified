@@ -6,7 +6,7 @@
       <div class="agenciesNames" style="background-color: white">
         <p
           style="
-            font-family: Inter;
+            font-family: Arial;
             font-size: 25px;
             font-weight: 700;
             line-height: 30px;
@@ -235,13 +235,13 @@
           <div class="col-12">
             <p
               style="
-                font-family: Inter;
+                font-family: Arial;
                 font-size: 24px;
                 font-weight: 700;
                 line-height: 21px;
                 letter-spacing: 0em;
                 text-align: center;
-                padding: 4px 0px 0px 24px;
+                padding: 10px 0px 15px 0px;
               "
             >
               CLUSTERS
@@ -249,7 +249,7 @@
           </div>
           <div class="col-12 col-md-3 clusterdiv">
             <div class="color text-white" style="background-color: #ff625e">
-              <p class="clusterText">CLUSTER 1</p>
+              <p class="clusterText">Cluster 1</p>
               <div class="hover-text" style="background-color: #ff625e">
                 {{ cluster1Length }}
               </div>
@@ -257,7 +257,7 @@
           </div>
           <div class="col-12 col-md-3 clusterdiv">
             <div class="color text-white" style="background-color: #ff9288">
-              <p class="clusterText">UNCLUSTERED</p>
+              <p class="clusterText">Unclustered</p>
               <div class="hover-text" style="background-color: #ff9288">
                 {{ unclusteredLength }}
               </div>
@@ -265,7 +265,7 @@
           </div>
           <div class="col-12 col-md-2 clusterdiv">
             <div class="color text-white" style="background-color: #f5eea5">
-              <p class="clusterText">CLUSTER 2</p>
+              <p class="clusterText">Cluster 2</p>
               <div class="hover-text" style="background-color: #f5eea5">
                 {{ cluster2Length }}
               </div>
@@ -273,7 +273,7 @@
           </div>
           <div class="col-12 col-md-2 clusterdiv">
             <div class="color text-white" style="background-color: #fffec3">
-              <p class="clusterText">NORTH CLUSTER</p>
+              <p class="clusterText">North Cluster</p>
               <div class="hover-text" style="background-color: #fffec3">
                 {{ northClusterLength }}
               </div>
@@ -284,7 +284,7 @@
               class="col-12 clusterdiv clusterdiv3 text-white"
               style="background-color: #82c8e2"
             >
-              <p class="clusterText">SOUTH CLUSTER</p>
+              <p class="clusterText">South Cluster</p>
               <div class="hover-text2" style="background-color: #82c8e2">
                 {{ southClusterLength }}
               </div>
@@ -293,7 +293,7 @@
               class="col-12 clusterdiv clusterdiv3 text-white"
               style="background-color: #afe7fe"
             >
-              <p class="clusterText">SENIOR CITIZENS CLUSTER</p>
+              <p class="clusterText">Senior Citizens Cluster</p>
               <div class="hover-text2" style="background-color: #afe7fe">
                 {{ seniorLength }}
               </div>
@@ -305,13 +305,13 @@
         <div class="Sectors">
           <p
             style="
-              font-family: Inter;
+              font-family: Arial;
               font-size: 24px;
               font-weight: 700;
               line-height: 21px;
               letter-spacing: 0em;
-              text-align: left;
-              padding: 4px 0px 0px 24px;
+              text-align: center;
+              padding: 10px 0px 0px 0px;
             "
           >
             SECTORS
@@ -327,13 +327,13 @@
         <div class="Client">
           <p
             style="
-              font-family: Inter;
+              font-family: Arial;
               font-size: 24px;
               font-weight: 700;
               line-height: 21px;
               letter-spacing: 0em;
-              text-align: left;
-              padding: 4px 0px 0px 24px;
+              text-align: center;
+              padding: 10px 0px 0px 0px;
             "
           >
             CLIENT
@@ -349,13 +349,13 @@
         <div class="Regional">
           <p
             style="
-              font-family: Inter;
+              font-family: Arial;
               font-size: 24px;
               font-weight: 700;
               line-height: 21px;
               letter-spacing: 0em;
-              text-align: left;
-              padding: 4px 0px 0px 24px;
+              text-align: center;
+              padding: 10px 0px 0px 0px;
             "
           >
             REGIONAL OPERATION
@@ -1135,17 +1135,17 @@ export default {
 
   height: 1em;
   /* border-radius: 20px; */
-  margin: 10px 10px 10px 10px;
-  padding: 10px 0px 130px 0px;
+  margin: 5px 5px 5px 5px;
+  padding: 30px 0px 130px 0px;
 }
 
 .agenciesNames {
-  box-shadow: 0px 0px 8px 1px #00000026;
+  box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.15);
 
   height: 77em;
   /* border-radius: 20px; */
-  margin: 10px 10px 10px 10px;
-  padding: 10px 0px 130px 0px;
+  margin: 5px 5px 5px 5px;
+  padding: 10px 0px 10px 0px;
 }
 
 .agencyfilter table tbody tr td .hover:hover {
@@ -1179,7 +1179,7 @@ export default {
 }
 
 .clusterdiv {
-  height: 80%;
+  height: 70%;
 }
 .color {
   width: 95%;
@@ -1190,8 +1190,8 @@ export default {
   margin: auto;
 }
 .clusterdiv2 {
-  height: 80%;
-  padding: 0px 10px 0px 10px;
+  height: 70%;
+  padding: 0px 10px 0px 5px;
 }
 .clusterdiv3 {
   height: 48%;
@@ -1206,8 +1206,8 @@ export default {
 
   height: 150px;
   /* border-radius: 20px; */
-  margin: 10px 10px 10px 10px;
-  padding: 10px 0px 130px 0px;
+  margin: 5px 5px 5px 5px;
+  padding: 30px 0px 130px 0px;
 }
 
 .shadow {
@@ -1243,13 +1243,13 @@ export default {
 
   height: 15em;
   /* border-radius: 20px; */
-  margin: 5px 10px 5px 10px;
-  padding: 10px 0px 10px 0px;
+  margin: 5px 5px 5px 5px;
+  padding: 10px 10px 10px 10px;
 }
 .Sectors,
 .Client {
   height: 22em;
-  padding-bottom: 50px;
+  padding-bottom: 62px;
 }
 .Regional {
   height: 17em;
@@ -1296,7 +1296,7 @@ export default {
 }
 
 .sidepart {
-  font-family: Inter;
+  font-family: Arial;
   font-weight: 600;
   line-height: 20.57px;
   font-size: 27px;
@@ -1304,7 +1304,7 @@ export default {
 }
 
 .sidepartValue {
-  font-family: Inter;
+  font-family: Arial;
   font-size: 50px;
   font-weight: 600;
   line-height: 30px;
@@ -1318,7 +1318,7 @@ export default {
 }
 
 .headerAgencies {
-  font-family: Inter;
+  font-family: Arial;
   font-size: 24px;
   font-weight: 700;
   line-height: 24px;
@@ -1327,7 +1327,7 @@ export default {
 }
 
 .clusterText {
-  font-family: Inter;
+  font-family: Arial;
   font-size: 18px;
   font-weight: 600;
   line-height: 22px;
@@ -1338,7 +1338,7 @@ export default {
 
 .agency-color {
   color: black;
-  font-family: Inter;
+  font-family: Arial;
   font-size: 17px;
   font-weight: 500;
   line-height: 21px;
