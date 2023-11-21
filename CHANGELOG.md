@@ -300,3 +300,7 @@
 ### version 6.2 - MARLO BARUA
 
 - Fix license status display and reload page after data update
+
+### version 6.3 - MARK PONDOL
+
+- Overlapping text - partial fix
