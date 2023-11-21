@@ -737,6 +737,11 @@ export default {
   text-align: left;
 }
 
+/* Multiple email */
+
+
+
+
 .agencyHead {
   font-family: Arial;
   font-size: 16px;
@@ -753,5 +758,8 @@ export default {
   line-height: 19px;
   letter-spacing: 0em;
   text-align: left;
+  clip-path: content-box;
 }
+
+
 </style>
