@@ -465,8 +465,8 @@ export default {
 }
 
 .tableOutside {
-  margin: 20px 0px 20px 0px;
-  border: 2px solid #e0e0e0;
+  margin: 5px 5px 5px 5px;
+  border: 0px solid #e0e0e0;
   /* border-radius: 20px; */
 }
 
@@ -485,10 +485,10 @@ export default {
 }
 
 .agenciesNames {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.15);
   height: 67em;
   /* border-radius: 20px; */
-  margin: 10px 10px 10px 10px;
+  margin: 5px 5px 5px 5px;
   padding: 10px 0px 130px 0px;
 }
 
@@ -522,11 +522,11 @@ export default {
 }
 
 .shadow-agencies {
-  box-shadow: 0px 0px 8px 1px #00000026;
+  box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.15);
 
   height: 150px;
   /* border-radius: 20px; */
-  margin: 10px 10px 10px 10px;
+  margin: 5px 5px 5px 5px;
   padding: 10px 0px 130px 0px;
 }
 

@@ -292,3 +292,11 @@
 ### version 6.0 - MARLO BARUA
 
 - Implemented Edit History Logs and View Edit History Logs
+
+### version 6.1 - KIARA HAGUNOB
+
+- Update Column Widths in SWDA_Agencies
+
+### version 6.2 - MARLO BARUA
+
+- Fix license status display and reload page after data update
