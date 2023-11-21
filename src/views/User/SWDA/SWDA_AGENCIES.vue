@@ -737,6 +737,11 @@ export default {
   text-align: left;
 }
 
+/* Multiple email */
+
+
+
+
 .agencyHead {
   font-family: Inter;
   font-size: 16px;
@@ -747,11 +752,14 @@ export default {
 }
 
 .agencyContent {
-  font-family: Inter;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
   font-weight: 700;
   line-height: 19px;
   letter-spacing: 0em;
   text-align: left;
+  clip-path: content-box;
 }
+
+
 </style>
