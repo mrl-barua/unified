@@ -609,7 +609,7 @@
                 id="type"
               >
                 <option :value="model.Swda.License_Status" selected>
-                  {{ model.Swda.Cluster }}
+                  {{ model.Swda.License_Status }}
                 </option>
                 <option value="" disabled selected>Select an option ⮟</option>
                 <option value="Active/Valid">Active/Valid</option>
@@ -822,6 +822,8 @@ export default {
           alert(res.data.message);
 
           this.errorList = "";
+
+          window.location.reload(); // reload the page after updating the data
         })
         .catch(function (error) {
           if (error.response) {
