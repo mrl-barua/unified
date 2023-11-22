@@ -300,3 +300,17 @@
 ### version 6.2 - MARLO BARUA
 
 - Fix license status display and reload page after data update
+
+### version 6.3 - MARK PONDOL
+
+- Overlapping text - partial fix
+
+### version 6.4 - MARLO BARUA
+
+- Fix formatting issues
+- Add missing date field in AdminSWDA_EditHistory.vue and SWDA_EXPIRED_DELISTED.vue
+
+### cersion 6.5 - MARLO BARUA
+
+- Update chart options and SWDA view component
+- Fix the HR PAGE regarding its style
