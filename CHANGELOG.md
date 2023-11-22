@@ -304,3 +304,8 @@
 ### version 6.3 - MARK PONDOL
 
 - Overlapping text - partial fix
+
+### version 6.4 - MARLO BARUA
+
+- Fix formatting issues
+- Add missing date field in AdminSWDA_EditHistory.vue and SWDA_EXPIRED_DELISTED.vue

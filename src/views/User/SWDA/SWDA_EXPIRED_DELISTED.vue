@@ -269,6 +269,41 @@
               </tr>
             </tfoot>
           </DataTable>
+
+          <DataTable
+            v-if="this.swda.length <= 0"
+            style="width: 100%"
+            class="display stripe order-column cell-border hover compact"
+            id="swdaTable"
+          >
+            <thead style="background: #133f5c" class="text-white">
+              <tr>
+                <th>ID</th>
+                <th>Type</th>
+                <th>Sector</th>
+                <th>Cluster</th>
+                <th>Agency</th>
+                <th>Address</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="item in swda" :key="item.ID">
+                <td>No Data Available</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th>ID</th>
+                <th>Type</th>
+                <th>Sector</th>
+                <th>Cluster</th>
+                <th>Agency</th>
+                <th>Address</th>
+                <th>Actions</th>
+              </tr>
+            </tfoot>
+          </DataTable>
         </div>
       </div>
     </div>
@@ -493,7 +528,7 @@ export default {
 }
 
 .agencyfilter table tbody tr td .hover:hover {
-  background-color: #294D9C;
+  background-color: #294d9c;
   color: white; /* Change text color to white on hover */
   cursor: pointer; /* Change cursor to a pointer on hover (optional) */
   /* border-radius: 5px; */

@@ -10,10 +10,14 @@
         style="width: 100%"
         class="display stripe order-column cell-border hover compact"
         id="swdaTable"
+        :options="{
+          order: [[0, 'desc']],
+        }"
       >
         <thead style="background: #133f5c" class="text-white">
           <tr>
             <th>ID</th>
+            <th>Date Edited</th>
             <th>Type</th>
             <th>Sector</th>
             <th>Cluster</th>
@@ -25,6 +29,7 @@
         <tbody>
           <tr v-for="item in swda" :key="item.id">
             <td>{{ item.id }}</td>
+            <td>{{ formatDate(item.created_at) }}</td>
             <td>{{ item.Type }}</td>
             <td>{{ item.Sector }}</td>
             <td>{{ item.Cluster }}</td>
@@ -43,6 +48,8 @@
         <tfoot>
           <tr>
             <th>ID</th>
+            <th>Date Edited</th>
+
             <th>Type</th>
             <th>Sector</th>
             <th>Cluster</th>
@@ -123,6 +130,18 @@ export default {
     this.SwdaData(this.SwdaID);
   },
   methods: {
+    formatDate(dateString) {
+      const options = {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+      };
+      return new Date(dateString).toLocaleDateString(undefined, options);
+    },
+
     getSwdaEditHistory(SwdaID) {
       axios.get(`${backendURL}/api/swdaVersion/${SwdaID}`).then((res) => {
         this.swda = res.data.SwdaEditHistory;
