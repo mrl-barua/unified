@@ -3,7 +3,7 @@
     <AdminSidebar :iconText="PageTitle" />
     <br /><br /><br /><br /><br />
     <div class="container-fluid wrapper">
-      <p class="Header">Edit History Logs</p>
+      <p class="Header">Recent Edit</p>
       <p class="Header2">{{ model.Swda.Agency }}</p>
       <DataTable
         v-if="this.swda.length > 0"
@@ -223,9 +223,10 @@ div.dataTables_wrapper a.paginate_button {
 .Header2 {
   font-family: Inter;
   font-size: 22px;
-  font-weight: 500;
+  font-weight: bolder;
   line-height: 27px;
   letter-spacing: 0em;
   text-align: center;
+  color: red;
 }
 </style>

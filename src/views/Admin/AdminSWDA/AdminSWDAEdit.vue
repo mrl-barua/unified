@@ -695,6 +695,7 @@ export default {
       PageTitle: "ADMIN SWDA > EDIT", // The title displayed on the page, which is "ADMIN SWDA"
       SwdaID: "",
       errorList: "",
+      // The model for the form inputs  (the data that will be sent to the backend) is defined here as an empty object with the following properties: Swda
       model: {
         Swda: {
           Type: "",
@@ -744,9 +745,11 @@ export default {
   mounted() {
     //console.log(this.$route.params.ID);
     this.SwdaID = this.$route.params.ID;
+    //the SwdaID is passed as a parameter to the SwdaData() function  (which is defined below) to get the data of the SWDA with the given ID
     this.SwdaData(this.$route.params.ID);
   },
   methods: {
+    // The SwdaData() function is used to get the data of the SWDA with the given ID
     SwdaData(SwdaID) {
       axios
         .get(`http://127.0.0.1:8000/api/swdalist/${SwdaID}/edit`)
@@ -754,6 +757,7 @@ export default {
           const swdaData = res.data.Swda;
           console.log(res.data.Swda);
 
+          // Check if swdaData is null or empty
           this.model.Swda.Type = swdaData.Type;
           this.model.Swda.Sector = swdaData.Sector;
           this.model.Swda.Cluster = swdaData.Cluster;
@@ -801,6 +805,7 @@ export default {
           this.model.Swda.Accreditation_Overdue =
             swdaData.Accreditation_Overdue;
         })
+        // If the SWDA with the given ID is not found, an error message will be displayed
         .catch(function (error) {
           if (error.response) {
             if (error.response.status === 404) {
@@ -809,12 +814,16 @@ export default {
           }
         });
     },
-
+    // The updateSWDA() function is used to update the data of the SWDA with the given ID in the database using the backend API endpoint for updating SWDA data
     updateSWDA(SwdaID) {
       var mythis = this;
       axios
         .put(
           `http://127.0.0.1:8000/api/swdalist/${SwdaID}/edit`,
+          // The data to be updated is passed as a parameter to the axios.put() function
+          // as the second parameter (the first parameter is the API endpoint) in the form of
+          // an object with the following properties: Swda (which contains the data to be updated)
+          // and _method (which is set to "PUT" to indicate that the data will be updated)
           this.model.Swda
         )
         .then((res) => {

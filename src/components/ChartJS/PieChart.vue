@@ -16,6 +16,13 @@ export default {
       type: Object,
       required: true,
     },
+
+    legendOptions: {
+      type: Object, // Define a prop for legend options
+      default: () => ({
+        position: "top", // Default legend position
+      }),
+    },
   },
   data() {
     return {
@@ -23,6 +30,9 @@ export default {
       chartOptions: {
         responsive: true,
         maintainAspectRatio: false,
+        plugins: {
+          legend: this.legendOptions, // Use the prop for legend options
+        },
       },
     };
   },

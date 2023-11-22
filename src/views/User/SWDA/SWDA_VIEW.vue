@@ -1,3 +1,13 @@
+/**
+ * Vue component for displaying the SWDA_VIEW.
+ * This component renders the details of a user's SWDA (Social Welfare and Development Agency).
+ * It includes information such as agency details, contact information, contact person, registration status, accreditation status, license status, programs and services, and status.
+ * The data is fetched from the model object.
+ *
+ * @component SWDA_VIEW
+ * @example
+ * <SWDA_VIEW />
+ */
 <template>
   <div>
     <Sidebar :iconText="PageTitle" />

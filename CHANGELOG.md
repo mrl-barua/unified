@@ -309,3 +309,8 @@
 
 - Fix formatting issues
 - Add missing date field in AdminSWDA_EditHistory.vue and SWDA_EXPIRED_DELISTED.vue
+
+### cersion 6.5 - MARLO BARUA
+
+- Update chart options and SWDA view component
+- Fix the HR PAGE regarding its style

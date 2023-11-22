@@ -1,62 +1,85 @@
+/** * @name HR * @description This component represents the HR page in the user
+interface. * It displays various charts and a data table related to employee
+welfare and relations. * The component fetches data from the backend API to
+populate the charts and table. * * @component * * @example *
+<HR />
+*/
 <template>
   <Sidebar :iconText="PageTitle" :iconDetails="PageDetail" />
 
   <br /><br /><br /><br />
 
-  <div class="col-12 col-md-7">
+  <div class="col-12 col-md-8">
     <div class="shadow2 forbarchart">
-      <p>NUMBER OF RECORDS PER MONTH</p>
-      <div class="Barchart1"><BarChart :data="MonthData" /></div>
-    </div>
-  </div>
-
-  <div class="col-12 col-md-5">
-    <div class="shadow2">
-      <p>TOTAL NUMBER OF CATEGORIES REQUEST</p>
-      <div class="Piechart1"><PieChart :data="NameData" /></div>
-    </div>
-  </div>
-  <div class="col-12 col-md-6">
-    <div class="shadow2">
-      <p>PERCENTAGE OF REQUESTING EMPLOYEES STATUS</p>
-      <div class="Piechart1">
-        <PieChart v-if="EmploymentData" :data="EmploymentData" />
+      <div class="inside">
+        <p class="textHeader">NUMBER OF RECORDS PER MONTH</p>
+        <div class="Barchart1">
+          <BarChart :data="MonthData" :aspectRatio="25 / 10" />
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="col-12 col-md-6">
+  <div class="col-12 col-md-4">
     <div class="shadow2">
-      <h3>DETAILS OF REQUESTING EMPLOYEE</h3>
+      <div class="inside">
+        <p class="textHeader">TOTAL NUMBER OF CATEGORIES REQUEST</p>
+        <div class="Piechart1">
+          <PieChart :data="NameData" :legendOptions="customLegendOptions" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-md-4">
+    <div class="shadow2">
+      <div class="inside">
+        <p class="textHeader">PERCENTAGE OF REQUESTING EMPLOYEES STATUS</p>
+        <div class="Piechart1">
+          <PieChart
+            v-if="EmploymentData"
+            :data="EmploymentData"
+            :legendOptions="customLegendOptions"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
 
-      <div class="d-flex justify-content-around">
-        <h5 class="fw-bold">NAME</h5>
-        <h5 class="fw-bold">OFFICE / UNIT</h5>
-        <h5 class="fw-bold">RECORD COUNT</h5>
-      </div>
-      <hr class="hr" />
-      <div class="d-flex justify-content-around">
-        <p>text</p>
-        <p>text</p>
-        <p>text</p>
-      </div>
-      <hr class="hr" />
-      <div class="d-flex justify-content-around">
-        <p>text</p>
-        <p>text</p>
-        <p>text</p>
-      </div>
-      <hr class="hr" />
-      <div class="d-flex justify-content-around">
-        <p>text</p>
-        <p>text</p>
-        <p>text</p>
-      </div>
-      <hr class="hr" />
-      <div class="d-flex justify-content-around">
-        <p>text</p>
-        <p>text</p>
-        <p>text</p>
+  <div class="col-12 col-md-8">
+    <div class="shadow2">
+      <div class="inside">
+        <p class="textHeader">DETAILS OF REQUESTING EMPLOYEE</p>
+
+        <DataTable
+          id="table"
+          :paging="true"
+          :searching="true"
+          :info="true"
+          :responsive="true"
+          :length-change="true"
+          :length-menu="[10, 25, 50, 100]"
+          :language="{
+            paginate: {
+              previous: '<i class=\'fas fa-angle-left\'></i>',
+              next: '<i class=\'fas fa-angle-right\'></i>',
+            },
+          }"
+        >
+          <thead style="background: #133f5c" class="text-white">
+            <tr>
+              <th>Name</th>
+              <th>Office/Unit</th>
+              <th>Record Count</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>No Data Available</td>
+              <td>No Data Available</td>
+              <td>No Data Available</td>
+            </tr>
+          </tbody>
+        </DataTable>
       </div>
     </div>
   </div>
@@ -73,6 +96,11 @@ import BarChart from "@/components/ChartJS/Barchart";
 import PieChart from "@/components/ChartJS/PieChart";
 import DoughnutChart from "@/components/ChartJS/DoughnutChart";
 
+import DataTable from "datatables.net-vue3";
+import DataTablesCore from "datatables.net";
+import "datatables.net-responsive";
+DataTable.use(DataTablesCore);
+
 export default {
   name: "HR",
   components: {
@@ -81,12 +109,17 @@ export default {
     BarChart,
     PieChart,
     DoughnutChart,
+    DataTable,
   },
 
   data() {
     return {
       PageTitle: "EMPLOYEE WELFARE AND RELATIONS",
       PageDetail: "Employee Assistance/Support Services",
+
+      customLegendOptions: {
+        position: "bottom", // Set the legend position as needed
+      },
 
       MonthData: {
         labels: [
@@ -104,20 +137,30 @@ export default {
           "December",
         ],
         label: ["Months"],
-        values: [39, 18, 13, 4, 3, 1, 2, 3, 4, 5, 4, 2],
-        backgroundColor: ["rgba(19, 63, 92, 1)"],
+        values: [39, 18, 13, 14, 3, 21, 2, 3, 44, 5, 4, 12],
+        backgroundColor: [
+          "rgba(226, 80, 76, 1)",
+          "rgba(106, 158, 218, 1)",
+          "rgba(210, 178, 2, 1)",
+          "rgba(255, 105, 97, 1)",
+          "rgba(132, 182, 244, 1)",
+          "rgba(238, 202, 6, 1)",
+          "rgba(226, 80, 76, 1)",
+          "rgba(106, 158, 218, 1)",
+          "rgba(210, 178, 2, 1)",
+          "rgba(255, 105, 97, 1)",
+          "rgba(132, 182, 244, 1)",
+          "rgba(238, 202, 6, 1)",
+        ],
       },
       NameData: {
         labels: ["CNSP", "EMOTIONALLY/PSYCHO DISTRESS", "OFW"],
         label: ["CHART2"],
-        values: [42, 23, 12, 2],
+        values: [42, 23, 12],
         backgroundColor: [
-          "rgba(75, 192, 192, 0.2",
-          "rgba(255, 99, 132, 0.2",
-          "rgba(255, 206, 86, 0.2",
-          "rgba(54, 162, 235, 0.2",
-          "rgba(153, 102, 255, 0.2",
-          "rgba(255, 159, 64, 0.2",
+          "rgba(235, 95, 94, 1)",
+          "rgba(248, 218, 69, 1)",
+          "rgba(186, 194, 255, 1)",
         ],
       },
 
@@ -180,11 +223,11 @@ export default {
               casualLength,
             ],
             backgroundColor: [
-              "rgba(19, 63, 92, 1)",
-              "rgba(243, 165, 51, 1)",
               "rgba(235, 95, 94, 1)",
-              "rgba(0, 255, 0, 0.6)",
-              "rgba(0, 0, 255, 0.6)",
+              "rgba(248, 218, 69, 1)",
+              "rgba(186, 194, 255, 1)",
+              "rgba(132, 182, 244, 1)",
+              "rgba(106, 158, 218, 1)",
             ],
           };
           // Set barChartData to the computed data
@@ -218,10 +261,10 @@ export default {
 
 <style scoped>
 .shadow2 {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.15);
   height: 400px;
-  border-radius: 20px;
-  margin: 10px 15px 10px 20px;
+  /* border-radius: 20px; */
+  margin: 5px 5px 5px 5px;
   padding: 10px 0px 10px 0px;
 }
 
@@ -237,5 +280,17 @@ export default {
 
 .Barchart1 {
   height: 340px;
+}
+
+.inside {
+  padding: 0px 20px 0px 20px;
+}
+.textHeader {
+  font-family: Inter;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 30px;
+  letter-spacing: 0em;
+  text-align: center;
 }
 </style>

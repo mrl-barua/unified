@@ -33,12 +33,17 @@ export default {
       type: Object,
       required: true,
     },
+    aspectRatio: {
+      type: Number,
+      default: 30 / 10, // You can set a default value or leave it empty
+    },
   },
   data() {
     return {
       chartData: this.prepareChartData(this.data),
       chartOptions: {
         responsive: true,
+        aspectRatio: this.aspectRatio, // Use the aspectRatio prop here
       },
     };
   },
