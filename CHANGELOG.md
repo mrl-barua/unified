@@ -314,3 +314,11 @@
 
 - Update chart options and SWDA view component
 - Fix the HR PAGE regarding its style
+
+### version 6.6 - MARK PONDOL
+
+- slp revamp gdd fixed
+
+### version 6.7 - KIARA HAGUNOB
+
+- Fixed margins, and colors in SLP SNM and CBA
