@@ -75,32 +75,32 @@
       <div class="shadow3">
               <h1><b>SUBMITTED REPORTS PER CLUSTER</b></h1>           
               <div class="parent">
-      <div class="rectangle" style="background-color: #EB5F5E">
+      <div class="rectangle" style="background-color: #FF6961">
         <div class="label">DAVAO CITY</div>
         <div class="number"><b>75</b></div>
       </div>
 
-      <div class="rectangle" style="background-color: #59508D">
+      <div class="rectangle" style="background-color: #6A9EDA">
         <div class="label">DAVAO DEL NORTE</div>
         <div class="number"><b>44</b></div>
       </div>
 
-      <div class="rectangle" style="background-color: #BC5090">
+      <div class="rectangle" style="background-color: #EECA06">
         <div class="label">DAVAO DEL SUR</div>
         <div class="number"><b>41</b></div>
       </div>
 
-      <div class="rectangle" style="background-color: #EB5F5E">
+      <div class="rectangle" style="background-color: #FF9688">
         <div class="label">DAVAO ORIENTAL</div>
         <div class="number"><b>65</b></div>
       </div>
 
-      <div class="rectangle" style="background-color: #59508D">
+      <div class="rectangle" style="background-color: #84B6F4">
         <div class="label">DAVAO DE ORO</div>
         <div class="number"><b>48</b></div>
       </div>
 
-      <div class="rectangle" style="background-color: #BC5090">
+      <div class="rectangle" style="background-color: #ECDC63">
         <div class="label">DAVAO OCCIDENTAL</div>
         <div class="number"><b>27</b></div>
       </div>
@@ -258,19 +258,17 @@ export default {
 <style scoped>
 
 .shadow2{
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+  box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.15);
   height: 500px;
-  border-radius: 20px;
-  margin:10px 15px 10px 20px;
+  margin:5px 5px 5px 5px;
   padding: 10px 0px 10px 0px;
 }
 
 
 .shadow3{
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+  box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.15);
   height: 480px;
-  border-radius: 20px;
-  margin:30px 15px 20px 20px;
+  margin:5px 5px 5px 5px;
   padding: 10px 0px 10px 0px;
 }
 .forbarchart{
@@ -290,15 +288,14 @@ export default {
 }
 
 .rectangle {
-  margin: 20px;
+  margin: 10px;
   padding: 10px;
   color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 150px; 
-  border-radius: 5px;
+  height: 165px; 
 }
 
 
