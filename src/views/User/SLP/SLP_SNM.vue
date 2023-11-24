@@ -5,15 +5,15 @@
 
   <div class="stacked-rectangle col-12 col-md-3">
     <div class="shadow3">
-      <div class="rectangle" style="background-color: #eb5f5e">
+      <div class="rectangle" style="background-color: #FF4040">
         <div class="label">POOR</div>
         <div class="number"><b>282</b></div>
       </div>
-      <div class="rectangle" style="background-color: #59508d">
+      <div class="rectangle" style="background-color: #4E91FD">
         <div class="label">NON-POOR</div>
         <div class="number"><b>224</b></div>
       </div>
-      <div class="rectangle" style="background-color: #f3a533">
+      <div class="rectangle" style="background-color: #EEB600">
         <div class="label">NO MATCH</div>
         <div class="number"><b>202</b></div>
       </div>
@@ -152,17 +152,15 @@ export default {
 
 <style scoped>
 .shadow1 {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.15);
   height: 480px;
-  border-radius: 20px;
-  margin: 10px 15px 10px -40px;
+  margin: 5px 5px 5px 5px;
   padding: 10px 0px 10px 0px;
 }
 .shadow2 {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.15);
   height: 350px;
-  border-radius: 20px;
-  margin: 10px 15px 10px 20px;
+  margin: 5px 5px 5px 5px;
   padding: 10px 0px 10px 0px;
 }
 
@@ -170,8 +168,8 @@ export default {
 .shadow3 {
   height: 480px;
   border-radius: 20px;
-  margin: 10px 15px 10px 20px;
-  padding: 10px 0px 10px 0px;
+  /*margin: 10px 15px 10px 20px;
+  padding: 10px 0px 10px 0px;*/
 }
 
 .forbarchart {
@@ -210,7 +208,6 @@ export default {
 /* css */
 
 .stacked-rectangle {
-  display: flex;
   justify-content: space-between;
 }
 
