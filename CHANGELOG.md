@@ -322,3 +322,7 @@
 ### version 6.7 - KIARA HAGUNOB
 
 - Fixed margins, and colors in SLP SNM and CBA
+
+### version 6.8 - MARLO BARUA
+
+- Fix paths and add AdminHRView component
