@@ -1,9 +1,10 @@
-<template>div
+<template>
   <Sidebar :iconText="PageTitle" />
 
-  <br /><br /><br /><br />
+  <br /><br /><br />
 
-  <div class="col-12 col-md-12">
+  <!-- Previous Code Static -->
+  <!-- <div class="col-12 col-md-12">
     <div class="shadow2">
       <br />
       <div
@@ -44,10 +45,47 @@
         <p>178</p>
       </div>
     </div>
+  </div> -->
+
+  <div class="col-12 col-md-12">
+    <div class="shadow3">
+      <div class="inside">
+        <DataTable
+          id="table"
+          :paging="true"
+          :searching="true"
+          :info="true"
+          :responsive="true"
+          :length-change="true"
+          :length-menu="[10, 25, 50, 100]"
+          :language="{
+            paginate: {
+              previous: '<i class=\'fas fa-angle-left\'></i>',
+              next: '<i class=\'fas fa-angle-right\'></i>',
+            },
+          }"
+        >
+          <thead style="background: #133f5c" class="text-white">
+            <tr>
+              <th>MODALITY</th>
+              <th>TOTAL PROJECT COST FROM DSWD</th>
+              <th>TOTAL</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>No Data Available</td>
+              <td>No Data Available</td>
+              <td>No Data Available</td>
+            </tr>
+          </tbody>
+        </DataTable>
+      </div>
+    </div>
   </div>
 
   <div class="col-12 col-md-12">
-    <div class="shadow2 forbarchart">
+    <div class="shadow3 forbarchart">
       <br />
       <h5 class="fw-bold">COST FROM DSWD BY BARANGAY</h5>
       <br />
@@ -69,14 +107,22 @@ import BarChart from "@/components/ChartJS/Barchart";
 import PieChart from "@/components/ChartJS/PieChart";
 import DoughnutChart from "@/components/ChartJS/DoughnutChart";
 
+import DataTable from "datatables.net-vue3";
+import DataTablesCore from "datatables.net";
+import "datatables.net-responsive";
+DataTable.use(DataTablesCore);
+
 export default {
-  name: "SLPPA",
+  // name: "SLPPA",
+  name: "HR",
+
   components: {
     Sidebar,
     Footer,
     BarChart,
     PieChart,
     DoughnutChart,
+    DataTable,
   },
 
   data() {
@@ -103,6 +149,8 @@ export default {
         ],
         backgroundColor: ["#292D96"],
       },
+
+      EmploymentData: null,
     };
   },
 
@@ -115,12 +163,19 @@ export default {
 </script>
 
 <style scoped>
-.shadow2 {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  height: 350px;
-  border-radius: 20px;
-  margin: 10px 15px 10px 20px;
+.shadow3 {
+  box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.15);
+  height: 400px;
+  /* border-radius: 20px; */
+  margin: 5px 5px 5px 5px;
   padding: 10px 0px 10px 0px;
+}
+
+.element.style {
+  width: 311.632px;
+  text-align: center;
+  padding: 8px;
+  margin: 5px;
 }
 
 .forbarchart {
