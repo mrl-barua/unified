@@ -38,8 +38,10 @@ import AdminCbss from '../views/Admin/AdminCBSS/AdminCBSS.vue'
 
 import AdminHR from '../views/Admin/AdminHR/AdminHR.vue'
 import AdminHR_Archive from '../views/Admin/AdminHR/AdminHR_Archive.vue'
-import AdminHRACreate from '../views/Admin/AdminHR/AdminHRCreate'
-import AdminHREdit from '../views/Admin/AdminHR/AdminHREdit'
+import AdminHRACreate from '../views/Admin/AdminHR/AdminHRCreate.vue'
+import AdminHREdit from '../views/Admin/AdminHR/AdminHREdit.vue'
+import AdminHRView from '../views/Admin/AdminHR/AdminHRView.vue'
+
 
 
 import AdminSLP from '../views/Admin/AdminSLP/AdminSLP.vue'
@@ -165,6 +167,12 @@ const routes = [
     beforeEnter: adminRequireAuth,
   },
 
+  {
+    path: '/adminhr/:ID/view',
+    name: 'AdminHRView',
+    component: AdminHRView,
+    beforeEnter: adminRequireAuth,
+  },
 
 
 
