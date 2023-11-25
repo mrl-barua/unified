@@ -326,3 +326,7 @@
 ### version 6.8 - MARLO BARUA
 
 - Fix paths and add AdminHRView component
+
+### version 6.9 - KIARA HAGUNOB
+
+- Fixed margins in SLP GDD, and OSD

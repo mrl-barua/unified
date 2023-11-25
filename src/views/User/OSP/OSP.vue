@@ -449,11 +449,8 @@ export default {
 
 <style scoped>
 .dashboard-box {
-  background-color: #f0f0f0;
   padding: 20px;
-  margin: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  margin:5px 5px 5px 5px;
+  box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.15);
 }
 </style>
