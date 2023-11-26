@@ -87,7 +87,7 @@
                 ></router-link>
 
                 <router-link
-                  :to="{ path: '/adminhr' + item.ID + '/edit' }"
+                  :to="{ path: '/adminhr/' + item.ID + '/edit' }"
                   class="custom-link"
                 >
                   <i class="bx bx-edit icon table-icon"></i>

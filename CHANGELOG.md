@@ -322,3 +322,15 @@
 ### version 6.7 - KIARA HAGUNOB
 
 - Fixed margins, and colors in SLP SNM and CBA
+
+### version 6.8 - MARLO BARUA
+
+- Fix paths and add AdminHRView component
+
+### version 6.9 - KIARA HAGUNOB
+
+- Fixed margins in SLP GDD, and OSD
+
+### version 6.10 - MARLO BARUA
+
+- Added Stack BarChart component

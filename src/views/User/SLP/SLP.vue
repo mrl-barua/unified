@@ -98,7 +98,7 @@
   <!-- 4 -->
 
   <div class="container">
-    <div class="col-12 col-md-6">
+    <div class="col-12 col-md-5">
       <div class="shadow5">
         <h1>SECTORAL ACCOMPLISHMENT</h1>
         <div class="DoughnutChart" style="height: 370px">
@@ -241,7 +241,7 @@ export default {
   line-height: normal;
   background: #fff;
   box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.15);
-  margin: 0.5rem;
+  margin: 5px 5px 5px 10px;
 }
 .shadow2 h1 {
   color: #252525;
@@ -277,7 +277,7 @@ export default {
 .row {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  /*margin-bottom: 20px;*/
 }
 
 .label {
@@ -295,7 +295,7 @@ export default {
 
 .rectangle {
   padding: 22px;
-  margin: 10px;
+  margin: 8px;
   color: white;
   display: flex;
   flex-direction: column;
@@ -328,7 +328,8 @@ export default {
   line-height: normal;
   background: #fff;
   box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.15);
-  margin: 0.5rem;
+  margin: 5px 5px 5px 5px;
+  height: 455px;
 }
 
 .shadow5 h1 {
@@ -356,11 +357,12 @@ export default {
 .rectangle4 .label {
   color: #133f5c;
   text-align: center;
-  font-size: 22px;
+  font-size: 26px;
   font-style: bold;
   font-weight: 700;
   line-height: normal;
 }
+
 .label[data-v-c2f0b4a5] {
   width: 304px;
 }
@@ -383,7 +385,7 @@ export default {
 /* referrals */
 
 .rectangle1 {
-  margin: 2px;
+  margin: 5px;
   color: white;
   display: flex;
   flex-direction: column;
