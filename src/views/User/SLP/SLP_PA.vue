@@ -1,7 +1,7 @@
 <template>
   <Sidebar :iconText="PageTitle" />
 
-  <br /><br /><br />
+  <br /><br /><br /><br />
 
   <!-- Previous Code Static -->
   <!-- <div class="col-12 col-md-12">
@@ -49,7 +49,7 @@
 
   <div class="col-12 col-md-12">
     <div class="shadow3">
-      <div class="inside">
+      <div class="inside" style="padding: 10px">
         <DataTable
           id="table"
           :paging="true"
@@ -87,7 +87,8 @@
   <div class="col-12 col-md-12">
     <div class="shadow3 forbarchart">
       <br />
-      <h5 class="fw-bold">COST FROM DSWD BY BARANGAY</h5>
+      <br />
+      <h1 class="fw-bold">COST FROM DSWD BY BARANGAY</h1>
       <br />
       <div class="Barchart1">
         <BarChart :data="CostData" :aspectRatio="60 / 10" />
@@ -147,7 +148,7 @@ export default {
           450000, 450000, 450000, 450000, 450000, 420000, 360000, 15000, 15000,
           15000,
         ],
-        backgroundColor: ["#292D96"],
+        backgroundColor: ["#FF4040"],
       },
 
       EmploymentData: null,
@@ -171,13 +172,6 @@ export default {
   padding: 10px 0px 10px 0px;
 }
 
-.element.style {
-  width: 311.632px;
-  text-align: center;
-  padding: 8px;
-  margin: 5px;
-}
-
 .forbarchart {
   height: 250px;
   @media only screen and (min-width: 500px) {
@@ -189,6 +183,17 @@ export default {
 }
 
 .Barchart1 {
-  height: 480px;
+  height: 300px;
+}
+
+.shadow3 h1 {
+  color: #252525;
+  text-align: center;
+  font-family: Arial;
+  font-size: 27px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding-top: 1.5rem;
 }
 </style>
