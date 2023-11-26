@@ -95,6 +95,7 @@ import Footer from "@/components/Footer";
 import BarChart from "@/components/ChartJS/Barchart";
 import PieChart from "@/components/ChartJS/PieChart";
 import DoughnutChart from "@/components/ChartJS/DoughnutChart";
+import StackBarChart from "@/components/ChartJS/StackBarChart";
 
 import DataTable from "datatables.net-vue3";
 import DataTablesCore from "datatables.net";
@@ -110,6 +111,7 @@ export default {
     PieChart,
     DoughnutChart,
     DataTable,
+    StackBarChart,
   },
 
   data() {
@@ -161,6 +163,22 @@ export default {
           "rgba(235, 95, 94, 1)",
           "rgba(248, 218, 69, 1)",
           "rgba(186, 194, 255, 1)",
+        ],
+      },
+      sampleData: {
+        labels: ["January", "February", "March", "April", "May"],
+        datasets: [
+          {
+            label: "Dataset 1",
+            values: [20, 30, 25, 40, 35],
+            backgroundColor: "rgba(255, 99, 132, 0.5)", // Example color
+          },
+          {
+            label: "Dataset 2",
+            values: [15, 25, 20, 30, 25],
+            backgroundColor: "rgba(54, 162, 235, 0.5)", // Example color
+          },
+          // Add more datasets if needed
         ],
       },
 
