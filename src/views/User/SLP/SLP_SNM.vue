@@ -5,21 +5,22 @@
 
   <div class="stacked-rectangle col-12 col-md-3">
     <div class="shadow3">
-      <div class="rectangle" style="background-color: #FF4040">
+      <div class="rectangle" style="background-color: #ff4040">
         <div class="label">POOR</div>
         <div class="number"><b>282</b></div>
       </div>
-      <div class="rectangle" style="background-color: #4E91FD">
+      <div class="rectangle" style="background-color: #4e91fd">
         <div class="label">NON-POOR</div>
         <div class="number"><b>224</b></div>
       </div>
-      <div class="rectangle" style="background-color: #EEB600">
+      <div class="rectangle" style="background-color: #eeb600">
         <div class="label">NO MATCH</div>
         <div class="number"><b>202</b></div>
       </div>
     </div>
   </div>
 
+  <!-- 
   <div class="col-12 col-md-9">
     <div class="shadow1">
       <br />
@@ -82,6 +83,45 @@
         <p>Lorem Ipsum</p>
       </div>
     </div>
+  </div> -->
+
+  <!-- Revamp -->
+
+  <div class="col-12 col-md-9">
+    <div class="shadow3">
+      <div class="inside" style="padding: 10px">
+        <DataTable
+          id="table"
+          :paging="true"
+          :searching="true"
+          :info="true"
+          :responsive="true"
+          :length-change="true"
+          :length-menu="[10, 25, 50, 100]"
+          :language="{
+            paginate: {
+              previous: '<i class=\'fas fa-angle-left\'></i>',
+              next: '<i class=\'fas fa-angle-right\'></i>',
+            },
+          }"
+        >
+          <thead style="background: #133f5c" class="text-white">
+            <tr>
+              <th>MODALITY</th>
+              <th>TOTAL PROJECT COST FROM DSWD</th>
+              <th>TOTAL</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>No Data Available</td>
+              <td>No Data Available</td>
+              <td>No Data Available</td>
+            </tr>
+          </tbody>
+        </DataTable>
+      </div>
+    </div>
   </div>
 
   <div class="col-12 col-md-12">
@@ -105,19 +145,27 @@ import BarChart from "@/components/ChartJS/Barchart";
 import PieChart from "@/components/ChartJS/PieChart";
 import DoughnutChart from "@/components/ChartJS/DoughnutChart";
 
+import DataTable from "datatables.net-vue3";
+import DataTablesCore from "datatables.net";
+import "datatables.net-responsive";
+DataTable.use(DataTablesCore);
+
 export default {
-  name: "SLPPA",
+  // name: "SLPPA",
+  name: "HR",
+
   components: {
     Sidebar,
     Footer,
     BarChart,
     PieChart,
     DoughnutChart,
+    DataTable,
   },
 
   data() {
     return {
-      PageTitle: "SLP - Physical Accomplishment by Portfolio",
+      PageTitle: "SLP - Status Name Matching",
 
       CostData: {
         labels: [
