@@ -2,32 +2,49 @@
   <div>
     <Sidebar :iconText="PageTitle" />
     <br /><br /><br /><br />
-    <div class="container-fluid wrapper">
-      <div class="col-6 first-column">
-        <p>Dashboard Summary</p>
-
+    
+  <div class="col-12">
+    <div class="dashboard-box" style=" height:500px;">
+        <div style="
+            background-color: ;
+            color: black;
+            padding: 10px; 
+            font-weight: 800;
+            font-size: 30px;
+            text-align: center;
+          "
+        >
+          DASHBOARD SUMMARY
+        </div>
         <!-- FIRST ROW FIRST COLUMN -->
-        <div class="col-4">
+        <div class="first">
+          <div class="col-sm-4">
+            <div class="col-12">
+            <p>Total Number of <br> Clients Serve </p>
+              <div class="zero">
+                  <span id="clientServe">00</span>
+              </div>
+            </div>
           <div class="col-12">
-            <p>Total Number of Clients Serve</p>
-            <span id="clientServe">00</span>
-          </div>
-          <div class="col-12">
-            <p>Financial Assistance Amount Given</p>
-            <span id="clientServe">00</span>
+            <br>
+              <p>Financial Assistance <br> Amount Given</p>
+              <div class="zero">
+              <span id="clientServe">00</span>
+            </div>
+            </div>
           </div>
         </div>
-
         <!-- FIRST ROW SECOND COLUMN -->
-        <div class="col-4">
-          <p>Gender of Clients Serve</p>
+        <div class="col-sm-4">
+          <div class="first">
+          <p>Gender of Clients Serve</p></div>
           <div class="col-12">
             <p>FEMALE <span id="genderFemaleServe">00</span> %</p>
             <hr class="hr" />
             <p>MALE <span id="genderMaleServe">00</span> %</p>
           </div>
-
-          <p>Mode of Admission</p>
+          <div class="first">
+          <p>Mode of Admission</p></div>
           <div class="col-12">
             <p>WALK-IN</p>
             <p id="walkInAdmission">00</p>
@@ -38,29 +55,247 @@
         </div>
 
         <!-- FIRST ROW THIRD COLUMN -->
-        <div class="col-4">
-          <div class="col-12">
-            <p>Number of Case Categories</p>
-            <p id="caseCategories">00</p>
+        <div class="first">
+            <div class="col-sm-4">
+                <div class="col-12">
+                  <p>Number of Case <br> Categories</p>
+                  <div class="zero">
+                      <p id="caseCategories">00</p>
+                    </div>
+                </div>
+              <div class="col-12" >
+                <br>
+                <p>Number of Non- <br> Monetary Services</p>
+                <div class="zero">
+                  <p id="nonMonetaryServices">00</p>
+                </div>
+              </div>
+            </div>
           </div>
+      </div>
+
+      <!--client served per quarter-->
+      <div class="col-sm-6">
+        <div class="col-12">
+              <div class="dashboard-box" >
+                <div
+                  style="
+                    background-color: ;
+                    color: black;
+                    padding: 10px;
+                    font-weight: 800;
+                    font-size: 20px;
+                    text-align: center;
+                  "
+                >
+                  Clients Served per Quarter
+                </div>
+              </div>
+            </div>
+          </div>
+        <div class="col-sm-6">
           <div class="col-12">
-            <p>Number of Non- Monetary Services</p>
-            <p id="nonMonetaryServices">00</p>
+            <div class="dashboard-box" > 
+              <div
+                style="
+                  background-color: ;
+                  color: black;
+                  padding: 10px;
+                  font-weight: 800;
+                  font-size: 20px;
+                  text-align: center;
+                "
+              > 
+                Clients Served per Age and Sex
+              </div>
+           </div>
+        </div>
+      </div>
+    
+<!--case category-->
+      <div class="col-6 ">
+        <div class="dashboard-box">
+          <div
+            style="
+              background-color: ;
+              color: black;
+              padding: 10px;
+              font-weight: 800;
+              font-size: 20px;
+              text-align: center;
+            "
+          >
+            Case Category Served
+            </div>
+          </div>
+
+        <div class="dashboard-box" >
+          <div
+            style="
+              background-color: ;
+              color: black;
+              padding: 10px;
+              font-weight: 800;
+              font-size: 20px;
+              text-align: center;
+            "
+          >
+            Sub Category Served
+            </div>
+          </div>
+        </div>
+
+        <!--Financial Amount served-->
+      <div class="col-6 ">
+          
+        <div class="dashboard-box"> 
+          <div
+            style="
+              background-color: ;
+              color: black;
+              padding: 10px;
+              font-weight: 800;
+              font-size: 20px;
+              text-align: center;
+            "
+          > 
+          Financial Amount served
+          </div>
+        </div>
+
+        <div class="dashboard-box"> 
+          <div
+            style="
+              background-color: ;
+              color: black;
+              padding: 10px;
+              font-weight: 800;
+              font-size: 20px;
+              text-align: center;
+            "
+          > 
+          Financial Amount served
           </div>
         </div>
       </div>
-      <div class="col-6 second-column"></div>
-    </div>
+    <!--Non-Monetary Services Served-->
+      <div class="col-4 ">
+        <div class ="col-12">
+          <div class="dashboard-blank">
+              <div
+                style="
+                  background-color: ;
+                  color: black;
+                  padding: 10px;
+                  font-weight: 800;
+                  font-size: 20px;
+                  text-align: center;
+                "
+              > 
+              Non-Monetary Services Served
+            </div> 
+            </div>
+          </div>
+        </div>
+ <!--CBSS Staff Monitoring-->
+      <div class="col-8 ">
+        <div class ="col-12">
+          <div class="dashboard-blank">
+              <div
+                style="
+                  background-color: ;
+                  color: black;
+                  padding: 10px;
+                  font-weight: 800;
+                  font-size: 20px;
+                  text-align: center;
+                "
+              > 
+              CBSS Staff Monitoring
+            </div>
+          </div>
+        </div>
+      </div>
+  <!--Non-Monetary Services Served Inside box-->  
+      <div class="col-4 ">
+        <div class ="col-12">
+          <div class="dashboard-box" style="height:300px;"> 
+            <div class="Non-monetary">
+              
+              <div class="col-6">
+                <div class="col-12">                 
+                  <p> Service Name </p>
+                 </div>
+                </div>
+              
+
+              <div class="col-6">
+                <div class="col-12">               
+                   <p>Number of Person Served</p>
+                </div>
+              </div>
+            </div> 
+          </div>
+        </div>
+     </div>
+
+        <!--CBSS Staff Monitoring Inside Box-->
+        <div class="col-4">
+          <div class ="col-12">
+            <div class="dashboard-box" style="height:300px;"> 
+            <div class="Non-monetary">
+              <div class="col-6">
+                <div class="col-12">                  
+                    Responsible Person
+                  </div>
+                </div>
+              
+              <div class="col-6">
+                <div class="col-12">                
+                   Total Number of Client Served
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <div class="col-4">
+          <div class ="col-12">
+            <div class="dashboard-box" style="height:300px;"> 
+            <div class="Non-monetary">
+              <div class="col-6">
+                <div class="col-12">
+                    Responsible Person
+                  </div>
+                </div>
+              
+
+              <div class="col-6">
+                <div class="col-12">
+                  Total Number of Categories Served
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+      
+      
+      </div>
+    </div>   
   </div>
 </template>
 
 <script>
-import axios from "axios";
 import { backendURL } from "@/config.js";
+import axios from "axios";
 
+import BarChart from "@/components/ChartJS/Barchart";
+import LineChart from "@/components/ChartJS/LineChart";
 import Footer from "@/components/Footer";
 import Sidebar from "@/components/Sidebar";
-import BarChart from "@/components/ChartJS/Barchart";
 
 export default {
   name: "Dashboard",
@@ -68,6 +303,7 @@ export default {
     Footer,
     Sidebar,
     BarChart,
+    LineChart,
   },
   data() {
     return {
@@ -175,7 +411,7 @@ export default {
               "rgba(0, 255, 0, 0.6)",
               "rgba(0, 0, 255, 0.6)",
               "rgba(0, 0, 255, 0.6)",
-              "rgba(128, 0, 128, 0.6",
+              "rgba(128, 0, 128, 0.6)",
             ],
           };
           // Set catcc error barChartData to the computed data
@@ -190,4 +426,40 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.dashboard-box {
+  
+  background-color: #f0f0f0;
+  padding: 20px;
+  margin: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+.dashboard-blank {
+  
+
+  padding: 20px;
+  margin: 20px;
+  border-radius: 5px;
+
+}
+.first{
+  color: black;
+  line-height:30px;
+  font-size: 20px;
+  font-weight: 600;
+}
+.zero{
+  font-size: 50px;
+  font-weight: bold; 
+}
+.col-6 second-column{
+  
+}
+.Non-monetary{
+  color:black;
+  font-weight: 600;
+
+}
+</style>
