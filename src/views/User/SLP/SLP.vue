@@ -160,25 +160,21 @@ export default {
 
       SLPData: {
         labels: [
-          "EO 70",
-          "CVA",
-          "SLP",
-          "REGULAR",
-          "ZERO",
-          "HUNGER",
-          "EO 70",
-          "FRs",
+          "EO 70 CVA",
+          "SLP REGULAR",
+          "ZERO HUNGER ",
+          "EO 70 FRs",
           "REFERRAL",
         ],
         datasets: [
           {
             label: "PHYSICAL TARGET",
-            values: [25, 18, 13, 4, 3, 1, 2, 3, 4, 5, 4, 2],
+            values: [25, 18, 13, 4, 3],
             backgroundColor: ["#4E91FD"],
           },
           {
             label: "TOTAL",
-            values: [25, 18, 13, 4, 3, 1, 2, 3, 4, 5, 4, 2],
+            values: [3, 4, 5, 4, 2],
             backgroundColor: ["#FF4040"],
           },
         ],
@@ -190,25 +186,21 @@ export default {
       RefData: {
         labels: [
           "REFERRAL BY PARTNERS",
-          " ",
           "WALK IN",
           "OBSUs",
-          " ",
           "THRU EMAIL",
-          " ",
-          "NPMO",
-          "ENDORSEMENT",
+          "NPMO ENDORSEMENT",
         ],
 
         datasets: [
           {
             label: "YEAR 2023",
-            values: [25, 18, 13, 4, 3, 1, 2, 3, 4, 5, 4, 2],
+            values: [25, 13, 4, 3, 1],
             backgroundColor: ["#4E91FD"],
           },
           {
             label: "YEAR 2022",
-            values: [25, 18, 13, 4, 3, 1, 2, 3, 4, 5, 4, 2],
+            values: [3, 4, 5, 4, 2],
             backgroundColor: ["#FF4040"],
           },
         ],

@@ -91,7 +91,7 @@
       <h1 class="fw-bold">COST FROM DSWD BY BARANGAY</h1>
       <br />
       <div class="Barchart1">
-        <BarChart :data="CostData" :aspectRatio="60 / 10" />
+        <BarChartM :data="CostData" :aspectRatio="60 / 10" />
       </div>
     </div>
   </div>
@@ -105,8 +105,12 @@ import { backendURL } from "@/config.js";
 import Sidebar from "@/components/Sidebar.vue";
 import Footer from "@/components/Footer";
 import BarChart from "@/components/ChartJS/Barchart";
+import BarChartM from "@/components/ChartJS/BarchartM";
 import PieChart from "@/components/ChartJS/PieChart";
 import DoughnutChart from "@/components/ChartJS/DoughnutChart";
+import HBarChart from "@/components/ChartJS/HBarchart";
+import StackBarChart from "@/components/ChartJS/StackBarchart";
+import HStackBarChart from "@/components/ChartJS/HStackBarchart";
 
 import DataTable from "datatables.net-vue3";
 import DataTablesCore from "datatables.net";
@@ -115,16 +119,49 @@ DataTable.use(DataTablesCore);
 
 export default {
   // name: "SLPPA",
-  name: "HR",
+  name: "SLPPA",
 
   components: {
     Sidebar,
     Footer,
     BarChart,
+    BarChartM,
     PieChart,
-    DoughnutChart,
+    HBarChart,
     DataTable,
+    DoughnutChart,
+    StackBarChart,
+    HStackBarChart,
   },
+
+  // data() {
+  //   return {
+  //     PageTitle: "SLP - Physical Accomplishment by Portfolio",
+
+  //     CostData: {
+  // labels: [
+  //   "Sumimao",
+  //   "Malabog",
+  //   "Langub",
+  //   "Calinan Poblacion",
+  //   "8A, Poblacion A",
+  //   "Lasang",
+  //   "Bunawan",
+  //   "Buhangin Proper",
+  //   "Kilate",
+  //   "Calinan Proper",
+  // ],
+  //       label: ["ASSOCIATION-MANAGED"],
+  //       values: [
+  //         450000, 450000, 450000, 450000, 450000, 420000, 360000, 15000, 15000,
+  //         15000,
+  //       ],
+  //       backgroundColor: ["#FF4040"],
+  //     },
+
+  //     EmploymentData: null,
+  //   };
+  // },
 
   data() {
     return {
@@ -143,18 +180,27 @@ export default {
           "Kilate",
           "Calinan Proper",
         ],
-        label: ["ASSOCIATION-MANAGED"],
-        values: [
-          450000, 450000, 450000, 450000, 450000, 420000, 360000, 15000, 15000,
-          15000,
-        ],
-        backgroundColor: ["#FF4040"],
-      },
 
-      EmploymentData: null,
+        datasets: [
+          {
+            label: "ASSOCIATION-MANAGED",
+            values: [
+              450000, 450000, 450000, 450000, 450000, 420000, 0, 0, 0, 0,
+            ],
+            backgroundColor: "#FF4040",
+          },
+          // Add your new dataset
+          {
+            label: "INDIVIDUALLY-MANAGED",
+            values: [0, 0, 0, 0, 0, 0, 360000, 15000, 15000, 15000],
+            backgroundColor: "#EEB600",
+          },
+        ],
+      },
     };
   },
 
+  //
   methods: {
     // inserted data for month
   },
