@@ -330,3 +330,7 @@
 ### version 6.9 - KIARA HAGUNOB
 
 - Fixed margins in SLP GDD, and OSD
+
+### version 6.10 - MARLO BARUA
+
+- Added Stack BarChart component
