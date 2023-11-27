@@ -391,8 +391,8 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 230px;
-  height: 126px;
+  width: 225px;
+  height: 134px;
 }
 
 .rectangle1 .label {
@@ -405,7 +405,7 @@ export default {
 }
 
 .rectangle1 .number {
-  font-size: 35px;
+  font-size: 38px;
   text-align: center;
 }
 
@@ -439,5 +439,6 @@ export default {
 .parent {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  padding: 5px;
 }
 </style>

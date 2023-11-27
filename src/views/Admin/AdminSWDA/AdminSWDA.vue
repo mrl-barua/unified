@@ -58,6 +58,13 @@
           style="width: 100%"
           class="display stripe order-column cell-border hover compact"
           id="swdaTable"
+          :options="{
+            //* pageLength: 5,
+            //* lengthMenu: [
+            //* [5, 10, 25, 50],
+            //*  [5, 10, 25, 50],
+            //*  ],
+          }"
         >
           <thead style="background: #133f5c" class="text-white">
             <tr>

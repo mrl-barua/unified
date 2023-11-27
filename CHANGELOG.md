@@ -330,3 +330,11 @@
 ### version 6.9 - KIARA HAGUNOB
 
 - Fixed margins in SLP GDD, and OSD
+
+### version 6.10 - MARLO BARUA
+
+- Added Stack BarChart component
+
+### version 7.0 - FONZEE MANLOD
+
+- Implement Layout for CBSS USER VIEW
