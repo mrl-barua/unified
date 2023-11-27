@@ -227,8 +227,9 @@ h1 {
 
 .shadow-container {
   box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.15);
-  width: 100%;
+  width: 98%;
   height: 100%;
   margin: auto;
+  margin-top: 10px;
 }
 </style>
