@@ -91,7 +91,7 @@
 
       <!--client served per quarter-->
       <div class="col-sm-6">
-        <div class="col-14">
+        <div class="col-12">
           <div class="dashboard-box">
             <div
               style="
@@ -192,13 +192,16 @@
               font-size: 20px;
               text-align: center;
             "
-          >
-            Financial Amount served
+          > Financial Amount served
           </div>
-          <div class="dashboard-box" style="height: 245px">
+      
         <div>
-          <div><b>CSS AND OTHERS</b></div>
-          <div><b>RECORD COUNT</b></div>
+          <div style="display: flex; justify-content: space-between">
+            <div >Category</div>
+            <div style="display: flex; align-items: center; margin-right: 15px; margin-top: 5px">
+              Amount
+            </div>
+          </div>
         </div>
         <div style="background-color: ; color: black; padding: 10px">
           <div style="display: flex; justify-content: space-between">
@@ -207,29 +210,29 @@
               0
             </div>
           </div>
-          <div style="border-bottom: 1px solid #a9a9a9; margin-top: 10px"></div>
+          <div style="border-bottom: 1px solid #a9a9a9; margin-top: 20px; margin-bottom: 15px;"></div>
           <div style="display: flex; justify-content: space-between">
             <div>Category #2</div>
             <div style="display: flex; align-items: center; margin-right: 50px">
               0
             </div>
           </div>
-          <div style="border-bottom: 1px solid #a9a9a9; margin-top: 10px"></div>
+          <div style="border-bottom: 1px solid #a9a9a9; margin-top: 15px; margin-bottom: 15px;"></div>
           <div style="display: flex; justify-content: space-between">
             <div>Category #3</div>
             <div style="display: flex; align-items: center; margin-right: 50px">
               0
             </div>
           </div>
-          <div style="border-bottom: 1px solid #a9a9a9; margin-top: 10px"></div>
+          <div style="border-bottom: 1px solid #a9a9a9; margin-top: 15px; margin-bottom: 15px;"></div>
           <div style="display: flex; justify-content: space-between">
-            <div>Category #1</div>
+            <div>Category #4</div>
             <div style="display: flex; align-items: center; margin-right: 50px">
               0
             </div>
           </div>
         </div>
-      </div>
+
         </div>
       </div>
       <!--Non-Monetary Services Served-->
