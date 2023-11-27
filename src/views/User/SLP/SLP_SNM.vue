@@ -127,9 +127,9 @@
   <div class="col-12 col-md-12">
     <div class="shadow2 forbarchart">
       <br />
-      <h5 class="fw-bold">COST FROM DSWD BY BARANGAY</h5>
+      <h5 class="fw-bold">STATUS BY MUNICIPALITY</h5>
       <br />
-      <div class="Barchart1"><BarChart :data="CostData" /></div>
+      <div class="Barchart1"><StackBarChart :data="CostData" /></div>
     </div>
   </div>
 
@@ -144,6 +144,9 @@ import Footer from "@/components/Footer";
 import BarChart from "@/components/ChartJS/Barchart";
 import PieChart from "@/components/ChartJS/PieChart";
 import DoughnutChart from "@/components/ChartJS/DoughnutChart";
+import HBarChart from "@/components/ChartJS/HBarchart";
+import StackBarChart from "@/components/ChartJS/StackBarchart";
+import HStackBarChart from "@/components/ChartJS/HStackBarchart";
 
 import DataTable from "datatables.net-vue3";
 import DataTablesCore from "datatables.net";
@@ -151,15 +154,18 @@ import "datatables.net-responsive";
 DataTable.use(DataTablesCore);
 
 export default {
-  // name: "SLPPA",
-  name: "HR",
+  // name: "SLPSNM",
+  name: "SLPSNM",
 
   components: {
     Sidebar,
     Footer,
     BarChart,
     PieChart,
+    HBarChart,
     DoughnutChart,
+    StackBarChart,
+    HStackBarChart,
     DataTable,
   },
 
@@ -169,23 +175,45 @@ export default {
 
       CostData: {
         labels: [
-          "Sumimao",
-          "Malabog",
-          "Langub",
-          "Calinan Poblacion",
-          "8A, Poblacion A",
-          "Lasang",
-          "Bunawan",
-          "Buhangin Proper",
-          "Kilate",
-          "Calinan Proper",
+          "Padada",
+          "Magsaysay",
+          "Manay",
+          "Cateel",
+          "Caraga",
+          "Governor",
+          "City of Mati",
+          "Sta.Cruz",
+          "Sulop",
+          "Baganga",
+          "Maragusan",
+          "Laak",
+          "Digos",
+          "Tarragona",
+          "San Isidro",
         ],
-        label: ["ASSOCIATION-MANAGED"],
-        values: [
-          450000, 450000, 450000, 450000, 450000, 420000, 360000, 15000, 15000,
-          15000,
+        datasets: [
+          {
+            label: "POOR",
+            values: [
+              89, 56, 12, 45, 90, 34, 67, 90, 23, 87, 54, 10, 89, 23, 56,
+            ],
+            backgroundColor: ["#FF4040"],
+          },
+          {
+            label: "NON-POOR",
+            values: [
+              45, 78, 12, 67, 89, 23, 90, 12, 34, 56, 78, 90, 54, 32, 67,
+            ],
+            backgroundColor: ["#4E91FD"],
+          },
+          {
+            label: "NO MATCH",
+            values: [
+              23, 76, 12, 89, 56, 43, 87, 12, 56, 89, 34, 67, 90, 45, 89,
+            ],
+            backgroundColor: ["#EEB600"],
+          },
         ],
-        backgroundColor: ["#292D96"],
       },
     };
   },
