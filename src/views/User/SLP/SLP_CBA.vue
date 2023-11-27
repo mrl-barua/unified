@@ -1,9 +1,9 @@
 <template>
-    <Sidebar :iconText="PageTitle" />
+  <Sidebar :iconText="PageTitle" />
 
-    <br><br><br><br>
+  <br /><br /><br /><br />
 
-    <div class="col-12 col-md-12">
+  <!-- <div class="col-12 col-md-12">
       <div class="shadow2">
       <br>
        <div class="d-flex justify-content-around"
@@ -61,55 +61,92 @@
         </div> 
       </div>
     </div>
-    
- 
-   <div class="col-12 col-md-6">
-      
-    <div class="shadow3">
-            <h1><b>NUMBER OF PDO PER CLUSTER</b></h1>           
-          <div class="Barchart1"><BarChart :data="ProvinceData" /></div>
-        </div>
+     -->
+
+  <div class="col-12 col-md-12">
+    <div class="shadow2">
+      <div class="inside" style="padding: 10px">
+        <DataTable
+          id="table"
+          :paging="true"
+          :searching="true"
+          :info="true"
+          :responsive="true"
+          :length-change="true"
+          :length-menu="[10, 25, 50, 100]"
+          :language="{
+            paginate: {
+              previous: '<i class=\'fas fa-angle-left\'></i>',
+              next: '<i class=\'fas fa-angle-right\'></i>',
+            },
+          }"
+        >
+          <thead style="background: #133f5c" class="text-white">
+            <tr>
+              <th>PDO</th>
+              <th>PROVINCE</th>
+              <th>DOCUMENT TITLE</th>
+              <th>TIMESTAMP</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>No Data Available</td>
+              <td>No Data Available</td>
+              <td>No Data Available</td>
+              <td>No Data Available</td>
+            </tr>
+          </tbody>
+        </DataTable>
+      </div>
     </div>
+  </div>
 
-    <div class="col-12 col-md-6">
-      <div class="shadow3">
-              <h1><b>SUBMITTED REPORTS PER CLUSTER</b></h1>           
-              <div class="parent">
-      <div class="rectangle" style="background-color: #FF6961">
-        <div class="label">DAVAO CITY</div>
-        <div class="number"><b>75</b></div>
-      </div>
+  <div class="col-12 col-md-6">
+    <div class="shadow2 forbarchart2">
+      <h1>NUMBER OF PDO PER CLUSTER</h1>
+      <div class="Barchart2"><BarChart :data="ProvinceData" /></div>
+    </div>
+  </div>
 
-      <div class="rectangle" style="background-color: #6A9EDA">
-        <div class="label">DAVAO DEL NORTE</div>
-        <div class="number"><b>44</b></div>
-      </div>
+  <div class="col-12 col-md-6">
+    <div class="shadow2">
+      <h1>SUBMITTED REPORTS PER CLUSTER</h1>
+      <div class="parent">
+        <div class="rectangle" style="background-color: #ff6961">
+          <div class="label">DAVAO CITY</div>
+          <div class="number"><b>75</b></div>
+        </div>
 
-      <div class="rectangle" style="background-color: #EECA06">
-        <div class="label">DAVAO DEL SUR</div>
-        <div class="number"><b>41</b></div>
-      </div>
+        <div class="rectangle" style="background-color: #6a9eda">
+          <div class="label">DAVAO DEL NORTE</div>
+          <div class="number"><b>44</b></div>
+        </div>
 
-      <div class="rectangle" style="background-color: #FF9688">
-        <div class="label">DAVAO ORIENTAL</div>
-        <div class="number"><b>65</b></div>
-      </div>
+        <div class="rectangle" style="background-color: #eeca06">
+          <div class="label">DAVAO DEL SUR</div>
+          <div class="number"><b>41</b></div>
+        </div>
 
-      <div class="rectangle" style="background-color: #84B6F4">
-        <div class="label">DAVAO DE ORO</div>
-        <div class="number"><b>48</b></div>
-      </div>
+        <div class="rectangle" style="background-color: #ff9688">
+          <div class="label">DAVAO ORIENTAL</div>
+          <div class="number"><b>65</b></div>
+        </div>
 
-      <div class="rectangle" style="background-color: #ECDC63">
-        <div class="label">DAVAO OCCIDENTAL</div>
-        <div class="number"><b>27</b></div>
-      </div>
-          </div>
-      </div>
-      </div>
+        <div class="rectangle" style="background-color: #84b6f4">
+          <div class="label">DAVAO DE ORO</div>
+          <div class="number"><b>48</b></div>
+        </div>
 
-    
-    <!-- <Footer /> -->
+        <div class="rectangle" style="background-color: #ecdc63">
+          <div class="label">DAVAO OCCIDENTAL</div>
+          <div class="number"><b>27</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <Footer /> -->
 </template>
 
 <script>
@@ -120,50 +157,52 @@ import Footer from "@/components/Footer";
 import BarChart from "@/components/ChartJS/Barchart";
 import PieChart from "@/components/ChartJS/PieChart";
 import DoughnutChart from "@/components/ChartJS/DoughnutChart";
+import HBarChart from "@/components/ChartJS/HBarchart";
+import StackBarChart from "@/components/ChartJS/StackBarchart";
+import HStackBarChart from "@/components/ChartJS/HStackBarchart";
+
+import DataTable from "datatables.net-vue3";
+import DataTablesCore from "datatables.net";
+import "datatables.net-responsive";
+DataTable.use(DataTablesCore);
 
 export default {
-    name: 'HR',
-    components: {
-        Sidebar,
-        Footer,
-        BarChart,
-        PieChart,
-        DoughnutChart
-    
-    },
+  //
+  name: "SLPCBA",
+  components: {
+    Sidebar,
+    Footer,
+    BarChart,
+    PieChart,
+    HBarChart,
+    DoughnutChart,
+    StackBarChart,
+    HStackBarChart,
+    DataTable,
+  },
 
-    data() {
-      return {
-        PageTitle: "SLP - Capability Building Activities",
+  data() {
+    return {
+      PageTitle: "SLP - Capability Building Activities",
 
-        MonthData: {
-          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November' , 'December'],
-          label: ['Months'],
-          values: [39, 18, 13, 4, 3, 1, 2, 3, 4, 5, 4, 2],
-          backgroundColor: [
-          'rgba(19, 63, 92, 1)'
+      ProvinceData: {
+        labels: [
+          "DAVAO CITY",
+          "DAVAO ORIENTAL",
+          "DAVAO DEL NORTE",
+          "DAVAO DE ORO",
+          "DAVAO DEL NORTE",
+          "DAVAO OCCIDENTAL",
         ],
-        },    
-        ProvinceData: {
-          labels: ['CNSP', 'EMOTIONALLY/PSYCHO DISTRESS', 'OFW'],
-          label: [''],
-          values: [42, 23, 12, 2],
-          backgroundColor: [
-          'rgba(75, 192, 192, 0.2',
-          'rgba(255, 99, 132, 0.2',
-          'rgba(255, 206, 86, 0.2',
-          'rgba(54, 162, 235, 0.2',
-          'rgba(153, 102, 255, 0.2',
-          'rgba(255, 159, 64, 0.2',
-        ],
-        },
+        label: ["Number of PDO"],
+        values: [120, 100, 400, 150, 250, 200],
+        backgroundColor: ["#EEB600"],
+      },
+    };
+  },
 
-        EmploymentData: null,
-      };
-    },
-
- methods:{
-  EmploymentFetchData() {
+  methods: {
+    EmploymentFetchData() {
       return axios
         .get(`${backendURL}/api/employmentStatus`)
         .then((response) => {
@@ -173,27 +212,26 @@ export default {
           const contractual = [];
           const coterminos = [];
           const casual = [];
-         
 
-          response.data.forEach(item => {
+          response.data.forEach((item) => {
             const employmentstatus = item.EMPLOYMENT_STATUS;
 
             switch (employmentstatus) {
-              case 'MOA':
-                  moa.push(item);
+              case "MOA":
+                moa.push(item);
                 break;
-              case 'PERMANENT':
-                  permanent.push(item);
+              case "PERMANENT":
+                permanent.push(item);
                 break;
-              case 'CONTRACTUAL':
-                 contractual.push(item);
-                break; 
-              case 'COTERMINOS':
+              case "CONTRACTUAL":
+                contractual.push(item);
+                break;
+              case "COTERMINOS":
                 coterminos.push(item);
-                break; 
-              case 'CASUAL':
+                break;
+              case "CASUAL":
                 casual.push(item);
-                break; 
+                break;
               default:
                 // Handle other cases if necessary
                 break;
@@ -208,70 +246,67 @@ export default {
           const casualLength = casual.length;
           // Prepare and return data
           const employmentdata = {
-            labels: ['MOA', 'PERMANENT', 'CONTRACTUAL', 'COTERMINOS', 'CASUAL'],
-            label: ['Employment Data'],
-            values: [moaLength, permanentLength, contractualLength, coterminosLength, casualLength],
-            backgroundColor: ['rgba(19, 63, 92, 1)',
-                              'rgba(243, 165, 51, 1)',
-                              'rgba(235, 95, 94, 1)',
-                              'rgba(0, 255, 0, 0.6)',
-                              'rgba(0, 0, 255, 0.6)',
-                            
-          ],
+            labels: ["MOA", "PERMANENT", "CONTRACTUAL", "COTERMINOS", "CASUAL"],
+            label: ["Employment Data"],
+            values: [
+              moaLength,
+              permanentLength,
+              contractualLength,
+              coterminosLength,
+              casualLength,
+            ],
+            backgroundColor: [
+              "rgba(19, 63, 92, 1)",
+              "rgba(243, 165, 51, 1)",
+              "rgba(235, 95, 94, 1)",
+              "rgba(0, 255, 0, 0.6)",
+              "rgba(0, 0, 255, 0.6)",
+            ],
           };
           // Set barChartData to the computed data
           this.EmploymentData = employmentdata;
         })
-        .catch(error => {
-          console.error('Error fetching data:', error);
-
+        .catch((error) => {
+          console.error("Error fetching data:", error);
 
           const employmentdata = {
-            labels: ['MOA', 'PERMANENT', 'CONTRACTUAL', 'COTERMINOS', 'CASUAL'],
-            label: ['Employment Data'],
+            labels: ["MOA", "PERMANENT", "CONTRACTUAL", "COTERMINOS", "CASUAL"],
+            label: ["Employment Data"],
             values: [1, 1, 1, 1, 1],
-            backgroundColor: ['rgba(25, 82, 105, 0.6)',
-                              'rgba(0, 255, 0, 0.6)',
-                              'rgba(0, 0, 255, 0.6)',
-                            
-          ],
+            backgroundColor: [
+              "rgba(25, 82, 105, 0.6)",
+              "rgba(0, 255, 0, 0.6)",
+              "rgba(0, 0, 255, 0.6)",
+            ],
           };
           // Set barChartData to the computed data
           this.EmploymentData = employmentdata;
-
         });
     },
-
- },
-
-
+  },
 
   mounted() {
     // Automatically fetch data when the component is mounted
     this.EmploymentFetchData();
   },
-
-    
-}
+};
 </script>
 
 <style scoped>
-
-.shadow2{
+.shadow2 {
   box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.15);
   height: 500px;
-  margin:5px 5px 5px 5px;
+  margin: 5px 5px 5px 5px;
   padding: 10px 0px 10px 0px;
 }
 
-
-.shadow3{
+.shadow3 {
   box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.15);
   height: 480px;
-  margin:5px 5px 5px 5px;
+  margin: 5px 5px 5px 5px;
   padding: 10px 0px 10px 0px;
 }
-.forbarchart{
+.forbarchart {
   height: 250px;
   @media only screen and (min-width: 500px) {
     height: 350px;
@@ -281,10 +316,8 @@ export default {
   }
 }
 
-
-.Barchart1{
-  height: 340px; 
-
+.Barchart2 {
+  height: 350px;
 }
 
 .rectangle {
@@ -295,10 +328,8 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 165px; 
+  height: 165px;
 }
-
-
 
 .rectangle .label {
   color: #fff;
@@ -315,12 +346,21 @@ export default {
 }
 
 .parent {
-display: grid;
-grid-template-columns: repeat(3, 1fr);
-grid-template-rows: repeat(2, 1fr);
-grid-column-gap: 0px;
-grid-row-gap: 0px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
 }
 
+.shadow2 h1 {
+  color: #252525;
+  text-align: center;
+  font-family: Arial;
+  font-size: 27px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding-top: 1.5rem;
+}
 </style>
-
