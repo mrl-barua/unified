@@ -280,7 +280,6 @@ export default {
             ],
           };
           // Set barChartData to the computed data
-          this.EmploymentData = employmentdata;
         });
     },
   },

@@ -1039,7 +1039,7 @@ export default {
           // as the second parameter (the first parameter is the API endpoint) in the form of
           // an object with the following properties: Hr (which contains the data to be updated)
           // and _method (which is set to "PUT" to indicate that the data will be updated)
-          this.model.Hr
+          this.model.HR
         )
         .then((res) => {
           console.log(res.data);

@@ -343,3 +343,10 @@
 
 - SLP Major Update
 - Added Barchart Components, Horizontal StackbarChart
+
+### version 7.2 - MARK PONDOL
+
+- SLP Major Revamp and added new dasboards
+- SLP_BMT (DONE)
+- SLP_CBA (DONE)
+- SLP_STAT (DONE)
