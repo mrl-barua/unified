@@ -3,61 +3,77 @@
 
   <br /><br /><br /><br />
 
-  <div class="col-12 col-md-7">
+  <div class="col-12 col-md-10">
+    <div class="shadow2">
+      <div class="inside" style="padding: 10px">
+        <DataTable
+          id="table"
+          :paging="true"
+          :searching="true"
+          :info="true"
+          :responsive="true"
+          :length-change="true"
+          :length-menu="[10, 25, 50, 100]"
+          :language="{
+            paginate: {
+              previous: '<i class=\'fas fa-angle-left\'></i>',
+              next: '<i class=\'fas fa-angle-right\'></i>',
+            },
+          }"
+        >
+          <thead style="background: #133f5c" class="text-white">
+            <tr>
+              <th>PDO</th>
+              <th>Province</th>
+              <th>City/Municipality</th>
+              <th>Barangay</th>
+              <th>Modality</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>No Data Available</td>
+              <td>No Data Available</td>
+              <td>No Data Available</td>
+              <td>No Data Available</td>
+              <td>No Data Available</td>
+              <td>No Data Available</td>
+            </tr>
+          </tbody>
+        </DataTable>
+      </div>
+    </div>
+  </div>
+
+  <div class="stacked-rectangle col-12 col-md-2">
+    <div class="shadow3">
+      <div class="rectangle" style="background-color: #ff4040">
+        <div class="label">NO. OF PAX</div>
+        <div class="number"><b>282</b></div>
+      </div>
+      <div class="rectangle" style="background-color: #4e91fd">
+        <div class="label">AMOUNT</div>
+        <div class="number"><b>224</b></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6">
     <div class="shadow2 forbarchart">
-      <p>NUMBER OF RECORDS PER MONTH</p>
-      <div class="Barchart1"><BarChart :data="MonthData" /></div>
-    </div>
-  </div>
-
-  <div class="col-12 col-md-5">
-    <div class="shadow2">
-      <p>TOTAL NUMBER OF CATEGORIES REQUEST</p>
-      <div class="Piechart1"><PieChart :data="NameData" /></div>
-    </div>
-  </div>
-  <div class="col-12 col-md-6">
-    <div class="shadow2">
-      <p>PERCENTAGE OF REQUESTING EMPLOYEES STATUS</p>
-      <div class="Piechart1">
-        <DoughnutChart v-if="EmploymentData" :data="EmploymentData" />
-      </div>
+      <br />
+      <h5 class="fw-bold">PROVINCIAL BUDGET MONITORING</h5>
+      <br />
+      <div class="Barchart1"><BarChart :data="ProvinceData" /></div>
     </div>
   </div>
 
   <div class="col-12 col-md-6">
-    <div class="shadow2">
-      <h3>DETAILS OF REQUESTING EMPLOYEE</h3>
-
-      <div class="d-flex justify-content-around">
-        <h5 class="fw-bold">NAME</h5>
-        <h5 class="fw-bold">OFFICE / UNIT</h5>
-        <h5 class="fw-bold">RECORD COUNT</h5>
-      </div>
-      <hr class="hr" />
-      <div class="d-flex justify-content-around">
-        <p>text</p>
-        <p>text</p>
-        <p>text</p>
-      </div>
-      <hr class="hr" />
-      <div class="d-flex justify-content-around">
-        <p>text</p>
-        <p>text</p>
-        <p>text</p>
-      </div>
-      <hr class="hr" />
-      <div class="d-flex justify-content-around">
-        <p>text</p>
-        <p>text</p>
-        <p>text</p>
-      </div>
-      <hr class="hr" />
-      <div class="d-flex justify-content-around">
-        <p>text</p>
-        <p>text</p>
-        <p>text</p>
-      </div>
+    <div class="shadow2 forbarchart">
+      <br />
+      <h5 class="fw-bold">STATUS BY MUNICIPALITY</h5>
+      <br />
+      <div class="Barchart1"><StackBarChart :data="CostData" /></div>
     </div>
   </div>
 
@@ -72,156 +88,129 @@ import Footer from "@/components/Footer";
 import BarChart from "@/components/ChartJS/Barchart";
 import PieChart from "@/components/ChartJS/PieChart";
 import DoughnutChart from "@/components/ChartJS/DoughnutChart";
+import HBarChart from "@/components/ChartJS/HBarchart";
+import StackBarChart from "@/components/ChartJS/StackBarchart";
+import HStackBarChart from "@/components/ChartJS/HStackBarchart";
+
+import DataTable from "datatables.net-vue3";
+import DataTablesCore from "datatables.net";
+import "datatables.net-responsive";
+DataTable.use(DataTablesCore);
 
 export default {
-  name: "HR",
+  // name: "SLPSNM",
+  name: "SLPSNM",
+
   components: {
     Sidebar,
     Footer,
     BarChart,
     PieChart,
+    HBarChart,
     DoughnutChart,
+    StackBarChart,
+    HStackBarChart,
+    DataTable,
   },
 
   data() {
     return {
-      PageTitle: "SLP - Enterprise Status 2022",
+      PageTitle: "SLPA - Enterprise Status 2022",
 
-      MonthData: {
+      ProvinceData: {
         labels: [
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July",
-          "August",
-          "September",
-          "October",
-          "November",
-          "December",
+          "DAVAO ORIENTAL",
+          "DAVAO DEL SUR",
+          "DAVAO CITY",
+          "DAVAO DE ORO",
+          "DAVAO DEL NORTE",
+          "DAVAO OCCIDENTAL",
         ],
-        label: ["Months"],
-        values: [39, 18, 13, 4, 3, 1, 2, 3, 4, 5, 4, 2],
-        backgroundColor: ["rgba(19, 63, 92, 1)"],
-      },
-      NameData: {
-        labels: ["CNSP", "EMOTIONALLY/PSYCHO DISTRESS", "OFW"],
-        label: ["CHART2"],
-        values: [42, 23, 12, 2],
+        label: ["PROVINCIAL BUDGET DISTRIBUTIONS"],
+        values: [110, 200, 400, 150, 250, 200],
         backgroundColor: [
-          "rgba(75, 192, 192, 0.2",
-          "rgba(255, 99, 132, 0.2",
-          "rgba(255, 206, 86, 0.2",
-          "rgba(54, 162, 235, 0.2",
-          "rgba(153, 102, 255, 0.2",
-          "rgba(255, 159, 64, 0.2",
+          "#B78700",
+          "#D29E00",
+          "#EEB600",
+          "#EECA06",
+          "#F8E44B",
+          "#FCEA64",
         ],
       },
 
-      EmploymentData: null,
+      CostData: {
+        labels: [
+          "Padada",
+          "Magsaysay",
+          "Manay",
+          "Cateel",
+          "Caraga",
+          "Governor",
+          "City of Mati",
+          "Sta.Cruz",
+          "Sulop",
+          "Baganga",
+          "Maragusan",
+          "Laak",
+          "Digos",
+          "Tarragona",
+          "San Isidro",
+        ],
+        datasets: [
+          {
+            label: "POOR",
+            values: [
+              89, 56, 12, 45, 90, 34, 67, 90, 23, 87, 54, 10, 89, 23, 56,
+            ],
+            backgroundColor: ["#FF4040"],
+          },
+          {
+            label: "NON-POOR",
+            values: [
+              45, 78, 12, 67, 89, 23, 90, 12, 34, 56, 78, 90, 54, 32, 67,
+            ],
+            backgroundColor: ["#4E91FD"],
+          },
+          {
+            label: "NO MATCH",
+            values: [
+              23, 76, 12, 89, 56, 43, 87, 12, 56, 89, 34, 67, 90, 45, 89,
+            ],
+            backgroundColor: ["#EEB600"],
+          },
+        ],
+      },
     };
   },
 
   methods: {
-    EmploymentFetchData() {
-      return axios
-        .get(`${backendURL}/api/employmentStatus`)
-        .then((response) => {
-          // Initialize data arrays
-          const moa = [];
-          const permanent = [];
-          const contractual = [];
-          const coterminos = [];
-          const casual = [];
-
-          response.data.forEach((item) => {
-            const employmentstatus = item.EMPLOYMENT_STATUS;
-
-            switch (employmentstatus) {
-              case "MOA":
-                moa.push(item);
-                break;
-              case "PERMANENT":
-                permanent.push(item);
-                break;
-              case "CONTRACTUAL":
-                contractual.push(item);
-                break;
-              case "COTERMINOS":
-                coterminos.push(item);
-                break;
-              case "CASUAL":
-                casual.push(item);
-                break;
-              default:
-                // Handle other cases if necessary
-                break;
-            }
-          });
-
-          // Calculate data lengths
-          const moaLength = moa.length;
-          const permanentLength = permanent.length;
-          const contractualLength = contractual.length;
-          const coterminosLength = coterminos.length;
-          const casualLength = casual.length;
-          // Prepare and return data
-          const employmentdata = {
-            labels: ["MOA", "PERMANENT", "CONTRACTUAL", "COTERMINOS", "CASUAL"],
-            label: ["Employment Data"],
-            values: [
-              moaLength,
-              permanentLength,
-              contractualLength,
-              coterminosLength,
-              casualLength,
-            ],
-            backgroundColor: [
-              "rgba(19, 63, 92, 1)",
-              "rgba(243, 165, 51, 1)",
-              "rgba(235, 95, 94, 1)",
-              "rgba(0, 255, 0, 0.6)",
-              "rgba(0, 0, 255, 0.6)",
-            ],
-          };
-          // Set barChartData to the computed data
-          this.EmploymentData = employmentdata;
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-
-          const employmentdata = {
-            labels: ["MOA", "PERMANENT", "CONTRACTUAL", "COTERMINOS", "CASUAL"],
-            label: ["Employment Data"],
-            values: [1, 1, 1, 1, 1],
-            backgroundColor: [
-              "rgba(25, 82, 105, 0.6)",
-              "rgba(0, 255, 0, 0.6)",
-              "rgba(0, 0, 255, 0.6)",
-            ],
-          };
-          // Set barChartData to the computed data
-          this.EmploymentData = employmentdata;
-        });
-    },
+    // inserted data for month
   },
 
-  mounted() {
-    // Automatically fetch data when the component is mounted
-    this.EmploymentFetchData();
-  },
+  mounted() {},
 };
 </script>
 
 <style scoped>
-.shadow2 {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  height: 400px;
-  border-radius: 20px;
-  margin: 10px 15px 10px 20px;
+.shadow1 {
+  box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.15);
+  height: 480px;
+  margin: 5px 5px 5px 5px;
   padding: 10px 0px 10px 0px;
+}
+.shadow2 {
+  box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.15);
+  height: 465px;
+  margin: 5px 5px 5px 5px;
+  padding: 10px 0px 10px 0px;
+}
+
+/* copy */
+.shadow3 {
+  height: 480px;
+  border-radius: 20px;
+  /*margin: 10px 15px 10px 20px;
+  padding: 10px 0px 10px 0px;*/
 }
 
 .forbarchart {
@@ -230,11 +219,69 @@ export default {
     height: 350px;
   }
   @media only screen and (min-width: 720px) {
-    height: 400px;
+    height: 600px;
   }
 }
 
 .Barchart1 {
-  height: 340px;
+  height: 480px;
+}
+
+/* CSS FOR DATA SUMMARY */
+
+.row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.label {
+  width: 200px;
+  text-align: right;
+  font-weight: bold;
+}
+
+.number {
+  width: 100px;
+  text-align: left;
+}
+
+/* css */
+
+.stacked-rectangle {
+  justify-content: space-between;
+}
+
+.stacked-rectangle .col-12.col-md-4 {
+  width: 20%;
+}
+
+.stacked-rectangle .shadow2 {
+  background: transparent;
+}
+
+.rectangle {
+  padding: 10px;
+  margin: 5px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 48%;
+}
+
+.rectangle .label {
+  color: #fff;
+  text-align: center;
+  font-size: 27px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.rectangle .number {
+  font-size: 50px;
+  text-align: center;
 }
 </style>
