@@ -338,3 +338,8 @@
 ### version 7.0 - FONZEE MANLOD
 
 - Implement Layout for CBSS USER VIEW
+
+### version 7.1 - MARK PONDOL
+
+- SLP Major Update
+- Added Barchart Components, Horizontal StackbarChart

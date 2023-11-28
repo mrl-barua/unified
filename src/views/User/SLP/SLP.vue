@@ -7,7 +7,7 @@
   <div class="col-12 col-md-8">
     <div class="shadow2 forbarchart">
       <h1>TOTAL ACCOMPLISHMENT VS PHYSICAL TARGET</h1>
-      <div class="Barchart1"><HBarChart :data="SLPData" /></div>
+      <div class="StackBarchart1"><StackBarChart :data="SLPData" /></div>
     </div>
   </div>
   <div class="col-12 col-md-4">
@@ -81,7 +81,7 @@
     <div class="col-12 col-md-8">
       <div class="shadow2 forbarchart">
         <h1>REFERRALS</h1>
-        <div class="Barchart1"><HBarChart :data="RefData" /></div>
+        <div class="HStackBarchart1"><HStackBarChart :data="RefData" /></div>
       </div>
     </div>
   </div>
@@ -138,6 +138,8 @@ import BarChart from "@/components/ChartJS/Barchart";
 import PieChart from "@/components/ChartJS/PieChart";
 import DoughnutChart from "@/components/ChartJS/DoughnutChart";
 import HBarChart from "@/components/ChartJS/HBarchart";
+import StackBarChart from "@/components/ChartJS/StackBarchart";
+import HStackBarChart from "@/components/ChartJS/HStackBarchart";
 
 export default {
   name: "SLP",
@@ -148,6 +150,8 @@ export default {
     PieChart,
     HBarChart,
     DoughnutChart,
+    StackBarChart,
+    HStackBarChart,
   },
 
   data() {
@@ -156,35 +160,54 @@ export default {
 
       SLPData: {
         labels: [
-          "EO 70",
-          "CVA",
-          "SLP",
-          "REGULAR",
-          "ZERO",
-          "HUNGER",
-          "EO 70",
-          "FRs",
+          "EO 70 CVA",
+          "SLP REGULAR",
+          "ZERO HUNGER ",
+          "EO 70 FRs",
           "REFERRAL",
         ],
-        label: ["PHYSICAL TARGET"]["TOTAL"],
-        values: [25, 18, 13, 4, 3, 1, 2, 3, 4, 5, 4, 2],
-        backgroundColor: ["#4E91FD", "#FF4040"],
+        datasets: [
+          {
+            label: "PHYSICAL TARGET",
+            values: [25, 18, 13, 4, 3],
+            backgroundColor: ["#4E91FD"],
+          },
+          {
+            label: "TOTAL",
+            values: [3, 4, 5, 4, 2],
+            backgroundColor: ["#FF4040"],
+          },
+        ],
+
+        // label: [""],
+        // values: [25, 18, 13, 4, 3, 1, 2, 3, 4, 5, 4, 2],
+        // backgroundColor: ["#4E91FD", "#FF4040"],
       },
       RefData: {
         labels: [
           "REFERRAL BY PARTNERS",
-          " ",
           "WALK IN",
           "OBSUs",
-          " ",
           "THRU EMAIL",
-          " ",
-          "NPMO",
-          "ENDORSEMENT",
+          "NPMO ENDORSEMENT",
         ],
-        label: ["YEAR 2022"],
-        values: [0, 0, 18, 13, 4, 3, 1, 20, 40, 4, 5, 4, 2],
-        backgroundColor: ["#FF4040", "#4E91FD"],
+
+        datasets: [
+          {
+            label: "YEAR 2023",
+            values: [25, 13, 4, 3, 1],
+            backgroundColor: ["#4E91FD"],
+          },
+          {
+            label: "YEAR 2022",
+            values: [3, 4, 5, 4, 2],
+            backgroundColor: ["#FF4040"],
+          },
+        ],
+
+        // label: ["YEAR 2022"],
+        // values: [0, 0, 18, 13, 4, 3, 1, 20, 40, 4, 5, 4, 2],
+        // backgroundColor: ["#FF4040", "#4E91FD"],
       },
 
       SecData: {
@@ -265,7 +288,7 @@ export default {
   }
 }
 /* this refers to the gap between text and graph */
-.Barchart1 {
+.StackBarchart1 {
   height: 280px;
 }
 .Barchart2 {
@@ -391,8 +414,8 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 225px;
-  height: 134px;
+  width: 222px;
+  height: 130px;
 }
 
 .rectangle1 .label {

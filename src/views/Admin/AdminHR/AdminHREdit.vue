@@ -463,7 +463,8 @@
             </div>
             <div class="col-3">
               <div class="spaceBetween">
-                \
+                <!-- ! NEED FIXINGS FOR THIS "region current" -->
+                <!-- ! NEED FIXINGS FOR THIS "region current" -->
                 <!-- ! NEED FIXINGS FOR THIS "region current" -->
                 <label for="officeLocation">REGION (Current)</label>
                 <input
@@ -536,47 +537,251 @@
         <!-- //TODO THIRD ROW START -->
         <!-- //TODO THIRD ROW START -->
         <!-- //TODO THIRD ROW START -->
-        <!-- <div class="col-12 third-row">
-      <div class="col-12 mb-3">
-        <div class="col-3">EMPLOYEE_ID_NO</div>
-        <div class="col-3">ENTRY_DATE_IN_DSWD</div>
-        <div class="col-3">DATE_OF_ORIGINAL_APPOINTMENT</div>
-        <div class="col-3">DATE OF LAST PROMOTION</div>
-      </div>
+        <div class="col-12 third-row">
+          <div class="col-12 mb-3">
+            <div class="col-3">
+              <div class="spaceBetween">
+                <label for="officeLocation">EMPLOYEE_ID_NO</label>
+                <input
+                  type="text"
+                  v-model="model.HR.employee_id_no"
+                  class="form-control"
+                  id="officeLocation"
+                />
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="spaceBetween">
+                <label for="officeLocation">ENTRY_DATE_IN_DSWD</label>
+                <input
+                  type="text"
+                  v-model="model.HR.entry_date_in_dswd"
+                  class="form-control"
+                  id="officeLocation"
+                />
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="spaceBetween">
+                <label for="officeLocation">DATE_OF_ORIGINAL_APPOINTMENT</label>
+                <input
+                  type="text"
+                  v-model="model.HR.date_of_original_appointment"
+                  class="form-control"
+                  id="officeLocation"
+                />
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="spaceBetween">
+                <label for="officeLocation">DATE OF LAST PROMOTION</label>
+                <input
+                  type="text"
+                  v-model="model.HR.date_of_last_promotion"
+                  class="form-control"
+                  id="officeLocation"
+                />
+              </div>
+            </div>
+          </div>
 
-      <div class="col-12 mb-3">
-        <div class="col-3">GSIS_NUMBER</div>
-        <div class="col-3">BIR_TIN.NO.</div>
-        <div class="col-3">SSS_NUMBER</div>
-        <div class="col-3">PHILHEALTH_NUMBER</div>
-      </div>
+          <div class="col-12 mb-3">
+            <div class="col-3">
+              <div class="spaceBetween">
+                <label for="officeLocation">GSIS_NUMBER</label>
+                <input
+                  type="text"
+                  v-model="model.HR.gsis_number"
+                  class="form-control"
+                  id="officeLocation"
+                />
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="spaceBetween">
+                <label for="officeLocation">BIR_TIN.NO.</label>
+                <input
+                  type="text"
+                  v-model="model.HR.bir_tin_number"
+                  class="form-control"
+                  id="officeLocation"
+                />
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="spaceBetween">
+                <label for="officeLocation">SSS_NUMBER</label>
+                <input
+                  type="text"
+                  v-model="model.HR.sss_number"
+                  class="form-control"
+                  id="officeLocation"
+                />
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="spaceBetween">
+                <label for="officeLocation">PHILHEALTH_NUMBER</label>
+                <input
+                  type="text"
+                  v-model="model.HR.philhealth_number"
+                  class="form-control"
+                  id="officeLocation"
+                />
+              </div>
+            </div>
+          </div>
 
-      <div class="col-12 mb-3">
-        <div class="col-3">HIGHEST_LVL_OF_ELIGIBILITY</div>
-        <div class="col-3">ELIGIBILITY CSC and Others</div>
-        <div class="col-3">ELIGIBILITY_License_RA_1080</div>
-        <div class="col-3">LICENSE</div>
-      </div>
+          <div class="col-12 mb-3">
+            <div class="col-3">
+              <div class="spaceBetween">
+                <label for="officeLocation">HIGHEST_LVL_OF_ELIGIBILITY</label>
+                <input
+                  type="text"
+                  v-model="model.HR.highest_level_of_eligibility_1st_2nd"
+                  class="form-control"
+                  id="officeLocation"
+                />
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="spaceBetween">
+                <label for="officeLocation">ELIGIBILITY CSC and Others</label>
+                <input
+                  type="text"
+                  v-model="model.HR.eligibility_csc_and_other_eligibilities"
+                  class="form-control"
+                  id="officeLocation"
+                />
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="spaceBetween">
+                <label for="officeLocation"> ELIGIBILITY_License_RA_1080</label>
+                <input
+                  type="text"
+                  v-model="model.HR.eligibility_license_ra_1080"
+                  class="form-control"
+                  id="officeLocation"
+                />
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="spaceBetween">
+                <label for="officeLocation">LICENSE</label>
+                <input
+                  type="text"
+                  v-model="model.HR.license"
+                  class="form-control"
+                  id="officeLocation"
+                />
+              </div>
+            </div>
+          </div>
 
-      <div class="col-12 mb-3">
-        <div class="col-3">HIGHEST_EDUCATION_COMPLETED</div>
-        <div class="col-3">DEGREE_AND_COURSE <br />(1st Course Vocational)</div>
-        <div class="col-3">
-          DEGREE_AND_COURSE <br />
-          (2nd Course)
+          <div class="col-12 mb-3">
+            <div class="col-3">
+              <div class="spaceBetween">
+                <label for="officeLocation">HIGHEST_EDUCATION_COMPLETED</label>
+                <input
+                  type="text"
+                  v-model="model.HR.highest_education_completed"
+                  class="form-control"
+                  id="officeLocation"
+                />
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="spaceBetween">
+                <label for="officeLocation"
+                  >DEGREE_AND_COURSE <br />(1st Course Vocational)</label
+                >
+                <input
+                  type="text"
+                  v-model="model.HR.degree_and_course_1st_course_vocational"
+                  class="form-control"
+                  id="officeLocation"
+                />
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="spaceBetween">
+                <label for="officeLocation"
+                  >DEGREE_AND_COURSE <br />
+                  (2nd Course)</label
+                >
+                <input
+                  type="text"
+                  v-model="model.HR.degree_and_course_2nd_course"
+                  class="form-control"
+                  id="officeLocation"
+                />
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="spaceBetween">
+                <label for="officeLocation">OTHER_COURSE</label>
+                <input
+                  type="text"
+                  v-model="model.HR.other_course"
+                  class="form-control"
+                  id="officeLocation"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 mb-3">
+            <div class="col-6">
+              <div class="spaceBetween">
+                <label for="officeLocation"
+                  >REMARKS_STATUS_OF_VACANT_POSITION</label
+                >
+                <input
+                  type="text"
+                  v-model="model.HR.remarks_status_of_vacant_position"
+                  class="form-control"
+                  id="officeLocation"
+                />
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="col-6">
+                <div class="spaceBetween">
+                  <label for="officeLocation">FORMER_INCUMBENT</label>
+                  <input
+                    type="text"
+                    v-model="model.HR.former_incumbent"
+                    class="form-control"
+                    id="officeLocation"
+                  />
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="spaceBetween">
+                  <label for="officeLocation">DATE_VACATED</label>
+                  <input
+                    type="text"
+                    v-model="model.HR.date_vacated"
+                    class="form-control"
+                    id="officeLocation"
+                  />
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="spaceBetween">
+                  <label for="officeLocation">MASTERS_OR_DOCTORAL_DEGREE</label>
+                  <input
+                    type="text"
+                    v-model="model.HR.masters_or_doctoral_degree"
+                    class="form-control"
+                    id="officeLocation"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="col-3">OTHER_COURSE</div>
-      </div>
-
-      <div class="col-12 mb-3">
-        <div class="col-6">REMARKS_STATUS_OF_VACANT_POSITION</div>
-        <div class="col-6">
-          <div class="col-6">FORMER_INCUMBENT</div>
-          <div class="col-6">DATE_VACATED</div>
-          <div class="col-12">MASTERS_OR_DOCTORAL_DEGREE</div>
-        </div>
-      </div>
-    </div> -->
         <!-- //TODO THIRD ROW END -->
         <!-- //TODO THIRD ROW END -->
         <!-- //TODO THIRD ROW END -->

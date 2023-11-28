@@ -66,7 +66,7 @@
                 <li class="list">
                   <a href="#" class="nav-link">
                     <i class="bx bx-bar-chart icon"></i>
-                    <span class="link">OSP</span>
+                    <span class="link">OSD</span>
                   </a>
                 </li>
               </router-link>

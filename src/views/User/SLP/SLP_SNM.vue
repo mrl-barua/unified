@@ -5,21 +5,22 @@
 
   <div class="stacked-rectangle col-12 col-md-3">
     <div class="shadow3">
-      <div class="rectangle" style="background-color: #FF4040">
+      <div class="rectangle" style="background-color: #ff4040">
         <div class="label">POOR</div>
         <div class="number"><b>282</b></div>
       </div>
-      <div class="rectangle" style="background-color: #4E91FD">
+      <div class="rectangle" style="background-color: #4e91fd">
         <div class="label">NON-POOR</div>
         <div class="number"><b>224</b></div>
       </div>
-      <div class="rectangle" style="background-color: #EEB600">
+      <div class="rectangle" style="background-color: #eeb600">
         <div class="label">NO MATCH</div>
         <div class="number"><b>202</b></div>
       </div>
     </div>
   </div>
 
+  <!-- 
   <div class="col-12 col-md-9">
     <div class="shadow1">
       <br />
@@ -82,14 +83,53 @@
         <p>Lorem Ipsum</p>
       </div>
     </div>
+  </div> -->
+
+  <!-- Revamp -->
+
+  <div class="col-12 col-md-9">
+    <div class="shadow3">
+      <div class="inside" style="padding: 10px">
+        <DataTable
+          id="table"
+          :paging="true"
+          :searching="true"
+          :info="true"
+          :responsive="true"
+          :length-change="true"
+          :length-menu="[10, 25, 50, 100]"
+          :language="{
+            paginate: {
+              previous: '<i class=\'fas fa-angle-left\'></i>',
+              next: '<i class=\'fas fa-angle-right\'></i>',
+            },
+          }"
+        >
+          <thead style="background: #133f5c" class="text-white">
+            <tr>
+              <th>MODALITY</th>
+              <th>TOTAL PROJECT COST FROM DSWD</th>
+              <th>TOTAL</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>No Data Available</td>
+              <td>No Data Available</td>
+              <td>No Data Available</td>
+            </tr>
+          </tbody>
+        </DataTable>
+      </div>
+    </div>
   </div>
 
   <div class="col-12 col-md-12">
     <div class="shadow2 forbarchart">
       <br />
-      <h5 class="fw-bold">COST FROM DSWD BY BARANGAY</h5>
+      <h5 class="fw-bold">STATUS BY MUNICIPALITY</h5>
       <br />
-      <div class="Barchart1"><BarChart :data="CostData" /></div>
+      <div class="Barchart1"><StackBarChart :data="CostData" /></div>
     </div>
   </div>
 
@@ -104,40 +144,76 @@ import Footer from "@/components/Footer";
 import BarChart from "@/components/ChartJS/Barchart";
 import PieChart from "@/components/ChartJS/PieChart";
 import DoughnutChart from "@/components/ChartJS/DoughnutChart";
+import HBarChart from "@/components/ChartJS/HBarchart";
+import StackBarChart from "@/components/ChartJS/StackBarchart";
+import HStackBarChart from "@/components/ChartJS/HStackBarchart";
+
+import DataTable from "datatables.net-vue3";
+import DataTablesCore from "datatables.net";
+import "datatables.net-responsive";
+DataTable.use(DataTablesCore);
 
 export default {
-  name: "SLPPA",
+  // name: "SLPSNM",
+  name: "SLPSNM",
+
   components: {
     Sidebar,
     Footer,
     BarChart,
     PieChart,
+    HBarChart,
     DoughnutChart,
+    StackBarChart,
+    HStackBarChart,
+    DataTable,
   },
 
   data() {
     return {
-      PageTitle: "SLP - Physical Accomplishment by Portfolio",
+      PageTitle: "SLP - Status Name Matching",
 
       CostData: {
         labels: [
-          "Sumimao",
-          "Malabog",
-          "Langub",
-          "Calinan Poblacion",
-          "8A, Poblacion A",
-          "Lasang",
-          "Bunawan",
-          "Buhangin Proper",
-          "Kilate",
-          "Calinan Proper",
+          "Padada",
+          "Magsaysay",
+          "Manay",
+          "Cateel",
+          "Caraga",
+          "Governor",
+          "City of Mati",
+          "Sta.Cruz",
+          "Sulop",
+          "Baganga",
+          "Maragusan",
+          "Laak",
+          "Digos",
+          "Tarragona",
+          "San Isidro",
         ],
-        label: ["ASSOCIATION-MANAGED"],
-        values: [
-          450000, 450000, 450000, 450000, 450000, 420000, 360000, 15000, 15000,
-          15000,
+        datasets: [
+          {
+            label: "POOR",
+            values: [
+              89, 56, 12, 45, 90, 34, 67, 90, 23, 87, 54, 10, 89, 23, 56,
+            ],
+            backgroundColor: ["#FF4040"],
+          },
+          {
+            label: "NON-POOR",
+            values: [
+              45, 78, 12, 67, 89, 23, 90, 12, 34, 56, 78, 90, 54, 32, 67,
+            ],
+            backgroundColor: ["#4E91FD"],
+          },
+          {
+            label: "NO MATCH",
+            values: [
+              23, 76, 12, 89, 56, 43, 87, 12, 56, 89, 34, 67, 90, 45, 89,
+            ],
+            backgroundColor: ["#EEB600"],
+          },
         ],
-        backgroundColor: ["#292D96"],
       },
     };
   },
