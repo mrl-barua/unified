@@ -51,7 +51,7 @@
           <div class="col-6">
             <div class="shadow-container">
               <p class="section2-header">Case Categories Served</p>
-              <div class="chart-container"><LineChart :data="SLPData" /></div>
+              <div class="chart-container"><BarChart :data="SLPData" /></div>
             </div>
           </div>
           <div class="col-6">
@@ -65,7 +65,7 @@
           <div class="col-6">
             <div class="shadow-container">
               <p class="section2-header">Sub - Categories Served</p>
-              <div class="chart-container"><LineChart :data="SLPData" /></div>
+              <div class="chart-container"><BarChart :data="SLPData" /></div>
             </div>
           </div>
           <div class="col-6">
@@ -81,6 +81,7 @@
         <div class="col-4">
           <p
             style="
+              padding-top: 20px;
               font-family: Inter;
               font-size: 20px;
               font-weight: 700;
@@ -162,6 +163,13 @@ export default {
       PageTitle: "CBSS",
 
       SLPData: {
+        labels: ["1st", "2nd", "3rd", "4th"],
+        label: ["Quarter"],
+        values: [0, 25, 75, 100],
+        backgroundColor: ["#C8C375"],  
+      },
+
+      BarData: {
         labels: ["1st", "2nd", "3rd", "4th"],
         label: ["Quarter"],
         values: [0, 25, 75, 100],
