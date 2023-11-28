@@ -3,7 +3,7 @@
 
   <br /><br /><br /><br />
 
-  <div class="col-12 col-md-10">
+  <div class="col-12 col-md-12">
     <div class="shadow2">
       <div class="inside" style="padding: 10px">
         <DataTable
@@ -23,12 +23,11 @@
         >
           <thead style="background: #133f5c" class="text-white">
             <tr>
-              <th>PDO</th>
+              <th>Name of SLPA/Payee</th>
               <th>Province</th>
               <th>City/Municipality</th>
               <th>Barangay</th>
-              <th>Modality</th>
-              <th>Amount</th>
+              <th>Status of Enterprise</th>
             </tr>
           </thead>
           <tbody>
@@ -38,23 +37,9 @@
               <td>No Data Available</td>
               <td>No Data Available</td>
               <td>No Data Available</td>
-              <td>No Data Available</td>
             </tr>
           </tbody>
         </DataTable>
-      </div>
-    </div>
-  </div>
-
-  <div class="stacked-rectangle col-12 col-md-2">
-    <div class="shadow3">
-      <div class="rectangle" style="background-color: #ff4040">
-        <div class="label">NO. OF PAX</div>
-        <div class="number"><b>282</b></div>
-      </div>
-      <div class="rectangle" style="background-color: #4e91fd">
-        <div class="label">AMOUNT</div>
-        <div class="number"><b>224</b></div>
       </div>
     </div>
   </div>
@@ -99,7 +84,7 @@ DataTable.use(DataTablesCore);
 
 export default {
   // name: "SLPSNM",
-  name: "SLPSNM",
+  name: "SLPSTAT",
 
   components: {
     Sidebar,
@@ -129,12 +114,12 @@ export default {
         label: ["PROVINCIAL BUDGET DISTRIBUTIONS"],
         values: [110, 200, 400, 150, 250, 200],
         backgroundColor: [
-          "#B78700",
-          "#D29E00",
-          "#EEB600",
-          "#EECA06",
-          "#F8E44B",
-          "#FCEA64",
+          "#1436B8",
+          "#4D4DDA",
+          "#5086C1",
+          "#6A9EDA",
+          "#84B6F4",
+          "#B2DAFA",
         ],
       },
 
