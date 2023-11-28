@@ -1,5 +1,5 @@
 <template>
-  <Sidebar :iconText="PageTitle" />
+   <Sidebar :iconText="PageTitle" :iconDetails="PageDetail" />
 
   <br /><br /><br /><br />
 
@@ -183,8 +183,8 @@ export default {
 
   data() {
     return {
-      PageTitle: "SLP - Capability Building Activities",
-
+      PageTitle: "Sustainable Livelihood Program",
+      PageDetail: "Capability Building Activities",
       ProvinceData: {
         labels: [
           "DAVAO CITY",

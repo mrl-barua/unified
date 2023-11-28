@@ -1,5 +1,5 @@
 <template>
-  <Sidebar :iconText="PageTitle" />
+  <Sidebar :iconText="PageTitle" :iconDetails="PageDetail" />
 
   <br /><br /><br /><br />
 
@@ -106,8 +106,8 @@ export default {
 
   data() {
     return {
-      PageTitle: "SLP - Budget Monitoring Tracker",
-
+      PageTitle: "Sustainable Livelihood Program",
+      PageDetail: "Budget Monitoring Tracker",
       ProvinceData: {
         labels: [
           "DAVAO ORIENTAL",
