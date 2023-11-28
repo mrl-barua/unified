@@ -1,5 +1,5 @@
 <template>
-  <Sidebar :iconText="PageTitle" />
+  <Sidebar :iconText="PageTitle" :iconDetails="PageDetail" />
 
   <br /><br /><br /><br />
 
@@ -171,8 +171,8 @@ export default {
 
   data() {
     return {
-      PageTitle: "SLP - Status Name Matching",
-
+      PageTitle: "Sustainable Livelihood Program",
+      PageDetail: "Status Name Matching",
       CostData: {
         labels: [
           "Padada",

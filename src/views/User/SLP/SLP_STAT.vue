@@ -1,5 +1,5 @@
 <template>
-  <Sidebar :iconText="PageTitle" />
+   <Sidebar :iconText="PageTitle" :iconDetails="PageDetail" />
 
   <br /><br /><br /><br />
 
@@ -100,8 +100,8 @@ export default {
 
   data() {
     return {
-      PageTitle: "SLPA - Enterprise Status 2022",
-
+      PageTitle: "Sustainable Livelihood Program",
+      PageDetail: "Enterprise Status 2022",
       ProvinceData: {
         labels: [
           "DAVAO ORIENTAL",

@@ -1,5 +1,5 @@
 <template>
-  <Sidebar :iconText="PageTitle" />
+   <Sidebar :iconText="PageTitle" :iconDetails="PageDetail" />
 
   <br /><br /><br /><br />
 
@@ -165,8 +165,8 @@ export default {
 
   data() {
     return {
-      PageTitle: "SLP - Physical Accomplishment by Portfolio",
-
+      PageTitle: "Sustainable Livelihood Program",
+      PageDetail: "Physical Accomplishment by Portfolio",
       CostData: {
         labels: [
           "Sumimao",

@@ -350,3 +350,8 @@
 - SLP_BMT (DONE)
 - SLP_CBA (DONE)
 - SLP_STAT (DONE)
+
+### version 7.3 - MARLO BARUA
+
+- Added HR View and Edit in ADMIN HR
+- Added Sidebar Title Indicator in all SLP PAGES IN USER VIEW

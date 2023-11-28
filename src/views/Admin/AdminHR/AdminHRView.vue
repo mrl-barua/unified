@@ -3,7 +3,494 @@
     <AdminSidebar :iconText="PageTitle" />
     <br /><br /><br /><br /><br />
     <div class="container-fluid wrapper">
-      <p>GWENCHANA</p>
+      <div class="col-12">
+        <p>DIVISION</p>
+        <p>{{ model.HR.division }}</p>
+
+        <!-- FIRST ROW -->
+        <div class="col-5 first-row">
+          <div class="col-12">
+            <div class="col-4">
+              <p class="headerText">ID</p>
+              <p v-if="model.HR.ID" class="headerContent">{{ model.HR.ID }}</p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+            <div class="col-4">
+              <p class="headerText">Section/Unit</p>
+              <p v-if="model.HR.section_unit" class="headerContent">
+                {{ model.HR.section_unit }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+            <div class="col-4">
+              <p class="headerText">ITEM NUMBER</p>
+              <p v-if="model.HR.item_number" class="headerContent">
+                {{ model.HR.item_number }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <p class="headerText">OFFICE LOCATION</p>
+            <p v-if="model.HR.office_location" class="headerContent">
+              {{ model.HR.office_location }}
+            </p>
+            <p v-else class="error headerContent">No Data</p>
+          </div>
+
+          <div class="col-12">
+            <div class="col-4">
+              <p class="headerText">DATE POSITION</p>
+              <p v-if="model.HR.date_position" class="headerContent">
+                {{ model.HR.date_position }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+            <div class="col-4">
+              <p class="headerText">POSITION TITLE</p>
+              <p v-if="model.HR.position_title" class="headerContent">
+                {{ model.HR.position_title }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+            <div class="col-4">
+              <p class="headerText">POSITION LEVEL</p>
+              <p v-if="model.HR.position_level" class="headerContent">
+                {{ model.HR.position_level }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <p class="headerText">PARENTHETICAL TITLE</p>
+            <p v-if="model.HR.parenthetical_title" class="headerContent">
+              {{ model.HR.parenthetical_title }}
+            </p>
+            <p v-else class="error headerContent">No Data</p>
+          </div>
+
+          <div class="col-12">
+            <div class="col-4">
+              <p class="headerText">SALARY STEP INCREMENT</p>
+              <p v-if="model.HR.salary_step_increment" class="headerContent">
+                {{ model.HR.salary_step_increment }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+            <div class="col-4">
+              <p class="headerText">MONTHY RATE</p>
+              <p v-if="model.HR.monthly_rate" class="headerContent">
+                {{ model.HR.monthly_rate }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+            <div class="col-4">
+              <p class="headerText">DESIGNATION</p>
+              <p v-if="model.HR.designation" class="headerContent">
+                {{ model.HR.designation }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="col-4">
+              <p class="headerText">DATE OF DESIGNATION</p>
+              <p v-if="model.HR.date_of_designation" class="headerContent">
+                {{ model.HR.date_of_designation }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+            <div class="col-4">
+              <p class="headerText">SPECIAL ORDER NO.</p>
+              <p v-if="model.HR.special_order_no" class="headerContent">
+                {{ model.HR.special_order_no }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+            <div class="col-4">
+              <p class="headerText">DATE FILLED UP ASSUMPTION</p>
+              <p
+                v-if="model.HR.date_filled_up_assumption"
+                class="headerContent"
+              >
+                {{ model.HR.date_filled_up_assumption }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <p class="headerText">OFFICE/BUREAU/SERVICE/PROGRAM</p>
+            <p
+              v-if="model.HR.office_bureau_service_program"
+              class="headerContent"
+            >
+              {{ model.HR.office_bureau_service_program }}
+            </p>
+            <p v-else class="error headerContent">No Data</p>
+          </div>
+          <div class="col-12">
+            <p class="headerText">FUND SOURCE FOR CONTRACTUAL</p>
+            <p
+              v-if="model.HR.fund_source_for_contractual"
+              class="headerContent"
+            >
+              {{ model.HR.fund_source_for_contractual }}
+            </p>
+            <p v-else class="error headerContent">No Data</p>
+          </div>
+
+          <div class="col-6">
+            <p class="headerText">MODEL OF ACCESSION</p>
+            <p v-if="model.HR.mode_of_accession" class="headerContent">
+              {{ model.HR.mode_of_accession }}
+            </p>
+            <p v-else class="error headerContent">No Data</p>
+          </div>
+          <div class="col-6">
+            <p class="headerText">MODEL OF SEPARTION</p>
+            <p v-if="model.HR.mode_of_separation" class="headerContent">
+              {{ model.HR.mode_of_separation }}
+            </p>
+            <p v-else class="error headerContent">No Data</p>
+          </div>
+        </div>
+
+        <!-- SECOND ROW -->
+        <div class="col-7 second-row">
+          <div class="col-12">
+            <div class="col-3">
+              <p class="headerText">LAST NAME</p>
+              <p v-if="model.HR.last_name" class="headerContent">
+                {{ model.HR.last_name }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+            <div class="col-3">
+              <p class="headerText">FIRST NAME</p>
+              <p v-if="model.HR.first_name" class="headerContent">
+                {{ model.HR.first_name }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+            <div class="col-3">
+              <p class="headerText">MIDDLE NAME</p>
+              <p v-if="model.HR.middle_name" class="headerContent">
+                {{ model.HR.middle_name }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+            <div class="col-3">
+              <p class="headerText">EXT.</p>
+              <p v-if="model.HR.ext" class="headerContent">
+                {{ model.HR.ext }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="col-3">
+              <p class="headerText">AGE</p>
+              <p v-if="model.HR.age" class="headerContent">
+                {{ model.HR.age }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+            <div class="col-3">
+              <p class="headerText">GENDER</p>
+              <p v-if="model.HR.gender" class="headerContent">
+                {{ model.HR.gender }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+            <div class="col-3">
+              <p class="headerText">CIVIL STATUS</p>
+              <p v-if="model.HR.civil_status" class="headerContent">
+                {{ model.HR.civil_status }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+            <div class="col-3">
+              <p class="headerText">DATE OF BIRTH</p>
+              <p v-if="model.HR.date_of_birth" class="headerContent">
+                {{ model.HR.date_of_birth }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="col-3">
+              <p class="headerText">STREET</p>
+              <p v-if="model.HR.street_current" class="headerContent">
+                {{ model.HR.street_current }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+            <div class="col-3">
+              <p class="headerText">PUROK</p>
+              <p
+                v-if="model.HR.purok_subdivision_current"
+                class="headerContent"
+              >
+                {{ model.HR.purok_subdivision_current }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+            <div class="col-3">
+              <p class="headerText">BARNGAY</p>
+              <p v-if="model.HR.barangay_current" class="headerContent">
+                {{ model.HR.barangay_current }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+            <div class="col-3">
+              <p class="headerText">CITY/MUNICIPALITY</p>
+              <p
+                v-if="model.HR.city_municipality_current"
+                class="headerContent"
+              >
+                {{ model.HR.city_municipality_current }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="col-4">
+              <p class="headerText">REGION</p>
+              <p v-if="model.HR.province_current" class="headerContent">
+                {{ model.HR.province_current }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+            <div class="col-4">
+              <p class="headerText">EMAIL ADDRESS</p>
+              <p
+                v-if="model.HR.active_and_working_email_address"
+                class="headerContent"
+              >
+                {{ model.HR.active_and_working_email_address }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+            <div class="col-4">
+              <p class="headerText">INDICATE WHETHER SENIOR CITIZEN</p>
+              <p
+                v-if="model.HR.indicate_whether_senior_citizen"
+                class="headerContent"
+              >
+                {{ model.HR.indicate_whether_senior_citizen }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+
+            <div class="col-6">
+              <p class="headerText">TYPE OF DISABILITY</p>
+              <p v-if="model.HR.type_of_disability" class="headerContent">
+                {{ model.HR.type_of_disability }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+            <div class="col-6">
+              <p class="headerText">INDICATE IF BELONG INDIGENEOUS GROUP</p>
+              <p
+                v-if="model.HR.indicate_if_indigenous_group"
+                class="headerContent"
+              >
+                {{ model.HR.indicate_if_indigenous_group }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+          </div>
+
+          <hr class="hr" />
+
+          <div class="col-12">
+            <div class="col-3">
+              <p class="headerText">EMPLOYEE ID NO.</p>
+              <p v-if="model.HR.employee_id_no" class="headerContent">
+                {{ model.HR.employee_id_no }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+            <div class="col-3">
+              <p class="headerText">ENTRY DATE IN DSWD</p>
+              <p v-if="model.HR.entry_date_in_dswd" class="headerContent">
+                {{ model.HR.entry_date_in_dswd }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+            <div class="col-3">
+              <p class="headerText">DATE OF ORIGINAL APPOINTMENT</p>
+              <p
+                v-if="model.HR.date_of_original_appointment"
+                class="headerContent"
+              >
+                {{ model.HR.date_of_original_appointment }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+            <div class="col-3">
+              <p class="headerText">DATE OF LAST PROMOTION</p>
+              <p v-if="model.HR.date_of_last_promotion" class="headerContent">
+                {{ model.HR.date_of_last_promotion }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="col-3">
+              <p class="headerText">GSIS NO.</p>
+              <p v-if="model.HR.gsis_number" class="headerContent">
+                {{ model.HR.gsis_number }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+            <div class="col-3">
+              <p class="headerText">BIR TIN NO.</p>
+              <p v-if="model.HR.bir_tin_number" class="headerContent">
+                {{ model.HR.bir_tin_number }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+            <div class="col-3">
+              <p class="headerText">SSS NO.</p>
+              <p v-if="model.HR.sss_number" class="headerContent">
+                {{ model.HR.sss_number }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+            <div class="col-3">
+              <p class="headerText">PHILHEALTH NO.</p>
+              <p v-if="model.HR.philhealth_number" class="headerContent">
+                {{ model.HR.philhealth_number }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="col-3">
+              <p class="headerText">PHILHEALTH NO.</p>
+              <p v-if="model.HR.philhealth_number" class="headerContent">
+                {{ model.HR.philhealth_number }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+            <div class="col-3">
+              <p class="headerText">ELIGIBILITY CSC AND OTHERS</p>
+              <p
+                v-if="model.HR.eligibility_csc_and_other_eligibilities"
+                class="headerContent"
+              >
+                {{ model.HR.eligibility_csc_and_other_eligibilities }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+            <div class="col-3">
+              <p class="headerText">ELIGIBILITY LICENSE RA 1080</p>
+              <p
+                v-if="model.HR.eligibility_license_ra_1080"
+                class="headerContent"
+              >
+                {{ model.HR.eligibility_license_ra_1080 }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+            <div class="col-3">
+              <p class="headerText">LICENSE</p>
+              <p v-if="model.HR.license" class="headerContent">
+                {{ model.HR.license }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="col-3">
+              <p class="headerText">HIGHEST EDUCATION COMPLETED</p>
+              <p
+                v-if="model.HR.highest_education_completed"
+                class="headerContent"
+              >
+                {{ model.HR.highest_education_completed }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+            <div class="col-3">
+              <p class="headerText">
+                DEGREE AND COURSE (1st Course Vocational)
+              </p>
+              <p
+                v-if="model.HR.degree_and_course_1st_course_vocational"
+                class="headerContent"
+              >
+                {{ model.HR.degree_and_course_1st_course_vocational }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+            <div class="col-3">
+              <p class="headerText">DEGREE AND COURSE (2nd Course)</p>
+              <p
+                v-if="model.HR.degree_and_course_2nd_course"
+                class="headerContent"
+              >
+                {{ model.HR.degree_and_course_2nd_course }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+            <div class="col-3">
+              <p class="headerText">OTHER COURSE</p>
+              <p v-if="model.HR.other_course" class="headerContent">
+                {{ model.HR.other_course }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="col-3">
+              <p class="headerText">REMARKS STATUS OF VACANT POSITION</p>
+              <p
+                v-if="model.HR.remarks_status_of_vacant_position"
+                class="headerContent"
+              >
+                {{ model.HR.remarks_status_of_vacant_position }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+            <div class="col-3">
+              <p class="headerText">REMARKS STATUS OF VACANT OSITION</p>
+              <p
+                v-if="model.HR.remarks_status_of_vacant_position"
+                class="headerContent"
+              >
+                {{ model.HR.remarks_status_of_vacant_position }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+            <div class="col-3">
+              <p class="headerText">FORMER INCUMBENT</p>
+              <p v-if="model.HR.former_incumbent" class="headerContent">
+                {{ model.HR.former_incumbent }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+            <div class="col-3">
+              <p class="headerText">DATE VACATED</p>
+              <p v-if="model.HR.date_vacated" class="headerContent">
+                {{ model.HR.date_vacated }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -25,6 +512,7 @@ export default {
       // The model for the form inputs  (the data that will be sent to the backend) is defined here as an empty object with the following properties: Hr
       model: {
         HR: {
+          ID: "",
           division: "",
           section_unit: "",
           office_location: "",
@@ -120,6 +608,7 @@ export default {
           console.log(res.data.HR);
 
           // Check if hrData is null or empty
+          this.model.HR.ID = hrData.ID;
           this.model.HR.division = hrData.division;
           this.model.HR.section_unit = hrData.section_unit;
           this.model.HR.office_location = hrData.office_location;
@@ -234,40 +723,40 @@ export default {
         });
     },
     // The updateHR() function is used to update the data of the HR with the given ID in the database using the backend API endpoint for updating HR data
-    updateHR(HrID) {
-      var mythis = this;
-      axios
-        .put(
-          `http://127.0.0.1:8000/api/hrlist/${HrID}/edit`,
-          // The data to be updated is passed as a parameter to the axios.put() function
-          // as the second parameter (the first parameter is the API endpoint) in the form of
-          // an object with the following properties: Hr (which contains the data to be updated)
-          // and _method (which is set to "PUT" to indicate that the data will be updated)
-          this.model.Hr
-        )
-        .then((res) => {
-          console.log(res.data);
-          alert(res.data.message);
+    // updateHR(HrID) {
+    //   var mythis = this;
+    //   axios
+    //     .put(
+    //       `http://127.0.0.1:8000/api/hrlist/${HrID}/edit`,
+    //       // The data to be updated is passed as a parameter to the axios.put() function
+    //       // as the second parameter (the first parameter is the API endpoint) in the form of
+    //       // an object with the following properties: Hr (which contains the data to be updated)
+    //       // and _method (which is set to "PUT" to indicate that the data will be updated)
+    //       this.model.Hr
+    //     )
+    //     .then((res) => {
+    //       console.log(res.data);
+    //       alert(res.data.message);
 
-          this.errorList = "";
+    //       this.errorList = "";
 
-          window.location.reload(); // reload the page after updating the data
-        })
-        .catch(function (error) {
-          if (error.response) {
-            if (error.response.status === 422) {
-              mythis.errorList = error.response.data.errors;
-            }
-            if (error.response.status === 404) {
-              alert(error.response.data.message);
-            }
-          } else if (error.request) {
-            console.log(error.request);
-          } else {
-            console.log("error", error.message);
-          }
-        });
-    },
+    //       window.location.reload(); // reload the page after updating the data
+    //     })
+    //     .catch(function (error) {
+    //       if (error.response) {
+    //         if (error.response.status === 422) {
+    //           mythis.errorList = error.response.data.errors;
+    //         }
+    //         if (error.response.status === 404) {
+    //           alert(error.response.data.message);
+    //         }
+    //       } else if (error.request) {
+    //         console.log(error.request);
+    //       } else {
+    //         console.log("error", error.message);
+    //       }
+    //     });
+    // },
   },
 };
 </script>
@@ -311,6 +800,36 @@ export default {
   letter-spacing: 0em;
   text-align: left;
 }
+.error {
+  color: red;
+}
+
+.headerText {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.headerContent {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.first-row {
+  border-right: 1px solid #000000;
+}
+
+.second-row {
+  padding-left: 10px;
+}
+
 .error {
   color: red;
 }
