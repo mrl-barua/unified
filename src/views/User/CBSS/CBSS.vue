@@ -2,464 +2,242 @@
   <div>
     <Sidebar :iconText="PageTitle" />
     <br /><br /><br /><br />
-    
-  <div class="col-12">
-    <div class="dashboard-box" style=" height:500px;">
-        <div style="
-            background-color: ;
-            color: black;
-            padding: 10px; 
-            font-weight: 800;
-            font-size: 30px;
-            text-align: center;
-          "
-        >
-          DASHBOARD SUMMARY
-        </div>
-        <!-- FIRST ROW FIRST COLUMN -->
-        <div class="first">
-          <div class="col-sm-4">
-            <div class="col-12">
-            <p>Total Number of <br> Clients Serve </p>
-              <div class="zero">
-                  <span id="clientServe">00</span>
-              </div>
-            </div>
+    <div class="col-12 wrapper container-fluid col-12">
+      <section class="dashboard-summary">
+        <div class="dashboard-container">
+          <h1>DASHBOARD SUMMARY</h1>
           <div class="col-12">
-            <br>
-              <p>Financial Assistance <br> Amount Given</p>
-              <div class="zero">
-              <span id="clientServe">00</span>
+            <div class="col-4">
+              <p class="dashboard-text">Total Number of Clients Served</p>
+              <p class="dashboard-value">0</p>
+              <br />
+              <p class="dashboard-text">Financial Assistance Amount Given</p>
+              <p class="dashboard-value">00</p>
             </div>
+            <div class="col-4">
+              <p class="dashboard-text">Gender of Clients Served</p>
+              <p>FEMALE <span>0</span></p>
+              <p>MALE <span>0</span></p>
+              <p class="dashboard-text">Mode of Admissions</p>
+              <p>FEMALE <span>0</span></p>
+              <p>MALE <span>0</span></p>
+            </div>
+            <div class="col-4">
+              <p class="dashboard-text">Number of Case Categories</p>
+              <p class="dashboard-value">0</p>
+              <p class="dashboard-text">Number of Non- Monetary Services</p>
+              <p class="dashboard-value">0</p>
             </div>
           </div>
         </div>
-        <!-- FIRST ROW SECOND COLUMN -->
-        <div class="col-sm-4">
-          <div class="first">
-          <p>Gender of Clients Serve</p></div>
-          <div class="col-12">
-            <p>FEMALE <span id="genderFemaleServe">00</span> %</p>
-            <hr class="hr" />
-            <p>MALE <span id="genderMaleServe">00</span> %</p>
-          </div>
-          <div class="first">
-          <p>Mode of Admission</p></div>
-          <div class="col-12">
-            <p>WALK-IN</p>
-            <p id="walkInAdmission">00</p>
-            <hr class="hr" />
-            <p>DSWD...</p>
-            <p id="dswdAdmission">00</p>
-          </div>
-        </div>
+      </section>
 
-        <!-- FIRST ROW THIRD COLUMN -->
-        <div class="first">
-            <div class="col-sm-4">
-                <div class="col-12">
-                  <p>Number of Case <br> Categories</p>
-                  <div class="zero">
-                      <p id="caseCategories">00</p>
-                    </div>
-                </div>
-              <div class="col-12" >
-                <br>
-                <p>Number of Non- <br> Monetary Services</p>
-                <div class="zero">
-                  <p id="nonMonetaryServices">00</p>
-                </div>
-              </div>
-            </div>
-          </div>
-      </div>
-
-      <!--client served per quarter-->
-      <div class="col-sm-6">
+      <section class="barchart-section col-12">
         <div class="col-12">
-              <div class="dashboard-box" >
-                <div
-                  style="
-                    background-color: ;
-                    color: black;
-                    padding: 10px;
-                    font-weight: 800;
-                    font-size: 20px;
-                    text-align: center;
-                  "
-                >
-                  Clients Served per Quarter
-                </div>
-              </div>
+          <div class="col-6">
+            <div class="shadow-container">
+              <p class="section2-header">Clients Served per Quarter</p>
+              <div class="chart-container"><LineChart :data="SLPData" /></div>
             </div>
           </div>
-        <div class="col-sm-6">
-          <div class="col-12">
-            <div class="dashboard-box" > 
-              <div
-                style="
-                  background-color: ;
-                  color: black;
-                  padding: 10px;
-                  font-weight: 800;
-                  font-size: 20px;
-                  text-align: center;
-                "
-              > 
-                Clients Served per Age and Sex
-              </div>
-           </div>
+          <div class="col-6">
+            <div class="shadow-container">
+              <p class="section2-header">Clients Served per Age and Sex</p>
+              <div class="chart-container"><LineChart :data="SLPData" /></div>
+            </div>
+          </div>
         </div>
-      </div>
-    
-<!--case category-->
-      <div class="col-6 ">
-        <div class="dashboard-box">
-          <div
+        <div class="col-12">
+          <div class="col-6">
+            <div class="shadow-container">
+              <p class="section2-header">Case Categories Served</p>
+              <div class="chart-container"><BarChart :data="SLPData" /></div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="shadow-container">
+              <p class="section2-header">Financial Amount Served</p>
+              <div class="chart-container"><LineChart :data="SLPData" /></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="col-6">
+            <div class="shadow-container">
+              <p class="section2-header">Sub - Categories Served</p>
+              <div class="chart-container"><BarChart :data="SLPData" /></div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="shadow-container">
+              <p class="section2-header">Financial Amount Served</p>
+              <div class="chart-container"><LineChart :data="SLPData" /></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="col-12">
+        <div class="col-4">
+          <p
             style="
-              background-color: ;
-              color: black;
-              padding: 10px;
-              font-weight: 800;
+              padding-top: 20px;
+              font-family: Inter;
               font-size: 20px;
+              font-weight: 700;
+              line-height: 24px;
+              letter-spacing: 0em;
               text-align: center;
             "
           >
-            Case Category Served
-            </div>
-          </div>
+            Non-Monetary Services Served
+          </p>
 
-        <div class="dashboard-box" >
-          <div
+          <div class="shadow-container">
+            <p class="section2-header">Financial Amount Served</p>
+            <div class="chart-container"><LineChart :data="SLPData" /></div>
+          </div>
+        </div>
+        <div class="col-8">
+          <p
             style="
-              background-color: ;
-              color: black;
-              padding: 10px;
-              font-weight: 800;
-              font-size: 20px;
+              font-family: Inter;
+              font-size: 25px;
+              font-weight: 700;
+              line-height: 30px;
+              letter-spacing: 0em;
               text-align: center;
             "
           >
-            Sub Category Served
+            CBSS Staff Monitoring
+          </p>
+          <div class="col-6">
+            <div class="shadow-container">
+              <p class="section2-header">Financial Amount Served</p>
+              <div class="chart-container"><LineChart :data="SLPData" /></div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="shadow-container">
+              <p class="section2-header">Financial Amount Served</p>
+              <div class="chart-container"><LineChart :data="SLPData" /></div>
             </div>
           </div>
         </div>
-
-        <!--Financial Amount served-->
-      <div class="col-6 ">
-          
-        <div class="dashboard-box"> 
-          <div
-            style="
-              background-color: ;
-              color: black;
-              padding: 10px;
-              font-weight: 800;
-              font-size: 20px;
-              text-align: center;
-            "
-          > 
-          Financial Amount served
-          </div>
-        </div>
-
-        <div class="dashboard-box"> 
-          <div
-            style="
-              background-color: ;
-              color: black;
-              padding: 10px;
-              font-weight: 800;
-              font-size: 20px;
-              text-align: center;
-            "
-          > 
-          Financial Amount served
-          </div>
-        </div>
-      </div>
-    <!--Non-Monetary Services Served-->
-      <div class="col-4 ">
-        <div class ="col-12">
-          <div class="dashboard-blank">
-              <div
-                style="
-                  background-color: ;
-                  color: black;
-                  padding: 10px;
-                  font-weight: 800;
-                  font-size: 20px;
-                  text-align: center;
-                "
-              > 
-              Non-Monetary Services Served
-            </div> 
-            </div>
-          </div>
-        </div>
- <!--CBSS Staff Monitoring-->
-      <div class="col-8 ">
-        <div class ="col-12">
-          <div class="dashboard-blank">
-              <div
-                style="
-                  background-color: ;
-                  color: black;
-                  padding: 10px;
-                  font-weight: 800;
-                  font-size: 20px;
-                  text-align: center;
-                "
-              > 
-              CBSS Staff Monitoring
-            </div>
-          </div>
-        </div>
-      </div>
-  <!--Non-Monetary Services Served Inside box-->  
-      <div class="col-4 ">
-        <div class ="col-12">
-          <div class="dashboard-box" style="height:300px;"> 
-            <div class="Non-monetary">
-              
-              <div class="col-6">
-                <div class="col-12">                 
-                  <p> Service Name </p>
-                 </div>
-                </div>
-              
-
-              <div class="col-6">
-                <div class="col-12">               
-                   <p>Number of Person Served</p>
-                </div>
-              </div>
-            </div> 
-          </div>
-        </div>
-     </div>
-
-        <!--CBSS Staff Monitoring Inside Box-->
-        <div class="col-4">
-          <div class ="col-12">
-            <div class="dashboard-box" style="height:300px;"> 
-            <div class="Non-monetary">
-              <div class="col-6">
-                <div class="col-12">                  
-                    Responsible Person
-                  </div>
-                </div>
-              
-              <div class="col-6">
-                <div class="col-12">                
-                   Total Number of Client Served
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-        <div class="col-4">
-          <div class ="col-12">
-            <div class="dashboard-box" style="height:300px;"> 
-            <div class="Non-monetary">
-              <div class="col-6">
-                <div class="col-12">
-                    Responsible Person
-                  </div>
-                </div>
-              
-
-              <div class="col-6">
-                <div class="col-12">
-                  Total Number of Categories Served
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-
-      
-      
-      </div>
-    </div>   
+      </section>
+    </div>
   </div>
 </template>
 
 <script>
 import { backendURL } from "@/config.js";
 import axios from "axios";
-
-import BarChart from "@/components/ChartJS/Barchart";
-import LineChart from "@/components/ChartJS/LineChart";
+import Sidebar from "@/components/Sidebar.vue";
 import Footer from "@/components/Footer";
-import Sidebar from "@/components/Sidebar";
+import BarChart from "@/components/ChartJS/Barchart";
+import PieChart from "@/components/ChartJS/PieChart";
+import DoughnutChart from "@/components/ChartJS/DoughnutChart";
+import HBarChart from "@/components/ChartJS/HBarchart";
+import StackBarChart from "@/components/ChartJS/StackBarchart";
+import HStackBarChart from "@/components/ChartJS/HStackBarchart";
+import BarChartM from "@/components/ChartJS/BarchartM.vue";
+import LineChart from "@/components/ChartJS/LineChart.vue";
 
 export default {
-  name: "Dashboard",
+  name: "CBSS",
   components: {
-    Footer,
     Sidebar,
-    BarChart,
     LineChart,
+    Footer,
+    BarChart,
+    PieChart,
+    HBarChart,
+    DoughnutChart,
+    StackBarChart,
+    HStackBarChart,
+    BarChartM,
   },
+
   data() {
     return {
       PageTitle: "CBSS",
-      ClusterData: null, // Initialize barChartData as null
-      RegionData: null,
+
+      SLPData: {
+        labels: ["1st", "2nd", "3rd", "4th"],
+        label: ["Quarter"],
+        values: [0, 25, 75, 100],
+        backgroundColor: ["#C8C375"],  
+      },
+
+      BarData: {
+        labels: ["1st", "2nd", "3rd", "4th"],
+        label: ["Quarter"],
+        values: [0, 25, 75, 100],
+        backgroundColor: ["#C8C375"],
+      },
     };
   },
-  methods: {
-    ClusterFetchData() {
-      return axios
-        .get(`${backendURL}/api/cluster`)
-        .then((response) => {
-          // Initialize data arrays
-          const southCluster = [];
-          const cluster1 = [];
-          const northCluster = [];
-          const unclustered = [];
-          const cluster2 = [];
-          const senior = [];
-
-          response.data.forEach((item) => {
-            const clusterName = item.Cluster;
-
-            switch (clusterName) {
-              case "South Cluster":
-                southCluster.push(item);
-                break;
-              case "Cluster 1":
-                cluster1.push(item);
-                break;
-              case "North Cluster":
-                northCluster.push(item);
-                break;
-              case "Unclustered":
-                unclustered.push(item);
-                break;
-              case "Cluster 2":
-                cluster2.push(item);
-                break;
-              case "Senior Citizens Center":
-                senior.push(item);
-                break;
-              default:
-                // Handle other cases if necessary
-                break;
-            }
-          });
-
-          // Calculate data lengths
-          const southClusterLength = southCluster.length;
-          const cluster1Length = cluster1.length;
-          const northClusterLength = northCluster.length;
-          const unclusteredLength = unclustered.length;
-          const cluster2Length = cluster2.length;
-          const seniorLength = senior.length;
-
-          // Prepare and return data
-          const clusterdata = {
-            labels: [
-              "Unclustered",
-              "Cluster 1",
-              "North Cluster",
-              "South Cluster",
-              "Senior Citizen",
-              "Cluster 2",
-            ],
-            label: ["Cluster"],
-            values: [
-              unclusteredLength,
-              cluster1Length,
-              northClusterLength,
-              southClusterLength,
-              seniorLength,
-              cluster2Length,
-            ],
-            backgroundColor: [
-              "rgba(25, 82, 105, 0.6)",
-              "rgba(0, 255, 0, 0.6)",
-              "rgba(0, 0, 255, 0.6)",
-              "rgba(0, 0, 255, 0.6)",
-              "rgba(128, 0, 128, 0.6",
-            ],
-          };
-          // Set barChartData to the computed data
-          this.ClusterData = clusterdata;
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-
-          // Prepare and return data if in case there is an api catch error
-          const clusterdata = {
-            labels: [
-              "Unclustered",
-              "Cluster 1",
-              "North Cluster",
-              "South Cluster",
-              "Senior Citizen",
-              "Cluster 2",
-            ],
-            label: ["Cluster"],
-            values: [1, 1, 1, 1, 1, 1],
-            backgroundColor: [
-              "rgba(25, 82, 105, 0.6)",
-              "rgba(0, 255, 0, 0.6)",
-              "rgba(0, 0, 255, 0.6)",
-              "rgba(0, 0, 255, 0.6)",
-              "rgba(128, 0, 128, 0.6)",
-            ],
-          };
-          // Set catcc error barChartData to the computed data
-          this.ClusterData = clusterdata;
-        });
-    },
-  },
-  mounted() {
-    // Automatically fetch data when the component is mounted
-    this.ClusterFetchData();
-  },
+  methods: {},
+  mounted() {},
 };
 </script>
 
 <style scoped>
-.dashboard-box {
-  
-  background-color: #f0f0f0;
-  padding: 20px;
-  margin: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+h1 {
+  font-family: Inter;
+  font-size: 43px;
+  font-weight: 700;
+  line-height: 52px;
+  letter-spacing: 0em;
+  text-align: center;
 }
-.dashboard-blank {
-  
 
-  padding: 20px;
-  margin: 20px;
-  border-radius: 5px;
-
-}
-.first{
-  color: black;
-  line-height:30px;
-  font-size: 20px;
+.dashboard-text {
+  font-family: Inter;
+  font-size: 30px;
   font-weight: 600;
+  line-height: 36px;
+  letter-spacing: 0em;
+  text-align: center;
 }
-.zero{
-  font-size: 50px;
-  font-weight: bold; 
-}
-.col-6 second-column{
-  
-}
-.Non-monetary{
-  color:black;
-  font-weight: 600;
 
+.dashboard-value {
+  font-family: Inter;
+  font-size: 70px;
+  font-weight: 600;
+  line-height: 85px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+.section2-header {
+  font-family: Inter;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 30px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+.chart-container {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.dashboard-container {
+  width: 100%;
+  height: 100%;
+  margin: 10px auto;
+  padding: 20px 0px 20px 0px;
+  box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.15);
+}
+
+.shadow-container {
+  box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.15);
+  width: 98%;
+  height: 100%;
+  margin: auto;
+  margin-top: 10px;
 }
 </style>
