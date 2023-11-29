@@ -360,3 +360,8 @@
 
 - Partially implemented OSP Pages with no contents
 - Temporarily assigned some data in CBSS USER VIEW
+
+### version 7.5 - KIARA HAGUNOB
+
+- Edited the chart color in HR
+- Fixed Logo margin on Header
