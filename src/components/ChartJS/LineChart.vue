@@ -43,17 +43,25 @@ export default {
   },
   methods: {
     prepareChartData(data) {
-      // You can modify this function to format the data as needed for the chart.
-      return {
-        labels: data.labels,
-        datasets: [
-          {
-            label: data.label,
-            data: data.values,
-            backgroundColor: data.backgroundColor,
-          },
-        ],
-      };
+      if (data.datasets) {
+        // If data has a datasets property, use it directly
+        return {
+          labels: data.labels,
+          datasets: data.datasets,
+        };
+      } else {
+        // Otherwise, create a single dataset from the label, values, and backgroundColor properties
+        return {
+          labels: data.labels,
+          datasets: [
+            {
+              label: data.label,
+              data: data.values,
+              backgroundColor: data.backgroundColor,
+            },
+          ],
+        };
+      }
     },
   },
 };
