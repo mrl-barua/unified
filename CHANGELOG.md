@@ -354,8 +354,14 @@
 ### version 7.3 - MARLO BARUA
 
 - Added HR View and Edit in ADMIN HR
-- Added Sidebar Title Indicator in all SLP PAGES IN USER VIEW\
+- Added Sidebar Title Indicator in all SLP PAGES IN USER VIEW
 
 ### version 7.4 - MARLO BARUA
 
 - Partially implemented OSP Pages with no contents
+- Temporarily assigned some data in CBSS USER VIEW
+
+### version 7.5 - KIARA HAGUNOB
+
+- Edited the chart color in HR
+- Fixed Logo margin on Header

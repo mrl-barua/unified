@@ -49,6 +49,6 @@ header {
 header img {
   width: 280px;
 
-  margin: 20px 0px 10px 20px;
+  margin: 13px 0px 10px 20px;
 }
 </style>

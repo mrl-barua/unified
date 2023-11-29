@@ -16,11 +16,33 @@
             </div>
             <div class="col-4">
               <p class="dashboard-text">Gender of Clients Served</p>
-              <p>FEMALE <span>0</span></p>
-              <p>MALE <span>0</span></p>
+              <div class="col-6">
+                <p class="dashboard-center text-center">FEMALE</p>
+              </div>
+              <div class="col-6">
+                <p class="dashboard-center text-center">0</p>
+              </div>
+
+              <div class="col-6">
+                <p class="dashboard-center text-center">MALE</p>
+              </div>
+              <div class="col-6">
+                <p class="dashboard-center text-center">0</p>
+              </div>
               <p class="dashboard-text">Mode of Admissions</p>
-              <p>FEMALE <span>0</span></p>
-              <p>MALE <span>0</span></p>
+              <div class="col-6">
+                <p class="dashboard-center text-center">WALK-IN</p>
+              </div>
+              <div class="col-6">
+                <p class="dashboard-center text-center">00%</p>
+              </div>
+
+              <div class="col-6">
+                <p class="dashboard-center text-center">DSW D...</p>
+              </div>
+              <div class="col-6">
+                <p class="dashboard-center text-center">00 %</p>
+              </div>
             </div>
             <div class="col-4">
               <p class="dashboard-text">Number of Case Categories</p>
@@ -37,13 +59,17 @@
           <div class="col-6">
             <div class="shadow-container">
               <p class="section2-header">Clients Served per Quarter</p>
-              <div class="chart-container"><LineChart :data="SLPData" /></div>
+              <div class="chart-container lineChart">
+                <LineChart :data="SLPData" />
+              </div>
             </div>
           </div>
           <div class="col-6">
             <div class="shadow-container">
               <p class="section2-header">Clients Served per Age and Sex</p>
-              <div class="chart-container"><LineChart :data="SLPData" /></div>
+              <div class="chart-container lineChart">
+                <LineChart :data="sexData" />
+              </div>
             </div>
           </div>
         </div>
@@ -57,7 +83,7 @@
           <div class="col-6">
             <div class="shadow-container">
               <p class="section2-header">Financial Amount Served</p>
-              <div class="chart-container"><LineChart :data="SLPData" /></div>
+              <div class="chart-container"><BarChart :data="SLPData" /></div>
             </div>
           </div>
         </div>
@@ -65,13 +91,11 @@
           <div class="col-6">
             <div class="shadow-container">
               <p class="section2-header">Sub - Categories Served</p>
-              <div class="chart-container"><BarChart :data="SLPData" /></div>
             </div>
           </div>
           <div class="col-6">
             <div class="shadow-container">
               <p class="section2-header">Financial Amount Served</p>
-              <div class="chart-container"><LineChart :data="SLPData" /></div>
             </div>
           </div>
         </div>
@@ -95,7 +119,6 @@
 
           <div class="shadow-container">
             <p class="section2-header">Financial Amount Served</p>
-            <div class="chart-container"><LineChart :data="SLPData" /></div>
           </div>
         </div>
         <div class="col-8">
@@ -114,13 +137,11 @@
           <div class="col-6">
             <div class="shadow-container">
               <p class="section2-header">Financial Amount Served</p>
-              <div class="chart-container"><LineChart :data="SLPData" /></div>
             </div>
           </div>
           <div class="col-6">
             <div class="shadow-container">
               <p class="section2-header">Financial Amount Served</p>
-              <div class="chart-container"><LineChart :data="SLPData" /></div>
             </div>
           </div>
         </div>
@@ -165,8 +186,28 @@ export default {
       SLPData: {
         labels: ["1st", "2nd", "3rd", "4th"],
         label: ["Quarter"],
-        values: [0, 25, 75, 100],
-        backgroundColor: ["#C8C375"],  
+        values: [50, 75, 225, 75],
+        backgroundColor: ["#C8C375"],
+      },
+
+      sexData: {
+        labels: ["0", "5-17", "18-28", "29-39", "40-50", "51-61", "62 & above"],
+        datasets: [
+          {
+            label: "Female",
+            data: [23, 75, 25, 21, 54, 52, 12, 66],
+            backgroundColor: "red",
+            fill: false, // for line chart
+            borderColor: "red", // for line chart
+          },
+          {
+            label: "Male",
+            data: [13, 25, 35, 11, 44, 52, 22, 76],
+            backgroundColor: "blue",
+            fill: false, // for line chart
+            borderColor: "blue", // for line chart
+          },
+        ],
       },
 
       BarData: {
@@ -210,6 +251,15 @@ h1 {
   text-align: center;
 }
 
+.dashboard-center {
+  font-family: Inter;
+  font-size: 25px;
+  font-weight: 400;
+  line-height: 30px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
 .section2-header {
   font-family: Inter;
   font-size: 25px;
@@ -217,6 +267,7 @@ h1 {
   line-height: 30px;
   letter-spacing: 0em;
   text-align: center;
+  padding-top: 20px;
 }
 
 .chart-container {
@@ -227,7 +278,7 @@ h1 {
 
 .dashboard-container {
   width: 100%;
-  height: 100%;
+  height: 500px;
   margin: 10px auto;
   padding: 20px 0px 20px 0px;
   box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.15);
@@ -236,8 +287,13 @@ h1 {
 .shadow-container {
   box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.15);
   width: 98%;
-  height: 100%;
+  height: 400px;
   margin: auto;
   margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.lineChart {
+  padding-bottom: 100px;
 }
 </style>

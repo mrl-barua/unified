@@ -241,11 +241,11 @@ export default {
               casualLength,
             ],
             backgroundColor: [
-              "rgba(235, 95, 94, 1)",
-              "rgba(248, 218, 69, 1)",
-              "rgba(186, 194, 255, 1)",
-              "rgba(132, 182, 244, 1)",
+              "rgba(226, 80, 76, 1)",
               "rgba(106, 158, 218, 1)",
+              "rgba(238, 202, 6, 1)",
+              "rgba(255, 105, 97, 1)",
+              "rgba(132, 182, 244, 1)",
             ],
           };
           // Set barChartData to the computed data
@@ -259,9 +259,11 @@ export default {
             label: ["Employment Data"],
             values: [1, 1, 1, 1, 1],
             backgroundColor: [
-              "rgba(25, 82, 105, 0.6)",
-              "rgba(0, 255, 0, 0.6)",
-              "rgba(0, 0, 255, 0.6)",
+              "rgba(226, 80, 76, 1)",
+              "rgba(106, 158, 218, 1)",
+              "rgba(238, 202, 6, 1)",
+              "rgba(255, 105, 97, 1)",
+              "rgba(132, 182, 244, 1)",
             ],
           };
           // Set barChartData to the computed data
