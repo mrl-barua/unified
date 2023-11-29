@@ -354,4 +354,8 @@
 ### version 7.3 - MARLO BARUA
 
 - Added HR View and Edit in ADMIN HR
-- Added Sidebar Title Indicator in all SLP PAGES IN USER VIEW
+- Added Sidebar Title Indicator in all SLP PAGES IN USER VIEW\
+
+### version 7.4 - MARLO BARUA
+
+- Partially implemented OSP Pages with no contents
