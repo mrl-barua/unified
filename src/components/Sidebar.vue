@@ -72,7 +72,7 @@
               </router-link>
 
               <!-- reference from HR  -->
-              <li class="list">
+              <li class="list visually-hidden">
                 <div class="dropdown">
                   <a
                     class="nav-link dropdown-toggle"

@@ -51,7 +51,7 @@
                 </li>
               </router-link>
 
-              <router-link to="/adminslp" class="custom-link">
+              <router-link to="/adminslp" class="custom-link visually-hidden">
                 <li class="list">
                   <a href="#" class="nav-link">
                     <i class="bx bx-pie-chart-alt-2 icon"></i>
