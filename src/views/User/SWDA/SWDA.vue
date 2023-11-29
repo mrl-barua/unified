@@ -247,39 +247,58 @@
               CLUSTERS
             </p>
           </div>
-          <div class="col-12 col-md-3 clusterdiv">
-            <div class="color text-white" style="background-color: #FF6961">
+          <div class="col-12 col-md-2 clusterdiv">
+            <div class="color text-white" style="background-color: #ff6961">
               <p class="clusterText">Cluster 1</p>
-              <div class="hover-text" style="background-color: #FF6961">
+              <div class="hover-text" style="background-color: #ff6961">
                 {{ cluster1Length }}
               </div>
             </div>
           </div>
-          <div class="col-12 col-md-3 clusterdiv">
-            <div class="color text-white" style="background-color: #FF9688">
+          <div class="col-12 col-md-2 clusterdiv">
+            <div class="color text-white" style="background-color: #ff9688">
               <p class="clusterText">Unclustered</p>
-              <div class="hover-text" style="background-color: #FF9688">
+              <div class="hover-text" style="background-color: #ff9688">
                 {{ unclusteredLength }}
               </div>
             </div>
           </div>
           <div class="col-12 col-md-2 clusterdiv">
-            <div class="color text-white" style="background-color: #EECA06">
+            <div class="color text-white" style="background-color: #eeca06">
               <p class="clusterText">Cluster 2</p>
-              <div class="hover-text" style="background-color: #EECA06">
+              <div class="hover-text" style="background-color: #eeca06">
                 {{ cluster2Length }}
               </div>
             </div>
           </div>
           <div class="col-12 col-md-2 clusterdiv">
-            <div class="color text-white" style="background-color: #FAE860">
+            <div class="color text-white" style="background-color: #fae860">
               <p class="clusterText">North Cluster</p>
-              <div class="hover-text" style="background-color: #FAE860">
+              <div class="hover-text" style="background-color: #fae860">
                 {{ northClusterLength }}
               </div>
             </div>
           </div>
-          <div class="col-12 col-md-2 clusterdiv2">
+
+          <div class="col-12 col-md-2 clusterdiv">
+            <div class="color text-white" style="background-color: #6a9eda">
+              <p class="clusterText">South Cluster</p>
+              <div class="hover-text" style="background-color: #6a9eda">
+                {{ southClusterLength }}
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-2 clusterdiv">
+            <div class="color text-white" style="background-color: #b2dafa">
+              <p class="clusterText">Senior Citizens Cluster</p>
+              <div class="hover-text" style="background-color: #b2dafa">
+                {{ seniorLength }}
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="col-12 col-md-2 clusterdiv2">
             <div
               class="col-12 clusterdiv clusterdiv3 text-white"
               style="background-color: #6A9EDA"
@@ -298,7 +317,7 @@
                 {{ seniorLength }}
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
       <div class="col-12 col-md-6">
