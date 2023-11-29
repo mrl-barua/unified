@@ -18,7 +18,11 @@
 
           <div class="sidebar-content">
             <ul class="lists">
-              <router-link to="/adminswda" class="custom-link">
+              <router-link
+                to="/adminswda"
+                class="custom-link"
+                active-class="active"
+              >
                 <li class="list">
                   <a href="#" class="nav-link">
                     <i class="bx bx-message-rounded icon"></i>
@@ -26,7 +30,11 @@
                   </a>
                 </li>
               </router-link>
-              <router-link to="/admincbss" class="custom-link">
+              <router-link
+                to="/admincbss"
+                class="custom-link"
+                active-class="active"
+              >
                 <li class="list">
                   <a href="#" class="nav-link">
                     <i class="bx bx-home-alt icon"></i>
@@ -34,7 +42,11 @@
                   </a>
                 </li>
               </router-link>
-              <router-link to="/adminhr" class="custom-link">
+              <router-link
+                to="/adminhr"
+                class="custom-link"
+                active-class="active"
+              >
                 <li class="list">
                   <a href="#" class="nav-link">
                     <i class="bx bx-bar-chart-alt-2 icon"></i>
@@ -42,7 +54,11 @@
                   </a>
                 </li>
               </router-link>
-              <router-link to="/adminosp" class="custom-link">
+              <router-link
+                to="/adminosp"
+                class="custom-link"
+                active-class="active"
+              >
                 <li class="list">
                   <a href="#" class="nav-link">
                     <i class="bx bx-bell icon"></i>
@@ -51,7 +67,11 @@
                 </li>
               </router-link>
 
-              <router-link to="/adminslp" class="custom-link visually-hidden">
+              <router-link
+                to="/adminslp"
+                class="custom-link visually-hidden"
+                active-class="active"
+              >
                 <li class="list">
                   <a href="#" class="nav-link">
                     <i class="bx bx-pie-chart-alt-2 icon"></i>
@@ -61,7 +81,10 @@
               </router-link>
             </ul>
             <div class="bottom-cotent">
-              <router-link to="/adminSettings" class="custom-link">
+              <router-link
+                to="/adminSettings"
+                class="custom-link visually-hidden"
+              >
                 <li class="list">
                   <a href="#" class="nav-link">
                     <i class="bx bx-cog icon"></i>
@@ -333,5 +356,21 @@ nav.open .sidebar {
 .lists .nav-link:hover .icon,
 .lists .nav-link:hover .link {
   color: #fff;
+}
+
+.active li {
+  background-color: #4070f4;
+  border-radius: 8px;
+  padding-left: 20px;
+  padding-right: 20px;
+  z-index: 50;
+}
+
+.active li span {
+  color: white !important;
+}
+
+.active .nav-link .icon {
+  color: #fff !important;
 }
 </style>

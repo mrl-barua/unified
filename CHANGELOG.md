@@ -365,3 +365,7 @@
 
 - Edited the chart color in HR
 - Fixed Logo margin on Header
+
+### version 7.6 - MARLO BARUA
+
+- Added Active state in Sidebar and AdminSidebar Components

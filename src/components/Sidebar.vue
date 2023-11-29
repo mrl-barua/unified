@@ -21,7 +21,7 @@
 
           <div class="sidebar-content">
             <ul class="lists">
-              <router-link to="/swda" class="custom-link">
+              <router-link to="/swda" class="custom-link" active-class="active">
                 <li class="list">
                   <a href="#" class="nav-link">
                     <i class="bx bx-doughnut-chart icon"></i>
@@ -29,7 +29,7 @@
                   </a>
                 </li>
               </router-link>
-              <router-link to="/cbss" class="custom-link">
+              <router-link to="/cbss" class="custom-link" active-class="active">
                 <li class="list">
                   <a href="#" class="nav-link">
                     <i class="bx bx-bar-chart-square icon"></i>
@@ -38,7 +38,7 @@
                 </li>
               </router-link>
 
-              <router-link to="/hr" class="custom-link">
+              <router-link to="/hr" class="custom-link" active-class="active">
                 <li class="list">
                   <a href="#" class="nav-link">
                     <i class="bx bx-bar-chart-alt-2 icon"></i>
@@ -62,7 +62,7 @@
             </li> 
           -->
 
-              <router-link to="/osp" class="custom-link">
+              <router-link to="/osp" class="custom-link" active-class="active">
                 <li class="list">
                   <a href="#" class="nav-link">
                     <i class="bx bx-bar-chart icon"></i>
@@ -404,6 +404,7 @@ nav.open .sidebar {
   padding-left: 20px;
   padding-right: 20px;
   background-color: #4070f4;
+  z-index: 49;
 }
 
 .nav-link .icon {
@@ -420,5 +421,21 @@ nav.open .sidebar {
 .lists .nav-link:hover .icon,
 .lists .nav-link:hover .link {
   color: #fff;
+}
+
+.active li {
+  background-color: #4070f4;
+  border-radius: 8px;
+  padding-left: 20px;
+  padding-right: 20px;
+  z-index: 50;
+}
+
+.active li span {
+  color: white !important;
+}
+
+.active .nav-link .icon {
+  color: #fff !important;
 }
 </style>
