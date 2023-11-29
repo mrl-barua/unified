@@ -4,8 +4,9 @@
     <br /><br /><br /><br /><br />
     <div class="container-fluid wrapper">
       <div class="col-12">
-        <p>DIVISION</p>
-        <p>{{ model.HR.division }}</p>
+        <p class="headerText text-center">DIVISION</p>
+        <p class="headerContent text-center">{{ model.HR.division }}</p>
+        <hr class="hr pb-4" />
 
         <!-- FIRST ROW -->
         <div class="col-5 first-row">
