@@ -45,8 +45,13 @@ import AdminHRView from '../views/Admin/AdminHR/AdminHRView.vue'
 
 
 import AdminSLP from '../views/Admin/AdminSLP/AdminSLP.vue'
-import AdminOSP from '../views/Admin/AdminOSP/AdminOSP.vue'
 
+
+import AdminOSP from '../views/Admin/AdminOSP/AdminOSP.vue'
+import AdminOSP_Archive from '../views/Admin/AdminOSP/AdminOSP_Archive.vue'
+import AdminOSPCreate from '../views/Admin/AdminOSP/AdminOSPCreate.vue'
+import AdminOSPEdit from '../views/Admin/AdminOSP/AdminOSPEdit.vue'
+import AdminOSPView from '../views/Admin/AdminOSP/AdminOSPView.vue'
 
 import AdminSWDA from '../views/Admin/AdminSWDA/AdminSWDA.vue'
 import AdminSWDA_Archive from '../views/Admin/AdminSWDA/AdminSWDA_Archive.vue'
@@ -184,6 +189,8 @@ const routes = [
     beforeEnter: adminRequireAuth,
   },
 
+
+
   {
     path: '/adminosp',
     name: 'adminosp',
@@ -191,6 +198,34 @@ const routes = [
     beforeEnter: adminRequireAuth,
   },
 
+
+  {
+    path: '/adminosp/archive',
+    name: 'adminhrArchive',
+    component: AdminOSP_Archive,
+    beforeEnter: adminRequireAuth,
+  },
+
+  {
+    path: '/adminosp/create',
+    name: 'AdminOSPCreate',
+    component: AdminOSPCreate,
+    beforeEnter: adminRequireAuth,
+  },
+
+  {
+    path: '/adminosp/:ID/edit',
+    name: 'AdminOSPEdit',
+    component: AdminOSPEdit,
+    beforeEnter: adminRequireAuth,
+  },
+
+  {
+    path: '/adminosp/:ID/view',
+    name: 'AdminOSPView',
+    component: AdminOSPView,
+    beforeEnter: adminRequireAuth,
+  },
 
 
 

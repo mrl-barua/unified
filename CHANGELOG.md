@@ -369,3 +369,7 @@
 ### version 7.6 - MARLO BARUA
 
 - Added Active state in Sidebar and AdminSidebar Components
+
+### version 7.7 - MARLO BARUA
+
+- Done with Admin View and Crud Functionalities for ADMIN OSP

@@ -379,11 +379,14 @@
           >
             REGIONAL OPERATION
           </p>
-          <HBarchart
-            v-if="RegionData"
-            :data="RegionData"
-            :aspectRatio="60 / 10"
-          />
+
+          <div class="regionalBarChart">
+            <HBarchart
+              v-if="RegionData"
+              :data="RegionData"
+              :aspectRatio="60 / 10"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -1268,6 +1271,7 @@ export default {
   margin: 5px 5px 5px 5px;
   padding: 10px 10px 10px 10px;
 }
+
 .Sectors,
 .Client {
   height: 22em;
@@ -1366,5 +1370,9 @@ export default {
   line-height: 21px;
   letter-spacing: 0em;
   text-align: left;
+}
+
+.regionalBarChart {
+  padding-bottom: 40px;
 }
 </style>
