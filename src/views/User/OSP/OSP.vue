@@ -54,8 +54,37 @@
           >
             SOLO PARENT
           </div>
+          <div
+            style="
+              background-color: ;
+              color: black;
+              flex: 1;
+              padding: 10px;
+              text-align: center;
+            "
+          >
+            Coterminous
+          </div>
+
+          <div
+            style="
+              background-color: ;
+              color: black;
+              flex: 1;
+              padding: 10px;
+              text-align: center;
+            "
+          >
+            Casual
+          </div>
         </div>
         <div style="display: flex">
+          <div style="flex: 1; padding: 10px; text-align: center">
+            <span style="font-size: 40px; font-weight: bold">0</span>
+          </div>
+          <div style="flex: 1; padding: 10px; text-align: center">
+            <span style="font-size: 40px; font-weight: bold">0</span>
+          </div>
           <div style="flex: 1; padding: 10px; text-align: center">
             <span style="font-size: 40px; font-weight: bold">0</span>
           </div>
@@ -87,7 +116,7 @@
         <div
           style="display: flex; align-items: center; justify-content: center"
         >
-          <PieChart :data="MonthData" />
+          <PieChart :data="EmploymentData" />
           <div></div>
         </div>
       </div>
@@ -108,32 +137,37 @@
         >
           <span>DIVISION</span>
         </div>
-        <hr style="border: 2px solid #a9a9a9" />
-        <div style="background-color: ; color: black; padding: 10px">
-          <div style="display: flex; justify-content: space-between">
-            <div><b>DIVISION</b></div>
-            <div><b>RECORD COUNT</b></div>
+        <div class="shadow2">
+          <div class="inside">
+            <DataTable
+              id="table"
+              :paging="true"
+              :searching="true"
+              :info="true"
+              :responsive="true"
+              :length-change="true"
+              :length-menu="[10, 25, 50, 100]"
+              :language="{
+                paginate: {
+                  previous: '<i class=\'fas fa-angle-left\'></i>',
+                  next: '<i class=\'fas fa-angle-right\'></i>',
+                },
+              }"
+            >
+              <thead style="background: #133f5c" class="text-white">
+                <tr>
+                  <th>DIVISION</th>
+                  <th>RECORD COUNT</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>No Data Available</td>
+                  <td>No Data Available</td>
+                </tr>
+              </tbody>
+            </DataTable>
           </div>
-        </div>
-
-        <!-- Division records with bar graphs -->
-        <div
-          v-for="division in divisions"
-          :key="division"
-          style="
-            background-color: ;
-            color: black;
-            padding: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-          "
-        >
-          <span>{{ division }}</span>
-          <div style="background-color: #808080; height: 20px; margin: 0 10px">
-            <div style="background-color: orange; height: 100%"></div>
-          </div>
-          <span style="margin-right: 50px">0</span>
         </div>
       </div>
     </div>
@@ -160,24 +194,12 @@
     </div>
 
     <!-- Gender and Age Box -->
-    <div class="col-12 col-md-6">
-      <div class="dashboard-box" style="height: 300px">
-        <div
-          style="
-            background-color: ;
-            color: black;
-            padding: 10px;
-            font-weight: bold;
-            font-size: 20px;
-            text-align: center;
-          "
-        >
-          GENDER AND AGE
-          <div style="height: 230px">
-            <BarChart :data="MonthData" :aspectRatio="60 / 10" />
-          </div>
-        </div>
-        <!-- SHOULD HAVE STACKED UP BAR CHART HERE -->
+    <div class="col-12 col-md-9">
+      <div class="dashboard-box" style="height: 350px">
+        <br />
+        <h5 class="fw-bold">GENDER AND AGE</h5>
+        <br />
+        <div class="Barchart1"><StackBarChart :data="GenageData" /></div>
       </div>
     </div>
 
@@ -197,32 +219,11 @@
           >
             EMPLOYMENT TYPE
           </div>
+
           <div
             style="display: flex; align-items: center; justify-content: center"
           >
             <PieChart :data="employmentType" style="height: 200px" />
-            <div></div>
-          </div>
-        </div>
-      </div>
-      <div class="col-6">
-        <div class="dashboard-box" style="height: 300px">
-          <div
-            style="
-              background-color: ;
-              color: black;
-              padding: 10px;
-              font-weight: bold;
-              font-size: 20px;
-              text-align: center;
-            "
-          >
-            GENDER
-          </div>
-          <div
-            style="display: flex; align-items: center; justify-content: center"
-          >
-            <PieChart :data="genderData" style="height: 200px" />
             <div></div>
           </div>
         </div>
@@ -400,33 +401,58 @@
 </template>
 
 <script>
+import { backendURL } from "@/config.js";
 import Sidebar from "@/components/Sidebar.vue";
 import Footer from "@/components/Footer";
+import BarChart from "@/components/ChartJS/Barchart";
 import PieChart from "@/components/ChartJS/PieChart";
-import BarChart from "@/components/ChartJS/Barchart.vue";
+import DoughnutChart from "@/components/ChartJS/DoughnutChart";
+import StackBarChart from "@/components/ChartJS/StackBarChart";
+
+import DataTable from "datatables.net-vue3";
+import DataTablesCore from "datatables.net";
+import "datatables.net-responsive";
+DataTable.use(DataTablesCore);
 
 export default {
   name: "OSP",
   components: {
     Sidebar,
     Footer,
-    PieChart,
     BarChart,
+    PieChart,
+    DoughnutChart,
+    DataTable,
+    StackBarChart,
   },
   data() {
     return {
       PageTitle: "OPERATIONAL STAFF DATABASE",
 
-      divisions: ["Division #1", "Division #2", "Division #3", "Division #4"], //division data
-      MonthData: {
-        labels: ["Permanent", "MOA", "Contractual"],
-        values: [80, 15, 20], //  values
+      EmploymentData: {
+        labels: ["MOA", "Permanent", "Contractual", "Coterminous", "Casual"],
+        values: [25, 25, 25, 25, 25], //  values
         backgroundColor: [
-          "rgba(19, 63, 92, 1)",
-          "rgba(89, 80, 141, 1)",
-          "rgba(243, 165, 51, 1)",
+          "#E2504C",
+          "#6A9EDA",
+          "#EECA06",
+          "#FF6961",
+          "#84B6F4",
         ],
       },
+
+      MonthData: {
+        labels: ["MOA", "Permanent", "Contractual", "Coterminous", "Casual"],
+        values: [25, 25, 25, 25, 25], //  values
+        backgroundColor: [
+          "#E2504C",
+          "#6A9EDA",
+          "#EECA06",
+          "#FF6961",
+          "#84B6F4",
+        ],
+      },
+
       employmentType: {
         labels: [], //  two choices for gender
         values: [30, 10, 20, 40], //values
@@ -442,6 +468,41 @@ export default {
         values: [50, 50], //values accordingly
         backgroundColor: ["rgba(235, 95, 94)", "rgba(89,80,141)"], // colors for each gender
       },
+
+      GenageData: {
+        labels: [
+          "22-24",
+          "25-27",
+          "28-30",
+          "31-33",
+          "34-36",
+          "37-39",
+          "40-42",
+          "43-45",
+          "46-48",
+          "49-51",
+          "52-54",
+          "55-57",
+          "58-60",
+          "61-63",
+          "64",
+          "65",
+        ],
+        datasets: [
+          {
+            label: "Male",
+            values: [
+              89, 56, 12, 45, 90, 34, 67, 90, 23, 87, 54, 10, 89, 23, 56, 63,
+            ],
+            backgroundColor: ["#BAC2FF"],
+          },
+          {
+            label: "Female",
+            values: [45, 78, 10, 0, 89, 23, 90, 12, 34, 56, 78, 90, 54, 32, 67],
+            backgroundColor: ["#FF7676"],
+          },
+        ],
+      },
     };
   },
 };
@@ -450,7 +511,16 @@ export default {
 <style scoped>
 .dashboard-box {
   padding: 20px;
-  margin:5px 5px 5px 5px;
+  margin: 5px 5px 5px 5px;
   box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.15);
+}
+
+.shadow2 {
+  height: 275px;
+  /* border-radius: 20px; */
+}
+
+.Barchart1 {
+  height: 250px;
 }
 </style>
