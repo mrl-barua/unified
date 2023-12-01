@@ -37,8 +37,8 @@ import AdminCbss from '../views/Admin/AdminCBSS/AdminCBSS.vue'
 
 
 import AdminHR from '../views/Admin/AdminHR/AdminHR.vue'
-import AdminHR_Archive from '../views/Admin/AdminHR/AdminHR_Archive.vue'
-import AdminHRACreate from '../views/Admin/AdminHR/AdminHRCreate.vue'
+import AdminHRArchive from '../views/Admin/AdminHR/AdminHR_Archive.vue'
+import AdminHRCreate from '../views/Admin/AdminHR/AdminHRCreate.vue'
 import AdminHREdit from '../views/Admin/AdminHR/AdminHREdit.vue'
 import AdminHRView from '../views/Admin/AdminHR/AdminHRView.vue'
 
@@ -153,15 +153,15 @@ const routes = [
 
   {
     path: '/adminhr/archive',
-    name: 'adminhrArchive',
-    component: AdminHR_Archive,
+    name: 'adminHRArchive',
+    component: AdminHRArchive,
     beforeEnter: adminRequireAuth,
   },
 
   {
     path: '/adminhr/create',
     name: 'AdminHRCreate',
-    component: AdminHRACreate,
+    component: AdminHRCreate,
     beforeEnter: adminRequireAuth,
   },
 

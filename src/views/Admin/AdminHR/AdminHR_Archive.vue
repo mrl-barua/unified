@@ -46,30 +46,30 @@
           <thead style="background: #cb0e16" class="text-white">
             <tr>
               <th>ID</th>
-              <th>Division</th>
-              <th>Section/Unit</th>
-              <th>Office/Location</th>
-              <th>Position Title</th>
-              <th>Position Level</th>
+              <th>REQUEST DATE</th>
+              <th>NAME OF REQUESTING</th>
+              <th>EMPLOYEE POSITION</th>
+              <th>EMPLOYEE STATUS</th>
+              <th>OFFICE/UNIT</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="item in hr" :key="item.ID">
-              <td>{{ item.ID }}</td>
-              <td>{{ item.division }}</td>
-              <td>{{ item.section_unit }}</td>
-              <td>{{ item.office_location }}</td>
-              <td>{{ item.position_title }}</td>
-              <td>{{ item.position_level }}</td>
+            <tr v-for="item in hr" :key="item.id">
+              <td>{{ item.id }}</td>
+              <td>{{ item.request_date }}</td>
+              <td>{{ item.requesting_employee_name }}</td>
+              <td>{{ item.employee_position }}</td>
+              <td>{{ item.employment_status }}</td>
+              <td>{{ item.office_unit }}</td>
               <td style="display: flex; justify-content: space-around">
                 <i
                   class="bx bxs-up-arrow-square custom-link"
-                  @click="restoreHr(item.ID)"
+                  @click="restoreHr(item.id)"
                 ></i>
 
                 <!-- <router-link
-                  :to="{ path: '/adminhr/' + item.ID + '/view' }"
+                  :to="{ path: '/adminhr/' + item.id + '/view' }"
                   class="custom-link"
                 >
                   <i class="bx bx-low-vision table-icon custom-link"></i
@@ -85,11 +85,42 @@
           <tfoot>
             <tr>
               <th>ID</th>
-              <th>Division</th>
-              <th>Section/Unit</th>
-              <th>Office/Location</th>
-              <th>Position Title</th>
-              <th>Position Level</th>
+              <th>REQUEST DATE</th>
+              <th>NAME OF REQUESTING</th>
+              <th>EMPLOYEE POSITION</th>
+              <th>EMPLOYEE STATUS</th>
+              <th>OFFICE/UNIT</th>
+              <th>Actions</th>
+            </tr>
+          </tfoot>
+        </DataTable>
+
+        <DataTable
+          v-else
+          style="width: 100%"
+          class="display stripe order-column cell-border hover compact"
+          id="hrTable"
+        >
+          <thead style="background: #cb0e16" class="text-white">
+            <tr>
+              <th>ID</th>
+              <th>REQUEST DATE</th>
+              <th>NAME OF REQUESTING</th>
+              <th>EMPLOYEE POSITION</th>
+              <th>EMPLOYEE STATUS</th>
+              <th>OFFICE/UNIT</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+          <tfoot>
+            <tr>
+              <th>ID</th>
+              <th>REQUEST DATE</th>
+              <th>NAME OF REQUESTING</th>
+              <th>EMPLOYEE POSITION</th>
+              <th>EMPLOYEE STATUS</th>
+              <th>OFFICE/UNIT</th>
               <th>Actions</th>
             </tr>
           </tfoot>
@@ -223,7 +254,7 @@ export default {
       // Add data from this.hr
       this.hr.forEach((item) => {
         const rowData = [
-          item.ID,
+          item.id,
 
           item.division,
           item.section_unit,

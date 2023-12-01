@@ -373,3 +373,7 @@
 ### version 7.7 - MARLO BARUA
 
 - Done with Admin View and Crud Functionalities for ADMIN OSP
+
+### version 7.8 MARLO BARUA
+
+- Partially Done with AdminHR and AdminOSP(Main Dashboard, Archive, View Details, and Edit )

@@ -741,13 +741,13 @@ import axios from "axios";
 import AdminSidebar from "@/components/AdminSidebar";
 
 export default {
-  name: "AdminHRView",
+  name: "AdminOSDEdit",
   components: {
     AdminSidebar,
   },
   data() {
     return {
-      PageTitle: "ADMIN OSD > VIEW", // The title displayed on the page, which is "ADMIN HR"
+      PageTitle: "ADMIN OSD > EDIT", // The title displayed on the page, which is "ADMIN HR"
       OsdID: "",
       errorList: "",
       // The model for the form inputs  (the data that will be sent to the backend) is defined here as an empty object with the following properties: Osd

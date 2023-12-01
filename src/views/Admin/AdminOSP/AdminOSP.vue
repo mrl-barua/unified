@@ -24,7 +24,7 @@
           </ul>
         </div>
 
-        <router-link to="/adminosd/create">
+        <router-link to="/adminosp/create">
           <button
             class="btn btn-primary float-start"
             style="
