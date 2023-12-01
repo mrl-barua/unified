@@ -203,8 +203,19 @@
       </div>
     </div>
 
+    <div class="col-12 col-md-3">
+      <div class="dashboard-box" style="height: 350px">
+        <br />
+        <h5 class="fw-bold">EMPLOYMENT TYPE</h5>
+        <br />
+        <div class="Barchart1">
+          <PieChart :data="employmentType" style="height: 200px" />
+        </div>
+      </div>
+    </div>
+
     <!-- Employment Type and Gender Box -->
-    <div class="col-12 col-md-6" style="justify-content: space-between">
+    <!-- <div class="col-12 col-md-6" style="justify-content: space-between">
       <div class="col-6">
         <div class="dashboard-box" style="height: 300px">
           <div
@@ -228,175 +239,7 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <!-- ELIGIBILITY header -->
-
-  <div class="col-12">
-    <h2
-      style="
-        margin-top: 20px;
-        margin-bottom: 20px;
-        margin-left: 60px;
-        margin-right: 60px;
-        background-color: #294d9c;
-        color: white;
-        font-weight: bold;
-        padding: 10px;
-        text-align: center;
-      "
-    >
-      ELIGIBILITY
-    </h2>
-  </div>
-
-  <!-- CSS and Others -->
-  <div class="row">
-    <div class="col-12 col-md-6">
-      <div class="dashboard-box" style="height: 220px">
-        <div
-          style="display: flex; justify-content: space-between; padding: 10px"
-        >
-          <div><b>CSS AND OTHERS</b></div>
-          <div><b>RECORD COUNT</b></div>
-        </div>
-        <div style="border-bottom: 2px solid #a9a9a9"></div>
-        <div style="background-color: ; color: black; padding: 10px">
-          <div style="display: flex; justify-content: space-between">
-            <div>1. lorem ipsum</div>
-            <div style="display: flex; align-items: center; margin-right: 50px">
-              0
-            </div>
-          </div>
-          <div style="border-bottom: 1px solid #a9a9a9; margin-top: 10px"></div>
-          <div style="display: flex; justify-content: space-between">
-            <div>2. lorem ipsum</div>
-            <div style="display: flex; align-items: center; margin-right: 50px">
-              0
-            </div>
-          </div>
-          <div style="border-bottom: 1px solid #a9a9a9; margin-top: 10px"></div>
-          <div style="display: flex; justify-content: space-between">
-            <div>3. lorem ipsum</div>
-            <div style="display: flex; align-items: center; margin-right: 50px">
-              0
-            </div>
-          </div>
-          <div style="border-bottom: 1px solid #a9a9a9; margin-top: 10px"></div>
-          <div style="display: flex; justify-content: space-between">
-            <div>4. lorem ipsum</div>
-            <div style="display: flex; align-items: center; margin-right: 50px">
-              0
-            </div>
-          </div>
-          <div style="border-bottom: 2px solid #a9a9a9; margin-top: 10px"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Licensed -->
-    <div class="col-12 col-md-6">
-      <div class="dashboard-box" style="height: 220px">
-        <div
-          style="display: flex; justify-content: space-between; padding: 10px"
-        >
-          <div><b>LICENSED</b></div>
-          <div><b>RECORD COUNT</b></div>
-        </div>
-        <div style="border-bottom: 2px solid #a9a9a9"></div>
-        <div style="background-color: ; color: black; padding: 10px">
-          <div style="display: flex; justify-content: space-between">
-            <div>1. lorem ipsum</div>
-            <div style="display: flex; align-items: center; margin-right: 50px">
-              0
-            </div>
-          </div>
-          <div style="border-bottom: 1px solid #a9a9a9; margin-top: 10px"></div>
-          <div style="display: flex; justify-content: space-between">
-            <div>2. lorem ipsum</div>
-            <div style="display: flex; align-items: center; margin-right: 50px">
-              0
-            </div>
-          </div>
-          <div style="border-bottom: 1px solid #a9a9a9; margin-top: 10px"></div>
-          <div style="display: flex; justify-content: space-between">
-            <div>3. lorem ipsum</div>
-            <div style="display: flex; align-items: center; margin-right: 50px">
-              0
-            </div>
-          </div>
-          <div style="border-bottom: 1px solid #a9a9a9; margin-top: 10px"></div>
-          <div style="display: flex; justify-content: space-between">
-            <div>4. lorem ipsum</div>
-            <div style="display: flex; align-items: center; margin-right: 50px">
-              0
-            </div>
-          </div>
-          <div style="border-bottom: 2px solid #a9a9a9; margin-top: 10px"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- HIGHEST LEVEL OF ELIGIBILITY -->
-  <div class="row">
-    <div class="col-12 col-md-6">
-      <div class="dashboard-box" style="height: 220px">
-        <div style="display: flex; justify-content: center; padding: 10px">
-          <div><b>HIGHEST LEVEL OF ELIGIBILITY</b></div>
-        </div>
-        <div style="border-bottom: 2px solid #a9a9a9"></div>
-        <div style="background-color: ; color: black; padding: 10px">
-          <div style="display: flex; justify-content: space-between">
-            <div>1. lorem ipsum</div>
-          </div>
-          <div style="border-bottom: 1px solid #a9a9a9; margin-top: 10px"></div>
-          <div style="display: flex; justify-content: space-between">
-            <div>2. lorem ipsum</div>
-          </div>
-          <div style="border-bottom: 1px solid #a9a9a9; margin-top: 10px"></div>
-          <div style="display: flex; justify-content: space-between">
-            <div>3. lorem ipsum</div>
-          </div>
-          <div style="border-bottom: 1px solid #a9a9a9; margin-top: 10px"></div>
-          <div style="display: flex; justify-content: space-between">
-            <div>4. lorem ipsum</div>
-          </div>
-          <div style="border-bottom: 2px solid #a9a9a9; margin-top: 10px"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- W/WO ELIGIBILITY -->
-    <div class="col-12 col-md-6">
-      <div class="dashboard-box" style="height: 220px">
-        <div style="display: flex; justify-content: space-between">
-          <div style="flex: 1; padding: 10px; text-align: center">
-            <span style="font-size: 20px; font-weight: bold; color: black"
-              >WITH ELIGIBILITY</span
-            >
-          </div>
-          <div style="flex: 1; padding: 10px; text-align: center">
-            <span style="font-size: 20px; font-weight: bold; color: black"
-              >WITHOUT ELIGIBILITY</span
-            >
-          </div>
-        </div>
-        <div style="display: flex; justify-content: space-between">
-          <div style="flex: 1; padding: 10px; text-align: center">
-            <span style="font-size: 60px; font-weight: bold; color: red"
-              >0</span
-            >
-          </div>
-          <div style="flex: 1; padding: 10px; text-align: center">
-            <span style="font-size: 60px; font-weight: bold; color: #292d96"
-              >0</span
-            >
-          </div>
-        </div>
-      </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
