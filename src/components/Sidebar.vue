@@ -252,6 +252,7 @@ body {
 /* Styles for non-sticky nav */
 nav {
   position: absolute;
+  margin-top: -2px;
   top: 6em;
   height: 55px;
   width: 100%;
@@ -264,6 +265,7 @@ nav {
 
 .overlay {
   position: fixed;
+  margin-top: -2px;
   top: 3.4em;
   left: -100%;
   height: 1000vh;
@@ -277,6 +279,7 @@ nav {
 
 nav .sidebar {
   position: fixed;
+  margin-top: -2px;
   top: 9.4em;
   left: -100%;
   height: 90%;
