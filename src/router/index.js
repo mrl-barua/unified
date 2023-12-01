@@ -33,8 +33,11 @@ import SLP_STAT from '../views/User/SLP/SLP_STAT.vue'
 import SLP_CBA from '../views/User/SLP/SLP_CBA.vue'
 
 
-import AdminCbss from '../views/Admin/AdminCBSS/AdminCBSS.vue'
-
+import AdminCBSS from '../views/Admin/AdminCBSS/AdminCBSS.vue'
+import AdminCBSSArchive from '../views/Admin/AdminCBSS/AdminCBSS_Archive.vue'
+import AdminCBSSCreate from '../views/Admin/AdminCBSS/AdminCBSSCreate.vue'
+import AdminCBSSEdit from '../views/Admin/AdminCBSS/AdminCBSSEdit.vue'
+import AdminCBSSView from '../views/Admin/AdminCBSS/AdminCBSSView.vue'
 
 import AdminHR from '../views/Admin/AdminHR/AdminHR.vue'
 import AdminHRArchive from '../views/Admin/AdminHR/AdminHR_Archive.vue'
@@ -135,12 +138,38 @@ const routes = [
   // ADMIN DASHBOARD START
   {
     path: '/admincbss',
-    name: 'admincbss',
-    component: AdminCbss,
+    name: 'adminCBSS',
+    component: AdminCBSS,
     beforeEnter: adminRequireAuth,
   },
 
+  {
+    path: '/admincbss/archive',
+    name: 'adminCBSSArchive',
+    component: AdminCBSSArchive,
+    beforeEnter: adminRequireAuth,
+  },
 
+  {
+    path: '/admincbss/create',
+    name: 'AdminCBSSCreate',
+    component: AdminCBSSCreate,
+    beforeEnter: adminRequireAuth,
+  },
+
+  {
+    path: '/admincbss/:ID/edit',
+    name: 'AdminCBSSEdit',
+    component: AdminCBSSEdit,
+    beforeEnter: adminRequireAuth,
+  },
+
+  {
+    path: '/admincbss/:ID/view',
+    name: 'AdminCBSSView',
+    component: AdminCBSSView,
+    beforeEnter: adminRequireAuth,
+  },
 
 
 

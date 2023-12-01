@@ -13,31 +13,16 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Active
+            Inactive
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <router-link to="/admincbss/archive" style="text-decoration: none">
-              <li>
-                <a class="dropdown-item" href="#">Inactive</a>
+            <router-link to="/admincbss" style="text-decoration: none"
+              ><li>
+                <a class="dropdown-item" href="#">Active</a>
               </li></router-link
             >
           </ul>
         </div>
-
-        <router-link to="/admincbss/create">
-          <button
-            class="btn btn-primary float-start"
-            style="
-              background-color: #133f5c;
-              font-size: 12px; /* Adjust the font size as needed */
-              padding: 10px 30px 10px 30px;
-              margin-left: 20px;
-            "
-          >
-            ADD NEW
-          </button>
-        </router-link>
-
         <button
           @click="exportToExcel"
           class="btn btn-primary float-end"
@@ -51,7 +36,6 @@
           EXPORT TO EXCEL
         </button>
       </div>
-
       <div class="card-body">
         <DataTable
           v-if="this.cbss.length > 0"
@@ -59,7 +43,7 @@
           class="display stripe order-column cell-border hover compact"
           id="cbssTable"
         >
-          <thead style="background: #133f5c" class="text-white">
+          <thead style="background: #cb0e16" class="text-white">
             <tr>
               <th>ID</th>
               <th>Name</th>
@@ -78,36 +62,57 @@
               <td>{{ item.SEX }}</td>
               <td>{{ item.CASE_CATEGORY }}</td>
               <td>{{ item.MODE_OF_ADMISSION }}</td>
-              <td class="actions">
-                <router-link
-                  :to="{ path: '/admincbss/' + item.ID + '/view' }"
+              <td style="display: flex; justify-content: space-around">
+                <i
+                  style="cursor: pointer"
+                  class="bx bxs-up-arrow-square custom-link"
+                  @click="restoreCbss(item.ID)"
+                ></i>
+
+                <!-- <router-link
+                  :to="{ path: '/adminhr/' + item.id + '/view' }"
                   class="custom-link"
                 >
                   <i class="bx bx-low-vision table-icon custom-link"></i
-                ></router-link>
+                ></router-link> -->
 
-                <router-link
-                  :to="{ path: '/admincbss/' + item.ID + '/edit' }"
-                  class="custom-link"
-                >
-                  <i class="bx bx-edit icon table-icon"></i>
-                </router-link>
-
-                <i
-                  @click="deleteCbss(item.ID)"
-                  class="bx bx-archive-in icon table-icon custom-link"
+                <!-- <i
+                  class="bx bx-trash icon table-icon custom-link"
                   style="cursor: pointer"
-                ></i>
-
-                <router-link
-                  :to="{ path: '/adminswda/' + item.ID + '/editHistory' }"
-                  class="custom-link"
-                >
-                  <i class="bx bx-history icon table-icon"></i>
-                </router-link>
+                ></i> -->
               </td>
             </tr>
           </tbody>
+          <tfoot>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Sex</th>
+              <th>Case Category</th>
+              <th>Mode of Admission</th>
+              <th>Actions</th>
+            </tr>
+          </tfoot>
+        </DataTable>
+        <DataTable
+          v-else
+          style="width: 100%"
+          class="display stripe order-column cell-border hover compact"
+          id="hrTable"
+        >
+          <thead style="background: #cb0e16" class="text-white">
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Sex</th>
+              <th>Case Category</th>
+              <th>Mode of Admission</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
           <tfoot>
             <tr>
               <th>ID</th>
@@ -130,7 +135,6 @@
 <script>
 import axios from "axios";
 import { backendURL } from "@/config.js";
-
 import Footer from "@/components/Footer";
 import AdminSidebar from "@/components/AdminSidebar";
 import BarChart from "@/components/ChartJS/Barchart";
@@ -140,8 +144,9 @@ import DataTable from "datatables.net-vue3";
 import DataTablesCore from "datatables.net";
 import "datatables.net-responsive";
 DataTable.use(DataTablesCore);
+
 export default {
-  name: "AdminCBSS",
+  name: "AdminCBSS_Archive",
   components: {
     Footer,
     AdminSidebar,
@@ -150,7 +155,7 @@ export default {
   },
   data() {
     return {
-      PageTitle: "ADMIN CBSS", // The title displayed on the page, which is "ADMIN HR"
+      PageTitle: "ADMIN CBSS ARCHIVE", // The title displayed on the page, which is "ADMIN HR"
 
       cbss: [],
     };
@@ -221,17 +226,17 @@ export default {
       });
     },
     getCbss() {
-      axios.get(`${backendURL}/api/cbsslist`).then((res) => {
-        this.cbss = res.data.Cbss;
+      axios.get(`${backendURL}/api/cbssArchived`).then((res) => {
+        this.cbss = res.data.ArchivedCbss;
         console.log(res);
       });
     },
 
-    deleteCbss(CbssID) {
-      // console.log(CbssID);
-      if (confirm("Are you sure, you want to archive this data?")) {
+    restoreCbss(CbssID) {
+      // console.log(HrID);
+      if (confirm("Are you sure, you want to restore this data?")) {
         axios
-          .delete(`${backendURL}/api/cbsslist/${CbssID}/delete`)
+          .post(`${backendURL}/api/cbssArchived/${CbssID}/restore`)
           .then((res) => {
             alert(res.data.message);
             // Reload the page after a successful deletion
@@ -239,9 +244,6 @@ export default {
           })
           .catch(function (error) {
             if (error.response) {
-              if (error.response.status === 422) {
-                mythis.errorList = error.response.data.errors;
-              }
               if (error.response.status === 404) {
                 alert(error.response.data.message);
               }
@@ -280,11 +282,5 @@ div.dataTables_wrapper a.paginate_button {
 .custom-link {
   text-decoration: none !important;
   color: black;
-}
-
-.actions {
-  justify-content: space-evenly;
-  align-items: center;
-  width: 100px !important;
 }
 </style>

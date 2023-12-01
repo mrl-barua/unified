@@ -12,10 +12,10 @@
               <p class="dashboard-value">0</p>
               <br />
               <p class="dashboard-text">Financial Assistance Amount Given</p>
-              <p class="dashboard-value">00</p>
+              <p class="dashboard-value">000</p>
             </div>
             <div class="col-4">
-              <p class="dashboard-text">Gender of Clients Served</p>
+              <p class="dashboard-subtext">Gender of Clients Served</p>
               <div class="col-6">
                 <p class="dashboard-center text-center">FEMALE</p>
               </div>
@@ -28,25 +28,27 @@
               </div>
               <div class="col-6">
                 <p class="dashboard-center text-center">0</p>
-              </div>
-              <p class="dashboard-text">Mode of Admissions</p>
+              </div> 
+              <br /> <br /> <br />
+              <p class="dashboard-subtext">Mode of Admissions</p>
               <div class="col-6">
                 <p class="dashboard-center text-center">WALK-IN</p>
               </div>
               <div class="col-6">
-                <p class="dashboard-center text-center">00%</p>
+                <p class="dashboard-center text-center">0</p>
               </div>
 
               <div class="col-6">
                 <p class="dashboard-center text-center">DSW D...</p>
               </div>
               <div class="col-6">
-                <p class="dashboard-center text-center">00 %</p>
+                <p class="dashboard-center text-center">0</p>
               </div>
             </div>
             <div class="col-4">
               <p class="dashboard-text">Number of Case Categories</p>
               <p class="dashboard-value">0</p>
+              <br />
               <p class="dashboard-text">Number of Non- Monetary Services</p>
               <p class="dashboard-value">0</p>
             </div>
@@ -83,7 +85,6 @@
           <div class="col-6">
             <div class="shadow-container">
               <p class="section2-header">Financial Amount Served</p>
-              <div class="chart-container"><BarChart :data="SLPData" /></div>
             </div>
           </div>
         </div>
@@ -91,6 +92,7 @@
           <div class="col-6">
             <div class="shadow-container">
               <p class="section2-header">Sub - Categories Served</p>
+              <div class="chart-container"><BarChart :data="SLPData" /></div>
             </div>
           </div>
           <div class="col-6">
@@ -103,46 +105,13 @@
 
       <section class="col-12">
         <div class="col-4">
-          <p
-            style="
-              padding-top: 20px;
-              font-family: Inter;
-              font-size: 20px;
-              font-weight: 700;
-              line-height: 24px;
-              letter-spacing: 0em;
-              text-align: center;
-            "
-          >
-            Non-Monetary Services Served
-          </p>
-
           <div class="shadow-container">
-            <p class="section2-header">Financial Amount Served</p>
+            <p class="section2-header">Non-Monetary Services Served</p>
           </div>
         </div>
         <div class="col-8">
-          <p
-            style="
-              font-family: Inter;
-              font-size: 25px;
-              font-weight: 700;
-              line-height: 30px;
-              letter-spacing: 0em;
-              text-align: center;
-            "
-          >
-            CBSS Staff Monitoring
-          </p>
-          <div class="col-6">
-            <div class="shadow-container">
-              <p class="section2-header">Financial Amount Served</p>
-            </div>
-          </div>
-          <div class="col-6">
-            <div class="shadow-container">
-              <p class="section2-header">Financial Amount Served</p>
-            </div>
+          <div class="shadow-container">
+            <p class="section2-header">CBSS Staff Monitoring</p>
           </div>
         </div>
       </section>
@@ -184,10 +153,16 @@ export default {
       PageTitle: "CBSS",
 
       SLPData: {
-        labels: ["1st", "2nd", "3rd", "4th"],
-        label: ["Quarter"],
-        values: [50, 75, 225, 75],
-        backgroundColor: ["#C8C375"],
+        labels: ["1", "2", "3", "4", "5", "6"],
+        label: ["Client"],
+        values: [50, 75, 225, 100, 200, 40],
+        backgroundColor: [
+          "rgba(150, 9, 9, 1)",
+          "rgba(198, 54, 55, 1)",
+          "rgba(226, 80, 76, 1)",
+          "rgba(255, 105, 97, 1)",
+          "rgba(255, 150, 136, 1)",
+          "rgba(255, 191, 176, 1)"],
       },
 
       sexData: {
@@ -231,6 +206,7 @@ h1 {
   line-height: 52px;
   letter-spacing: 0em;
   text-align: center;
+  padding-top: 20px;
 }
 
 .dashboard-text {
@@ -240,6 +216,17 @@ h1 {
   line-height: 36px;
   letter-spacing: 0em;
   text-align: center;
+  width: 340px;
+}
+
+.dashboard-subtext {
+  font-family: Arial;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 36px;
+  letter-spacing: 0em;
+  text-align: center;
+  margin-top: 40px;
 }
 
 .dashboard-value {
@@ -249,6 +236,7 @@ h1 {
   line-height: 85px;
   letter-spacing: 0em;
   text-align: center;
+  width: 340px;
 }
 
 .dashboard-center {
@@ -280,17 +268,18 @@ h1 {
   width: 100%;
   height: 500px;
   margin: 10px auto;
-  padding: 20px 0px 20px 0px;
+  padding: 5px 5px 5px 5px;
   box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
 }
 
 .shadow-container {
   box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.15);
+  padding: 5px 5px 5px 5px;
   width: 98%;
   height: 400px;
-  margin: auto;
-  margin-top: 10px;
-  margin-bottom: 20px;
+  border-radius: 3px;
+  margin-bottom: 10px;
 }
 
 .lineChart {

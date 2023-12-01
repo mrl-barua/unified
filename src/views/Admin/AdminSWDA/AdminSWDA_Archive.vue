@@ -27,13 +27,13 @@
           @click="exportToExcel"
           class="btn btn-primary float-end"
           style="
-            background-color: Green;
+            background-color: #0229bf;
             font-size: 12px; /* Adjust the font size as needed */
             padding: 10px 30px 10px 30px;
             margin-left: auto;
           "
         >
-          EXPORT DATA
+          EXPORT TO EXCEL
         </button>
       </div>
       <div class="card-body">
@@ -64,6 +64,7 @@
               <td>{{ item.Address }}</td>
               <td style="display: flex; justify-content: space-around">
                 <i
+                  style="cursor: pointer"
                   class="bx bxs-up-arrow-square custom-link"
                   @click="restoreSwda(item.ID)"
                 ></i>
@@ -75,10 +76,10 @@
                   <i class="bx bx-low-vision table-icon custom-link"></i
                 ></router-link> -->
 
-                <i
+                <!-- <i
                   class="bx bx-trash icon table-icon custom-link"
                   style="cursor: pointer"
-                ></i>
+                ></i> -->
               </td>
             </tr>
           </tbody>
