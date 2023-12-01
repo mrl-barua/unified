@@ -28,8 +28,10 @@
               </div>
               <div class="col-6">
                 <p class="dashboard-center text-center">0</p>
-              </div> 
-              <br /> <br /> <br />
+              </div>
+              <br />
+              <br />
+              <br />
               <p class="dashboard-subtext">Mode of Admissions</p>
               <div class="col-6">
                 <p class="dashboard-center text-center">WALK-IN</p>
@@ -62,7 +64,7 @@
             <div class="shadow-container">
               <p class="section2-header">Clients Served per Quarter</p>
               <div class="chart-container lineChart">
-                <LineChart :data="SLPData" />
+                <LineChart :data="ClientData" />
               </div>
             </div>
           </div>
@@ -79,12 +81,66 @@
           <div class="col-6">
             <div class="shadow-container">
               <p class="section2-header">Case Categories Served</p>
-              <div class="chart-container"><BarChart :data="SLPData" /></div>
+              <div class="chart-container"><BarChart :data="ClientData" /></div>
             </div>
           </div>
           <div class="col-6">
             <div class="shadow-container">
               <p class="section2-header">Financial Amount Served</p>
+              <div class="dataTable-container">
+                <DataTable
+                  style="width: 90%"
+                  class="display stripe order-column hover compact"
+                  id="hrTable"
+                  :options="{
+                    lengthChange: false,
+                    pageLength: 4,
+                  }"
+                >
+                  <thead style="background: #133f5c" class="text-white">
+                    <tr>
+                      <th>CATEGORY NAME</th>
+                      <th>AMOUNT</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>TEST</td>
+                      <td>TEST</td>
+                    </tr>
+                    <tr>
+                      <td>TEST</td>
+                      <td>TEST</td>
+                    </tr>
+                    <tr>
+                      <td>TEST</td>
+                      <td>TEST</td>
+                    </tr>
+                    <tr>
+                      <td>TEST</td>
+                      <td>TEST</td>
+                    </tr>
+                    <tr>
+                      <td>TEST</td>
+                      <td>TEST</td>
+                    </tr>
+                    <tr>
+                      <td>TEST</td>
+                      <td>TEST</td>
+                    </tr>
+                    <tr>
+                      <td>TEST</td>
+                      <td>TEST</td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th>CATEGORY NAME</th>
+                      <th>AMOUNT</th>
+                    </tr>
+                  </tfoot>
+                </DataTable>
+              </div>
             </div>
           </div>
         </div>
@@ -92,12 +148,66 @@
           <div class="col-6">
             <div class="shadow-container">
               <p class="section2-header">Sub - Categories Served</p>
-              <div class="chart-container"><BarChart :data="SLPData" /></div>
+              <div class="chart-container"><BarChart :data="CaseData" /></div>
             </div>
           </div>
           <div class="col-6">
             <div class="shadow-container">
               <p class="section2-header">Financial Amount Served</p>
+              <div class="dataTable-container">
+                <DataTable
+                  style="width: 90%"
+                  class="display stripe order-column hover compact"
+                  id="hrTable"
+                  :options="{
+                    lengthChange: false,
+                    pageLength: 4,
+                  }"
+                >
+                  <thead style="background: #133f5c" class="text-white">
+                    <tr>
+                      <th>CATEGORY NAME</th>
+                      <th>AMOUNT</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>TEST</td>
+                      <td>TEST</td>
+                    </tr>
+                    <tr>
+                      <td>TEST</td>
+                      <td>TEST</td>
+                    </tr>
+                    <tr>
+                      <td>TEST</td>
+                      <td>TEST</td>
+                    </tr>
+                    <tr>
+                      <td>TEST</td>
+                      <td>TEST</td>
+                    </tr>
+                    <tr>
+                      <td>TEST</td>
+                      <td>TEST</td>
+                    </tr>
+                    <tr>
+                      <td>TEST</td>
+                      <td>TEST</td>
+                    </tr>
+                    <tr>
+                      <td>TEST</td>
+                      <td>TEST</td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th>CATEGORY NAME</th>
+                      <th>AMOUNT</th>
+                    </tr>
+                  </tfoot>
+                </DataTable>
+              </div>
             </div>
           </div>
         </div>
@@ -105,13 +215,184 @@
 
       <section class="col-12">
         <div class="col-4">
-          <div class="shadow-container">
+          <div class="shadow-container2">
             <p class="section2-header">Non-Monetary Services Served</p>
+            <div class="dataTable-container">
+              <DataTable
+                style="width: 90%"
+                class="display stripe order-column hover compact"
+                id="hrTable"
+                :options="{
+                  lengthChange: false,
+                  searching: false,
+                  pageLength: 5,
+                }"
+              >
+                <thead style="background: #133f5c" class="text-white">
+                  <tr>
+                    <th>Service Name</th>
+                    <th>Number of Person Served</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>TEST</td>
+                    <td>TEST</td>
+                  </tr>
+                  <tr>
+                    <td>TEST</td>
+                    <td>TEST</td>
+                  </tr>
+                  <tr>
+                    <td>TEST</td>
+                    <td>TEST</td>
+                  </tr>
+                  <tr>
+                    <td>TEST</td>
+                    <td>TEST</td>
+                  </tr>
+                  <tr>
+                    <td>TEST</td>
+                    <td>TEST</td>
+                  </tr>
+                  <tr>
+                    <td>TEST</td>
+                    <td>TEST</td>
+                  </tr>
+                  <tr>
+                    <td>TEST</td>
+                    <td>TEST</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th>Service Name</th>
+                    <th>Number of Person Served</th>
+                  </tr>
+                </tfoot>
+              </DataTable>
+            </div>
           </div>
         </div>
         <div class="col-8">
           <div class="shadow-container">
             <p class="section2-header">CBSS Staff Monitoring</p>
+            <div class="col-12">
+              <div class="col-6">
+                <div class="dataTable-container">
+                  <DataTable
+                    style="width: 90%"
+                    class="display stripe order-column hover compact"
+                    id="hrTable"
+                    :options="{
+                      lengthChange: false,
+                      searching: false,
+                      pageLength: 5,
+                    }"
+                  >
+                    <thead style="background: #133f5c" class="text-white">
+                      <tr>
+                        <th>Responsible Person</th>
+                        <th>Total Number of Client Served</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>TEST</td>
+                        <td>TEST</td>
+                      </tr>
+                      <tr>
+                        <td>TEST</td>
+                        <td>TEST</td>
+                      </tr>
+                      <tr>
+                        <td>TEST</td>
+                        <td>TEST</td>
+                      </tr>
+                      <tr>
+                        <td>TEST</td>
+                        <td>TEST</td>
+                      </tr>
+                      <tr>
+                        <td>TEST</td>
+                        <td>TEST</td>
+                      </tr>
+                      <tr>
+                        <td>TEST</td>
+                        <td>TEST</td>
+                      </tr>
+                      <tr>
+                        <td>TEST</td>
+                        <td>TEST</td>
+                      </tr>
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <th>Responsible Person</th>
+                        <th>Total Number of Client Served</th>
+                      </tr>
+                    </tfoot>
+                  </DataTable>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="dataTable-container">
+                  <DataTable
+                    style="width: 90%"
+                    class="display stripe order-column hover compact"
+                    id="hrTable"
+                    :options="{
+                      lengthChange: false,
+                      searching: false,
+                      pageLength: 5,
+                    }"
+                  >
+                    <thead style="background: #133f5c" class="text-white">
+                      <tr>
+                        <th>Responsible Person</th>
+                        <th>Total Number of Client Served</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>TEST</td>
+                        <td>TEST</td>
+                      </tr>
+                      <tr>
+                        <td>TEST</td>
+                        <td>TEST</td>
+                      </tr>
+                      <tr>
+                        <td>TEST</td>
+                        <td>TEST</td>
+                      </tr>
+                      <tr>
+                        <td>TEST</td>
+                        <td>TEST</td>
+                      </tr>
+                      <tr>
+                        <td>TEST</td>
+                        <td>TEST</td>
+                      </tr>
+                      <tr>
+                        <td>TEST</td>
+                        <td>TEST</td>
+                      </tr>
+                      <tr>
+                        <td>TEST</td>
+                        <td>TEST</td>
+                      </tr>
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <th>Responsible Person</th>
+                        <th>Total Number of Client Served</th>
+                      </tr>
+                    </tfoot>
+                  </DataTable>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -133,6 +414,10 @@ import HStackBarChart from "@/components/ChartJS/HStackBarchart";
 import BarChartM from "@/components/ChartJS/BarchartM.vue";
 import LineChart from "@/components/ChartJS/LineChart.vue";
 
+import DataTable from "datatables.net-vue3";
+import DataTablesCore from "datatables.net";
+import "datatables.net-responsive";
+DataTable.use(DataTablesCore);
 export default {
   name: "CBSS",
   components: {
@@ -146,13 +431,14 @@ export default {
     StackBarChart,
     HStackBarChart,
     BarChartM,
+    DataTable,
   },
 
   data() {
     return {
       PageTitle: "CBSS",
 
-      SLPData: {
+      ClientData: {
         labels: ["1", "2", "3", "4", "5", "6"],
         label: ["Client"],
         values: [50, 75, 225, 100, 200, 40],
@@ -162,7 +448,20 @@ export default {
           "rgba(226, 80, 76, 1)",
           "rgba(255, 105, 97, 1)",
           "rgba(255, 150, 136, 1)",
-          "rgba(255, 191, 176, 1)"],
+          "rgba(255, 191, 176, 1)",
+        ],
+      },
+
+      CaseData: {
+        labels: ["1", "2", "3", "4"],
+        label: ["Client"],
+        values: [50, 75, 225, 100],
+        backgroundColor: [
+          "rgba(183, 154, 0, 1)",
+          "rgba(210, 178, 2, 1)",
+          "rgba(238, 202, 6, 1)",
+          "rgba(248, 228, 75, 1)",
+        ],
       },
 
       sexData: {
@@ -199,6 +498,9 @@ export default {
 </script>
 
 <style scoped>
+@import "datatables.net-dt";
+@import "datatables.net-bs5";
+
 h1 {
   font-family: Inter;
   font-size: 43px;
@@ -216,7 +518,6 @@ h1 {
   line-height: 36px;
   letter-spacing: 0em;
   text-align: center;
-  width: 340px;
 }
 
 .dashboard-subtext {
@@ -236,7 +537,6 @@ h1 {
   line-height: 85px;
   letter-spacing: 0em;
   text-align: center;
-  width: 340px;
 }
 
 .dashboard-center {
@@ -284,5 +584,12 @@ h1 {
 
 .lineChart {
   padding-bottom: 100px;
+}
+
+.dataTable-container {
+  padding: 0px 20px 10px 20px;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
 }
 </style>
