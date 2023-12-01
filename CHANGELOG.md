@@ -385,3 +385,7 @@
 ### version 7.10 KIARA HAGUNOB
 
 - Partially fixed CBSS, and added border radius in SWDA
+
+### version 8.0 MARLO BARUA
+
+- Added Temporary Tables in SWDA with temporary Data
