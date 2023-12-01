@@ -94,7 +94,11 @@
                   id="hrTable"
                   :options="{
                     lengthChange: false,
-                    pageLength: 4,
+                    searching: false,
+                    // pageLength: 5,
+                    scrollY: '300px',
+                    info: false,
+                    paging: false,
                   }"
                 >
                   <thead style="background: #133f5c" class="text-white">
@@ -133,12 +137,6 @@
                       <td>TEST</td>
                     </tr>
                   </tbody>
-                  <tfoot>
-                    <tr>
-                      <th>CATEGORY NAME</th>
-                      <th>AMOUNT</th>
-                    </tr>
-                  </tfoot>
                 </DataTable>
               </div>
             </div>
@@ -161,7 +159,11 @@
                   id="hrTable"
                   :options="{
                     lengthChange: false,
-                    pageLength: 4,
+                    searching: false,
+                    // pageLength: 5,
+                    scrollY: '300px',
+                    info: false,
+                    paging: false,
                   }"
                 >
                   <thead style="background: #133f5c" class="text-white">
@@ -200,12 +202,6 @@
                       <td>TEST</td>
                     </tr>
                   </tbody>
-                  <tfoot>
-                    <tr>
-                      <th>CATEGORY NAME</th>
-                      <th>AMOUNT</th>
-                    </tr>
-                  </tfoot>
                 </DataTable>
               </div>
             </div>
@@ -225,7 +221,10 @@
                 :options="{
                   lengthChange: false,
                   searching: false,
-                  pageLength: 5,
+                  // pageLength: 5,
+                  scrollY: '300px',
+                  info: false,
+                  paging: false,
                 }"
               >
                 <thead style="background: #133f5c" class="text-white">
@@ -264,12 +263,6 @@
                     <td>TEST</td>
                   </tr>
                 </tbody>
-                <tfoot>
-                  <tr>
-                    <th>Service Name</th>
-                    <th>Number of Person Served</th>
-                  </tr>
-                </tfoot>
               </DataTable>
             </div>
           </div>
@@ -287,7 +280,10 @@
                     :options="{
                       lengthChange: false,
                       searching: false,
-                      pageLength: 5,
+                      // pageLength: 5,
+                      scrollY: '300px',
+                      info: false,
+                      paging: false,
                     }"
                   >
                     <thead style="background: #133f5c" class="text-white">
@@ -326,12 +322,6 @@
                         <td>TEST</td>
                       </tr>
                     </tbody>
-                    <tfoot>
-                      <tr>
-                        <th>Responsible Person</th>
-                        <th>Total Number of Client Served</th>
-                      </tr>
-                    </tfoot>
                   </DataTable>
                 </div>
               </div>
@@ -344,7 +334,10 @@
                     :options="{
                       lengthChange: false,
                       searching: false,
-                      pageLength: 5,
+                      // pageLength: 5,
+                      scrollY: '300px',
+                      info: false,
+                      paging: false,
                     }"
                   >
                     <thead style="background: #133f5c" class="text-white">
@@ -383,12 +376,6 @@
                         <td>TEST</td>
                       </tr>
                     </tbody>
-                    <tfoot>
-                      <tr>
-                        <th>Responsible Person</th>
-                        <th>Total Number of Client Served</th>
-                      </tr>
-                    </tfoot>
                   </DataTable>
                 </div>
               </div>
