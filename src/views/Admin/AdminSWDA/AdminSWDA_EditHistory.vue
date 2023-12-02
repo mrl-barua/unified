@@ -12,6 +12,7 @@
         id="swdaTable"
         :options="{
           order: [[0, 'desc']],
+          stateSave: true,
         }"
       >
         <thead style="background: #133f5c" class="text-white">

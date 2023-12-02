@@ -42,6 +42,14 @@
           style="width: 100%"
           class="display stripe order-column cell-border hover compact"
           id="cbssTable"
+          :options="{
+            stateSave: true,
+            //* pageLength: 5,
+            //* lengthMenu: [
+            //* [5, 10, 25, 50],
+            //*  [5, 10, 25, 50],
+            //*  ],
+          }"
         >
           <thead style="background: #cb0e16" class="text-white">
             <tr>

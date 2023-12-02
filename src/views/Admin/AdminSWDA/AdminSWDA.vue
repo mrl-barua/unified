@@ -59,6 +59,7 @@
           class="display stripe order-column cell-border hover compact"
           id="swdaTable"
           :options="{
+            stateSave: true,
             //* pageLength: 5,
             //* lengthMenu: [
             //* [5, 10, 25, 50],

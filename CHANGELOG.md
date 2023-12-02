@@ -389,3 +389,7 @@
 ### version 8.0 MARLO BARUA
 
 - Added Temporary Tables in SWDA with temporary Data
+
+### version 8.1 MARLO BARUA
+
+- Configured the option for all DataTables Component
