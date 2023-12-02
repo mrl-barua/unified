@@ -345,7 +345,7 @@
                     <thead style="background: #133f5c" class="text-white">
                       <tr>
                         <th>Responsible Person</th>
-                        <th>Total Number of Client Served</th>
+                        <th>Total Number of Case Categories Served</th>
                       </tr>
                     </thead>
                     <tbody>
