@@ -8,9 +8,10 @@
           <h1>DASHBOARD SUMMARY</h1>
           <div class="col-12">
             <div class="col-4">
+              <br/>
               <p class="dashboard-text">Total Number of Clients Served</p>
               <p class="dashboard-value">0</p>
-              <br />
+              
               <p class="dashboard-text">Financial Assistance Amount Given</p>
               <p class="dashboard-value">000</p>
             </div>
@@ -48,9 +49,10 @@
               </div>
             </div>
             <div class="col-4">
+              <br/>
               <p class="dashboard-text">Number of Case Categories</p>
               <p class="dashboard-value">0</p>
-              <br />
+              
               <p class="dashboard-text">Number of Non- Monetary Services</p>
               <p class="dashboard-value">0</p>
             </div>
