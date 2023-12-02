@@ -137,7 +137,7 @@
         >
           <span>DIVISION</span>
         </div>
-        <div class="shadow2">
+        <div class="shadow3">
           <div class="inside">
             <DataTable
               id="table"
@@ -174,7 +174,7 @@
 
     <!-- Status -->
     <div class="col-12 col-md-6">
-      <div class="dashboard-box" style="height: 195px">
+      <div class="dashboard-box" style="height: 205px">
         <div
           style="
             background-color: ;
@@ -185,10 +185,32 @@
             text-align: center;
           "
         >
-          STATUS (FILLED/UNFILLED)
+          STATUS
         </div>
-        <div style="flex: 1; padding: 10px; text-align: center">
-          <span style="font-size: 40px; font-weight: bold">0</span>
+
+        <div style="display: flex; justify-content: space-between">
+          <div style="flex: 1; padding: 10px; text-align: center">
+            <span style="font-size: 20px; font-weight: bold; color: black"
+              >FILLED</span
+            >
+          </div>
+          <div style="flex: 1; padding: 10px; text-align: center">
+            <span style="font-size: 20px; font-weight: bold; color: black"
+              >UNFILLED</span
+            >
+          </div>
+        </div>
+        <div style="display: flex; justify-content: space-between">
+          <div style="flex: 1; text-align: center">
+            <span style="font-size: 60px; font-weight: bold; color: red"
+              >0</span
+            >
+          </div>
+          <div style="flex: 1; text-align: center">
+            <span style="font-size: 60px; font-weight: bold; color: #292d96"
+              >0</span
+            >
+          </div>
         </div>
       </div>
     </div>
@@ -241,6 +263,145 @@
       </div>
     </div> -->
   </div>
+
+  <div class="col-12 col-md-12">
+    <div class="h2">
+      <h2>ELIGIBILITY</h2>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6">
+    <div class="shadow2">
+      <div class="inside">
+        <DataTable
+          id="table"
+          :paging="true"
+          :searching="true"
+          :info="true"
+          :responsive="true"
+          :length-change="true"
+          :length-menu="[10, 25, 50, 100]"
+          :language="{
+            paginate: {
+              previous: '<i class=\'fas fa-angle-left\'></i>',
+              next: '<i class=\'fas fa-angle-right\'></i>',
+            },
+          }"
+        >
+          <thead style="background: #133f5c" class="text-white">
+            <tr>
+              <th>CSC and Others</th>
+              <th>Record Count</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>No Data Available</td>
+              <td>No Data Available</td>
+            </tr>
+          </tbody>
+        </DataTable>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-md-6">
+    <div class="shadow2">
+      <div class="inside">
+        <DataTable
+          id="table"
+          :paging="true"
+          :searching="true"
+          :info="true"
+          :responsive="true"
+          :length-change="true"
+          :length-menu="[10, 25, 50, 100]"
+          :language="{
+            paginate: {
+              previous: '<i class=\'fas fa-angle-left\'></i>',
+              next: '<i class=\'fas fa-angle-right\'></i>',
+            },
+          }"
+        >
+          <thead style="background: #133f5c" class="text-white">
+            <tr>
+              <th>Licensed</th>
+              <th>Record Count</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>No Data Available</td>
+              <td>No Data Available</td>
+            </tr>
+          </tbody>
+        </DataTable>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-md-6">
+    <div class="shadow2">
+      <div class="inside">
+        <DataTable
+          id="table"
+          :paging="true"
+          :searching="true"
+          :info="true"
+          :responsive="true"
+          :length-change="true"
+          :length-menu="[10, 25, 50, 100]"
+          :language="{
+            paginate: {
+              previous: '<i class=\'fas fa-angle-left\'></i>',
+              next: '<i class=\'fas fa-angle-right\'></i>',
+            },
+          }"
+        >
+          <thead style="background: #133f5c" class="text-white">
+            <tr>
+              <th>Highest Level of Eligibility (1st Level / 2nd Level)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>No Data Available</td>
+            </tr>
+          </tbody>
+        </DataTable>
+      </div>
+    </div>
+  </div>
+
+  <!-- W/WO ELIGIBILITY -->
+  <div class="col-12 col-md-6">
+    <div class="dashboard-box" style="height: 300px">
+      <div style="display: flex; justify-content: space-between">
+        <div style="flex: 1; padding: 10px; text-align: center">
+          <br />
+          <br />
+          <span style="font-size: 20px; font-weight: bold; color: black"
+            >WITH ELIGIBILITY</span
+          >
+        </div>
+        <div style="flex: 1; padding: 10px; text-align: center">
+          <br />
+          <br />
+          <span style="font-size: 20px; font-weight: bold; color: black"
+            >WITHOUT ELIGIBILITY</span
+          >
+        </div>
+      </div>
+      <div style="display: flex; justify-content: space-between">
+        <div style="flex: 1; padding: 10px; text-align: center">
+          <span style="font-size: 60px; font-weight: bold; color: red">0</span>
+        </div>
+        <div style="flex: 1; padding: 10px; text-align: center">
+          <span style="font-size: 60px; font-weight: bold; color: #292d96"
+            >0</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -284,32 +445,10 @@ export default {
         ],
       },
 
-      MonthData: {
-        labels: ["MOA", "Permanent", "Contractual", "Coterminous", "Casual"],
-        values: [25, 25, 25, 25, 25], //  values
-        backgroundColor: [
-          "#E2504C",
-          "#6A9EDA",
-          "#EECA06",
-          "#FF6961",
-          "#84B6F4",
-        ],
-      },
-
       employmentType: {
-        labels: [], //  two choices for gender
-        values: [30, 10, 20, 40], //values
-        backgroundColor: [
-          "rgba(235, 95, 94)",
-          "rgba(243,165,51)",
-          "rgba(89,80,141)",
-          "rgba(188,80,144)",
-        ], // Add colors for each gender
-      },
-      genderData: {
-        labels: [], //two choices for gender
-        values: [50, 50], //values accordingly
-        backgroundColor: ["rgba(235, 95, 94)", "rgba(89,80,141)"], // colors for each gender
+        labels: ["Senior Citizen", "Indigenous People", "Solo Parents", "PWD"],
+        values: [25, 25, 25, 25, 25], //  values
+        backgroundColor: ["#6A9EDA", "#F8DA45", "#FF7676", "#BAC2FF"], // Add colors for each gender
       },
 
       GenageData: {
@@ -358,12 +497,28 @@ export default {
   box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.15);
 }
 
-.shadow2 {
+.shadow3 {
   height: 275px;
   /* border-radius: 20px; */
+}
+.shadow2 {
+  box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.15);
+  height: 300px;
+  margin: 5px 5px 5px 5px;
+  padding: 10px;
 }
 
 .Barchart1 {
   height: 250px;
+}
+
+.h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 15px 5px;
+  background-color: #133f5c;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 2px;
 }
 </style>
