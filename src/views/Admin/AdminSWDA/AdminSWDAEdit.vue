@@ -367,7 +367,7 @@
               </option>
               <option value="" disabled selected>Select an option ⮟</option>
               <option value="Davao City">Davao City</option>
-              <option value="Davao del Oro">Davao del Oro</option>
+              <option value="Davao de Oro">Davao de Oro</option>
               <option value="Davao del Norte">Davao del Norte</option>
               <option value="Davao del Sur">Davao del Sur</option>
               <option value="Davao Oriental">Davao Oriental</option>
@@ -390,7 +390,7 @@
               </option>
               <option value="" disabled selected>Select an option ⮟</option>
               <option value="Davao City">Davao City</option>
-              <option value="Davao del Oro">Davao del Oro</option>
+              <option value="Davao de Oro">Davao de Oro</option>
               <option value="Davao del Norte">Davao del Norte</option>
               <option value="Davao del Sur">Davao del Sur</option>
               <option value="Davao Oriental">Davao Oriental</option>

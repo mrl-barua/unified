@@ -100,7 +100,12 @@
           <div class="col-6">
             <div class="shadow-container">
               <p class="section2-header">Sub - Categories Served</p>
-              <div class="chart-container"><BarChart :data="CaseData" /></div>
+              <div class="chart-container">
+                <BarChart
+                  :data="subCategoriesChart"
+                  v-if="subCategoriesChart"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -336,6 +341,7 @@ export default {
       clientServedPerQuarterChart: null,
       clientServedPerAgeAndSex: null,
       caseCategoriesChart: null,
+      subCategoriesChart: null,
 
       CaseData: {
         labels: ["1", "2", "3", "4"],
@@ -636,9 +642,58 @@ export default {
       });
     },
 
+    getSubCategoriesServedChart() {
+      axios.get(`${backendURL}/api/subCategoriesServedChart`).then((res) => {
+        this.SubCategoriesServedChart = res.data.SubCategoriesServedChart;
+
+        const cnsp = [];
+        const emotionallyDistressed = [];
+        const ofw = [];
+
+        const Others = [];
+
+        res.data.SubCategoriesServedChart.forEach((item) => {
+          if (item.SUB_CATEGORY === "CNSP") {
+            cnsp.push(item);
+          } else if (item.SUB_CATEGORY === "EMOTIONALLY/PSYCHO DISTRESSED") {
+            emotionallyDistressed.push(item);
+          } else if (item.SUB_CATEGORY === "OFW") {
+            ofw.push(item);
+          } else {
+            Others.push(item);
+          }
+        });
+
+        const cnspChart = cnsp.length;
+        const emotionallyDistressedChart = emotionallyDistressed.length;
+        const ofwChart = ofw.length;
+        const OthersChart = Others.length;
+        // console.log(caseCategoriesWedc);
+        const subCategoriesChart = {
+          labels: ["CNSP", "EMOTIONALLY DISTRESSED", "OFW", "OTHERS"],
+          label: ["Case Categories"],
+          values: [
+            cnspChart,
+            emotionallyDistressedChart,
+            ofwChart,
+            OthersChart,
+          ],
+          backgroundColor: [
+            "rgba(183, 154, 0, 1)",
+            "rgba(210, 178, 2, 1)",
+            "rgba(238, 202, 6, 1)",
+            "rgba(248, 228, 75, 1)",
+          ],
+        };
+
+        this.subCategoriesChart = subCategoriesChart;
+      });
+    },
+
     getSubCategoriesServed() {
       axios.get(`${backendURL}/api/subCategoriesServed`).then((res) => {
         this.subCategoriesServed = res.data.SubCategoriesServed;
+        console.log(res.data.SubCategoriesServed);
 
         const countsByService = this.subCategoriesServed.reduce(
           (counts, item) => {
@@ -709,6 +764,7 @@ export default {
     this.getSubCategoriesServed();
     this.getTotalNumberOfClientServed();
     this.getTotalNumberOfCategoriesServed();
+    this.getSubCategoriesServedChart();
   },
 };
 </script>
