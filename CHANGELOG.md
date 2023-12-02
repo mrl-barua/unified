@@ -393,3 +393,7 @@
 ### version 8.1 MARLO BARUA
 
 - Configured the option for all DataTables Component
+
+### version 8.2 MARLO BARUA
+
+- Implemented Partial Fetch from backend CBSS View

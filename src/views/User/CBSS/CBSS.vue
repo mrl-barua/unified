@@ -9,10 +9,10 @@
           <div class="col-12">
             <div class="col-4">
               <p class="dashboard-text">Total Number of Clients Served</p>
-              <p class="dashboard-value">0</p>
+              <p class="dashboard-value">{{ totalClientServed.length }}</p>
               <br />
               <p class="dashboard-text">Financial Assistance Amount Given</p>
-              <p class="dashboard-value">000</p>
+              <p class="dashboard-value">{{ totalAmount }}</p>
             </div>
             <div class="col-4">
               <p class="dashboard-subtext">Gender of Clients Served</p>
@@ -20,14 +20,14 @@
                 <p class="dashboard-center text-center">FEMALE</p>
               </div>
               <div class="col-6">
-                <p class="dashboard-center text-center">0</p>
+                <p class="dashboard-center text-center">{{ female.length }}</p>
               </div>
 
               <div class="col-6">
                 <p class="dashboard-center text-center">MALE</p>
               </div>
               <div class="col-6">
-                <p class="dashboard-center text-center">0</p>
+                <p class="dashboard-center text-center">{{ male.length }}</p>
               </div>
               <br />
               <br />
@@ -37,22 +37,22 @@
                 <p class="dashboard-center text-center">WALK-IN</p>
               </div>
               <div class="col-6">
-                <p class="dashboard-center text-center">0</p>
+                <p class="dashboard-center text-center">{{ walkIn.length }}</p>
               </div>
 
               <div class="col-6">
                 <p class="dashboard-center text-center">DSW D...</p>
               </div>
               <div class="col-6">
-                <p class="dashboard-center text-center">0</p>
+                <p class="dashboard-center text-center">{{ others.length }}</p>
               </div>
             </div>
             <div class="col-4">
               <p class="dashboard-text">Number of Case Categories</p>
-              <p class="dashboard-value">0</p>
+              <p class="dashboard-value">{{ caseCategories.length }}</p>
               <br />
               <p class="dashboard-text">Number of Non- Monetary Services</p>
-              <p class="dashboard-value">0</p>
+              <p class="dashboard-value">{{ NonMonetaryServices.length }}</p>
             </div>
           </div>
         </div>
@@ -64,7 +64,10 @@
             <div class="shadow-container">
               <p class="section2-header">Clients Served per Quarter</p>
               <div class="chart-container lineChart">
-                <LineChart :data="ClientData" />
+                <LineChart
+                  :data="clientServedPerQuarterChart"
+                  v-if="clientServedPerQuarterChart"
+                />
               </div>
             </div>
           </div>
@@ -72,7 +75,10 @@
             <div class="shadow-container">
               <p class="section2-header">Clients Served per Age and Sex</p>
               <div class="chart-container lineChart">
-                <LineChart :data="sexData" />
+                <LineChart
+                  :data="clientServedPerAgeAndSex"
+                  v-if="clientServedPerAgeAndSex"
+                />
               </div>
             </div>
           </div>
@@ -81,7 +87,12 @@
           <div class="col-6">
             <div class="shadow-container">
               <p class="section2-header">Case Categories Served</p>
-              <div class="chart-container"><BarChart :data="ClientData" /></div>
+              <div class="chart-container">
+                <BarChart
+                  :data="caseCategoriesChart"
+                  v-if="caseCategoriesChart"
+                />
+              </div>
             </div>
           </div>
           <div class="col-6">
@@ -433,20 +444,25 @@ export default {
   data() {
     return {
       PageTitle: "CBSS",
+      totalClientServed: [],
+      totalAmount: 0,
+      male: [],
+      female: [],
+      walkIn: [],
+      others: [],
 
-      ClientData: {
-        labels: ["1", "2", "3", "4", "5", "6"],
-        label: ["Client"],
-        values: [50, 75, 225, 100, 200, 40],
-        backgroundColor: [
-          "rgba(150, 9, 9, 1)",
-          "rgba(198, 54, 55, 1)",
-          "rgba(226, 80, 76, 1)",
-          "rgba(255, 105, 97, 1)",
-          "rgba(255, 150, 136, 1)",
-          "rgba(255, 191, 176, 1)",
-        ],
-      },
+      caseCategories: [],
+      caseCategoriesWedc: [],
+      caseCategoriesFhona: [],
+      caseCategoriesOlderPersons: [],
+      caseCategoriesOfw: [],
+      caseCategoriesPwd: [],
+      caseCategoriesOthers: [],
+      NonMonetaryServices: [],
+
+      clientServedPerQuarterChart: null,
+      clientServedPerAgeAndSex: null,
+      caseCategoriesChart: null,
 
       CaseData: {
         labels: ["1", "2", "3", "4"],
@@ -459,37 +475,261 @@ export default {
           "rgba(248, 228, 75, 1)",
         ],
       },
-
-      sexData: {
-        labels: ["0", "5-17", "18-28", "29-39", "40-50", "51-61", "62 & above"],
-        datasets: [
-          {
-            label: "Female",
-            data: [23, 75, 25, 21, 54, 52, 12, 66],
-            backgroundColor: "red",
-            fill: false, // for line chart
-            borderColor: "red", // for line chart
-          },
-          {
-            label: "Male",
-            data: [13, 25, 35, 11, 44, 52, 22, 76],
-            backgroundColor: "blue",
-            fill: false, // for line chart
-            borderColor: "blue", // for line chart
-          },
-        ],
-      },
-
-      BarData: {
-        labels: ["1st", "2nd", "3rd", "4th"],
-        label: ["Quarter"],
-        values: [0, 25, 75, 100],
-        backgroundColor: ["#C8C375"],
-      },
     };
   },
-  methods: {},
-  mounted() {},
+  methods: {
+    // getCbss() {
+    //   axios.get(`${backendURL}/api/cbsslist`).then((res) => {
+    //     this.cbss = res.data.Cbss;
+    //     console.log(res.data.Cbss);
+    //   });
+    // },
+
+    getTotalClientServed() {
+      axios.get(`${backendURL}/api/totalClientServed`).then((res) => {
+        this.totalClientServed = res.data.Cbss;
+        // console.log(res.data.Cbss);
+      });
+    },
+
+    getFinancialAmountGiven() {
+      axios.get(`${backendURL}/api/financialAmountGiven`).then((res) => {
+        this.totalAmount = res.data.totalAmount;
+        // console.log(res.data.totalAmount);
+      });
+    },
+
+    getgenderClientServed() {
+      axios.get(`${backendURL}/api/genderClientServed`).then((res) => {
+        const male = [];
+        const female = [];
+
+        res.data.Sex.forEach((item) => {
+          if (item.SEX === "MALE") {
+            male.push(item);
+          } else if (item.SEX === "FEMALE") {
+            female.push(item);
+          }
+        });
+
+        this.male = male;
+        this.female = female;
+      });
+    },
+
+    getModeofAdmission() {
+      axios.get(`${backendURL}/api/modeOfAdmission`).then((res) => {
+        const walkIn = [];
+        const others = [];
+        // console.log(res.data.ModeOfAdmission);
+        res.data.ModeOfAdmission.forEach((item) => {
+          if (item.MODE_OF_ADMISSION === "WALK-IN") {
+            walkIn.push(item);
+          } else {
+            others.push(item);
+          }
+        });
+
+        this.walkIn = walkIn;
+        this.others = others;
+        // console.log(this.walkIn);
+      });
+    },
+
+    getNumberCaseCategories() {
+      axios.get(`${backendURL}/api/numberCaseCategories`).then((res) => {
+        this.caseCategories = res.data.NumberCaseCategories;
+        const caseCategoriesWedc = [];
+        const caseCategoriesFhona = [];
+        const caseCategoriesOlderPersons = [];
+        const caseCategoriesOfw = [];
+        const caseCategoriesPwd = [];
+        const caseCategoriesOthers = [];
+        // console.log(res.data.NumberCaseCategories);
+        res.data.NumberCaseCategories.forEach((item) => {
+          if (item.CASE_CATEGORY === "WEDC") {
+            caseCategoriesWedc.push(item);
+          } else if (item.CASE_CATEGORY === "FHONA") {
+            caseCategoriesFhona.push(item);
+          } else if (item.CASE_CATEGORY === "OLDER PERSONS") {
+            caseCategoriesOlderPersons.push(item);
+          } else if (item.CASE_CATEGORY === "PWD") {
+            caseCategoriesPwd.push(item);
+          } else if (item.CASE_CATEGORY === "OFW") {
+            caseCategoriesOfw.push(item);
+          } else {
+            caseCategoriesOthers.push(item);
+          }
+        });
+
+        const caseChartCategoriesWedc = caseCategoriesWedc.length;
+        const caseChartCategoriesFhona = caseCategoriesFhona.length;
+        const caseChartCategoriesOlderPersons =
+          caseCategoriesOlderPersons.length;
+
+        const caseChartCategoriesPwd = caseCategoriesPwd.length;
+        const caseChartCategoriesOfw = caseCategoriesOfw.length;
+        const caseChartCategoriesOthers = caseCategoriesOthers.length;
+
+        // console.log(caseCategoriesWedc);
+        const caseCategoriesChart = {
+          labels: ["WEDC", "FHONA", "OLDER PERSONS", "PWD", "OFW", "OTHERS"],
+          label: ["Case Categories"],
+          values: [
+            caseChartCategoriesWedc,
+            caseChartCategoriesFhona,
+            caseChartCategoriesOlderPersons,
+            caseChartCategoriesPwd,
+            caseChartCategoriesOfw,
+            caseChartCategoriesOthers,
+          ],
+          backgroundColor: [
+            "rgba(150, 9, 9, 1)",
+            "rgba(198, 54, 55, 1)",
+            "rgba(226, 80, 76, 1)",
+            "rgba(255, 105, 97, 1)",
+            "rgba(255, 150, 136, 1)",
+            "rgba(255, 191, 176, 1)",
+          ],
+        };
+
+        this.caseCategoriesChart = caseCategoriesChart;
+
+        // console.log(this.caseCategories);
+      });
+    },
+
+    getNumberNonMonetaryServices() {
+      axios.get(`${backendURL}/api/numberNonMonetaryServices`).then((res) => {
+        this.NonMonetaryServices = res.data.NumberNonMonetaryServices;
+        // console.log(res.data.NumberNonMonetaryServices);
+
+        // console.log(this.NonMonetaryServices.length);
+      });
+    },
+
+    getClientsServedPerQuarter() {
+      axios.get(`${backendURL}/api/clientsServedPerQuarter`).then((res) => {
+        this.clientsServedPerQuarter = res.data.clientsServedPerQuarter;
+        // console.log(res.data.clientsServedPerQuarter.Quarter1);
+
+        const quarter1 = res.data.clientsServedPerQuarter.Quarter1;
+        const quarter2 = res.data.clientsServedPerQuarter.Quarter2;
+        const quarter3 = res.data.clientsServedPerQuarter.Quarter3;
+        const quarter4 = res.data.clientsServedPerQuarter.Quarter4;
+        const clientServedPerQuarterChart = {
+          labels: ["Quarter 1", "Quarter 2", "Quarter 3", "Quarter 4"],
+          label: ["Quarters"],
+          values: [quarter1, quarter2, quarter3, quarter4],
+          backgroundColor: [
+            "rgba(255, 150, 136, 1)",
+            "rgba(255, 105, 97, 1)",
+            "rgba(248, 228, 75, 1)",
+            "rgba(106, 158, 218, 1)",
+            "rgba(178, 218, 250, 1)",
+            "rgba(238, 202, 6, 1)",
+          ],
+        };
+
+        this.clientServedPerQuarterChart = clientServedPerQuarterChart;
+        // console.log(this.NonMonetaryServices.length);
+      });
+    },
+
+    getClientServedPerAgeAndSex() {
+      axios.get(`${backendURL}/api/clientServedPerAgeAndSex`).then((res) => {
+        this.clientServedPerAgeAndSex = res.data.clientServedPerAgeAndSex;
+        // console.log(res.data.clientServedPerAgeAndSex);
+        const maleAge0_4 = res.data.clientServedPerAgeAndSex.MALE["AGE:0-4"];
+        const maleAge5_17 = res.data.clientServedPerAgeAndSex.MALE["AGE:5-17"];
+        const maleAge18_28 =
+          res.data.clientServedPerAgeAndSex.MALE["AGE:18-28"];
+        const maleAge29_39 =
+          res.data.clientServedPerAgeAndSex.MALE["AGE:29-39"];
+        const maleAge40_50 =
+          res.data.clientServedPerAgeAndSex.MALE["AGE:40-50"];
+        const maleAge51_61 =
+          res.data.clientServedPerAgeAndSex.MALE["AGE:51-61"];
+        const maleAge62_Above =
+          res.data.clientServedPerAgeAndSex.MALE["AGE:61 and Above"];
+
+        const femaleAge0_4 =
+          res.data.clientServedPerAgeAndSex.FEMALE["AGE:0-4"];
+        const femaleAge5_17 =
+          res.data.clientServedPerAgeAndSex.FEMALE["AGE:5-17"];
+        const femaleAge18_28 =
+          res.data.clientServedPerAgeAndSex.FEMALE["AGE:18-28"];
+        const femaleAge29_39 =
+          res.data.clientServedPerAgeAndSex.FEMALE["AGE:29-39"];
+        const femaleAge40_50 =
+          res.data.clientServedPerAgeAndSex.FEMALE["AGE:40-50"];
+        const femaleAge51_61 =
+          res.data.clientServedPerAgeAndSex.FEMALE["AGE:51-61"];
+        const femaleAge62_Above =
+          res.data.clientServedPerAgeAndSex.FEMALE["AGE:61 and Above"];
+
+        // console.log(femaleAge40_50);
+
+        const clientServedPerAgeAndSex = {
+          labels: [
+            "0",
+            "5-17",
+            "18-28",
+            "29-39",
+            "40-50",
+            "51-61",
+            "62 & above",
+          ],
+          datasets: [
+            {
+              label: "Female",
+              data: [
+                femaleAge0_4,
+                femaleAge5_17,
+                femaleAge18_28,
+                femaleAge29_39,
+                femaleAge40_50,
+                femaleAge51_61,
+                femaleAge62_Above,
+              ],
+              backgroundColor: "red",
+              fill: false, // for line chart
+              borderColor: "red", // for line chart
+            },
+            {
+              label: "Male",
+              data: [
+                maleAge0_4,
+                maleAge5_17,
+                maleAge18_28,
+                maleAge29_39,
+                maleAge40_50,
+                maleAge51_61,
+                maleAge62_Above,
+              ],
+              backgroundColor: "blue",
+              fill: false, // for line chart
+              borderColor: "blue", // for line chart
+            },
+          ],
+        };
+
+        this.clientServedPerAgeAndSex = clientServedPerAgeAndSex;
+        // console.log(this.NonMonetaryServices.length);
+      });
+    },
+  },
+  mounted() {
+    // this.getCbss();
+    this.getTotalClientServed();
+    this.getFinancialAmountGiven();
+    this.getgenderClientServed();
+    this.getModeofAdmission();
+    this.getNumberCaseCategories();
+    this.getNumberNonMonetaryServices();
+    this.getClientsServedPerQuarter();
+    this.getClientServedPerAgeAndSex();
+  },
 };
 </script>
 
