@@ -49,10 +49,12 @@
             </div>
             <div class="col-4">
               <p class="dashboard-text">Number of Case Categories</p>
-              <p class="dashboard-value">{{ caseCategories.length }}</p>
+              <p class="dashboard-value">{{ uniqueCaseCategories.length }}</p>
               <br />
               <p class="dashboard-text">Number of Non- Monetary Services</p>
-              <p class="dashboard-value">{{ NonMonetaryServices.length }}</p>
+              <p class="dashboard-value">
+                {{ uniqueNonMonetaryServices.length }}
+              </p>
             </div>
           </div>
         </div>
@@ -97,74 +99,18 @@
           </div>
           <div class="col-6">
             <div class="shadow-container">
-              <p class="section2-header">Financial Amount Served</p>
-              <div class="dataTable-container">
-                <DataTable
-                  style="width: 90%"
-                  class="display stripe order-column hover compact"
-                  id="hrTable"
-                  :options="{
-                    lengthChange: false,
-                    searching: false,
-                    // pageLength: 5,
-                    scrollY: '200px',
-                    info: false,
-                    paging: false,
-                  }"
-                >
-                  <thead style="background: #133f5c" class="text-white">
-                    <tr>
-                      <th>CATEGORY NAME</th>
-                      <th>AMOUNT</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>TEST</td>
-                      <td>TEST</td>
-                    </tr>
-                    <tr>
-                      <td>TEST</td>
-                      <td>TEST</td>
-                    </tr>
-                    <tr>
-                      <td>TEST</td>
-                      <td>TEST</td>
-                    </tr>
-                    <tr>
-                      <td>TEST</td>
-                      <td>TEST</td>
-                    </tr>
-                    <tr>
-                      <td>TEST</td>
-                      <td>TEST</td>
-                    </tr>
-                    <tr>
-                      <td>TEST</td>
-                      <td>TEST</td>
-                    </tr>
-                    <tr>
-                      <td>TEST</td>
-                      <td>TEST</td>
-                    </tr>
-                  </tbody>
-                </DataTable>
-              </div>
+              <p class="section2-header">Sub - Categories Served</p>
+              <div class="chart-container"><BarChart :data="CaseData" /></div>
             </div>
           </div>
         </div>
         <div class="col-12">
           <div class="col-6">
             <div class="shadow-container">
-              <p class="section2-header">Sub - Categories Served</p>
-              <div class="chart-container"><BarChart :data="CaseData" /></div>
-            </div>
-          </div>
-          <div class="col-6">
-            <div class="shadow-container">
               <p class="section2-header">Financial Amount Served</p>
               <div class="dataTable-container">
                 <DataTable
+                  v-if="financialAmountServed.length > 0"
                   style="width: 90%"
                   class="display stripe order-column hover compact"
                   id="hrTable"
@@ -172,7 +118,7 @@
                     lengthChange: false,
                     searching: false,
                     // pageLength: 5,
-                    scrollY: '200px',
+                    scrollY: '230px',
                     info: false,
                     paging: false,
                   }"
@@ -184,33 +130,49 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>TEST</td>
-                      <td>TEST</td>
+                    <tr
+                      v-for="(sum, category) in sumsByCategory"
+                      :key="category"
+                    >
+                      <td>{{ category }}</td>
+                      <td>{{ sum }}</td>
                     </tr>
+                  </tbody>
+                </DataTable>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="shadow-container">
+              <p class="section2-header">Non-Monetary Services Served</p>
+              <div class="dataTable-container">
+                <DataTable
+                  v-if="subCategoriesServed.length > 0"
+                  style="width: 90%"
+                  class="display stripe order-column hover compact"
+                  id="hrTable"
+                  :options="{
+                    lengthChange: false,
+                    searching: false,
+                    // pageLength: 5,
+                    scrollY: '230px',
+                    info: false,
+                    paging: false,
+                  }"
+                >
+                  <thead style="background: #133f5c" class="text-white">
                     <tr>
-                      <td>TEST</td>
-                      <td>TEST</td>
+                      <th>Service Name</th>
+                      <th>Number of Person Served</th>
                     </tr>
-                    <tr>
-                      <td>TEST</td>
-                      <td>TEST</td>
-                    </tr>
-                    <tr>
-                      <td>TEST</td>
-                      <td>TEST</td>
-                    </tr>
-                    <tr>
-                      <td>TEST</td>
-                      <td>TEST</td>
-                    </tr>
-                    <tr>
-                      <td>TEST</td>
-                      <td>TEST</td>
-                    </tr>
-                    <tr>
-                      <td>TEST</td>
-                      <td>TEST</td>
+                  </thead>
+                  <tbody>
+                    <tr
+                      v-for="(count, service) in countsByService"
+                      :key="service"
+                    >
+                      <td>{{ service }}</td>
+                      <td>{{ count }}</td>
                     </tr>
                   </tbody>
                 </DataTable>
@@ -221,70 +183,14 @@
       </section>
 
       <section class="col-12">
-        <div class="col-4">
-          <div class="shadow-container2">
-            <p class="section2-header">Non-Monetary Services Served</p>
-            <div class="dataTable-container">
-              <DataTable
-                style="width: 90%"
-                class="display stripe order-column hover compact"
-                id="hrTable"
-                :options="{
-                  lengthChange: false,
-                  searching: false,
-                  // pageLength: 5,
-                  scrollY: '200px',
-                  info: false,
-                  paging: false,
-                }"
-              >
-                <thead style="background: #133f5c" class="text-white">
-                  <tr>
-                    <th>Service Name</th>
-                    <th>Number of Person Served</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>TEST</td>
-                    <td>TEST</td>
-                  </tr>
-                  <tr>
-                    <td>TEST</td>
-                    <td>TEST</td>
-                  </tr>
-                  <tr>
-                    <td>TEST</td>
-                    <td>TEST</td>
-                  </tr>
-                  <tr>
-                    <td>TEST</td>
-                    <td>TEST</td>
-                  </tr>
-                  <tr>
-                    <td>TEST</td>
-                    <td>TEST</td>
-                  </tr>
-                  <tr>
-                    <td>TEST</td>
-                    <td>TEST</td>
-                  </tr>
-                  <tr>
-                    <td>TEST</td>
-                    <td>TEST</td>
-                  </tr>
-                </tbody>
-              </DataTable>
-            </div>
-          </div>
-        </div>
-        <div class="col-8">
+        <div class="col-12">
           <div class="shadow-container">
             <p class="section2-header">CBSS Staff Monitoring</p>
             <div class="col-12">
               <div class="col-6">
                 <div class="dataTable-container">
                   <DataTable
+                    v-if="totalNumberOfClientServed.length > 0"
                     style="width: 90%"
                     class="display stripe order-column hover compact"
                     id="hrTable"
@@ -292,7 +198,7 @@
                       lengthChange: false,
                       searching: false,
                       // pageLength: 5,
-                      scrollY: '200px',
+                      scrollY: '240px',
                       info: false,
                       paging: false,
                     }"
@@ -304,33 +210,12 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>TEST</td>
-                        <td>TEST</td>
-                      </tr>
-                      <tr>
-                        <td>TEST</td>
-                        <td>TEST</td>
-                      </tr>
-                      <tr>
-                        <td>TEST</td>
-                        <td>TEST</td>
-                      </tr>
-                      <tr>
-                        <td>TEST</td>
-                        <td>TEST</td>
-                      </tr>
-                      <tr>
-                        <td>TEST</td>
-                        <td>TEST</td>
-                      </tr>
-                      <tr>
-                        <td>TEST</td>
-                        <td>TEST</td>
-                      </tr>
-                      <tr>
-                        <td>TEST</td>
-                        <td>TEST</td>
+                      <tr
+                        v-for="(count, person) in countsByPerson"
+                        :key="person"
+                      >
+                        <td>{{ person }}</td>
+                        <td>{{ count }}</td>
                       </tr>
                     </tbody>
                   </DataTable>
@@ -339,6 +224,7 @@
               <div class="col-6">
                 <div class="dataTable-container">
                   <DataTable
+                    v-if="totalNumberOfCategoriesServed.length > 0"
                     style="width: 90%"
                     class="display stripe order-column hover compact"
                     id="hrTable"
@@ -346,7 +232,7 @@
                       lengthChange: false,
                       searching: false,
                       // pageLength: 5,
-                      scrollY: '200px',
+                      scrollY: '240px',
                       info: false,
                       paging: false,
                     }"
@@ -354,47 +240,19 @@
                     <thead style="background: #133f5c" class="text-white">
                       <tr>
                         <th>Responsible Person</th>
-                        <th>Total Number of Client Served</th>
+                        <th>Case Categories Served</th>
+                        <th>Total</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>TEST</td>
-                        <td>TEST</td>
+                      <tr
+                        v-for="(count, key) in countsByPersonAndCategory"
+                        :key="key"
+                      >
+                        <td>{{ key.split("|")[0] }}</td>
+                        <td>{{ key.split("|")[1] }}</td>
+                        <td>{{ count }}</td>
                       </tr>
-                      <tr>
-                        <td>TEST</td>
-                        <td>TEST</td>
-                      </tr>
-                      <tr>
-                        <td>TEST</td>
-                        <td>TEST</td>
-                      </tr>
-                      <tr>
-                        <td>TEST</td>
-                        <td>TEST</td>
-                      </tr>
-                      <tr>
-                        <td>TEST</td>
-                        <td>TEST</td>
-                      </tr>
-                      <tr>
-                        <td>TEST</td>
-                        <td>TEST</td>
-                      </tr>
-                      <tr>
-                        <td>TEST</td>
-                        <td>TEST</td>
-                      </tr>
-                      <tr>
-                        <td>TEST</td>
-                        <td>TEST</td>
-                      </tr>
-                      <tr>
-                        <td>TEST</td>
-                        <td>TEST</td>
-                      </tr>
-                      v
                     </tbody>
                   </DataTable>
                 </div>
@@ -444,6 +302,7 @@ export default {
   data() {
     return {
       PageTitle: "CBSS",
+
       totalClientServed: [],
       totalAmount: 0,
       male: [],
@@ -452,6 +311,8 @@ export default {
       others: [],
 
       caseCategories: [],
+      uniqueCaseCategories: [],
+      uniqueNonMonetaryServices: [],
       caseCategoriesWedc: [],
       caseCategoriesFhona: [],
       caseCategoriesOlderPersons: [],
@@ -459,6 +320,18 @@ export default {
       caseCategoriesPwd: [],
       caseCategoriesOthers: [],
       NonMonetaryServices: [],
+
+      financialAmountServed: [],
+      sumsByCategory: {},
+
+      subCategoriesServed: [],
+      countsByService: {},
+
+      totalNumberOfClientServed: [],
+      countsByPerson: {},
+
+      totalNumberOfCategoriesServed: [],
+      countsByPersonAndCategory: {},
 
       clientServedPerQuarterChart: null,
       clientServedPerAgeAndSex: null,
@@ -478,13 +351,6 @@ export default {
     };
   },
   methods: {
-    // getCbss() {
-    //   axios.get(`${backendURL}/api/cbsslist`).then((res) => {
-    //     this.cbss = res.data.Cbss;
-    //     console.log(res.data.Cbss);
-    //   });
-    // },
-
     getTotalClientServed() {
       axios.get(`${backendURL}/api/totalClientServed`).then((res) => {
         this.totalClientServed = res.data.Cbss;
@@ -539,6 +405,23 @@ export default {
     getNumberCaseCategories() {
       axios.get(`${backendURL}/api/numberCaseCategories`).then((res) => {
         this.caseCategories = res.data.NumberCaseCategories;
+        this.numberCaseCategories = res.data.NumberCaseCategories;
+        const uniqueCaseCategories = this.numberCaseCategories.reduce(
+          (categories, item) => {
+            if (
+              item.CASE_CATEGORY &&
+              !categories.includes(item.CASE_CATEGORY)
+            ) {
+              categories.push(item.CASE_CATEGORY);
+            }
+            return categories;
+          },
+          []
+        );
+
+        this.uniqueCaseCategories = uniqueCaseCategories;
+        console.log(this.uniqueCaseCategories);
+
         const caseCategoriesWedc = [];
         const caseCategoriesFhona = [];
         const caseCategoriesOlderPersons = [];
@@ -602,9 +485,22 @@ export default {
     getNumberNonMonetaryServices() {
       axios.get(`${backendURL}/api/numberNonMonetaryServices`).then((res) => {
         this.NonMonetaryServices = res.data.NumberNonMonetaryServices;
-        // console.log(res.data.NumberNonMonetaryServices);
+        this.numberNonMonetaryServices = res.data.NumberNonMonetaryServices;
 
-        // console.log(this.NonMonetaryServices.length);
+        const uniqueNonMonetaryServices = this.numberNonMonetaryServices.reduce(
+          (services, item) => {
+            if (
+              item.NON_MONETARY_SERVICES &&
+              !services.includes(item.NON_MONETARY_SERVICES)
+            ) {
+              services.push(item.NON_MONETARY_SERVICES);
+            }
+            return services;
+          },
+          []
+        );
+
+        this.uniqueNonMonetaryServices = uniqueNonMonetaryServices;
       });
     },
 
@@ -718,6 +614,86 @@ export default {
         // console.log(this.NonMonetaryServices.length);
       });
     },
+
+    getFinancialAmountServe() {
+      axios.get(`${backendURL}/api/financialAmountServed`).then((res) => {
+        this.financialAmountServed = res.data.FinancialAmountServed;
+
+        const sumsByCategory = this.financialAmountServed.reduce(
+          (sums, item) => {
+            if (!sums[item.CASE_CATEGORY]) {
+              sums[item.CASE_CATEGORY] = 0;
+            }
+            sums[item.CASE_CATEGORY] += item.AMOUNT || 0; // if AMOUNT is null, treat it as 0
+            return sums;
+          },
+          {}
+        );
+
+        this.sumsByCategory = sumsByCategory;
+
+        // console.log(this.sumsByCategory);
+      });
+    },
+
+    getSubCategoriesServed() {
+      axios.get(`${backendURL}/api/subCategoriesServed`).then((res) => {
+        this.subCategoriesServed = res.data.SubCategoriesServed;
+
+        const countsByService = this.subCategoriesServed.reduce(
+          (counts, item) => {
+            if (!counts[item.NON_MONETARY_SERVICES]) {
+              counts[item.NON_MONETARY_SERVICES] = 0;
+            }
+            counts[item.NON_MONETARY_SERVICES]++;
+            return counts;
+          },
+          {}
+        );
+
+        this.countsByService = countsByService;
+      });
+    },
+
+    getTotalNumberOfClientServed() {
+      axios.get(`${backendURL}/api/totalNumberOfClientServed`).then((res) => {
+        this.totalNumberOfClientServed = res.data.TotalNumberOfClientServed;
+
+        const countsByPerson = this.totalNumberOfClientServed.reduce(
+          (counts, item) => {
+            if (!counts[item.REPONSIBLE_PERSON]) {
+              counts[item.REPONSIBLE_PERSON] = 0;
+            }
+            counts[item.REPONSIBLE_PERSON]++;
+            return counts;
+          },
+          {}
+        );
+
+        this.countsByPerson = countsByPerson;
+      });
+    },
+
+    getTotalNumberOfCategoriesServed() {
+      axios
+        .get(`${backendURL}/api/totalNumberOfCategoriesServed`)
+        .then((res) => {
+          this.totalNumberOfCategoriesServed =
+            res.data.TotalNumberOfCategoriesServed;
+
+          const countsByPersonAndCategory =
+            this.totalNumberOfCategoriesServed.reduce((counts, item) => {
+              const key = `${item.REPONSIBLE_PERSON}|${item.CASE_CATEGORY}`;
+              if (!counts[key]) {
+                counts[key] = 0;
+              }
+              counts[key]++;
+              return counts;
+            }, {});
+
+          this.countsByPersonAndCategory = countsByPersonAndCategory;
+        });
+    },
   },
   mounted() {
     // this.getCbss();
@@ -729,6 +705,10 @@ export default {
     this.getNumberNonMonetaryServices();
     this.getClientsServedPerQuarter();
     this.getClientServedPerAgeAndSex();
+    this.getFinancialAmountServe();
+    this.getSubCategoriesServed();
+    this.getTotalNumberOfClientServed();
+    this.getTotalNumberOfCategoriesServed();
   },
 };
 </script>

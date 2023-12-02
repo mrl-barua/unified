@@ -397,3 +397,7 @@
 ### version 8.2 MARLO BARUA
 
 - Implemented Partial Fetch from backend CBSS View
+
+### version 8.3 MARLO BARUA
+
+- Done Implementing Fetch from backend CBSS View
