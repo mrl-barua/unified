@@ -170,42 +170,32 @@ export default {
   mounted() {
     //console.log(this.$route.params.ID);
     this.CbssID = this.$route.params.ID;
-    //the OsdID is passed as a parameter to the OsdData() function  (which is defined below) to get the data of the HR with the given ID
-    this.CbssData(this.$route.params.ID);
+    //the CbssID is passed as a parameter to the CbssData() function  (which is defined below) to get the data of the CBSS with the given ID
+    this.CbssEditHistoryData(this.$route.params.ID);
   },
   methods: {
-    // The OsdData() function is used to get the data of the HR with the given ID
-    CbssData(CbssID) {
+    CbssEditHistoryData(CbssID) {
       axios
-        .get(`http://127.0.0.1:8000/api/cbsslist/${CbssID}/edit`)
+        .get(`http://127.0.0.1:8000/api/cbssVersion/${CbssID}/view`)
         .then((res) => {
           const cbssData = res.data.Cbss;
           console.log(res.data.Cbss);
 
-          this.model.Cbss.ID = cbssData.ID;
-          this.model.Cbss.DATE = cbssData.DATE;
-          this.model.Cbss.NAME = cbssData.NAME;
-          this.model.Cbss.AGE = cbssData.AGE;
-          this.model.Cbss.SEX = cbssData.SEX;
-          this.model.Cbss.CASE_CATEGORY = cbssData.CASE_CATEGORY;
-          this.model.Cbss.SUB_CATEGORY = cbssData.SUB_CATEGORY;
-          this.model.Cbss.MODE_OF_ADMISSION = cbssData.MODE_OF_ADMISSION;
-          this.model.Cbss.ADDRESS = cbssData.ADDRESS;
-          this.model.Cbss.NON_MONETARY_SERVICES =
-            cbssData.NON_MONETARY_SERVICES;
-          this.model.Cbss.Purpose = cbssData.Purpose;
-          this.model.Cbss.AMOUNT = cbssData.AMOUNT;
-          this.model.Cbss.REMARKS = cbssData.REMARKS;
-          this.model.Cbss.REPONSIBLE_PERSON = cbssData.REPONSIBLE_PERSON;
-          this.model.Cbss.NUMBER_OF_SERVICES_AVAILED =
-            cbssData.NUMBER_OF_SERVICES_AVAILED;
-        })
-        // If the HR with the given ID is not found, an error message will be displayed
-        .catch(function (error) {
-          if (error.response) {
-            if (error.response.status === 404) {
-              alert(error.response.data.message);
+          // Check if cbssData is null or empty
+          if (!cbssData || Object.keys(cbssData).length === 0) {
+            for (const key in this.model.Cbss) {
+              this.model.Cbss[key] = "No Data";
             }
+          } else {
+            // Assign values from cbssData to this.model.Cbss
+            for (const key in cbssData) {
+              this.model.Cbss[key] = cbssData[key];
+            }
+          }
+        })
+        .catch((error) => {
+          if (error.response && error.response.status === 404) {
+            alert(error.response.data.message);
           }
         });
     },

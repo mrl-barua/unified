@@ -38,6 +38,9 @@ import AdminCBSSArchive from '../views/Admin/AdminCBSS/AdminCBSS_Archive.vue'
 import AdminCBSSCreate from '../views/Admin/AdminCBSS/AdminCBSSCreate.vue'
 import AdminCBSSEdit from '../views/Admin/AdminCBSS/AdminCBSSEdit.vue'
 import AdminCBSSView from '../views/Admin/AdminCBSS/AdminCBSSView.vue'
+import AdminCBSSViewHistory from '../views/Admin/AdminCBSS/AdminCBSS_EditHistory.vue'
+import AdminCBSSViewHistoryVIEW from '../views/Admin/AdminCBSS/AdminCBSS_EditHistory_View.vue'
+
 
 import AdminHR from '../views/Admin/AdminHR/AdminHR.vue'
 import AdminHRArchive from '../views/Admin/AdminHR/AdminHR_Archive.vue'
@@ -171,6 +174,26 @@ const routes = [
     beforeEnter: adminRequireAuth,
   },
 
+  {
+    path: '/admincbss/:ID/editHistory',
+    name: 'editCbssHistory',
+    component: AdminCBSSViewHistory,
+    beforeEnter: adminRequireAuth,
+  },
+
+
+
+  {
+    path: '/admincbss/:ID/editHistory/view',
+    name: 'editCbssHistoryView',
+    component: AdminCBSSViewHistoryVIEW,
+    beforeEnter: adminRequireAuth,
+  },
+
+
+  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
   {

@@ -402,8 +402,13 @@
 
 - Done Implementing Fetch from backend CBSS View
 
-### version 8.4 MARLO BARUA
+### version 8.4 MARLO BARUAs
 
 - Added Sub Categories Chart Function in CBSS USER VIEW
 - Bug fix on Swda Edit (Davao del Oro ==> Davao de Oro)
 - Implemented Dynamic Label and Value Fetching in SWDA USER CHARTS FUNCTIONS
+
+### version 8.5 MARLO BARUA
+
+- Fix table pagination and input types
+- Completed the Admin SWDA All functionality needed

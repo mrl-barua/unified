@@ -60,11 +60,11 @@
           id="swdaTable"
           :options="{
             stateSave: true,
-            //* pageLength: 5,
-            //* lengthMenu: [
-            //* [5, 10, 25, 50],
-            //*  [5, 10, 25, 50],
-            //*  ],
+            pageLength: 5,
+            lengthMenu: [
+              [5, 10, 25, 50],
+              [5, 10, 25, 50],
+            ],
           }"
         >
           <thead style="background: #133f5c" class="text-white">

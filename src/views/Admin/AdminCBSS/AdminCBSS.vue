@@ -60,11 +60,11 @@
           id="cbssTable"
           :options="{
             stateSave: true,
-            //* pageLength: 5,
-            //* lengthMenu: [
-            //* [5, 10, 25, 50],
-            //*  [5, 10, 25, 50],
-            //*  ],
+            pageLength: 8,
+            lengthMenu: [
+              [5, 8, 10, 25, 50],
+              [5, 8, 10, 25, 50],
+            ],
           }"
         >
           <thead style="background: #133f5c" class="text-white">
@@ -108,7 +108,7 @@
                 ></i>
 
                 <router-link
-                  :to="{ path: '/adminswda/' + item.ID + '/editHistory' }"
+                  :to="{ path: '/admincbss/' + item.ID + '/editHistory' }"
                   class="custom-link"
                 >
                   <i class="bx bx-history icon table-icon"></i>

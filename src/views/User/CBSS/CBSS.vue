@@ -5,7 +5,16 @@
     <div class="col-12 wrapper container-fluid col-12">
       <section class="dashboard-summary">
         <div class="dashboard-container">
-          <h1>DASHBOARD SUMMARY</h1>
+          <div class="col-12">
+            <div class="col-4">
+              <hr class="hr mt-5 ms-5" style="border: 2px solid black" />
+            </div>
+            <div class="col-4"><h1>DASHBOARD SUMMARY</h1></div>
+            <div class="col-4">
+              <hr class="hr mt-5 me-5" style="border: 2px solid black" />
+            </div>
+          </div>
+
           <div class="col-12">
             <div class="col-4">
               <p class="dashboard-text">Total Number of Clients Served</p>

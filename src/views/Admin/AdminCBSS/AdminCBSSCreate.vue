@@ -144,7 +144,7 @@
             <div class="spaceBetween">
               <label for="officeLocation">AMOUNT</label>
               <input
-                type="text"
+                type="number"
                 v-model="model.Cbss.AMOUNT"
                 class="form-control"
                 id="officeLocation"
@@ -179,7 +179,7 @@
             <div class="spaceBetween">
               <label for="officeLocation">NUMBER OF SERVICES AVAILED</label>
               <input
-                type="text"
+                type="number"
                 v-model="model.Cbss.NUMBER_OF_SERVICES_AVAILED"
                 class="form-control"
                 id="officeLocation"

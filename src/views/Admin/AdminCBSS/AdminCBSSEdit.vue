@@ -8,7 +8,7 @@
       <!-- ! SHOW ERROR DIALOGUE -->
       <!-- ! SHOW ERROR DIALOGUE -->
       <!-- ! SHOW ERROR DIALOGUE -->
-      <!-- <ul
+      <ul
         class="alert alert-warning"
         v-if="Object.keys(this.errorList).length > 0"
       >
@@ -19,7 +19,7 @@
         >
           {{ error[0] }}
         </li>
-      </ul> -->
+      </ul>
       <!-- ! SHOW ERROR DIALOGUE -->
       <!-- ! SHOW ERROR DIALOGUE -->
       <!-- ! SHOW ERROR DIALOGUE -->
@@ -188,12 +188,12 @@
         </div>
       </div>
       <div class="md-3 col-12 buttons d-flex justify-content-end">
-        <router-link to="/adminhr">
+        <router-link to="/admincbss">
           <button class="btn btn-secondary">CANCEL</button>
         </router-link>
-        <router-link to="/adminhr">
+        <router-link to="/admincbss">
           <button
-            @click="updateHR($route.params.ID)"
+            @click="updateCbss($route.params.ID)"
             class="btn btn-primary col-12"
           >
             Save
@@ -283,41 +283,41 @@ export default {
           }
         });
     },
-    // The updateHR() function is used to update the data of the HR with the given ID in the database using the backend API endpoint for updating HR data
-    // updateHR(HrID) {
-    //   var mythis = this;
-    //   axios
-    //     .put(
-    //       `http://127.0.0.1:8000/api/hrlist/${HrID}/edit`,
-    //       // The data to be updated is passed as a parameter to the axios.put() function
-    //       // as the second parameter (the first parameter is the API endpoint) in the form of
-    //       // an object with the following properties: Hr (which contains the data to be updated)
-    //       // and _method (which is set to "PUT" to indicate that the data will be updated)
-    //       this.model.HR
-    //     )
-    //     .then((res) => {
-    //       console.log(res.data);
-    //       alert(res.data.message);
+    // The updateCbss() function is used to update the data of the HR with the given ID in the database using the backend API endpoint for updating HR data
+    updateCbss(CbssID) {
+      var mythis = this;
+      axios
+        .put(
+          `http://127.0.0.1:8000/api/cbsslist/${CbssID}/edit`,
+          // The data to be updated is passed as a parameter to the axios.put() function
+          // as the second parameter (the first parameter is the API endpoint) in the form of
+          // an object with the following properties: Hr (which contains the data to be updated)
+          // and _method (which is set to "PUT" to indicate that the data will be updated)
+          this.model.Cbss
+        )
+        .then((res) => {
+          console.log(res.data);
+          alert(res.data.message);
 
-    //       this.errorList = "";
+          this.errorList = "";
 
-    //       window.location.reload(); // reload the page after updating the data
-    //     })
-    //     .catch(function (error) {
-    //       if (error.response) {
-    //         if (error.response.status === 422) {
-    //           mythis.errorList = error.response.data.errors;
-    //         }
-    //         if (error.response.status === 404) {
-    //           alert(error.response.data.message);
-    //         }
-    //       } else if (error.request) {
-    //         console.log(error.request);
-    //       } else {
-    //         console.log("error", error.message);
-    //       }
-    //     });
-    // },
+          window.location.reload(); // reload the page after updating the data
+        })
+        .catch(function (error) {
+          if (error.response) {
+            if (error.response.status === 422) {
+              mythis.errorList = error.response.data.errors;
+            }
+            if (error.response.status === 404) {
+              alert(error.response.data.message);
+            }
+          } else if (error.request) {
+            console.log(error.request);
+          } else {
+            console.log("error", error.message);
+          }
+        });
+    },
   },
 };
 </script>
