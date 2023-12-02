@@ -512,17 +512,15 @@ export default {
 
     getClientsServedPerQuarter() {
       axios.get(`${backendURL}/api/clientsServedPerQuarter`).then((res) => {
-        this.clientsServedPerQuarter = res.data.clientsServedPerQuarter;
-        // console.log(res.data.clientsServedPerQuarter.Quarter1);
+        const data = res.data.clientsServedPerQuarter;
 
-        const quarter1 = res.data.clientsServedPerQuarter.Quarter1;
-        const quarter2 = res.data.clientsServedPerQuarter.Quarter2;
-        const quarter3 = res.data.clientsServedPerQuarter.Quarter3;
-        const quarter4 = res.data.clientsServedPerQuarter.Quarter4;
+        const labels = Object.keys(data);
+        const values = Object.values(data);
+
         const clientServedPerQuarterChart = {
-          labels: ["Quarter 1", "Quarter 2", "Quarter 3", "Quarter 4"],
+          labels,
           label: ["Quarters"],
-          values: [quarter1, quarter2, quarter3, quarter4],
+          values,
           backgroundColor: [
             "rgba(255, 150, 136, 1)",
             "rgba(255, 105, 97, 1)",
@@ -534,81 +532,33 @@ export default {
         };
 
         this.clientServedPerQuarterChart = clientServedPerQuarterChart;
-        // console.log(this.NonMonetaryServices.length);
       });
     },
-
     getClientServedPerAgeAndSex() {
       axios.get(`${backendURL}/api/clientServedPerAgeAndSex`).then((res) => {
-        this.clientServedPerAgeAndSex = res.data.clientServedPerAgeAndSex;
-        // console.log(res.data.clientServedPerAgeAndSex);
-        const maleAge0_4 = res.data.clientServedPerAgeAndSex.MALE["AGE:0-4"];
-        const maleAge5_17 = res.data.clientServedPerAgeAndSex.MALE["AGE:5-17"];
-        const maleAge18_28 =
-          res.data.clientServedPerAgeAndSex.MALE["AGE:18-28"];
-        const maleAge29_39 =
-          res.data.clientServedPerAgeAndSex.MALE["AGE:29-39"];
-        const maleAge40_50 =
-          res.data.clientServedPerAgeAndSex.MALE["AGE:40-50"];
-        const maleAge51_61 =
-          res.data.clientServedPerAgeAndSex.MALE["AGE:51-61"];
-        const maleAge62_Above =
-          res.data.clientServedPerAgeAndSex.MALE["AGE:61 and Above"];
+        const data = res.data.clientServedPerAgeAndSex;
 
-        const femaleAge0_4 =
-          res.data.clientServedPerAgeAndSex.FEMALE["AGE:0-4"];
-        const femaleAge5_17 =
-          res.data.clientServedPerAgeAndSex.FEMALE["AGE:5-17"];
-        const femaleAge18_28 =
-          res.data.clientServedPerAgeAndSex.FEMALE["AGE:18-28"];
-        const femaleAge29_39 =
-          res.data.clientServedPerAgeAndSex.FEMALE["AGE:29-39"];
-        const femaleAge40_50 =
-          res.data.clientServedPerAgeAndSex.FEMALE["AGE:40-50"];
-        const femaleAge51_61 =
-          res.data.clientServedPerAgeAndSex.FEMALE["AGE:51-61"];
-        const femaleAge62_Above =
-          res.data.clientServedPerAgeAndSex.FEMALE["AGE:61 and Above"];
-
-        // console.log(femaleAge40_50);
+        const labels = Object.keys(data.MALE || data.FEMALE).map((ageKey) =>
+          ageKey.replace("AGE:", "")
+        );
+        const maleData = labels.map((label) => data.MALE[`AGE:${label}`] || 0);
+        const femaleData = labels.map(
+          (label) => data.FEMALE[`AGE:${label}`] || 0
+        );
 
         const clientServedPerAgeAndSex = {
-          labels: [
-            "0",
-            "5-17",
-            "18-28",
-            "29-39",
-            "40-50",
-            "51-61",
-            "62 & above",
-          ],
+          labels,
           datasets: [
             {
               label: "Female",
-              data: [
-                femaleAge0_4,
-                femaleAge5_17,
-                femaleAge18_28,
-                femaleAge29_39,
-                femaleAge40_50,
-                femaleAge51_61,
-                femaleAge62_Above,
-              ],
+              data: femaleData,
               backgroundColor: "red",
               fill: false, // for line chart
               borderColor: "red", // for line chart
             },
             {
               label: "Male",
-              data: [
-                maleAge0_4,
-                maleAge5_17,
-                maleAge18_28,
-                maleAge29_39,
-                maleAge40_50,
-                maleAge51_61,
-                maleAge62_Above,
-              ],
+              data: maleData,
               backgroundColor: "blue",
               fill: false, // for line chart
               borderColor: "blue", // for line chart
@@ -617,7 +567,6 @@ export default {
         };
 
         this.clientServedPerAgeAndSex = clientServedPerAgeAndSex;
-        // console.log(this.NonMonetaryServices.length);
       });
     },
 
@@ -646,38 +595,23 @@ export default {
       axios.get(`${backendURL}/api/subCategoriesServedChart`).then((res) => {
         this.SubCategoriesServedChart = res.data.SubCategoriesServedChart;
 
-        const cnsp = [];
-        const emotionallyDistressed = [];
-        const ofw = [];
+        const countsBySubCategory = this.SubCategoriesServedChart.reduce(
+          (counts, item) => {
+            if (item.SUB_CATEGORY) {
+              if (!counts[item.SUB_CATEGORY]) {
+                counts[item.SUB_CATEGORY] = 0;
+              }
+              counts[item.SUB_CATEGORY]++;
+            }
+            return counts;
+          },
+          {}
+        );
 
-        const Others = [];
-
-        res.data.SubCategoriesServedChart.forEach((item) => {
-          if (item.SUB_CATEGORY === "CNSP") {
-            cnsp.push(item);
-          } else if (item.SUB_CATEGORY === "EMOTIONALLY/PSYCHO DISTRESSED") {
-            emotionallyDistressed.push(item);
-          } else if (item.SUB_CATEGORY === "OFW") {
-            ofw.push(item);
-          } else {
-            Others.push(item);
-          }
-        });
-
-        const cnspChart = cnsp.length;
-        const emotionallyDistressedChart = emotionallyDistressed.length;
-        const ofwChart = ofw.length;
-        const OthersChart = Others.length;
-        // console.log(caseCategoriesWedc);
         const subCategoriesChart = {
-          labels: ["CNSP", "EMOTIONALLY DISTRESSED", "OFW", "OTHERS"],
+          labels: Object.keys(countsBySubCategory),
           label: ["Case Categories"],
-          values: [
-            cnspChart,
-            emotionallyDistressedChart,
-            ofwChart,
-            OthersChart,
-          ],
+          values: Object.values(countsBySubCategory),
           backgroundColor: [
             "rgba(183, 154, 0, 1)",
             "rgba(210, 178, 2, 1)",

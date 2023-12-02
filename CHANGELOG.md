@@ -406,3 +406,4 @@
 
 - Added Sub Categories Chart Function in CBSS USER VIEW
 - Bug fix on Swda Edit (Davao del Oro ==> Davao de Oro)
+- Implemented Dynamic Label and Value Fetching in SWDA USER CHARTS FUNCTIONS
