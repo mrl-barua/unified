@@ -192,6 +192,7 @@ export default {
         .get(`${backendURL}/api/employmentStatus`)
         .then((response) => {
           // Initialize data arrays
+
           const moa = [];
           const permanent = [];
           const contractual = [];
@@ -199,7 +200,7 @@ export default {
           const casual = [];
 
           response.data.forEach((item) => {
-            const employmentstatus = item.EMPLOYMENT_STATUS;
+            const employmentstatus = item.employment_status;
 
             switch (employmentstatus) {
               case "MOA":
@@ -229,6 +230,8 @@ export default {
           const contractualLength = contractual.length;
           const coterminosLength = coterminos.length;
           const casualLength = casual.length;
+
+          console.log(permanentLength);
           // Prepare and return data
           const employmentdata = {
             labels: ["MOA", "PERMANENT", "CONTRACTUAL", "COTERMINOS", "CASUAL"],
