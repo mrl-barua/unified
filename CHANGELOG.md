@@ -417,3 +417,13 @@
 
 - Implemented Lazy Loading for RouterJS for faster loading
 - Change the fetch function on AdminOSD.vue and added catch method
+
+### version 8.7 MARLO BARUA
+
+- Imported the SweetAlert2 Library using npm installer for customized alert designs
+- Reworked the OSD View Page basing on figma design
+- Fix the functions in SWDA USER VIEW
+- Reworked some of the inline Css in OSD USER VIEW
+- Fixed the Chart Components Stylings
+- Change the alert designs of SWDA ADMIN using the SweetAlert2
+- Implemented Lazy Load for All Router View and Links in Router.JS

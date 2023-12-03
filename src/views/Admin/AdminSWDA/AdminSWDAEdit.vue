@@ -828,11 +828,21 @@ export default {
         )
         .then((res) => {
           console.log(res.data);
-          alert(res.data.message);
-
+          // alert(res.data.message);
+          this.$swal({
+            icon: "success",
+            title: "Success!",
+            text: res.data.message,
+          })
+            .then(() => {
+              return this.$router.push("/adminswda");
+            })
+            .then(() => {
+              window.location.reload();
+            });
           this.errorList = "";
 
-          window.location.reload(); // reload the page after updating the data
+          // window.location.reload(); // reload the page after updating the data
         })
         .catch(function (error) {
           if (error.response) {

@@ -607,78 +607,29 @@ export default {
       return axios
         .get(`${backendURL}/api/regionaloperation`)
         .then((response) => {
-          // Initialize data arrays
-          const davaoCity = [];
-          const davaodelSur = [];
-          const davaodelNorte = [];
-          const davaodeOro = [];
-          const davaoOriental = [];
-          const others = [];
-          const regionXI = [];
+          // Initialize data dictionary
+          const dataDict = {};
 
           response.data.forEach((item) => {
-            const regionName = item.Regional_Operation;
+            const regionName = item.Regional_Operation || "Others";
 
-            switch (regionName) {
-              case "Davao City":
-                davaoCity.push(item);
-                break;
-              case "Davao del Sur":
-                davaodelSur.push(item);
-                break;
-              case "Davao del Norte":
-                davaodelNorte.push(item);
-                break;
-              case null:
-                others.push(item);
-                break;
-              case "Region XI":
-                regionXI.push(item);
-                break;
-              case "Davao Oriental":
-                davaoOriental.push(item);
-                break;
-              case "Davao de Oro":
-                davaodeOro.push(item);
-                break;
-              default:
-                // Handle other cases if necessary
-                break;
+            // If the region name is not in the dictionary, add it with a count of 1
+            // Otherwise, increment the count
+            if (!(regionName in dataDict)) {
+              dataDict[regionName] = 1;
+            } else {
+              dataDict[regionName]++;
             }
           });
 
-          // Calculate data lengths
-          const davaoCityLength = davaoCity.length;
-          const davaodelSurLength = davaodelSur.length;
-          const davaodelNorteLength = davaodelNorte.length;
-          const othersLength = others.length;
-          const regionXILength = regionXI.length;
-          const davaoOrientalLength = davaoOriental.length;
-          const davaodeOroLength = davaodeOro.length;
-
           // Prepare and return data
           const regiondata = {
-            labels: [
-              "Davao City",
-              "Davao del Sur",
-              "Davao del Norte",
-              "Others",
-              "Region XI",
-              "Davao Oriental",
-              "Davao de Oro",
-            ],
+            labels: Object.keys(dataDict),
             label: ["Regional Operation"],
-            values: [
-              davaoCityLength,
-              davaodelSurLength,
-              davaodelNorteLength,
-              othersLength,
-              regionXILength,
-              davaoOrientalLength,
-              davaodeOroLength,
-            ],
+            values: Object.values(dataDict),
             backgroundColor: ["rgba(19, 63, 92, 1)"],
           };
+
           // Set barChartData to the computed data
           this.RegionData = regiondata;
         })
@@ -700,7 +651,8 @@ export default {
             values: [1, 1, 1, 1, 1, 1, 1],
             backgroundColor: ["rgba(19, 63, 92, 1)"],
           };
-          // Set catcc error barChartData to the computed data
+
+          // Set catch error barChartData to the computed data
           this.RegionData = regiondata;
         });
     },
@@ -783,104 +735,22 @@ export default {
       return axios
         .get(`${backendURL}/api/sector`)
         .then((response) => {
-          // Initialize arrays for active and expired agencies
-          const children = [];
-          const childrenAndYouth = [];
-          const familiesAndCommunities = [];
-          const youth = [];
-          const elderly = [];
-          const personsWithDisability = [];
-          const women = [];
-          const specialGroup = [];
-          const womenAndChildren = [];
-          const indigenousPeoples = [];
-          const drugDependents = [];
+          // Initialize dictionary for sectors
+          const sectors = {};
 
           response.data.forEach((item) => {
             const sector = item.Sector;
-
-            switch (sector) {
-              case "Children":
-                children.push(item);
-                break;
-              case "Children and Youth":
-                childrenAndYouth.push(item);
-                break;
-              case "Families and Communities":
-                familiesAndCommunities.push(item);
-                break;
-              case "Youth":
-                youth.push(item);
-                break;
-              case "Elderly":
-                elderly.push(item);
-                break;
-              case "Persons with Disability":
-                personsWithDisability.push(item);
-                break;
-              case "Women":
-                women.push(item);
-                break;
-              case "Special Group":
-                specialGroup.push(item);
-                break;
-              case "Women and Children":
-                womenAndChildren.push(item);
-                break;
-              case "Indigenous Peoples":
-                indigenousPeoples.push(item);
-                break;
-              case "Drug Dependents":
-                drugDependents.push(item);
-                break;
-              default:
-                // Handle other cases if necessary
-                break;
+            if (!(sector in sectors)) {
+              sectors[sector] = 0;
             }
+            sectors[sector]++;
           });
-
-          // Calculate data lengths
-          const childrenLength = children.length;
-          const childrenAndYouthLength = childrenAndYouth.length;
-          const familiesAndCommunitiesLength = familiesAndCommunities.length;
-          const youthLength = youth.length;
-          const elderlyLength = elderly.length;
-          const personsWithDisabilityLength = personsWithDisability.length;
-          const womenLength = women.length;
-          const specialGroupLength = specialGroup.length;
-          const womenAndChildrenLength = womenAndChildren.length;
-          const indigenousPeoplesLength = indigenousPeoples.length;
-          const drugDependentsLength = drugDependents.length;
 
           // Prepare and return data
           const sectordata = {
-            labels: [
-              "Children",
-              "Children and Youth",
-              "Families and Communities",
-              "Youth",
-              "Elderly",
-              "Persons with Disability",
-              "Women",
-              "Special Group",
-              "Women and Children",
-              "Indigenous Peoples",
-              "Drug Dependents",
-            ],
+            labels: Object.keys(sectors),
             label: ["Regional Operation"],
-            values: [
-              childrenLength,
-              childrenAndYouthLength,
-              familiesAndCommunitiesLength,
-              youthLength,
-              elderlyLength,
-              personsWithDisabilityLength,
-              womenLength,
-              specialGroupLength,
-              womenAndChildrenLength,
-              indigenousPeoplesLength,
-              drugDependentsLength,
-            ],
+            values: Object.values(sectors),
             backgroundColor: [
               "rgba(178, 218, 250, 1)",
               "rgba(132, 182, 244, 1)",
@@ -1159,7 +1029,7 @@ export default {
   box-shadow: 0px 0px 8px 1px #00000026;
 
   height: 1em;
-  border-radius: 5px; 
+  border-radius: 5px;
   margin: 5px 5px 5px 5px;
   padding: 30px 0px 130px 0px;
 }
@@ -1168,7 +1038,7 @@ export default {
   box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.15);
 
   height: 77em;
-  border-radius: 5px; 
+  border-radius: 5px;
   margin: 5px 5px 5px 5px;
   padding: 10px 0px 10px 0px;
 }
@@ -1213,7 +1083,7 @@ export default {
   justify-content: center; /* Center horizontally */
   align-items: center;
   margin: auto;
-  border-radius: 3px; 
+  border-radius: 3px;
 }
 .clusterdiv2 {
   height: 70%;
@@ -1231,7 +1101,7 @@ export default {
   box-shadow: 0px 0px 8px 1px #00000026;
 
   height: 150px;
-  border-radius: 5px; 
+  border-radius: 5px;
   margin: 5px 5px 5px 5px;
   padding: 30px 0px 130px 0px;
 }
@@ -1268,7 +1138,7 @@ export default {
   box-shadow: 0px 0px 8px 1px #00000026;
 
   height: 15em;
-  border-radius: 5px; 
+  border-radius: 5px;
   margin: 5px 5px 5px 5px;
   padding: 10px 10px 10px 10px;
 }
@@ -1375,5 +1245,9 @@ export default {
 
 .regionalBarChart {
   padding-bottom: 40px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding-bottom: 50px;
 }
 </style>

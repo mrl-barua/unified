@@ -5,119 +5,53 @@
     <br /><br /><br /><br />
 
     <div class="col-12 col-md-6">
-      <div class="dashboard-box" style="height: 580px">
-        <div
-          style="
-            background-color: ;
-            color: black;
-            padding: 10px;
-            font-weight: bold;
-            font-size: 20px;
-            text-align: center;
-          "
-        >
-          EMPLOYMENT DATA
-        </div>
+      <div class="dashboard-box" style="height: 630px">
+        <p class="employmentdata-header">EMPLOYMENT DATA</p>
 
-        <div style="display: flex">
-          <div
-            style="
-              background-color: ;
-              color: black;
-              flex: 1;
-              padding: 10px;
-              text-align: center;
-            "
-          >
-            IP GROUP
+        <div class="col-12" style="display: flex">
+          <div class="col-2">
+            <p class="employmentdata-text">IP GROUP</p>
           </div>
-
-          <div
-            style="
-              background-color: ;
-              color: black;
-              flex: 1;
-              padding: 10px;
-              text-align: center;
-            "
-          >
-            PWD
+          <div class="col-2">
+            <p class="employmentdata-text">PWD</p>
           </div>
-          <div
-            style="
-              background-color: ;
-              color: black;
-              flex: 1;
-              padding: 10px;
-              text-align: center;
-            "
-          >
-            SOLO PARENT
+          <div class="col-3">
+            <p class="employmentdata-text">SOLO PARENT</p>
           </div>
-          <div
-            style="
-              background-color: ;
-              color: black;
-              flex: 1;
-              padding: 10px;
-              text-align: center;
-            "
-          >
-            Coterminous
+          <div class="col-3">
+            <p class="employmentdata-text">COTERMINOUS</p>
           </div>
-
-          <div
-            style="
-              background-color: ;
-              color: black;
-              flex: 1;
-              padding: 10px;
-              text-align: center;
-            "
-          >
-            Casual
+          <div class="col-2">
+            <p class="employmentdata-text">CASUAL</p>
           </div>
         </div>
-        <div style="display: flex">
-          <div style="flex: 1; padding: 10px; text-align: center">
-            <span style="font-size: 40px; font-weight: bold">0</span>
+        <div class="col-12">
+          <div class="col-2">
+            <p class="employmentdata-content">0</p>
           </div>
-          <div style="flex: 1; padding: 10px; text-align: center">
-            <span style="font-size: 40px; font-weight: bold">0</span>
+          <div class="col-2">
+            <p class="employmentdata-content">0</p>
           </div>
-          <div style="flex: 1; padding: 10px; text-align: center">
-            <span style="font-size: 40px; font-weight: bold">0</span>
+          <div class="col-3">
+            <p class="employmentdata-content">0</p>
           </div>
-          <div style="flex: 1; padding: 10px; text-align: center">
-            <span style="font-size: 40px; font-weight: bold">0</span>
+          <div class="col-3">
+            <p class="employmentdata-content">0</p>
           </div>
-          <div style="flex: 1; padding: 10px; text-align: center">
-            <span style="font-size: 40px; font-weight: bold">0</span>
+          <div class="col-2">
+            <p class="employmentdata-content">0</p>
           </div>
         </div>
         <!-- Gray line to separate sections -->
         <hr style="border: 2px solid #a9a9a9" />
 
         <div style="text-align: center">
-          <span
-            style="
-              background-color: ;
-              color: black;
-              padding: 10px;
-              font-weight: bold;
-              font-size: 20px;
-              text-align: center;
-            "
-            >EMPLOYMENT STATUS</span
-          >
+          <p class="employmentdata-header">EMPLOYMENT STATUS</p>
         </div>
 
         <!-- Container for PieChart and Employment choices -->
-        <div
-          style="display: flex; align-items: center; justify-content: center"
-        >
+        <div class="chart-container">
           <PieChart :data="EmploymentData" />
-          <div></div>
         </div>
       </div>
     </div>
@@ -174,7 +108,7 @@
 
     <!-- Status -->
     <div class="col-12 col-md-6">
-      <div class="dashboard-box" style="height: 205px">
+      <div class="dashboard-box" style="height: 254px">
         <div
           style="
             background-color: ;
@@ -520,5 +454,28 @@ export default {
   font-weight: bold;
   text-align: center;
   padding: 2px;
+}
+.employmentdata-header {
+  color: black;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+}
+.employmentdata-text {
+  color: black;
+  flex: 1;
+  padding: 10px;
+  text-align: center;
+}
+
+.employmentdata-content {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.chart-container {
+  /* padding-bottom: 20px; */
+  width: 100%;
 }
 </style>

@@ -4,69 +4,73 @@
     <br /><br /><br /><br /><br />
     <div class="container-fluid wrapper">
       <div class="col-12">
-        <p class="headerText text-center">DIVISION</p>
-        <p class="headerContent text-center">{{ model.Osd.division }}</p>
+        <p class="head text-center">DIVISION</p>
+        <p class="headContent text-center">{{ model.Osd.division }}</p>
+        <p class="head text-center">FULL NAME</p>
+        <p class="headContent text-center">{{ model.Osd.fullname }}</p>
         <hr class="hr pb-4" />
 
         <!-- FIRST ROW -->
         <div class="col-5 first-row">
           <div class="col-12">
-            <div class="col-4">
+            <div class="col-6">
               <p class="headerText">ID</p>
               <p v-if="model.Osd.id" class="headerContent">
                 {{ model.Osd.id }}
               </p>
               <p v-else class="error headerContent">No Data</p>
             </div>
-            <div class="col-4">
+            <div class="col-6">
               <p class="headerText">Section/Unit</p>
               <p v-if="model.Osd.section_unit" class="headerContent">
                 {{ model.Osd.section_unit }}
               </p>
               <p v-else class="error headerContent">No Data</p>
             </div>
-            <div class="col-4">
+          </div>
+          <div class="col-12">
+            <div class="col-6">
               <p class="headerText">ITEM NUMBER</p>
               <p v-if="model.Osd.item_number" class="headerContent">
                 {{ model.Osd.item_number }}
               </p>
               <p v-else class="error headerContent">No Data</p>
             </div>
+            <div class="col-6">
+              <p class="headerText">OFFICE LOCATION</p>
+              <p
+                v-if="model.Osd.office_location_official_station"
+                class="headerContent"
+              >
+                {{ model.Osd.office_location_official_station }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
           </div>
 
           <div class="col-12">
-            <p class="headerText">OFFICE LOCATION</p>
-            <p
-              v-if="model.Osd.office_location_official_station"
-              class="headerContent"
-            >
-              {{ model.Osd.office_location_official_station }}
-            </p>
-            <p v-else class="error headerContent">No Data</p>
-          </div>
-
-          <div class="col-12">
-            <div class="col-4">
+            <div class="col-6">
               <p class="headerText">DATE POSITION</p>
               <p v-if="model.Osd.date_position_created" class="headerContent">
                 {{ model.Osd.date_position_created }}
               </p>
               <p v-else class="error headerContent">No Data</p>
             </div>
-            <div class="col-4">
-              <p class="headerText">POSITION TITLE</p>
-              <p v-if="model.Osd.position_title" class="headerContent">
-                {{ model.Osd.position_title }}
-              </p>
-              <p v-else class="error headerContent">No Data</p>
-            </div>
-            <div class="col-4">
+            <div class="col-6">
               <p class="headerText">POSITION LEVEL</p>
               <p v-if="model.Osd.position_level" class="headerContent">
                 {{ model.Osd.position_level }}
               </p>
               <p v-else class="error headerContent">No Data</p>
             </div>
+          </div>
+
+          <div class="col-12">
+            <p class="headerText">POSITION TITLE</p>
+            <p v-if="model.Osd.position_title" class="headerContent">
+              {{ model.Osd.position_title }}
+            </p>
+            <p v-else class="error headerContent">No Data</p>
           </div>
 
           <div class="col-12">
@@ -78,58 +82,54 @@
           </div>
 
           <div class="col-12">
-            <div class="col-4">
+            <div class="col-6">
               <p class="headerText">SALARY STEP INCREMENT</p>
               <p v-if="model.Osd.salary_step_increment" class="headerContent">
                 {{ model.Osd.salary_step_increment }}
               </p>
               <p v-else class="error headerContent">No Data</p>
             </div>
-            <div class="col-4">
+            <div class="col-6">
               <p class="headerText">MONTHY RATE</p>
               <p v-if="model.Osd.monthly_rate" class="headerContent">
                 {{ model.Osd.monthly_rate }}
               </p>
               <p v-else class="error headerContent">No Data</p>
             </div>
-            <div class="col-4">
-              <p class="headerText">DESIGNATION</p>
-              <p
-                v-if="model.Osd.designation_as_appropriate_based_on_so"
-                class="headerContent"
-              >
-                {{ model.Osd.designation_as_appropriate_based_on_so }}
-              </p>
-              <p v-else class="error headerContent">No Data</p>
-            </div>
           </div>
           <div class="col-12">
-            <div class="col-4">
+            <p class="headerText">DESIGNATION</p>
+            <p
+              v-if="model.Osd.designation_as_appropriate_based_on_so"
+              class="headerContent"
+            >
+              {{ model.Osd.designation_as_appropriate_based_on_so }}
+            </p>
+            <p v-else class="error headerContent">No Data</p>
+          </div>
+          <div class="col-12">
+            <div class="col-6">
               <p class="headerText">DATE OF DESIGNATION</p>
               <p v-if="model.Osd.date_of_designation" class="headerContent">
                 {{ model.Osd.date_of_designation }}
               </p>
               <p v-else class="error headerContent">No Data</p>
             </div>
-            <div class="col-4">
+            <div class="col-6">
               <p class="headerText">SPECIAL ORDER NO.</p>
               <p v-if="model.Osd.special_order_no" class="headerContent">
                 {{ model.Osd.special_order_no }}
               </p>
               <p v-else class="error headerContent">No Data</p>
             </div>
-            <div class="col-4">
-              <p class="headerText">DATE FILLED UP ASSUMPTION</p>
-              <p
-                v-if="model.Osd.date_filled_up_assumption"
-                class="headerContent"
-              >
-                {{ model.Osd.date_filled_up_assumption }}
-              </p>
-              <p v-else class="error headerContent">No Data</p>
-            </div>
           </div>
-
+          <div class="col-12">
+            <p class="headerText">DATE FILLED UP ASSUMPTION</p>
+            <p v-if="model.Osd.date_filled_up_assumption" class="headerContent">
+              {{ model.Osd.date_filled_up_assumption }}
+            </p>
+            <p v-else class="error headerContent">No Data</p>
+          </div>
           <div class="col-12">
             <p class="headerText">OFFICE/BUREAU/SERVICE/PROGRAM</p>
             <p
@@ -150,23 +150,28 @@
             </p>
             <p v-else class="error headerContent">No Data</p>
           </div>
-
-          <div class="col-6">
-            <p class="headerText">MODEL OF ACCESSION</p>
-            <p
-              v-if="model.Osd.mode_of_accession_for_appointment_based_positions"
-              class="headerContent"
-            >
-              {{ model.Osd.mode_of_accession_for_appointment_based_positions }}
-            </p>
-            <p v-else class="error headerContent">No Data</p>
-          </div>
-          <div class="col-6">
-            <p class="headerText">MODEL OF SEPARTION</p>
-            <p v-if="model.Osd.mode_of_separation" class="headerContent">
-              {{ model.Osd.mode_of_separation }}
-            </p>
-            <p v-else class="error headerContent">No Data</p>
+          <div class="col-12">
+            <div class="col-6">
+              <p class="headerText">MODEL OF ACCESSION</p>
+              <p
+                v-if="
+                  model.Osd.mode_of_accession_for_appointment_based_positions
+                "
+                class="headerContent"
+              >
+                {{
+                  model.Osd.mode_of_accession_for_appointment_based_positions
+                }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
+            <div class="col-6">
+              <p class="headerText">MODEL OF SEPARTION</p>
+              <p v-if="model.Osd.mode_of_separation" class="headerContent">
+                {{ model.Osd.mode_of_separation }}
+              </p>
+              <p v-else class="error headerContent">No Data</p>
+            </div>
           </div>
         </div>
 
@@ -270,7 +275,16 @@
               <p v-else class="error headerContent">No Data</p>
             </div>
           </div> -->
-
+          <div class="col-12">
+            <p class="headerText">EMAIL ADDRESS</p>
+            <p
+              v-if="model.Osd.active_and_working_email_address"
+              class="headerContent"
+            >
+              {{ model.Osd.active_and_working_email_address }}
+            </p>
+            <p v-else class="error headerContent">No Data</p>
+          </div>
           <div class="col-12">
             <!-- <div class="col-4">
               <p class="headerText">REGION</p>
@@ -279,16 +293,7 @@
               </p>
               <p v-else class="error headerContent">No Data</p>
             </div> -->
-            <div class="col-6">
-              <p class="headerText">EMAIL ADDRESS</p>
-              <p
-                v-if="model.Osd.active_and_working_email_address"
-                class="headerContent"
-              >
-                {{ model.Osd.active_and_working_email_address }}
-              </p>
-              <p v-else class="error headerContent">No Data</p>
-            </div>
+
             <div class="col-6">
               <p class="headerText">INDICATE WHETHER SENIOR CITIZEN</p>
               <p
@@ -307,36 +312,39 @@
               </p>
               <p v-else class="error headerContent">No Data</p>
             </div>
-            <div class="col-6">
-              <p class="headerText">INDICATE IF BELONG INDIGENEOUS GROUP</p>
-              <p
-                v-if="model.Osd.indicate_whether_member_of_indigenous_group"
-                class="headerContent"
-              >
-                {{ model.Osd.indicate_whether_member_of_indigenous_group }}
-              </p>
-              <p v-else class="error headerContent">No Data</p>
-            </div>
+          </div>
+          <div class="col-12">
+            <p class="headerText">INDICATE IF BELONG INDIGENEOUS GROUP</p>
+            <p
+              v-if="model.Osd.indicate_whether_member_of_indigenous_group"
+              class="headerContent"
+            >
+              {{ model.Osd.indicate_whether_member_of_indigenous_group }}
+            </p>
+            <p v-else class="error headerContent">No Data</p>
           </div>
 
           <hr class="hr" />
 
           <div class="col-12">
-            <div class="col-3">
+            <div class="col-6">
               <p class="headerText">EMPLOYEE ID NO.</p>
               <p v-if="model.Osd.employee_id_number" class="headerContent">
                 {{ model.Osd.employee_id_number }}
               </p>
               <p v-else class="error headerContent">No Data</p>
             </div>
-            <div class="col-3">
+            <div class="col-6">
               <p class="headerText">ENTRY DATE IN DSWD</p>
               <p v-if="model.Osd.entry_date_in_dswd" class="headerContent">
                 {{ model.Osd.entry_date_in_dswd }}
               </p>
               <p v-else class="error headerContent">No Data</p>
             </div>
-            <div class="col-3">
+          </div>
+
+          <div class="col-12">
+            <div class="col-6">
               <p class="headerText">DATE OF ORIGINAL APPOINTMENT</p>
               <p
                 v-if="model.Osd.date_of_original_appointment"
@@ -346,7 +354,7 @@
               </p>
               <p v-else class="error headerContent">No Data</p>
             </div>
-            <div class="col-3">
+            <div class="col-6">
               <p class="headerText">DATE OF LAST PROMOTION</p>
               <p v-if="model.Osd.date_of_last_promotion" class="headerContent">
                 {{ model.Osd.date_of_last_promotion }}
@@ -356,28 +364,31 @@
           </div>
 
           <div class="col-12">
-            <div class="col-3">
+            <div class="col-6">
               <p class="headerText">GSIS NO.</p>
               <p v-if="model.Osd.gsis_number" class="headerContent">
                 {{ model.Osd.gsis_number }}
               </p>
               <p v-else class="error headerContent">No Data</p>
             </div>
-            <div class="col-3">
+            <div class="col-6">
               <p class="headerText">BIR TIN NO.</p>
               <p v-if="model.Osd.bir_tin_number" class="headerContent">
                 {{ model.Osd.bir_tin_number }}
               </p>
               <p v-else class="error headerContent">No Data</p>
             </div>
-            <div class="col-3">
+          </div>
+
+          <div class="col-12">
+            <div class="col-6">
               <p class="headerText">SSS NO.</p>
               <p v-if="model.Osd.sss_number" class="headerContent">
                 {{ model.Osd.sss_number }}
               </p>
               <p v-else class="error headerContent">No Data</p>
             </div>
-            <div class="col-3">
+            <div class="col-6">
               <p class="headerText">PHILHEALTH NO.</p>
               <p v-if="model.Osd.philhealth_number" class="headerContent">
                 {{ model.Osd.philhealth_number }}
@@ -387,14 +398,7 @@
           </div>
 
           <div class="col-12">
-            <div class="col-3">
-              <p class="headerText">PHILHEALTH NO.</p>
-              <p v-if="model.Osd.philhealth_number" class="headerContent">
-                {{ model.Osd.philhealth_number }}
-              </p>
-              <p v-else class="error headerContent">No Data</p>
-            </div>
-            <div class="col-3">
+            <div class="col-6">
               <p class="headerText">ELIGIBILITY CSC AND OTHERS</p>
               <p
                 v-if="model.Osd.eligibility_csc_and_other_eligibilities"
@@ -404,7 +408,7 @@
               </p>
               <p v-else class="error headerContent">No Data</p>
             </div>
-            <div class="col-3">
+            <div class="col-6">
               <p class="headerText">ELIGIBILITY LICENSE RA 1080</p>
               <p
                 v-if="model.Osd.eligibility_license_ra_1080"
@@ -414,20 +418,21 @@
               </p>
               <p v-else class="error headerContent">No Data</p>
             </div>
-            <div class="col-3">
-              <p class="headerText">LICENSE</p>
-              <p
-                v-if="model.Osd.license_ra_1080_let_rn_rs_etc"
-                class="headerContent"
-              >
-                {{ model.Osd.license_ra_1080_let_rn_rs_etc }}
-              </p>
-              <p v-else class="error headerContent">No Data</p>
-            </div>
           </div>
 
           <div class="col-12">
-            <div class="col-3">
+            <p class="headerText">LICENSE</p>
+            <p
+              v-if="model.Osd.license_ra_1080_let_rn_rs_etc"
+              class="headerContent"
+            >
+              {{ model.Osd.license_ra_1080_let_rn_rs_etc }}
+            </p>
+            <p v-else class="error headerContent">No Data</p>
+          </div>
+
+          <div class="col-12">
+            <div class="col-6">
               <p class="headerText">HIGHEST EDUCATION COMPLETED</p>
               <p
                 v-if="model.Osd.highest_education_completed"
@@ -437,7 +442,7 @@
               </p>
               <p v-else class="error headerContent">No Data</p>
             </div>
-            <div class="col-3">
+            <div class="col-6">
               <p class="headerText">
                 DEGREE AND COURSE (1st Course Vocational)
               </p>
@@ -449,7 +454,10 @@
               </p>
               <p v-else class="error headerContent">No Data</p>
             </div>
-            <div class="col-3">
+          </div>
+
+          <div class="col-12">
+            <div class="col-6">
               <p class="headerText">DEGREE AND COURSE (2nd Course)</p>
               <p
                 v-if="model.Osd.degree_and_course_2nd_course"
@@ -459,7 +467,7 @@
               </p>
               <p v-else class="error headerContent">No Data</p>
             </div>
-            <div class="col-3">
+            <div class="col-6">
               <p class="headerText">OTHER COURSE</p>
               <p v-if="model.Osd.other_courses" class="headerContent">
                 {{ model.Osd.other_courses }}
@@ -469,7 +477,7 @@
           </div>
 
           <div class="col-12">
-            <div class="col-4">
+            <div class="col-6">
               <p class="headerText">REMARKS STATUS OF VACANT POSITION</p>
               <p
                 v-if="model.Osd.remarks_status_of_vacant_position"
@@ -479,20 +487,20 @@
               </p>
               <p v-else class="error headerContent">No Data</p>
             </div>
-            <div class="col-4">
+            <div class="col-6">
               <p class="headerText">FORMER INCUMBENT</p>
               <p v-if="model.Osd.former_incumbent" class="headerContent">
                 {{ model.Osd.former_incumbent }}
               </p>
               <p v-else class="error headerContent">No Data</p>
             </div>
-            <div class="col-4">
-              <p class="headerText">DATE VACATED</p>
-              <p v-if="model.Osd.date_vacated" class="headerContent">
-                {{ model.Osd.date_vacated }}
-              </p>
-              <p v-else class="error headerContent">No Data</p>
-            </div>
+          </div>
+          <div class="col-12">
+            <p class="headerText">DATE VACATED</p>
+            <p v-if="model.Osd.date_vacated" class="headerContent">
+              {{ model.Osd.date_vacated }}
+            </p>
+            <p v-else class="error headerContent">No Data</p>
           </div>
         </div>
       </div>
@@ -742,6 +750,24 @@ export default {
 }
 .error {
   color: red;
+}
+
+.head {
+  font-family: Inter;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 27px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+.headContent {
+  font-family: Inter;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 30px;
+  letter-spacing: 0em;
+  text-align: center;
 }
 
 .headerText {

@@ -280,6 +280,7 @@ export default {
         a.click();
       });
     },
+
     getSwda() {
       axios.get(`${backendURL}/api/swdalist`).then((res) => {
         this.swda = res.data.Swda;
@@ -288,30 +289,46 @@ export default {
     },
 
     deleteSwda(SwdaID) {
-      // console.log(SwdaID);
-      if (confirm("Are you sure, you want to archive this data?")) {
-        axios
-          .delete(`${backendURL}/api/swdalist/${SwdaID}/delete`)
-          .then((res) => {
-            alert(res.data.message);
-            // Reload the page after a successful deletion
-            window.location.reload();
-          })
-          .catch(function (error) {
-            if (error.response) {
-              if (error.response.status === 422) {
-                mythis.errorList = error.response.data.errors;
+      this.$swal({
+        title: "Are you sure?",
+        text: "You want to archive this data?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, archive it!",
+        cancelButtonText: "No, keep it",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios
+            .delete(`${backendURL}/api/swdalist/${SwdaID}/delete`)
+            .then((res) => {
+              this.$swal({
+                icon: "success",
+                title: "Success!",
+                text: res.data.message,
+              }).then(() => {
+                window.location.reload();
+              });
+            })
+            .catch(function (error) {
+              if (error.response) {
+                if (error.response.status === 422) {
+                  mythis.errorList = error.response.data.errors;
+                }
+                if (error.response.status === 404) {
+                  this.$swal({
+                    icon: "error",
+                    title: "Error!",
+                    text: error.response.data.message,
+                  });
+                }
+              } else if (error.request) {
+                console.log(error.request);
+              } else {
+                console.log("error", error.message);
               }
-              if (error.response.status === 404) {
-                alert(error.response.data.message);
-              }
-            } else if (error.request) {
-              console.log(error.request);
-            } else {
-              console.log("error", error.message);
-            }
-          });
-      }
+            });
+        }
+      });
     },
   },
 };

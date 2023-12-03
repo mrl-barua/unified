@@ -1,27 +1,27 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LoginForm from '../views/LoginForm.vue'
-import CBSS from '../views/User/CBSS/CBSS.vue'
+// import CBSS from '../views/User/CBSS/CBSS.vue'
 // import HR from '../views/User/HR/HR.vue'
 // import OSP from '../views/User/OSP/OSP.vue'
 
 
 // import SWDA from '../views/User/SWDA/SWDA.vue'
-import SWDA_AGENCY from '../views/User/SWDA/SWDA_AGENCIES.vue'
-import SWDAView from '../views/User/SWDA/SWDA_VIEW.vue'
+// import SWDA_AGENCY from '../views/User/SWDA/SWDA_AGENCIES.vue'
+// import SWDAView from '../views/User/SWDA/SWDA_VIEW.vue'
 
 
-import SWDA_ACTIVE_ACCREDITED from '../views/User/SWDA/SWDA_ACTIVE_ACCREDITED.vue'
-import SWDA_ACTIVE_LICENSED from '../views/User/SWDA/SWDA_ACTIVE_LICENSED.vue'
-import SWDA_ACTIVE_REGISTERED from '../views/User/SWDA/SWDA_ACTIVE_REGISTERED.vue'
+// import SWDA_ACTIVE_ACCREDITED from '../views/User/SWDA/SWDA_ACTIVE_ACCREDITED.vue'
+// import SWDA_ACTIVE_LICENSED from '../views/User/SWDA/SWDA_ACTIVE_LICENSED.vue'
+// import SWDA_ACTIVE_REGISTERED from '../views/User/SWDA/SWDA_ACTIVE_REGISTERED.vue'
 
-import SWDA_EXPIRED_ACCREDITED from '../views/User/SWDA/SWDA_EXPIRED_ACCREDITED.vue'
-import SWDA_EXPIRED_DELISTED from '../views/User/SWDA/SWDA_EXPIRED_DELISTED.vue'
-import SWDA_EXPIRED_LICENSED from '../views/User/SWDA/SWDA_EXPIRED_LICENCED.vue'
-import SWDA_EXPIRED_REGISTERED from '../views/User/SWDA/SWDA_EXPIRED_REGISTERED.vue'
-import SWDA_MOD_AUXILLARY from '../views/User/SWDA/SWDA_MOD_AUXILLARY.vue'
-import SWDA_MOD_COMBASED from '../views/User/SWDA/SWDA_MOD_COMBASED.vue'
-import SWDA_MOD_NRESIDENTIAL from '../views/User/SWDA/SWDA_MOD_NRESIDENTIAL.vue'
-import SWDA_MOD_RESIDENTIAL from '../views/User/SWDA/SWDA_MOD_RESIDENTIAL.vue'
+// import SWDA_EXPIRED_ACCREDITED from '../views/User/SWDA/SWDA_EXPIRED_ACCREDITED.vue'
+// import SWDA_EXPIRED_DELISTED from '../views/User/SWDA/SWDA_EXPIRED_DELISTED.vue'
+// import SWDA_EXPIRED_LICENSED from '../views/User/SWDA/SWDA_EXPIRED_LICENCED.vue'
+// import SWDA_EXPIRED_REGISTERED from '../views/User/SWDA/SWDA_EXPIRED_REGISTERED.vue'
+// import SWDA_MOD_AUXILLARY from '../views/User/SWDA/SWDA_MOD_AUXILLARY.vue'
+// import SWDA_MOD_COMBASED from '../views/User/SWDA/SWDA_MOD_COMBASED.vue'
+// import SWDA_MOD_NRESIDENTIAL from '../views/User/SWDA/SWDA_MOD_NRESIDENTIAL.vue'
+// import SWDA_MOD_RESIDENTIAL from '../views/User/SWDA/SWDA_MOD_RESIDENTIAL.vue'
 
 
 // import SLP from '../views/User/SLP/SLP.vue'
@@ -74,7 +74,7 @@ import ERROR from '../views/404.vue' // Import the 404 Error Page
 import { userIsAuthenticated } from '../auth'; // Import the user authentication function
 import { adminIsAuthenticated } from '../auth'; // Import the admin authentication function
 import { startAutoLogout, clearAutoLogout, logout } from '../auth';
-
+import Swal from 'sweetalert2'
 
 const userRequireAuth = (to, from, next) => {
   if (userIsAuthenticated()) {
@@ -85,7 +85,14 @@ const userRequireAuth = (to, from, next) => {
     startAutoLogout();
   } else {
     // User is not authenticated, redirect to the login page or handle it as needed
-    alert('You need to log in to access this page.');
+    // alert('You need to log in to access this page.');
+    Swal.fire({
+      icon: 'warning',
+      title: 'Warning',
+      text: 'You need to log in to access this page.',
+      width: 450,
+      padding: '3.5em',
+    });
     next({
       name: 'login',
       query: { redirect: to.fullPath },
@@ -103,7 +110,14 @@ const adminRequireAuth = (to, from, next) => {
     startAutoLogout();
   } else {
     // User is not authenticated, redirect to the login page or handle it as needed
-    alert('You need to log in to access this page.');
+    // alert('You need to log in to access this page.');
+    Swal.fire({
+      icon: 'warning',
+      title: 'Warning',
+      text: 'You need to log in to access this page.',
+      width: 450,
+      padding: '3.5em',
+    });
     next({
       name: 'login',
       query: { redirect: to.fullPath },
@@ -138,7 +152,13 @@ const routes = [
     }
   },
 
-  // ADMIN DASHBOARD START
+  // TODO ADMIN DASHBOARD START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // TODO ADMIN DASHBOARD START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // TODO ADMIN DASHBOARD START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+  // ! ADMIN CBSS START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // ! ADMIN CBSS START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // ! ADMIN CBSS START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   {
     path: '/admincbss',
     name: 'adminCBSS',
@@ -181,12 +201,13 @@ const routes = [
     component: () => import('../views/Admin/AdminCBSS/AdminCBSS_EditHistory_View.vue'),
     beforeEnter: adminRequireAuth,
   },
+  // ! ADMIN CBSS END!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // ! ADMIN CBSS END!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // ! ADMIN CBSS END!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-
+  //? TODO ADMIN HR START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  //? TODO ADMIN HR START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  //? TODO ADMIN HR START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   {
     path: '/adminhr',
     name: 'adminhr',
@@ -218,17 +239,27 @@ const routes = [
     beforeEnter: adminRequireAuth,
   },
 
-  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  //? TODO ADMIN HR END!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  //? TODO ADMIN HR END!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  //? TODO ADMIN HR END!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-
+  // * ADMIN SLP START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // * ADMIN SLP START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // * ADMIN SLP START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   {
     path: '/adminslp',
     name: 'adminslp',
     component: () => import('../views/Admin/AdminSLP/AdminSLP.vue'),
     beforeEnter: adminRequireAuth,
   },
+
+  // * ADMIN SLP END!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // * ADMIN SLP END!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // * ADMIN SLP END!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+  // ! ADMIN OSP START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // ! ADMIN OSP START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // ! ADMIN OSP START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   {
     path: '/adminosp',
     name: 'adminosp',
@@ -259,12 +290,13 @@ const routes = [
     component: () => import('../views/Admin/AdminOSP/AdminOSPView.vue'),
     beforeEnter: adminRequireAuth,
   },
+  // ! ADMIN OSP END!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // ! ADMIN OSP END!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // ! ADMIN OSP END!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-
+  // ? ADMIN SWDA START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // ? ADMIN SWDA START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // ? ADMIN SWDA START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   {
     path: '/adminswda',
     name: 'adminswda',
@@ -308,9 +340,15 @@ const routes = [
     beforeEnter: adminRequireAuth,
   },
 
-  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+  // ? ADMIN SWDA END!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // ? ADMIN SWDA END!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // ? ADMIN SWDA END!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+  // * ADMIN SETTINGS START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // * ADMIN SETTINGS START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // * ADMIN SETTINGS START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
   {
@@ -320,27 +358,38 @@ const routes = [
     beforeEnter: adminRequireAuth,
   },
 
-  // ADMIN DASHBOARD END
-  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // * ADMIN SETTINGS END!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // * ADMIN SETTINGS END!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // * ADMIN SETTINGS END!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
+  // TODO ADMIN DASHBOARD END!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // TODO ADMIN DASHBOARD END!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // TODO ADMIN DASHBOARD END!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  ////////////////////////////////////////////////////////////////////////////////////
+  // TODO USER DASHBOARD START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // TODO USER DASHBOARD START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // TODO USER DASHBOARD START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
+  // !USER CBSS START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // !USER CBSS START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // !USER CBSS START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-
-  //  USER DASHBOARD START
   {
     path: '/cbss',
     name: 'cbss',
-    component: CBSS,
+    component: () => import('../views/User/CBSS/CBSS.vue'),
     beforeEnter: userRequireAuth,
   },
 
-  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // !USER CBSS START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // !USER CBSS START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // !USER CBSS START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  //////////////////////////////////////////////////////////////////////////
+  // ?USER HR START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // ?USER HR START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // ?USER HR START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
   {
     path: '/hr',
@@ -349,9 +398,15 @@ const routes = [
     beforeEnter: userRequireAuth,
   },
 
-  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // ?USER HR START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // ?USER HR START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // ?USER HR START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+
+  // *USER OSP START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // *USER OSP START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // *USER OSP START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
   {
     path: '/osp',
@@ -359,11 +414,16 @@ const routes = [
     component: () => import('../views/User/OSP/OSP.vue'),
     beforeEnter: userRequireAuth,
   },
-  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // *USER OSP START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // *USER OSP START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // *USER OSP START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-  // USER SWDA START
+
+  // !USER SWDA START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // !USER SWDA START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // !USER SWDA START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
   {
     path: '/swda',
     name: 'swda',
@@ -375,7 +435,7 @@ const routes = [
   {
     path: '/swda_agency',
     name: 'swda_agency',
-    component: SWDA_AGENCY,
+    component: () => import('../views/User/SWDA/SWDA_AGENCIES.vue'),
     beforeEnter: userRequireAuth,
   },
 
@@ -383,7 +443,7 @@ const routes = [
   {
     path: '/swda/:ID/view',
     name: 'SWDAView',
-    component: SWDAView,
+    component: () => import('../views/User/SWDA/SWDA_VIEW.vue'),
     beforeEnter: userRequireAuth,
   },
 
@@ -391,7 +451,7 @@ const routes = [
   {
     path: '/swda/activeAccredited',
     name: 'swda_active_accredited',
-    component: SWDA_ACTIVE_ACCREDITED,
+    component: () => import('../views/User/SWDA/SWDA_ACTIVE_ACCREDITED.vue'),
     beforeEnter: userRequireAuth,
   },
 
@@ -400,14 +460,14 @@ const routes = [
   {
     path: '/swda/activeLicensed',
     name: 'swda_active_licensed',
-    component: SWDA_ACTIVE_LICENSED,
+    component: () => import('../views/User/SWDA/SWDA_ACTIVE_LICENSED.vue'),
     beforeEnter: userRequireAuth,
   },
 
   {
     path: '/swda/activeRegistered',
     name: 'swda_active_Registered',
-    component: SWDA_ACTIVE_REGISTERED,
+    component: () => import('../views/User/SWDA/SWDA_ACTIVE_REGISTERED.vue'),
     beforeEnter: userRequireAuth,
   },
 
@@ -415,7 +475,7 @@ const routes = [
   {
     path: '/swda/expiredAccredited',
     name: 'swda_expired_accredited',
-    component: SWDA_EXPIRED_ACCREDITED,
+    component: () => import('../views/User/SWDA/SWDA_EXPIRED_ACCREDITED.vue'),
     beforeEnter: userRequireAuth,
   },
 
@@ -423,7 +483,7 @@ const routes = [
   {
     path: '/swda/expiredDelisted',
     name: 'swda_expired_delisted',
-    component: SWDA_EXPIRED_DELISTED,
+    component: () => import('../views/User/SWDA/SWDA_EXPIRED_DELISTED.vue'),
     beforeEnter: userRequireAuth,
   },
 
@@ -431,7 +491,7 @@ const routes = [
   {
     path: '/swda/expiredLicensed',
     name: 'swda_expired_licensed',
-    component: SWDA_EXPIRED_LICENSED,
+    component: () => import('../views/User/SWDA/SWDA_EXPIRED_LICENCED.vue'),
     beforeEnter: userRequireAuth,
   },
 
@@ -440,7 +500,7 @@ const routes = [
   {
     path: '/swda/expiredRegistered',
     name: 'swda_active_registered',
-    component: SWDA_EXPIRED_REGISTERED,
+    component: () => import('../views/User/SWDA/SWDA_EXPIRED_REGISTERED.vue'),
     beforeEnter: userRequireAuth,
   },
 
@@ -449,36 +509,34 @@ const routes = [
   {
     path: '/swda/modAuxillary',
     name: 'swda_mod_auxillary',
-    component: SWDA_MOD_AUXILLARY,
+    component: () => import('../views/User/SWDA/SWDA_MOD_AUXILLARY.vue'),
     beforeEnter: userRequireAuth,
   },
 
   {
     path: '/swda/modCombased',
     name: 'swda_mod_combased',
-    component: SWDA_MOD_COMBASED,
+    component: () => import('../views/User/SWDA/SWDA_MOD_COMBASED.vue'),
     beforeEnter: userRequireAuth,
   },
 
   {
     path: '/swda/modNResidential',
     name: 'swda_mod_nresidential',
-    component: SWDA_MOD_NRESIDENTIAL,
+    component: () => import('../views/User/SWDA/SWDA_MOD_NRESIDENTIAL.vue'),
     beforeEnter: userRequireAuth,
   },
 
   {
     path: '/swda/modResidential',
     name: 'swda_mod_residential',
-    component: SWDA_MOD_RESIDENTIAL,
+    component: () => import('../views/User/SWDA/SWDA_MOD_RESIDENTIAL.vue'),
     beforeEnter: userRequireAuth,
   },
 
-  // USER SWDA END
-
-  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // !USER SWDA END!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // !USER SWDA END!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // !USER SWDA END!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
 

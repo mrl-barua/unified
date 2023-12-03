@@ -74,7 +74,7 @@
           <div class="col-6">
             <div class="shadow-container">
               <p class="section2-header">Clients Served per Quarter</p>
-              <div class="chart-container lineChart">
+              <div class="linechart-container lineChart">
                 <LineChart
                   :data="clientServedPerQuarterChart"
                   v-if="clientServedPerQuarterChart"
@@ -85,7 +85,7 @@
           <div class="col-6">
             <div class="shadow-container">
               <p class="section2-header">Clients Served per Age and Sex</p>
-              <div class="chart-container lineChart">
+              <div class="linechart-container lineChart">
                 <LineChart
                   :data="clientServedPerAgeAndSex"
                   v-if="clientServedPerAgeAndSex"
@@ -773,10 +773,17 @@ h1 {
   padding-top: 20px;
 }
 
+.linechart-container {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
 .chart-container {
   width: 100%;
   height: 100%;
   margin: 0 auto;
+  padding-bottom: 50px;
 }
 
 .dashboard-container {
