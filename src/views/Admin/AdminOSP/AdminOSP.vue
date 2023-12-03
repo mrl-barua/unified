@@ -70,6 +70,7 @@
           <thead style="background: #133f5c" class="text-white">
             <tr>
               <th>ID</th>
+              <th>Name</th>
               <th>Division</th>
               <th>Section/Unit</th>
               <th>Office/Location</th>
@@ -81,6 +82,7 @@
           <tbody>
             <tr v-for="item in osd" :key="item.id">
               <td>{{ item.id }}</td>
+              <td>{{ item.fullname }}</td>
               <td>{{ item.division }}</td>
               <td>{{ item.section_unit }}</td>
               <td>{{ item.office_location_official_station }}</td>
@@ -112,6 +114,7 @@
           <tfoot>
             <tr>
               <th>ID</th>
+              <th>Name</th>
               <th>Division</th>
               <th>Section/Unit</th>
               <th>Office/Location</th>
