@@ -321,11 +321,14 @@ export default {
         a.click();
       });
     },
-    getOsd() {
-      axios.get(`${backendURL}/api/osdlist`).then((res) => {
+    async getOsd() {
+      try {
+        const res = await axios.get(`${backendURL}/api/osdlist`);
         this.osd = res.data.Osd;
         console.log(res);
-      });
+      } catch (error) {
+        console.error(error);
+      }
     },
 
     deleteOsd(OsdID) {

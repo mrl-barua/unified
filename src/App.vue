@@ -1,16 +1,21 @@
 <template>
-  <router-view></router-view>
+  <div id="app">
+    <!-- <loading v-if="isLoading" /> -->
+    <!-- <transition name="fade"> -->
+    <router-view />
+    <!-- </transition> -->
+  </div>
 </template>
 
 <script>
 import LoginForm from "./views/LoginForm.vue";
-import Dashboard from "./views/User/CBSS/CBSS.vue";
+// import Dashboard from "./views/User/CBSS/CBSS.vue";
 
 export default {
   name: "App",
   components: {
     LoginForm,
-    Dashboard,
+    // Dashboard,
   },
 
   mounted() {

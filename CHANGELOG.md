@@ -412,3 +412,8 @@
 
 - Fix table pagination and input types
 - Completed the Admin SWDA All functionality needed
+
+### version 8.6 MARLO BARUA
+
+- Implemented Lazy Loading for RouterJS for faster loading
+- Change the fetch function on AdminOSD.vue and added catch method
