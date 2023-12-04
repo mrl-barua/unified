@@ -239,6 +239,19 @@ const routes = [
     beforeEnter: adminRequireAuth,
   },
 
+  {
+    path: '/adminhr/:ID/editHistory',
+    name: 'AdminHReditHistory',
+    component: () => import('../views/Admin/AdminHR/AdminHR_EditHistory.vue'),
+    beforeEnter: adminRequireAuth,
+  },
+  {
+    path: '/adminhr/:ID/editHistory/view',
+    name: 'AdminHReditHistoryView',
+    component: () => import('../views/Admin/AdminHR/AdminHR_EditHistory_View.vue'),
+    beforeEnter: adminRequireAuth,
+  },
+
   //? TODO ADMIN HR END!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   //? TODO ADMIN HR END!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   //? TODO ADMIN HR END!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -288,6 +301,20 @@ const routes = [
     path: '/adminosp/:ID/view',
     name: 'AdminOSPView',
     component: () => import('../views/Admin/AdminOSP/AdminOSPView.vue'),
+    beforeEnter: adminRequireAuth,
+  },
+
+
+  {
+    path: '/adminosp/:ID/editHistory',
+    name: 'AdminOSPeditHistory',
+    component: () => import('../views/Admin/AdminOSP/AdminOSP_EditHistory.vue'),
+    beforeEnter: adminRequireAuth,
+  },
+  {
+    path: '/adminosp/:ID/editHistory/view',
+    name: 'AdminOSPeditHistoryView',
+    component: () => import('../views/Admin/AdminOSP/AdminOSP_EditHistory_View.vue'),
     beforeEnter: adminRequireAuth,
   },
   // ! ADMIN OSP END!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

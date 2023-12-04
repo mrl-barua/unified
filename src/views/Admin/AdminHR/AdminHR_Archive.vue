@@ -72,21 +72,22 @@
               <td>{{ item.office_unit }}</td>
               <td style="display: flex; justify-content: space-around">
                 <i
+                  style="cursor: pointer"
                   class="bx bxs-up-arrow-square custom-link"
                   @click="restoreHr(item.id)"
                 ></i>
 
                 <!-- <router-link
-                  :to="{ path: '/adminhr/' + item.id + '/view' }"
+                  :to="{ path: '/adminswda/' + item.ID + '/view' }"
                   class="custom-link"
                 >
                   <i class="bx bx-low-vision table-icon custom-link"></i
                 ></router-link> -->
 
-                <i
+                <!-- <i
                   class="bx bx-trash icon table-icon custom-link"
                   style="cursor: pointer"
-                ></i>
+                ></i> -->
               </td>
             </tr>
           </tbody>
@@ -362,29 +363,45 @@ export default {
         console.log(res);
       });
     },
-
     restoreHr(HrID) {
-      // console.log(HrID);
-      if (confirm("Are you sure, you want to restore this data?")) {
-        axios
-          .post(`${backendURL}/api/hrArchived/${HrID}/restore`)
-          .then((res) => {
-            alert(res.data.message);
-            // Reload the page after a successful deletion
-            window.location.reload();
-          })
-          .catch(function (error) {
-            if (error.response) {
-              if (error.response.status === 404) {
-                alert(error.response.data.message);
+      this.$swal({
+        title: "Are you sure?",
+        text: "You want to restore this data?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, restore it!",
+        cancelButtonText: "No, keep it",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios
+            .post(`${backendURL}/api/hrArchived/${HrID}/restore`)
+            .then((res) => {
+              return this.$swal({
+                icon: "success",
+                title: "Success!",
+                text: res.data.message,
+              });
+            })
+            .then(() => {
+              window.location.reload();
+            })
+            .catch((error) => {
+              if (error.response) {
+                if (error.response.status === 404) {
+                  this.$swal({
+                    icon: "error",
+                    title: "Error!",
+                    text: error.response.data.message,
+                  });
+                }
+              } else if (error.request) {
+                console.log(error.request);
+              } else {
+                console.log("error", error.message);
               }
-            } else if (error.request) {
-              console.log(error.request);
-            } else {
-              console.log("error", error.message);
-            }
-          });
-      }
+            });
+        }
+      });
     },
   },
 };

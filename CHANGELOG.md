@@ -434,3 +434,9 @@
 - Fixed the CBSS CREATE and EDIT ADMIN PAGES
 - Minor Fix in CBSS USER PAGE
 - Updated the Global Scroll Bar
+
+### version 8.9 MARLO BARUA
+
+- Implemented the SweetAlert2 Library in the ADMIN HR and ADMIN OSP
+- Completed the ADMIN HR and ADMIN OSP FUNCTIONALITIES
+- Added Version History for ADMIN HR and OSP Routes in Router.js
