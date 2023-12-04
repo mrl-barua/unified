@@ -8,19 +8,14 @@ import { Chart } from 'vue-chartjs'
 // In your JavaScript file (e.g., main.js)
 import 'boxicons/css/boxicons.min.css';
 
+
 // Import DataTables
-import 'datatables.net-bs5/css/dataTables.bootstrap5.css'
+import 'datatables.net';
+import 'datatables.net-bs5';
 import 'datatables.net-bs5/css/dataTables.bootstrap5.min.css'
-import 'datatables.net-bs5/js/dataTables.bootstrap5.js'
-import 'datatables.net-bs5/js/dataTables.bootstrap5.min.js'
-import 'datatables.net-bs5/js/dataTables.bootstrap5.min.mjs'
-import 'datatables.net-bs5/js/dataTables.bootstrap5.min.mjs'
-
-import 'datatables.net/js/jquery.dataTables'
-// import 'datatables.net/js/jquery.dataTables.min.js'
-// import 'datatables.net/js/jquery.dataTables.min.mjs'
-// import 'datatables.net/js/jquery.dataTables.mjs'
+import VueSweetalert2 from 'vue-sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css'
 
 
 
-createApp(App).use(router).mount('#app')
+createApp(App).use(router).use(VueSweetalert2).mount('#app')

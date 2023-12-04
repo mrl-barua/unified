@@ -43,7 +43,7 @@ export default {
       chartData: this.prepareChartData(this.data),
       chartOptions: {
         responsive: true,
-        aspectRatio: this.aspectRatio, // Use the aspectRatio prop here
+        maintainAspectRatio: false, // Use the aspectRatio prop here
       },
     };
   },
@@ -70,6 +70,7 @@ export default {
   display: flex;
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
-  height: 100%; /* Optional: Set a height for the container */
+  height: 100%;
+  width: 100%;
 }
 </style>

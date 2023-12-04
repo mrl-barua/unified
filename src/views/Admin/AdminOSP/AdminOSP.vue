@@ -58,10 +58,19 @@
           style="width: 100%"
           class="display stripe order-column cell-border hover compact"
           id="osdTable"
+          :options="{
+            stateSave: true,
+            //* pageLength: 5,
+            //* lengthMenu: [
+            //* [5, 10, 25, 50],
+            //*  [5, 10, 25, 50],
+            //*  ],
+          }"
         >
           <thead style="background: #133f5c" class="text-white">
             <tr>
               <th>ID</th>
+              <th>Name</th>
               <th>Division</th>
               <th>Section/Unit</th>
               <th>Office/Location</th>
@@ -73,12 +82,14 @@
           <tbody>
             <tr v-for="item in osd" :key="item.id">
               <td>{{ item.id }}</td>
+              <td>{{ item.fullname }}</td>
               <td>{{ item.division }}</td>
               <td>{{ item.section_unit }}</td>
               <td>{{ item.office_location_official_station }}</td>
               <td>{{ item.position_title }}</td>
               <td>{{ item.position_level }}</td>
-              <td>
+
+              <td class="actions">
                 <router-link
                   :to="{ path: '/adminosp/' + item.id + '/view' }"
                   class="custom-link"
@@ -98,12 +109,20 @@
                   class="bx bx-archive-in icon table-icon custom-link"
                   style="cursor: pointer"
                 ></i>
+
+                <router-link
+                  :to="{ path: '/adminosp/' + item.id + '/editHistory' }"
+                  class="custom-link"
+                >
+                  <i class="bx bx-history icon table-icon"></i>
+                </router-link>
               </td>
             </tr>
           </tbody>
           <tfoot>
             <tr>
               <th>ID</th>
+              <th>Name</th>
               <th>Division</th>
               <th>Section/Unit</th>
               <th>Office/Location</th>
@@ -310,38 +329,57 @@ export default {
         a.click();
       });
     },
-    getOsd() {
-      axios.get(`${backendURL}/api/osdlist`).then((res) => {
+    async getOsd() {
+      try {
+        const res = await axios.get(`${backendURL}/api/osdlist`);
         this.osd = res.data.Osd;
         console.log(res);
-      });
+      } catch (error) {
+        console.error(error);
+      }
     },
 
     deleteOsd(OsdID) {
-      // console.log(OsdID);
-      if (confirm("Are you sure, you want to archive this data?")) {
-        axios
-          .delete(`${backendURL}/api/osdlist/${OsdID}/delete`)
-          .then((res) => {
-            alert(res.data.message);
-            // Reload the page after a successful deletion
-            window.location.reload();
-          })
-          .catch(function (error) {
-            if (error.response) {
-              if (error.response.status === 422) {
-                mythis.errorList = error.response.data.errors;
+      this.$swal({
+        title: "Are you sure?",
+        text: "You want to archive this data?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, archive it!",
+        cancelButtonText: "No, keep it",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios
+            .delete(`${backendURL}/api/osdlist/${OsdID}/delete`)
+            .then((res) => {
+              this.$swal({
+                icon: "success",
+                title: "Success!",
+                text: res.data.message,
+              }).then(() => {
+                window.location.reload();
+              });
+            })
+            .catch(function (error) {
+              if (error.response) {
+                if (error.response.status === 422) {
+                  mythis.errorList = error.response.data.errors;
+                }
+                if (error.response.status === 404) {
+                  this.$swal({
+                    icon: "error",
+                    title: "Error!",
+                    text: error.response.data.message,
+                  });
+                }
+              } else if (error.request) {
+                console.log(error.request);
+              } else {
+                console.log("error", error.message);
               }
-              if (error.response.status === 404) {
-                alert(error.response.data.message);
-              }
-            } else if (error.request) {
-              console.log(error.request);
-            } else {
-              console.log("error", error.message);
-            }
-          });
-      }
+            });
+        }
+      });
     },
   },
 };
@@ -370,5 +408,11 @@ div.dataTables_wrapper a.paginate_button {
 .custom-link {
   text-decoration: none !important;
   color: black;
+}
+
+.actions {
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100px !important;
 }
 </style>

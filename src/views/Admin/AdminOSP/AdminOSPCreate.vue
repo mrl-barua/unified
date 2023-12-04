@@ -826,8 +826,19 @@ export default {
         .post("http://127.0.0.1:8000/api/osdlist", this.model.Osd)
         .then((res) => {
           console.log(res.data);
-          alert(res.data.message);
-
+          // alert(res.data.message);
+          this.$swal({
+            icon: "success",
+            title: "Success!",
+            text: res.data.message,
+          })
+            .then(() => {
+              this.$router.push("/adminosp");
+              // window.location.reload();
+            })
+            .then(() => {
+              window.location.reload();
+            });
           this.model.Osd = {
             id: "",
             division: "",
@@ -895,7 +906,7 @@ export default {
             blood_type: "",
           };
 
-          window.location.reload(); // RELOAD THE PAGE TO REMOVE THE ERRORS
+          // window.location.reload(); // RELOAD THE PAGE TO REMOVE THE ERRORS
         })
         .catch(function (error) {
           if (error.response) {

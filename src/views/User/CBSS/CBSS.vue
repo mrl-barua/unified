@@ -5,15 +5,24 @@
     <div class="col-12 wrapper container-fluid col-12">
       <section class="dashboard-summary">
         <div class="dashboard-container">
-          <h1>DASHBOARD SUMMARY</h1>
+          <div class="col-12">
+            <div class="col-4">
+              <hr class="hr mt-5 ms-5" style="border: 2px solid black" />
+            </div>
+            <div class="col-4"><h1>DASHBOARD SUMMARY</h1></div>
+            <div class="col-4">
+              <hr class="hr mt-5 me-5" style="border: 2px solid black" />
+            </div>
+          </div>
+
           <div class="col-12">
             <div class="col-4">
               <br/>
               <p class="dashboard-text">Total Number of Clients Served</p>
-              <p class="dashboard-value">0</p>
-              
+              <p class="dashboard-value">{{ totalClientServed.length }}</p>
+              <br />
               <p class="dashboard-text">Financial Assistance Amount Given</p>
-              <p class="dashboard-value">000</p>
+              <p class="dashboard-value">{{ totalAmount }}</p>
             </div>
             <div class="col-4">
               <p class="dashboard-subtext">Gender of Clients Served</p>
@@ -21,14 +30,14 @@
                 <p class="dashboard-center text-center">FEMALE</p>
               </div>
               <div class="col-6">
-                <p class="dashboard-center text-center">0</p>
+                <p class="dashboard-center text-center">{{ female.length }}</p>
               </div>
 
               <div class="col-6">
                 <p class="dashboard-center text-center">MALE</p>
               </div>
               <div class="col-6">
-                <p class="dashboard-center text-center">0</p>
+                <p class="dashboard-center text-center">{{ male.length }}</p>
               </div>
               <br />
               <br />
@@ -38,23 +47,34 @@
                 <p class="dashboard-center text-center">WALK-IN</p>
               </div>
               <div class="col-6">
-                <p class="dashboard-center text-center">0</p>
+                <p class="dashboard-center text-center">{{ walkIn.length }}</p>
               </div>
 
               <div class="col-6">
-                <p class="dashboard-center text-center">DSW D...</p>
+                <p class="dashboard-center text-center">DSW CONCERNS</p>
               </div>
               <div class="col-6">
-                <p class="dashboard-center text-center">0</p>
+                <p class="dashboard-center text-center">{{ others.length }}</p>
+              </div>
+
+              <div class="col-6">
+                <p class="dashboard-center text-center">REFERRAL</p>
+              </div>
+              <div class="col-6">
+                <p class="dashboard-center text-center">
+                  {{ referral.length }}
+                </p>
               </div>
             </div>
             <div class="col-4">
               <br/>
               <p class="dashboard-text">Number of Case Categories</p>
-              <p class="dashboard-value">0</p>
-              
+              <p class="dashboard-value">{{ uniqueCaseCategories.length }}</p>
+              <br />
               <p class="dashboard-text">Number of Non- Monetary Services</p>
-              <p class="dashboard-value">0</p>
+              <p class="dashboard-value">
+                {{ uniqueNonMonetaryServices.length }}
+              </p>
             </div>
           </div>
         </div>
@@ -65,16 +85,22 @@
           <div class="col-6">
             <div class="shadow-container">
               <p class="section2-header">Clients Served per Quarter</p>
-              <div class="chart-container lineChart">
-                <LineChart :data="ClientData" />
+              <div class="linechart-container lineChart">
+                <LineChart
+                  :data="clientServedPerQuarterChart"
+                  v-if="clientServedPerQuarterChart"
+                />
               </div>
             </div>
           </div>
           <div class="col-6">
             <div class="shadow-container">
               <p class="section2-header">Clients Served per Age and Sex</p>
-              <div class="chart-container lineChart">
-                <LineChart :data="sexData" />
+              <div class="linechart-container lineChart">
+                <LineChart
+                  :data="clientServedPerAgeAndSex"
+                  v-if="clientServedPerAgeAndSex"
+                />
               </div>
             </div>
           </div>
@@ -83,63 +109,22 @@
           <div class="col-6">
             <div class="shadow-container">
               <p class="section2-header">Case Categories Served</p>
-              <div class="chart-container"><BarChart :data="ClientData" /></div>
+              <div class="chart-container">
+                <BarChart
+                  :data="caseCategoriesChart"
+                  v-if="caseCategoriesChart"
+                />
+              </div>
             </div>
           </div>
           <div class="col-6">
             <div class="shadow-container">
-              <p class="section2-header">Financial Amount Served</p>
-              <div class="dataTable-container">
-                <DataTable
-                  style="width: 90%"
-                  class="display stripe order-column hover compact"
-                  id="hrTable"
-                  :options="{
-                    lengthChange: false,
-                    searching: false,
-                    // pageLength: 5,
-                    scrollY: '200px',
-                    info: false,
-                    paging: false,
-                  }"
-                >
-                  <thead style="background: #133f5c" class="text-white">
-                    <tr>
-                      <th>CATEGORY NAME</th>
-                      <th>AMOUNT</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>TEST</td>
-                      <td>TEST</td>
-                    </tr>
-                    <tr>
-                      <td>TEST</td>
-                      <td>TEST</td>
-                    </tr>
-                    <tr>
-                      <td>TEST</td>
-                      <td>TEST</td>
-                    </tr>
-                    <tr>
-                      <td>TEST</td>
-                      <td>TEST</td>
-                    </tr>
-                    <tr>
-                      <td>TEST</td>
-                      <td>TEST</td>
-                    </tr>
-                    <tr>
-                      <td>TEST</td>
-                      <td>TEST</td>
-                    </tr>
-                    <tr>
-                      <td>TEST</td>
-                      <td>TEST</td>
-                    </tr>
-                  </tbody>
-                </DataTable>
+              <p class="section2-header">Sub - Categories Served</p>
+              <div class="chart-container">
+                <BarChart
+                  :data="subCategoriesChart"
+                  v-if="subCategoriesChart"
+                />
               </div>
             </div>
           </div>
@@ -147,15 +132,10 @@
         <div class="col-12">
           <div class="col-6">
             <div class="shadow-container">
-              <p class="section2-header">Sub - Categories Served</p>
-              <div class="chart-container"><BarChart :data="CaseData" /></div>
-            </div>
-          </div>
-          <div class="col-6">
-            <div class="shadow-container">
               <p class="section2-header">Financial Amount Served</p>
               <div class="dataTable-container">
                 <DataTable
+                  v-if="financialAmountServed.length > 0"
                   style="width: 90%"
                   class="display stripe order-column hover compact"
                   id="hrTable"
@@ -163,7 +143,7 @@
                     lengthChange: false,
                     searching: false,
                     // pageLength: 5,
-                    scrollY: '200px',
+                    scrollY: '230px',
                     info: false,
                     paging: false,
                   }"
@@ -175,33 +155,49 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>TEST</td>
-                      <td>TEST</td>
+                    <tr
+                      v-for="(sum, category) in sumsByCategory"
+                      :key="category"
+                    >
+                      <td>{{ category }}</td>
+                      <td>{{ sum }}</td>
                     </tr>
+                  </tbody>
+                </DataTable>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="shadow-container">
+              <p class="section2-header">Non-Monetary Services Served</p>
+              <div class="dataTable-container">
+                <DataTable
+                  v-if="subCategoriesServed.length > 0"
+                  style="width: 90%"
+                  class="display stripe order-column hover compact"
+                  id="hrTable"
+                  :options="{
+                    lengthChange: false,
+                    searching: false,
+                    // pageLength: 5,
+                    scrollY: '230px',
+                    info: false,
+                    paging: false,
+                  }"
+                >
+                  <thead style="background: #133f5c" class="text-white">
                     <tr>
-                      <td>TEST</td>
-                      <td>TEST</td>
+                      <th>Service Name</th>
+                      <th>Number of Person Served</th>
                     </tr>
-                    <tr>
-                      <td>TEST</td>
-                      <td>TEST</td>
-                    </tr>
-                    <tr>
-                      <td>TEST</td>
-                      <td>TEST</td>
-                    </tr>
-                    <tr>
-                      <td>TEST</td>
-                      <td>TEST</td>
-                    </tr>
-                    <tr>
-                      <td>TEST</td>
-                      <td>TEST</td>
-                    </tr>
-                    <tr>
-                      <td>TEST</td>
-                      <td>TEST</td>
+                  </thead>
+                  <tbody>
+                    <tr
+                      v-for="(count, service) in countsByService"
+                      :key="service"
+                    >
+                      <td>{{ service }}</td>
+                      <td>{{ count }}</td>
                     </tr>
                   </tbody>
                 </DataTable>
@@ -212,70 +208,14 @@
       </section>
 
       <section class="col-12">
-        <div class="col-4">
-          <div class="shadow-container2">
-            <p class="section2-header">Non-Monetary Services Served</p>
-            <div class="dataTable-container">
-              <DataTable
-                style="width: 90%"
-                class="display stripe order-column hover compact"
-                id="hrTable"
-                :options="{
-                  lengthChange: false,
-                  searching: false,
-                  // pageLength: 5,
-                  scrollY: '200px',
-                  info: false,
-                  paging: false,
-                }"
-              >
-                <thead style="background: #133f5c" class="text-white">
-                  <tr>
-                    <th>Service Name</th>
-                    <th>Number of Person Served</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>TEST</td>
-                    <td>TEST</td>
-                  </tr>
-                  <tr>
-                    <td>TEST</td>
-                    <td>TEST</td>
-                  </tr>
-                  <tr>
-                    <td>TEST</td>
-                    <td>TEST</td>
-                  </tr>
-                  <tr>
-                    <td>TEST</td>
-                    <td>TEST</td>
-                  </tr>
-                  <tr>
-                    <td>TEST</td>
-                    <td>TEST</td>
-                  </tr>
-                  <tr>
-                    <td>TEST</td>
-                    <td>TEST</td>
-                  </tr>
-                  <tr>
-                    <td>TEST</td>
-                    <td>TEST</td>
-                  </tr>
-                </tbody>
-              </DataTable>
-            </div>
-          </div>
-        </div>
-        <div class="col-8">
+        <div class="col-12">
           <div class="shadow-container">
             <p class="section2-header">CBSS Staff Monitoring</p>
             <div class="col-12">
               <div class="col-6">
                 <div class="dataTable-container">
                   <DataTable
+                    v-if="totalNumberOfClientServed.length > 0"
                     style="width: 90%"
                     class="display stripe order-column hover compact"
                     id="hrTable"
@@ -283,7 +223,7 @@
                       lengthChange: false,
                       searching: false,
                       // pageLength: 5,
-                      scrollY: '200px',
+                      scrollY: '240px',
                       info: false,
                       paging: false,
                     }"
@@ -295,33 +235,12 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>TEST</td>
-                        <td>TEST</td>
-                      </tr>
-                      <tr>
-                        <td>TEST</td>
-                        <td>TEST</td>
-                      </tr>
-                      <tr>
-                        <td>TEST</td>
-                        <td>TEST</td>
-                      </tr>
-                      <tr>
-                        <td>TEST</td>
-                        <td>TEST</td>
-                      </tr>
-                      <tr>
-                        <td>TEST</td>
-                        <td>TEST</td>
-                      </tr>
-                      <tr>
-                        <td>TEST</td>
-                        <td>TEST</td>
-                      </tr>
-                      <tr>
-                        <td>TEST</td>
-                        <td>TEST</td>
+                      <tr
+                        v-for="(count, person) in countsByPerson"
+                        :key="person"
+                      >
+                        <td>{{ person }}</td>
+                        <td>{{ count }}</td>
                       </tr>
                     </tbody>
                   </DataTable>
@@ -330,6 +249,7 @@
               <div class="col-6">
                 <div class="dataTable-container">
                   <DataTable
+                    v-if="totalNumberOfCategoriesServed.length > 0"
                     style="width: 90%"
                     class="display stripe order-column hover compact"
                     id="hrTable"
@@ -337,7 +257,7 @@
                       lengthChange: false,
                       searching: false,
                       // pageLength: 5,
-                      scrollY: '200px',
+                      scrollY: '240px',
                       info: false,
                       paging: false,
                     }"
@@ -345,47 +265,19 @@
                     <thead style="background: #133f5c" class="text-white">
                       <tr>
                         <th>Responsible Person</th>
-                        <th>Total Number of Case Categories Served</th>
+                        <th>Case Categories Served</th>
+                        <th>Total</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>TEST</td>
-                        <td>TEST</td>
+                      <tr
+                        v-for="(count, key) in countsByPersonAndCategory"
+                        :key="key"
+                      >
+                        <td>{{ key.split("|")[0] }}</td>
+                        <td>{{ key.split("|")[1] }}</td>
+                        <td>{{ count }}</td>
                       </tr>
-                      <tr>
-                        <td>TEST</td>
-                        <td>TEST</td>
-                      </tr>
-                      <tr>
-                        <td>TEST</td>
-                        <td>TEST</td>
-                      </tr>
-                      <tr>
-                        <td>TEST</td>
-                        <td>TEST</td>
-                      </tr>
-                      <tr>
-                        <td>TEST</td>
-                        <td>TEST</td>
-                      </tr>
-                      <tr>
-                        <td>TEST</td>
-                        <td>TEST</td>
-                      </tr>
-                      <tr>
-                        <td>TEST</td>
-                        <td>TEST</td>
-                      </tr>
-                      <tr>
-                        <td>TEST</td>
-                        <td>TEST</td>
-                      </tr>
-                      <tr>
-                        <td>TEST</td>
-                        <td>TEST</td>
-                      </tr>
-                      v
                     </tbody>
                   </DataTable>
                 </div>
@@ -436,19 +328,42 @@ export default {
     return {
       PageTitle: "CBSS",
 
-      ClientData: {
-        labels: ["1", "2", "3", "4", "5", "6"],
-        label: ["Client"],
-        values: [50, 75, 225, 100, 200, 40],
-        backgroundColor: [
-          "rgba(150, 9, 9, 1)",
-          "rgba(198, 54, 55, 1)",
-          "rgba(226, 80, 76, 1)",
-          "rgba(255, 105, 97, 1)",
-          "rgba(255, 150, 136, 1)",
-          "rgba(255, 191, 176, 1)",
-        ],
-      },
+      totalClientServed: [],
+      totalAmount: 0,
+      male: [],
+      female: [],
+      walkIn: [],
+      concerns: [],
+      referral: [],
+      others: [],
+
+      caseCategories: [],
+      uniqueCaseCategories: [],
+      uniqueNonMonetaryServices: [],
+      caseCategoriesWedc: [],
+      caseCategoriesFhona: [],
+      caseCategoriesOlderPersons: [],
+      caseCategoriesOfw: [],
+      caseCategoriesPwd: [],
+      caseCategoriesOthers: [],
+      NonMonetaryServices: [],
+
+      financialAmountServed: [],
+      sumsByCategory: {},
+
+      subCategoriesServed: [],
+      countsByService: {},
+
+      totalNumberOfClientServed: [],
+      countsByPerson: {},
+
+      totalNumberOfCategoriesServed: [],
+      countsByPersonAndCategory: {},
+
+      clientServedPerQuarterChart: null,
+      clientServedPerAgeAndSex: null,
+      caseCategoriesChart: null,
+      subCategoriesChart: null,
 
       CaseData: {
         labels: ["1", "2", "3", "4"],
@@ -461,37 +376,360 @@ export default {
           "rgba(248, 228, 75, 1)",
         ],
       },
-
-      sexData: {
-        labels: ["0", "5-17", "18-28", "29-39", "40-50", "51-61", "62 & above"],
-        datasets: [
-          {
-            label: "Female",
-            data: [23, 75, 25, 21, 54, 52, 12, 66],
-            backgroundColor: "red",
-            fill: false, // for line chart
-            borderColor: "red", // for line chart
-          },
-          {
-            label: "Male",
-            data: [13, 25, 35, 11, 44, 52, 22, 76],
-            backgroundColor: "blue",
-            fill: false, // for line chart
-            borderColor: "blue", // for line chart
-          },
-        ],
-      },
-
-      BarData: {
-        labels: ["1st", "2nd", "3rd", "4th"],
-        label: ["Quarter"],
-        values: [0, 25, 75, 100],
-        backgroundColor: ["#C8C375"],
-      },
     };
   },
-  methods: {},
-  mounted() {},
+  methods: {
+    getTotalClientServed() {
+      axios.get(`${backendURL}/api/totalClientServed`).then((res) => {
+        this.totalClientServed = res.data.Cbss;
+        // console.log(res.data.Cbss);
+      });
+    },
+
+    getFinancialAmountGiven() {
+      axios.get(`${backendURL}/api/financialAmountGiven`).then((res) => {
+        this.totalAmount = res.data.totalAmount;
+        // console.log(res.data.totalAmount);
+      });
+    },
+
+    getgenderClientServed() {
+      axios.get(`${backendURL}/api/genderClientServed`).then((res) => {
+        const male = [];
+        const female = [];
+
+        res.data.Sex.forEach((item) => {
+          if (item.SEX === "MALE") {
+            male.push(item);
+          } else if (item.SEX === "FEMALE") {
+            female.push(item);
+          }
+        });
+
+        this.male = male;
+        this.female = female;
+      });
+    },
+
+    getModeofAdmission() {
+      axios.get(`${backendURL}/api/modeOfAdmission`).then((res) => {
+        const walkIn = [];
+        const concerns = [];
+        const referral = [];
+        const others = [];
+        // console.log(res.data.ModeOfAdmission);
+        res.data.ModeOfAdmission.forEach((item) => {
+          if (item.MODE_OF_ADMISSION === "WALK-IN") {
+            walkIn.push(item);
+          } else if (item.MODE_OF_ADMISSION === "DSWD XI CONCERNS") {
+            concerns.push(item);
+          } else if (item.MODE_OF_ADMISSION === "REFERRAL") {
+            referral.push(item);
+          } else {
+            others.push(item);
+          }
+        });
+
+        this.walkIn = walkIn;
+        this.concerns = concerns;
+        this.referral = referral;
+        this.others = others;
+        // console.log(this.referral.length + this.others.length + this.walkIn.length + this.concerns.length );
+      });
+    },
+
+    getNumberCaseCategories() {
+      axios.get(`${backendURL}/api/numberCaseCategories`).then((res) => {
+        this.caseCategories = res.data.NumberCaseCategories;
+        this.numberCaseCategories = res.data.NumberCaseCategories;
+        const uniqueCaseCategories = this.numberCaseCategories.reduce(
+          (categories, item) => {
+            if (
+              item.CASE_CATEGORY &&
+              !categories.includes(item.CASE_CATEGORY)
+            ) {
+              categories.push(item.CASE_CATEGORY);
+            }
+            return categories;
+          },
+          []
+        );
+
+        this.uniqueCaseCategories = uniqueCaseCategories;
+        console.log(this.uniqueCaseCategories);
+
+        const caseCategoriesWedc = [];
+        const caseCategoriesFhona = [];
+        const caseCategoriesOlderPersons = [];
+        const caseCategoriesOfw = [];
+        const caseCategoriesPwd = [];
+        const caseCategoriesOthers = [];
+        // console.log(res.data.NumberCaseCategories);
+        res.data.NumberCaseCategories.forEach((item) => {
+          if (item.CASE_CATEGORY === "WEDC") {
+            caseCategoriesWedc.push(item);
+          } else if (item.CASE_CATEGORY === "FHONA") {
+            caseCategoriesFhona.push(item);
+          } else if (item.CASE_CATEGORY === "OLDER PERSONS") {
+            caseCategoriesOlderPersons.push(item);
+          } else if (item.CASE_CATEGORY === "PWD") {
+            caseCategoriesPwd.push(item);
+          } else if (item.CASE_CATEGORY === "OFW") {
+            caseCategoriesOfw.push(item);
+          } else {
+            caseCategoriesOthers.push(item);
+          }
+        });
+
+        const caseChartCategoriesWedc = caseCategoriesWedc.length;
+        const caseChartCategoriesFhona = caseCategoriesFhona.length;
+        const caseChartCategoriesOlderPersons =
+          caseCategoriesOlderPersons.length;
+
+        const caseChartCategoriesPwd = caseCategoriesPwd.length;
+        const caseChartCategoriesOfw = caseCategoriesOfw.length;
+        const caseChartCategoriesOthers = caseCategoriesOthers.length;
+
+        // console.log(caseCategoriesWedc);
+        const caseCategoriesChart = {
+          labels: ["WEDC", "FHONA", "OLDER PERSONS", "PWD", "OFW", "OTHERS"],
+          label: ["Case Categories"],
+          values: [
+            caseChartCategoriesWedc,
+            caseChartCategoriesFhona,
+            caseChartCategoriesOlderPersons,
+            caseChartCategoriesPwd,
+            caseChartCategoriesOfw,
+            caseChartCategoriesOthers,
+          ],
+          backgroundColor: [
+            "rgba(150, 9, 9, 1)",
+            "rgba(198, 54, 55, 1)",
+            "rgba(226, 80, 76, 1)",
+            "rgba(255, 105, 97, 1)",
+            "rgba(255, 150, 136, 1)",
+            "rgba(255, 191, 176, 1)",
+          ],
+        };
+
+        this.caseCategoriesChart = caseCategoriesChart;
+
+        // console.log(this.caseCategories);
+      });
+    },
+
+    getNumberNonMonetaryServices() {
+      axios.get(`${backendURL}/api/numberNonMonetaryServices`).then((res) => {
+        this.NonMonetaryServices = res.data.NumberNonMonetaryServices;
+        this.numberNonMonetaryServices = res.data.NumberNonMonetaryServices;
+
+        const uniqueNonMonetaryServices = this.numberNonMonetaryServices.reduce(
+          (services, item) => {
+            if (
+              item.NON_MONETARY_SERVICES &&
+              !services.includes(item.NON_MONETARY_SERVICES)
+            ) {
+              services.push(item.NON_MONETARY_SERVICES);
+            }
+            return services;
+          },
+          []
+        );
+
+        this.uniqueNonMonetaryServices = uniqueNonMonetaryServices;
+      });
+    },
+
+    getClientsServedPerQuarter() {
+      axios.get(`${backendURL}/api/clientsServedPerQuarter`).then((res) => {
+        const data = res.data.clientsServedPerQuarter;
+
+        const labels = Object.keys(data);
+        const values = Object.values(data);
+
+        const clientServedPerQuarterChart = {
+          labels,
+          label: ["Quarters"],
+          values,
+          backgroundColor: [
+            "rgba(255, 150, 136, 1)",
+            "rgba(255, 105, 97, 1)",
+            "rgba(248, 228, 75, 1)",
+            "rgba(106, 158, 218, 1)",
+            "rgba(178, 218, 250, 1)",
+            "rgba(238, 202, 6, 1)",
+          ],
+        };
+
+        this.clientServedPerQuarterChart = clientServedPerQuarterChart;
+      });
+    },
+    getClientServedPerAgeAndSex() {
+      axios.get(`${backendURL}/api/clientServedPerAgeAndSex`).then((res) => {
+        const data = res.data.clientServedPerAgeAndSex;
+
+        const labels = Object.keys(data.MALE || data.FEMALE).map((ageKey) =>
+          ageKey.replace("AGE:", "")
+        );
+        const maleData = labels.map((label) => data.MALE[`AGE:${label}`] || 0);
+        const femaleData = labels.map(
+          (label) => data.FEMALE[`AGE:${label}`] || 0
+        );
+
+        const clientServedPerAgeAndSex = {
+          labels,
+          datasets: [
+            {
+              label: "Female",
+              data: femaleData,
+              backgroundColor: "red",
+              fill: false, // for line chart
+              borderColor: "red", // for line chart
+            },
+            {
+              label: "Male",
+              data: maleData,
+              backgroundColor: "blue",
+              fill: false, // for line chart
+              borderColor: "blue", // for line chart
+            },
+          ],
+        };
+
+        this.clientServedPerAgeAndSex = clientServedPerAgeAndSex;
+      });
+    },
+
+    getFinancialAmountServe() {
+      axios.get(`${backendURL}/api/financialAmountServed`).then((res) => {
+        this.financialAmountServed = res.data.FinancialAmountServed;
+
+        const sumsByCategory = this.financialAmountServed.reduce(
+          (sums, item) => {
+            if (!sums[item.CASE_CATEGORY]) {
+              sums[item.CASE_CATEGORY] = 0;
+            }
+            sums[item.CASE_CATEGORY] += item.AMOUNT || 0; // if AMOUNT is null, treat it as 0
+            return sums;
+          },
+          {}
+        );
+
+        this.sumsByCategory = sumsByCategory;
+
+        // console.log(this.sumsByCategory);
+      });
+    },
+
+    getSubCategoriesServedChart() {
+      axios.get(`${backendURL}/api/subCategoriesServedChart`).then((res) => {
+        this.SubCategoriesServedChart = res.data.SubCategoriesServedChart;
+
+        const countsBySubCategory = this.SubCategoriesServedChart.reduce(
+          (counts, item) => {
+            if (item.SUB_CATEGORY) {
+              if (!counts[item.SUB_CATEGORY]) {
+                counts[item.SUB_CATEGORY] = 0;
+              }
+              counts[item.SUB_CATEGORY]++;
+            }
+            return counts;
+          },
+          {}
+        );
+
+        const subCategoriesChart = {
+          labels: Object.keys(countsBySubCategory),
+          label: ["Case Categories"],
+          values: Object.values(countsBySubCategory),
+          backgroundColor: [
+            "rgba(183, 154, 0, 1)",
+            "rgba(210, 178, 2, 1)",
+            "rgba(238, 202, 6, 1)",
+            "rgba(248, 228, 75, 1)",
+          ],
+        };
+
+        this.subCategoriesChart = subCategoriesChart;
+      });
+    },
+
+    getSubCategoriesServed() {
+      axios.get(`${backendURL}/api/subCategoriesServed`).then((res) => {
+        this.subCategoriesServed = res.data.SubCategoriesServed;
+        console.log(res.data.SubCategoriesServed);
+
+        const countsByService = this.subCategoriesServed.reduce(
+          (counts, item) => {
+            if (!counts[item.NON_MONETARY_SERVICES]) {
+              counts[item.NON_MONETARY_SERVICES] = 0;
+            }
+            counts[item.NON_MONETARY_SERVICES]++;
+            return counts;
+          },
+          {}
+        );
+
+        this.countsByService = countsByService;
+      });
+    },
+
+    getTotalNumberOfClientServed() {
+      axios.get(`${backendURL}/api/totalNumberOfClientServed`).then((res) => {
+        this.totalNumberOfClientServed = res.data.TotalNumberOfClientServed;
+
+        const countsByPerson = this.totalNumberOfClientServed.reduce(
+          (counts, item) => {
+            if (!counts[item.REPONSIBLE_PERSON]) {
+              counts[item.REPONSIBLE_PERSON] = 0;
+            }
+            counts[item.REPONSIBLE_PERSON]++;
+            return counts;
+          },
+          {}
+        );
+
+        this.countsByPerson = countsByPerson;
+      });
+    },
+
+    getTotalNumberOfCategoriesServed() {
+      axios
+        .get(`${backendURL}/api/totalNumberOfCategoriesServed`)
+        .then((res) => {
+          this.totalNumberOfCategoriesServed =
+            res.data.TotalNumberOfCategoriesServed;
+
+          const countsByPersonAndCategory =
+            this.totalNumberOfCategoriesServed.reduce((counts, item) => {
+              const key = `${item.REPONSIBLE_PERSON}|${item.CASE_CATEGORY}`;
+              if (!counts[key]) {
+                counts[key] = 0;
+              }
+              counts[key]++;
+              return counts;
+            }, {});
+
+          this.countsByPersonAndCategory = countsByPersonAndCategory;
+        });
+    },
+  },
+  mounted() {
+    // this.getCbss();
+    this.getTotalClientServed();
+    this.getFinancialAmountGiven();
+    this.getgenderClientServed();
+    this.getModeofAdmission();
+    this.getNumberCaseCategories();
+    this.getNumberNonMonetaryServices();
+    this.getClientsServedPerQuarter();
+    this.getClientServedPerAgeAndSex();
+    this.getFinancialAmountServe();
+    this.getSubCategoriesServed();
+    this.getTotalNumberOfClientServed();
+    this.getTotalNumberOfCategoriesServed();
+    this.getSubCategoriesServedChart();
+  },
 };
 </script>
 
@@ -525,7 +763,7 @@ h1 {
   line-height: 36px;
   letter-spacing: 0em;
   text-align: center;
-  margin-top: 40px;
+  margin-top: 10px;
 }
 
 .dashboard-value {
@@ -556,10 +794,17 @@ h1 {
   padding-top: 20px;
 }
 
+.linechart-container {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
 .chart-container {
   width: 100%;
   height: 100%;
   margin: 0 auto;
+  padding-bottom: 50px;
 }
 
 .dashboard-container {

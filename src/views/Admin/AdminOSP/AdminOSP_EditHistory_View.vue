@@ -509,20 +509,18 @@
 </template>
 
 <script>
-import axios from "axios";
 import AdminSidebar from "@/components/AdminSidebar";
+import axios from "axios"; // Import Axios
 
 export default {
-  name: "AdminHRView",
+  name: "AdminOSDEditHistoryView",
   components: {
     AdminSidebar,
   },
   data() {
     return {
-      PageTitle: "ADMIN OSD > VIEW", // The title displayed on the page, which is "ADMIN HR"
-      OsdID: "",
-      errorList: "",
-      // The model for the form inputs  (the data that will be sent to the backend) is defined here as an empty object with the following properties: Osd
+      PageTitle: "ADMIN OSD EDIT HISTORY VIEW",
+
       model: {
         Osd: {
           id: "",
@@ -594,114 +592,32 @@ export default {
     };
   },
   mounted() {
-    //console.log(this.$route.params.ID);
     this.OsdID = this.$route.params.ID;
-    //the OsdID is passed as a parameter to the OsdData() function  (which is defined below) to get the data of the HR with the given ID
-    this.OsdData(this.$route.params.ID);
+    this.OsdEditHistoryData(this.OsdID);
   },
   methods: {
-    // The OsdData() function is used to get the data of the HR with the given ID
-    OsdData(OsdID) {
+    OsdEditHistoryData(OsdID) {
       axios
-        .get(`http://127.0.0.1:8000/api/osdlist/${OsdID}/edit`)
+        .get(`http://127.0.0.1:8000/api/osdVersion/${OsdID}/view`)
         .then((res) => {
           const osdData = res.data.Osd;
           console.log(res.data.Osd);
 
-          this.model.Osd.id = osdData.id;
-          this.model.Osd.division = osdData.division;
-          this.model.Osd.section_unit = osdData.section_unit;
-          this.model.Osd.office_location_official_station =
-            osdData.office_location_official_station;
-          this.model.Osd.item_number = osdData.item_number;
-          this.model.Osd.date_position_created = osdData.date_position_created;
-          this.model.Osd.position_title = osdData.position_title;
-          this.model.Osd.parenthetical_title = osdData.parenthetical_title;
-          this.model.Osd.position_level = osdData.position_level;
-          this.model.Osd.sg = osdData.sg;
-          this.model.Osd.salary_step_increment = osdData.salary_step_increment;
-          this.model.Osd.monthly_rate = osdData.monthly_rate;
-          this.model.Osd.designation_as_appropriate_based_on_so =
-            osdData.designation_as_appropriate_based_on_so;
-          this.model.Osd.date_of_designation = osdData.date_of_designation;
-          this.model.Osd.special_order_no = osdData.special_order_no;
-          this.model.Osd.office_bureau_service_program =
-            osdData.office_bureau_service_program;
-          this.model.Osd.fund_source_for_contractual =
-            osdData.fund_source_for_contractual;
-          this.model.Osd.employment_status = osdData.employment_status;
-          this.model.Osd.status_filled_unfilled =
-            osdData.status_filled_unfilled;
-          this.model.Osd.mode_of_accession_for_appointment_based_positions =
-            osdData.mode_of_accession_for_appointment_based_positions;
-          this.model.Osd.date_filled_up_assumption =
-            osdData.date_filled_up_assumption;
-          this.model.Osd.fullname = osdData.fullname;
-          this.model.Osd.lastname = osdData.lastname;
-          this.model.Osd.firstname = osdData.firstname;
-          this.model.Osd.middlename = osdData.middlename;
-          this.model.Osd.ext = osdData.ext;
-          this.model.Osd.date_of_original_appointment =
-            osdData.date_of_original_appointment;
-          this.model.Osd.date_of_last_promotion =
-            osdData.date_of_last_promotion;
-          this.model.Osd.entry_date_in_dswd = osdData.entry_date_in_dswd;
-          this.model.Osd.eligibility_csc_and_other_eligibilities =
-            osdData.eligibility_csc_and_other_eligibilities;
-          this.model.Osd.eligibility_license_ra_1080 =
-            osdData.eligibility_license_ra_1080;
-          this.model.Osd.license_ra_1080_let_rn_rs_etc =
-            osdData.license_ra_1080_let_rn_rs_etc;
-          this.model.Osd.highest_level_of_eligibility =
-            osdData.highest_level_of_eligibility;
-          this.model.Osd.highest_education_completed =
-            osdData.highest_education_completed;
-          this.model.Osd.degree_and_course_1st_vocational =
-            osdData.degree_and_course_1st_vocational;
-          this.model.Osd.degree_and_course_2nd_course =
-            osdData.degree_and_course_2nd_course;
-          this.model.Osd.other_courses = osdData.other_courses;
-          this.model.Osd.masters_or_doctoral_degree_specify =
-            osdData.masters_or_doctoral_degree_specify;
-          this.model.Osd.gender = osdData.gender;
-          this.model.Osd.date_of_birth = osdData.date_of_birth;
-          this.model.Osd.age = osdData.age;
-          this.model.Osd.civil_status = osdData.civil_status;
-          this.model.Osd.residential_address = osdData.residential_address;
-          this.model.Osd.permanent_address = osdData.permanent_address;
-          this.model.Osd.indicate_whether_solo_parent =
-            osdData.indicate_whether_solo_parent;
-          this.model.Osd.indicate_whether_senior_citizen =
-            osdData.indicate_whether_senior_citizen;
-          this.model.Osd.indicate_whether_pwd = osdData.indicate_whether_pwd;
-          this.model.Osd.type_of_disability = osdData.type_of_disability;
-          this.model.Osd.indicate_whether_member_of_indigenous_group =
-            osdData.indicate_whether_member_of_indigenous_group;
-          this.model.Osd.indigenous_group = osdData.indigenous_group;
-          this.model.Osd.citizenship = osdData.citizenship;
-          this.model.Osd.active_contact_numbers =
-            osdData.active_contact_numbers;
-          this.model.Osd.active_and_working_email_address =
-            osdData.active_and_working_email_address;
-          this.model.Osd.former_incumbent = osdData.former_incumbent;
-          this.model.Osd.mode_of_separation = osdData.mode_of_separation;
-          this.model.Osd.date_vacated = osdData.date_vacated;
-          this.model.Osd.remarks_status_of_vacant_position =
-            osdData.remarks_status_of_vacant_position;
-          this.model.Osd.employee_id_number = osdData.employee_id_number;
-          this.model.Osd.bir_tin_number = osdData.bir_tin_number;
-          this.model.Osd.philhealth_number = osdData.philhealth_number;
-          this.model.Osd.sss_number = osdData.sss_number;
-          this.model.Osd.pagibig_number = osdData.pagibig_number;
-          this.model.Osd.gsis_number = osdData.gsis_number;
-          this.model.Osd.blood_type = osdData.blood_type;
-        })
-        // If the HR with the given ID is not found, an error message will be displayed
-        .catch(function (error) {
-          if (error.response) {
-            if (error.response.status === 404) {
-              alert(error.response.data.message);
+          // Check if osdData is null or empty
+          if (!osdData || Object.keys(osdData).length === 0) {
+            for (const key in this.model.Osd) {
+              this.model.Osd[key] = "No Data";
             }
+          } else {
+            // Assign values from osdData to this.model.Osd
+            for (const key in osdData) {
+              this.model.Osd[key] = osdData[key];
+            }
+          }
+        })
+        .catch((error) => {
+          if (error.response && error.response.status === 404) {
+            alert(error.response.data.message);
           }
         });
     },
@@ -752,24 +668,6 @@ export default {
   color: red;
 }
 
-.head {
-  font-family: Inter;
-  font-size: 22px;
-  font-weight: 500;
-  line-height: 27px;
-  letter-spacing: 0em;
-  text-align: center;
-}
-
-.headContent {
-  font-family: Inter;
-  font-size: 25px;
-  font-weight: 700;
-  line-height: 30px;
-  letter-spacing: 0em;
-  text-align: center;
-}
-
 .headerText {
   font-family: Inter;
   font-size: 16px;
@@ -788,9 +686,8 @@ export default {
   text-align: left;
 }
 
-.second-row {
-  border-left: 1px solid gray;
-  margin-bottom: 20px;
+.first-row {
+  border-right: 1px solid #000000;
 }
 
 .second-row {
@@ -799,5 +696,13 @@ export default {
 
 .error {
   color: red;
+}
+
+.page-border {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.15);
 }
 </style>

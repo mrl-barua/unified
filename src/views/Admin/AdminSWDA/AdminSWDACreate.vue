@@ -352,7 +352,7 @@
             >
               <option value="" disabled selected>Select an option ⮟</option>
               <option value="Davao City">Davao City</option>
-              <option value="Davao del Oro">Davao del Oro</option>
+              <option value="Davao de Oro">Davao de Oro</option>
               <option value="Davao del Norte">Davao del Norte</option>
               <option value="Davao del Sur">Davao del Sur</option>
               <option value="Davao Oriental">Davao Oriental</option>
@@ -372,7 +372,7 @@
             >
               <option value="" disabled selected>Select an option ⮟</option>
               <option value="Davao City">Davao City</option>
-              <option value="Davao del Oro">Davao del Oro</option>
+              <option value="Davao de Oro">Davao de Oro</option>
               <option value="Davao del Norte">Davao del Norte</option>
               <option value="Davao del Sur">Davao del Sur</option>
               <option value="Davao Oriental">Davao Oriental</option>
@@ -714,8 +714,16 @@ export default {
         .post("http://127.0.0.1:8000/api/swdalist", this.model.Swda)
         .then((res) => {
           console.log(res.data);
-          alert(res.data.message);
-
+          // alert(res.data.message);
+          // this.$swal(res.data.message);
+          this.$swal({
+            icon: "success",
+            title: "Success!",
+            text: res.data.message,
+          }).then(() => {
+            this.$router.push("/adminswda");
+            // window.location.reload();
+          });
           this.model.Swda = {
             Type: "",
             Sector: "",
@@ -759,7 +767,7 @@ export default {
             Accreditation_Overdue: "",
           };
 
-          window.location.reload(); // RELOAD THE PAGE TO REMOVE THE ERRORS
+          // window.location.reload(); // RELOAD THE PAGE TO REMOVE THE ERRORS
         })
         .catch(function (error) {
           if (error.response) {

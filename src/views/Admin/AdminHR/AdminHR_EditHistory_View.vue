@@ -1,7 +1,7 @@
 <template>
   <div>
     <AdminSidebar :iconText="PageTitle" />
-    <br /><br /><br /><br />
+    <br /><br /><br /><br /><br />
     <div class="container-fluid wrapper">
       <div class="col-12 page-border">
         <div class="col-12" style="padding: 20px">
@@ -106,20 +106,18 @@
 </template>
 
 <script>
-import axios from "axios";
 import AdminSidebar from "@/components/AdminSidebar";
+import axios from "axios"; // Import Axios
 
 export default {
-  name: "AdminHRView",
+  name: "AdminHREditHistoryView",
   components: {
     AdminSidebar,
   },
   data() {
     return {
-      PageTitle: "ADMIN HR > VIEW", // The title displayed on the page, which is "ADMIN HR"
-      HrID: "",
-      errorList: "",
-      // The model for the form inputs  (the data that will be sent to the backend) is defined here as an empty object with the following properties: Hr
+      PageTitle: "ADMIN HR EDIT HISTORY VIEW",
+
       model: {
         Hr: {
           id: "",
@@ -139,42 +137,32 @@ export default {
     };
   },
   mounted() {
-    //console.log(this.$route.params.ID);
     this.HrID = this.$route.params.ID;
-    //the HrID is passed as a parameter to the HrData() function  (which is defined below) to get the data of the HR with the given ID
-    this.HrData(this.$route.params.ID);
+    this.HrEditHistoryData(this.HrID);
   },
   methods: {
-    // The HrData() function is used to get the data of the HR with the given ID
-    HrData(HrID) {
+    HrEditHistoryData(HrID) {
       axios
-        .get(`http://127.0.0.1:8000/api/hrlist/${HrID}/edit`)
+        .get(`http://127.0.0.1:8000/api/hrVersion/${HrID}/view`)
         .then((res) => {
           const hrData = res.data.Hr;
           console.log(res.data.Hr);
 
           // Check if hrData is null or empty
-          this.model.Hr.id = hrData.id;
-          this.model.Hr.request_date = hrData.request_date;
-          this.model.Hr.requesting_employee_name =
-            hrData.requesting_employee_name;
-          this.model.Hr.employee_position = hrData.employee_position;
-          this.model.Hr.employment_status = hrData.employment_status;
-          this.model.Hr.office_unit = hrData.office_unit;
-          this.model.Hr.request_category = hrData.request_category;
-          this.model.Hr.brief_interview = hrData.brief_interview;
-          this.model.Hr.remarks = hrData.remarks;
-          this.model.Hr.assistance_provided = hrData.assistance_provided;
-
-          this.model.Hr.quantity_unit = hrData.quantity_unit;
-          this.model.Hr.date_received = hrData.date_received;
-        })
-        // If the HR with the given ID is not found, an error message will be displayed
-        .catch(function (error) {
-          if (error.response) {
-            if (error.response.status === 404) {
-              alert(error.response.data.message);
+          if (!hrData || Object.keys(hrData).length === 0) {
+            for (const key in this.model.Hr) {
+              this.model.Hr[key] = "No Data";
             }
+          } else {
+            // Assign values from hrData to this.model.Hr
+            for (const key in hrData) {
+              this.model.Hr[key] = hrData[key];
+            }
+          }
+        })
+        .catch((error) => {
+          if (error.response && error.response.status === 404) {
+            alert(error.response.data.message);
           }
         });
     },

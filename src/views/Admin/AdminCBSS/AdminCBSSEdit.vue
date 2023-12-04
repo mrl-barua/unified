@@ -8,7 +8,7 @@
       <!-- ! SHOW ERROR DIALOGUE -->
       <!-- ! SHOW ERROR DIALOGUE -->
       <!-- ! SHOW ERROR DIALOGUE -->
-      <!-- <ul
+      <ul
         class="alert alert-warning"
         v-if="Object.keys(this.errorList).length > 0"
       >
@@ -19,26 +19,16 @@
         >
           {{ error[0] }}
         </li>
-      </ul> -->
+      </ul>
       <!-- ! SHOW ERROR DIALOGUE -->
       <!-- ! SHOW ERROR DIALOGUE -->
       <!-- ! SHOW ERROR DIALOGUE -->
+
       <div class="container-fluid wrapper">
         <div class="col-12">
-          <div class="col-3">
+          <div class="col-12">
             <div class="spaceBetween">
-              <label for="officeLocation">DATE</label>
-              <input
-                type="text"
-                v-model="model.Cbss.DATE"
-                class="form-control"
-                id="officeLocation"
-              />
-            </div>
-          </div>
-          <div class="col-3">
-            <div class="spaceBetween">
-              <label for="officeLocation">NAME</label>
+              <label for="officeLocation">Full Name</label>
               <input
                 type="text"
                 v-model="model.Cbss.NAME"
@@ -47,153 +37,204 @@
               />
             </div>
           </div>
-          <div class="col-3">
-            <div class="spaceBetween">
-              <label for="officeLocation">AGE</label>
-              <input
-                type="text"
-                v-model="model.Cbss.AGE"
-                class="form-control"
-                id="officeLocation"
-              />
-            </div>
-          </div>
-          <div class="col-3">
-            <div class="spaceBetween">
-              <label for="officeLocation">SEX</label>
-              <input
-                type="text"
-                v-model="model.Cbss.SEX"
-                class="form-control"
-                id="officeLocation"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="col-12">
-          <div class="col-3">
-            <div class="spaceBetween">
-              <label for="officeLocation">CASE CATEGORY</label>
-              <input
-                type="text"
-                v-model="model.Cbss.CASE_CATEGORY"
-                class="form-control"
-                id="officeLocation"
-              />
-            </div>
-          </div>
-          <div class="col-3">
-            <div class="spaceBetween">
-              <label for="officeLocation">SUB CATEGORY</label>
-              <input
-                type="text"
-                v-model="model.Cbss.SUB_CATEGORY"
-                class="form-control"
-                id="officeLocation"
-              />
-            </div>
-          </div>
-          <div class="col-3">
-            <div class="spaceBetween">
-              <label for="officeLocation">MODE OF ADMISSION</label>
-              <input
-                type="text"
-                v-model="model.Cbss.MODE_OF_ADMISSION"
-                class="form-control"
-                id="officeLocation"
-              />
-            </div>
-          </div>
-          <div class="col-3">
-            <div class="spaceBetween">
-              <label for="officeLocation">ADDRESS</label>
-              <input
-                type="text"
-                v-model="model.Cbss.ADDRESS"
-                class="form-control"
-                id="officeLocation"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="col-12">
-          <div class="col-3">
-            <div class="spaceBetween">
-              <label for="officeLocation">NON MONETARY SERVICES</label>
-              <input
-                type="text"
-                v-model="model.Cbss.NON_MONETARY_SERVICES"
-                class="form-control"
-                id="officeLocation"
-              />
-            </div>
-          </div>
-          <div class="col-3">
-            <div class="spaceBetween">
-              <label for="officeLocation">PURPOSE</label>
-              <input
-                type="text"
-                v-model="model.Cbss.Purpose"
-                class="form-control"
-                id="officeLocation"
-              />
-            </div>
-          </div>
-          <div class="col-3">
-            <div class="spaceBetween">
-              <label for="officeLocation">AMOUNT</label>
-              <input
-                type="text"
-                v-model="model.Cbss.AMOUNT"
-                class="form-control"
-                id="officeLocation"
-              />
-            </div>
-          </div>
-          <div class="col-3">
-            <div class="spaceBetween">
-              <label for="officeLocation">REMARKS</label>
-              <input
-                type="text"
-                v-model="model.Cbss.REMARKS"
-                class="form-control"
-                id="officeLocation"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="col-12">
+          <!-- 1ST SECTION -->
           <div class="col-6">
-            <div class="spaceBetween">
-              <label for="officeLocation">RESPONSIBLE PERSON</label>
-              <input
-                type="text"
-                v-model="model.Cbss.REPONSIBLE_PERSON"
-                class="form-control"
-                id="officeLocation"
-              />
+            <div class="col-12">
+              <div class="spaceBetween">
+                <label for="officeLocation">Responsible Person</label>
+                <input
+                  type="text"
+                  v-model="model.Cbss.REPONSIBLE_PERSON"
+                  class="form-control"
+                  id="officeLocation"
+                />
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="spaceBetween">
+                <label for="officeLocation">Address</label>
+                <input
+                  type="text"
+                  v-model="model.Cbss.ADDRESS"
+                  class="form-control"
+                  id="officeLocation"
+                />
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="spaceBetween">
+                <label for="officeLocation">Age</label>
+                <input
+                  type="number"
+                  v-model="model.Cbss.AGE"
+                  class="form-control"
+                  id="officeLocation"
+                />
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="spaceBetween">
+                <label for="officeLocation">Sex</label>
+                <select
+                  v-model="model.Cbss.SEX"
+                  class="form-control centered-placeholder"
+                  id="cluster"
+                >
+                  <option :value="model.Cbss.SEX" selected>
+                    {{ model.Cbss.SEX }}
+                  </option>
+                  <option value="" disabled selected>Select an option ⮟</option>
+                  <option value="MALE">MALE</option>
+                  <option value="FEMALE">FEMALE</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="spaceBetween">
+                <label for="officeLocation">Amount</label>
+                <input
+                  type="number"
+                  v-model="model.Cbss.AMOUNT"
+                  class="form-control"
+                  id="officeLocation"
+                />
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="spaceBetween">
+                <label for="officeLocation">Case Category</label>
+                <select
+                  v-model="model.Cbss.CASE_CATEGORY"
+                  class="form-control centered-placeholder"
+                  id="cluster"
+                >
+                  <option :value="model.Cbss.CASE_CATEGORY" selected>
+                    {{ model.Cbss.CASE_CATEGORY }}
+                  </option>
+                  <option value="" disabled selected>Select an option ⮟</option>
+                  <option value="WEDC">WEDC</option>
+                  <option value="FHONA">FHONA</option>
+                  <option value="OFW">OFW</option>
+                  <option value="OLDER PERSONS">OLDER PERSONS</option>
+                  <option value="OTHERS">OTHERS</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="spaceBetween">
+                <label for="officeLocation">Date</label>
+                <input
+                  type="date"
+                  v-model="model.Cbss.DATE"
+                  class="form-control"
+                  id="officeLocation"
+                />
+              </div>
             </div>
           </div>
+
+          <!-- 2ND SECTION -->
           <div class="col-6">
-            <div class="spaceBetween">
-              <label for="officeLocation">NUMBER OF SERVICES AVAILED</label>
-              <input
-                type="text"
-                v-model="model.Cbss.NUMBER_OF_SERVICES_AVAILED"
-                class="form-control"
-                id="officeLocation"
-              />
+            <div class="col-12">
+              <div class="spaceBetween">
+                <label for="officeLocation">Mode of Admission</label>
+                <select
+                  v-model="model.Cbss.MODE_OF_ADMISSION"
+                  class="form-control centered-placeholder"
+                  id="cluster"
+                >
+                  <option :value="model.Cbss.MODE_OF_ADMISSION" selected>
+                    {{ model.Cbss.MODE_OF_ADMISSION }}
+                  </option>
+                  <option value="" disabled selected>Select an option ⮟</option>
+                  <option value="WALK-IN">WALK-IN</option>
+                  <option value="DSWD XI CONCERNS">DSWD XI CONCERNS</option>
+                  <option value="REFERRAL">REFERRAL</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="spaceBetween">
+                <label for="officeLocation">Non Monetary Services</label>
+                <select
+                  v-model="model.Cbss.NON_MONETARY_SERVICES"
+                  class="form-control centered-placeholder"
+                  id="cluster"
+                >
+                  <option :value="model.Cbss.NON_MONETARY_SERVICES" selected>
+                    {{ model.Cbss.NON_MONETARY_SERVICES }}
+                  </option>
+                  <option value="" disabled selected>Select an option ⮟</option>
+                  <option value="Counseling/Advice">Counseling/Advice</option>
+                  <option value="Travel Clearance">Travel Clearance</option>
+                  <option value="Referral">Referral</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="spaceBetween">
+                <label for="officeLocation">Number of Services Availed</label>
+                <input
+                  type="number"
+                  v-model="model.Cbss.NUMBER_OF_SERVICES_AVAILED"
+                  class="form-control"
+                  id="officeLocation"
+                />
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="spaceBetween">
+                <label for="officeLocation">Sub Category</label>
+                <select
+                  v-model="model.Cbss.SUB_CATEGORY"
+                  class="form-control centered-placeholder"
+                  id="cluster"
+                >
+                  <option :value="model.Cbss.SUB_CATEGORY" selected>
+                    {{ model.Cbss.SUB_CATEGORY }}
+                  </option>
+                  <option value="" disabled selected>Select an option ⮟</option>
+                  <option value="CNSP">CNSP</option>
+                  <option value="EMOTIONALLY/PSYCHO DISTRESSED">
+                    EMOTIONALLY/PSYCHO DISTRESSED
+                  </option>
+                  <option value="OFW">OFW</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="spaceBetween">
+                <label for="officeLocation">Purpose</label>
+                <input
+                  type="text"
+                  v-model="model.Cbss.Purpose"
+                  class="form-control"
+                  id="officeLocation"
+                />
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="spaceBetween">
+                <label for="officeLocation">Remarks</label>
+                <input
+                  type="text"
+                  v-model="model.Cbss.REMARKS"
+                  class="form-control"
+                  id="officeLocation"
+                />
+              </div>
             </div>
           </div>
         </div>
       </div>
+
       <div class="md-3 col-12 buttons d-flex justify-content-end">
-        <router-link to="/adminhr">
+        <router-link to="/admincbss">
           <button class="btn btn-secondary">CANCEL</button>
         </router-link>
-        <router-link to="/adminhr">
+        <router-link to="/admincbss">
           <button
-            @click="updateHR($route.params.ID)"
+            @click="updateCbss($route.params.ID)"
             class="btn btn-primary col-12"
           >
             Save
@@ -240,6 +281,20 @@ export default {
       },
     };
   },
+  computed: {
+    formattedDate: {
+      get() {
+        // Convert date from 'yyyy-mm-dd' to 'dd/mm/yyyy'
+        const [year, month, day] = this.model.Cbss.DATE.split("-");
+        return `${day}/${month}/${year}`;
+      },
+      set(value) {
+        // Convert date from 'dd/mm/yyyy' to 'yyyy-mm-dd'
+        const [day, month, year] = value.split("/");
+        this.model.Cbss.DATE = `${year}-${month}-${day}`;
+      },
+    },
+  },
   mounted() {
     //console.log(this.$route.params.ID);
     this.CbssID = this.$route.params.ID;
@@ -283,41 +338,51 @@ export default {
           }
         });
     },
-    // The updateHR() function is used to update the data of the HR with the given ID in the database using the backend API endpoint for updating HR data
-    // updateHR(HrID) {
-    //   var mythis = this;
-    //   axios
-    //     .put(
-    //       `http://127.0.0.1:8000/api/hrlist/${HrID}/edit`,
-    //       // The data to be updated is passed as a parameter to the axios.put() function
-    //       // as the second parameter (the first parameter is the API endpoint) in the form of
-    //       // an object with the following properties: Hr (which contains the data to be updated)
-    //       // and _method (which is set to "PUT" to indicate that the data will be updated)
-    //       this.model.HR
-    //     )
-    //     .then((res) => {
-    //       console.log(res.data);
-    //       alert(res.data.message);
 
-    //       this.errorList = "";
+    updateCbss(CbssID) {
+      var mythis = this;
+      axios
+        .put(
+          `http://127.0.0.1:8000/api/cbsslist/${CbssID}/edit`,
+          // The data to be updated is passed as a parameter to the axios.put() function
+          // as the second parameter (the first parameter is the API endpoint) in the form of
+          // an object with the following properties: Cbss (which contains the data to be updated)
+          // and _method (which is set to "PUT" to indicate that the data will be updated)
+          this.model.Cbss
+        )
+        .then((res) => {
+          console.log(res.data);
+          // alert(res.data.message);
+          this.$swal({
+            icon: "success",
+            title: "Success!",
+            text: res.data.message,
+          })
+            .then(() => {
+              return this.$router.push("/admincbss");
+            })
+            .then(() => {
+              window.location.reload();
+            });
+          this.errorList = "";
 
-    //       window.location.reload(); // reload the page after updating the data
-    //     })
-    //     .catch(function (error) {
-    //       if (error.response) {
-    //         if (error.response.status === 422) {
-    //           mythis.errorList = error.response.data.errors;
-    //         }
-    //         if (error.response.status === 404) {
-    //           alert(error.response.data.message);
-    //         }
-    //       } else if (error.request) {
-    //         console.log(error.request);
-    //       } else {
-    //         console.log("error", error.message);
-    //       }
-    //     });
-    // },
+          // window.location.reload(); // reload the page after updating the data
+        })
+        .catch(function (error) {
+          if (error.response) {
+            if (error.response.status === 422) {
+              mythis.errorList = error.response.data.errors;
+            }
+            if (error.response.status === 404) {
+              alert(error.response.data.message);
+            }
+          } else if (error.request) {
+            console.log(error.request);
+          } else {
+            console.log("error", error.message);
+          }
+        });
+    },
   },
 };
 </script>

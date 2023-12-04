@@ -389,3 +389,54 @@
 ### version 8.0 MARLO BARUA
 
 - Added Temporary Tables in SWDA with temporary Data
+
+### version 8.1 MARLO BARUA
+
+- Configured the option for all DataTables Component
+
+### version 8.2 MARLO BARUA
+
+- Implemented Partial Fetch from backend CBSS View
+
+### version 8.3 MARLO BARUA
+
+- Done Implementing Fetch from backend CBSS View
+
+### version 8.4 MARLO BARUAs
+
+- Added Sub Categories Chart Function in CBSS USER VIEW
+- Bug fix on Swda Edit (Davao del Oro ==> Davao de Oro)
+- Implemented Dynamic Label and Value Fetching in SWDA USER CHARTS FUNCTIONS
+
+### version 8.5 MARLO BARUA
+
+- Fix table pagination and input types
+- Completed the Admin SWDA All functionality needed
+
+### version 8.6 MARLO BARUA
+
+- Implemented Lazy Loading for RouterJS for faster loading
+- Change the fetch function on AdminOSD.vue and added catch method
+
+### version 8.7 MARLO BARUA
+
+- Imported the SweetAlert2 Library using npm installer for customized alert designs
+- Reworked the OSD View Page basing on figma design
+- Fix the functions in SWDA USER VIEW
+- Reworked some of the inline Css in OSD USER VIEW
+- Fixed the Chart Components Stylings
+- Change the alert designs of SWDA ADMIN using the SweetAlert2
+- Implemented Lazy Load for All Router View and Links in Router.JS
+
+### version 8.8 MARLO BARUA
+
+- Implemented the SweetAlert2 Library in the ADMIN CBSS
+- Fixed the CBSS CREATE and EDIT ADMIN PAGES
+- Minor Fix in CBSS USER PAGE
+- Updated the Global Scroll Bar
+
+### version 8.9 MARLO BARUA
+
+- Implemented the SweetAlert2 Library in the ADMIN HR and ADMIN OSP
+- Completed the ADMIN HR and ADMIN OSP FUNCTIONALITIES
+- Added Version History for ADMIN HR and OSP Routes in Router.js

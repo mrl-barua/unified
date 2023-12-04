@@ -58,6 +58,14 @@
           style="width: 100%"
           class="display stripe order-column cell-border hover compact"
           id="cbssTable"
+          :options="{
+            stateSave: true,
+            pageLength: 8,
+            lengthMenu: [
+              [5, 8, 10, 25, 50],
+              [5, 8, 10, 25, 50],
+            ],
+          }"
         >
           <thead style="background: #133f5c" class="text-white">
             <tr>
@@ -100,7 +108,7 @@
                 ></i>
 
                 <router-link
-                  :to="{ path: '/adminswda/' + item.ID + '/editHistory' }"
+                  :to="{ path: '/admincbss/' + item.ID + '/editHistory' }"
                   class="custom-link"
                 >
                   <i class="bx bx-history icon table-icon"></i>
@@ -226,32 +234,47 @@ export default {
         console.log(res);
       });
     },
-
     deleteCbss(CbssID) {
-      // console.log(CbssID);
-      if (confirm("Are you sure, you want to archive this data?")) {
-        axios
-          .delete(`${backendURL}/api/cbsslist/${CbssID}/delete`)
-          .then((res) => {
-            alert(res.data.message);
-            // Reload the page after a successful deletion
-            window.location.reload();
-          })
-          .catch(function (error) {
-            if (error.response) {
-              if (error.response.status === 422) {
-                mythis.errorList = error.response.data.errors;
+      this.$swal({
+        title: "Are you sure?",
+        text: "You want to archive this data?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, archive it!",
+        cancelButtonText: "No, keep it",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios
+            .delete(`${backendURL}/api/cbsslist/${CbssID}/delete`)
+            .then((res) => {
+              this.$swal({
+                icon: "success",
+                title: "Success!",
+                text: res.data.message,
+              }).then(() => {
+                window.location.reload();
+              });
+            })
+            .catch(function (error) {
+              if (error.response) {
+                if (error.response.status === 422) {
+                  mythis.errorList = error.response.data.errors;
+                }
+                if (error.response.status === 404) {
+                  this.$swal({
+                    icon: "error",
+                    title: "Error!",
+                    text: error.response.data.message,
+                  });
+                }
+              } else if (error.request) {
+                console.log(error.request);
+              } else {
+                console.log("error", error.message);
               }
-              if (error.response.status === 404) {
-                alert(error.response.data.message);
-              }
-            } else if (error.request) {
-              console.log(error.request);
-            } else {
-              console.log("error", error.message);
-            }
-          });
-      }
+            });
+        }
+      });
     },
   },
 };
