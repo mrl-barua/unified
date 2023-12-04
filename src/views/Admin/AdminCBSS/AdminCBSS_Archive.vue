@@ -241,27 +241,44 @@ export default {
     },
 
     restoreCbss(CbssID) {
-      // console.log(HrID);
-      if (confirm("Are you sure, you want to restore this data?")) {
-        axios
-          .post(`${backendURL}/api/cbssArchived/${CbssID}/restore`)
-          .then((res) => {
-            alert(res.data.message);
-            // Reload the page after a successful deletion
-            window.location.reload();
-          })
-          .catch(function (error) {
-            if (error.response) {
-              if (error.response.status === 404) {
-                alert(error.response.data.message);
+      this.$swal({
+        title: "Are you sure?",
+        text: "You want to restore this data?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, restore it!",
+        cancelButtonText: "No, keep it",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios
+            .post(`${backendURL}/api/cbssArchived/${CbssID}/restore`)
+            .then((res) => {
+              return this.$swal({
+                icon: "success",
+                title: "Success!",
+                text: res.data.message,
+              });
+            })
+            .then(() => {
+              window.location.reload();
+            })
+            .catch((error) => {
+              if (error.response) {
+                if (error.response.status === 404) {
+                  this.$swal({
+                    icon: "error",
+                    title: "Error!",
+                    text: error.response.data.message,
+                  });
+                }
+              } else if (error.request) {
+                console.log(error.request);
+              } else {
+                console.log("error", error.message);
               }
-            } else if (error.request) {
-              console.log(error.request);
-            } else {
-              console.log("error", error.message);
-            }
-          });
-      }
+            });
+        }
+      });
     },
   },
 };

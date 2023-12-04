@@ -50,10 +50,19 @@
               </div>
 
               <div class="col-6">
-                <p class="dashboard-center text-center">DSW D...</p>
+                <p class="dashboard-center text-center">DSW CONCERNS</p>
               </div>
               <div class="col-6">
                 <p class="dashboard-center text-center">{{ others.length }}</p>
+              </div>
+
+              <div class="col-6">
+                <p class="dashboard-center text-center">REFERRAL</p>
+              </div>
+              <div class="col-6">
+                <p class="dashboard-center text-center">
+                  {{ referral.length }}
+                </p>
               </div>
             </div>
             <div class="col-4">
@@ -322,6 +331,8 @@ export default {
       male: [],
       female: [],
       walkIn: [],
+      concerns: [],
+      referral: [],
       others: [],
 
       caseCategories: [],
@@ -401,19 +412,27 @@ export default {
     getModeofAdmission() {
       axios.get(`${backendURL}/api/modeOfAdmission`).then((res) => {
         const walkIn = [];
+        const concerns = [];
+        const referral = [];
         const others = [];
         // console.log(res.data.ModeOfAdmission);
         res.data.ModeOfAdmission.forEach((item) => {
           if (item.MODE_OF_ADMISSION === "WALK-IN") {
             walkIn.push(item);
+          } else if (item.MODE_OF_ADMISSION === "DSWD XI CONCERNS") {
+            concerns.push(item);
+          } else if (item.MODE_OF_ADMISSION === "REFERRAL") {
+            referral.push(item);
           } else {
             others.push(item);
           }
         });
 
         this.walkIn = walkIn;
+        this.concerns = concerns;
+        this.referral = referral;
         this.others = others;
-        // console.log(this.walkIn);
+        // console.log(this.referral.length + this.others.length + this.walkIn.length + this.concerns.length );
       });
     },
 
@@ -742,7 +761,7 @@ h1 {
   line-height: 36px;
   letter-spacing: 0em;
   text-align: center;
-  margin-top: 40px;
+  margin-top: 10px;
 }
 
 .dashboard-value {

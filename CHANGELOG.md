@@ -427,3 +427,10 @@
 - Fixed the Chart Components Stylings
 - Change the alert designs of SWDA ADMIN using the SweetAlert2
 - Implemented Lazy Load for All Router View and Links in Router.JS
+
+### version 8.8 MARLO BARUA
+
+- Implemented the SweetAlert2 Library in the ADMIN CBSS
+- Fixed the CBSS CREATE and EDIT ADMIN PAGES
+- Minor Fix in CBSS USER PAGE
+- Updated the Global Scroll Bar

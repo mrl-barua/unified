@@ -8,7 +8,7 @@
       <!-- ! SHOW ERROR DIALOGUE -->
       <!-- ! SHOW ERROR DIALOGUE -->
       <!-- ! SHOW ERROR DIALOGUE -->
-      <!-- <ul
+      <ul
         class="alert alert-warning"
         v-if="Object.keys(this.errorList).length > 0"
       >
@@ -19,10 +19,24 @@
         >
           {{ error[0] }}
         </li>
-      </ul> -->
+      </ul>
       <!-- ! SHOW ERROR DIALOGUE -->
       <!-- ! SHOW ERROR DIALOGUE -->
       <!-- ! SHOW ERROR DIALOGUE -->
+
+      <div class="container-fluid wrapper">
+        <!-- 1ST SECTION -->
+        <div class="col-6">
+          <div class="col-12"></div>
+          <div class="col-12"></div>
+          <div class="col-12"></div>
+          <div class="col-12"></div>
+          <div class="col-12"></div>
+          <div class="col-12"></div>
+        </div>
+        <!-- 2ND SECTION -->
+        <div class="col-6"></div>
+      </div>
 
       <div class="container-fluid wrapper">
         <!-- //! FIRST ROW START -->

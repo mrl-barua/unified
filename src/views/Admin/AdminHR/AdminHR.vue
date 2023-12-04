@@ -86,7 +86,7 @@
               <td>{{ item.employee_position }}</td>
               <td>{{ item.employment_status }}</td>
               <td>{{ item.office_unit }}</td>
-              <td>
+              <td class="actions">
                 <router-link
                   :to="{ path: '/adminhr/' + item.id + '/view' }"
                   class="custom-link"
@@ -106,7 +106,35 @@
                   class="bx bx-archive-in icon table-icon custom-link"
                   style="cursor: pointer"
                 ></i>
+
+                <router-link
+                  :to="{ path: '/adminhr/' + item.id + '/editHistory' }"
+                  class="custom-link"
+                >
+                  <i class="bx bx-history icon table-icon"></i>
+                </router-link>
               </td>
+              <!-- <td>
+                <router-link
+                  :to="{ path: '/adminhr/' + item.id + '/view' }"
+                  class="custom-link"
+                >
+                  <i class="bx bx-low-vision table-icon custom-link"></i
+                ></router-link>
+
+                <router-link
+                  :to="{ path: '/adminhr/' + item.id + '/edit' }"
+                  class="custom-link"
+                >
+                  <i class="bx bx-edit icon table-icon"></i>
+                </router-link>
+
+                <i
+                  @click="deleteHr(item.id)"
+                  class="bx bx-archive-in icon table-icon custom-link"
+                  style="cursor: pointer"
+                ></i>
+              </td> -->
             </tr>
           </tbody>
           <tfoot>
@@ -274,5 +302,11 @@ div.dataTables_wrapper a.paginate_button {
 .custom-link {
   text-decoration: none !important;
   color: black;
+}
+
+.actions {
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100px !important;
 }
 </style>

@@ -73,7 +73,7 @@ body {
 body {
   --sb-track-color: #f11b25;
   --sb-thumb-color: #292d96;
-  --sb-size: 10px;
+  --sb-size: 3px;
 
   scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
 }
