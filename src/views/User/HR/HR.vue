@@ -36,7 +36,7 @@ populate the charts and table. * * @component * * @example *
           <BarChart
             :data="recordsPerMonthChart"
             :key="chartKey"
-            v-if="recordsPerMonthChart"
+            v-if="!isLoading && recordsPerMonthChart"
           />
         </div>
       </div>
@@ -50,7 +50,7 @@ populate the charts and table. * * @component * * @example *
         <div class="Piechart1">
           <PieChart
             :data="numberOfCategoryRequest"
-            v-if="numberOfCategoryRequest"
+            v-if="!isLoading && numberOfCategoryRequest"
             :key="chartKey"
             :legendOptions="customLegendOptions"
           />
@@ -64,7 +64,7 @@ populate the charts and table. * * @component * * @example *
         <p class="textHeader">PERCENTAGE OF REQUESTING EMPLOYEES STATUS</p>
         <div class="Piechart1">
           <PieChart
-            v-if="countOfRequestingEmployee"
+            v-if="!isLoading && countOfRequestingEmployee"
             :data="countOfRequestingEmployee"
             :key="chartKey"
             :legendOptions="customLegendOptions"
@@ -81,10 +81,33 @@ populate the charts and table. * * @component * * @example *
 
         <DataTable
           id="table"
-          v-if="DetailsOfRequestingEmployee.length > 0"
+          v-if="!isLoading && DetailsOfRequestingEmployee.length > 0"
           class="display stripe order-column hover compact text-start"
           :data="DetailsOfRequestingEmployee"
           :columns="columns"
+          :options="{
+            lengthChange: false,
+            searching: false,
+            // pageLength: 5,
+            scrollY: '280px',
+            info: false,
+            paging: false,
+          }"
+        >
+          <thead style="background: #133f5c" class="text-white">
+            <tr>
+              <th>Name</th>
+              <th>Office/Unit</th>
+              <th>Record Count</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </DataTable>
+
+        <DataTable
+          id="table"
+          v-else
+          class="display stripe order-column hover compact text-start"
           :options="{
             lengthChange: false,
             searching: false,
@@ -147,7 +170,7 @@ export default {
       },
 
       selectedYear: new Date().getFullYear(), // Default to current year
-      availableYears: this.generatePastYears(5), // Generate the past 5 years
+
       selectedMonth: "All",
       availableMonths: [
         "All",
@@ -175,234 +198,198 @@ export default {
         { title: "Record Count", data: "record_count" },
       ],
       chartKey: 0,
+      isLoading: false,
     };
   },
   computed: {
     selectedYearAndMonth() {
-      return this.selectedYear + this.selectedMonth;
+      return `${this.selectedYear}${this.selectedMonth}`;
     },
+  },
+  created() {
+    this.availableYears = this.generatePastYears(5); // Generate the past 5 years
   },
   watch: {
     selectedYearAndMonth: {
       immediate: true,
       handler(newValue) {
-        console.log("selectedYear or selectedMonth changed to", newValue);
+        // console.log("selectedYear or selectedMonth changed to", newValue);
         this.updateData();
       },
     },
   },
+  mounted() {
+    // this.updateData();
+  },
   methods: {
-    updateData() {
-      this.getNumberOfRecordsPerMonth();
-      this.getNumberOfCategoryRequestsPerMonth();
-      this.getPercentageOfRequestingEmployee();
-      this.getDetailsOfRequestingEmployee();
+    async updateData() {
+      this.isLoading = true;
+      try {
+        await Promise.all([
+          this.getNumberOfRecordsPerMonth(),
+          this.getNumberOfCategoryRequestsPerMonth(),
+          this.getPercentageOfRequestingEmployee(),
+          this.getDetailsOfRequestingEmployee(),
+        ]);
+        this.chartKey++;
+      } catch (error) {
+        console.error(error);
+      } finally {
+        this.isLoading = false;
+      }
     },
     generatePastYears(numYears) {
       const currentYear = new Date().getFullYear();
-      return Array.from({ length: numYears }, (v, i) => currentYear - i);
+      return Array.from({ length: numYears }, (_, i) => currentYear - i);
     },
-    getNumberOfRecordsPerMonth() {
-      let url = `${backendURL}/api/numberOfRecordsPerMonth`;
+
+    createChartConfig(labels, values) {
+      return {
+        labels: labels,
+        label: ["Number of Record Per month"],
+        values: values,
+        backgroundColor: [
+          "rgba(226, 80, 76, 1)",
+          "rgba(106, 158, 218, 1)",
+          "rgba(210, 178, 2, 1)",
+          "rgba(255, 105, 97, 1)",
+          "rgba(132, 182, 244, 1)",
+          "rgba(238, 202, 6, 1)",
+          "rgba(226, 80, 76, 1)",
+          "rgba(106, 158, 218, 1)",
+          "rgba(210, 178, 2, 1)",
+          "rgba(255, 105, 97, 1)",
+          "rgba(132, 182, 244, 1)",
+          "rgba(238, 202, 6, 1)",
+        ],
+      };
+    },
+
+    constructUrl(endpoint) {
+      let url = `${backendURL}/api/${endpoint}`;
       if (this.selectedMonth !== "All") {
         url += `/${this.selectedMonth}`;
       }
       url += `/${this.selectedYear}`;
-
-      axios
-        .get(url)
-        .then((res) => {
-          this.NumberOfRecordsPerMonth = res.data.NumberOfRecordsPerMonth;
-          console.log(this.NumberOfRecordsPerMonth);
-          const recordsPerMonthChart = {
-            labels: Object.keys(this.NumberOfRecordsPerMonth),
-            label: ["Number of Record Per month"],
-            values: Object.values(this.NumberOfRecordsPerMonth),
-            backgroundColor: [
-              "rgba(226, 80, 76, 1)",
-              "rgba(106, 158, 218, 1)",
-              "rgba(210, 178, 2, 1)",
-              "rgba(255, 105, 97, 1)",
-              "rgba(132, 182, 244, 1)",
-              "rgba(238, 202, 6, 1)",
-              "rgba(226, 80, 76, 1)",
-              "rgba(106, 158, 218, 1)",
-              "rgba(210, 178, 2, 1)",
-              "rgba(255, 105, 97, 1)",
-              "rgba(132, 182, 244, 1)",
-              "rgba(238, 202, 6, 1)",
-            ],
-          };
-
-          this.recordsPerMonthChart = recordsPerMonthChart;
-          this.chartKey++;
-        })
-        .catch((error) => {
-          console.error(error);
-          // Handle the error appropriately here
-          const recordsPerMonthChart = {
-            labels: [
-              "Jan",
-              "Feb",
-              "Mar",
-              "Apr",
-              "May",
-              "Jun",
-              "Jul",
-              "Aug",
-              "Sep",
-              "Oct",
-              "Nov",
-              "Dec",
-            ],
-            label: ["Number of Record Per month"],
-            values: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            backgroundColor: [
-              "rgba(226, 80, 76, 1)",
-              "rgba(106, 158, 218, 1)",
-              "rgba(210, 178, 2, 1)",
-              "rgba(255, 105, 97, 1)",
-              "rgba(132, 182, 244, 1)",
-              "rgba(238, 202, 6, 1)",
-              "rgba(226, 80, 76, 1)",
-              "rgba(106, 158, 218, 1)",
-              "rgba(210, 178, 2, 1)",
-              "rgba(255, 105, 97, 1)",
-              "rgba(132, 182, 244, 1)",
-              "rgba(238, 202, 6, 1)",
-            ],
-          };
-
-          this.recordsPerMonthChart = recordsPerMonthChart;
-        });
+      return url;
     },
 
-    getNumberOfCategoryRequestsPerMonth() {
-      let url = `${backendURL}/api/totalNumberOfCategoryRequest`;
-      if (this.selectedMonth !== "All") {
-        url += `/${this.selectedMonth}`;
-      }
-      url += `/${this.selectedYear}`;
-
-      axios
-        .get(url)
-        .then((res) => {
-          this.TotalNumberOfCategoryRequest =
-            res.data.TotalNumberOfCategoryRequest;
-          console.log(this.TotalNumberOfCategoryRequest);
-
-          const numberOfCategoryRequest = {
-            labels: Object.keys(this.TotalNumberOfCategoryRequest),
-            label: ["Number of Record Per month"],
-            values: Object.values(this.TotalNumberOfCategoryRequest),
-            backgroundColor: [
-              "rgba(226, 80, 76, 1)",
-              "rgba(106, 158, 218, 1)",
-              "rgba(210, 178, 2, 1)",
-              "rgba(255, 105, 97, 1)",
-              "rgba(132, 182, 244, 1)",
-              "rgba(238, 202, 6, 1)",
-              "rgba(226, 80, 76, 1)",
-              "rgba(106, 158, 218, 1)",
-              "rgba(210, 178, 2, 1)",
-              "rgba(255, 105, 97, 1)",
-              "rgba(132, 182, 244, 1)",
-              "rgba(238, 202, 6, 1)",
-            ],
-          };
-
-          this.numberOfCategoryRequest = numberOfCategoryRequest;
-
-          this.chartKey++;
-        })
-        .catch((error) => {
-          console.error(error);
-          // Handle the error appropriately here
-        });
+    handleApiError(error) {
+      console.error(error);
+      // Handle the error appropriately here
+      // For example, show an error message to the user
+      this.errorMessage = "Failed to fetch data";
     },
 
-    getPercentageOfRequestingEmployee() {
-      let url = `${backendURL}/api/percentageOfRequestingEmployee`;
-      if (this.selectedMonth !== "All") {
-        url += `/${this.selectedMonth}`;
+    async getNumberOfRecordsPerMonth() {
+      const url = this.constructUrl("numberOfRecordsPerMonth");
+      try {
+        const res = await axios.get(url);
+        this.NumberOfRecordsPerMonth = res.data.NumberOfRecordsPerMonth;
+        // console.log(this.NumberOfRecordsPerMonth);
+        this.recordsPerMonthChart = this.createChartConfig(
+          Object.keys(this.NumberOfRecordsPerMonth),
+          Object.values(this.NumberOfRecordsPerMonth)
+        );
+        this.chartKey++;
+      } catch (error) {
+        console.error(error);
+        this.recordsPerMonthChart = this.createChartConfig(
+          [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec",
+          ],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        );
       }
-      url += `/${this.selectedYear}`;
-
-      axios
-        .get(url)
-        .then((res) => {
-          this.CountOfRequestingEmployee = res.data.CountOfRequestingEmployee;
-          console.log(this.CountOfRequestingEmployee);
-
-          const countOfRequestingEmployee = {
-            labels: Object.keys(this.CountOfRequestingEmployee),
-            label: ["Number of Record Per month"],
-            values: Object.values(this.CountOfRequestingEmployee),
-            backgroundColor: [
-              "rgba(226, 80, 76, 1)",
-              "rgba(106, 158, 218, 1)",
-              "rgba(210, 178, 2, 1)",
-              "rgba(255, 105, 97, 1)",
-              "rgba(132, 182, 244, 1)",
-              "rgba(238, 202, 6, 1)",
-              "rgba(226, 80, 76, 1)",
-              "rgba(106, 158, 218, 1)",
-              "rgba(210, 178, 2, 1)",
-              "rgba(255, 105, 97, 1)",
-              "rgba(132, 182, 244, 1)",
-              "rgba(238, 202, 6, 1)",
-            ],
-          };
-
-          this.countOfRequestingEmployee = countOfRequestingEmployee;
-
-          this.chartKey++;
-        })
-        .catch((error) => {
-          console.error(error);
-          // Handle the error appropriately here
-          const countOfRequestingEmployee = {
-            labels: ["Permanent", "Contractual", "MOA"],
-            label: ["Number of Record Per month"],
-            values: [0, 0, 0],
-            backgroundColor: [
-              "rgba(226, 80, 76, 1)",
-              "rgba(106, 158, 218, 1)",
-              "rgba(210, 178, 2, 1)",
-            ],
-          };
-
-          this.countOfRequestingEmployee = countOfRequestingEmployee;
-        });
     },
 
-    getDetailsOfRequestingEmployee() {
-      let url = `${backendURL}/api/detailsOfRequestingEmployee`;
-      if (this.selectedMonth !== "All") {
-        url += `/${this.selectedMonth}`;
+    async getNumberOfCategoryRequestsPerMonth() {
+      const url = this.constructUrl("totalNumberOfCategoryRequest");
+      try {
+        const res = await axios.get(url);
+        this.TotalNumberOfCategoryRequest =
+          res.data.TotalNumberOfCategoryRequest;
+        // console.log(this.TotalNumberOfCategoryRequest);
+        this.numberOfCategoryRequest = this.createChartConfig(
+          Object.keys(this.TotalNumberOfCategoryRequest),
+          Object.values(this.TotalNumberOfCategoryRequest)
+        );
+        this.chartKey++;
+      } catch (error) {
+        console.error(error);
+        // Handle the error appropriately here
       }
-      url += `/${this.selectedYear}`;
+    },
 
-      axios
-        .get(url)
-        .then((res) => {
-          this.DetailsOfRequestingEmployee =
-            res.data.DetailsOfRequestingEmployee;
-          console.log(this.DetailsOfRequestingEmployee);
+    async getPercentageOfRequestingEmployee() {
+      const url = this.constructUrl("percentageOfRequestingEmployee");
+      try {
+        const res = await axios.get(url);
+        this.CountOfRequestingEmployee = res.data.CountOfRequestingEmployee;
+        // console.log(this.CountOfRequestingEmployee);
+        this.countOfRequestingEmployee = this.createChartConfig(
+          Object.keys(this.CountOfRequestingEmployee),
+          Object.values(this.CountOfRequestingEmployee),
+          [
+            "rgba(226, 80, 76, 1)",
+            "rgba(106, 158, 218, 1)",
+            "rgba(210, 178, 2, 1)",
+            "rgba(255, 105, 97, 1)",
+            "rgba(132, 182, 244, 1)",
+            "rgba(238, 202, 6, 1)",
+            "rgba(226, 80, 76, 1)",
+            "rgba(106, 158, 218, 1)",
+            "rgba(210, 178, 2, 1)",
+            "rgba(255, 105, 97, 1)",
+            "rgba(132, 182, 244, 1)",
+            "rgba(238, 202, 6, 1)",
+          ]
+        );
+        this.chartKey++;
+      } catch (error) {
+        console.error(error);
+        // Handle the error appropriately here
+        this.countOfRequestingEmployee = this.createChartConfig(
+          ["Permanent", "Contractual", "MOA"],
+          [0, 0, 0],
+          [
+            "rgba(226, 80, 76, 1)",
+            "rgba(106, 158, 218, 1)",
+            "rgba(210, 178, 2, 1)",
+          ]
+        );
+      }
+    },
 
-          this.chartKey++;
-        })
-        .catch((error) => {
-          console.error(error);
-          // Handle the error appropriately here
-        });
+    async getDetailsOfRequestingEmployee() {
+      const url = this.constructUrl("detailsOfRequestingEmployee");
+      try {
+        const res = await axios.get(url);
+        this.DetailsOfRequestingEmployee = res.data.DetailsOfRequestingEmployee;
+        // console.log(this.DetailsOfRequestingEmployee);
+        this.chartKey++;
+      } catch (error) {
+        console.error(error);
+        // Handle the error appropriately here
+        // For example, show an error message to the user
+        this.errorMessage = "Failed to get details of requesting employee";
+      }
     },
   },
 
   mounted() {
     // Automatically fetch data when the component is mounted
-    // this.getNumberOfRecordsPerMonth();
-    // this.getNumberOfCategoryRequestsPerMonth();
   },
 };
 </script>
@@ -413,7 +400,7 @@ export default {
 .shadow2 {
   box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.15);
   height: 400px;
-  border-radius: 3px; 
+  border-radius: 3px;
   margin: 5px 5px 5px 5px;
   padding: 10px 0px 10px 0px;
 }
