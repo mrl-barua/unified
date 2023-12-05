@@ -457,3 +457,7 @@
 ### version 9.2 MARLO BARUA
 
 - Done with the HR USER PAGE
+
+### version 9.3 KIARA HAGUNOB
+
+- Design fixed user dashboards of CBSS, HR, and OSD
