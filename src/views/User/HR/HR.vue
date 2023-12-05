@@ -82,7 +82,7 @@ populate the charts and table. * * @component * * @example *
         <DataTable
           id="table"
           v-if="DetailsOfRequestingEmployee.length > 0"
-          class="display stripe order-column hover compact"
+          class="display stripe order-column hover compact text-start"
           :data="DetailsOfRequestingEmployee"
           :columns="columns"
           :options="{
