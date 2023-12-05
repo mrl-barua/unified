@@ -14,7 +14,7 @@ populate the charts and table. * * @component * * @example *
       <div class="inside">
         <p class="textHeader">NUMBER OF RECORDS PER MONTH</p>
         <div class="Barchart1">
-          <BarChart :data="MonthData" :aspectRatio="25 / 10" />
+          <BarChart :data="recordsPerMonthChart" v-if="recordsPerMonthChart" />
         </div>
       </div>
     </div>
@@ -123,6 +123,8 @@ export default {
         position: "bottom", // Set the legend position as needed
       },
 
+      recordsPerMonthChart: null,
+
       MonthData: {
         labels: [
           "January",
@@ -187,6 +189,74 @@ export default {
   },
 
   methods: {
+    getNumberOfRecordsPerMonth() {
+      axios
+        .get(`${backendURL}/api/numberOfRecordsPerMonth`)
+        .then((res) => {
+          this.NumberOfRecordsPerMonth = res.data.NumberOfRecordsPerMonth;
+
+          const recordsPerMonthChart = {
+            labels: Object.keys(this.NumberOfRecordsPerMonth),
+            label: ["Number of Record Per month"],
+            values: Object.values(this.NumberOfRecordsPerMonth),
+            backgroundColor: [
+              "rgba(226, 80, 76, 1)",
+              "rgba(106, 158, 218, 1)",
+              "rgba(210, 178, 2, 1)",
+              "rgba(255, 105, 97, 1)",
+              "rgba(132, 182, 244, 1)",
+              "rgba(238, 202, 6, 1)",
+              "rgba(226, 80, 76, 1)",
+              "rgba(106, 158, 218, 1)",
+              "rgba(210, 178, 2, 1)",
+              "rgba(255, 105, 97, 1)",
+              "rgba(132, 182, 244, 1)",
+              "rgba(238, 202, 6, 1)",
+            ],
+          };
+
+          this.recordsPerMonthChart = recordsPerMonthChart;
+        })
+        .catch((error) => {
+          console.error(error);
+          // Handle the error appropriately here
+          const recordsPerMonthChart = {
+            labels: [
+              "Jan",
+              "Feb",
+              "Mar",
+              "Apr",
+              "May",
+              "Jun",
+              "Jul",
+              "Aug",
+              "Sep",
+              "Oct",
+              "Nov",
+              "Dec",
+            ],
+            label: ["Number of Record Per month"],
+            values: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            backgroundColor: [
+              "rgba(226, 80, 76, 1)",
+              "rgba(106, 158, 218, 1)",
+              "rgba(210, 178, 2, 1)",
+              "rgba(255, 105, 97, 1)",
+              "rgba(132, 182, 244, 1)",
+              "rgba(238, 202, 6, 1)",
+              "rgba(226, 80, 76, 1)",
+              "rgba(106, 158, 218, 1)",
+              "rgba(210, 178, 2, 1)",
+              "rgba(255, 105, 97, 1)",
+              "rgba(132, 182, 244, 1)",
+              "rgba(238, 202, 6, 1)",
+            ],
+          };
+
+          this.recordsPerMonthChart = recordsPerMonthChart;
+        });
+    },
+
     EmploymentFetchData() {
       return axios
         .get(`${backendURL}/api/employmentStatus`)
@@ -278,6 +348,7 @@ export default {
   mounted() {
     // Automatically fetch data when the component is mounted
     this.EmploymentFetchData();
+    this.getNumberOfRecordsPerMonth();
   },
 };
 </script>
