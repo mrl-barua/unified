@@ -445,3 +445,7 @@
 
 - Fix the table margins for all ADMIN PAGE
 - Add Error Fetch table for all ADMIN PAGE
+
+### version 9.0
+
+- Added Catch Block in the CBSS USER VIEW
