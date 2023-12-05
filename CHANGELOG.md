@@ -453,3 +453,7 @@
 ### version 9.1 MARLO BARUA
 
 - Added Data in HR USER PAGE AND FILTERING METHODS
+
+### version 9.2 MARLO BARUA
+
+- Done with the HR USER PAGE

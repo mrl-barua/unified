@@ -81,17 +81,17 @@ populate the charts and table. * * @component * * @example *
 
         <DataTable
           id="table"
-          :paging="true"
-          :searching="true"
-          :info="true"
-          :responsive="true"
-          :length-change="true"
-          :length-menu="[10, 25, 50, 100]"
-          :language="{
-            paginate: {
-              previous: '<i class=\'fas fa-angle-left\'></i>',
-              next: '<i class=\'fas fa-angle-right\'></i>',
-            },
+          v-if="DetailsOfRequestingEmployee.length > 0"
+          class="display stripe order-column hover compact"
+          :data="DetailsOfRequestingEmployee"
+          :columns="columns"
+          :options="{
+            lengthChange: false,
+            searching: false,
+            // pageLength: 5,
+            scrollY: '280px',
+            info: false,
+            paging: false,
           }"
         >
           <thead style="background: #133f5c" class="text-white">
@@ -101,13 +101,7 @@ populate the charts and table. * * @component * * @example *
               <th>Record Count</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>No Data Available</td>
-              <td>No Data Available</td>
-              <td>No Data Available</td>
-            </tr>
-          </tbody>
+          <tbody></tbody>
         </DataTable>
       </div>
     </div>
@@ -174,6 +168,12 @@ export default {
       recordsPerMonthChart: null,
       numberOfCategoryRequest: null,
       countOfRequestingEmployee: null,
+      DetailsOfRequestingEmployee: [],
+      columns: [
+        { title: "Name", data: "name" },
+        { title: "Office/Unit", data: "office_unit" },
+        { title: "Record Count", data: "record_count" },
+      ],
       chartKey: 0,
     };
   },
@@ -196,6 +196,7 @@ export default {
       this.getNumberOfRecordsPerMonth();
       this.getNumberOfCategoryRequestsPerMonth();
       this.getPercentageOfRequestingEmployee();
+      this.getDetailsOfRequestingEmployee();
     },
     generatePastYears(numYears) {
       const currentYear = new Date().getFullYear();
@@ -374,6 +375,28 @@ export default {
           this.countOfRequestingEmployee = countOfRequestingEmployee;
         });
     },
+
+    getDetailsOfRequestingEmployee() {
+      let url = `${backendURL}/api/detailsOfRequestingEmployee`;
+      if (this.selectedMonth !== "All") {
+        url += `/${this.selectedMonth}`;
+      }
+      url += `/${this.selectedYear}`;
+
+      axios
+        .get(url)
+        .then((res) => {
+          this.DetailsOfRequestingEmployee =
+            res.data.DetailsOfRequestingEmployee;
+          console.log(this.DetailsOfRequestingEmployee);
+
+          this.chartKey++;
+        })
+        .catch((error) => {
+          console.error(error);
+          // Handle the error appropriately here
+        });
+    },
   },
 
   mounted() {
@@ -385,6 +408,8 @@ export default {
 </script>
 
 <style scoped>
+@import "datatables.net-dt";
+@import "datatables.net-bs5";
 .shadow2 {
   box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.15);
   height: 400px;
