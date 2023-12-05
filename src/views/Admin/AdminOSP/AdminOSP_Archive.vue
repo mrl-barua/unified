@@ -3,7 +3,7 @@
     <AdminSidebar :iconText="PageTitle" />
     <br /><br /><br /><br />
     <div class="container-fluid wrapper"></div>
-    <div class="card">
+    <div class="card card-margin">
       <div class="card-header" style="display: flex">
         <div class="dropdown">
           <button
@@ -44,11 +44,11 @@
           id="hrTable"
           :options="{
             stateSave: true,
-            //* pageLength: 5,
-            //* lengthMenu: [
-            //* [5, 10, 25, 50],
-            //*  [5, 10, 25, 50],
-            //*  ],
+            pageLength: 5,
+            lengthMenu: [
+              [5, 10, 25, 50],
+              [5, 10, 25, 50],
+            ],
           }"
         >
           <thead style="background: #cb0e16" class="text-white">
@@ -70,22 +70,10 @@
               <td>{{ item.office_location_official_station }}</td>
               <td>{{ item.position_title }}</td>
               <td>{{ item.position_level }}</td>
-              <td style="display: flex; justify-content: space-around">
+              <td style="text-align: center">
                 <i
                   class="bx bxs-up-arrow-square custom-link"
                   @click="restoreOsd(item.id)"
-                ></i>
-
-                <!-- <router-link
-                  :to="{ path: '/adminhr/' + item.ID + '/view' }"
-                  class="custom-link"
-                >
-                  <i class="bx bx-low-vision table-icon custom-link"></i
-                ></router-link> -->
-
-                <i
-                  class="bx bx-trash icon table-icon custom-link"
-                  style="cursor: pointer"
                 ></i>
               </td>
             </tr>

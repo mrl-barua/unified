@@ -92,5 +92,9 @@ body::-webkit-scrollbar-thumb {
   border-radius: 18px;
 }
 
+.card-margin {
+  margin: 20px;
+}
+
 /* CSS RESPONSIVE GLOBAL STYLES END */
 </style>
