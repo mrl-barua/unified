@@ -440,3 +440,8 @@
 - Implemented the SweetAlert2 Library in the ADMIN HR and ADMIN OSP
 - Completed the ADMIN HR and ADMIN OSP FUNCTIONALITIES
 - Added Version History for ADMIN HR and OSP Routes in Router.js
+
+### version 8.10
+
+- Fix the table margins for all ADMIN PAGE
+- Add Error Fetch table for all ADMIN PAGE

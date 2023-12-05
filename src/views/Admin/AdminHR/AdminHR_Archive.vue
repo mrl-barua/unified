@@ -3,7 +3,7 @@
     <AdminSidebar :iconText="PageTitle" />
     <br /><br /><br /><br />
     <div class="container-fluid wrapper"></div>
-    <div class="card">
+    <div class="card card-margin">
       <div class="card-header" style="display: flex">
         <div class="dropdown">
           <button
@@ -44,11 +44,11 @@
           id="hrTable"
           :options="{
             stateSave: true,
-            //* pageLength: 5,
-            //* lengthMenu: [
-            //* [5, 10, 25, 50],
-            //*  [5, 10, 25, 50],
-            //*  ],
+            pageLength: 5,
+            lengthMenu: [
+              [5, 10, 25, 50],
+              [5, 10, 25, 50],
+            ],
           }"
         >
           <thead style="background: #cb0e16" class="text-white">
@@ -70,24 +70,12 @@
               <td>{{ item.employee_position }}</td>
               <td>{{ item.employment_status }}</td>
               <td>{{ item.office_unit }}</td>
-              <td style="display: flex; justify-content: space-around">
+              <td style="text-align: center">
                 <i
                   style="cursor: pointer"
                   class="bx bxs-up-arrow-square custom-link"
                   @click="restoreHr(item.id)"
                 ></i>
-
-                <!-- <router-link
-                  :to="{ path: '/adminswda/' + item.ID + '/view' }"
-                  class="custom-link"
-                >
-                  <i class="bx bx-low-vision table-icon custom-link"></i
-                ></router-link> -->
-
-                <!-- <i
-                  class="bx bx-trash icon table-icon custom-link"
-                  style="cursor: pointer"
-                ></i> -->
               </td>
             </tr>
           </tbody>

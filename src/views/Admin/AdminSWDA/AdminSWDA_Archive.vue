@@ -3,7 +3,7 @@
     <AdminSidebar :iconText="PageTitle" />
     <br /><br /><br /><br />
     <div class="container-fluid wrapper"></div>
-    <div class="card">
+    <div class="card card-margin">
       <div class="card-header" style="display: flex">
         <div class="dropdown">
           <button
@@ -44,11 +44,11 @@
           id="swdaTable"
           :options="{
             stateSave: true,
-            //* pageLength: 5,
-            //* lengthMenu: [
-            //* [5, 10, 25, 50],
-            //*  [5, 10, 25, 50],
-            //*  ],
+            pageLength: 5,
+            lengthMenu: [
+              [5, 10, 25, 50],
+              [5, 10, 25, 50],
+            ],
           }"
         >
           <thead style="background: #cb0e16" class="text-white">
@@ -70,27 +70,53 @@
               <td>{{ item.Cluster }}</td>
               <td>{{ item.Agency }}</td>
               <td>{{ item.Address }}</td>
-              <td style="display: flex; justify-content: space-around">
+              <td style="text-align: center">
                 <i
                   style="cursor: pointer"
                   class="bx bxs-up-arrow-square custom-link"
                   @click="restoreSwda(item.ID)"
                 ></i>
-
-                <!-- <router-link
-                  :to="{ path: '/adminswda/' + item.ID + '/view' }"
-                  class="custom-link"
-                >
-                  <i class="bx bx-low-vision table-icon custom-link"></i
-                ></router-link> -->
-
-                <!-- <i
-                  class="bx bx-trash icon table-icon custom-link"
-                  style="cursor: pointer"
-                ></i> -->
               </td>
             </tr>
           </tbody>
+          <tfoot>
+            <tr>
+              <th>ID</th>
+              <th>Type</th>
+              <th>Sector</th>
+              <th>Cluster</th>
+              <th>Agency</th>
+              <th>Address</th>
+              <th>Actions</th>
+            </tr>
+          </tfoot>
+        </DataTable>
+
+        <DataTable
+          v-else
+          style="width: 100%"
+          class="display stripe order-column cell-border hover compact"
+          :options="{
+            stateSave: true,
+            pageLength: 5,
+            lengthMenu: [
+              [5, 10, 25, 50],
+              [5, 10, 25, 50],
+            ],
+          }"
+        >
+          <thead style="background: #cb0e16" class="text-white">
+            <tr>
+              <th>ID</th>
+              <th>Type</th>
+              <th>Sector</th>
+              <th>Cluster</th>
+              <th>Agency</th>
+              <th>Address</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
           <tfoot>
             <tr>
               <th>ID</th>

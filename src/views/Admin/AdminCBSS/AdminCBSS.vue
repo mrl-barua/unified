@@ -3,7 +3,7 @@
     <AdminSidebar :iconText="PageTitle" />
     <br /><br /><br /><br />
     <div class="container-fluid wrapper"></div>
-    <div class="card">
+    <div class="card card-margin">
       <div class="card-header" style="display: flex">
         <div class="dropdown">
           <button
@@ -116,6 +116,44 @@
               </td>
             </tr>
           </tbody>
+          <tfoot>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Sex</th>
+              <th>Case Category</th>
+              <th>Mode of Admission</th>
+              <th>Actions</th>
+            </tr>
+          </tfoot>
+        </DataTable>
+
+        <DataTable
+          v-else
+          style="width: 100%"
+          class="display stripe order-column cell-border hover compact"
+          :options="{
+            stateSave: true,
+            pageLength: 8,
+            lengthMenu: [
+              [5, 8, 10, 25, 50],
+              [5, 8, 10, 25, 50],
+            ],
+          }"
+        >
+          <thead style="background: #133f5c" class="text-white">
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Sex</th>
+              <th>Case Category</th>
+              <th>Mode of Admission</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
           <tfoot>
             <tr>
               <th>ID</th>
