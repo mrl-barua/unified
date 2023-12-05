@@ -413,7 +413,7 @@ export default {
 .shadow2 {
   box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.15);
   height: 400px;
-  /* border-radius: 20px; */
+  border-radius: 3px; 
   margin: 5px 5px 5px 5px;
   padding: 10px 0px 10px 0px;
 }

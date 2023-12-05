@@ -6,11 +6,11 @@
       <section class="dashboard-summary">
         <div class="dashboard-container">
           <div class="col-12">
-            <div class="col-4">
+            <div class="col-3">
               <hr class="hr mt-5 ms-5" style="border: 2px solid black" />
             </div>
-            <div class="col-4"><h1>DASHBOARD SUMMARY</h1></div>
-            <div class="col-4">
+            <div class="col-6"><h1>DASHBOARD SUMMARY</h1></div>
+            <div class="col-3">
               <hr class="hr mt-5 me-5" style="border: 2px solid black" />
             </div>
           </div>
@@ -25,41 +25,41 @@
             </div>
             <div class="col-4">
               <p class="dashboard-subtext">Gender of Clients Served</p>
-              <div class="col-6">
+              <div class="col-7">
                 <p class="dashboard-center text-center">FEMALE</p>
               </div>
-              <div class="col-6">
+              <div class="col-5">
                 <p class="dashboard-center text-center">{{ female.length }}</p>
               </div>
 
-              <div class="col-6">
+              <div class="col-7">
                 <p class="dashboard-center text-center">MALE</p>
               </div>
-              <div class="col-6">
+              <div class="col-5">
                 <p class="dashboard-center text-center">{{ male.length }}</p>
               </div>
               <br />
               <br />
               <br />
               <p class="dashboard-subtext">Mode of Admissions</p>
-              <div class="col-6">
+              <div class="col-7">
                 <p class="dashboard-center text-center">WALK-IN</p>
               </div>
-              <div class="col-6">
+              <div class="col-5">
                 <p class="dashboard-center text-center">{{ walkIn.length }}</p>
               </div>
 
-              <div class="col-6">
-                <p class="dashboard-center text-center">DSW CONCERNS</p>
+              <div class="col-7">
+                <p class="dashboard-center text-center">DSWD XI CONCERNS</p>
               </div>
-              <div class="col-6">
+              <div class="col-5">
                 <p class="dashboard-center text-center">{{ others.length }}</p>
               </div>
 
-              <div class="col-6">
+              <div class="col-7">
                 <p class="dashboard-center text-center">REFERRAL</p>
               </div>
-              <div class="col-6">
+              <div class="col-5">
                 <p class="dashboard-center text-center">
                   {{ referral.length }}
                 </p>
@@ -978,6 +978,7 @@ h1 {
   letter-spacing: 0em;
   text-align: center;
   padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .dashboard-text {
@@ -987,6 +988,7 @@ h1 {
   line-height: 36px;
   letter-spacing: 0em;
   text-align: center;
+  margin: 0 65px 0 65px;
 }
 
 .dashboard-subtext {
@@ -1006,6 +1008,7 @@ h1 {
   line-height: 85px;
   letter-spacing: 0em;
   text-align: center;
+  color: #294D9C;
 }
 
 .dashboard-center {
