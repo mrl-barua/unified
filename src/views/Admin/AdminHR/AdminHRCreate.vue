@@ -26,7 +26,7 @@
             <div class="spaceBetween">
               <label for="agency">Request Date</label>
               <input
-                type="text"
+                type="date"
                 v-model="model.Hr.request_date"
                 class="form-control centered-placeholder"
                 id="agency"
@@ -148,7 +148,7 @@
           <div class="spaceBetween">
             <label for="agency">Date Received</label>
             <input
-              type="text"
+              type="date"
               v-model="model.Hr.date_received"
               class="form-control centered-placeholder"
               id="agency"
@@ -174,7 +174,7 @@
 <script>
 import axios from "axios";
 import AdminSidebar from "@/components/AdminSidebar";
-
+import { format, parse } from "date-fns";
 export default {
   name: "AdminHRCreate",
 
@@ -207,10 +207,26 @@ export default {
   },
 
   methods: {
+    formatDate(dateString) {
+      const parsedDate = parse(dateString, "yyyy-MM-dd", new Date());
+      if (isNaN(parsedDate)) {
+        throw new Error(`Invalid date: ${dateString}`);
+      }
+      return format(parsedDate, "MMMM dd, yyyy");
+    },
     saveHr() {
       var mythis = this;
+      if (!this.model.Hr.request_date || !this.model.Hr.date_received) {
+        throw new Error("Request date and date received are required");
+      }
+
+      var hrCopy = Object.assign({}, this.model.Hr);
+
+      hrCopy.request_date = this.formatDate(this.model.Hr.request_date);
+      hrCopy.date_received = this.formatDate(this.model.Hr.date_received);
+      // this.model.Hr.request_date = this.formatDate(this.model.Hr.request_date);
       axios
-        .post("http://127.0.0.1:8000/api/hrlist", this.model.Hr)
+        .post("http://127.0.0.1:8000/api/hrlist", hrCopy)
         .then((res) => {
           console.log(res.data);
           // alert(res.data.message);
@@ -227,6 +243,7 @@ export default {
             .then(() => {
               window.location.reload();
             });
+
           this.model.Hr = {
             request_date: "",
             requesting_employee_name: "",

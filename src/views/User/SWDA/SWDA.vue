@@ -109,7 +109,8 @@
     </div>
 
     <div class="col-12 col-md-9">
-      <div class="agencies col-12 col-md-6 col-lg-3">
+      <!-- ACTIVE AGENCIES -->
+      <div class="agencies col-12 col-lg-6 col-xl-3">
         <div class="shadow-agencies">
           <h4 class="headerAgencies">ACTIVE AGENCIES</h4>
           <p class="col-4 textAgencies">Registered</p>
@@ -139,7 +140,8 @@
         </div>
       </div>
 
-      <div class="agencies col-12 col-md-6 col-lg-4">
+      <!-- EXPIRED AGENCIES -->
+      <div class="agencies col-12 col-lg-6 col-xl-4">
         <div class="shadow-agencies">
           <h4 class="headerAgencies">EXPIRED AGENCIES</h4>
           <p class="col-3 textAgencies">Registered</p>
@@ -178,7 +180,8 @@
         </div>
       </div>
 
-      <div class="agencies col-12 col-md-12 col-lg-5">
+      <!-- MODE OF DELIVERY -->
+      <div class="agencies col-12 col-lg-12 col-xl-5">
         <div class="shadow-agencies">
           <h4 class="headerAgencies">MODE OF DELIVERY</h4>
           <p class="col-3 textAgencies">Community</p>
@@ -217,6 +220,7 @@
         </div>
       </div>
 
+      <!-- NUMBER OF AGENCIES -->
       <div class="agencies col-12 col-md-12">
         <div class="agencyNumbers">
           <h4 class="headerAgencies">NUMBER OF AGENCIES</h4>
@@ -414,9 +418,9 @@ export default {
   },
   data() {
     return {
-      PageTitle: "POLICY AND PLANS DIVISION", // The title displayed on the page, which is "SWDA"
-      PageDetail:
-        "List of Registration, Licensing, and Accreditation of Social Welfare and Development Agencies (SWDA)      ", // The subtitle displayed on the page, which is "SWDA"
+      PageTitle:
+        "List of Registration, Licensing, and Accreditation of Social Welfare and Development Agencies (SWDA)      ", // The title displayed on the page, which is "SWDA"
+      PageDetail: "Main Dashboard", // The subtitle displayed on the page, which is "SWDA"
 
       customLegendOptions: {
         position: "right", // Set the legend position as needed

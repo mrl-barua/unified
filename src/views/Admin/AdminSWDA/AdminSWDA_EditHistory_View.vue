@@ -1,6 +1,6 @@
 <template>
   <div>
-    <AdminSidebar :iconText="PageTitle" />
+    <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
     <br /><br /><br /><br /><br />
     <div class="container-fluid wrapper">
       <div class="col-12 col-md-12">
@@ -407,7 +407,9 @@ export default {
   },
   data() {
     return {
-      PageTitle: "ADMIN SWDA EDIT HISTORY VIEW",
+      PageTitle:
+        "List of Registration, Licensing, and Accreditation of Social Welfare and Development Agencies (SWDA)",
+      PageDetail: "View Edit Details",
 
       model: {
         Swda: {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Sidebar :iconText="PageTitle" />
+    <Sidebar :iconText="PageTitle" :iconDetails="PageDetail" />
 
     <br /><br /><br /><br />
 
@@ -111,7 +111,7 @@
       <div class="dashboard-box" style="height: 275px">
         <div
           style="
-           font-family: Inter;
+            font-family: Inter;
             font-size: 25px;
             font-weight: 700;
             line-height: 30px;
@@ -124,16 +124,12 @@
 
         <div style="display: flex; justify-content: space-between">
           <div style="flex: 1; padding: 10px; text-align: center">
-            <span style="font-family: Inter;
-                        font-size: 22px;
-                        font-weight: 500;"
+            <span style="font-family: Inter; font-size: 22px; font-weight: 500"
               >FILLED</span
             >
           </div>
           <div style="flex: 1; padding: 10px; text-align: center">
-            <span style="font-family: Inter;
-                        font-size: 22px;
-                        font-weight: 500;"
+            <span style="font-family: Inter; font-size: 22px; font-weight: 500"
               >UNFILLED</span
             >
           </div>
@@ -316,19 +312,14 @@
         <div style="flex: 1; padding: 10px; text-align: center">
           <br />
           <br />
-          <span 
-          style="font-family: Inter;
-                  font-size: 25px;
-                  font-weight: 700;"
+          <span style="font-family: Inter; font-size: 25px; font-weight: 700"
             >WITH ELIGIBILITY</span
           >
         </div>
         <div style="flex: 1; padding: 10px; text-align: center">
           <br />
           <br />
-          <span style="font-family: Inter;
-                        font-size: 25px;
-                        font-weight: 700;"
+          <span style="font-family: Inter; font-size: 25px; font-weight: 700"
             >WITHOUT ELIGIBILITY</span
           >
         </div>
@@ -375,7 +366,7 @@ export default {
   data() {
     return {
       PageTitle: "OPERATIONAL STAFF DATABASE",
-
+      PageDetail: "Main Dashboard",
       EmploymentData: {
         labels: ["MOA", "Permanent", "Contractual", "Coterminous", "Casual"],
         values: [25, 25, 25, 25, 25], //  values
@@ -470,11 +461,11 @@ export default {
 
 .employmentdata-header {
   font-family: Inter;
-    font-size: 25px;
-    font-weight: 700;
-    line-height: 30px;
-    letter-spacing: 0em;
-    text-align: center;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 30px;
+  letter-spacing: 0em;
+  text-align: center;
 }
 .employmentdata-text {
   color: black;
@@ -487,13 +478,13 @@ export default {
   font-size: 40px;
   font-weight: bold;
 }
-h5{
+h5 {
   font-family: Inter;
-    font-size: 25px;
-    font-weight: 700;
-    line-height: 30px;
-    letter-spacing: 0em;
-    text-align: center;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 30px;
+  letter-spacing: 0em;
+  text-align: center;
 }
 .chart-container {
   /* padding-bottom: 20px; */

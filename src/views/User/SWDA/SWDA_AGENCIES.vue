@@ -573,9 +573,9 @@ export default {
   },
   data() {
     return {
-      PageTitle: "SWDA - AGENCIES", // The title displayed on the page, which is "SWDA"
-      PageDetail:
-        "List of Registration, Licensing, and Accreditation of Social Welfare and Development Agencies (SWDA)      ", // The subtitle displayed on the page, which is "SWDA"
+      PageTitle:
+        "List of Registration, Licensing, and Accreditation of Social Welfare and Development Agencies (SWDA)", // The title displayed on the page, which is "SWDA"
+      PageDetail: "Agency Details", // The subtitle displayed on the page, which is "SWDA"
 
       customLegendOptions: {
         position: "right", // Set the legend position as needed

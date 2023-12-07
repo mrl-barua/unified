@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Sidebar :iconText="PageTitle" />
+    <Sidebar :iconText="PageTitle" :iconDetails="PageDetail" />
     <br /><br /><br /><br />
     <div class="col-12 wrapper container-fluid col-12">
       <section class="dashboard-summary">
@@ -416,8 +416,8 @@ export default {
 
   data() {
     return {
-      PageTitle: "CBSS",
-
+      PageTitle: "Community Based Services Section",
+      PageDetail: "Main Dashboard",
       totalClientServed: [],
       totalAmount: 0,
       male: [],
@@ -1008,7 +1008,7 @@ h1 {
   line-height: 85px;
   letter-spacing: 0em;
   text-align: center;
-  color: #294D9C;
+  color: #294d9c;
 }
 
 .dashboard-center {

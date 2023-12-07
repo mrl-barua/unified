@@ -461,3 +461,8 @@
 ### version 9.3 KIARA HAGUNOB
 
 - Design fixed user dashboards of CBSS, HR, and OSD
+
+### version 9.4 MARLO BARUA
+
+- Update user dashboards and add date-fns library
+- Fix IconDetails for USER PAGE and ADMIN PAGE (ADMIN SWDA & ADMIN CBSS)

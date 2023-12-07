@@ -5,9 +5,17 @@
       <div class="blue-header">
         <div class="logo">
           <i class="bx bx-menu menu-icon"></i>
-          <h3 class="text-white">{{ iconText }}</h3>
-          <!-- <span class="logo-name">UNIFIED</span> -->
-          <!-- <img class="float-start header-image" src="@/assets/DSWDLogo.png" alt="dswdLogo"> -->
+          <div class="text-start">
+            <h4 class="text-white iconText">{{ iconText }}</h4>
+            <p class="text-white iconDetails">
+              {{ iconDetails }}
+            </p>
+          </div>
+
+          <div class="admin">
+            <p class="text-white admin">Admin</p>
+            <i class="bx bx-user-circle admin-icon"></i>
+          </div>
         </div>
 
         <div class="sidebar">
@@ -30,6 +38,7 @@
                   </a>
                 </li>
               </router-link>
+
               <router-link
                 to="/admincbss"
                 class="custom-link"
@@ -42,6 +51,7 @@
                   </a>
                 </li>
               </router-link>
+
               <router-link
                 to="/adminhr"
                 class="custom-link"
@@ -92,6 +102,7 @@
                   </a>
                 </li>
               </router-link>
+
               <li class="list">
                 <div @click="logout" class="nav-link" style="cursor: pointer">
                   <i class="bx bx-log-out icon"></i>
@@ -159,12 +170,25 @@ export default {
           : `calc(6em - ${window.scrollY}px)`;
       }
     },
-    logout() {
-      // Clear the user's authentication status in localStorage
-      localStorage.removeItem("user");
 
-      // Redirect the user to the login page
-      this.$router.push("/"); // Change the path to match your login route
+    logout() {
+      this.$swal({
+        title: "Are you sure?",
+        text: "You will be logged out of your account",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, log out!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Clear the user's authentication status in localStorage
+          // sessionStorage.removeItem("admin");
+
+          // Redirect the user to the login page
+          this.$router.push("/"); // Change the path to match your login route
+        }
+      });
     },
   },
 };
@@ -265,6 +289,26 @@ nav .logo {
   display: flex;
   align-items: center;
   margin: 0 24px;
+}
+
+.admin {
+  display: flex;
+  align-items: center;
+  margin: 0 5px;
+  position: absolute;
+  right: 0px;
+}
+
+.admin-icon {
+  color: white;
+  font-size: 32px;
+  margin-right: 14px;
+  cursor: pointer;
+}
+
+.admin p {
+  color: white;
+  margin-right: 48px;
 }
 
 nav .logo img {
@@ -375,5 +419,11 @@ nav.open .sidebar {
 
 .active .nav-link .icon {
   color: #fff !important;
+}
+
+.active .nav-link:hover {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  background-color: #c20000;
 }
 </style>

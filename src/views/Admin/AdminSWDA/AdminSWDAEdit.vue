@@ -1,6 +1,6 @@
 <template>
   <br /><br /><br /><br />
-  <AdminSidebar :iconText="PageTitle" />
+  <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
   <div>
     <div class="container-fluid">
       <div class="Header"></div>
@@ -692,7 +692,9 @@ export default {
   },
   data() {
     return {
-      PageTitle: "ADMIN SWDA > EDIT", // The title displayed on the page, which is "ADMIN SWDA"
+      PageTitle:
+        "List of Registration, Licensing, and Accreditation of Social Welfare and Development Agencies (SWDA)",
+      PageDetail: "Edit Current Record",
       SwdaID: "",
       errorList: "",
       // The model for the form inputs  (the data that will be sent to the backend) is defined here as an empty object with the following properties: Swda
