@@ -37,7 +37,7 @@
           <span v-else>Loading...</span>
         </button>
       </form>
-      <p>
+      <p class="visually-hidden">
         Don't have an account?
         <a href="#" @click="switchToSignup" id="signup-link">Sign up</a>
       </p>

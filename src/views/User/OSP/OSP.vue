@@ -5,90 +5,53 @@
     <br /><br /><br /><br />
 
     <div class="col-12 col-md-6">
-      <div class="dashboard-box" style="height: 580px">
-        <div
-          style="
-            background-color: ;
-            color: black;
-            padding: 10px;
-            font-weight: bold;
-            font-size: 20px;
-            text-align: center;
-          "
-        >
-          EMPLOYMENT DATA
-        </div>
+      <div class="dashboard-box" style="height: 630px">
+        <p class="employmentdata-header">EMPLOYMENT DATA</p>
 
-        <div style="display: flex">
-          <div
-            style="
-              background-color: ;
-              color: black;
-              flex: 1;
-              padding: 10px;
-              text-align: center;
-            "
-          >
-            IP GROUP
+        <div class="col-12" style="display: flex">
+          <div class="col-2">
+            <p class="employmentdata-text">IP GROUP</p>
           </div>
-
-          <div
-            style="
-              background-color: ;
-              color: black;
-              flex: 1;
-              padding: 10px;
-              text-align: center;
-            "
-          >
-            PWD
+          <div class="col-2">
+            <p class="employmentdata-text">PWD</p>
           </div>
-          <div
-            style="
-              background-color: ;
-              color: black;
-              flex: 1;
-              padding: 10px;
-              text-align: center;
-            "
-          >
-            SOLO PARENT
+          <div class="col-3">
+            <p class="employmentdata-text">SOLO PARENT</p>
+          </div>
+          <div class="col-3">
+            <p class="employmentdata-text">COTERMINOUS</p>
+          </div>
+          <div class="col-2">
+            <p class="employmentdata-text">CASUAL</p>
           </div>
         </div>
-        <div style="display: flex">
-          <div style="flex: 1; padding: 10px; text-align: center">
-            <span style="font-size: 40px; font-weight: bold">0</span>
+        <div class="col-12">
+          <div class="col-2">
+            <p class="employmentdata-content">0</p>
           </div>
-          <div style="flex: 1; padding: 10px; text-align: center">
-            <span style="font-size: 40px; font-weight: bold">0</span>
+          <div class="col-2">
+            <p class="employmentdata-content">0</p>
           </div>
-          <div style="flex: 1; padding: 10px; text-align: center">
-            <span style="font-size: 40px; font-weight: bold">0</span>
+          <div class="col-3">
+            <p class="employmentdata-content">0</p>
+          </div>
+          <div class="col-3">
+            <p class="employmentdata-content">0</p>
+          </div>
+          <div class="col-2">
+            <p class="employmentdata-content">0</p>
           </div>
         </div>
         <!-- Gray line to separate sections -->
         <hr style="border: 2px solid #a9a9a9" />
 
         <div style="text-align: center">
-          <span
-            style="
-              background-color: ;
-              color: black;
-              padding: 10px;
-              font-weight: bold;
-              font-size: 20px;
-              text-align: center;
-            "
-            >EMPLOYMENT STATUS</span
-          >
+          <p class="employmentdata-header">EMPLOYMENT STATUS</p>
         </div>
 
         <!-- Container for PieChart and Employment choices -->
-        <div
-          style="display: flex; align-items: center; justify-content: center"
-        >
-          <PieChart :data="MonthData" />
-          <div></div>
+        <div class="chart-container">
+          <PieChart :data="EmploymentData" />
         </div>
       </div>
     </div>
@@ -108,39 +71,44 @@
         >
           <span>DIVISION</span>
         </div>
-        <hr style="border: 2px solid #a9a9a9" />
-        <div style="background-color: ; color: black; padding: 10px">
-          <div style="display: flex; justify-content: space-between">
-            <div><b>DIVISION</b></div>
-            <div><b>RECORD COUNT</b></div>
+        <div class="shadow3">
+          <div class="inside">
+            <DataTable
+              id="table"
+              :paging="true"
+              :searching="true"
+              :info="true"
+              :responsive="true"
+              :length-change="true"
+              :length-menu="[10, 25, 50, 100]"
+              :language="{
+                paginate: {
+                  previous: '<i class=\'fas fa-angle-left\'></i>',
+                  next: '<i class=\'fas fa-angle-right\'></i>',
+                },
+              }"
+            >
+              <thead style="background: #133f5c" class="text-white">
+                <tr>
+                  <th>DIVISION</th>
+                  <th>RECORD COUNT</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>No Data Available</td>
+                  <td>No Data Available</td>
+                </tr>
+              </tbody>
+            </DataTable>
           </div>
-        </div>
-
-        <!-- Division records with bar graphs -->
-        <div
-          v-for="division in divisions"
-          :key="division"
-          style="
-            background-color: ;
-            color: black;
-            padding: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-          "
-        >
-          <span>{{ division }}</span>
-          <div style="background-color: #808080; height: 20px; margin: 0 10px">
-            <div style="background-color: orange; height: 100%"></div>
-          </div>
-          <span style="margin-right: 50px">0</span>
         </div>
       </div>
     </div>
 
     <!-- Status -->
     <div class="col-12 col-md-6">
-      <div class="dashboard-box" style="height: 195px">
+      <div class="dashboard-box" style="height: 254px">
         <div
           style="
             background-color: ;
@@ -151,38 +119,59 @@
             text-align: center;
           "
         >
-          STATUS (FILLED/UNFILLED)
+          STATUS
         </div>
-        <div style="flex: 1; padding: 10px; text-align: center">
-          <span style="font-size: 40px; font-weight: bold">0</span>
+
+        <div style="display: flex; justify-content: space-between">
+          <div style="flex: 1; padding: 10px; text-align: center">
+            <span style="font-size: 20px; font-weight: bold; color: black"
+              >FILLED</span
+            >
+          </div>
+          <div style="flex: 1; padding: 10px; text-align: center">
+            <span style="font-size: 20px; font-weight: bold; color: black"
+              >UNFILLED</span
+            >
+          </div>
+        </div>
+        <div style="display: flex; justify-content: space-between">
+          <div style="flex: 1; text-align: center">
+            <span style="font-size: 60px; font-weight: bold; color: red"
+              >0</span
+            >
+          </div>
+          <div style="flex: 1; text-align: center">
+            <span style="font-size: 60px; font-weight: bold; color: #292d96"
+              >0</span
+            >
+          </div>
         </div>
       </div>
     </div>
 
     <!-- Gender and Age Box -->
-    <div class="col-12 col-md-6">
-      <div class="dashboard-box" style="height: 300px">
-        <div
-          style="
-            background-color: ;
-            color: black;
-            padding: 10px;
-            font-weight: bold;
-            font-size: 20px;
-            text-align: center;
-          "
-        >
-          GENDER AND AGE
-          <div style="height: 230px">
-            <BarChart :data="MonthData" :aspectRatio="60 / 10" />
-          </div>
+    <div class="col-12 col-md-9">
+      <div class="dashboard-box" style="height: 350px">
+        <br />
+        <h5 class="fw-bold">GENDER AND AGE</h5>
+        <br />
+        <div class="Barchart1"><StackBarChart :data="GenageData" /></div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-3">
+      <div class="dashboard-box" style="height: 350px">
+        <br />
+        <h5 class="fw-bold">EMPLOYMENT TYPE</h5>
+        <br />
+        <div class="Barchart1">
+          <PieChart :data="employmentType" style="height: 200px" />
         </div>
-        <!-- SHOULD HAVE STACKED UP BAR CHART HERE -->
       </div>
     </div>
 
     <!-- Employment Type and Gender Box -->
-    <div class="col-12 col-md-6" style="justify-content: space-between">
+    <!-- <div class="col-12 col-md-6" style="justify-content: space-between">
       <div class="col-6">
         <div class="dashboard-box" style="height: 300px">
           <div
@@ -197,6 +186,7 @@
           >
             EMPLOYMENT TYPE
           </div>
+
           <div
             style="display: flex; align-items: center; justify-content: center"
           >
@@ -205,194 +195,143 @@
           </div>
         </div>
       </div>
-      <div class="col-6">
-        <div class="dashboard-box" style="height: 300px">
-          <div
-            style="
-              background-color: ;
-              color: black;
-              padding: 10px;
-              font-weight: bold;
-              font-size: 20px;
-              text-align: center;
-            "
-          >
-            GENDER
-          </div>
-          <div
-            style="display: flex; align-items: center; justify-content: center"
-          >
-            <PieChart :data="genderData" style="height: 200px" />
-            <div></div>
-          </div>
-        </div>
-      </div>
+    </div> -->
+  </div>
+
+  <div class="col-12 col-md-12">
+    <div class="h2">
+      <h2>ELIGIBILITY</h2>
     </div>
   </div>
 
-  <!-- ELIGIBILITY header -->
-
-  <div class="col-12">
-    <h2
-      style="
-        margin-top: 20px;
-        margin-bottom: 20px;
-        margin-left: 60px;
-        margin-right: 60px;
-        background-color: #294d9c;
-        color: white;
-        font-weight: bold;
-        padding: 10px;
-        text-align: center;
-      "
-    >
-      ELIGIBILITY
-    </h2>
-  </div>
-
-  <!-- CSS and Others -->
-  <div class="row">
-    <div class="col-12 col-md-6">
-      <div class="dashboard-box" style="height: 220px">
-        <div
-          style="display: flex; justify-content: space-between; padding: 10px"
+  <div class="col-12 col-md-6">
+    <div class="shadow2">
+      <div class="inside">
+        <DataTable
+          id="table"
+          :paging="true"
+          :searching="true"
+          :info="true"
+          :responsive="true"
+          :length-change="true"
+          :length-menu="[10, 25, 50, 100]"
+          :language="{
+            paginate: {
+              previous: '<i class=\'fas fa-angle-left\'></i>',
+              next: '<i class=\'fas fa-angle-right\'></i>',
+            },
+          }"
         >
-          <div><b>CSS AND OTHERS</b></div>
-          <div><b>RECORD COUNT</b></div>
-        </div>
-        <div style="border-bottom: 2px solid #a9a9a9"></div>
-        <div style="background-color: ; color: black; padding: 10px">
-          <div style="display: flex; justify-content: space-between">
-            <div>1. lorem ipsum</div>
-            <div style="display: flex; align-items: center; margin-right: 50px">
-              0
-            </div>
-          </div>
-          <div style="border-bottom: 1px solid #a9a9a9; margin-top: 10px"></div>
-          <div style="display: flex; justify-content: space-between">
-            <div>2. lorem ipsum</div>
-            <div style="display: flex; align-items: center; margin-right: 50px">
-              0
-            </div>
-          </div>
-          <div style="border-bottom: 1px solid #a9a9a9; margin-top: 10px"></div>
-          <div style="display: flex; justify-content: space-between">
-            <div>3. lorem ipsum</div>
-            <div style="display: flex; align-items: center; margin-right: 50px">
-              0
-            </div>
-          </div>
-          <div style="border-bottom: 1px solid #a9a9a9; margin-top: 10px"></div>
-          <div style="display: flex; justify-content: space-between">
-            <div>4. lorem ipsum</div>
-            <div style="display: flex; align-items: center; margin-right: 50px">
-              0
-            </div>
-          </div>
-          <div style="border-bottom: 2px solid #a9a9a9; margin-top: 10px"></div>
-        </div>
+          <thead style="background: #133f5c" class="text-white">
+            <tr>
+              <th>CSC and Others</th>
+              <th>Record Count</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>No Data Available</td>
+              <td>No Data Available</td>
+            </tr>
+          </tbody>
+        </DataTable>
       </div>
     </div>
-
-    <!-- Licensed -->
-    <div class="col-12 col-md-6">
-      <div class="dashboard-box" style="height: 220px">
-        <div
-          style="display: flex; justify-content: space-between; padding: 10px"
+  </div>
+  <div class="col-12 col-md-6">
+    <div class="shadow2">
+      <div class="inside">
+        <DataTable
+          id="table"
+          :paging="true"
+          :searching="true"
+          :info="true"
+          :responsive="true"
+          :length-change="true"
+          :length-menu="[10, 25, 50, 100]"
+          :language="{
+            paginate: {
+              previous: '<i class=\'fas fa-angle-left\'></i>',
+              next: '<i class=\'fas fa-angle-right\'></i>',
+            },
+          }"
         >
-          <div><b>LICENSED</b></div>
-          <div><b>RECORD COUNT</b></div>
-        </div>
-        <div style="border-bottom: 2px solid #a9a9a9"></div>
-        <div style="background-color: ; color: black; padding: 10px">
-          <div style="display: flex; justify-content: space-between">
-            <div>1. lorem ipsum</div>
-            <div style="display: flex; align-items: center; margin-right: 50px">
-              0
-            </div>
-          </div>
-          <div style="border-bottom: 1px solid #a9a9a9; margin-top: 10px"></div>
-          <div style="display: flex; justify-content: space-between">
-            <div>2. lorem ipsum</div>
-            <div style="display: flex; align-items: center; margin-right: 50px">
-              0
-            </div>
-          </div>
-          <div style="border-bottom: 1px solid #a9a9a9; margin-top: 10px"></div>
-          <div style="display: flex; justify-content: space-between">
-            <div>3. lorem ipsum</div>
-            <div style="display: flex; align-items: center; margin-right: 50px">
-              0
-            </div>
-          </div>
-          <div style="border-bottom: 1px solid #a9a9a9; margin-top: 10px"></div>
-          <div style="display: flex; justify-content: space-between">
-            <div>4. lorem ipsum</div>
-            <div style="display: flex; align-items: center; margin-right: 50px">
-              0
-            </div>
-          </div>
-          <div style="border-bottom: 2px solid #a9a9a9; margin-top: 10px"></div>
-        </div>
+          <thead style="background: #133f5c" class="text-white">
+            <tr>
+              <th>Licensed</th>
+              <th>Record Count</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>No Data Available</td>
+              <td>No Data Available</td>
+            </tr>
+          </tbody>
+        </DataTable>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-md-6">
+    <div class="shadow2">
+      <div class="inside">
+        <DataTable
+          id="table"
+          :paging="true"
+          :searching="true"
+          :info="true"
+          :responsive="true"
+          :length-change="true"
+          :length-menu="[10, 25, 50, 100]"
+          :language="{
+            paginate: {
+              previous: '<i class=\'fas fa-angle-left\'></i>',
+              next: '<i class=\'fas fa-angle-right\'></i>',
+            },
+          }"
+        >
+          <thead style="background: #133f5c" class="text-white">
+            <tr>
+              <th>Highest Level of Eligibility (1st Level / 2nd Level)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>No Data Available</td>
+            </tr>
+          </tbody>
+        </DataTable>
       </div>
     </div>
   </div>
 
-  <!-- HIGHEST LEVEL OF ELIGIBILITY -->
-  <div class="row">
-    <div class="col-12 col-md-6">
-      <div class="dashboard-box" style="height: 220px">
-        <div style="display: flex; justify-content: center; padding: 10px">
-          <div><b>HIGHEST LEVEL OF ELIGIBILITY</b></div>
+  <!-- W/WO ELIGIBILITY -->
+  <div class="col-12 col-md-6">
+    <div class="dashboard-box" style="height: 300px">
+      <div style="display: flex; justify-content: space-between">
+        <div style="flex: 1; padding: 10px; text-align: center">
+          <br />
+          <br />
+          <span style="font-size: 20px; font-weight: bold; color: black"
+            >WITH ELIGIBILITY</span
+          >
         </div>
-        <div style="border-bottom: 2px solid #a9a9a9"></div>
-        <div style="background-color: ; color: black; padding: 10px">
-          <div style="display: flex; justify-content: space-between">
-            <div>1. lorem ipsum</div>
-          </div>
-          <div style="border-bottom: 1px solid #a9a9a9; margin-top: 10px"></div>
-          <div style="display: flex; justify-content: space-between">
-            <div>2. lorem ipsum</div>
-          </div>
-          <div style="border-bottom: 1px solid #a9a9a9; margin-top: 10px"></div>
-          <div style="display: flex; justify-content: space-between">
-            <div>3. lorem ipsum</div>
-          </div>
-          <div style="border-bottom: 1px solid #a9a9a9; margin-top: 10px"></div>
-          <div style="display: flex; justify-content: space-between">
-            <div>4. lorem ipsum</div>
-          </div>
-          <div style="border-bottom: 2px solid #a9a9a9; margin-top: 10px"></div>
+        <div style="flex: 1; padding: 10px; text-align: center">
+          <br />
+          <br />
+          <span style="font-size: 20px; font-weight: bold; color: black"
+            >WITHOUT ELIGIBILITY</span
+          >
         </div>
       </div>
-    </div>
-
-    <!-- W/WO ELIGIBILITY -->
-    <div class="col-12 col-md-6">
-      <div class="dashboard-box" style="height: 220px">
-        <div style="display: flex; justify-content: space-between">
-          <div style="flex: 1; padding: 10px; text-align: center">
-            <span style="font-size: 20px; font-weight: bold; color: black"
-              >WITH ELIGIBILITY</span
-            >
-          </div>
-          <div style="flex: 1; padding: 10px; text-align: center">
-            <span style="font-size: 20px; font-weight: bold; color: black"
-              >WITHOUT ELIGIBILITY</span
-            >
-          </div>
+      <div style="display: flex; justify-content: space-between">
+        <div style="flex: 1; padding: 10px; text-align: center">
+          <span style="font-size: 60px; font-weight: bold; color: red">0</span>
         </div>
-        <div style="display: flex; justify-content: space-between">
-          <div style="flex: 1; padding: 10px; text-align: center">
-            <span style="font-size: 60px; font-weight: bold; color: red"
-              >0</span
-            >
-          </div>
-          <div style="flex: 1; padding: 10px; text-align: center">
-            <span style="font-size: 60px; font-weight: bold; color: #292d96"
-              >0</span
-            >
-          </div>
+        <div style="flex: 1; padding: 10px; text-align: center">
+          <span style="font-size: 60px; font-weight: bold; color: #292d96"
+            >0</span
+          >
         </div>
       </div>
     </div>
@@ -400,47 +339,85 @@
 </template>
 
 <script>
+import { backendURL } from "@/config.js";
 import Sidebar from "@/components/Sidebar.vue";
 import Footer from "@/components/Footer";
+import BarChart from "@/components/ChartJS/Barchart";
 import PieChart from "@/components/ChartJS/PieChart";
-import BarChart from "@/components/ChartJS/Barchart.vue";
+import DoughnutChart from "@/components/ChartJS/DoughnutChart";
+import StackBarChart from "@/components/ChartJS/StackBarChart";
+
+import DataTable from "datatables.net-vue3";
+import DataTablesCore from "datatables.net";
+import "datatables.net-responsive";
+DataTable.use(DataTablesCore);
 
 export default {
   name: "OSP",
   components: {
     Sidebar,
     Footer,
-    PieChart,
     BarChart,
+    PieChart,
+    DoughnutChart,
+    DataTable,
+    StackBarChart,
   },
   data() {
     return {
       PageTitle: "OPERATIONAL STAFF DATABASE",
 
-      divisions: ["Division #1", "Division #2", "Division #3", "Division #4"], //division data
-      MonthData: {
-        labels: ["Permanent", "MOA", "Contractual"],
-        values: [80, 15, 20], //  values
+      EmploymentData: {
+        labels: ["MOA", "Permanent", "Contractual", "Coterminous", "Casual"],
+        values: [25, 25, 25, 25, 25], //  values
         backgroundColor: [
-          "rgba(19, 63, 92, 1)",
-          "rgba(89, 80, 141, 1)",
-          "rgba(243, 165, 51, 1)",
+          "#E2504C",
+          "#6A9EDA",
+          "#EECA06",
+          "#FF6961",
+          "#84B6F4",
         ],
       },
+
       employmentType: {
-        labels: [], //  two choices for gender
-        values: [30, 10, 20, 40], //values
-        backgroundColor: [
-          "rgba(235, 95, 94)",
-          "rgba(243,165,51)",
-          "rgba(89,80,141)",
-          "rgba(188,80,144)",
-        ], // Add colors for each gender
+        labels: ["Senior Citizen", "Indigenous People", "Solo Parents", "PWD"],
+        values: [25, 25, 25, 25, 25], //  values
+        backgroundColor: ["#6A9EDA", "#F8DA45", "#FF7676", "#BAC2FF"], // Add colors for each gender
       },
-      genderData: {
-        labels: [], //two choices for gender
-        values: [50, 50], //values accordingly
-        backgroundColor: ["rgba(235, 95, 94)", "rgba(89,80,141)"], // colors for each gender
+
+      GenageData: {
+        labels: [
+          "22-24",
+          "25-27",
+          "28-30",
+          "31-33",
+          "34-36",
+          "37-39",
+          "40-42",
+          "43-45",
+          "46-48",
+          "49-51",
+          "52-54",
+          "55-57",
+          "58-60",
+          "61-63",
+          "64",
+          "65",
+        ],
+        datasets: [
+          {
+            label: "Male",
+            values: [
+              89, 56, 12, 45, 90, 34, 67, 90, 23, 87, 54, 10, 89, 23, 56, 63,
+            ],
+            backgroundColor: ["#BAC2FF"],
+          },
+          {
+            label: "Female",
+            values: [45, 78, 10, 0, 89, 23, 90, 12, 34, 56, 78, 90, 54, 32, 67],
+            backgroundColor: ["#FF7676"],
+          },
+        ],
       },
     };
   },
@@ -450,7 +427,55 @@ export default {
 <style scoped>
 .dashboard-box {
   padding: 20px;
-  margin:5px 5px 5px 5px;
+  margin: 5px 5px 5px 5px;
   box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.15);
+}
+
+.shadow3 {
+  height: 275px;
+  /* border-radius: 20px; */
+}
+.shadow2 {
+  box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.15);
+  height: 300px;
+  margin: 5px 5px 5px 5px;
+  padding: 10px;
+}
+
+.Barchart1 {
+  height: 250px;
+}
+
+.h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 15px 5px;
+  background-color: #133f5c;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 2px;
+}
+.employmentdata-header {
+  color: black;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+}
+.employmentdata-text {
+  color: black;
+  flex: 1;
+  padding: 10px;
+  text-align: center;
+}
+
+.employmentdata-content {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.chart-container {
+  /* padding-bottom: 20px; */
+  width: 100%;
 }
 </style>

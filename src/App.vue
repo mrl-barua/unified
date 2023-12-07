@@ -1,16 +1,21 @@
 <template>
-  <router-view></router-view>
+  <div id="app">
+    <!-- <loading v-if="isLoading" /> -->
+    <!-- <transition name="fade"> -->
+    <router-view />
+    <!-- </transition> -->
+  </div>
 </template>
 
 <script>
 import LoginForm from "./views/LoginForm.vue";
-import Dashboard from "./views/User/CBSS/CBSS.vue";
+// import Dashboard from "./views/User/CBSS/CBSS.vue";
 
 export default {
   name: "App",
   components: {
     LoginForm,
-    Dashboard,
+    // Dashboard,
   },
 
   mounted() {
@@ -68,7 +73,7 @@ body {
 body {
   --sb-track-color: #f11b25;
   --sb-thumb-color: #292d96;
-  --sb-size: 10px;
+  --sb-size: 3px;
 
   scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
 }
@@ -85,6 +90,10 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
   background: var(--sb-thumb-color);
   border-radius: 18px;
+}
+
+.card-margin {
+  margin: 20px;
 }
 
 /* CSS RESPONSIVE GLOBAL STYLES END */

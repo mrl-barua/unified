@@ -3,7 +3,7 @@
     <AdminSidebar :iconText="PageTitle" />
     <br /><br /><br /><br />
     <div class="container-fluid wrapper"></div>
-    <div class="card">
+    <div class="card card-margin">
       <div class="card-header" style="display: flex">
         <div class="dropdown">
           <button
@@ -42,13 +42,13 @@
           @click="exportToExcel"
           class="btn btn-primary float-end"
           style="
-            background-color: green;
+            background-color: #0229bf;
             font-size: 12px; /* Adjust the font size as needed */
             padding: 10px 30px 10px 30px;
             margin-left: auto;
           "
         >
-          EXPORT DATA
+          EXPORT TO EXCEL
         </button>
       </div>
 
@@ -58,6 +58,14 @@
           style="width: 100%"
           class="display stripe order-column cell-border hover compact"
           id="cbssTable"
+          :options="{
+            stateSave: true,
+            pageLength: 8,
+            lengthMenu: [
+              [5, 8, 10, 25, 50],
+              [5, 8, 10, 25, 50],
+            ],
+          }"
         >
           <thead style="background: #133f5c" class="text-white">
             <tr>
@@ -78,7 +86,7 @@
               <td>{{ item.SEX }}</td>
               <td>{{ item.CASE_CATEGORY }}</td>
               <td>{{ item.MODE_OF_ADMISSION }}</td>
-              <td>
+              <td class="actions">
                 <router-link
                   :to="{ path: '/admincbss/' + item.ID + '/view' }"
                   class="custom-link"
@@ -87,7 +95,7 @@
                 ></router-link>
 
                 <router-link
-                  :to="{ path: '/admincbss' + item.ID + '/edit' }"
+                  :to="{ path: '/admincbss/' + item.ID + '/edit' }"
                   class="custom-link"
                 >
                   <i class="bx bx-edit icon table-icon"></i>
@@ -98,9 +106,54 @@
                   class="bx bx-archive-in icon table-icon custom-link"
                   style="cursor: pointer"
                 ></i>
+
+                <router-link
+                  :to="{ path: '/admincbss/' + item.ID + '/editHistory' }"
+                  class="custom-link"
+                >
+                  <i class="bx bx-history icon table-icon"></i>
+                </router-link>
               </td>
             </tr>
           </tbody>
+          <tfoot>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Sex</th>
+              <th>Case Category</th>
+              <th>Mode of Admission</th>
+              <th>Actions</th>
+            </tr>
+          </tfoot>
+        </DataTable>
+
+        <DataTable
+          v-else
+          style="width: 100%"
+          class="display stripe order-column cell-border hover compact"
+          :options="{
+            stateSave: true,
+            pageLength: 8,
+            lengthMenu: [
+              [5, 8, 10, 25, 50],
+              [5, 8, 10, 25, 50],
+            ],
+          }"
+        >
+          <thead style="background: #133f5c" class="text-white">
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Sex</th>
+              <th>Case Category</th>
+              <th>Mode of Admission</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
           <tfoot>
             <tr>
               <th>ID</th>
@@ -219,32 +272,47 @@ export default {
         console.log(res);
       });
     },
-
     deleteCbss(CbssID) {
-      // console.log(CbssID);
-      if (confirm("Are you sure, you want to archive this data?")) {
-        axios
-          .delete(`${backendURL}/api/cbsslist/${CbssID}/delete`)
-          .then((res) => {
-            alert(res.data.message);
-            // Reload the page after a successful deletion
-            window.location.reload();
-          })
-          .catch(function (error) {
-            if (error.response) {
-              if (error.response.status === 422) {
-                mythis.errorList = error.response.data.errors;
+      this.$swal({
+        title: "Are you sure?",
+        text: "You want to archive this data?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, archive it!",
+        cancelButtonText: "No, keep it",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios
+            .delete(`${backendURL}/api/cbsslist/${CbssID}/delete`)
+            .then((res) => {
+              this.$swal({
+                icon: "success",
+                title: "Success!",
+                text: res.data.message,
+              }).then(() => {
+                window.location.reload();
+              });
+            })
+            .catch(function (error) {
+              if (error.response) {
+                if (error.response.status === 422) {
+                  mythis.errorList = error.response.data.errors;
+                }
+                if (error.response.status === 404) {
+                  this.$swal({
+                    icon: "error",
+                    title: "Error!",
+                    text: error.response.data.message,
+                  });
+                }
+              } else if (error.request) {
+                console.log(error.request);
+              } else {
+                console.log("error", error.message);
               }
-              if (error.response.status === 404) {
-                alert(error.response.data.message);
-              }
-            } else if (error.request) {
-              console.log(error.request);
-            } else {
-              console.log("error", error.message);
-            }
-          });
-      }
+            });
+        }
+      });
     },
   },
 };
@@ -273,5 +341,11 @@ div.dataTables_wrapper a.paginate_button {
 .custom-link {
   text-decoration: none !important;
   color: black;
+}
+
+.actions {
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100px !important;
 }
 </style>

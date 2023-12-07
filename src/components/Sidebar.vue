@@ -252,6 +252,7 @@ body {
 /* Styles for non-sticky nav */
 nav {
   position: absolute;
+  margin-top: -2px;
   top: 6em;
   height: 55px;
   width: 100%;
@@ -264,6 +265,7 @@ nav {
 
 .overlay {
   position: fixed;
+  margin-top: -2px;
   top: 3.4em;
   left: -100%;
   height: 1000vh;
@@ -275,12 +277,14 @@ nav {
   z-index: 50;
 }
 
+/* Styles for absolute nav */
 nav .sidebar {
   position: fixed;
+  margin-top: -2px;
   top: 9.4em;
   left: -100%;
   height: 90%;
-  width: 303px;
+  width: 265px;
   padding-top: 1%;
   padding-bottom: 4%;
   background-color: #fff;
@@ -370,7 +374,7 @@ nav .logo .iconText {
 }
 
 .bx-x {
-  margin-left: 220px;
+  margin-left: 185px;
 }
 
 .logo .logo-name {

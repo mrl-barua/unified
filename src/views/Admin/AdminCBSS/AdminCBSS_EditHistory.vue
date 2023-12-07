@@ -4,12 +4,12 @@
     <br /><br /><br /><br /><br />
     <div class="container-fluid wrapper">
       <p class="Header">Recent Edit</p>
-      <p class="Header2">{{ model.Swda.Agency }}</p>
+      <p class="Header2">{{ model.Cbss.NAME }}</p>
       <DataTable
-        v-if="this.swda.length > 0"
+        v-if="this.cbss.length > 0"
         style="width: 100%"
         class="display stripe order-column cell-border hover compact"
-        id="swdaTable"
+        id="cbssTable"
         :options="{
           order: [[0, 'desc']],
           stateSave: true,
@@ -19,26 +19,26 @@
           <tr>
             <th>ID</th>
             <th>Date Edited</th>
-            <th>Type</th>
-            <th>Sector</th>
-            <th>Cluster</th>
-            <th>Agency</th>
-            <th>Address</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Sex</th>
+            <th>Case Category</th>
+            <th>Mode of Admission</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in swda" :key="item.id">
-            <td>{{ item.id }}</td>
+          <tr v-for="item in cbss" :key="item.ID">
+            <td>{{ item.ID }}</td>
             <td>{{ formatDate(item.created_at) }}</td>
-            <td>{{ item.Type }}</td>
-            <td>{{ item.Sector }}</td>
-            <td>{{ item.Cluster }}</td>
-            <td>{{ item.Agency }}</td>
-            <td>{{ item.Address }}</td>
+            <td>{{ item.NAME }}</td>
+            <td>{{ item.AGE }}</td>
+            <td>{{ item.SEX }}</td>
+            <td>{{ item.CASE_CATEGORY }}</td>
+            <td>{{ item.MODE_OF_ADMISSION }}</td>
             <td class="actions">
               <router-link
-                :to="{ path: '/adminswda/' + item.id + '/editHistory/view' }"
+                :to="{ path: '/admincbss/' + item.ID + '/editHistory/view' }"
                 class="custom-link"
               >
                 <i class="bx bx-low-vision table-icon custom-link"></i
@@ -50,47 +50,48 @@
           <tr>
             <th>ID</th>
             <th>Date Edited</th>
-
-            <th>Type</th>
-            <th>Sector</th>
-            <th>Cluster</th>
-            <th>Agency</th>
-            <th>Address</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Sex</th>
+            <th>Case Category</th>
+            <th>Mode of Admission</th>
             <th>Actions</th>
           </tr>
         </tfoot>
       </DataTable>
 
       <DataTable
-        v-else-if="this.swda.length <= 0"
+        v-else-if="this.cbss.length <= 0"
         style="width: 100%"
         class="display stripe order-column cell-border hover compact"
-        id="swdaTable"
+        id="cbssTable"
       >
         <thead style="background: #133f5c" class="text-white">
           <tr>
             <th>ID</th>
-            <th>Type</th>
-            <th>Sector</th>
-            <th>Cluster</th>
-            <th>Agency</th>
-            <th>Address</th>
+            <th>Date Edited</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Sex</th>
+            <th>Case Category</th>
+            <th>Mode of Admission</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in swda" :key="item.id">
+          <tr v-for="item in cbss" :key="item.ID">
             <td>no data</td>
           </tr>
         </tbody>
         <tfoot>
           <tr>
             <th>ID</th>
-            <th>Type</th>
-            <th>Sector</th>
-            <th>Cluster</th>
-            <th>Agency</th>
-            <th>Address</th>
+            <th>Date Edited</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Sex</th>
+            <th>Case Category</th>
+            <th>Mode of Admission</th>
             <th>Actions</th>
           </tr>
         </tfoot>
@@ -118,17 +119,17 @@ export default {
   data() {
     return {
       PageTitle: "ADMIN EDIT HISTORY ",
-      swda: [],
+      cbss: [],
 
       model: {
-        Swda: { Agency: "" },
+        Cbss: { NAME: "" },
       },
     };
   },
   mounted() {
-    this.SwdaID = this.$route.params.ID;
-    this.getSwdaEditHistory(this.SwdaID);
-    this.SwdaData(this.SwdaID);
+    this.CbssID = this.$route.params.ID;
+    this.getCbssEditHistory(this.CbssID);
+    this.CbssData(this.CbssID);
   },
   methods: {
     formatDate(dateString) {
@@ -143,29 +144,30 @@ export default {
       return new Date(dateString).toLocaleDateString(undefined, options);
     },
 
-    getSwdaEditHistory(SwdaID) {
-      axios.get(`${backendURL}/api/swdaVersion/${SwdaID}`).then((res) => {
-        this.swda = res.data.SwdaEditHistory;
-        console.log(res);
+    getCbssEditHistory(CbssID) {
+      axios.get(`${backendURL}/api/cbssVersion/${CbssID}`).then((res) => {
+        this.cbss = res.data.CbssEditHistory;
+
+        // console.log(res.data.CbssEditHistory);
       });
     },
 
-    SwdaData(SwdaID) {
+    CbssData(CbssID) {
       axios
-        .get(`http://127.0.0.1:8000/api/swdalist/${SwdaID}/edit`)
+        .get(`http://127.0.0.1:8000/api/cbsslist/${CbssID}/edit`)
         .then((res) => {
-          const swdaData = res.data.Swda;
-          console.log(res.data.Swda);
+          const cbssData = res.data.Cbss;
+          console.log(res.data.Cbss);
 
-          // Check if swdaData is null or empty
-          if (!swdaData || Object.keys(swdaData).length === 0) {
-            for (const key in this.model.Swda) {
-              this.model.Swda[key] = "No Data";
+          // Check if cbssData is null or empty
+          if (!cbssData || Object.keys(cbssData).length === 0) {
+            for (const key in this.model.Cbss) {
+              this.model.Cbss[key] = "No Data";
             }
           } else {
-            // Assign values from swdaData to this.model.Swda
-            for (const key in swdaData) {
-              this.model.Swda[key] = swdaData[key];
+            // Assign values from cbssData to this.model.Cbss
+            for (const key in cbssData) {
+              this.model.Cbss[key] = cbssData[key];
             }
           }
         })

@@ -3,7 +3,7 @@
     <AdminSidebar :iconText="PageTitle" />
     <br /><br /><br /><br />
     <div class="container-fluid wrapper"></div>
-    <div class="card">
+    <div class="card card-margin">
       <div class="card-header" style="display: flex">
         <div class="dropdown">
           <button
@@ -58,57 +58,131 @@
           style="width: 100%"
           class="display stripe order-column cell-border hover compact"
           id="hrTable"
+          :options="{
+            stateSave: true,
+            pageLength: 5,
+            lengthMenu: [
+              [5, 10, 25, 50],
+              [5, 10, 25, 50],
+            ],
+          }"
         >
           <thead style="background: #133f5c" class="text-white">
             <tr>
               <th>ID</th>
-              <th>Division</th>
-              <th>Section/Unit</th>
-              <th>Office/Location</th>
-              <th>Position Title</th>
-              <th>Position Level</th>
+              <th>REQUEST DATE</th>
+              <th>NAME OF REQUESTING</th>
+              <th>EMPLOYEE POSITION</th>
+              <th>EMPLOYEE STATUS</th>
+              <th>OFFICE/UNIT</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="item in hr" :key="item.ID">
-              <td>{{ item.ID }}</td>
-              <td>{{ item.division }}</td>
-              <td>{{ item.section_unit }}</td>
-              <td>{{ item.office_location }}</td>
-              <td>{{ item.position_title }}</td>
-              <td>{{ item.position_level }}</td>
-              <td>
+            <tr v-for="item in hr" :key="item.id">
+              <td>{{ item.id }}</td>
+              <td>{{ item.request_date }}</td>
+              <td>{{ item.requesting_employee_name }}</td>
+              <td>{{ item.employee_position }}</td>
+              <td>{{ item.employment_status }}</td>
+              <td>{{ item.office_unit }}</td>
+              <td class="actions">
                 <router-link
-                  :to="{ path: '/adminhr/' + item.ID + '/view' }"
+                  :to="{ path: '/adminhr/' + item.id + '/view' }"
                   class="custom-link"
                 >
                   <i class="bx bx-low-vision table-icon custom-link"></i
                 ></router-link>
 
                 <router-link
-                  :to="{ path: '/adminhr/' + item.ID + '/edit' }"
+                  :to="{ path: '/adminhr/' + item.id + '/edit' }"
                   class="custom-link"
                 >
                   <i class="bx bx-edit icon table-icon"></i>
                 </router-link>
 
                 <i
-                  @click="deleteHr(item.ID)"
+                  @click="deleteHr(item.id)"
                   class="bx bx-archive-in icon table-icon custom-link"
                   style="cursor: pointer"
                 ></i>
+
+                <router-link
+                  :to="{ path: '/adminhr/' + item.id + '/editHistory' }"
+                  class="custom-link"
+                >
+                  <i class="bx bx-history icon table-icon"></i>
+                </router-link>
               </td>
+              <!-- <td>
+                <router-link
+                  :to="{ path: '/adminhr/' + item.id + '/view' }"
+                  class="custom-link"
+                >
+                  <i class="bx bx-low-vision table-icon custom-link"></i
+                ></router-link>
+
+                <router-link
+                  :to="{ path: '/adminhr/' + item.id + '/edit' }"
+                  class="custom-link"
+                >
+                  <i class="bx bx-edit icon table-icon"></i>
+                </router-link>
+
+                <i
+                  @click="deleteHr(item.id)"
+                  class="bx bx-archive-in icon table-icon custom-link"
+                  style="cursor: pointer"
+                ></i>
+              </td> -->
             </tr>
           </tbody>
           <tfoot>
             <tr>
               <th>ID</th>
-              <th>Division</th>
-              <th>Section/Unit</th>
-              <th>Office/Location</th>
-              <th>Position Title</th>
-              <th>Position Level</th>
+              <th>REQUEST DATE</th>
+              <th>NAME OF REQUESTING</th>
+              <th>EMPLOYEE POSITION</th>
+              <th>EMPLOYEE STATUS</th>
+              <th>OFFICE/UNIT</th>
+              <th>Actions</th>
+            </tr>
+          </tfoot>
+        </DataTable>
+
+        <DataTable
+          v-else
+          style="width: 100%"
+          class="display stripe order-column cell-border hover compact"
+          :options="{
+            stateSave: true,
+            pageLength: 5,
+            lengthMenu: [
+              [5, 10, 25, 50],
+              [5, 10, 25, 50],
+            ],
+          }"
+        >
+          <thead style="background: #133f5c" class="text-white">
+            <tr>
+              <th>ID</th>
+              <th>REQUEST DATE</th>
+              <th>NAME OF REQUESTING</th>
+              <th>EMPLOYEE POSITION</th>
+              <th>EMPLOYEE STATUS</th>
+              <th>OFFICE/UNIT</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+          <tfoot>
+            <tr>
+              <th>ID</th>
+              <th>REQUEST DATE</th>
+              <th>NAME OF REQUESTING</th>
+              <th>EMPLOYEE POSITION</th>
+              <th>EMPLOYEE STATUS</th>
+              <th>OFFICE/UNIT</th>
               <th>Actions</th>
             </tr>
           </tfoot>
@@ -159,82 +233,18 @@ export default {
 
       // Add headers
       const headers = [
-        "ID",
-        "DIVISION",
-        "SECTION/UNIT",
-        "OFFICE LOCATION",
-        "ITEM NUMBER",
-        "DATE POSITION",
-        "POSITION TITLE",
-        "PARENTHETICAL TITLE",
-        "POSITION_LEVEL",
-        "SG",
-        "SALARY STEP INCREMENT",
-        "MONTHLY_RATE",
-        "DESIGNATION",
-        "DATE OF DESIGNATION",
-        "SPECIAL_ORDER_NO.",
-        "OFFICE_BUREAU_SERVICE_PROGRAM",
-        "FUND_SOURCE_FOR_CONTRACTUAL",
-        "EMPLOYMENT_STATUS",
-        "STATUS_FILLED_UNFILLED",
-        "MODE_OF_ACCESSION",
-        "DATE_FILLED_UP_ASSUMPTION",
-        "FULL_NAME",
-        "LASTNAME",
-        "FIRST_NAME",
-        "MIDDLE_NAME",
-        "EXT.",
-        "DATE_OF_ORIGINAL_APPOINTMENT",
-        "DATE_OF_LAST_PROMOTION",
-        "ENTRY_DATE_IN_DSWD",
-        "ELIGIBILITY_CSC_and_other_eligibilities",
-        "ELIGIBILITY_License_RA_1080",
-        "LICENSE",
-        "HIGHEST_LVL_OF_ELIGIBILITY_1ST_AND_2ND",
-        "HIGHEST_EDUCATION_COMPLETED",
-        "DEGREE_AND_COURSE_1st_Course_Vocational",
-        "DEGREE_AND_COURSE_2nd Course",
-        "OTHER_COURSE",
-        "MASTERS_OR_DOCTORAL_DEGREE",
-        "GENDER",
-        "DATE_OF_BIRTH",
-        "AGE",
-        "CIVIL_STATUS",
-        "STREET_Current",
-        "PUROK/SUBDIVISION_Current",
-        "BARANGAY_Current",
-        "CITY/MUNICIPALITY_Current",
-        "PROVINCE_Current",
-        "PERMANENT_ADDRESS",
-        "PERMANENT_ADDRESS_Street",
-        "PERMANENT_ADDRESS_Purok",
-        "PERMANENT_ADDRESS_Subdivision_Community_Village",
-        "PERMANENT_ADDRESS_Barangay",
-        "PERMANENT_ADDRESS_Region",
-        "PERMANENT_ADDRESS_City_Municipality",
-        "PERMANENT_ADDRESS_Province",
-        "BD",
-        "INDICATE_WHETHER_SOLO_PARENT",
-        "INDICATE_WHETHER_SENIOR_CITIZEN",
-        "INDICATE_WHETHER_PWD",
-        "TYPE_OF_DISABILITY",
-        "INDICATE_IF_INDIGINOUS_GROUP",
-        "ACTIVE_AND_WORKING_EMAIL_ADDRESS",
-        "FORMER_INCUMBENT",
-        "MODE_OF_SEPARATION",
-        "DATE_VACATED",
-        "REMARKS_STATUS_OF_VACANT_POSITION",
-        "EMPLOYEE_ID_NO",
-        "BIR_TIN.NO.",
-        "PHILHEALTH_NUMBER",
-        "SSS_NUMBER",
-        "PAG-IBIG_NUMBER",
-        "GSIS_NUMBER",
-        "BLOOD_TYPE",
-        "HIGHEST_LEVEL_OF_ELIGIBILITY_1ST_AND_2ND",
-        "HIGHEST_LEVEL__ELIGIBILITY_1ST_AND_2ND",
-        "ELIGIBILITY_CSC_and_other eligibilities",
+        "NO.",
+        "REQUEST DATE",
+        "NAME OF REQUESTING",
+        "EMPLOYEE	POSITION",
+        "EMPLOYMENT STATUS",
+        "OFFICE/UNIT",
+        "CATEGORY OF REQUEST",
+        "BRIEF INTERVIEW",
+        "REMARKS",
+        "Assistance Provided Kind/Type",
+        "Quantity/ Unit",
+        "Date Received",
       ];
 
       worksheet.addRow(headers);
@@ -242,83 +252,17 @@ export default {
       // Add data from this.hr
       this.hr.forEach((item) => {
         const rowData = [
-          item.ID,
+          item.id,
 
-          item.division,
-          item.section_unit,
-          item.office_location,
-          item.item_number,
-          item.date_position,
-          item.position_title,
-          item.parenthetical_title,
-          item.position_level,
-          item.sg,
-          item.salary_step_increment,
-          item.monthly_rate,
-          item.designation,
-          item.date_of_designation,
-          item.special_order_no,
-          item.office_bureau_service_program,
-          item.fund_source_for_contractual,
+          item.request_date,
+          item.requesting_employee_name,
+          item.employee_position,
           item.employment_status,
-          item.status_filled_unfilled,
-          item.mode_of_accession,
-          item.date_filled_up_assumption,
-          item.full_name,
-          item.last_name,
-          item.first_name,
-          item.middle_name,
-          item.ext,
-          item.date_of_original_appointment,
-          item.date_of_last_promotion,
-          item.entry_date_in_dswd,
-          item.eligibility_csc_and_other_eligibilities,
-          item.eligibility_license_ra_1080,
-          item.license,
-          item.highest_level_of_eligibility_1st_2nd,
-          item.highest_education_completed,
-          item.degree_and_course_1st_course_vocational,
-          item.degree_and_course_2nd_course,
-          item.other_course,
-          item.masters_or_doctoral_degree,
-          item.gender,
-          item.date_of_birth,
-          item.age,
-          item.civil_status,
-          item.street_current,
-          item.purok_subdivision_current,
-          item.barangay_current,
-          item.city_municipality_current,
-          item.province_current,
-          item.permanent_address,
-          item.permanent_address_street,
-          item.permanent_address_purok,
-          item.permanent_address_subdivision_community_village,
-          item.permanent_address_barangay,
-          item.permanent_address_region,
-          item.permanent_address_city_municipality,
-          item.permanent_address_province,
-          item.bd,
-          item.indicate_whether_solo_parent,
-          item.indicate_whether_senior_citizen,
-          item.indicate_whether_pwd,
-          item.type_of_disability,
-          item.indicate_if_indigenous_group,
-          item.active_and_working_email_address,
-          item.former_incumbent,
-          item.mode_of_separation,
-          item.date_vacated,
-          item.remarks_status_of_vacant_position,
-          item.employee_id_no,
-          item.bir_tin_number,
-          item.philhealth_number,
-          item.sss_number,
-          item.pagibig_number,
-          item.gsis_number,
-          item.blood_type,
-          item.highest_level_of_eligibility_1st_and_2nd,
-          item.highest_level_eligibility_1st_and_2nd,
-          item.eligibility_csc_and_other_eligibilities,
+          item.office_unit,
+          item.request_category,
+          item.brief_interview,
+          item.remarks,
+          item.assistance_provided,
         ];
 
         worksheet.addRow(rowData);
@@ -344,30 +288,46 @@ export default {
     },
 
     deleteHr(HrID) {
-      // console.log(HrID);
-      if (confirm("Are you sure, you want to archive this data?")) {
-        axios
-          .delete(`${backendURL}/api/hrlist/${HrID}/delete`)
-          .then((res) => {
-            alert(res.data.message);
-            // Reload the page after a successful deletion
-            window.location.reload();
-          })
-          .catch(function (error) {
-            if (error.response) {
-              if (error.response.status === 422) {
-                mythis.errorList = error.response.data.errors;
+      this.$swal({
+        title: "Are you sure?",
+        text: "You want to archive this data?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, archive it!",
+        cancelButtonText: "No, keep it",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios
+            .delete(`${backendURL}/api/hrlist/${HrID}/delete`)
+            .then((res) => {
+              this.$swal({
+                icon: "success",
+                title: "Success!",
+                text: res.data.message,
+              }).then(() => {
+                window.location.reload();
+              });
+            })
+            .catch(function (error) {
+              if (error.response) {
+                if (error.response.status === 422) {
+                  mythis.errorList = error.response.data.errors;
+                }
+                if (error.response.status === 404) {
+                  this.$swal({
+                    icon: "error",
+                    title: "Error!",
+                    text: error.response.data.message,
+                  });
+                }
+              } else if (error.request) {
+                console.log(error.request);
+              } else {
+                console.log("error", error.message);
               }
-              if (error.response.status === 404) {
-                alert(error.response.data.message);
-              }
-            } else if (error.request) {
-              console.log(error.request);
-            } else {
-              console.log("error", error.message);
-            }
-          });
-      }
+            });
+        }
+      });
     },
   },
 };
@@ -396,5 +356,11 @@ div.dataTables_wrapper a.paginate_button {
 .custom-link {
   text-decoration: none !important;
   color: black;
+}
+
+.actions {
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100px !important;
 }
 </style>

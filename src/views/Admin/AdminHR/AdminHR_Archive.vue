@@ -3,7 +3,7 @@
     <AdminSidebar :iconText="PageTitle" />
     <br /><br /><br /><br />
     <div class="container-fluid wrapper"></div>
-    <div class="card">
+    <div class="card card-margin">
       <div class="card-header" style="display: flex">
         <div class="dropdown">
           <button
@@ -42,42 +42,39 @@
           style="width: 100%"
           class="display stripe order-column cell-border hover compact"
           id="hrTable"
+          :options="{
+            stateSave: true,
+            pageLength: 5,
+            lengthMenu: [
+              [5, 10, 25, 50],
+              [5, 10, 25, 50],
+            ],
+          }"
         >
           <thead style="background: #cb0e16" class="text-white">
             <tr>
               <th>ID</th>
-              <th>Division</th>
-              <th>Section/Unit</th>
-              <th>Office/Location</th>
-              <th>Position Title</th>
-              <th>Position Level</th>
+              <th>REQUEST DATE</th>
+              <th>NAME OF REQUESTING</th>
+              <th>EMPLOYEE POSITION</th>
+              <th>EMPLOYEE STATUS</th>
+              <th>OFFICE/UNIT</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="item in hr" :key="item.ID">
-              <td>{{ item.ID }}</td>
-              <td>{{ item.division }}</td>
-              <td>{{ item.section_unit }}</td>
-              <td>{{ item.office_location }}</td>
-              <td>{{ item.position_title }}</td>
-              <td>{{ item.position_level }}</td>
-              <td style="display: flex; justify-content: space-around">
+            <tr v-for="item in hr" :key="item.id">
+              <td>{{ item.id }}</td>
+              <td>{{ item.request_date }}</td>
+              <td>{{ item.requesting_employee_name }}</td>
+              <td>{{ item.employee_position }}</td>
+              <td>{{ item.employment_status }}</td>
+              <td>{{ item.office_unit }}</td>
+              <td style="text-align: center">
                 <i
-                  class="bx bxs-up-arrow-square custom-link"
-                  @click="restoreHr(item.ID)"
-                ></i>
-
-                <!-- <router-link
-                  :to="{ path: '/adminhr/' + item.ID + '/view' }"
-                  class="custom-link"
-                >
-                  <i class="bx bx-low-vision table-icon custom-link"></i
-                ></router-link> -->
-
-                <i
-                  class="bx bx-trash icon table-icon custom-link"
                   style="cursor: pointer"
+                  class="bx bxs-up-arrow-square custom-link"
+                  @click="restoreHr(item.id)"
                 ></i>
               </td>
             </tr>
@@ -85,11 +82,42 @@
           <tfoot>
             <tr>
               <th>ID</th>
-              <th>Division</th>
-              <th>Section/Unit</th>
-              <th>Office/Location</th>
-              <th>Position Title</th>
-              <th>Position Level</th>
+              <th>REQUEST DATE</th>
+              <th>NAME OF REQUESTING</th>
+              <th>EMPLOYEE POSITION</th>
+              <th>EMPLOYEE STATUS</th>
+              <th>OFFICE/UNIT</th>
+              <th>Actions</th>
+            </tr>
+          </tfoot>
+        </DataTable>
+
+        <DataTable
+          v-else
+          style="width: 100%"
+          class="display stripe order-column cell-border hover compact"
+          id="hrTable"
+        >
+          <thead style="background: #cb0e16" class="text-white">
+            <tr>
+              <th>ID</th>
+              <th>REQUEST DATE</th>
+              <th>NAME OF REQUESTING</th>
+              <th>EMPLOYEE POSITION</th>
+              <th>EMPLOYEE STATUS</th>
+              <th>OFFICE/UNIT</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+          <tfoot>
+            <tr>
+              <th>ID</th>
+              <th>REQUEST DATE</th>
+              <th>NAME OF REQUESTING</th>
+              <th>EMPLOYEE POSITION</th>
+              <th>EMPLOYEE STATUS</th>
+              <th>OFFICE/UNIT</th>
               <th>Actions</th>
             </tr>
           </tfoot>
@@ -223,7 +251,7 @@ export default {
       // Add data from this.hr
       this.hr.forEach((item) => {
         const rowData = [
-          item.ID,
+          item.id,
 
           item.division,
           item.section_unit,
@@ -323,29 +351,45 @@ export default {
         console.log(res);
       });
     },
-
     restoreHr(HrID) {
-      // console.log(HrID);
-      if (confirm("Are you sure, you want to restore this data?")) {
-        axios
-          .post(`${backendURL}/api/hrArchived/${HrID}/restore`)
-          .then((res) => {
-            alert(res.data.message);
-            // Reload the page after a successful deletion
-            window.location.reload();
-          })
-          .catch(function (error) {
-            if (error.response) {
-              if (error.response.status === 404) {
-                alert(error.response.data.message);
+      this.$swal({
+        title: "Are you sure?",
+        text: "You want to restore this data?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, restore it!",
+        cancelButtonText: "No, keep it",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios
+            .post(`${backendURL}/api/hrArchived/${HrID}/restore`)
+            .then((res) => {
+              return this.$swal({
+                icon: "success",
+                title: "Success!",
+                text: res.data.message,
+              });
+            })
+            .then(() => {
+              window.location.reload();
+            })
+            .catch((error) => {
+              if (error.response) {
+                if (error.response.status === 404) {
+                  this.$swal({
+                    icon: "error",
+                    title: "Error!",
+                    text: error.response.data.message,
+                  });
+                }
+              } else if (error.request) {
+                console.log(error.request);
+              } else {
+                console.log("error", error.message);
               }
-            } else if (error.request) {
-              console.log(error.request);
-            } else {
-              console.log("error", error.message);
-            }
-          });
-      }
+            });
+        }
+      });
     },
   },
 };

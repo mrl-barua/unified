@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header />
+    <AdminHeader />
     <nav :class="{ sticky: isSticky }">
       <div class="blue-header">
         <div class="logo">
@@ -109,12 +109,12 @@
 </template>
 
 <script>
-import Header from "@/components/Header";
+import AdminHeader from "@/components/AdminHeader";
 
 export default {
   name: "sidebar",
   components: {
-    Header,
+    AdminHeader,
   },
   data() {
     return {
@@ -193,13 +193,15 @@ nav {
   width: 100%;
   display: flex;
   align-items: center;
-  background: #294d9c;
+  background: #c20000;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
   z-index: 999;
+  margin-top: -2px;
 }
 
 .overlay {
   position: fixed;
+  margin-top: -2px;
   top: 3.4em;
   left: -100%;
   height: 1000vh;
@@ -213,10 +215,11 @@ nav {
 
 nav .sidebar {
   position: fixed;
+  margin-top: -2px;
   top: 9.4em;
   left: -100%;
   height: 90%;
-  width: 303px;
+  width: 265px;
   padding-top: 1%;
   padding-bottom: 4%;
   background-color: #fff;
@@ -306,7 +309,7 @@ nav .logo .iconText {
 }
 
 .bx-x {
-  margin-left: 220px;
+  margin-left: 185px;
 }
 
 .logo .logo-name {
@@ -339,7 +342,7 @@ nav.open .sidebar {
 .lists .nav-link:hover {
   padding-left: 20px;
   padding-right: 20px;
-  background-color: #4070f4;
+  background-color: #c20000;
 }
 
 .nav-link .icon {
@@ -359,7 +362,7 @@ nav.open .sidebar {
 }
 
 .active li {
-  background-color: #4070f4;
+  background-color: #c20000;
   border-radius: 8px;
   padding-left: 20px;
   padding-right: 20px;

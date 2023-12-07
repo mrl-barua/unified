@@ -1,6 +1,6 @@
 <template>
   <Sidebar :iconText="PageTitle" :iconDetails="PageDetail" />
-  <br /><br /><br /><br /><br />
+  <br /><br /><br /><br />
   <div class="wrapper" container-fluid>
     <div class="col-12 col-md-3">
       <div class="agenciesNames" style="background-color: white">
@@ -108,7 +108,7 @@
       </div>
     </div>
 
-    <div class="col-12 col-md-9">
+    <div class="col-12 col-md-9 pt-3">
       <div class="col-12">
         <p class="AgencyTitle">{{ cleanQueryParam("agencyName") }}</p>
         <hr class="hr" />
@@ -739,9 +739,6 @@ export default {
 
 /* Multiple email */
 
-
-
-
 .agencyHead {
   font-family: Arial;
   font-size: 16px;
@@ -760,6 +757,4 @@ export default {
   text-align: left;
   clip-path: content-box;
 }
-
-
 </style>
