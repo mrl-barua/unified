@@ -482,3 +482,10 @@
 
 - Update user dashboards and add date-fns library
 - Fix IconDetails for USER PAGE and ADMIN PAGE (ADMIN SWDA & ADMIN CBSS)
+
+### version 9.5 MARLO BARUA
+
+- Done with the OSD USER PAGE
+- Configured the Session With Sweet Alert 2 for Better User Experience
+- Optimized the Login() in the LoginForm.vue
+- Optimized the Design for Admin PAGE

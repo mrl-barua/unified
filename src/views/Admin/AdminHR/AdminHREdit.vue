@@ -1,6 +1,6 @@
 <template>
   <br /><br /><br /><br />
-  <AdminSidebar :iconText="PageTitle" />
+  <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
   <div>
     <div class="container-fluid">
       <div class="Header"></div>
@@ -188,7 +188,8 @@ export default {
   },
   data() {
     return {
-      PageTitle: "ADMIN HR > EDIT", // The title displayed on the page, which is "ADMIN HR"
+      PageTitle: "EMPLOYEE WELFARE AND RELATIONS",
+      PageDetail: "Edit Current Record",
       HrID: "",
       errorList: "",
       // The model for the form inputs  (the data that will be sent to the backend) is defined here as an empty object with the following properties: Hr
