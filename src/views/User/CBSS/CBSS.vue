@@ -83,7 +83,7 @@
           <div class="col-6">
             <div class="shadow-container">
               <p class="section2-header">Financial Amount Served</p>
-              <div class="chart-container"><BarChart :data="SLPData" /></div>
+             
             </div>
           </div>
         </div>
@@ -91,6 +91,7 @@
           <div class="col-6">
             <div class="shadow-container">
               <p class="section2-header">Sub - Categories Served</p>
+              <div class="chart-container"><BarChart :data="SLPData" /></div>
             </div>
           </div>
           <div class="col-6">
