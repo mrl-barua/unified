@@ -1,6 +1,6 @@
 <template>
   <br /><br /><br /><br />
-  <AdminSidebar :iconText="PageTitle" />
+  <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
   <div>
     <div class="container-fluid">
       <div class="Header"></div>
@@ -124,7 +124,7 @@
               <div class="spaceBetween">
                 <label for="officeLocation">Date</label>
                 <input
-                  type="date"
+                  type="text"
                   v-model="model.Cbss.DATE"
                   class="form-control"
                   id="officeLocation"
@@ -256,7 +256,8 @@ export default {
   },
   data() {
     return {
-      PageTitle: "ADMIN CBSS > EDIT", // The title displayed on the page, which is "ADMIN HR"
+      PageTitle: "Community Based Services Section",
+      PageDetail: "Edit Current Record",
       CbssID: "",
       errorList: "",
       // The model for the form inputs  (the data that will be sent to the backend) is defined here as an empty object with the following properties: Hr
@@ -282,35 +283,32 @@ export default {
     };
   },
   computed: {
-    formattedDate: {
-      get() {
-        // Convert date from 'yyyy-mm-dd' to 'dd/mm/yyyy'
-        const [year, month, day] = this.model.Cbss.DATE.split("-");
-        return `${day}/${month}/${year}`;
-      },
-      set(value) {
-        // Convert date from 'dd/mm/yyyy' to 'yyyy-mm-dd'
-        const [day, month, year] = value.split("/");
-        this.model.Cbss.DATE = `${year}-${month}-${day}`;
-      },
-    },
+    // formattedDate: {
+    //   get() {
+    //     // Convert date from 'yyyy-mm-dd' to 'dd/mm/yyyy'
+    //     const [year, month, day] = this.model.Cbss.DATE.split("-");
+    //     return `${day}/${month}/${year}`;
+    //   },
+    //   set(value) {
+    //     // Convert date from 'dd/mm/yyyy' to 'yyyy-mm-dd'
+    //     const [day, month, year] = value.split("/");
+    //     this.model.Cbss.DATE = `${year}-${month}-${day}`;
+    //   },
+    // },
   },
   mounted() {
     //console.log(this.$route.params.ID);
     this.CbssID = this.$route.params.ID;
-    //the CbssID is passed as a parameter to the CbssData() function  (which is defined below) to get the data of the HR with the given ID
+    //the CbssID is passed as a parameter to the CbssData() function  (which is defined below) to get the data of the CBSS with the given ID
     this.CbssData(this.$route.params.ID);
   },
   methods: {
-    // The CbssData() function is used to get the data of the HR with the given ID
     CbssData(CbssID) {
       axios
         .get(`http://127.0.0.1:8000/api/cbsslist/${CbssID}/edit`)
         .then((res) => {
           const cbssData = res.data.Cbss;
           console.log(res.data);
-
-          // Check if hrData is null or empty
           this.model.Cbss.ID = cbssData.ID;
           this.model.Cbss.DATE = cbssData.DATE;
           this.model.Cbss.NAME = cbssData.NAME;
@@ -329,7 +327,6 @@ export default {
           this.model.Cbss.NUMBER_OF_SERVICES_AVAILED =
             cbssData.NUMBER_OF_SERVICES_AVAILED;
         })
-        // If the CBSS with the given ID is not found, an error message will be displayed
         .catch(function (error) {
           if (error.response) {
             if (error.response.status === 404) {
@@ -352,7 +349,6 @@ export default {
         )
         .then((res) => {
           console.log(res.data);
-          // alert(res.data.message);
           this.$swal({
             icon: "success",
             title: "Success!",
@@ -362,11 +358,9 @@ export default {
               return this.$router.push("/admincbss");
             })
             .then(() => {
-              window.location.reload();
+              window.location.reload(); // reload the page after updating the data
             });
           this.errorList = "";
-
-          // window.location.reload(); // reload the page after updating the data
         })
         .catch(function (error) {
           if (error.response) {
@@ -419,5 +413,9 @@ export default {
   margin-right: 20px;
   width: 180px;
   margin-bottom: 20px;
+}
+
+.col-12 {
+  margin-bottom: 5px;
 }
 </style>

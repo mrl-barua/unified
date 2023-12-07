@@ -163,7 +163,7 @@ export default {
   data() {
     return {
       PageTitle: "EMPLOYEE WELFARE AND RELATIONS",
-      PageDetail: "Employee Assistance/Support Services",
+      PageDetail: "Main Dashboard",
 
       customLegendOptions: {
         position: "bottom", // Set the legend position as needed

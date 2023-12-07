@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Sidebar :iconText="PageTitle" />
+    <Sidebar :iconText="PageTitle" :iconDetails="PageDetail" />
 
     <br /><br /><br /><br />
 
@@ -375,7 +375,7 @@ export default {
   data() {
     return {
       PageTitle: "OPERATIONAL STAFF DATABASE",
-
+      PageDetail: "Main Dashboard",
       EmploymentData: {
         labels: ["MOA", "Permanent", "Contractual", "Coterminous", "Casual"],
         values: [25, 25, 25, 25, 25], //  values

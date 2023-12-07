@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Sidebar :iconText="PageTitle" />
+    <Sidebar :iconText="PageTitle" :iconDetails="PageDetail" />
     <br /><br /><br /><br />
     <div class="col-12 wrapper container-fluid col-12">
       <section class="dashboard-summary">
@@ -117,15 +117,75 @@
           </div>
           <div class="col-6">
             <div class="shadow-container">
-              <p class="section2-header">Financial Amount Served</p>
-              <div class="chart-container"><BarChart :data="SLPData" /></div>
+              <p class="section2-header">Sub - Categories Served</p>
+              <div class="chart-container">
+                <BarChart
+                  :data="subCategoriesChart"
+                  v-if="subCategoriesChart"
+                />
+              </div>
             </div>
           </div>
         </div>
         <div class="col-12">
           <div class="col-6">
             <div class="shadow-container">
-              <p class="section2-header">Sub - Categories Served</p>
+              <p class="section2-header">Financial Amount Served</p>
+              <div class="dataTable-container">
+                <DataTable
+                  v-if="financialAmountServed.length > 0"
+                  style="width: 90%"
+                  class="display stripe order-column hover compact"
+                  id="hrTable"
+                  :options="{
+                    lengthChange: false,
+                    searching: false,
+                    // pageLength: 5,
+                    scrollY: '230px',
+                    info: false,
+                    paging: false,
+                  }"
+                >
+                  <thead style="background: #133f5c" class="text-white">
+                    <tr>
+                      <th>CATEGORY NAME</th>
+                      <th>AMOUNT</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr
+                      v-for="(sum, category) in sumsByCategory"
+                      :key="category"
+                    >
+                      <td>{{ category }}</td>
+                      <td>{{ sum }}</td>
+                    </tr>
+                  </tbody>
+                </DataTable>
+
+                <DataTable
+                  v-else
+                  style="width: 90%"
+                  class="display stripe order-column hover compact"
+                  id="hrTable"
+                  :options="{
+                    lengthChange: false,
+                    searching: false,
+                    // pageLength: 5,
+                    scrollY: '230px',
+                    info: false,
+                    paging: false,
+                  }"
+                >
+                  <thead style="background: #133f5c" class="text-white">
+                    <tr>
+                      <th>CATEGORY NAME</th>
+                      <th>AMOUNT</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </DataTable>
+              </div>
             </div>
           </div>
           <div class="col-6">
@@ -356,8 +416,8 @@ export default {
 
   data() {
     return {
-      PageTitle: "CBSS",
-
+      PageTitle: "Community Based Services Section",
+      PageDetail: "Main Dashboard",
       totalClientServed: [],
       totalAmount: 0,
       male: [],

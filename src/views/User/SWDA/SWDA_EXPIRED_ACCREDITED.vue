@@ -293,7 +293,7 @@ export default {
   },
   data() {
     return {
-      PageTitle: "POLICY AND PLANS DIVISION",
+      PageTitle: "List of Registration, Licensing, and Accreditation of Social Welfare and Development Agencies (SWDA)",
       PageDetail: "Accredited Expired Agencies",
 
       swda: [],
