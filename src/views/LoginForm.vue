@@ -158,7 +158,7 @@ export default {
       }, 1000); // Simulated delay of 1 second
     },
 
-    //* WORKING LOGIN FOR ADMIN DASHBOARD - USER DASHBOARD LOGIN
+    // // * WORKING LOGIN FOR ADMIN DASHBOARD - USER DASHBOARD LOGIN
     // login() {
     //   this.loading = true; // Set loading state to true
 
@@ -171,26 +171,30 @@ export default {
     //       console.log("Request Payload:", this.email, this.password);
     //       console.log("Server Response:", response);
 
-    //       if (response.data.Role === "admin") {
-    //         sessionStorage.setItem("admin", "authenticated");
-    //         this.$router.push("/admindashboard");
-    //       } else if (response.data.Role === "user") {
-    //         sessionStorage.setItem("user", "authenticated");
-    //         this.$router.push("/dashboard");
-    //       } else {
-    //         // Handle unexpected role or scenario
-    //         console.error("Unexpected role:", response.data.Role);
-    //         this.error = "Unexpected role. Please contact support.";
-    //       }
+    //       setTimeout(() => {
+    //         if (response.data.Role === "admin") {
+    //           sessionStorage.setItem("admin", "authenticated");
+    //           this.$router.push("/adminswda");
+    //         } else if (response.data.Role === "user") {
+    //           sessionStorage.setItem("user", "authenticated");
+    //           this.$router.push("/cbss");
+    //         } else {
+    //           // Handle unexpected role or scenario
+    //           console.error("Unexpected role:", response.data.Role);
+    //           this.error = "Unexpected role. Please contact support.";
+    //         }
 
-    //       this.error = null; // Reset error state on successful login
+    //         this.error = null; // Reset error state on successful login
+    //         this.loading = false; // Reset loading state after the request
+    //       }, 1000); // Delay of 3 seconds
     //     })
     //     .catch((error) => {
-    //       // Handle errors or invalid credentials
-    //       this.error = "User not found. Please enter correct credentials.";
-    //     })
-    //     .finally(() => {
-    //       this.loading = false; // Reset loading state after the request
+    //       // Delay the execution of the error handling code by 3 seconds
+    //       setTimeout(() => {
+    //         // Handle errors or invalid credentials
+    //         this.error = "User not found. Please enter correct credentials.";
+    //         this.loading = false; // Reset loading state after the request
+    //       }, 1000);
     //     });
     // },
   },
