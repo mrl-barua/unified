@@ -13,8 +13,31 @@ populate the charts and table. * * @component * * @example *
     <div class="shadow2 forbarchart">
       <div class="inside">
         <p class="textHeader">NUMBER OF RECORDS PER MONTH</p>
+        <div>
+          <label for="monthSelect">Select Month: </label>
+          <select id="monthSelect" v-model="selectedMonth" class="me-3">
+            <option
+              v-for="(month, index) in availableMonths"
+              :key="index"
+              :value="month"
+            >
+              {{ month }}
+            </option>
+          </select>
+
+          <label for="yearSelect">Select Year: </label>
+          <select id="yearSelect" v-model="selectedYear">
+            <option v-for="year in availableYears" :key="year" :value="year">
+              {{ year }}
+            </option>
+          </select>
+        </div>
         <div class="Barchart1">
-          <BarChart :data="MonthData" :aspectRatio="25 / 10" />
+          <BarChart
+            :data="recordsPerMonthChart"
+            :key="chartKey"
+            v-if="!isLoading && recordsPerMonthChart"
+          />
         </div>
       </div>
     </div>
@@ -25,7 +48,12 @@ populate the charts and table. * * @component * * @example *
       <div class="inside">
         <p class="textHeader">TOTAL NUMBER OF CATEGORIES REQUEST</p>
         <div class="Piechart1">
-          <PieChart :data="NameData" :legendOptions="customLegendOptions" />
+          <PieChart
+            :data="numberOfCategoryRequest"
+            v-if="!isLoading && numberOfCategoryRequest"
+            :key="chartKey"
+            :legendOptions="customLegendOptions"
+          />
         </div>
       </div>
     </div>
@@ -36,8 +64,9 @@ populate the charts and table. * * @component * * @example *
         <p class="textHeader">PERCENTAGE OF REQUESTING EMPLOYEES STATUS</p>
         <div class="Piechart1">
           <PieChart
-            v-if="EmploymentData"
-            :data="EmploymentData"
+            v-if="!isLoading && countOfRequestingEmployee"
+            :data="countOfRequestingEmployee"
+            :key="chartKey"
             :legendOptions="customLegendOptions"
           />
         </div>
@@ -52,17 +81,17 @@ populate the charts and table. * * @component * * @example *
 
         <DataTable
           id="table"
-          :paging="true"
-          :searching="true"
-          :info="true"
-          :responsive="true"
-          :length-change="true"
-          :length-menu="[10, 25, 50, 100]"
-          :language="{
-            paginate: {
-              previous: '<i class=\'fas fa-angle-left\'></i>',
-              next: '<i class=\'fas fa-angle-right\'></i>',
-            },
+          v-if="!isLoading && DetailsOfRequestingEmployee.length > 0"
+          class="display stripe order-column hover compact text-start"
+          :data="DetailsOfRequestingEmployee"
+          :columns="columns"
+          :options="{
+            lengthChange: false,
+            searching: false,
+            // pageLength: 5,
+            scrollY: '280px',
+            info: false,
+            paging: false,
           }"
         >
           <thead style="background: #133f5c" class="text-white">
@@ -72,13 +101,30 @@ populate the charts and table. * * @component * * @example *
               <th>Record Count</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody></tbody>
+        </DataTable>
+
+        <DataTable
+          id="table"
+          v-else
+          class="display stripe order-column hover compact text-start"
+          :options="{
+            lengthChange: false,
+            searching: false,
+            // pageLength: 5,
+            scrollY: '280px',
+            info: false,
+            paging: false,
+          }"
+        >
+          <thead style="background: #133f5c" class="text-white">
             <tr>
-              <td>No Data Available</td>
-              <td>No Data Available</td>
-              <td>No Data Available</td>
+              <th>Name</th>
+              <th>Office/Unit</th>
+              <th>Record Count</th>
             </tr>
-          </tbody>
+          </thead>
+          <tbody></tbody>
         </DataTable>
       </div>
     </div>
@@ -123,170 +169,238 @@ export default {
         position: "bottom", // Set the legend position as needed
       },
 
-      MonthData: {
-        labels: [
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July",
-          "August",
-          "September",
-          "October",
-          "November",
-          "December",
-        ],
-        label: ["Months"],
-        values: [39, 18, 13, 14, 3, 21, 2, 3, 44, 5, 4, 12],
-        backgroundColor: [
-          "rgba(226, 80, 76, 1)",
-          "rgba(106, 158, 218, 1)",
-          "rgba(210, 178, 2, 1)",
-          "rgba(255, 105, 97, 1)",
-          "rgba(132, 182, 244, 1)",
-          "rgba(238, 202, 6, 1)",
-          "rgba(226, 80, 76, 1)",
-          "rgba(106, 158, 218, 1)",
-          "rgba(210, 178, 2, 1)",
-          "rgba(255, 105, 97, 1)",
-          "rgba(132, 182, 244, 1)",
-          "rgba(238, 202, 6, 1)",
-        ],
-      },
-      NameData: {
-        labels: ["CNSP", "EMOTIONALLY/PSYCHO DISTRESS", "OFW"],
-        label: ["CHART2"],
-        values: [42, 23, 12],
-        backgroundColor: [
-          "rgba(235, 95, 94, 1)",
-          "rgba(248, 218, 69, 1)",
-          "rgba(186, 194, 255, 1)",
-        ],
-      },
-      sampleData: {
-        labels: ["January", "February", "March", "April", "May"],
-        datasets: [
-          {
-            label: "Dataset 1",
-            values: [20, 30, 25, 40, 35],
-            backgroundColor: "rgba(255, 99, 132, 0.5)", // Example color
-          },
-          {
-            label: "Dataset 2",
-            values: [15, 25, 20, 30, 25],
-            backgroundColor: "rgba(54, 162, 235, 0.5)", // Example color
-          },
-          // Add more datasets if needed
-        ],
-      },
+      selectedYear: new Date().getFullYear(), // Default to current year
 
-      EmploymentData: null,
+      selectedMonth: "All",
+      availableMonths: [
+        "All",
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+      ],
+
+      recordsPerMonthChart: null,
+      numberOfCategoryRequest: null,
+      countOfRequestingEmployee: null,
+      DetailsOfRequestingEmployee: [],
+      columns: [
+        { title: "Name", data: "name" },
+        { title: "Office/Unit", data: "office_unit" },
+        { title: "Record Count", data: "record_count" },
+      ],
+      chartKey: 0,
+      isLoading: false,
     };
   },
-
+  computed: {
+    selectedYearAndMonth() {
+      return `${this.selectedYear}${this.selectedMonth}`;
+    },
+  },
+  created() {
+    this.availableYears = this.generatePastYears(5); // Generate the past 5 years
+  },
+  watch: {
+    selectedYearAndMonth: {
+      immediate: true,
+      handler(newValue) {
+        // console.log("selectedYear or selectedMonth changed to", newValue);
+        this.updateData();
+      },
+    },
+  },
+  mounted() {
+    // this.updateData();
+  },
   methods: {
-    EmploymentFetchData() {
-      return axios
-        .get(`${backendURL}/api/employmentStatus`)
-        .then((response) => {
-          // Initialize data arrays
+    async updateData() {
+      this.isLoading = true;
+      try {
+        await Promise.all([
+          this.getNumberOfRecordsPerMonth(),
+          this.getNumberOfCategoryRequestsPerMonth(),
+          this.getPercentageOfRequestingEmployee(),
+          this.getDetailsOfRequestingEmployee(),
+        ]);
+        this.chartKey++;
+      } catch (error) {
+        console.error(error);
+      } finally {
+        this.isLoading = false;
+      }
+    },
+    generatePastYears(numYears) {
+      const currentYear = new Date().getFullYear();
+      return Array.from({ length: numYears }, (_, i) => currentYear - i);
+    },
 
-          const moa = [];
-          const permanent = [];
-          const contractual = [];
-          const coterminos = [];
-          const casual = [];
+    createChartConfig(labels, values) {
+      return {
+        labels: labels,
+        label: ["Number of Record Per month"],
+        values: values,
+        backgroundColor: [
+          "rgba(226, 80, 76, 1)",
+          "rgba(106, 158, 218, 1)",
+          "rgba(210, 178, 2, 1)",
+          "rgba(255, 105, 97, 1)",
+          "rgba(132, 182, 244, 1)",
+          "rgba(238, 202, 6, 1)",
+          "rgba(226, 80, 76, 1)",
+          "rgba(106, 158, 218, 1)",
+          "rgba(210, 178, 2, 1)",
+          "rgba(255, 105, 97, 1)",
+          "rgba(132, 182, 244, 1)",
+          "rgba(238, 202, 6, 1)",
+        ],
+      };
+    },
 
-          response.data.forEach((item) => {
-            const employmentstatus = item.employment_status;
+    constructUrl(endpoint) {
+      let url = `${backendURL}/api/${endpoint}`;
+      if (this.selectedMonth !== "All") {
+        url += `/${this.selectedMonth}`;
+      }
+      url += `/${this.selectedYear}`;
+      return url;
+    },
 
-            switch (employmentstatus) {
-              case "MOA":
-                moa.push(item);
-                break;
-              case "PERMANENT":
-                permanent.push(item);
-                break;
-              case "CONTRACTUAL":
-                contractual.push(item);
-                break;
-              case "COTERMINOS":
-                coterminos.push(item);
-                break;
-              case "CASUAL":
-                casual.push(item);
-                break;
-              default:
-                // Handle other cases if necessary
-                break;
-            }
-          });
+    handleApiError(error) {
+      console.error(error);
+      // Handle the error appropriately here
+      // For example, show an error message to the user
+      this.errorMessage = "Failed to fetch data";
+    },
 
-          // Calculate data lengths
-          const moaLength = moa.length;
-          const permanentLength = permanent.length;
-          const contractualLength = contractual.length;
-          const coterminosLength = coterminos.length;
-          const casualLength = casual.length;
+    async getNumberOfRecordsPerMonth() {
+      const url = this.constructUrl("numberOfRecordsPerMonth");
+      try {
+        const res = await axios.get(url);
+        this.NumberOfRecordsPerMonth = res.data.NumberOfRecordsPerMonth;
+        // console.log(this.NumberOfRecordsPerMonth);
+        this.recordsPerMonthChart = this.createChartConfig(
+          Object.keys(this.NumberOfRecordsPerMonth),
+          Object.values(this.NumberOfRecordsPerMonth)
+        );
+        this.chartKey++;
+      } catch (error) {
+        console.error(error);
+        this.recordsPerMonthChart = this.createChartConfig(
+          [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec",
+          ],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        );
+      }
+    },
 
-          console.log(permanentLength);
-          // Prepare and return data
-          const employmentdata = {
-            labels: ["MOA", "PERMANENT", "CONTRACTUAL", "COTERMINOS", "CASUAL"],
-            label: ["Employment Data"],
-            values: [
-              moaLength,
-              permanentLength,
-              contractualLength,
-              coterminosLength,
-              casualLength,
-            ],
-            backgroundColor: [
-              "rgba(226, 80, 76, 1)",
-              "rgba(106, 158, 218, 1)",
-              "rgba(238, 202, 6, 1)",
-              "rgba(255, 105, 97, 1)",
-              "rgba(132, 182, 244, 1)",
-            ],
-          };
-          // Set barChartData to the computed data
-          this.EmploymentData = employmentdata;
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
+    async getNumberOfCategoryRequestsPerMonth() {
+      const url = this.constructUrl("totalNumberOfCategoryRequest");
+      try {
+        const res = await axios.get(url);
+        this.TotalNumberOfCategoryRequest =
+          res.data.TotalNumberOfCategoryRequest;
+        // console.log(this.TotalNumberOfCategoryRequest);
+        this.numberOfCategoryRequest = this.createChartConfig(
+          Object.keys(this.TotalNumberOfCategoryRequest),
+          Object.values(this.TotalNumberOfCategoryRequest)
+        );
+        this.chartKey++;
+      } catch (error) {
+        console.error(error);
+        // Handle the error appropriately here
+      }
+    },
 
-          const employmentdata = {
-            labels: ["MOA", "PERMANENT", "CONTRACTUAL", "COTERMINOS", "CASUAL"],
-            label: ["Employment Data"],
-            values: [1, 1, 1, 1, 1],
-            backgroundColor: [
-              "rgba(226, 80, 76, 1)",
-              "rgba(106, 158, 218, 1)",
-              "rgba(238, 202, 6, 1)",
-              "rgba(255, 105, 97, 1)",
-              "rgba(132, 182, 244, 1)",
-            ],
-          };
-          // Set barChartData to the computed data
-          this.EmploymentData = employmentdata;
-        });
+    async getPercentageOfRequestingEmployee() {
+      const url = this.constructUrl("percentageOfRequestingEmployee");
+      try {
+        const res = await axios.get(url);
+        this.CountOfRequestingEmployee = res.data.CountOfRequestingEmployee;
+        // console.log(this.CountOfRequestingEmployee);
+        this.countOfRequestingEmployee = this.createChartConfig(
+          Object.keys(this.CountOfRequestingEmployee),
+          Object.values(this.CountOfRequestingEmployee),
+          [
+            "rgba(226, 80, 76, 1)",
+            "rgba(106, 158, 218, 1)",
+            "rgba(210, 178, 2, 1)",
+            "rgba(255, 105, 97, 1)",
+            "rgba(132, 182, 244, 1)",
+            "rgba(238, 202, 6, 1)",
+            "rgba(226, 80, 76, 1)",
+            "rgba(106, 158, 218, 1)",
+            "rgba(210, 178, 2, 1)",
+            "rgba(255, 105, 97, 1)",
+            "rgba(132, 182, 244, 1)",
+            "rgba(238, 202, 6, 1)",
+          ]
+        );
+        this.chartKey++;
+      } catch (error) {
+        console.error(error);
+        // Handle the error appropriately here
+        this.countOfRequestingEmployee = this.createChartConfig(
+          ["Permanent", "Contractual", "MOA"],
+          [0, 0, 0],
+          [
+            "rgba(226, 80, 76, 1)",
+            "rgba(106, 158, 218, 1)",
+            "rgba(210, 178, 2, 1)",
+          ]
+        );
+      }
+    },
+
+    async getDetailsOfRequestingEmployee() {
+      const url = this.constructUrl("detailsOfRequestingEmployee");
+      try {
+        const res = await axios.get(url);
+        this.DetailsOfRequestingEmployee = res.data.DetailsOfRequestingEmployee;
+        // console.log(this.DetailsOfRequestingEmployee);
+        this.chartKey++;
+      } catch (error) {
+        console.error(error);
+        // Handle the error appropriately here
+        // For example, show an error message to the user
+        this.errorMessage = "Failed to get details of requesting employee";
+      }
     },
   },
 
   mounted() {
     // Automatically fetch data when the component is mounted
-    this.EmploymentFetchData();
   },
 };
 </script>
 
 <style scoped>
+@import "datatables.net-dt";
+@import "datatables.net-bs5";
 .shadow2 {
   box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.15);
   height: 400px;
-  /* border-radius: 20px; */
+  border-radius: 3px;
   margin: 5px 5px 5px 5px;
   padding: 10px 0px 10px 0px;
 }
@@ -302,7 +416,7 @@ export default {
 }
 
 .Barchart1 {
-  height: 340px;
+  height: 300px;
 }
 
 .inside {

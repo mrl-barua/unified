@@ -61,11 +61,11 @@
       <div class="dashboard-box">
         <div
           style="
-            background-color: ;
-            color: black;
-            padding: 10px;
-            font-weight: bold;
-            font-size: 20px;
+            font-family: Inter;
+            font-size: 25px;
+            font-weight: 700;
+            line-height: 30px;
+            letter-spacing: 0em;
             text-align: center;
           "
         >
@@ -108,14 +108,14 @@
 
     <!-- Status -->
     <div class="col-12 col-md-6">
-      <div class="dashboard-box" style="height: 254px">
+      <div class="dashboard-box" style="height: 275px">
         <div
           style="
-            background-color: ;
-            color: black;
-            padding: 10px;
-            font-weight: bold;
-            font-size: 20px;
+           font-family: Inter;
+            font-size: 25px;
+            font-weight: 700;
+            line-height: 30px;
+            letter-spacing: 0em;
             text-align: center;
           "
         >
@@ -124,12 +124,16 @@
 
         <div style="display: flex; justify-content: space-between">
           <div style="flex: 1; padding: 10px; text-align: center">
-            <span style="font-size: 20px; font-weight: bold; color: black"
+            <span style="font-family: Inter;
+                        font-size: 22px;
+                        font-weight: 500;"
               >FILLED</span
             >
           </div>
           <div style="flex: 1; padding: 10px; text-align: center">
-            <span style="font-size: 20px; font-weight: bold; color: black"
+            <span style="font-family: Inter;
+                        font-size: 22px;
+                        font-weight: 500;"
               >UNFILLED</span
             >
           </div>
@@ -312,14 +316,19 @@
         <div style="flex: 1; padding: 10px; text-align: center">
           <br />
           <br />
-          <span style="font-size: 20px; font-weight: bold; color: black"
+          <span 
+          style="font-family: Inter;
+                  font-size: 25px;
+                  font-weight: 700;"
             >WITH ELIGIBILITY</span
           >
         </div>
         <div style="flex: 1; padding: 10px; text-align: center">
           <br />
           <br />
-          <span style="font-size: 20px; font-weight: bold; color: black"
+          <span style="font-family: Inter;
+                        font-size: 25px;
+                        font-weight: 700;"
             >WITHOUT ELIGIBILITY</span
           >
         </div>
@@ -429,17 +438,19 @@ export default {
   padding: 20px;
   margin: 5px 5px 5px 5px;
   box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
 }
 
 .shadow3 {
   height: 275px;
-  /* border-radius: 20px; */
+  border-radius: 3px;
 }
 .shadow2 {
   box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.15);
   height: 300px;
   margin: 5px 5px 5px 5px;
   padding: 10px;
+  border-radius: 3px;
 }
 
 .Barchart1 {
@@ -447,20 +458,23 @@ export default {
 }
 
 .h2 {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Inter;
   margin: 15px 5px;
+  font-size: 25px;
   background-color: #133f5c;
   color: white;
-  font-weight: bold;
+  font-weight: 700;
   text-align: center;
-  padding: 2px;
+  padding: 12px 0 4px 0;
 }
+
 .employmentdata-header {
-  color: black;
-  padding: 10px;
-  font-weight: bold;
-  font-size: 20px;
-  text-align: center;
+  font-family: Inter;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: center;
 }
 .employmentdata-text {
   color: black;
@@ -473,7 +487,14 @@ export default {
   font-size: 40px;
   font-weight: bold;
 }
-
+h5{
+  font-family: Inter;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: center;
+}
 .chart-container {
   /* padding-bottom: 20px; */
   width: 100%;
