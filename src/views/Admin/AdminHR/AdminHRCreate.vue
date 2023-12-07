@@ -1,6 +1,6 @@
 <template>
   <br /><br /><br /><br />
-  <AdminSidebar :iconText="PageTitle" />
+  <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
   <div>
     <div class="container-fluid">
       <div class="Header"></div>
@@ -184,7 +184,8 @@ export default {
 
   data() {
     return {
-      PageTitle: "ADMIN HR > ADD",
+      PageTitle: "EMPLOYEE WELFARE AND RELATIONS",
+      PageDetail: "Add New Record",
 
       errorList: "",
 

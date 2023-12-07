@@ -648,7 +648,7 @@ export default {
   data() {
     return {
       PageTitle:
-        "List of Registration, Licensing, and Accreditation of Social Welfare and Development Agencies (SWDA)",
+        "List of Registration, Licensing, and Accreditation of Social Welfare and Development Agencies",
       PageDetail: "Add New Record",
       errorList: "",
       model: {

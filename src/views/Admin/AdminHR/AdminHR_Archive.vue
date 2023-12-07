@@ -1,6 +1,6 @@
 <template>
   <div>
-    <AdminSidebar :iconText="PageTitle" />
+    <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
     <br /><br /><br /><br />
     <div class="container-fluid wrapper"></div>
     <div class="card card-margin">
@@ -152,8 +152,8 @@ export default {
   },
   data() {
     return {
-      PageTitle: "ADMIN HR ARCHIVE", // The title displayed on the page, which is "ADMIN HR"
-
+      PageTitle: "EMPLOYEE WELFARE AND RELATIONS",
+      PageDetail: "Inactive Main Dashboard",
       hr: [],
     };
   },

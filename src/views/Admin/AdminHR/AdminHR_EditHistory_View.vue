@@ -1,6 +1,6 @@
 <template>
   <div>
-    <AdminSidebar :iconText="PageTitle" />
+    <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
     <br /><br /><br /><br /><br />
     <div class="container-fluid wrapper">
       <div class="col-12 page-border">
@@ -116,8 +116,8 @@ export default {
   },
   data() {
     return {
-      PageTitle: "ADMIN HR EDIT HISTORY VIEW",
-
+      PageTitle: "EMPLOYEE WELFARE AND RELATIONS",
+      PageDetail: "View Edit Details",
       model: {
         Hr: {
           id: "",

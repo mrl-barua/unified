@@ -308,7 +308,7 @@ nav .logo {
 
 .admin p {
   color: white;
-  margin-right: 48px;
+  margin-right: 52px;
 }
 
 nav .logo img {
