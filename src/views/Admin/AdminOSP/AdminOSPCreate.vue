@@ -1,6 +1,6 @@
 <template>
   <br /><br /><br /><br />
-  <AdminSidebar :iconText="PageTitle" />
+  <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
   <div>
     <div class="container-fluid">
       <div class="Header"></div>
@@ -744,7 +744,8 @@ export default {
   },
   data() {
     return {
-      PageTitle: "ADMIN OSD > ADD", // The title displayed on the page, which is "ADMIN HR"
+      PageTitle: "OPERATIONAL STAFF DATABASE",
+      PageDetail: "Add New Record",
       OsdID: "",
       errorList: "",
       // The model for the form inputs  (the data that will be sent to the backend) is defined here as an empty object with the following properties: Osd

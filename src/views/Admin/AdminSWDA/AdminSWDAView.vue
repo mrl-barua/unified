@@ -1,6 +1,6 @@
 <template>
   <div>
-    <AdminSidebar :iconText="PageTitle" />
+    <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
     <br /><br /><br /><br /><br />
     <div class="container-fluid wrapper">
       <div class="col-12 col-md-12">
@@ -12,7 +12,7 @@
           >
             {{ model.Swda.Agency }}
           </p>
-          <p v-else class="agencyContent error">No Data</p>
+          <p v-else class="agencyContent error text-center">No Data</p>
           <hr class="hr" />
         </div>
 
@@ -407,7 +407,9 @@ export default {
   },
   data() {
     return {
-      PageTitle: "ADMIN SWDA VIEW",
+      PageTitle:
+        "List of Registration, Licensing, and Accreditation of Social Welfare and Development Agencies",
+      PageDetail: "View Details",
 
       model: {
         Swda: {

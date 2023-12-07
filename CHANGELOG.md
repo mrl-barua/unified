@@ -441,7 +441,35 @@
 - Completed the ADMIN HR and ADMIN OSP FUNCTIONALITIES
 - Added Version History for ADMIN HR and OSP Routes in Router.js
 
-### version 8.10
+### version 8.10 MARLO BARUA
 
 - Fix the table margins for all ADMIN PAGE
 - Add Error Fetch table for all ADMIN PAGE
+
+### version 9.0 MARLO BARUA
+
+- Added Catch Block in the CBSS USER VIEW
+
+### version 9.1 MARLO BARUA
+
+- Added Data in HR USER PAGE AND FILTERING METHODS
+
+### version 9.2 MARLO BARUA
+
+- Done with the HR USER PAGE
+
+### version 9.3 KIARA HAGUNOB
+
+- Design fixed user dashboards of CBSS, HR, and OSD
+
+### version 9.4 MARLO BARUA
+
+- Update user dashboards and add date-fns library
+- Fix IconDetails for USER PAGE and ADMIN PAGE (ADMIN SWDA & ADMIN CBSS)
+
+### version 9.5 MARLO BARUA
+
+- Done with the OSD USER PAGE
+- Configured the Session With Sweet Alert 2 for Better User Experience
+- Optimized the Login() in the LoginForm.vue
+- Optimized the Design for Admin PAGE

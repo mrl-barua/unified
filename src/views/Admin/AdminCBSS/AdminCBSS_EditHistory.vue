@@ -1,6 +1,6 @@
 <template>
   <div>
-    <AdminSidebar :iconText="PageTitle" />
+    <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
     <br /><br /><br /><br /><br />
     <div class="container-fluid wrapper">
       <p class="Header">Recent Edit</p>
@@ -118,7 +118,8 @@ export default {
   },
   data() {
     return {
-      PageTitle: "ADMIN EDIT HISTORY ",
+      PageTitle: "Community Based Services Section",
+      PageDetail: "Edit History Log",
       cbss: [],
 
       model: {

@@ -147,21 +147,14 @@
             </li> -->
             </ul>
 
-            <div class="bottom-cotent">
-              <!-- <li class="list">
-              <a href="#" class="nav-link">
-                <i class="bx bx-cog icon"></i>
-                <span class="link">Settings</span>
-              </a>
-            </li> -->
-              <router-link to="/" class="custom-link">
-                <li class="list">
-                  <div @click="logout" class="nav-link" style="cursor: pointer">
-                    <i class="bx bx-log-out icon"></i>
-                    <span class="link"> Logout </span>
-                  </div>
-                </li>
-              </router-link>
+            <div class="bottom-content">
+              <li class="list">
+                <div @click="logout" class="nav-link" style="cursor: pointer">
+                  <i class="bx bx-log-out icon"></i>
+                  <span class="link"> Logout </span>
+                </div>
+                <br />
+              </li>
             </div>
           </div>
         </div>
@@ -223,12 +216,25 @@ export default {
           : `calc(6em - ${window.scrollY}px)`;
       }
     },
-    logout() {
-      // Clear the user's authentication status in localStorage
-      localStorage.removeItem("user");
 
-      // Redirect the user to the login page
-      this.$router.push("/"); // Change the path to match your login route
+    logout() {
+      this.$swal({
+        title: "Are you sure?",
+        text: "You will be logged out of your account",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, log out!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Clear the user's authentication status in localStorage
+          // sessionStorage.removeItem("admin");
+
+          // Redirect the user to the login page
+          this.$router.push("/"); // Change the path to match your login route
+        }
+      });
     },
   },
 };

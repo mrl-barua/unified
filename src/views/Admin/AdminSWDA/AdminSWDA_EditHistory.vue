@@ -1,6 +1,6 @@
 <template>
   <div>
-    <AdminSidebar :iconText="PageTitle" />
+    <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
     <br /><br /><br /><br /><br />
     <div class="container-fluid wrapper">
       <p class="Header">Recent Edit</p>
@@ -117,7 +117,9 @@ export default {
   },
   data() {
     return {
-      PageTitle: "ADMIN EDIT HISTORY ",
+      PageTitle:
+        "List of Registration, Licensing, and Accreditation of Social Welfare and Development Agencies",
+      PageDetail: "Edit History Log",
       swda: [],
 
       model: {

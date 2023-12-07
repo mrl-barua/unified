@@ -1,6 +1,6 @@
 <template>
   <div>
-    <AdminSidebar :iconText="PageTitle" />
+    <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
     <br /><br /><br /><br />
     <div class="container-fluid wrapper"></div>
     <div class="card card-margin">
@@ -27,13 +27,13 @@
           @click="exportToExcel"
           class="btn btn-primary float-end"
           style="
-            background-color: Green;
+            background-color: #0229bf;
             font-size: 12px; /* Adjust the font size as needed */
             padding: 10px 30px 10px 30px;
             margin-left: auto;
           "
         >
-          EXPORT DATA
+          EXPORT TO EXCEL
         </button>
       </div>
       <div class="card-body">
@@ -150,8 +150,8 @@ export default {
   },
   data() {
     return {
-      PageTitle: "ADMIN OSP ARCHIVE", // The title displayed on the page, which is "ADMIN HR"
-
+      PageTitle: "OPERATIONAL STAFF DATABASE",
+      PageDetail: "Inactive Main Dashboard",
       Osd: [],
     };
   },

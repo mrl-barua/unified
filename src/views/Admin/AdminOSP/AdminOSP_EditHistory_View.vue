@@ -1,6 +1,6 @@
 <template>
   <div>
-    <AdminSidebar :iconText="PageTitle" />
+    <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
     <br /><br /><br /><br /><br />
     <div class="container-fluid wrapper">
       <div class="col-12">
@@ -519,7 +519,8 @@ export default {
   },
   data() {
     return {
-      PageTitle: "ADMIN OSD EDIT HISTORY VIEW",
+      PageTitle: "OPERATIONAL STAFF DATABASE",
+      PageDetail: "View Edit Details",
 
       model: {
         Osd: {
@@ -704,5 +705,23 @@ export default {
   justify-content: center;
   margin: auto;
   box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.15);
+}
+
+.head {
+  font-family: Inter;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 27px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+.headContent {
+  font-family: Inter;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 30px;
+  letter-spacing: 0em;
+  text-align: center;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <AdminSidebar :iconText="PageTitle" />
+    <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail"/>
     <br /><br /><br /><br /><br />
     <div class="container-fluid wrapper">
       <p class="Header">Recent Edit</p>
@@ -123,7 +123,9 @@ export default {
   },
   data() {
     return {
-      PageTitle: "ADMIN EDIT HISTORY ",
+     
+    PageTitle: "OPERATIONAL STAFF DATABASE",
+      PageDetail: "Edit History Logs",
       osp: [],
 
       model: {

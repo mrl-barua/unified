@@ -1,6 +1,6 @@
 <template>
   <br /><br /><br /><br />
-  <AdminSidebar :iconText="PageTitle" />
+  <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
   <div>
     <div class="container-fluid">
       <div class="Header"></div>
@@ -420,7 +420,8 @@ export default {
   },
   data() {
     return {
-      PageTitle: "ADMIN CBSS > ADD", // The title displayed on the page, which is "ADMIN HR"
+      PageTitle: "Community Based Services Section",
+      PageDetail: "Add New Record",
       CbssID: "",
       errorList: "",
       // The model for the form inputs  (the data that will be sent to the backend) is defined here as an empty object with the following properties: Osd
@@ -458,10 +459,15 @@ export default {
             icon: "success",
             title: "Success!",
             text: res.data.message,
-          }).then(() => {
-            this.$router.push("/admincbss");
-            // window.location.reload();
-          });
+          })
+            .then(() => {
+              this.$router.push("/admincbss");
+              // window.location.reload();
+            })
+            .then(() => {
+              // this.$router.push("/admincbss");
+              window.location.reload();
+            });
           this.model.Cbss = {
             ID: "",
             DATE: "",
@@ -533,5 +539,9 @@ export default {
   margin-right: 20px;
   width: 180px;
   margin-bottom: 20px;
+}
+
+.col-12 {
+  margin-bottom: 5px;
 }
 </style>

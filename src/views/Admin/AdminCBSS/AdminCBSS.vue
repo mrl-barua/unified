@@ -1,6 +1,6 @@
 <template>
   <div>
-    <AdminSidebar :iconText="PageTitle" />
+    <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
     <br /><br /><br /><br />
     <div class="container-fluid wrapper"></div>
     <div class="card card-margin">
@@ -196,8 +196,8 @@ export default {
   },
   data() {
     return {
-      PageTitle: "ADMIN CBSS", // The title displayed on the page, which is "ADMIN HR"
-
+      PageTitle: "Community Based Services Section",
+      PageDetail: "Active Admin Dashboard",
       cbss: [],
     };
   },

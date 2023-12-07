@@ -1,6 +1,6 @@
 <template>
   <br /><br /><br /><br />
-  <AdminSidebar :iconText="PageTitle" />
+  <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
   <div>
     <div class="container-fluid">
       <div class="Header"></div>
@@ -20,7 +20,7 @@
 
       <div class="mb-3 col-12">
         <div class="spaceBetween">
-          <label for="agency">AGENCY</label>
+          <label>AGENCY</label>
           <input
             type="text"
             v-model="model.Swda.Agency"
@@ -32,7 +32,7 @@
       </div>
       <div class="mb-3 col-3">
         <div class="spaceBetween">
-          <label for="type">TYPE</label>
+          <label>TYPE</label>
           <select
             v-model="model.Swda.Type"
             class="form-control centered-placeholder"
@@ -47,7 +47,7 @@
 
       <div class="mb-3 col-3">
         <div class="spaceBetween">
-          <label for="address">ADDRESS</label>
+          <label>ADDRESS</label>
           <input
             type="text"
             v-model="model.Swda.Address"
@@ -59,7 +59,7 @@
 
       <div class="mb-3 col-3">
         <div class="spaceBetween">
-          <label for="contactNumber">CONTACT NUMBER</label>
+          <label>CONTACT NUMBER</label>
           <input
             type="text"
             v-model="model.Swda.Contact_Number"
@@ -71,7 +71,7 @@
 
       <div class="mb-3 col-3">
         <div class="spaceBetween">
-          <label for="formerName">FORMER NAME</label>
+          <label>FORMER NAME</label>
           <input
             type="text"
             v-model="model.Swda.Former_Name"
@@ -84,7 +84,7 @@
       <div class="col-12">
         <div class="mb-3 col-3">
           <div class="spaceBetween">
-            <label for="cluster">CLUSTER</label>
+            <label>CLUSTER</label>
             <select
               v-model="model.Swda.Cluster"
               class="form-control centered-placeholder"
@@ -104,7 +104,7 @@
         </div>
         <div class="mb-3 col-3">
           <div class="spaceBetween">
-            <label for="fax">FAX</label>
+            <label>FAX</label>
             <input
               type="text"
               v-model="model.Swda.Fax"
@@ -115,7 +115,7 @@
         </div>
         <div class="mb-3 col-3">
           <div class="spaceBetween">
-            <label for="email">EMAIL</label>
+            <label>EMAIL</label>
             <input
               type="text"
               v-model="model.Swda.Email"
@@ -126,7 +126,7 @@
         </div>
         <div class="mb-3 col-3">
           <div class="spaceBetween">
-            <label for="website">WEBSITE</label>
+            <label>WEBSITE</label>
             <input
               type="text"
               v-model="model.Swda.Website"
@@ -140,11 +140,11 @@
       <div class="col-12">
         <div class="mb-3 col-3">
           <div class="spaceBetween">
-            <label for="sector">SECTOR</label>
+            <label>SECTOR</label>
             <select
               v-model="model.Swda.Sector"
               class="form-control centered-placeholder"
-              id="type"
+              id="sector"
             >
               <option value="" disabled selected>Select an option ⮟</option>
               <option value="Children">Children</option>
@@ -168,7 +168,7 @@
 
         <div class="mb-3 col-3">
           <div class="spaceBetween">
-            <label for="contactNumber">CONTACT NUMBER</label>
+            <label>CONTACT NUMBER</label>
             <input
               type="text"
               v-model="model.Swda.Contact_Person"
@@ -180,7 +180,7 @@
 
         <div class="mb-3 col-3">
           <div class="spaceBetween">
-            <label for="position">POSITION</label>
+            <label>POSITION</label>
             <input
               type="text"
               v-model="model.Swda.Position"
@@ -192,7 +192,7 @@
 
         <div class="mb-3 col-3">
           <div class="spaceBetween">
-            <label for="mobileNumber">MOBILE NUMBER</label>
+            <label>MOBILE NUMBER</label>
             <input
               type="text"
               v-model="model.Swda.Mobile_Number"
@@ -206,7 +206,7 @@
       <div class="col-12">
         <div class="mb-3 col-4">
           <div>
-            <label for="registered">Registered:</label>
+            <label>Registered:</label>
             <div class="form-check form-check-inline">
               <input
                 class="form-check-input"
@@ -215,7 +215,7 @@
                 value="Yes"
                 id="registeredYes"
               />
-              <label class="form-check-label" for="registeredYes">Yes</label>
+              <label class="form-check-label">Yes</label>
             </div>
             <div class="form-check form-check-inline">
               <input
@@ -225,23 +225,23 @@
                 value="No"
                 id="registeredNo"
               />
-              <label class="form-check-label" for="registeredNo">No</label>
+              <label class="form-check-label">No</label>
             </div>
           </div>
         </div>
 
         <div class="mb-3 col-4">
           <div>
-            <label for="licensed">Licensed: </label>
+            <label>Licensed: </label>
             <div class="form-check form-check-inline">
               <input
                 class="form-check-input"
                 type="radio"
                 v-model="model.Swda.Licensed"
                 value="Yes"
-                id="registeredYes"
+                id="licensedregisteredYes"
               />
-              <label class="form-check-label" for="licensedNo">Yes</label>
+              <label class="form-check-label">Yes</label>
             </div>
             <div class="form-check form-check-inline">
               <input
@@ -249,25 +249,25 @@
                 type="radio"
                 v-model="model.Swda.Licensed"
                 value="No"
-                id="registeredNo"
+                id="licensedregisteredNo"
               />
-              <label class="form-check-label" for="licensedNo">No</label>
+              <label class="form-check-label">No</label>
             </div>
           </div>
         </div>
 
         <div class="mb-3 col-4">
           <div>
-            <label for="accredited">Accredited: </label>
+            <label>Accredited: </label>
             <div class="form-check form-check-inline">
               <input
                 class="form-check-input"
                 type="radio"
                 v-model="model.Swda.Accredited"
                 value="Yes"
-                id="registeredYes"
+                id="accreditedregisteredYes"
               />
-              <label class="form-check-label" for="accreditedNo">Yes</label>
+              <label class="form-check-label">Yes</label>
             </div>
             <div class="form-check form-check-inline">
               <input
@@ -275,9 +275,9 @@
                 type="radio"
                 v-model="model.Swda.Accredited"
                 value="No"
-                id="registeredNo"
+                id="accreditedregisteredNo"
               />
-              <label class="form-check-label" for="accreditedNo">No</label>
+              <label class="form-check-label">No</label>
             </div>
           </div>
         </div>
@@ -292,7 +292,7 @@
       <div class="col-12">
         <div class="mb-3 col-5">
           <div class="spaceBetween">
-            <label for="servicesOffered">SERVICES OFFERED</label>
+            <label>SERVICES OFFERED</label>
             <input
               type="text"
               v-model="model.Swda.Services_Offered"
@@ -303,7 +303,7 @@
         </div>
         <div class="mb-3 col-4">
           <div class="spaceBetween">
-            <label for="simplifiedServices">SIMPLIFIED SERVICES</label>
+            <label>SIMPLIFIED SERVICES</label>
             <input
               type="text"
               v-model="model.Swda.Simplified_Services"
@@ -314,7 +314,7 @@
         </div>
         <div class="mb-3 col-3">
           <div class="spaceBetween">
-            <label for="clientele">CLIENTELE</label>
+            <label>CLIENTELE</label>
             <input
               type="text"
               v-model="model.Swda.Clientele"
@@ -328,7 +328,7 @@
       <div class="col-12">
         <div class="mb-3 col-3">
           <div class="spaceBetween">
-            <label for="areaOfOperation">AREA OF OPERATION</label>
+            <label>AREA OF OPERATION</label>
             <select
               v-model="model.Swda.Area_of_Operation"
               class="form-control centered-placeholder"
@@ -344,7 +344,7 @@
 
         <div class="mb-3 col-3">
           <div class="spaceBetween">
-            <label for="regionalOperation">REGIONAL OPERATION</label>
+            <label>REGIONAL OPERATION</label>
             <select
               v-model="model.Swda.Regional_Operation"
               class="form-control centered-placeholder"
@@ -362,9 +362,7 @@
 
         <div class="mb-3 col-3">
           <div class="spaceBetween">
-            <label for="specifiedAreasOfOperation"
-              >SPECIFIED AREA OF OPERATION</label
-            >
+            <label>SPECIFIED AREA OF OPERATION</label>
             <select
               v-model="model.Swda.Specified_Areas_of_Operation"
               class="form-control centered-placeholder"
@@ -382,7 +380,7 @@
 
         <div class="mb-3 col-3">
           <div class="spaceBetween">
-            <label for="modeOfDelivery">MODE OF DELIVERY</label>
+            <label>MODE OF DELIVERY</label>
             <select
               v-model="model.Swda.Mode_of_Delivery"
               class="form-control centered-placeholder"
@@ -403,7 +401,7 @@
         <div class="col-9">
           <div class="mb-3 col-4">
             <div class="spaceBetween">
-              <label for="registrationID">REGISTRATION ID</label>
+              <label>REGISTRATION ID</label>
               <input
                 type="text"
                 v-model="model.Swda.Registration_ID"
@@ -415,7 +413,7 @@
 
           <div class="mb-3 col-4">
             <div class="spaceBetween">
-              <label for="registrationDateIssued">REGISTRATION DATE</label>
+              <label>REGISTRATION DATE</label>
               <input
                 type="date"
                 v-model="model.Swda.Registration_Date"
@@ -427,9 +425,7 @@
 
           <div class="mb-3 col-4">
             <div class="spaceBetween">
-              <label for="registrationDateIssued"
-                >REGISTRATION EXPIRATION</label
-              >
+              <label>REGISTRATION EXPIRATION</label>
               <input
                 type="date"
                 v-model="model.Swda.Registration_Expiration"
@@ -441,7 +437,7 @@
 
           <div class="mb-3 col-4">
             <div class="spaceBetween">
-              <label for="licenseID">LICENSE ID</label>
+              <label>LICENSE ID</label>
               <input
                 type="text"
                 v-model="model.Swda.Licensed_ID"
@@ -453,7 +449,7 @@
 
           <div class="mb-3 col-4">
             <div class="spaceBetween">
-              <label for="licenseDateIssued">LICENSE DATA ISSUED</label>
+              <label>LICENSE DATA ISSUED</label>
               <input
                 type="date"
                 v-model="model.Swda.License_Date_Issued"
@@ -465,7 +461,7 @@
 
           <div class="mb-3 col-4">
             <div class="spaceBetween">
-              <label for="licenseExpiration">LICENSE EXPIRATION</label>
+              <label>LICENSE EXPIRATION</label>
               <input
                 type="date"
                 v-model="model.Swda.License_Expiration"
@@ -477,7 +473,7 @@
 
           <div class="mb-3 col-4">
             <div class="spaceBetween">
-              <label for="accreditationID">ACCREDITATION ID</label>
+              <label>ACCREDITATION ID</label>
               <input
                 type="text"
                 v-model="model.Swda.Accreditation_ID"
@@ -489,9 +485,7 @@
 
           <div class="mb-3 col-4">
             <div class="spaceBetween">
-              <label for="accreditationDateIssued"
-                >ACCREDITATION DATE ISSUED</label
-              >
+              <label>ACCREDITATION DATE ISSUED</label>
               <input
                 type="date"
                 v-model="model.Swda.Accreditation_Date_Issued"
@@ -503,9 +497,7 @@
 
           <div class="mb-3 col-4">
             <div class="spaceBetween">
-              <label for="accreditationExpiration"
-                >ACCREDITATION EXPIRATION</label
-              >
+              <label>ACCREDITATION EXPIRATION</label>
               <input
                 type="date"
                 v-model="model.Swda.Accreditation_Expiration"
@@ -518,7 +510,7 @@
           <div class="col-9">
             <div class="mb-3 col-12">
               <div class="spaceBetween">
-                <label for="remarks">REMARKS</label>
+                <label>REMARKS</label>
                 <input
                   type="text"
                   v-model="model.Swda.Remarks"
@@ -532,7 +524,7 @@
           <div class="col-3">
             <div class="mb-3 col-12">
               <div class="spaceBetween">
-                <label for="licenseDaysLeft">LICENSE DAYS LEFT</label>
+                <label>LICENSE DAYS LEFT</label>
                 <input
                   type="number"
                   v-model="model.Swda.License_Days_Left"
@@ -545,9 +537,7 @@
 
             <div class="mb-3 col-12">
               <div class="spaceBetween">
-                <label for="accreditationDaysLeft"
-                  >ACCREDITATION DAYS LEFT</label
-                >
+                <label>ACCREDITATION DAYS LEFT</label>
                 <input
                   type="number"
                   v-model="model.Swda.Accreditation_Days_Left"
@@ -563,11 +553,11 @@
         <div class="col-3">
           <div class="mb-3 col-12">
             <div class="spaceBetween">
-              <label for="registrationStatus">REGISTRATION STATUS</label>
+              <label>REGISTRATION STATUS</label>
               <select
                 v-model="model.Swda.Registration_Status"
                 class="form-control centered-placeholder"
-                id="type"
+                id="registrationtype"
               >
                 <option value="" disabled selected>Select an option ⮟</option>
                 <option value="Active/Valid">Active/Valid</option>
@@ -578,11 +568,11 @@
 
           <div class="mb-3 col-12">
             <div class="spaceBetween">
-              <label for="licenseStatus">LICENSE STATUS</label>
+              <label>LICENSE STATUS</label>
               <select
                 v-model="model.Swda.License_Status"
                 class="form-control centered-placeholder"
-                id="type"
+                id="licensetype"
               >
                 <option value="" disabled selected>Select an option ⮟</option>
                 <option value="Active/Valid">Active/Valid</option>
@@ -593,11 +583,11 @@
 
           <div class="mb-3 col-12">
             <div class="spaceBetween">
-              <label for="accreditationStatus">ACCREDITATION STATUS</label>
+              <label>ACCREDITATION STATUS</label>
               <select
                 v-model="model.Swda.Accreditation_Status"
                 class="form-control centered-placeholder"
-                id="type"
+                id="accreditationtype"
               >
                 <option value="" disabled selected>Select an option ⮟</option>
                 <option value="Active/Valid">Active/Valid</option>
@@ -608,7 +598,7 @@
 
           <div class="mb-3 col-12">
             <div class="spaceBetween">
-              <label for="licensureOverdue">LICENSURE OVERDUE</label>
+              <label>LICENSURE OVERDUE</label>
               <input
                 type="number"
                 v-model="model.Swda.Licensure_Overdue"
@@ -621,7 +611,7 @@
 
           <div class="mb-3 col-12">
             <div class="spaceBetween">
-              <label for="accreditationOverdue">ACCREDITATION OVERDUE</label>
+              <label>ACCREDITATION OVERDUE</label>
               <input
                 type="number"
                 v-model="model.Swda.Accreditation_Overdue"
@@ -649,7 +639,7 @@
 <script>
 import axios from "axios";
 import AdminSidebar from "@/components/AdminSidebar";
-
+import { format, parse } from "date-fns";
 export default {
   name: "AdminSWDACreate",
   components: {
@@ -657,8 +647,9 @@ export default {
   },
   data() {
     return {
-      PageTitle: "ADMIN SWDA > ADD",
-
+      PageTitle:
+        "List of Registration, Licensing, and Accreditation of Social Welfare and Development Agencies",
+      PageDetail: "Add New Record",
       errorList: "",
       model: {
         Swda: {
@@ -708,10 +699,50 @@ export default {
   },
 
   methods: {
+    formatDate(dateString) {
+      const parsedDate = parse(dateString, "yyyy-MM-dd", new Date());
+      if (isNaN(parsedDate)) {
+        throw new Error(`Invalid date: ${dateString}`);
+      }
+      return format(parsedDate, "MMMM dd, yyyy");
+    },
     saveSwda() {
       var mythis = this;
+      if (
+        !this.model.Swda.Registration_Date ||
+        !this.model.Swda.License_Date_Issued ||
+        !this.model.Swda.Accreditation_Date_Issued ||
+        !this.model.Swda.Registration_Expiration ||
+        !this.model.Swda.License_Expiration ||
+        !this.model.Swda.Accreditation_Expiration
+      ) {
+        throw new Error("Request date is required");
+      }
+
+      var swdaCopy = Object.assign({}, this.model.Swda);
+
+      // var swdaCopy = Object.assign({}, this.model.Swda);
+
+      swdaCopy.Registration_Date = this.formatDate(
+        this.model.Swda.Registration_Date
+      );
+      swdaCopy.License_Date_Issued = this.formatDate(
+        this.model.Swda.License_Date_Issued
+      );
+      swdaCopy.Accreditation_Date_Issued = this.formatDate(
+        this.model.Swda.Accreditation_Date_Issued
+      );
+      swdaCopy.Registration_Expiration = this.formatDate(
+        this.model.Swda.Registration_Expiration
+      );
+      swdaCopy.License_Expiration = this.formatDate(
+        this.model.Swda.License_Expiration
+      );
+      swdaCopy.Accreditation_Expiration = this.formatDate(
+        this.model.Swda.Accreditation_Expiration
+      );
       axios
-        .post("http://127.0.0.1:8000/api/swdalist", this.model.Swda)
+        .post("http://127.0.0.1:8000/api/swdalist", swdaCopy)
         .then((res) => {
           console.log(res.data);
           // alert(res.data.message);
