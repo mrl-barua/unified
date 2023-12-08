@@ -399,6 +399,7 @@
 <script>
 import AdminSidebar from "@/components/AdminSidebar";
 import axios from "axios"; // Import Axios
+import { backendURL } from "@/config.js";
 
 export default {
   name: "AdminSWDAView",
@@ -464,7 +465,7 @@ export default {
   methods: {
     // SwdaData(SwdaID) {
     //   axios
-    //     .get(`http://127.0.0.1:8000/api/swdalist/${SwdaID}/edit`)
+    //     .get(`${backendURL}/api/swdalist/${SwdaID}/edit`)
 
     //     .then((res) => {
     //       const swdaData = res.data.Swda;
@@ -528,7 +529,7 @@ export default {
 
     SwdaData(SwdaID) {
       axios
-        .get(`http://127.0.0.1:8000/api/swdalist/${SwdaID}/edit`)
+        .get(`${backendURL}/api/swdalist/${SwdaID}/edit`)
         .then((res) => {
           const swdaData = res.data.Swda;
           console.log(res.data.Swda);

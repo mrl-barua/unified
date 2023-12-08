@@ -684,7 +684,7 @@
 <script>
 import axios from "axios";
 import AdminSidebar from "@/components/AdminSidebar";
-
+import { backendURL } from "@/config.js";
 export default {
   name: "AdminSWDAEdit",
   components: {
@@ -754,7 +754,7 @@ export default {
     // The SwdaData() function is used to get the data of the SWDA with the given ID
     SwdaData(SwdaID) {
       axios
-        .get(`http://127.0.0.1:8000/api/swdalist/${SwdaID}/edit`)
+        .get(`${backendURL}/api/swdalist/${SwdaID}/edit`)
         .then((res) => {
           const swdaData = res.data.Swda;
           console.log(res.data.Swda);
@@ -821,7 +821,7 @@ export default {
       var mythis = this;
       axios
         .put(
-          `http://127.0.0.1:8000/api/swdalist/${SwdaID}/edit`,
+          `${backendURL}/api/swdalist/${SwdaID}/edit`,
           // The data to be updated is passed as a parameter to the axios.put() function
           // as the second parameter (the first parameter is the API endpoint) in the form of
           // an object with the following properties: Swda (which contains the data to be updated)

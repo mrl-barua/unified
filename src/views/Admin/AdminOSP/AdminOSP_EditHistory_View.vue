@@ -511,6 +511,7 @@
 <script>
 import AdminSidebar from "@/components/AdminSidebar";
 import axios from "axios"; // Import Axios
+import { backendURL } from "@/config.js";
 
 export default {
   name: "AdminOSDEditHistoryView",
@@ -599,7 +600,7 @@ export default {
   methods: {
     OsdEditHistoryData(OsdID) {
       axios
-        .get(`http://127.0.0.1:8000/api/osdVersion/${OsdID}/view`)
+        .get(`${backendURL}/api/osdVersion/${OsdID}/view`)
         .then((res) => {
           const osdData = res.data.Osd;
           console.log(res.data.Osd);

@@ -154,7 +154,7 @@ export default {
 
     HrData(HrID) {
       axios
-        .get(`http://127.0.0.1:8000/api/hrlist/${HrID}/edit`)
+        .get(`${backendURL}/api/hrlist/${HrID}/edit`)
         .then((res) => {
           const hrData = res.data.Hr;
           console.log(res.data.Hr);

@@ -248,7 +248,7 @@
 <script>
 import axios from "axios";
 import AdminSidebar from "@/components/AdminSidebar";
-
+import { backendURL } from "@/config.js";
 export default {
   name: "AdminCBSSEdit",
   components: {
@@ -305,7 +305,7 @@ export default {
   methods: {
     CbssData(CbssID) {
       axios
-        .get(`http://127.0.0.1:8000/api/cbsslist/${CbssID}/edit`)
+        .get(`${backendURL}/api/cbsslist/${CbssID}/edit`)
         .then((res) => {
           const cbssData = res.data.Cbss;
           console.log(res.data);
@@ -340,7 +340,7 @@ export default {
       var mythis = this;
       axios
         .put(
-          `http://127.0.0.1:8000/api/cbsslist/${CbssID}/edit`,
+          `${backendURL}/api/cbsslist/${CbssID}/edit`,
           // The data to be updated is passed as a parameter to the axios.put() function
           // as the second parameter (the first parameter is the API endpoint) in the form of
           // an object with the following properties: Cbss (which contains the data to be updated)

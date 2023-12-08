@@ -412,7 +412,7 @@
 <script>
 import axios from "axios";
 import AdminSidebar from "@/components/AdminSidebar";
-
+import { backendURL } from "@/config.js";
 export default {
   name: "AdminCBSSCreate",
   components: {
@@ -451,7 +451,7 @@ export default {
     saveCbss() {
       var mythis = this;
       axios
-        .post("http://127.0.0.1:8000/api/cbsslist", this.model.Cbss)
+        .post(`${backendURL}/api/cbsslist`, this.model.Cbss)
         .then((res) => {
           console.log(res.data);
           // alert(res.data.message);

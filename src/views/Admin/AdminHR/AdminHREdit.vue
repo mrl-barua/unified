@@ -180,7 +180,7 @@
 <script>
 import axios from "axios";
 import AdminSidebar from "@/components/AdminSidebar";
-
+import { backendURL } from "@/config.js";
 export default {
   name: "AdminHREdit",
   components: {
@@ -220,7 +220,7 @@ export default {
     // The HrData() function is used to get the data of the HR with the given ID
     HrData(HrID) {
       axios
-        .get(`http://127.0.0.1:8000/api/hrlist/${HrID}/edit`)
+        .get(`${backendURL}/api/hrlist/${HrID}/edit`)
         .then((res) => {
           const hrData = res.data.Hr;
           console.log(res.data.Hr);
@@ -253,7 +253,7 @@ export default {
       var mythis = this;
       axios
         .put(
-          `http://127.0.0.1:8000/api/hrlist/${HrID}/edit`,
+          `${backendURL}/api/hrlist/${HrID}/edit`,
           // The data to be updated is passed as a parameter to the axios.put() function
           // as the second parameter (the first parameter is the API endpoint) in the form of
           // an object with the following properties: Hr (which contains the data to be updated)
