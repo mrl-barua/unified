@@ -72,7 +72,7 @@
                 <li class="list">
                   <a href="#" class="nav-link">
                     <i class="bx bx-bell icon"></i>
-                    <span class="link">ADMIN OSP</span>
+                    <span class="link">ADMIN OSD</span>
                   </a>
                 </li>
               </router-link>
