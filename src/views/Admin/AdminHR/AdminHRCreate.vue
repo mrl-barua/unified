@@ -174,6 +174,7 @@
 <script>
 import axios from "axios";
 import AdminSidebar from "@/components/AdminSidebar";
+import { backendURL } from "@/config.js";
 import { format, parse } from "date-fns";
 export default {
   name: "AdminHRCreate",
@@ -227,7 +228,7 @@ export default {
       hrCopy.date_received = this.formatDate(this.model.Hr.date_received);
       // this.model.Hr.request_date = this.formatDate(this.model.Hr.request_date);
       axios
-        .post("http://127.0.0.1:8000/api/hrlist", hrCopy)
+        .post(`${backendURL}/api/hrlist`, hrCopy)
         .then((res) => {
           console.log(res.data);
           // alert(res.data.message);

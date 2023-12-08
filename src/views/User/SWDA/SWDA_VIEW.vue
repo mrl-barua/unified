@@ -407,7 +407,7 @@ services, and status. * The data is fetched from the model object. * *
 <script>
 import Sidebar from "@/components/Sidebar";
 import axios from "axios"; // Import Axios
-
+import { backendURL } from "@/config.js";
 export default {
   name: "SWDAView",
   components: {
@@ -472,7 +472,7 @@ export default {
   methods: {
     // SwdaData(SwdaID) {
     //   axios
-    //     .get(`http://127.0.0.1:8000/api/swdalist/${SwdaID}/edit`)
+    //     .get(`${backendURL}/api/swdalist/${SwdaID}/edit`)
 
     //     .then((res) => {
     //       const swdaData = res.data.Swda;
@@ -536,7 +536,7 @@ export default {
 
     SwdaData(SwdaID) {
       axios
-        .get(`http://127.0.0.1:8000/api/swdalist/${SwdaID}/edit`)
+        .get(`${backendURL}/api/swdalist/${SwdaID}/edit`)
         .then((res) => {
           const swdaData = res.data.Swda;
           console.log(res.data.Swda);

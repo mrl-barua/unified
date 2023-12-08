@@ -108,7 +108,7 @@
 <script>
 import AdminSidebar from "@/components/AdminSidebar";
 import axios from "axios"; // Import Axios
-
+import { backendURL } from "@/config.js";
 export default {
   name: "AdminHREditHistoryView",
   components: {
@@ -143,7 +143,7 @@ export default {
   methods: {
     HrEditHistoryData(HrID) {
       axios
-        .get(`http://127.0.0.1:8000/api/hrVersion/${HrID}/view`)
+        .get(`${backendURL}/api/hrVersion/${HrID}/view`)
         .then((res) => {
           const hrData = res.data.Hr;
           console.log(res.data.Hr);

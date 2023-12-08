@@ -108,6 +108,7 @@
 <script>
 import axios from "axios";
 import AdminSidebar from "@/components/AdminSidebar";
+import { backendURL } from "@/config.js";
 
 export default {
   name: "AdminHRView",
@@ -149,7 +150,7 @@ export default {
     // The HrData() function is used to get the data of the HR with the given ID
     HrData(HrID) {
       axios
-        .get(`http://127.0.0.1:8000/api/hrlist/${HrID}/edit`)
+        .get(`${backendURL}/api/hrlist/${HrID}/edit`)
         .then((res) => {
           const hrData = res.data.Hr;
           console.log(res.data.Hr);

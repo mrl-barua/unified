@@ -639,6 +639,7 @@
 <script>
 import axios from "axios";
 import AdminSidebar from "@/components/AdminSidebar";
+import { backendURL } from "@/config.js";
 import { format, parse } from "date-fns";
 export default {
   name: "AdminSWDACreate",
@@ -742,7 +743,7 @@ export default {
         this.model.Swda.Accreditation_Expiration
       );
       axios
-        .post("http://127.0.0.1:8000/api/swdalist", swdaCopy)
+        .post(`${backendURL}http://127.0.0.1:8000/api/swdalist`, swdaCopy)
         .then((res) => {
           console.log(res.data);
           // alert(res.data.message);

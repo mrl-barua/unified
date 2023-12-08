@@ -473,3 +473,8 @@
 - Configured the Session With Sweet Alert 2 for Better User Experience
 - Optimized the Login() in the LoginForm.vue
 - Optimized the Design for Admin PAGE
+
+### version 9.6 MARLO BARUA
+
+- Update backend URLs in code
+- Update the Create New Record in OSD

@@ -130,7 +130,7 @@
                 <div class="spaceBetween">
                   <label for="officeLocation">POSITION LEVEL</label>
                   <input
-                    type="text"
+                    type="number"
                     v-model="model.Osd.position_level"
                     class="form-control"
                     id="officeLocation"
@@ -141,7 +141,7 @@
                 <div class="spaceBetween">
                   <label for="officeLocation">SALARY GRADE</label>
                   <input
-                    type="text"
+                    type="number"
                     v-model="model.Osd.sg"
                     class="form-control"
                     id="officeLocation"
@@ -152,7 +152,7 @@
                 <div class="spaceBetween">
                   <label for="officeLocation">SALARY STEP INCREMENT</label>
                   <input
-                    type="text"
+                    type="number"
                     v-model="model.Osd.salary_step_increment"
                     class="form-control"
                     id="officeLocation"
@@ -364,7 +364,7 @@
                 <div class="spaceBetween">
                   <label for="officeLocation">AGE</label>
                   <input
-                    type="text"
+                    type="number"
                     v-model="model.Osd.age"
                     class="form-control"
                     id="officeLocation"
@@ -739,7 +739,7 @@
 <script>
 import axios from "axios";
 import AdminSidebar from "@/components/AdminSidebar";
-
+import { backendURL } from "@/config.js";
 export default {
   name: "AdminOSDEdit",
   components: {
@@ -832,7 +832,7 @@ export default {
     // The OsdData() function is used to get the data of the HR with the given ID
     OsdData(OsdID) {
       axios
-        .get(`http://127.0.0.1:8000/api/osdlist/${OsdID}/edit`)
+        .get(`${backendURL}/api/osdlist/${OsdID}/edit`)
         .then((res) => {
           const osdData = res.data.Osd;
           console.log(res.data.Osd);
@@ -940,7 +940,7 @@ export default {
       var mythis = this;
       axios
         .put(
-          `http://127.0.0.1:8000/api/osdlist/${OsdID}/edit`,
+          `${backendURL}/api/osdlist/${OsdID}/edit`,
           // The data to be updated is passed as a parameter to the axios.put() function
           // as the second parameter (the first parameter is the API endpoint) in the form of
           // an object with the following properties: Hr (which contains the data to be updated)

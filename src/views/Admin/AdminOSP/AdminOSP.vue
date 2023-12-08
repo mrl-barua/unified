@@ -139,12 +139,12 @@
           class="display stripe order-column cell-border hover compact"
           id="osdTable"
           :options="{
-            stateSave: true,
-            pageLength: 5,
-            lengthMenu: [
-              [5, 10, 25, 50],
-              [5, 10, 25, 50],
-            ],
+            // stateSave: true,
+            // pageLength: 5,
+            // lengthMenu: [
+            //   [5, 10, 25, 50],
+            //   [5, 10, 25, 50],
+            // ],
           }"
         >
           <thead style="background: #133f5c" class="text-white">

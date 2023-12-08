@@ -130,7 +130,7 @@
                 <div class="spaceBetween">
                   <label for="officeLocation">POSITION LEVEL</label>
                   <input
-                    type="text"
+                    type="number"
                     v-model="model.Osd.position_level"
                     class="form-control"
                     id="officeLocation"
@@ -141,7 +141,7 @@
                 <div class="spaceBetween">
                   <label for="officeLocation">SALARY GRADE</label>
                   <input
-                    type="text"
+                    type="number"
                     v-model="model.Osd.sg"
                     class="form-control"
                     id="officeLocation"
@@ -152,7 +152,7 @@
                 <div class="spaceBetween">
                   <label for="officeLocation">SALARY STEP INCREMENT</label>
                   <input
-                    type="text"
+                    type="number"
                     v-model="model.Osd.salary_step_increment"
                     class="form-control"
                     id="officeLocation"
@@ -234,13 +234,19 @@
               </div>
               <div class="col-6">
                 <div class="spaceBetween">
-                  <label for="officeLocation">EMPLOYMENT STATUS</label>
-                  <input
-                    type="text"
+                  <label for="employmentStatus">EMPLOYMENT STATUS</label>
+                  <select
                     v-model="model.Osd.employment_status"
                     class="form-control"
-                    id="officeLocation"
-                  />
+                    id="employmentStatus"
+                  >
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="MOA">MOA</option>
+                    <option value="PERMANENT">PERMANENT</option>
+                    <option value="CASUAL">CASUAL</option>
+                    <option value="CONTRACTUAL">CONTRACTUAL</option>
+                    <option value="COTERMINOUS">COTERMINOUS</option>
+                  </select>
                 </div>
               </div>
             </div>
@@ -364,7 +370,7 @@
                 <div class="spaceBetween">
                   <label for="officeLocation">AGE</label>
                   <input
-                    type="text"
+                    type="number"
                     v-model="model.Osd.age"
                     class="form-control"
                     id="officeLocation"
@@ -383,7 +389,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-4">
+            <div class="col-3">
               <div class="spaceBetween">
                 <label for="officeLocation">CIVIL STATUS</label>
                 <input
@@ -394,7 +400,7 @@
                 />
               </div>
             </div>
-            <div class="col-5">
+            <div class="col-3">
               <div class="spaceBetween">
                 <label for="officeLocation">DATE OF BIRTH</label>
                 <input
@@ -405,9 +411,7 @@
                 />
               </div>
             </div>
-          </div>
 
-          <div class="col-12 mb-3">
             <div class="col-3">
               <div class="spaceBetween">
                 <label for="officeLocation">EMAIL ADDRESS</label>
@@ -419,41 +423,88 @@
                 />
               </div>
             </div>
-            <div class="col-3">
-              <div class="spaceBetween">
-                <label for="officeLocation"
-                  >INDICATE WHETHER SENIOR CITIZEN</label
-                >
-                <input
-                  type="text"
-                  v-model="model.Osd.indicate_whether_senior_citizen"
-                  class="form-control"
-                  id="officeLocation"
-                />
+          </div>
+
+          <div class="col-12 mb-3">
+            <div class="col-4">
+              <div class="col-6">
+                <div class="spaceBetween">
+                  <label for="pwdStatus">INDICATE WHETHER PWD</label>
+                  <select
+                    v-model="model.Osd.indicate_whether_pwd"
+                    class="form-control"
+                    id="pwdStatus"
+                  >
+                    <option value="" disabled>Select an option</option>
+                    <option value="PWD">PWD</option>
+                    <option value="">None</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="spaceBetween">
+                  <label for="officeLocation">TYPE OF DISABILITY</label>
+                  <input
+                    type="text"
+                    v-model="model.Osd.type_of_disability"
+                    class="form-control"
+                    id="officeLocation"
+                  />
+                </div>
               </div>
             </div>
-            <div class="col-3">
-              <div class="spaceBetween">
-                <label for="officeLocation">TYPE OF DISABILITY</label>
-                <input
-                  type="text"
-                  v-model="model.Osd.type_of_disability"
-                  class="form-control"
-                  id="officeLocation"
-                />
+            <div class="col-8">
+              <div class="col-4">
+                <div class="spaceBetween">
+                  <label for="seniorCitizenStatus"
+                    >INDICATE WHETHER SENIOR CITIZEN</label
+                  >
+                  <select
+                    v-model="model.Osd.indicate_whether_senior_citizen"
+                    class="form-control"
+                    id="seniorCitizenStatus"
+                  >
+                    <option value="" disabled>Select an option</option>
+                    <option value="SENIOR CITIZEN">SENIOR CITIZEN</option>
+                    <option value="">None</option>
+                  </select>
+                </div>
               </div>
-            </div>
-            <div class="col-3">
-              <div class="spaceBetween">
-                <label for="officeLocation">INDICATE IF INDIGENOUS_GROUP</label>
-                <input
-                  type="text"
-                  v-model="
-                    model.Osd.indicate_whether_member_of_indigenous_group
-                  "
-                  class="form-control"
-                  id="officeLocation"
-                />
+
+              <div class="col-4">
+                <div class="spaceBetween">
+                  <label for="seniorCitizenStatus"
+                    >INDICATE WHETHER SOLO PARENT</label
+                  >
+                  <select
+                    v-model="model.Osd.indicate_whether_solo_parent"
+                    class="form-control"
+                    id="seniorCitizenStatus"
+                  >
+                    <option value="" disabled>Select an option</option>
+                    <option value="SOLO PARENT">SOLO PARENT</option>
+                    <option value="">None</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-4">
+                <div class="spaceBetween">
+                  <label for="indigenousGroup"
+                    >INDICATE IF INDIGENOUS_GROUP</label
+                  >
+                  <select
+                    v-model="
+                      model.Osd.indicate_whether_member_of_indigenous_group
+                    "
+                    class="form-control"
+                    id="indigenousGroup"
+                  >
+                    <option value="" disabled>Select an option</option>
+                    <option value="INDIGENOUS GROUP">INDIGENOUS GROUP</option>
+                    <option value="">None</option>
+                  </select>
+                </div>
               </div>
             </div>
           </div>
@@ -736,7 +787,7 @@
 <script>
 import axios from "axios";
 import AdminSidebar from "@/components/AdminSidebar";
-
+import { backendURL } from "@/config.js";
 export default {
   name: "AdminOSDCreate",
   components: {
@@ -824,7 +875,7 @@ export default {
     saveOsd() {
       var mythis = this;
       axios
-        .post("http://127.0.0.1:8000/api/osdlist", this.model.Osd)
+        .post(`${backendURL}/api/osdlist`, this.model.Osd)
         .then((res) => {
           console.log(res.data);
           // alert(res.data.message);

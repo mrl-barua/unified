@@ -155,7 +155,7 @@ export default {
 
     CbssData(CbssID) {
       axios
-        .get(`http://127.0.0.1:8000/api/cbsslist/${CbssID}/edit`)
+        .get(`${backendURL}/api/cbsslist/${CbssID}/edit`)
         .then((res) => {
           const cbssData = res.data.Cbss;
           console.log(res.data.Cbss);
