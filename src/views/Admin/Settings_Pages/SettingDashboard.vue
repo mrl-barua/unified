@@ -136,7 +136,7 @@ export default {
     deleteSettings(SettingsID) {
       this.$swal({
         title: "Are you sure?",
-        text: "You want to archive this data?",
+        text: "You want to delete this data?",
         icon: "warning",
         showCancelButton: true,
         confirmButtonText: "Yes, archive it!",
