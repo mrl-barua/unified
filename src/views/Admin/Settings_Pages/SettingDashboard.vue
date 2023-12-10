@@ -139,7 +139,7 @@ export default {
         text: "You want to delete this data?",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonText: "Yes, archive it!",
+        confirmButtonText: "Yes, delete it!",
         cancelButtonText: "No, keep it",
       }).then((result) => {
         if (result.isConfirmed) {
