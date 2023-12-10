@@ -69,13 +69,24 @@ import LoginForm from '../views/LoginForm.vue'
 
 
 import SettingDashboard from '../views/Admin/Settings_Pages/SettingDashboard'
-
+import AddSettingUsers from '../views/Admin/Settings_Pages/addUserAccess'
+import EditSettingUsers from '../views/Admin/Settings_Pages/editUserAccess'
 import ERROR from '../views/404.vue' // Import the 404 Error Page
 import { userIsAuthenticated } from '../auth'; // Import the user authentication function
 import { adminIsAuthenticated } from '../auth'; // Import the admin authentication function
 import { startAutoLogout, clearAutoLogout, logout } from '../auth';
 import Swal from 'sweetalert2'
 
+/**
+ * Middleware function to check if the user is authenticated before accessing a route.
+ * If the user is authenticated, it allows access to the route.
+ * If the user is not authenticated, it redirects to the login page or handles it as needed.
+ *
+ * @param {Object} to - The target route object being navigated to.
+ * @param {Object} from - The current route object being navigated away from.
+ * @param {Function} next - A callback function to continue the navigation.
+ * @returns {void}
+ */
 const userRequireAuth = (to, from, next) => {
   if (userIsAuthenticated()) {
     // User is authenticated, allow access to the route
@@ -101,6 +112,15 @@ const userRequireAuth = (to, from, next) => {
 };
 
 
+/**
+ * Middleware function to check if the user is authenticated as an admin.
+ * If authenticated, allows access to the route. Otherwise, redirects to the login page.
+ *
+ * @param {Object} to - The target route object being navigated to.
+ * @param {Object} from - The current route object being navigated away from.
+ * @param {Function} next - A callback function to continue the navigation.
+ * @returns {void}
+ */
 const adminRequireAuth = (to, from, next) => {
   if (adminIsAuthenticated()) {
     // User is authenticated, allow access to the route
@@ -385,6 +405,21 @@ const routes = [
     beforeEnter: adminRequireAuth,
   },
 
+
+  {
+    path: '/adminSettings/addUserAccess',
+    name: 'AddUserAccess',
+    component: AddSettingUsers,
+    beforeEnter: adminRequireAuth,
+  },
+
+  {
+    path: '/adminSettings/:ID/editUserAccess',
+    name: 'EditUserAccess',
+    component: EditSettingUsers,
+    beforeEnter: adminRequireAuth,
+  },
+
   // * ADMIN SETTINGS END!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   // * ADMIN SETTINGS END!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   // * ADMIN SETTINGS END!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -619,6 +654,10 @@ const routes = [
 
 
 
+/**
+ * Router instance for handling navigation in the application.
+ * @type {import("vue-router").Router}
+ */
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes

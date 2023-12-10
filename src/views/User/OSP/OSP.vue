@@ -207,7 +207,7 @@
         <div class="inside">
           <DataTable
             id="table"
-            class="display stripe order-column hover compact text-start"
+            class="display stripe order-column hover compact"
             :data="HighestLevelOfEligibility"
             :columns="columnshighestLevelOfEligibility"
             :options="{

@@ -478,3 +478,7 @@
 
 - Update backend URLs in code
 - Update the Create New Record in OSD
+
+### version 9.7 MARLO BARUA
+
+- Implemented Add, Edit, View, and Delete User Roles
