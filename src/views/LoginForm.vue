@@ -18,17 +18,26 @@
       </h4>
       <br />
       <form @submit.prevent="login">
-        <input
-          v-model="email"
-          type="Username"
-          placeholder="Enter your Username"
-        />
-        <input
-          v-model="password"
-          type="password"
-          placeholder="Enter your Password"
-        />
-        <br /><br />
+        <div class="form-floating">
+          <input
+            v-model="email"
+            type="Username"
+            placeholder="Enter your Username"
+            class="form-control"
+          />
+          <label for="floatingInput" style="color: gray">Email address</label>
+        </div>
+        <div class="form-floating">
+          <input
+            v-model="password"
+            type="password"
+            placeholder="Enter your Password"
+            class="form-control"
+          />
+          <label for="floatingInput" style="color: gray">Password</label>
+        </div>
+
+        <br />
         <div v-if="error" class="error-message">
           User not found, Please enter correct credentials
         </div>
@@ -244,8 +253,8 @@ body {
   margin-top: -10px;
 
   @media only screen and (min-width: 680px) {
-    margin-bottom: 20px;
-    margin-top: -45px;
+    margin-bottom: 10px;
+    margin-top: -35px;
   }
 }
 

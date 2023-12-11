@@ -24,256 +24,93 @@
       <!-- ! SHOW ERROR DIALOGUE -->
       <!-- ! SHOW ERROR DIALOGUE -->
 
-      <!-- <div class="container-fluid wrapper">
-        <div class="col-12">
-          <div class="col-3">
-            <div class="spaceBetween">
-              <label for="officeLocation">DATE</label>
-              <input
-                type="text"
-                v-model="model.Cbss.DATE"
-                class="form-control"
-                id="officeLocation"
-              />
-            </div>
-          </div>
-          <div class="col-3">
-            <div class="spaceBetween">
-              <label for="officeLocation">NAME</label>
-              <input
-                type="text"
-                v-model="model.Cbss.NAME"
-                class="form-control"
-                id="officeLocation"
-              />
-            </div>
-          </div>
-          <div class="col-3">
-            <div class="spaceBetween">
-              <label for="officeLocation">AGE</label>
-              <input
-                type="text"
-                v-model="model.Cbss.AGE"
-                class="form-control"
-                id="officeLocation"
-              />
-            </div>
-          </div>
-          <div class="col-3">
-            <div class="spaceBetween">
-              <label for="officeLocation">SEX</label>
-              <input
-                type="text"
-                v-model="model.Cbss.SEX"
-                class="form-control"
-                id="officeLocation"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="col-12">
-          <div class="col-3">
-            <div class="spaceBetween">
-              <label for="officeLocation">CASE CATEGORY</label>
-              <input
-                type="text"
-                v-model="model.Cbss.CASE_CATEGORY"
-                class="form-control"
-                id="officeLocation"
-              />
-            </div>
-          </div>
-          <div class="col-3">
-            <div class="spaceBetween">
-              <label for="officeLocation">SUB CATEGORY</label>
-              <input
-                type="text"
-                v-model="model.Cbss.SUB_CATEGORY"
-                class="form-control"
-                id="officeLocation"
-              />
-            </div>
-          </div>
-          <div class="col-3">
-            <div class="spaceBetween">
-              <label for="officeLocation">MODE OF ADMISSION</label>
-              <input
-                type="text"
-                v-model="model.Cbss.MODE_OF_ADMISSION"
-                class="form-control"
-                id="officeLocation"
-              />
-            </div>
-          </div>
-          <div class="col-3">
-            <div class="spaceBetween">
-              <label for="officeLocation">ADDRESS</label>
-              <input
-                type="text"
-                v-model="model.Cbss.ADDRESS"
-                class="form-control"
-                id="officeLocation"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="col-12">
-          <div class="col-3">
-            <div class="spaceBetween">
-              <label for="officeLocation">NON MONETARY SERVICES</label>
-              <input
-                type="text"
-                v-model="model.Cbss.NON_MONETARY_SERVICES"
-                class="form-control"
-                id="officeLocation"
-              />
-            </div>
-          </div>
-          <div class="col-3">
-            <div class="spaceBetween">
-              <label for="officeLocation">PURPOSE</label>
-              <input
-                type="text"
-                v-model="model.Cbss.Purpose"
-                class="form-control"
-                id="officeLocation"
-              />
-            </div>
-          </div>
-          <div class="col-3">
-            <div class="spaceBetween">
-              <label for="officeLocation">AMOUNT</label>
-              <input
-                type="number"
-                v-model="model.Cbss.AMOUNT"
-                class="form-control"
-                id="officeLocation"
-              />
-            </div>
-          </div>
-          <div class="col-3">
-            <div class="spaceBetween">
-              <label for="officeLocation">REMARKS</label>
-              <input
-                type="text"
-                v-model="model.Cbss.REMARKS"
-                class="form-control"
-                id="officeLocation"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="col-12">
-          <div class="col-6">
-            <div class="spaceBetween">
-              <label for="officeLocation">RESPONSIBLE PERSON</label>
-              <input
-                type="text"
-                v-model="model.Cbss.REPONSIBLE_PERSON"
-                class="form-control"
-                id="officeLocation"
-              />
-            </div>
-          </div>
-          <div class="col-6">
-            <div class="spaceBetween">
-              <label for="officeLocation">NUMBER OF SERVICES AVAILED</label>
-              <input
-                type="number"
-                v-model="model.Cbss.NUMBER_OF_SERVICES_AVAILED"
-                class="form-control"
-                id="officeLocation"
-              />
-            </div>
-          </div>
-        </div>
-      </div> -->
       <div class="container-fluid wrapper">
         <div class="col-12">
           <div class="col-12">
             <div class="spaceBetween">
-              <label for="officeLocation">Full Name</label>
-              <input
-                type="text"
-                v-model="model.Cbss.NAME"
-                class="form-control"
-                id="officeLocation"
-              />
+              <div class="form-floating">
+                <input
+                  type="text"
+                  v-model="model.Cbss.NAME"
+                  class="form-control"
+                  id="officeLocation"
+                  placeholder="Responsible Person"
+                  required
+                />
+                <label for="officeLocation">Full Name</label>
+              </div>
             </div>
           </div>
           <!-- 1ST SECTION -->
           <div class="col-6">
             <div class="col-12">
-              <div class="spaceBetween">
-                <label for="officeLocation">Responsible Person</label>
+              <div class="form-floating spaceBetween">
                 <input
                   type="text"
                   v-model="model.Cbss.REPONSIBLE_PERSON"
                   class="form-control"
-                  id="officeLocation"
+                  id="responsiblePerson"
+                  placeholder="Responsible Person"
                 />
+                <label for="responsiblePerson">Responsible Person</label>
               </div>
             </div>
             <div class="col-12">
-              <div class="spaceBetween">
-                <label for="officeLocation">Address</label>
+              <div class="form-floating spaceBetween">
                 <input
                   type="text"
                   v-model="model.Cbss.ADDRESS"
                   class="form-control"
-                  id="officeLocation"
+                  id="address"
+                  placeholder="Address"
                 />
+                <label for="address">Address</label>
               </div>
             </div>
             <div class="col-12">
-              <div class="spaceBetween">
-                <label for="officeLocation">Age</label>
+              <div class="form-floating spaceBetween">
                 <input
                   type="number"
                   v-model="model.Cbss.AGE"
                   class="form-control"
-                  id="officeLocation"
+                  id="age"
+                  placeholder="Age"
                 />
+                <label for="age">Age</label>
               </div>
             </div>
             <div class="col-12">
-              <div class="spaceBetween">
-                <label for="officeLocation">Sex</label>
+              <div class="form-floating spaceBetween">
                 <select
                   v-model="model.Cbss.SEX"
                   class="form-control centered-placeholder"
-                  id="cluster"
+                  id="sex"
                 >
                   <option value="" disabled selected>Select an option ⮟</option>
                   <option value="MALE">MALE</option>
                   <option value="FEMALE">FEMALE</option>
                 </select>
+                <label for="sex">Sex</label>
               </div>
             </div>
             <div class="col-12">
-              <div class="spaceBetween">
-                <label for="officeLocation">Amount</label>
+              <div class="form-floating spaceBetween">
                 <input
                   type="number"
                   v-model="model.Cbss.AMOUNT"
                   class="form-control"
-                  id="officeLocation"
+                  id="amount"
+                  placeholder="Amount"
                 />
+                <label for="amount">Amount</label>
               </div>
             </div>
             <div class="col-12">
-              <div class="spaceBetween">
-                <label for="officeLocation">Case Category</label>
-                <!-- <input
-                  type="text"
-                  v-model="model.Cbss.CASE_CATEGORY"
-                  class="form-control"
-                  id="officeLocation"
-                /> -->
+              <div class="form-floating spaceBetween">
                 <select
                   v-model="model.Cbss.CASE_CATEGORY"
                   class="form-control centered-placeholder"
-                  id="cluster"
+                  id="caseCategory"
                 >
                   <option value="" disabled selected>Select an option ⮟</option>
                   <option value="WEDC">WEDC</option>
@@ -282,17 +119,19 @@
                   <option value="OLDER PERSONS">OLDER PERSONS</option>
                   <option value="OTHERS">OTHERS</option>
                 </select>
+                <label for="caseCategory">Case Category</label>
               </div>
             </div>
             <div class="col-12">
-              <div class="spaceBetween">
-                <label for="officeLocation">Date</label>
+              <div class="form-floating spaceBetween">
                 <input
                   type="date"
                   v-model="model.Cbss.DATE"
                   class="form-control"
-                  id="officeLocation"
+                  id="date"
+                  placeholder="Date"
                 />
+                <label for="date">Date</label>
               </div>
             </div>
           </div>
@@ -300,66 +139,55 @@
           <!-- 2ND SECTION -->
           <div class="col-6">
             <div class="col-12">
-              <div class="spaceBetween">
-                <label for="officeLocation">Mode of Admission</label>
-                <!-- <input
-                  type="text"
-                  v-model="model.Cbss.MODE_OF_ADMISSION"
-                  class="form-control"
-                  id="officeLocation"
-                /> -->
+              <div class="form-floating spaceBetween">
                 <select
                   v-model="model.Cbss.MODE_OF_ADMISSION"
                   class="form-control centered-placeholder"
-                  id="cluster"
+                  id="modeOfAdmission"
                 >
                   <option value="" disabled selected>Select an option ⮟</option>
                   <option value="WALK-IN">WALK-IN</option>
                   <option value="DSWD XI CONCERNS">DSWD XI CONCERNS</option>
                   <option value="REFERRAL">REFERRAL</option>
                 </select>
+                <label for="modeOfAdmission">Mode of Admission</label>
               </div>
             </div>
             <div class="col-12">
-              <div class="spaceBetween">
-                <label for="officeLocation">Non Monetary Services</label>
-                <!-- <input
-                  type="text"
-                  v-model="model.Cbss.NON_MONETARY_SERVICES"
-                  class="form-control"
-                  id="officeLocation"
-                /> -->
-
+              <div class="form-floating spaceBetween">
                 <select
                   v-model="model.Cbss.NON_MONETARY_SERVICES"
                   class="form-control centered-placeholder"
-                  id="cluster"
+                  id="nonMonetaryServices"
                 >
                   <option value="" disabled selected>Select an option ⮟</option>
                   <option value="Counseling/Advice">Counseling/Advice</option>
                   <option value="Travel Clearance">Travel Clearance</option>
                   <option value="Referral">Referral</option>
                 </select>
+                <label for="nonMonetaryServices">Non Monetary Services</label>
               </div>
             </div>
             <div class="col-12">
-              <div class="spaceBetween">
-                <label for="officeLocation">Number of Services Availed</label>
+              <div class="form-floating spaceBetween">
                 <input
                   type="number"
                   v-model="model.Cbss.NUMBER_OF_SERVICES_AVAILED"
                   class="form-control"
-                  id="officeLocation"
+                  id="numberOfServicesAvailed"
+                  placeholder="Number of Services Availed"
                 />
+                <label for="numberOfServicesAvailed"
+                  >Number of Services Availed</label
+                >
               </div>
             </div>
             <div class="col-12">
-              <div class="spaceBetween">
-                <label for="officeLocation">Sub Category</label>
+              <div class="form-floating spaceBetween">
                 <select
                   v-model="model.Cbss.SUB_CATEGORY"
                   class="form-control centered-placeholder"
-                  id="cluster"
+                  id="subCategory"
                 >
                   <option value="" disabled selected>Select an option ⮟</option>
                   <option value="CNSP">CNSP</option>
@@ -368,28 +196,31 @@
                   </option>
                   <option value="OFW">OFW</option>
                 </select>
+                <label for="subCategory">Sub Category</label>
               </div>
             </div>
             <div class="col-12">
-              <div class="spaceBetween">
-                <label for="officeLocation">Purpose</label>
+              <div class="form-floating spaceBetween">
                 <input
                   type="text"
                   v-model="model.Cbss.Purpose"
                   class="form-control"
-                  id="officeLocation"
+                  id="purpose"
+                  placeholder="Purpose"
                 />
+                <label for="purpose">Purpose</label>
               </div>
             </div>
             <div class="col-12">
-              <div class="spaceBetween">
-                <label for="officeLocation">Remarks</label>
-                <input
-                  type="text"
+              <div class="form-floating spaceBetween">
+                <textarea
+                  style="height: 120px"
                   v-model="model.Cbss.REMARKS"
                   class="form-control"
-                  id="officeLocation"
-                />
+                  id="remarks"
+                  placeholder="Remarks"
+                ></textarea>
+                <label for="remarks">Remarks</label>
               </div>
             </div>
           </div>
