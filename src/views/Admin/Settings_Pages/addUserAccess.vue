@@ -1,51 +1,54 @@
 <template>
-  <br /><br /><br /><br />
+  <br /><br /><br /><br /><br />
   <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
   <div>
     <div class="container-fluid">
-      <div class="Header"></div>
-
-      <div class="container-fluid wrapper">
+      <div class="container-fluid wrapper text-start">
         <div class="col-12">
           <div class="col-12">
             <div class="col-12">
-              <div class="spaceBetween">
-                <label>Name</label>
+              <div class="form-floating mb-1">
                 <input
                   type="text"
                   v-model="model.Admin.name"
                   class="form-control"
+                  id="floatingName"
+                  placeholder="Name"
                 />
+                <label for="floatingName">Name</label>
                 <p class="text-danger">
                   {{ newErrors.name ? newErrors.name[0] : "" }}
                 </p>
               </div>
             </div>
             <div class="col-12">
-              <div class="spaceBetween">
-                <label>Roles</label>
+              <div class="form-floating mb-1">
                 <select
                   v-model="model.Admin.role"
-                  class="form-control centered-placeholder"
-                  id="cluster"
+                  class="form-select"
+                  id="floatingRole"
+                  aria-label="Floating label select example"
                 >
-                  <option value="" disabled selected>Select an option ⮟</option>
+                  <option value="" disabled selected>Select an option</option>
                   <option value="admin">Admin</option>
                   <option value="user">User</option>
                 </select>
+                <label for="floatingRole">Roles</label>
                 <p class="text-danger">
                   {{ newErrors.role ? newErrors.role[0] : "" }}
                 </p>
               </div>
             </div>
             <div class="col-12">
-              <div class="spaceBetween">
-                <label>Email</label>
+              <div class="form-floating mb-1">
                 <input
                   type="email"
                   v-model="model.Admin.email"
                   class="form-control"
+                  id="floatingEmail"
+                  placeholder="name@example.com"
                 />
+                <label for="floatingEmail">Email address</label>
                 <p class="text-danger">
                   {{ newErrors.email ? newErrors.email[0] : "" }}
                 </p>
@@ -53,13 +56,14 @@
             </div>
 
             <div class="col-12">
-              <div class="spaceBetween">
-                <label>Password</label>
+              <div class="form-floating mb-1">
                 <input
                   v-if="showPassword"
                   type="text"
                   v-model="model.Admin.password"
                   class="form-control"
+                  id="floatingPassword"
+                  placeholder="Password"
                 />
 
                 <input
@@ -67,7 +71,10 @@
                   type="password"
                   v-model="model.Admin.password"
                   class="form-control"
+                  id="floatingPassword"
+                  placeholder="Password"
                 />
+                <label for="floatingPassword">Password</label>
                 <p class="text-danger">
                   {{ newErrors.password ? newErrors.password[0] : "" }}
                 </p>

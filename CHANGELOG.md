@@ -482,3 +482,10 @@
 ### version 9.7 MARLO BARUA
 
 - Implemented Add, Edit, View, and Delete User Roles
+
+### version 9.8 MARLO BARUA
+
+- Optimized Input Forms
+- Used Bootstrap 5 components for Input Forms
+- Done ADMIN SWDA and CBSS for INPUT FORMS OPTIMIZATION
+- Fix the bug in the sidebar when not fully scrolled
