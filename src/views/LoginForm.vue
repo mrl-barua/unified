@@ -86,6 +86,7 @@ export default {
   data() {
     return {
       email: "",
+      name: "",
       password: "",
       error: false,
       loading: false,
@@ -180,7 +181,9 @@ export default {
         .then((response) => {
           console.log("Request Payload:", this.email, this.password);
           console.log("Server Response:", response);
-
+          this.name = response.data.Name;
+          console.log("Name:", this.name);
+          localStorage.setItem("name", this.name);
           setTimeout(() => {
             if (response.data.Role === "admin") {
               sessionStorage.setItem("admin", "authenticated");

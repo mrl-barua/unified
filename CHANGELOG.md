@@ -494,3 +494,5 @@
 
 - Optimized User Input Forms in ADMIN HR AND OSD
 - Added vhost config in config.js
+- Add name to local storage
+- 

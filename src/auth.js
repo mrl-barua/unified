@@ -43,4 +43,5 @@ export function logout() {
   // Perform logout actions (e.g., clear session storage)
   sessionStorage.removeItem('user');
   sessionStorage.removeItem('admin');
+  localStorage.removeItem('name');
 }

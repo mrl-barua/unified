@@ -11,6 +11,11 @@
               {{ iconDetails }}
             </p>
           </div>
+
+          <div class="admin">
+            <p class="text-white admin">{{ name }}</p>
+            <i class="bx bx-user-circle admin-icon"></i>
+          </div>
         </div>
 
         <div class="sidebar">
@@ -24,15 +29,16 @@
               <router-link to="/swda" class="custom-link" active-class="active">
                 <li class="list">
                   <a href="#" class="nav-link">
-                    <i class="bx bx-doughnut-chart icon"></i>
+                    <i class="bx bx-message-rounded icon"></i>
                     <span class="link">SWDA</span>
                   </a>
                 </li>
               </router-link>
+
               <router-link to="/cbss" class="custom-link" active-class="active">
                 <li class="list">
                   <a href="#" class="nav-link">
-                    <i class="bx bx-bar-chart-square icon"></i>
+                    <i class="bx bx-home-alt icon"></i>
                     <span class="link">CBSS</span>
                   </a>
                 </li>
@@ -46,108 +52,29 @@
                   </a>
                 </li>
               </router-link>
-
-              <!-- <li class="list">  
-                  <div class="dropdown">
-                      <a class=" nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bx bx-bar-chart-alt-2 icon"></i>
-                        <span class="link">HR</span>
-                      </a>
-
-                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <router-link to="/hr" class="custom-link"> <li><a class="dropdown-item" href="#">Main Dashboard</a></li> </router-link>
-                            <li><a class="dropdown-item" href="#">Eligibility</a></li>
-                          </ul>
-                    </div>
-            </li> 
-          -->
-
               <router-link to="/osp" class="custom-link" active-class="active">
                 <li class="list">
                   <a href="#" class="nav-link">
-                    <i class="bx bx-bar-chart icon"></i>
+                    <i class="bx bx-bell icon"></i>
                     <span class="link">OSD</span>
                   </a>
                 </li>
               </router-link>
 
-              <!-- reference from HR  -->
-              <li class="list visually-hidden">
-                <div class="dropdown">
-                  <a
-                    class="nav-link dropdown-toggle"
-                    href="#"
-                    role="button"
-                    id="dropdownMenuLink"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <i class="bx bx-line-chart icon"></i>
+              <router-link
+                to="/slp"
+                class="custom-link visually-hidden"
+                active-class="active"
+              >
+                <li class="list">
+                  <a href="#" class="nav-link">
+                    <i class="bx bx-pie-chart-alt-2 icon"></i>
                     <span class="link">SLP</span>
                   </a>
-
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <router-link to="/slp" class="custom-link">
-                      <li>
-                        <a class="dropdown-item" href="#"
-                          >General Disaggregated Data</a
-                        >
-                      </li>
-                    </router-link>
-                    <router-link to="/slp_pa" class="custom-link">
-                      <li>
-                        <a class="dropdown-item" href="#"
-                          >Physical Accomplishments by Portfolio</a
-                        >
-                      </li>
-                    </router-link>
-                    <router-link to="/slp_snm" class="custom-link">
-                      <li>
-                        <a class="dropdown-item" href="#"
-                          >Status of Name Matching</a
-                        >
-                      </li>
-                    </router-link>
-                    <router-link to="/slp_bmt" class="custom-link">
-                      <li>
-                        <a class="dropdown-item" href="#"
-                          >Budget Monitoring Tracker</a
-                        >
-                      </li>
-                    </router-link>
-                    <router-link to="/slp_stat" class="custom-link">
-                      <li>
-                        <a class="dropdown-item" href="#"
-                          >SLPA Enterprise Status 2022</a
-                        >
-                      </li>
-                    </router-link>
-                    <router-link to="/slp_cba" class="custom-link">
-                      <li>
-                        <a class="dropdown-item" href="#"
-                          >SLP XI Capability Building Activities</a
-                        >
-                      </li>
-                    </router-link>
-                  </ul>
-                </div>
-              </li>
-
-              <!-- <li class="list">
-              <a href="#" class="nav-link">
-                <i class="bx bx-heart icon"></i>
-                <span class="link">Likes</span>
-              </a>
-            </li>
-            <li class="list">
-              <a href="#" class="nav-link">
-                <i class="bx bx-folder-open icon"></i>
-                <span class="link">Files</span>
-              </a>
-            </li> -->
+                </li>
+              </router-link>
             </ul>
-
-            <div class="bottom-content">
+            <div class="bottom-cotent">
               <li class="list">
                 <div @click="logout" class="nav-link" style="cursor: pointer">
                   <i class="bx bx-log-out icon"></i>
@@ -160,7 +87,6 @@
         </div>
       </div>
     </nav>
-
     <section class="overlay"></section>
   </div>
 </template>
@@ -176,6 +102,7 @@ export default {
   data() {
     return {
       isSticky: false,
+      name: null,
     };
   },
   props: {
@@ -183,6 +110,8 @@ export default {
     iconDetails: String,
   },
   mounted() {
+    this.name = localStorage.getItem("name");
+    console.log(this.name); // Logs the name to the console
     window.addEventListener("scroll", this.handleScroll);
     const navBar = document.querySelector("nav");
     const menuBtns = document.querySelectorAll(".menu-icon");
