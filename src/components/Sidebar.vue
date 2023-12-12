@@ -258,7 +258,6 @@ body {
 /* Styles for non-sticky nav */
 nav {
   position: absolute;
-  margin-top: -2px;
   top: 6em;
   height: 55px;
   width: 100%;
@@ -266,7 +265,8 @@ nav {
   align-items: center;
   background: #294d9c;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
-  z-index: 999;
+  z-index: 99;
+  margin-top: -2px;
 }
 
 .overlay {
@@ -275,27 +275,26 @@ nav {
   top: 3.4em;
   left: -100%;
   height: 1000vh;
+  z-index: 3;
   width: 200%;
   opacity: 0;
   pointer-events: none;
   transition: all 0.4s ease;
   background: rgba(0, 0, 0, 0.3);
-  z-index: 50;
 }
 
-/* Styles for absolute nav */
 nav .sidebar {
   position: fixed;
-  margin-top: -2px;
-  top: 9.4em;
+  padding-top: 100px;
+  top: 0em;
   left: -100%;
-  height: 90%;
+  height: 100%;
   width: 265px;
-  padding-top: 1%;
-  padding-bottom: 4%;
+  padding-bottom: -10%;
   background-color: #fff;
   box-shadow: 0 5px 1px rgba(0, 0, 0, 0.1);
   transition: all 0.4s ease;
+  z-index: 10;
 }
 /* Styles for sticky nav */
 nav.sticky .sidebar {
@@ -303,6 +302,9 @@ nav.sticky .sidebar {
   top: 3.4em; /* Updated value */
   height: 95%;
   padding-bottom: 1%;
+  margin-top: -2px;
+  padding-top: 1%;
+  z-index: 10;
 }
 
 nav.open ~ .overlay {
@@ -336,6 +338,26 @@ nav .logo {
   display: flex;
   align-items: center;
   margin: 0 24px;
+}
+
+.admin {
+  display: flex;
+  align-items: center;
+  margin: 0 5px;
+  position: absolute;
+  right: 0px;
+}
+
+.admin-icon {
+  color: white;
+  font-size: 32px;
+  margin-right: 14px;
+  cursor: pointer;
+}
+
+.admin p {
+  color: white;
+  margin-right: 52px;
 }
 
 nav .logo img {
@@ -413,8 +435,7 @@ nav.open .sidebar {
 .lists .nav-link:hover {
   padding-left: 20px;
   padding-right: 20px;
-  background-color: #4070f4;
-  z-index: 49;
+  background-color: #294d9c;
 }
 
 .nav-link .icon {
@@ -434,7 +455,7 @@ nav.open .sidebar {
 }
 
 .active li {
-  background-color: #4070f4;
+  background-color: #294d9c;
   border-radius: 8px;
   padding-left: 20px;
   padding-right: 20px;
@@ -447,5 +468,11 @@ nav.open .sidebar {
 
 .active .nav-link .icon {
   color: #fff !important;
+}
+
+.active .nav-link:hover {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  background-color: #294d9c;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail"/>
+    <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
     <br /><br /><br /><br /><br />
     <div class="container-fluid wrapper">
       <p class="Header">Recent Edit</p>
@@ -123,8 +123,7 @@ export default {
   },
   data() {
     return {
-     
-    PageTitle: "OPERATIONAL STAFF DATABASE",
+      PageTitle: "OPERATIONAL STAFF DATABASE",
       PageDetail: "Edit History Logs",
       osp: [],
 
@@ -160,7 +159,7 @@ export default {
 
     OspData(OspID) {
       axios
-        .get(`http://127.0.0.1:8000/api/osdlist/${OspID}/edit`)
+        .get(`${backendURL}/api/osdlist/${OspID}/edit`)
         .then((res) => {
           const ospData = res.data.Osd;
           console.log(res.data.Osd);

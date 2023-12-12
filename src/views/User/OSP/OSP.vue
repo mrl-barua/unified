@@ -6,7 +6,7 @@
 
     <!-- EMPLOYMENT STATUS AND TYPE -->
     <section class="col-12 col-md-6">
-      <div class="dashboard-box" style="height: 630px">
+      <div class="dashboard-box" style="height: 638px">
         <p class="employmentdata-header">EMPLOYMENT STATUS</p>
 
         <div class="col-12" style="display: flex">
@@ -207,7 +207,7 @@
         <div class="inside">
           <DataTable
             id="table"
-            class="display stripe order-column hover compact text-start"
+            class="display stripe order-column hover compact"
             :data="HighestLevelOfEligibility"
             :columns="columnshighestLevelOfEligibility"
             :options="{

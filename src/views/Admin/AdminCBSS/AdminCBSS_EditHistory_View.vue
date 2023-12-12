@@ -134,7 +134,7 @@
 <script>
 import axios from "axios";
 import AdminSidebar from "@/components/AdminSidebar";
-
+import { backendURL } from "@/config.js";
 export default {
   name: "AdminCBSSView",
   components: {
@@ -177,7 +177,7 @@ export default {
   methods: {
     CbssEditHistoryData(CbssID) {
       axios
-        .get(`http://127.0.0.1:8000/api/cbssVersion/${CbssID}/view`)
+        .get(`${backendURL}/api/cbssVersion/${CbssID}/view`)
         .then((res) => {
           const cbssData = res.data.Cbss;
           console.log(res.data.Cbss);

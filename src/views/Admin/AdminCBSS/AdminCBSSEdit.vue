@@ -28,89 +28,90 @@
         <div class="col-12">
           <div class="col-12">
             <div class="spaceBetween">
-              <label for="officeLocation">Full Name</label>
-              <input
-                type="text"
-                v-model="model.Cbss.NAME"
-                class="form-control"
-                id="officeLocation"
-              />
+              <div class="form-floating">
+                <input
+                  type="text"
+                  v-model="model.Cbss.NAME"
+                  class="form-control"
+                  id="officeLocation"
+                  placeholder="Responsible Person"
+                  required
+                />
+                <label for="officeLocation">Full Name</label>
+              </div>
             </div>
           </div>
           <!-- 1ST SECTION -->
           <div class="col-6">
             <div class="col-12">
-              <div class="spaceBetween">
-                <label for="officeLocation">Responsible Person</label>
+              <div class="form-floating spaceBetween">
                 <input
                   type="text"
                   v-model="model.Cbss.REPONSIBLE_PERSON"
                   class="form-control"
-                  id="officeLocation"
+                  id="responsiblePerson"
+                  placeholder="Responsible Person"
                 />
+                <label for="responsiblePerson">Responsible Person</label>
               </div>
             </div>
             <div class="col-12">
-              <div class="spaceBetween">
-                <label for="officeLocation">Address</label>
+              <div class="form-floating spaceBetween">
                 <input
                   type="text"
                   v-model="model.Cbss.ADDRESS"
                   class="form-control"
-                  id="officeLocation"
+                  id="address"
+                  placeholder="Address"
                 />
+                <label for="address">Address</label>
               </div>
             </div>
             <div class="col-12">
-              <div class="spaceBetween">
-                <label for="officeLocation">Age</label>
+              <div class="form-floating spaceBetween">
                 <input
                   type="number"
                   v-model="model.Cbss.AGE"
                   class="form-control"
-                  id="officeLocation"
+                  id="age"
+                  placeholder="Age"
                 />
+                <label for="age">Age</label>
               </div>
             </div>
             <div class="col-12">
-              <div class="spaceBetween">
-                <label for="officeLocation">Sex</label>
+              <div class="form-floating spaceBetween">
                 <select
                   v-model="model.Cbss.SEX"
                   class="form-control centered-placeholder"
-                  id="cluster"
+                  id="sex"
                 >
-                  <option :value="model.Cbss.SEX" selected>
-                    {{ model.Cbss.SEX }}
-                  </option>
                   <option value="" disabled selected>Select an option ⮟</option>
                   <option value="MALE">MALE</option>
                   <option value="FEMALE">FEMALE</option>
                 </select>
+                <label for="sex">Sex</label>
               </div>
             </div>
             <div class="col-12">
-              <div class="spaceBetween">
-                <label for="officeLocation">Amount</label>
+              <div class="form-floating spaceBetween">
                 <input
                   type="number"
                   v-model="model.Cbss.AMOUNT"
                   class="form-control"
-                  id="officeLocation"
+                  id="amount"
+                  placeholder="Amount"
                 />
+                <label for="amount">Amount</label>
               </div>
             </div>
             <div class="col-12">
-              <div class="spaceBetween">
-                <label for="officeLocation">Case Category</label>
+              <div class="form-floating spaceBetween">
                 <select
                   v-model="model.Cbss.CASE_CATEGORY"
                   class="form-control centered-placeholder"
-                  id="cluster"
+                  id="caseCategory"
                 >
-                  <option :value="model.Cbss.CASE_CATEGORY" selected>
-                    {{ model.Cbss.CASE_CATEGORY }}
-                  </option>
                   <option value="" disabled selected>Select an option ⮟</option>
                   <option value="WEDC">WEDC</option>
                   <option value="FHONA">FHONA</option>
@@ -118,17 +119,19 @@
                   <option value="OLDER PERSONS">OLDER PERSONS</option>
                   <option value="OTHERS">OTHERS</option>
                 </select>
+                <label for="caseCategory">Case Category</label>
               </div>
             </div>
             <div class="col-12">
-              <div class="spaceBetween">
-                <label for="officeLocation">Date</label>
+              <div class="form-floating spaceBetween">
                 <input
-                  type="text"
+                  type="date"
                   v-model="model.Cbss.DATE"
                   class="form-control"
-                  id="officeLocation"
+                  id="date"
+                  placeholder="Date"
                 />
+                <label for="date">Date</label>
               </div>
             </div>
           </div>
@@ -136,63 +139,56 @@
           <!-- 2ND SECTION -->
           <div class="col-6">
             <div class="col-12">
-              <div class="spaceBetween">
-                <label for="officeLocation">Mode of Admission</label>
+              <div class="form-floating spaceBetween">
                 <select
                   v-model="model.Cbss.MODE_OF_ADMISSION"
                   class="form-control centered-placeholder"
-                  id="cluster"
+                  id="modeOfAdmission"
                 >
-                  <option :value="model.Cbss.MODE_OF_ADMISSION" selected>
-                    {{ model.Cbss.MODE_OF_ADMISSION }}
-                  </option>
                   <option value="" disabled selected>Select an option ⮟</option>
                   <option value="WALK-IN">WALK-IN</option>
                   <option value="DSWD XI CONCERNS">DSWD XI CONCERNS</option>
                   <option value="REFERRAL">REFERRAL</option>
                 </select>
+                <label for="modeOfAdmission">Mode of Admission</label>
               </div>
             </div>
             <div class="col-12">
-              <div class="spaceBetween">
-                <label for="officeLocation">Non Monetary Services</label>
+              <div class="form-floating spaceBetween">
                 <select
                   v-model="model.Cbss.NON_MONETARY_SERVICES"
                   class="form-control centered-placeholder"
-                  id="cluster"
+                  id="nonMonetaryServices"
                 >
-                  <option :value="model.Cbss.NON_MONETARY_SERVICES" selected>
-                    {{ model.Cbss.NON_MONETARY_SERVICES }}
-                  </option>
                   <option value="" disabled selected>Select an option ⮟</option>
                   <option value="Counseling/Advice">Counseling/Advice</option>
                   <option value="Travel Clearance">Travel Clearance</option>
                   <option value="Referral">Referral</option>
                 </select>
+                <label for="nonMonetaryServices">Non Monetary Services</label>
               </div>
             </div>
             <div class="col-12">
-              <div class="spaceBetween">
-                <label for="officeLocation">Number of Services Availed</label>
+              <div class="form-floating spaceBetween">
                 <input
                   type="number"
                   v-model="model.Cbss.NUMBER_OF_SERVICES_AVAILED"
                   class="form-control"
-                  id="officeLocation"
+                  id="numberOfServicesAvailed"
+                  placeholder="Number of Services Availed"
                 />
+                <label for="numberOfServicesAvailed"
+                  >Number of Services Availed</label
+                >
               </div>
             </div>
             <div class="col-12">
-              <div class="spaceBetween">
-                <label for="officeLocation">Sub Category</label>
+              <div class="form-floating spaceBetween">
                 <select
                   v-model="model.Cbss.SUB_CATEGORY"
                   class="form-control centered-placeholder"
-                  id="cluster"
+                  id="subCategory"
                 >
-                  <option :value="model.Cbss.SUB_CATEGORY" selected>
-                    {{ model.Cbss.SUB_CATEGORY }}
-                  </option>
                   <option value="" disabled selected>Select an option ⮟</option>
                   <option value="CNSP">CNSP</option>
                   <option value="EMOTIONALLY/PSYCHO DISTRESSED">
@@ -200,28 +196,31 @@
                   </option>
                   <option value="OFW">OFW</option>
                 </select>
+                <label for="subCategory">Sub Category</label>
               </div>
             </div>
             <div class="col-12">
-              <div class="spaceBetween">
-                <label for="officeLocation">Purpose</label>
+              <div class="form-floating spaceBetween">
                 <input
                   type="text"
                   v-model="model.Cbss.Purpose"
                   class="form-control"
-                  id="officeLocation"
+                  id="purpose"
+                  placeholder="Purpose"
                 />
+                <label for="purpose">Purpose</label>
               </div>
             </div>
             <div class="col-12">
-              <div class="spaceBetween">
-                <label for="officeLocation">Remarks</label>
-                <input
-                  type="text"
+              <div class="form-floating spaceBetween">
+                <textarea
+                  style="height: 120px"
                   v-model="model.Cbss.REMARKS"
                   class="form-control"
-                  id="officeLocation"
-                />
+                  id="remarks"
+                  placeholder="Remarks"
+                ></textarea>
+                <label for="remarks">Remarks</label>
               </div>
             </div>
           </div>
@@ -248,7 +247,7 @@
 <script>
 import axios from "axios";
 import AdminSidebar from "@/components/AdminSidebar";
-
+import { backendURL } from "@/config.js";
 export default {
   name: "AdminCBSSEdit",
   components: {
@@ -305,7 +304,7 @@ export default {
   methods: {
     CbssData(CbssID) {
       axios
-        .get(`http://127.0.0.1:8000/api/cbsslist/${CbssID}/edit`)
+        .get(`${backendURL}/api/cbsslist/${CbssID}/edit`)
         .then((res) => {
           const cbssData = res.data.Cbss;
           console.log(res.data);
@@ -340,7 +339,7 @@ export default {
       var mythis = this;
       axios
         .put(
-          `http://127.0.0.1:8000/api/cbsslist/${CbssID}/edit`,
+          `${backendURL}/api/cbsslist/${CbssID}/edit`,
           // The data to be updated is passed as a parameter to the axios.put() function
           // as the second parameter (the first parameter is the API endpoint) in the form of
           // an object with the following properties: Cbss (which contains the data to be updated)

@@ -72,7 +72,7 @@
                 <li class="list">
                   <a href="#" class="nav-link">
                     <i class="bx bx-bell icon"></i>
-                    <span class="link">ADMIN OSP</span>
+                    <span class="link">ADMIN OSD</span>
                   </a>
                 </li>
               </router-link>
@@ -91,10 +91,7 @@
               </router-link>
             </ul>
             <div class="bottom-cotent">
-              <router-link
-                to="/adminSettings"
-                class="custom-link visually-hidden"
-              >
+              <router-link to="/adminSettings" class="custom-link">
                 <li class="list">
                   <a href="#" class="nav-link">
                     <i class="bx bx-cog icon"></i>
@@ -219,7 +216,7 @@ nav {
   align-items: center;
   background: #c20000;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
-  z-index: 999;
+  z-index: 99;
   margin-top: -2px;
 }
 
@@ -229,7 +226,7 @@ nav {
   top: 3.4em;
   left: -100%;
   height: 1000vh;
-  z-index: 1;
+  z-index: 3;
   width: 200%;
   opacity: 0;
   pointer-events: none;
@@ -239,16 +236,16 @@ nav {
 
 nav .sidebar {
   position: fixed;
-  margin-top: -2px;
-  top: 9.4em;
+  padding-top: 100px;
+  top: 0em;
   left: -100%;
-  height: 90%;
+  height: 100%;
   width: 265px;
-  padding-top: 1%;
-  padding-bottom: 4%;
+  padding-bottom: -10%;
   background-color: #fff;
   box-shadow: 0 5px 1px rgba(0, 0, 0, 0.1);
   transition: all 0.4s ease;
+  z-index: 10;
 }
 /* Styles for sticky nav */
 nav.sticky .sidebar {
@@ -256,6 +253,9 @@ nav.sticky .sidebar {
   top: 3.4em; /* Updated value */
   height: 95%;
   padding-bottom: 1%;
+  margin-top: -2px;
+  padding-top: 1%;
+  z-index: 10;
 }
 
 nav.open ~ .overlay {

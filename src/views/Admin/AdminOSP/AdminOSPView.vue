@@ -511,7 +511,7 @@
 <script>
 import axios from "axios";
 import AdminSidebar from "@/components/AdminSidebar";
-
+import { backendURL } from "@/config.js";
 export default {
   name: "AdminHRView",
   components: {
@@ -604,7 +604,7 @@ export default {
     // The OsdData() function is used to get the data of the HR with the given ID
     OsdData(OsdID) {
       axios
-        .get(`http://127.0.0.1:8000/api/osdlist/${OsdID}/edit`)
+        .get(`${backendURL}/api/osdlist/${OsdID}/edit`)
         .then((res) => {
           const osdData = res.data.Osd;
           console.log(res.data.Osd);

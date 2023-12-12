@@ -473,3 +473,19 @@
 - Configured the Session With Sweet Alert 2 for Better User Experience
 - Optimized the Login() in the LoginForm.vue
 - Optimized the Design for Admin PAGE
+
+### version 9.6 MARLO BARUA
+
+- Update backend URLs in code
+- Update the Create New Record in OSD
+
+### version 9.7 MARLO BARUA
+
+- Implemented Add, Edit, View, and Delete User Roles
+
+### version 9.8 MARLO BARUA
+
+- Optimized Input Forms
+- Used Bootstrap 5 components for Input Forms
+- Done ADMIN SWDA and CBSS for INPUT FORMS OPTIMIZATION
+- Fix the bug in the sidebar when not fully scrolled

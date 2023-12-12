@@ -154,7 +154,7 @@ export default {
 
     SwdaData(SwdaID) {
       axios
-        .get(`http://127.0.0.1:8000/api/swdalist/${SwdaID}/edit`)
+        .get(`${backendURL}/api/swdalist/${SwdaID}/edit`)
         .then((res) => {
           const swdaData = res.data.Swda;
           console.log(res.data.Swda);

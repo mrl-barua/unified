@@ -18,17 +18,26 @@
       </h4>
       <br />
       <form @submit.prevent="login">
-        <input
-          v-model="email"
-          type="Username"
-          placeholder="Enter your Username"
-        />
-        <input
-          v-model="password"
-          type="password"
-          placeholder="Enter your Password"
-        />
-        <br /><br />
+        <div class="form-floating">
+          <input
+            v-model="email"
+            type="Username"
+            placeholder="Enter your Username"
+            class="form-control"
+          />
+          <label for="floatingInput" style="color: gray">Email address</label>
+        </div>
+        <div class="form-floating">
+          <input
+            v-model="password"
+            type="password"
+            placeholder="Enter your Password"
+            class="form-control"
+          />
+          <label for="floatingInput" style="color: gray">Password</label>
+        </div>
+
+        <br />
         <div v-if="error" class="error-message">
           User not found, Please enter correct credentials
         </div>
@@ -129,74 +138,74 @@ export default {
       this.signupFormVisible = true;
     },
 
-    login() {
-      // Set loading state to true
-      this.loading = true;
-
-      // Simulate a delay to mimic a server response (remove this in a real scenario)
-      setTimeout(() => {
-        // Perform authentication logic here (e.g., check username and password)
-        if (this.email === "User" && this.password === "user") {
-          // Authentication successful, set user as authenticated in localStorage
-          sessionStorage.setItem("user", "authenticated");
-
-          // Navigate to the dashboard
-          this.$router.push("/swda");
-        } else if (this.email === "Admin" && this.password === "admin") {
-          // Authentication successful, set user as authenticated in localStorage
-          sessionStorage.setItem("admin", "authenticated");
-
-          // Navigate to the dashboard
-          this.$router.push("/adminswda");
-        } else {
-          // Authentication failed, display error message
-          this.error = true;
-        }
-
-        // Reset loading state to false after authentication logic
-        this.loading = false;
-      }, 1000); // Simulated delay of 1 second
-    },
-
-    // // * WORKING LOGIN FOR ADMIN DASHBOARD - USER DASHBOARD LOGIN
     // login() {
-    //   this.loading = true; // Set loading state to true
+    //   // Set loading state to true
+    //   this.loading = true;
 
-    //   axios
-    //     .post(`${backendURL}/api/adminLogin`, {
-    //       email: this.email,
-    //       password: this.password,
-    //     })
-    //     .then((response) => {
-    //       console.log("Request Payload:", this.email, this.password);
-    //       console.log("Server Response:", response);
+    //   // Simulate a delay to mimic a server response (remove this in a real scenario)
+    //   setTimeout(() => {
+    //     // Perform authentication logic here (e.g., check username and password)
+    //     if (this.email === "User" && this.password === "user") {
+    //       // Authentication successful, set user as authenticated in localStorage
+    //       sessionStorage.setItem("user", "authenticated");
 
-    //       setTimeout(() => {
-    //         if (response.data.Role === "admin") {
-    //           sessionStorage.setItem("admin", "authenticated");
-    //           this.$router.push("/adminswda");
-    //         } else if (response.data.Role === "user") {
-    //           sessionStorage.setItem("user", "authenticated");
-    //           this.$router.push("/cbss");
-    //         } else {
-    //           // Handle unexpected role or scenario
-    //           console.error("Unexpected role:", response.data.Role);
-    //           this.error = "Unexpected role. Please contact support.";
-    //         }
+    //       // Navigate to the dashboard
+    //       this.$router.push("/swda");
+    //     } else if (this.email === "Admin" && this.password === "admin") {
+    //       // Authentication successful, set user as authenticated in localStorage
+    //       sessionStorage.setItem("admin", "authenticated");
 
-    //         this.error = null; // Reset error state on successful login
-    //         this.loading = false; // Reset loading state after the request
-    //       }, 1000); // Delay of 3 seconds
-    //     })
-    //     .catch((error) => {
-    //       // Delay the execution of the error handling code by 3 seconds
-    //       setTimeout(() => {
-    //         // Handle errors or invalid credentials
-    //         this.error = "User not found. Please enter correct credentials.";
-    //         this.loading = false; // Reset loading state after the request
-    //       }, 1000);
-    //     });
+    //       // Navigate to the dashboard
+    //       this.$router.push("/adminswda");
+    //     } else {
+    //       // Authentication failed, display error message
+    //       this.error = true;
+    //     }
+
+    //     // Reset loading state to false after authentication logic
+    //     this.loading = false;
+    //   }, 1000); // Simulated delay of 1 second
     // },
+
+    // * WORKING LOGIN FOR ADMIN DASHBOARD - USER DASHBOARD LOGIN
+    login() {
+      this.loading = true; // Set loading state to true
+
+      axios
+        .post(`${backendURL}/api/adminLogin`, {
+          email: this.email,
+          password: this.password,
+        })
+        .then((response) => {
+          console.log("Request Payload:", this.email, this.password);
+          console.log("Server Response:", response);
+
+          setTimeout(() => {
+            if (response.data.Role === "admin") {
+              sessionStorage.setItem("admin", "authenticated");
+              this.$router.push("/adminswda");
+            } else if (response.data.Role === "user") {
+              sessionStorage.setItem("user", "authenticated");
+              this.$router.push("/cbss");
+            } else {
+              // Handle unexpected role or scenario
+              console.error("Unexpected role:", response.data.Role);
+              this.error = "Unexpected role. Please contact support.";
+            }
+
+            this.error = null; // Reset error state on successful login
+            this.loading = false; // Reset loading state after the request
+          }, 1000); // Delay of 3 seconds
+        })
+        .catch((error) => {
+          // Delay the execution of the error handling code by 3 seconds
+          setTimeout(() => {
+            // Handle errors or invalid credentials
+            this.error = "User not found. Please enter correct credentials.";
+            this.loading = false; // Reset loading state after the request
+          }, 1000);
+        });
+    },
   },
 };
 </script>
@@ -244,8 +253,8 @@ body {
   margin-top: -10px;
 
   @media only screen and (min-width: 680px) {
-    margin-bottom: 20px;
-    margin-top: -45px;
+    margin-bottom: 10px;
+    margin-top: -35px;
   }
 }
 
