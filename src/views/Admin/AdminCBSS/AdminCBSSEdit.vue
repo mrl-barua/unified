@@ -83,10 +83,10 @@
               <div class="form-floating spaceBetween">
                 <select
                   v-model="model.Cbss.SEX"
-                  class="form-control centered-placeholder"
+                  class="form-select centered-placeholder"
                   id="sex"
                 >
-                  <option value="" disabled selected>Select an option ⮟</option>
+                  <option value="" disabled selected>Select an option</option>
                   <option value="MALE">MALE</option>
                   <option value="FEMALE">FEMALE</option>
                 </select>
@@ -109,10 +109,10 @@
               <div class="form-floating spaceBetween">
                 <select
                   v-model="model.Cbss.CASE_CATEGORY"
-                  class="form-control centered-placeholder"
+                  class="form-select centered-placeholder"
                   id="caseCategory"
                 >
-                  <option value="" disabled selected>Select an option ⮟</option>
+                  <option value="" disabled selected>Select an option</option>
                   <option value="WEDC">WEDC</option>
                   <option value="FHONA">FHONA</option>
                   <option value="OFW">OFW</option>
@@ -142,10 +142,10 @@
               <div class="form-floating spaceBetween">
                 <select
                   v-model="model.Cbss.MODE_OF_ADMISSION"
-                  class="form-control centered-placeholder"
+                  class="form-select centered-placeholder"
                   id="modeOfAdmission"
                 >
-                  <option value="" disabled selected>Select an option ⮟</option>
+                  <option value="" disabled selected>Select an option</option>
                   <option value="WALK-IN">WALK-IN</option>
                   <option value="DSWD XI CONCERNS">DSWD XI CONCERNS</option>
                   <option value="REFERRAL">REFERRAL</option>
@@ -157,10 +157,10 @@
               <div class="form-floating spaceBetween">
                 <select
                   v-model="model.Cbss.NON_MONETARY_SERVICES"
-                  class="form-control centered-placeholder"
+                  class="form-select centered-placeholder"
                   id="nonMonetaryServices"
                 >
-                  <option value="" disabled selected>Select an option ⮟</option>
+                  <option value="" disabled selected>Select an option</option>
                   <option value="Counseling/Advice">Counseling/Advice</option>
                   <option value="Travel Clearance">Travel Clearance</option>
                   <option value="Referral">Referral</option>
@@ -186,10 +186,10 @@
               <div class="form-floating spaceBetween">
                 <select
                   v-model="model.Cbss.SUB_CATEGORY"
-                  class="form-control centered-placeholder"
+                  class="form-select centered-placeholder"
                   id="subCategory"
                 >
-                  <option value="" disabled selected>Select an option ⮟</option>
+                  <option value="" disabled selected>Select an option</option>
                   <option value="CNSP">CNSP</option>
                   <option value="EMOTIONALLY/PSYCHO DISTRESSED">
                     EMOTIONALLY/PSYCHO DISTRESSED

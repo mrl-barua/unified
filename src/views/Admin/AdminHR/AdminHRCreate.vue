@@ -20,144 +20,154 @@
 
       <div class="container-fluid wrapper">
         <!-- 1ST SECTION -->
-        <div class="col-6">
-          <div class="col-12"></div>
+        <section class="col-6">
           <div class="col-12">
-            <div class="spaceBetween">
-              <label for="agency">Request Date</label>
+            <div class="form-floating spaceBetween">
               <input
                 type="date"
                 v-model="model.Hr.request_date"
                 class="form-control centered-placeholder"
-                id="agency"
+                id="requestDate"
                 required
+                placeholder="Request Date"
               />
+              <label for="requestDate">Request Date</label>
             </div>
           </div>
           <div class="col-12">
-            <div class="spaceBetween">
-              <label for="agency">Requesting Employee</label>
+            <div class="form-floating spaceBetween">
               <input
                 type="text"
                 v-model="model.Hr.requesting_employee_name"
                 class="form-control centered-placeholder"
-                id="agency"
+                id="requestingEmployee"
                 required
+                placeholder="Requesting Employee"
               />
+              <label for="requestingEmployee">Requesting Employee</label>
             </div>
           </div>
           <div class="col-12">
-            <div class="spaceBetween">
-              <label for="agency">Employee Position</label>
+            <div class="form-floating spaceBetween">
               <input
                 type="text"
                 v-model="model.Hr.employee_position"
                 class="form-control centered-placeholder"
-                id="agency"
+                id="employeePosition"
                 required
+                placeholder="Employee Position"
               />
+              <label for="employeePosition">Employee Position</label>
             </div>
           </div>
           <div class="col-12">
-            <div class="spaceBetween">
-              <label for="agency">Employee Status</label>
+            <div class="form-floating spaceBetween">
               <input
                 type="text"
                 v-model="model.Hr.employment_status"
                 class="form-control centered-placeholder"
-                id="agency"
+                id="employmentStatus"
                 required
+                placeholder="Employee Status"
               />
+              <label for="employmentStatus">Employee Status</label>
             </div>
           </div>
           <div class="col-12">
-            <div class="spaceBetween">
-              <label for="agency">Office/Unit</label>
+            <div class="form-floating spaceBetween">
               <input
                 type="text"
                 v-model="model.Hr.office_unit"
                 class="form-control centered-placeholder"
-                id="agency"
+                id="officeUnit"
                 required
+                placeholder="Office/Unit"
               />
+              <label for="officeUnit">Office/Unit</label>
             </div>
           </div>
-        </div>
+        </section>
         <!-- 2ND SECTION -->
-        <div class="col-6">
-          <div class="spaceBetween">
-            <label for="agency">Request Category</label>
-            <input
-              type="text"
-              v-model="model.Hr.request_category"
-              class="form-control centered-placeholder"
-              id="agency"
-              required
-            />
+        <section class="col-6">
+          <div class="col-12">
+            <div class="form-floating spaceBetween">
+              <input
+                type="text"
+                v-model="model.Hr.request_category"
+                class="form-control centered-placeholder"
+                id="requestCategory"
+                required
+                placeholder="Request Category"
+              />
+              <label for="requestCategory">Request Category</label>
+            </div>
           </div>
-        </div>
-        <div class="col-6">
-          <div class="spaceBetween">
-            <label for="agency">Brief Interview</label>
-            <input
-              type="text"
-              v-model="model.Hr.brief_interview"
-              class="form-control centered-placeholder"
-              id="agency"
-              required
-            />
+          <div class="col-12">
+            <div class="form-floating spaceBetween">
+              <input
+                type="text"
+                v-model="model.Hr.brief_interview"
+                class="form-control centered-placeholder"
+                id="briefInterview"
+                required
+                placeholder="Brief Interview"
+              />
+              <label for="briefInterview">Brief Interview</label>
+            </div>
           </div>
-        </div>
-        <div class="col-6">
-          <div class="spaceBetween">
-            <label for="agency">Remarks</label>
-            <input
-              type="text"
-              v-model="model.Hr.remarks"
-              class="form-control centered-placeholder"
-              id="agency"
-              required
-            />
+          <div class="col-12">
+            <div class="form-floating spaceBetween">
+              <input
+                type="text"
+                v-model="model.Hr.remarks"
+                class="form-control centered-placeholder"
+                id="remarks"
+                required
+                placeholder="Remarks"
+              />
+              <label for="remarks">Remarks</label>
+            </div>
           </div>
-        </div>
-        <div class="col-6">
-          <div class="spaceBetween">
-            <label for="agency">Assistance Provided</label>
-            <input
-              type="text"
-              v-model="model.Hr.assistance_provided"
-              class="form-control centered-placeholder"
-              id="agency"
-              required
-            />
+          <div class="col-12">
+            <div class="form-floating spaceBetween">
+              <input
+                type="text"
+                v-model="model.Hr.assistance_provided"
+                class="form-control centered-placeholder"
+                id="assistanceProvided"
+                required
+                placeholder="Assistance Provided"
+              />
+              <label for="assistanceProvided">Assistance Provided</label>
+            </div>
           </div>
-        </div>
-        <div class="col-6">
-          <div class="spaceBetween">
-            <label for="agency">Quantity/Unit</label>
-            <input
-              type="text"
-              v-model="model.Hr.quantity_unit"
-              class="form-control centered-placeholder"
-              id="agency"
-              required
-            />
+          <div class="col-12">
+            <div class="form-floating spaceBetween">
+              <input
+                type="text"
+                v-model="model.Hr.quantity_unit"
+                class="form-control centered-placeholder"
+                id="quantityUnit"
+                required
+                placeholder="Quantity/Unit"
+              />
+              <label for="quantityUnit">Quantity/Unit</label>
+            </div>
           </div>
-        </div>
-        <div class="col-6">
-          <div class="spaceBetween">
-            <label for="agency">Date Received</label>
-            <input
-              type="date"
-              v-model="model.Hr.date_received"
-              class="form-control centered-placeholder"
-              id="agency"
-              required
-            />
+          <div class="col-12">
+            <div class="form-floating spaceBetween">
+              <input
+                type="date"
+                v-model="model.Hr.date_received"
+                class="form-control centered-placeholder"
+                id="dateReceived"
+                required
+                placeholder="Date Received"
+              />
+              <label for="dateReceived">Date Received</label>
+            </div>
           </div>
-        </div>
-        <div class="col-6"></div>
-        <div class="col-6"></div>
+        </section>
       </div>
 
       <div class="md-3 col-12 buttons d-flex justify-content-end">
@@ -291,7 +301,7 @@ export default {
 }
 
 .spaceBetween {
-  margin: 0px 10px 0px 10px;
+  margin: 0px 10px 10px 10px;
   /* font-family: Inter; */
   font-size: 15px;
   font-weight: 400;

@@ -489,3 +489,8 @@
 - Used Bootstrap 5 components for Input Forms
 - Done ADMIN SWDA and CBSS for INPUT FORMS OPTIMIZATION
 - Fix the bug in the sidebar when not fully scrolled
+
+### version 9.9
+
+- Optimized User Input Forms in ADMIN HR AND OSD
+- Added vhost config in config.js

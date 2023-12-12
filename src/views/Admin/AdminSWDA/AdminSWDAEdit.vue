@@ -301,7 +301,7 @@
 
             <div class="mb-3 col-4">
               <div>
-                <label>Accredited: </label>
+                <label class="pe-2">Accredited: </label>
                 <div class="form-check form-check-inline">
                   <input
                     class="form-check-input"

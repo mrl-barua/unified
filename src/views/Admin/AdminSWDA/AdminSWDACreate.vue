@@ -301,7 +301,7 @@
 
             <div class="mb-3 col-4">
               <div>
-                <label>Accredited: </label>
+                <label class="pe-2">Accredited: </label>
                 <div class="form-check form-check-inline">
                   <input
                     class="form-check-input"
@@ -632,7 +632,7 @@
                   class="form-control centered-placeholder"
                   id="registrationtype"
                 >
-                  <option value="" disabled selected>Select an option ⮟</option>
+                  <option value="" disabled selected>Select an option</option>
                   <option value="Active/Valid">Active/Valid</option>
                   <option value="Expired">Expired</option>
                 </select>

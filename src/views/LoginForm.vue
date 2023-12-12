@@ -138,6 +138,7 @@ export default {
       this.signupFormVisible = true;
     },
 
+    // * THIS LOGIN FUNCTION IS FOR DEVELOPMENT PURPOSES ONLY
     // login() {
     //   // Set loading state to true
     //   this.loading = true;
@@ -167,7 +168,7 @@ export default {
     //   }, 1000); // Simulated delay of 1 second
     // },
 
-    // * WORKING LOGIN FOR ADMIN DASHBOARD - USER DASHBOARD LOGIN
+    // * WORKING LOGIN FOR ADMIN DASHBOARD - USER DASHBOARD LOGIN - FOR PRODUCTION SERVER
     login() {
       this.loading = true; // Set loading state to true
 

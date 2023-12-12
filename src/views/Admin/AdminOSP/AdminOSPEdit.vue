@@ -6,9 +6,7 @@
       <div class="Header"></div>
 
       <!-- ! SHOW ERROR DIALOGUE -->
-      <!-- ! SHOW ERROR DIALOGUE -->
-      <!-- ! SHOW ERROR DIALOGUE -->
-      <!-- <ul
+      <ul
         class="alert alert-warning"
         v-if="Object.keys(this.errorList).length > 0"
       >
@@ -19,249 +17,275 @@
         >
           {{ error[0] }}
         </li>
-      </ul> -->
-      <!-- ! SHOW ERROR DIALOGUE -->
-      <!-- ! SHOW ERROR DIALOGUE -->
-      <!-- ! SHOW ERROR DIALOGUE -->
+      </ul>
 
       <div class="container-fluid wrapper">
-        <!-- //! FIRST ROW START -->
-        <!-- //! FIRST ROW START -->
-        <!-- //! FIRST ROW START -->
-        <div class="col-12 first-row">
+        <!-- //* FIRST ROW START -->
+
+        <section class="col-12 first-row">
           <div class="col-12">
-            <div class="col-12 mb-3">
-              <div class="spaceBetween">
-                <label for="officeLocation">DIVISION</label>
+            <div class="col-12">
+              <div class="form-floating spaceBetween mb-3">
                 <input
                   type="text"
                   v-model="model.Osd.division"
                   class="form-control"
-                  id="officeLocation"
+                  id="division"
+                  placeholder="Division"
                 />
+                <label for="division">DIVISION</label>
               </div>
             </div>
           </div>
 
           <div class="col-12">
             <div class="col-4 mb-3">
-              <div class="spaceBetween">
-                <label for="officeLocation">SECTION</label>
+              <div class="form-floating spaceBetween">
                 <input
                   type="text"
                   v-model="model.Osd.section_unit"
                   class="form-control"
-                  id="officeLocation"
+                  id="section"
+                  placeholder="Section"
                 />
+                <label for="section">SECTION</label>
               </div>
             </div>
             <div class="col-8 mb-3">
               <div class="col-6">
-                <div class="spaceBetween">
-                  <label for="officeLocation">OFFICE LOCATION</label>
+                <div class="form-floating spaceBetween">
                   <input
                     type="text"
                     v-model="model.Osd.office_location_official_station"
                     class="form-control"
                     id="officeLocation"
+                    placeholder="Office Location"
                   />
+                  <label for="officeLocation">OFFICE LOCATION</label>
                 </div>
               </div>
               <div class="col-6">
-                <div class="spaceBetween">
-                  <label for="officeLocation">ITEM NUMBER</label>
+                <div class="form-floating spaceBetween">
                   <input
                     type="text"
                     v-model="model.Osd.item_number"
                     class="form-control"
-                    id="officeLocation"
+                    id="itemNumber"
+                    placeholder="Item Number"
                   />
+                  <label for="itemNumber">ITEM NUMBER</label>
                 </div>
               </div>
             </div>
             <div class="col-12 mb-3">
               <div class="col-3">
-                <div class="spaceBetween">
-                  <label for="officeLocation">DATE POSITION</label>
+                <div class="form-floating spaceBetween">
                   <input
                     type="text"
                     v-model="model.Osd.date_position_created"
                     class="form-control"
-                    id="officeLocation"
+                    id="datePosition"
+                    placeholder="Date Position"
                   />
+                  <label for="datePosition">DATE POSITION</label>
                 </div>
               </div>
               <div class="col-3">
-                <div class="spaceBetween">
-                  <label for="officeLocation">POSITION TITLE</label>
+                <div class="form-floating spaceBetween">
                   <input
                     type="text"
                     v-model="model.Osd.position_title"
                     class="form-control"
-                    id="officeLocation"
+                    id="positionTitle"
+                    placeholder="Position Title"
                   />
+                  <label for="positionTitle">POSITION TITLE</label>
                 </div>
               </div>
               <div class="col-3">
-                <div class="spaceBetween">
-                  <label for="officeLocation">PARENTHETICAL TITLE</label>
+                <div class="form-floating spaceBetween">
                   <input
                     type="text"
                     v-model="model.Osd.parenthetical_title"
                     class="form-control"
-                    id="officeLocation"
+                    id="parentheticalTitle"
+                    placeholder="Parenthetical Title"
                   />
+                  <label for="parentheticalTitle">PARENTHETICAL TITLE</label>
                 </div>
               </div>
               <div class="col-3">
-                <div class="spaceBetween">
-                  <label for="officeLocation">MONTHLY RATE</label>
+                <div class="form-floating spaceBetween">
                   <input
                     type="text"
                     v-model="model.Osd.monthly_rate"
                     class="form-control"
-                    id="officeLocation"
+                    id="monthlyRate"
+                    placeholder="Monthly Rate"
                   />
+                  <label for="monthlyRate">MONTHLY RATE</label>
                 </div>
               </div>
             </div>
             <div class="col-12 mb-3">
               <div class="col-3">
-                <div class="spaceBetween">
-                  <label for="officeLocation">POSITION LEVEL</label>
+                <div class="form-floating spaceBetween">
                   <input
                     type="number"
                     v-model="model.Osd.position_level"
                     class="form-control"
-                    id="officeLocation"
+                    id="positionlevel"
+                    placeholder="Position Level"
                   />
+                  <label for="positionlevel">POSITION LEVEL</label>
                 </div>
               </div>
               <div class="col-3">
-                <div class="spaceBetween">
-                  <label for="officeLocation">SALARY GRADE</label>
+                <div class="form-floating spaceBetween">
                   <input
                     type="number"
                     v-model="model.Osd.sg"
                     class="form-control"
-                    id="officeLocation"
+                    id="salarygrade"
+                    placeholder="Salary Grade"
                   />
+                  <label for="salarygrade">SALARY GRADE</label>
                 </div>
               </div>
               <div class="col-3">
-                <div class="spaceBetween">
-                  <label for="officeLocation">SALARY STEP INCREMENT</label>
+                <div class="form-floating spaceBetween">
                   <input
                     type="number"
                     v-model="model.Osd.salary_step_increment"
                     class="form-control"
-                    id="officeLocation"
+                    id="salarystepincrement"
+                    placeholder="Salary Step Increment"
                   />
+                  <label for="salarystepincrement">SALARY STEP INCREMENT</label>
                 </div>
               </div>
               <div class="col-3">
-                <div class="spaceBetween">
-                  <!-- ! NEEDS CLARIFICATION FROM MARA -->
-                  <label for="officeLocation">STATUS</label>
-                  <input
-                    type="text"
+                <div class="form-floating spaceBetween">
+                  <select
                     v-model="model.Osd.status_filled_unfilled"
-                    class="form-control"
-                    id="officeLocation"
-                  />
+                    class="form-select centered-placeholder"
+                    id="statusfilledunfilled"
+                  >
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="FILLED">FILLED</option>
+                    <option value="UNFILLED">UNFILLED</option>
+                  </select>
+                  <label for="statusfilledunfilled">STATUS</label>
                 </div>
               </div>
             </div>
+            <!--  -->
+
             <div class="col-12 mb-3">
               <div class="col-3">
-                <div class="spaceBetween">
-                  <label for="officeLocation">DESIGNATION</label>
+                <div class="form-floating spaceBetween">
                   <input
                     type="text"
                     v-model="model.Osd.designation_as_appropriate_based_on_so"
                     class="form-control"
-                    id="officeLocation"
+                    id="designationasappropriatebasedonso"
+                    placeholder="Designation"
                   />
+                  <label for="designationasappropriatebasedonso"
+                    >DESIGNATION</label
+                  >
                 </div>
               </div>
               <div class="col-3">
-                <div class="spaceBetween">
-                  <label for="officeLocation">DATE OF DESIGNATION</label>
+                <div class="form-floating spaceBetween">
                   <input
                     type="text"
                     v-model="model.Osd.date_of_designation"
                     class="form-control"
-                    id="officeLocation"
+                    id="dateofdesignation"
+                    placeholder="Date of Designation"
                   />
+                  <label for="dateofdesignation">DATE OF DESIGNATION</label>
                 </div>
               </div>
               <div class="col-3">
-                <div class="spaceBetween">
-                  <label for="officeLocation">SPECIAL ORDER NO.</label>
+                <div class="form-floating spaceBetween">
                   <input
                     type="text"
                     v-model="model.Osd.special_order_no"
                     class="form-control"
-                    id="officeLocation"
+                    id="specialorderno"
+                    placeholder="Special Order No."
                   />
+                  <label for="specialorderno">SPECIAL ORDER NO.</label>
                 </div>
               </div>
               <div class="col-3">
-                <div class="spaceBetween">
-                  <label for="officeLocation">DATE FILLED UP ASSUMPTION</label>
+                <div class="form-floating spaceBetween">
                   <input
                     type="text"
                     v-model="model.Osd.date_filled_up_assumption"
                     class="form-control"
-                    id="officeLocation"
+                    id="datefilledupassumption"
+                    placeholder="Date Filled Up Assumption"
                   />
+                  <label for="datefilledupassumption"
+                    >DATE FILLED UP ASSUMPTION</label
+                  >
                 </div>
               </div>
             </div>
             <div class="col-12 mb-3">
               <div class="col-6">
-                <div class="spaceBetween">
-                  <label for="officeLocation"
-                    >OFFICE BUREAU SERVICE PROGRAM</label
-                  >
+                <div class="form-floating spaceBetween">
                   <input
                     type="text"
                     v-model="model.Osd.office_bureau_service_program"
                     class="form-control"
-                    id="officeLocation"
+                    id="officebureauserviceprogram"
+                    placeholder="Office Bureau Service Program"
                   />
+                  <label for="officebureauserviceprogram"
+                    >OFFICE BUREAU SERVICE PROGRAM</label
+                  >
                 </div>
               </div>
               <div class="col-6">
-                <div class="spaceBetween">
-                  <label for="officeLocation">EMPLOYMENT STATUS</label>
-                  <input
-                    type="text"
+                <div class="form-floating spaceBetween">
+                  <select
                     v-model="model.Osd.employment_status"
                     class="form-control"
-                    id="officeLocation"
-                  />
+                    id="employmentStatus"
+                  >
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="MOA">MOA</option>
+                    <option value="PERMANENT">PERMANENT</option>
+                    <option value="CASUAL">CASUAL</option>
+                    <option value="CONTRACTUAL">CONTRACTUAL</option>
+                    <option value="COTERMINOUS">COTERMINOUS</option>
+                  </select>
+                  <label for="employmentStatus">EMPLOYMENT STATUS</label>
                 </div>
               </div>
             </div>
             <div class="col-12 mb-3">
               <div class="col-6">
-                <div class="spaceBetween">
-                  <label for="officeLocation"
-                    >FUND SOURCE FOR CONTRACTUAL</label
-                  >
+                <div class="form-floating spaceBetween">
                   <input
                     type="text"
                     v-model="model.Osd.fund_source_for_contractual"
                     class="form-control"
-                    id="officeLocation"
+                    id="fundsourceforcontractual"
+                    placeholder="Fund Source for Contractual"
                   />
+                  <label for="fundsourceforcontractual"
+                    >FUND SOURCE FOR CONTRACTUAL</label
+                  >
                 </div>
               </div>
               <div class="col-6">
                 <div class="col-6">
-                  <div class="spaceBetween">
-                    <label for="officeLocation">MODE OF ACCESSION</label>
+                  <div class="form-floating spaceBetween">
                     <input
                       type="text"
                       v-model="
@@ -269,458 +293,544 @@
                           .mode_of_accession_for_appointment_based_positions
                       "
                       class="form-control"
-                      id="officeLocation"
+                      id="modeofaccessionforappointmentbasedpositions"
+                      placeholder="Mode of Accession"
                     />
+                    <label for="modeofaccessionforappointmentbasedpositions"
+                      >MODE OF ACCESSION</label
+                    >
                   </div>
                 </div>
                 <div class="col-6">
-                  <div class="spaceBetween">
-                    <label for="officeLocation">MODE OF SEPARATION</label>
+                  <div class="form-floating spaceBetween">
                     <input
                       type="text"
                       v-model="model.Osd.mode_of_separation"
                       class="form-control"
-                      id="officeLocation"
+                      id="modeofseparation"
+                      placeholder="Mode of Separation"
                     />
+                    <label for="modeofseparation">MODE OF SEPARATION</label>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <!-- //! FIRST ROW END -->
-        <!-- //! FIRST ROW END -->
-        <!-- //! FIRST ROW END -->
+        </section>
+
         <hr
           class="hr"
           style="margin-left: 15px; margin-right: 15px; border: 1px solid red"
         />
+
         <!-- //* SECOND ROW START -->
-        <!-- //* SECOND ROW START -->
-        <!-- //* SECOND ROW START -->
-        <div class="col-12 second-row">
+        <section class="col-12 second-row">
           <div class="col-12 mb-3">
             <div class="col-3">
-              <div class="spaceBetween">
-                <label for="officeLocation">FULL NAME</label>
+              <div class="form-floating spaceBetween">
                 <input
                   type="text"
                   v-model="model.Osd.fullname"
                   class="form-control"
-                  id="officeLocation"
+                  id="fullname"
+                  placeholder="Full Name"
                 />
+                <label for="fullname">FULL NAME</label>
               </div>
             </div>
             <div class="col-3">
-              <div class="spaceBetween">
-                <label for="officeLocation">LAST NAME</label>
+              <div class="form-floating spaceBetween">
                 <input
                   type="text"
                   v-model="model.Osd.lastname"
                   class="form-control"
-                  id="officeLocation"
+                  id="lastname"
+                  placeholder="Last Name"
                 />
+                <label for="lastname">LAST NAME</label>
               </div>
             </div>
             <div class="col-2">
-              <div class="spaceBetween">
-                <label for="officeLocation">FIRST NAME</label>
+              <div class="form-floating spaceBetween">
                 <input
                   type="text"
                   v-model="model.Osd.firstname"
                   class="form-control"
-                  id="officeLocation"
+                  id="firstname"
+                  placeholder="First Name"
                 />
+                <label for="firstname">FIRST NAME</label>
               </div>
             </div>
             <div class="col-2">
-              <div class="spaceBetween">
-                <label for="officeLocation">MIDDLE NAME</label>
+              <div class="form-floating spaceBetween">
                 <input
                   type="text"
                   v-model="model.Osd.middlename"
                   class="form-control"
-                  id="officeLocation"
+                  id="middlename"
+                  placeholder="Middle Name"
                 />
+                <label for="middlename">MIDDLE NAME</label>
               </div>
             </div>
-            <!-- ! SHOULD I INCLUDE THE FIRST NAME HERE??? -->
             <div class="col-2">
-              <div class="spaceBetween">
-                <label for="officeLocation">EXT.</label>
+              <div class="form-floating spaceBetween">
                 <input
                   type="text"
                   v-model="model.Osd.ext"
                   class="form-control"
-                  id="officeLocation"
+                  id="ext"
+                  placeholder="Ext."
                 />
+                <label for="ext">EXT.</label>
               </div>
             </div>
           </div>
-
           <div class="col-12 mb-3">
             <div class="col-3">
               <div class="col-6">
-                <div class="spaceBetween">
-                  <label for="officeLocation">AGE</label>
+                <div class="form-floating spaceBetween">
                   <input
                     type="number"
                     v-model="model.Osd.age"
                     class="form-control"
-                    id="officeLocation"
+                    id="age"
+                    placeholder="Age"
                   />
+                  <label for="age">AGE</label>
                 </div>
               </div>
               <div class="col-6">
-                <div class="spaceBetween">
-                  <label for="officeLocation">GENDER</label>
-                  <input
+                <div class="form-floating spaceBetween">
+                  <!-- <input
                     type="text"
                     v-model="model.Osd.gender"
                     class="form-control"
-                    id="officeLocation"
-                  />
+                    id="gender"
+                    placeholder="Gender"
+                  /> -->
+                  <select
+                    v-model="model.Osd.gender"
+                    class="form-control"
+                    id="employmentStatus"
+                  >
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="MALE">MALE</option>
+                    <option value="FEMALE">FEMALE</option>
+                    <option value="">None</option>
+                  </select>
+                  <label>GENDER</label>
                 </div>
               </div>
             </div>
-            <div class="col-4">
-              <div class="spaceBetween">
-                <label for="officeLocation">CIVIL STATUS</label>
+            <div class="col-3">
+              <div class="form-floating spaceBetween">
                 <input
                   type="text"
                   v-model="model.Osd.civil_status"
                   class="form-control"
-                  id="officeLocation"
+                  id="civilstatus"
+                  placeholder="Civil Status"
                 />
+                <label for="civilstatus">CIVIL STATUS</label>
               </div>
             </div>
-            <div class="col-5">
-              <div class="spaceBetween">
-                <label for="officeLocation">DATE OF BIRTH</label>
+            <div class="col-3">
+              <div class="form-floating spaceBetween">
                 <input
                   type="text"
                   v-model="model.Osd.date_of_birth"
                   class="form-control"
-                  id="officeLocation"
+                  id="dateofbirth"
+                  placeholder="Date of Birth"
                 />
+                <label for="dateofbirth">DATE OF BIRTH</label>
               </div>
             </div>
-          </div>
-
-          <div class="col-12 mb-3">
             <div class="col-3">
-              <div class="spaceBetween">
-                <label for="officeLocation">EMAIL ADDRESS</label>
+              <div class="form-floating spaceBetween">
                 <input
                   type="text"
                   v-model="model.Osd.active_and_working_email_address"
                   class="form-control"
-                  id="officeLocation"
+                  id="emailaddress"
+                  placeholder="Email Address"
                 />
-              </div>
-            </div>
-            <div class="col-3">
-              <div class="spaceBetween">
-                <label for="officeLocation"
-                  >INDICATE WHETHER SENIOR CITIZEN</label
-                >
-                <input
-                  type="text"
-                  v-model="model.Osd.indicate_whether_senior_citizen"
-                  class="form-control"
-                  id="officeLocation"
-                />
-              </div>
-            </div>
-            <div class="col-3">
-              <div class="spaceBetween">
-                <label for="officeLocation">TYPE OF DISABILITY</label>
-                <input
-                  type="text"
-                  v-model="model.Osd.type_of_disability"
-                  class="form-control"
-                  id="officeLocation"
-                />
-              </div>
-            </div>
-            <div class="col-3">
-              <div class="spaceBetween">
-                <label for="officeLocation">INDICATE IF INDIGENOUS_GROUP</label>
-                <input
-                  type="text"
-                  v-model="
-                    model.Osd.indicate_whether_member_of_indigenous_group
-                  "
-                  class="form-control"
-                  id="officeLocation"
-                />
+                <label for="emailaddress">EMAIL ADDRESS</label>
               </div>
             </div>
           </div>
-        </div>
-        <!-- //* SECOND ROW END -->
-        <!-- //* SECOND ROW END -->
-        <!-- //* SECOND ROW END -->
+          <div class="col-12 mb-3">
+            <div class="col-4">
+              <div class="col-6">
+                <div class="form-floating spaceBetween">
+                  <select
+                    v-model="model.Osd.indicate_whether_pwd"
+                    class="form-control"
+                    id="pwdStatus"
+                  >
+                    <option value="" disabled>Select an option</option>
+                    <option value="PWD">PWD</option>
+                    <option value="">None</option>
+                  </select>
+                  <label for="pwdStatus">INDICATE WHETHER PWD</label>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-floating spaceBetween">
+                  <input
+                    type="text"
+                    v-model="model.Osd.type_of_disability"
+                    class="form-control"
+                    id="typeofdisability"
+                    placeholder="Type of Disability"
+                  />
+                  <label for="typeofdisability">TYPE OF DISABILITY</label>
+                </div>
+              </div>
+            </div>
+            <div class="col-8">
+              <div class="col-4">
+                <div class="form-floating spaceBetween">
+                  <select
+                    v-model="model.Osd.indicate_whether_senior_citizen"
+                    class="form-control"
+                    id="seniorCitizenStatus"
+                  >
+                    <option value="" disabled>Select an option</option>
+                    <option value="SENIOR CITIZEN">SENIOR CITIZEN</option>
+                    <option value="">None</option>
+                  </select>
+                  <label for="seniorCitizenStatus"
+                    >INDICATE WHETHER SENIOR CITIZEN</label
+                  >
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-floating spaceBetween">
+                  <select
+                    v-model="model.Osd.indicate_whether_solo_parent"
+                    class="form-control"
+                    id="soloParentStatus"
+                  >
+                    <option value="" disabled>Select an option</option>
+                    <option value="SOLO PARENT">SOLO PARENT</option>
+                    <option value="">None</option>
+                  </select>
+                  <label for="soloParentStatus"
+                    >INDICATE WHETHER SOLO PARENT</label
+                  >
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-floating spaceBetween">
+                  <select
+                    v-model="
+                      model.Osd.indicate_whether_member_of_indigenous_group
+                    "
+                    class="form-control"
+                    id="indigenousGroup"
+                  >
+                    <option value="" disabled>Select an option</option>
+                    <option value="INDIGENOUS GROUP">INDIGENOUS GROUP</option>
+                    <option value="">None</option>
+                  </select>
+                  <label for="indigenousGroup"
+                    >INDICATE IF INDIGENOUS_GROUP</label
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <hr
           class="hr"
           style="margin-left: 15px; margin-right: 15px; border: 1px solid red"
         />
 
-        <!-- //TODO THIRD ROW START -->
-        <!-- //TODO THIRD ROW START -->
-        <!-- //TODO THIRD ROW START -->
-        <div class="col-12 third-row">
+        <!-- //* THIRD ROW START -->
+        <section class="col-12 third-row">
           <div class="col-12 mb-3">
             <div class="col-3">
-              <div class="spaceBetween">
-                <label for="officeLocation">EMPLOYEE_ID_NO</label>
+              <div class="form-floating spaceBetween">
                 <input
                   type="text"
                   v-model="model.Osd.employee_id_number"
                   class="form-control"
-                  id="officeLocation"
+                  id="employeeidno"
+                  placeholder="Employee ID No"
                 />
+                <label for="employeeidno">EMPLOYEE ID NO</label>
               </div>
             </div>
             <div class="col-3">
-              <div class="spaceBetween">
-                <label for="officeLocation">ENTRY_DATE_IN_DSWD</label>
+              <div class="form-floating spaceBetween">
                 <input
                   type="text"
                   v-model="model.Osd.entry_date_in_dswd"
                   class="form-control"
-                  id="officeLocation"
+                  id="entrydateindswd"
+                  placeholder="Entry Date in DSWD"
                 />
+                <label for="entrydateindswd">ENTRY DATE IN DSWD</label>
               </div>
             </div>
             <div class="col-3">
-              <div class="spaceBetween">
-                <label for="officeLocation">DATE_OF_ORIGINAL_APPOINTMENT</label>
+              <div class="form-floating spaceBetween">
                 <input
                   type="text"
                   v-model="model.Osd.date_of_original_appointment"
                   class="form-control"
-                  id="officeLocation"
+                  id="dateoforiginalappointment"
+                  placeholder="Date of Original Appointment"
                 />
+                <label for="dateoforiginalappointment"
+                  >DATE_OF_ORIGINAL_APPOINTMENT</label
+                >
               </div>
             </div>
             <div class="col-3">
-              <div class="spaceBetween">
-                <label for="officeLocation">DATE OF LAST PROMOTION</label>
+              <div class="form-floating spaceBetween">
                 <input
                   type="text"
                   v-model="model.Osd.date_of_last_promotion"
                   class="form-control"
-                  id="officeLocation"
+                  id="dateoflastpromotion"
+                  placeholder="Date of Last Promotion"
                 />
+                <label for="dateoflastpromotion">DATE OF LAST PROMOTION</label>
               </div>
             </div>
           </div>
-
           <div class="col-12 mb-3">
             <div class="col-3">
-              <div class="spaceBetween">
-                <label for="officeLocation">GSIS_NUMBER</label>
+              <div class="form-floating spaceBetween">
                 <input
                   type="text"
                   v-model="model.Osd.gsis_number"
                   class="form-control"
-                  id="officeLocation"
+                  id="gsisnumber"
+                  placeholder="GSIS Number"
                 />
+                <label for="gsisnumber">GSIS NUMBER</label>
               </div>
             </div>
             <div class="col-3">
-              <div class="spaceBetween">
-                <label for="officeLocation">BIR_TIN.NO.</label>
+              <div class="form-floating spaceBetween">
                 <input
                   type="text"
                   v-model="model.Osd.bir_tin_number"
                   class="form-control"
-                  id="officeLocation"
+                  id="birtinno"
+                  placeholder="BIR TIN No."
                 />
+                <label for="birtinno">BIR TIN.NO.</label>
               </div>
             </div>
             <div class="col-3">
-              <div class="spaceBetween">
-                <label for="officeLocation">SSS_NUMBER</label>
+              <div class="form-floating spaceBetween">
                 <input
                   type="text"
                   v-model="model.Osd.sss_number"
                   class="form-control"
-                  id="officeLocation"
+                  id="sssnumber"
+                  placeholder="SSS Number"
                 />
+                <label for="sssnumber">SSS NUMBER</label>
               </div>
             </div>
             <div class="col-3">
-              <div class="spaceBetween">
-                <label for="officeLocation">PHILHEALTH_NUMBER</label>
+              <div class="form-floating spaceBetween">
                 <input
                   type="text"
                   v-model="model.Osd.philhealth_number"
                   class="form-control"
-                  id="officeLocation"
+                  id="philhealthnumber"
+                  placeholder="PhilHealth Number"
                 />
+                <label for="philhealthnumber">PHILHEALTH NUMBER</label>
               </div>
             </div>
           </div>
 
           <div class="col-12 mb-3">
             <div class="col-3">
-              <div class="spaceBetween">
-                <label for="officeLocation">HIGHEST_LVL_OF_ELIGIBILITY</label>
+              <div class="form-floating spaceBetween">
                 <input
                   type="text"
                   v-model="model.Osd.highest_level_of_eligibility"
                   class="form-control"
-                  id="officeLocation"
+                  id="highestlvlofeligibility"
+                  placeholder="Highest Level of Eligibility"
                 />
+                <label for="highestlvlofeligibility"
+                  >HIGHEST LVL OF ELIGIBILITY</label
+                >
               </div>
             </div>
             <div class="col-3">
-              <div class="spaceBetween">
-                <label for="officeLocation">ELIGIBILITY CSC and Others</label>
+              <div class="form-floating spaceBetween">
                 <input
                   type="text"
                   v-model="model.Osd.eligibility_csc_and_other_eligibilities"
                   class="form-control"
-                  id="officeLocation"
+                  id="eligibilitycscandothers"
+                  placeholder="Eligibility CSC and Others"
                 />
+                <label for="eligibilitycscandothers"
+                  >ELIGIBILITY CSC and Others</label
+                >
               </div>
             </div>
             <div class="col-3">
-              <div class="spaceBetween">
-                <label for="officeLocation"> ELIGIBILITY_License_RA_1080</label>
+              <div class="form-floating spaceBetween">
                 <input
                   type="text"
                   v-model="model.Osd.eligibility_license_ra_1080"
                   class="form-control"
-                  id="officeLocation"
+                  id="eligibilitylicense1080"
+                  placeholder="Eligibility License RA 1080"
                 />
+                <label for="eligibilitylicense1080"
+                  >ELIGIBILITY License RA 1080</label
+                >
               </div>
             </div>
             <div class="col-3">
-              <div class="spaceBetween">
-                <label for="officeLocation">LICENSE</label>
+              <div class="form-floating spaceBetween">
                 <input
                   type="text"
                   v-model="model.Osd.license_ra_1080_let_rn_rs_etc"
                   class="form-control"
-                  id="officeLocation"
+                  id="license1080letrnrs"
+                  placeholder="License RA 1080 LET RN RS etc."
                 />
+                <label for="license1080letrnrs">LICENSE</label>
               </div>
             </div>
           </div>
 
           <div class="col-12 mb-3">
             <div class="col-3">
-              <div class="spaceBetween">
-                <label for="officeLocation">HIGHEST_EDUCATION_COMPLETED</label>
+              <div class="form-floating spaceBetween">
                 <input
                   type="text"
                   v-model="model.Osd.highest_education_completed"
                   class="form-control"
-                  id="officeLocation"
+                  id="highesteducationcompleted"
+                  placeholder="Highest Education Completed"
                 />
+                <label for="highesteducationcompleted"
+                  >HIGHEST_EDUCATION_COMPLETED</label
+                >
               </div>
             </div>
             <div class="col-3">
-              <div class="spaceBetween">
-                <label for="officeLocation"
-                  >DEGREE_AND_COURSE <br />(1st Course Vocational)</label
-                >
+              <div class="form-floating spaceBetween">
                 <input
                   type="text"
                   v-model="model.Osd.degree_and_course_1st_vocational"
                   class="form-control"
-                  id="officeLocation"
+                  id="degreeandcourse1stvocational"
+                  placeholder="Degree and Course (1st Course Vocational)"
                 />
+                <label for="degreeandcourse1stvocational"
+                  >DEGREE AND COURSE (1st Course Vocational)</label
+                >
               </div>
             </div>
             <div class="col-3">
-              <div class="spaceBetween">
-                <label for="officeLocation"
-                  >DEGREE_AND_COURSE <br />
-                  (2nd Course)</label
-                >
+              <div class="form-floating spaceBetween">
                 <input
                   type="text"
                   v-model="model.Osd.degree_and_course_2nd_course"
                   class="form-control"
-                  id="officeLocation"
+                  id="degreeandcourse2ndcourse"
+                  placeholder="Degree and Course (2nd Course)"
                 />
+                <label for="degreeandcourse2ndcourse"
+                  >DEGREE_AND_COURSE (2nd Course)</label
+                >
               </div>
             </div>
             <div class="col-3">
-              <div class="spaceBetween">
-                <label for="officeLocation">OTHER_COURSE</label>
+              <div class="form-floating spaceBetween">
                 <input
                   type="text"
                   v-model="model.Osd.other_courses"
                   class="form-control"
-                  id="officeLocation"
+                  id="othercourse"
+                  placeholder="Other Course"
                 />
+                <label for="othercourse">OTHER_COURSE</label>
               </div>
             </div>
           </div>
 
           <div class="col-12 mb-3">
             <div class="col-6">
-              <div class="spaceBetween">
-                <label for="officeLocation"
-                  >REMARKS_STATUS_OF_VACANT_POSITION</label
-                >
-                <input
+              <div class="form-floating spaceBetween">
+                <textarea
+                  style="height: 135px"
                   type="text"
                   v-model="model.Osd.remarks_status_of_vacant_position"
                   class="form-control"
-                  id="officeLocation"
+                  id="remarksstatusofvacantposition"
+                  placeholder="Remarks Status of Vacant Position"
                 />
+                <label for="remarksstatusofvacantposition"
+                  >REMARKS STATUS OF VACANT POSITION</label
+                >
               </div>
             </div>
             <div class="col-6">
               <div class="col-6">
-                <div class="spaceBetween">
-                  <label for="officeLocation">FORMER_INCUMBENT</label>
+                <div class="form-floating spaceBetween">
                   <input
                     type="text"
                     v-model="model.Osd.former_incumbent"
                     class="form-control"
-                    id="officeLocation"
+                    id="formerincumbent"
+                    placeholder="Former Incumbent"
                   />
+                  <label for="formerincumbent">FORMER INCUMBENT</label>
                 </div>
               </div>
               <div class="col-6">
-                <div class="spaceBetween">
-                  <label for="officeLocation">DATE_VACATED</label>
+                <div class="form-floating spaceBetween">
                   <input
                     type="text"
                     v-model="model.Osd.date_vacated"
                     class="form-control"
-                    id="officeLocation"
+                    id="datevacated"
+                    placeholder="Date Vacated"
                   />
+                  <label for="datevacated">DATE VACATED</label>
                 </div>
               </div>
               <div class="col-12">
-                <div class="spaceBetween">
-                  <label for="officeLocation">MASTERS_OR_DOCTORAL_DEGREE</label>
+                <div class="form-floating spaceBetween mt-3">
                   <input
                     type="text"
                     v-model="model.Osd.masters_or_doctoral_degree_specify"
                     class="form-control"
-                    id="officeLocation"
+                    id="mastersordoctoraldegree"
+                    placeholder="Masters or Doctoral Degree Specify"
                   />
+                  <label for="mastersordoctoraldegree"
+                    >MASTERS OR DOCTORAL DEGREE</label
+                  >
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <!-- //TODO THIRD ROW END -->
-        <!-- //TODO THIRD ROW END -->
-        <!-- //TODO THIRD ROW END -->
+        </section>
       </div>
 
       <div class="md-3 col-12 buttons d-flex justify-content-end">
-        <router-link to="/adminosd">
+        <router-link to="/adminosp">
           <button class="btn btn-secondary">CANCEL</button>
         </router-link>
         <router-link to="/adminosp">
@@ -985,10 +1095,6 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  padding-bottom: 100px;
-}
-
 .centered-placeholder::placeholder {
   text-align: center;
 }
@@ -1006,10 +1112,6 @@ export default {
 .spaceBetween label {
   padding-left: 10px;
   font-weight: bold;
-}
-
-.custom-input {
-  height: 113px; /* Adjust the height value as needed */
 }
 
 .btn {
