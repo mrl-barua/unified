@@ -469,21 +469,19 @@ export default {
     };
   },
   methods: {
-    getTotalClientServed() {
-      axios
-        .get(`${backendURL}/api/totalClientServed`)
-        .then((res) => {
-          this.totalClientServed = res.data.Cbss;
-          // console.log(res.data.Cbss);
-        })
-        .catch((error) => {
-          console.error(error);
-          // Handle the error appropriately here
-        });
+    async getTotalClientServed() {
+      try {
+        const res = await axios.get(`${backendURL}/api/totalClientServed`);
+        this.totalClientServed = res.data.Cbss;
+        // console.log(res.data.Cbss);
+      } catch (error) {
+        console.error(error);
+        // Handle the error appropriately here
+      }
     },
 
-    getFinancialAmountGiven() {
-      axios
+    async getFinancialAmountGiven() {
+      await axios
         .get(`${backendURL}/api/financialAmountGiven`)
         .then((res) => {
           this.totalAmount = res.data.totalAmount;
@@ -495,8 +493,8 @@ export default {
         });
     },
 
-    getgenderClientServed() {
-      axios
+    async getgenderClientServed() {
+      await axios
         .get(`${backendURL}/api/genderClientServed`)
         .then((res) => {
           const male = [];
@@ -519,8 +517,8 @@ export default {
         });
     },
 
-    getModeofAdmission() {
-      axios
+    async getModeofAdmission() {
+      await axios
         .get(`${backendURL}/api/modeOfAdmission`)
         .then((res) => {
           const walkIn = [];
@@ -552,8 +550,8 @@ export default {
         });
     },
 
-    getNumberCaseCategories() {
-      axios
+    async getNumberCaseCategories() {
+      await axios
         .get(`${backendURL}/api/numberCaseCategories`)
         .then((res) => {
           this.caseCategories = res.data.NumberCaseCategories;
@@ -654,8 +652,8 @@ export default {
         });
     },
 
-    getNumberNonMonetaryServices() {
-      axios
+    async getNumberNonMonetaryServices() {
+      await axios
         .get(`${backendURL}/api/numberNonMonetaryServices`)
         .then((res) => {
           this.NonMonetaryServices = res.data.NumberNonMonetaryServices;
@@ -680,8 +678,8 @@ export default {
         });
     },
 
-    getClientsServedPerQuarter() {
-      axios
+    async getClientsServedPerQuarter() {
+      await axios
         .get(`${backendURL}/api/clientsServedPerQuarter`)
         .then((res) => {
           const data = res.data.clientsServedPerQuarter;
@@ -730,8 +728,8 @@ export default {
           this.clientServedPerQuarterChart = clientServedPerQuarterChart;
         });
     },
-    getClientServedPerAgeAndSex() {
-      axios
+    async getClientServedPerAgeAndSex() {
+      await axios
         .get(`${backendURL}/api/clientServedPerAgeAndSex`)
         .then((res) => {
           const data = res.data.clientServedPerAgeAndSex;
@@ -793,8 +791,8 @@ export default {
         });
     },
 
-    getFinancialAmountServe() {
-      axios
+    async getFinancialAmountServe() {
+      await axios
         .get(`${backendURL}/api/financialAmountServed`)
         .then((res) => {
           this.financialAmountServed = res.data.FinancialAmountServed;
@@ -820,8 +818,8 @@ export default {
         });
     },
 
-    getSubCategoriesServedChart() {
-      axios
+    async getSubCategoriesServedChart() {
+      await axios
         .get(`${backendURL}/api/subCategoriesServedChart`)
         .then((res) => {
           this.SubCategoriesServedChart = res.data.SubCategoriesServedChart;
@@ -871,8 +869,8 @@ export default {
         });
     },
 
-    getSubCategoriesServed() {
-      axios
+    async getSubCategoriesServed() {
+      await axios
         .get(`${backendURL}/api/subCategoriesServed`)
         .then((res) => {
           this.subCategoriesServed = res.data.SubCategoriesServed;
@@ -897,8 +895,8 @@ export default {
         });
     },
 
-    getTotalNumberOfClientServed() {
-      axios
+    async getTotalNumberOfClientServed() {
+      await axios
         .get(`${backendURL}/api/totalNumberOfClientServed`)
         .then((res) => {
           this.totalNumberOfClientServed = res.data.TotalNumberOfClientServed;
@@ -922,8 +920,8 @@ export default {
         });
     },
 
-    getTotalNumberOfCategoriesServed() {
-      axios
+    async getTotalNumberOfCategoriesServed() {
+      await axios
         .get(`${backendURL}/api/totalNumberOfCategoriesServed`)
         .then((res) => {
           this.totalNumberOfCategoriesServed =
@@ -948,7 +946,6 @@ export default {
     },
   },
   mounted() {
-    // this.getCbss();
     this.getTotalClientServed();
     this.getFinancialAmountGiven();
     this.getgenderClientServed();

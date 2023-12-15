@@ -406,8 +406,9 @@ services, and status. * The data is fetched from the model object. * *
 
 <script>
 import Sidebar from "@/components/Sidebar";
-import axios from "axios"; // Import Axios
+import axios from "axios";
 import { backendURL } from "@/config.js";
+
 export default {
   name: "SWDAView",
   components: {
@@ -416,9 +417,8 @@ export default {
   data() {
     return {
       PageTitle:
-        "List of Registration, Licensing, and Accreditation of Social Welfare and Development Agencies (SWDA)", // The title displayed on the page, which is "SWDA"
-      PageDetail: "View Agency Details", // The subtitle displayed on the page, which is "SWDA"
-
+        "List of Registration, Licensing, and Accreditation of Social Welfare and Development Agencies (SWDA)",
+      PageDetail: "View Agency Details",
       model: {
         Swda: {
           Type: "",
@@ -465,99 +465,26 @@ export default {
       },
     };
   },
-  mounted() {
-    this.SwdaID = this.$route.params.ID;
-    this.SwdaData(this.SwdaID);
+  async mounted() {
+    const SwdaID = this.$route.params.ID;
+    await this.fetchSwdaData(SwdaID);
   },
   methods: {
-    // SwdaData(SwdaID) {
-    //   axios
-    //     .get(`${backendURL}/api/swdalist/${SwdaID}/edit`)
+    async fetchSwdaData(SwdaID) {
+      try {
+        const response = await axios.get(
+          `${backendURL}/api/swdalist/${SwdaID}/edit`
+        );
+        const swdaData = response.data.Swda || {};
 
-    //     .then((res) => {
-    //       const swdaData = res.data.Swda;
-    //       console.log(res.data.Swda);
-
-    //       this.model.Swda.Type = swdaData.Type;
-    //       this.model.Swda.Sector = swdaData.Sector;
-    //       this.model.Swda.Cluster = swdaData.Cluster;
-    //       this.model.Swda.Agency = swdaData.Agency;
-    //       this.model.Swda.Address = swdaData.Address;
-    //       this.model.Swda.Former_Name = swdaData.Former_Name;
-    //       this.model.Swda.Contact_Number = swdaData.Contact_Number;
-    //       this.model.Swda.Fax = swdaData.Fax;
-    //       this.model.Swda.Email = swdaData.Email;
-    //       this.model.Swda.Website = swdaData.Website;
-    //       this.model.Swda.Contact_Person = swdaData.Contact_Person;
-    //       this.model.Swda.Position = swdaData.Position;
-    //       this.model.Swda.Mobile_Number = swdaData.Mobile_Number;
-    //       this.model.Swda.Registered = swdaData.Registered;
-    //       this.model.Swda.Licensed = swdaData.Licensed;
-    //       this.model.Swda.Accredited = swdaData.Accredited;
-    //       this.model.Swda.Services_Offered = swdaData.Services_Offered;
-    //       this.model.Swda.Simplified_Services = swdaData.Simplified_Services;
-    //       this.model.Swda.Area_of_Operation = swdaData.Area_of_Operation;
-    //       this.model.Swda.Regional_Operation = swdaData.Regional_Operation;
-    //       this.model.Swda.Specified_Areas_of_Operation =
-    //         swdaData.Specified_Areas_of_Operation;
-    //       this.model.Swda.Mode_of_Delivery = swdaData.Mode_of_Delivery;
-    //       this.model.Swda.Clientele = swdaData.Clientele;
-    //       this.model.Swda.Registration_ID = swdaData.Registration_ID;
-    //       this.model.Swda.Registration_Date = swdaData.Registration_Date;
-    //       this.model.Swda.Registration_Expiration =
-    //         swdaData.Registration_Expiration;
-    //       this.model.Swda.Registration_Status = swdaData.Registration_Status;
-    //       this.model.Swda.Licensed_ID = swdaData.Licensed_ID;
-    //       this.model.Swda.License_Date_Issued = swdaData.License_Date_Issued;
-    //       this.model.Swda.License_Expiration = swdaData.License_Expiration;
-    //       this.model.Swda.License_Status = swdaData.License_Status;
-    //       this.model.Swda.Accreditation_ID = swdaData.Accreditation_ID;
-    //       this.model.Swda.Accreditation_Date_Issued =
-    //         swdaData.Accreditation_Date_Issued;
-    //       this.model.Swda.Accreditation_Expiration =
-    //         swdaData.Accreditation_Expiration;
-    //       this.model.Swda.Accreditation_Status = swdaData.Accreditation_Status;
-    //       this.model.Swda.Remarks = swdaData.Remarks;
-    //       this.model.Swda.License_Days_Left = swdaData.License_Days_Left;
-    //       this.model.Swda.Licensure_Overdue = swdaData.Licensure_Overdue;
-    //       this.model.Swda.Accreditation_Days_Left =
-    //         swdaData.Accreditation_Days_Left;
-    //       this.model.Swda.Accreditation_Overdue =
-    //         swdaData.Accreditation_Overdue;
-    //     })
-    //     .catch(function (error) {
-    //       if (error.response) {
-    //         if (error.response.status === 404) {
-    //           alert(error.response.data.message);
-    //         }
-    //       }
-    //     });
-    // },
-
-    SwdaData(SwdaID) {
-      axios
-        .get(`${backendURL}/api/swdalist/${SwdaID}/edit`)
-        .then((res) => {
-          const swdaData = res.data.Swda;
-          console.log(res.data.Swda);
-
-          // Check if swdaData is null or empty
-          if (!swdaData || Object.keys(swdaData).length === 0) {
-            for (const key in this.model.Swda) {
-              this.model.Swda[key] = "No Data";
-            }
-          } else {
-            // Assign values from swdaData to this.model.Swda
-            for (const key in swdaData) {
-              this.model.Swda[key] = swdaData[key];
-            }
-          }
-        })
-        .catch((error) => {
-          if (error.response && error.response.status === 404) {
-            alert(error.response.data.message);
-          }
-        });
+        for (const key in this.model.Swda) {
+          this.model.Swda[key] = swdaData[key] || "No Data";
+        }
+      } catch (error) {
+        if (error.response && error.response.status === 404) {
+          alert(error.response.data.message);
+        }
+      }
     },
   },
 };

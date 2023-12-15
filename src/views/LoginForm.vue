@@ -190,7 +190,7 @@ export default {
               this.$router.push("/adminswda");
             } else if (response.data.Role === "user") {
               sessionStorage.setItem("user", "authenticated");
-              this.$router.push("/cbss");
+              this.$router.push("/swda");
             } else {
               // Handle unexpected role or scenario
               console.error("Unexpected role:", response.data.Role);

@@ -490,9 +490,14 @@
 - Done ADMIN SWDA and CBSS for INPUT FORMS OPTIMIZATION
 - Fix the bug in the sidebar when not fully scrolled
 
-### version 9.9
+### version 9.9 MARLO BARUA
 
 - Optimized User Input Forms in ADMIN HR AND OSD
 - Added vhost config in config.js
 - Add name to local storage
-- 
+-
+
+### version 9.10 MARLO BARUA
+
+- Update changelog and fix routing bug
+- Update functions in USER PAGE from synchronous to asynchronous

@@ -574,60 +574,44 @@ export default {
   data() {
     return {
       PageTitle:
-        "List of Registration, Licensing, and Accreditation of Social Welfare and Development Agencies (SWDA)", // The title displayed on the page, which is "SWDA"
-      PageDetail: "Agency Details", // The subtitle displayed on the page, which is "SWDA"
-
+        "List of Registration, Licensing, and Accreditation of Social Welfare and Development Agencies (SWDA)",
+      PageDetail: "Agency Details",
       customLegendOptions: {
-        position: "right", // Set the legend position as needed
+        position: "right",
       },
-
-      agencies: [], // An array to store agency data fetched from the API
-      searchQuery: "", // A variable to hold the search query entered by the user for filtering agencies
+      agencies: [],
+      searchQuery: "",
     };
   },
   methods: {
-    debugRegistrationStatus() {
-      console.log(this.$route.query.registrationStatus);
+    async fetchAgencies() {
+      try {
+        const response = await axios.get(`${backendURL}/api/agenciesName`);
+        this.agencies = response.data["Swda Agencies"];
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
     },
     cleanQueryParam(paramName) {
-      if (this.$route.query[paramName]) {
-        return this.$route.query[paramName].replace(/\"/g, "");
-      }
-      return null;
+      return this.$route.query[paramName]
+        ? this.$route.query[paramName].replace(/\"/g, "")
+        : null;
     },
   },
   created() {
-    this.debugRegistrationStatus();
-    console.log(this.$route.query);
-    // Fetch data and populate the agencies array
-    axios
-
-      .get(`${backendURL}/api/agenciesName`)
-      .then((response) => {
-        this.agencies = response.data["Swda Agencies"];
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
+    this.fetchAgencies();
   },
-
   computed: {
     filteredAgencies() {
-      // Filter the agencies based on the searchQuery, and exclude agencies with null data
-      return this.agencies.filter((agency) => {
-        // Check if agency and agency.Agency are not null or undefined
-        if (agency && agency.Agency) {
-          return agency.Agency.toLowerCase().includes(
-            this.searchQuery.toLowerCase()
-          );
-        } else {
-          // If agency or agency.Agency is null or undefined, exclude it
-          return false;
-        }
-      });
+      const query = this.searchQuery.toLowerCase();
+      return this.agencies.filter(
+        (agency) =>
+          agency?.Agency &&
+          agency.Agency.toLowerCase().includes(query)
+      );
     },
     cleanedRegistrationStatus() {
-      return this.$route.query.registrationStatus.replace(/\"/g, "");
+      return this.cleanQueryParam("registrationStatus");
     },
   },
 };

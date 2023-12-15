@@ -266,53 +266,60 @@ export default {
         a.click();
       });
     },
-    getCbss() {
-      axios.get(`${backendURL}/api/cbsslist`).then((res) => {
+    async getCbss() {
+      try {
+        const res = await axios.get(`${backendURL}/api/cbsslist`);
         this.cbss = res.data.Cbss;
-        console.log(res);
-      });
+      } catch (error) {
+        console.error("Error fetching CBSS list:", error);
+      }
     },
-    deleteCbss(CbssID) {
-      this.$swal({
-        title: "Are you sure?",
-        text: "You want to archive this data?",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: "Yes, archive it!",
-        cancelButtonText: "No, keep it",
-      }).then((result) => {
+    async deleteCbss(CbssID) {
+      try {
+        const result = await this.$swal({
+          title: "Are you sure?",
+          text: "You want to archive this data?",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonText: "Yes, archive it!",
+          cancelButtonText: "No, keep it",
+        });
+
         if (result.isConfirmed) {
-          axios
-            .delete(`${backendURL}/api/cbsslist/${CbssID}/delete`)
-            .then((res) => {
-              this.$swal({
-                icon: "success",
-                title: "Success!",
-                text: res.data.message,
-              }).then(() => {
-                window.location.reload();
-              });
-            })
-            .catch(function (error) {
-              if (error.response) {
-                if (error.response.status === 422) {
-                  mythis.errorList = error.response.data.errors;
-                }
-                if (error.response.status === 404) {
-                  this.$swal({
-                    icon: "error",
-                    title: "Error!",
-                    text: error.response.data.message,
-                  });
-                }
-              } else if (error.request) {
-                console.log(error.request);
-              } else {
-                console.log("error", error.message);
-              }
+          try {
+            const res = await axios.delete(
+              `${backendURL}/api/cbsslist/${CbssID}/delete`
+            );
+
+            await this.$swal({
+              icon: "success",
+              title: "Success!",
+              text: res.data.message,
             });
+
+            window.location.reload();
+          } catch (error) {
+            if (error.response) {
+              if (error.response.status === 422) {
+                this.errorList = error.response.data.errors;
+              }
+              if (error.response.status === 404) {
+                await this.$swal({
+                  icon: "error",
+                  title: "Error!",
+                  text: error.response.data.message,
+                });
+              }
+            } else if (error.request) {
+              console.log(error.request);
+            } else {
+              console.log("error", error.message);
+            }
+          }
         }
-      });
+      } catch (error) {
+        console.error("Error with swal:", error);
+      }
     },
   },
 };

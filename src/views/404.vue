@@ -2,8 +2,10 @@
   <div>
     <h1>404</h1>
     <p>Oops! Something is wrong.</p>
-    <a class="button" href="#"
-      ><i class="icon-home"></i> Go back in initial page, is better.</a
+    <router-link to="/">
+      <a class="button" href="#">
+        <i class="icon-home"></i> Go back in Login page.</a
+      ></router-link
     >
   </div>
 </template>
@@ -27,7 +29,8 @@ body {
 
 .button {
   font-weight: 300;
-  color: #fff;
+  background-color: #f73636;
+  color: #ffffff;
   font-size: 1.2em;
   text-decoration: none;
   border: 1px solid #efefef;

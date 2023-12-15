@@ -175,30 +175,28 @@ export default {
     this.CbssEditHistoryData(this.$route.params.ID);
   },
   methods: {
-    CbssEditHistoryData(CbssID) {
-      axios
-        .get(`${backendURL}/api/cbssVersion/${CbssID}/view`)
-        .then((res) => {
-          const cbssData = res.data.Cbss;
-          console.log(res.data.Cbss);
+    async CbssEditHistoryData(CbssID) {
+      try {
+        const res = await axios.get(
+          `${backendURL}/api/cbssVersion/${CbssID}/view`
+        );
+        const cbssData = res.data.Cbss;
+        console.log(res.data.Cbss);
 
-          // Check if cbssData is null or empty
-          if (!cbssData || Object.keys(cbssData).length === 0) {
-            for (const key in this.model.Cbss) {
-              this.model.Cbss[key] = "No Data";
-            }
-          } else {
-            // Assign values from cbssData to this.model.Cbss
-            for (const key in cbssData) {
-              this.model.Cbss[key] = cbssData[key];
-            }
-          }
-        })
-        .catch((error) => {
-          if (error.response && error.response.status === 404) {
-            alert(error.response.data.message);
-          }
-        });
+        // Check if cbssData is null or empty
+        if (!cbssData || Object.keys(cbssData).length === 0) {
+          this.model.Cbss = this.model.Cbss.map(() => "No Data");
+        } else {
+          // Assign values from cbssData to this.model.Cbss
+          Object.assign(this.model.Cbss, cbssData);
+        }
+      } catch (error) {
+        if (error.response) {
+          alert(error.response.data.message);
+        } else {
+          console.error(error);
+        }
+      }
     },
   },
 };

@@ -293,7 +293,8 @@ export default {
   },
   data() {
     return {
-      PageTitle: "List of Registration, Licensing, and Accreditation of Social Welfare and Development Agencies (SWDA)",
+      PageTitle:
+        "List of Registration, Licensing, and Accreditation of Social Welfare and Development Agencies (SWDA)",
       PageDetail: "Community Based Mode of Delivery",
 
       swda: [],
@@ -345,88 +346,86 @@ export default {
   },
   methods: {
     // *ALREADY FUNCTIONAL
-    AgencyFetchData() {
-      return axios
-        .get(`${backendURL}/api/agencies`)
-        .then((response) => {
-          // Initialize arrays for active and expired agencies
-          const activeRegistered = [];
-          const activeLicensed = [];
-          const activeAccredited = [];
-          const expiredRegistered = [];
-          const expiredLicensed = [];
-          const expiredAccredited = [];
-          const expiredDelisted = [];
-          const communityBased = [];
-          const auxillarySWDA = [];
-          const residential = [];
-          const nonResidential = [];
+    async AgencyFetchData() {
+      try {
+        const response = await axios.get(`${backendURL}/api/agencies`);
 
-          response.data.forEach((item) => {
-            // Categorize by Registration Status
-            if (item.Registration_Status === "Active/Valid") {
-              if (item.Registered === "Yes") activeRegistered.push(item);
-              if (item.Licensed === "Yes") activeLicensed.push(item);
-              if (item.Accredited === "Yes") activeAccredited.push(item);
-            } else if (item.Registration_Status === "Expired") {
-              if (item.Registered === "No") expiredRegistered.push(item);
-              if (item.Licensed === "No") expiredLicensed.push(item);
-              if (item.Accredited === "No") expiredAccredited.push(item);
-              if (item.Delisted === "No") expiredDelisted.push(item);
-            }
+        // Initialize counters
+        let activeRegisteredCount = 0;
+        let activeLicensedCount = 0;
+        let activeAccreditedCount = 0;
+        let expiredRegisteredCount = 0;
+        let expiredLicensedCount = 0;
+        let expiredAccreditedCount = 0;
+        let expiredDelistedCount = 0;
+        let communityBasedCount = 0;
+        let auxillarySWDACount = 0;
+        let residentialCount = 0;
+        let nonResidentialCount = 0;
 
-            // Check if Mode_of_Delivery is a string before splitting
-            if (typeof item.Mode_of_Delivery === "string") {
-              const modes = item.Mode_of_Delivery.split(", ");
-              modes.forEach((mode) => {
-                if (mode === "Community-based") communityBased.push(item);
-                if (mode === "Auxiliary SWDA") auxillarySWDA.push(item);
-                if (mode === "Center-based Residential") residential.push(item);
-                if (mode === "Center-based Non-Residential")
-                  nonResidential.push(item);
-              });
-            }
-          });
+        response.data.forEach((item) => {
+          // Categorize by Registration Status
+          if (item.Registration_Status === "Active/Valid") {
+            if (item.Registered === "Yes") activeRegisteredCount++;
+            if (item.Licensed === "Yes") activeLicensedCount++;
+            if (item.Accredited === "Yes") activeAccreditedCount++;
+          } else if (item.Registration_Status === "Expired") {
+            if (item.Registered === "No") expiredRegisteredCount++;
+            if (item.Licensed === "No") expiredLicensedCount++;
+            if (item.Accredited === "No") expiredAccreditedCount++;
+            if (item.Delisted === "No") expiredDelistedCount++;
+          }
 
-          // Calculate data lengths
-          const activeRegisteredCount = activeRegistered.length;
-          const activeLicensedCount = activeLicensed.length;
-          const activeAccreditedCount = activeAccredited.length;
-          const expiredRegisteredCount = expiredRegistered.length;
-          const expiredLicensedCount = expiredLicensed.length;
-          const expiredAccreditedCount = expiredAccredited.length;
-          const expiredDelistedCount = expiredDelisted.length;
-          const communityBasedCount = communityBased.length;
-          const auxillarySWDACount = auxillarySWDA.length;
-          const residentialCount = residential.length;
-          const nonResidentialCount = nonResidential.length;
-
-          //FOR TEMPLATE LITERAL
-          this.activeRegisteredCount = activeRegisteredCount;
-          this.activeLicensedCount = activeLicensedCount;
-          this.activeAccreditedCount = activeAccreditedCount;
-          this.expiredRegisteredCount = expiredRegisteredCount;
-          this.expiredLicensedCount = expiredLicensedCount;
-          this.expiredAccreditedCount = expiredAccreditedCount;
-          this.expiredDelistedCount = expiredDelistedCount;
-          this.communityBasedCount = communityBasedCount;
-          this.auxillarySWDACount = auxillarySWDACount;
-          this.residentialCount = residentialCount;
-          this.nonResidentialCount = nonResidentialCount;
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
+          // Check if Mode_of_Delivery is a string before splitting
+          if (typeof item.Mode_of_Delivery === "string") {
+            const modes = item.Mode_of_Delivery.split(", ");
+            modes.forEach((mode) => {
+              switch (mode) {
+                case "Community-based":
+                  communityBasedCount++;
+                  break;
+                case "Auxiliary SWDA":
+                  auxillarySWDACount++;
+                  break;
+                case "Center-based Residential":
+                  residentialCount++;
+                  break;
+                case "Center-based Non-Residential":
+                  nonResidentialCount++;
+                  break;
+              }
+            });
+          }
         });
+
+        // Assign counts to this
+        this.activeRegisteredCount = activeRegisteredCount;
+        this.activeLicensedCount = activeLicensedCount;
+        this.activeAccreditedCount = activeAccreditedCount;
+        this.expiredRegisteredCount = expiredRegisteredCount;
+        this.expiredLicensedCount = expiredLicensedCount;
+        this.expiredAccreditedCount = expiredAccreditedCount;
+        this.expiredDelistedCount = expiredDelistedCount;
+        this.communityBasedCount = communityBasedCount;
+        this.auxillarySWDACount = auxillarySWDACount;
+        this.residentialCount = residentialCount;
+        this.nonResidentialCount = nonResidentialCount;
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
     },
-    getSwda() {
-      axios.get(`${backendURL}/api/swdalist`).then((res) => {
+
+    async getSwda() {
+      try {
+        const res = await axios.get(`${backendURL}/api/swdalist`);
         this.swda = res.data.Swda.filter(
           (item) =>
             item.Mode_of_Delivery &&
             item.Mode_of_Delivery.includes("Community-based")
         );
-        console.log(res);
-      });
+      } catch (error) {
+        console.error("Error fetching SWDA list:", error);
+      }
     },
   },
   mounted() {

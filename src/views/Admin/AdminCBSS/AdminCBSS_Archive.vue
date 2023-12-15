@@ -221,52 +221,58 @@ export default {
         a.click();
       });
     },
-    getCbss() {
-      axios.get(`${backendURL}/api/cbssArchived`).then((res) => {
+    async getCbss() {
+      try {
+        const res = await axios.get(`${backendURL}/api/cbssArchived`);
         this.cbss = res.data.ArchivedCbss;
-        console.log(res);
-      });
+      } catch (error) {
+        console.error("Error fetching cbss:", error);
+      }
     },
 
-    restoreCbss(CbssID) {
-      this.$swal({
-        title: "Are you sure?",
-        text: "You want to restore this data?",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: "Yes, restore it!",
-        cancelButtonText: "No, keep it",
-      }).then((result) => {
+    async restoreCbss(CbssID) {
+      try {
+        const result = await this.$swal({
+          title: "Are you sure?",
+          text: "You want to restore this data?",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonText: "Yes, restore it!",
+          cancelButtonText: "No, keep it",
+        });
+
         if (result.isConfirmed) {
-          axios
-            .post(`${backendURL}/api/cbssArchived/${CbssID}/restore`)
-            .then((res) => {
-              return this.$swal({
-                icon: "success",
-                title: "Success!",
-                text: res.data.message,
-              });
-            })
-            .then(() => {
-              window.location.reload();
-            })
-            .catch((error) => {
-              if (error.response) {
-                if (error.response.status === 404) {
-                  this.$swal({
-                    icon: "error",
-                    title: "Error!",
-                    text: error.response.data.message,
-                  });
-                }
-              } else if (error.request) {
-                console.log(error.request);
-              } else {
-                console.log("error", error.message);
-              }
+          try {
+            const res = await axios.post(
+              `${backendURL}/api/cbssArchived/${CbssID}/restore`
+            );
+
+            await this.$swal({
+              icon: "success",
+              title: "Success!",
+              text: res.data.message,
             });
+
+            window.location.reload();
+          } catch (error) {
+            if (error.response) {
+              if (error.response.status === 404) {
+                await this.$swal({
+                  icon: "error",
+                  title: "Error!",
+                  text: error.response.data.message,
+                });
+              }
+            } else if (error.request) {
+              console.log(error.request);
+            } else {
+              console.log("error", error.message);
+            }
+          }
         }
-      });
+      } catch (error) {
+        console.error("Error with swal:", error);
+      }
     },
   },
 };
