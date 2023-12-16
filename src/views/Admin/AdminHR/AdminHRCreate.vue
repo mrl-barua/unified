@@ -62,14 +62,16 @@
           </div>
           <div class="col-12">
             <div class="form-floating spaceBetween">
-              <input
-                type="text"
+              <select
                 v-model="model.Hr.employment_status"
-                class="form-control centered-placeholder"
-                id="employmentStatus"
-                required
-                placeholder="Employee Status"
-              />
+                class="form-select centered-placeholder"
+                id="sex"
+              >
+                <option value="" disabled selected>Select an option</option>
+                <option value="Permanent">Permanent</option>
+                <option value="Contractual">Contractual</option>
+                <option value="MOA">MOA</option>
+              </select>
               <label for="employmentStatus">Employee Status</label>
             </div>
           </div>
@@ -86,19 +88,36 @@
               <label for="officeUnit">Office/Unit</label>
             </div>
           </div>
+          <div class="col-12">
+            <div class="form-floating spaceBetween">
+              <input
+                type="date"
+                v-model="model.Hr.date_received"
+                class="form-control centered-placeholder"
+                id="dateReceived"
+                required
+                placeholder="Date Received"
+              />
+              <label for="dateReceived">Date Received</label>
+            </div>
+          </div>
         </section>
         <!-- 2ND SECTION -->
         <section class="col-6">
           <div class="col-12">
             <div class="form-floating spaceBetween">
-              <input
-                type="text"
+              <select
                 v-model="model.Hr.request_category"
-                class="form-control centered-placeholder"
-                id="requestCategory"
-                required
-                placeholder="Request Category"
-              />
+                class="form-select centered-placeholder"
+                id="sex"
+              >
+                <option value="" disabled selected>Select an option</option>
+                <option value="Medical – Laboratory, Procedures or Treatments">
+                  Medical – Laboratory, Procedures or Treatments
+                </option>
+                <option value="Referral Services">Referral Services</option>
+                <option value="Burial Assistance">Burial Assistance</option>
+              </select>
               <label for="requestCategory">Request Category</label>
             </div>
           </div>
@@ -117,7 +136,8 @@
           </div>
           <div class="col-12">
             <div class="form-floating spaceBetween">
-              <input
+              <textarea
+                style="height: 126px"
                 type="text"
                 v-model="model.Hr.remarks"
                 class="form-control centered-placeholder"
@@ -152,19 +172,6 @@
                 placeholder="Quantity/Unit"
               />
               <label for="quantityUnit">Quantity/Unit</label>
-            </div>
-          </div>
-          <div class="col-12">
-            <div class="form-floating spaceBetween">
-              <input
-                type="date"
-                v-model="model.Hr.date_received"
-                class="form-control centered-placeholder"
-                id="dateReceived"
-                required
-                placeholder="Date Received"
-              />
-              <label for="dateReceived">Date Received</label>
             </div>
           </div>
         </section>

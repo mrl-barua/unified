@@ -505,3 +505,4 @@
 ### version 10.0 MARLO BARUA
 
 - Fix backendURL in config.js and update async/await syntax in multiple files in ADMIN PAGE
+- Update LoginForm.vue and AdminHREdit.vue

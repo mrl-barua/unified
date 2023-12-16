@@ -39,7 +39,7 @@
 
         <br />
         <div v-if="error" class="error-message">
-          User not found, Please enter correct credentials
+          {{ error }}
         </div>
         <button type="submit" :disabled="loading">
           <span v-if="!loading">Login</span>
@@ -188,6 +188,8 @@ export default {
             if (response.data.Role === "admin") {
               sessionStorage.setItem("admin", "authenticated");
               this.$router.push("/adminswda");
+            } else if (this.email === "" && this.password === "") {
+              this.error = "Please enter your credentials.";
             } else if (response.data.Role === "user") {
               sessionStorage.setItem("user", "authenticated");
               this.$router.push("/swda");
@@ -199,15 +201,23 @@ export default {
 
             this.error = null; // Reset error state on successful login
             this.loading = false; // Reset loading state after the request
-          }, 1000); // Delay of 3 seconds
+          }, 500); // Delay of 3 seconds
         })
         .catch((error) => {
-          // Delay the execution of the error handling code by 3 seconds
+          // Delay the execution of the error handling code by 0.5 seconds
           setTimeout(() => {
             // Handle errors or invalid credentials
-            this.error = "User not found. Please enter correct credentials.";
+            if (this.email === "" && this.password === "") {
+              this.error = "Please enter your credentials.";
+            } else if (error.response && error.response.status === 400) {
+              this.error = "Invalid credentials. Please try again.";
+            } else if (error.response && error.response.status === 404) {
+              this.error = "User not found. Please enter correct credentials.";
+            } else {
+              this.error = "An error occurred. Please try again.";
+            }
             this.loading = false; // Reset loading state after the request
-          }, 1000);
+          }, 500);
         });
     },
   },
