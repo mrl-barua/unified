@@ -413,7 +413,7 @@
                   /> -->
                   <select
                     v-model="model.Osd.gender"
-                    class="form-control"
+                    class="form-select"
                     id="employmentStatus"
                   >
                     <option value="" disabled selected>Select an option</option>
@@ -468,7 +468,7 @@
                 <div class="form-floating spaceBetween">
                   <select
                     v-model="model.Osd.indicate_whether_pwd"
-                    class="form-control"
+                    class="form-select"
                     id="pwdStatus"
                   >
                     <option value="" disabled>Select an option</option>
@@ -496,7 +496,7 @@
                 <div class="form-floating spaceBetween">
                   <select
                     v-model="model.Osd.indicate_whether_senior_citizen"
-                    class="form-control"
+                    class="form-select"
                     id="seniorCitizenStatus"
                   >
                     <option value="" disabled>Select an option</option>
@@ -512,7 +512,7 @@
                 <div class="form-floating spaceBetween">
                   <select
                     v-model="model.Osd.indicate_whether_solo_parent"
-                    class="form-control"
+                    class="form-select"
                     id="soloParentStatus"
                   >
                     <option value="" disabled>Select an option</option>
@@ -530,7 +530,7 @@
                     v-model="
                       model.Osd.indicate_whether_member_of_indigenous_group
                     "
-                    class="form-control"
+                    class="form-select"
                     id="indigenousGroup"
                   >
                     <option value="" disabled>Select an option</option>
@@ -588,7 +588,7 @@
                   placeholder="Date of Original Appointment"
                 />
                 <label for="dateoforiginalappointment"
-                  >DATE_OF_ORIGINAL_APPOINTMENT</label
+                  >DATE OF ORIGINAL APPOINTMENT</label
                 >
               </div>
             </div>
@@ -724,7 +724,7 @@
                   placeholder="Highest Education Completed"
                 />
                 <label for="highesteducationcompleted"
-                  >HIGHEST_EDUCATION_COMPLETED</label
+                  >HIGHEST EDUCATION COMPLETED</label
                 >
               </div>
             </div>
@@ -752,7 +752,7 @@
                   placeholder="Degree and Course (2nd Course)"
                 />
                 <label for="degreeandcourse2ndcourse"
-                  >DEGREE_AND_COURSE (2nd Course)</label
+                  >DEGREE AND COURSE (2nd Course)</label
                 >
               </div>
             </div>
