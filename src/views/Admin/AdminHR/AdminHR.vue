@@ -1,6 +1,6 @@
 <template>
   <div>
-    <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail"/>
+    <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
     <br /><br /><br /><br />
     <div class="container-fluid wrapper"></div>
     <div class="card card-margin">
@@ -217,8 +217,8 @@ export default {
   },
   data() {
     return {
-      PageTitle: "EMPLOYEE WELFARE AND RELATIONS", 
-      PageDetail: "Active Main Dashboard", 
+      PageTitle: "EMPLOYEE WELFARE AND RELATIONS",
+      PageDetail: "Active Main Dashboard",
       hr: [],
     };
   },
@@ -280,54 +280,58 @@ export default {
         a.click();
       });
     },
-    getHr() {
-      axios.get(`${backendURL}/api/hrlist`).then((res) => {
+    async getHr() {
+      try {
+        const res = await axios.get(`${backendURL}/api/hrlist`);
         this.hr = res.data.Hr;
         console.log(res);
-      });
+      } catch (error) {
+        console.error(error);
+      }
     },
 
-    deleteHr(HrID) {
-      this.$swal({
+    async deleteHr(HrID) {
+      const result = await this.$swal({
         title: "Are you sure?",
         text: "You want to archive this data?",
         icon: "warning",
         showCancelButton: true,
         confirmButtonText: "Yes, archive it!",
         cancelButtonText: "No, keep it",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          axios
-            .delete(`${backendURL}/api/hrlist/${HrID}/delete`)
-            .then((res) => {
-              this.$swal({
-                icon: "success",
-                title: "Success!",
-                text: res.data.message,
-              }).then(() => {
-                window.location.reload();
-              });
-            })
-            .catch(function (error) {
-              if (error.response) {
-                if (error.response.status === 422) {
-                  mythis.errorList = error.response.data.errors;
-                }
-                if (error.response.status === 404) {
-                  this.$swal({
-                    icon: "error",
-                    title: "Error!",
-                    text: error.response.data.message,
-                  });
-                }
-              } else if (error.request) {
-                console.log(error.request);
-              } else {
-                console.log("error", error.message);
-              }
-            });
-        }
       });
+
+      if (result.isConfirmed) {
+        try {
+          const res = await axios.delete(
+            `${backendURL}/api/hrlist/${HrID}/delete`
+          );
+
+          await this.$swal({
+            icon: "success",
+            title: "Success!",
+            text: res.data.message,
+          });
+
+          window.location.reload();
+        } catch (error) {
+          if (error.response) {
+            if (error.response.status === 422) {
+              this.errorList = error.response.data.errors;
+            }
+            if (error.response.status === 404) {
+              await this.$swal({
+                icon: "error",
+                title: "Error!",
+                text: error.response.data.message,
+              });
+            }
+          } else if (error.request) {
+            console.log(error.request);
+          } else {
+            console.log("error", error.message);
+          }
+        }
+      }
     },
   },
 };

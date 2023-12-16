@@ -176,40 +176,23 @@ export default {
     this.CbssData(this.$route.params.ID);
   },
   methods: {
-    // The OsdData() function is used to get the data of the HR with the given ID
-    CbssData(CbssID) {
-      axios
-        .get(`${backendURL}/api/cbsslist/${CbssID}/edit`)
-        .then((res) => {
-          const cbssData = res.data.Cbss;
-          console.log(res.data.Cbss);
+    async CbssData(CbssID) {
+      try {
+        const res = await axios.get(
+          `${backendURL}/api/cbsslist/${CbssID}/edit`
+        );
+        const cbssData = res.data.Cbss;
+        console.log(res.data.Cbss);
 
-          this.model.Cbss.ID = cbssData.ID;
-          this.model.Cbss.DATE = cbssData.DATE;
-          this.model.Cbss.NAME = cbssData.NAME;
-          this.model.Cbss.AGE = cbssData.AGE;
-          this.model.Cbss.SEX = cbssData.SEX;
-          this.model.Cbss.CASE_CATEGORY = cbssData.CASE_CATEGORY;
-          this.model.Cbss.SUB_CATEGORY = cbssData.SUB_CATEGORY;
-          this.model.Cbss.MODE_OF_ADMISSION = cbssData.MODE_OF_ADMISSION;
-          this.model.Cbss.ADDRESS = cbssData.ADDRESS;
-          this.model.Cbss.NON_MONETARY_SERVICES =
-            cbssData.NON_MONETARY_SERVICES;
-          this.model.Cbss.Purpose = cbssData.Purpose;
-          this.model.Cbss.AMOUNT = cbssData.AMOUNT;
-          this.model.Cbss.REMARKS = cbssData.REMARKS;
-          this.model.Cbss.REPONSIBLE_PERSON = cbssData.REPONSIBLE_PERSON;
-          this.model.Cbss.NUMBER_OF_SERVICES_AVAILED =
-            cbssData.NUMBER_OF_SERVICES_AVAILED;
-        })
-        // If the HR with the given ID is not found, an error message will be displayed
-        .catch(function (error) {
-          if (error.response) {
-            if (error.response.status === 404) {
-              alert(error.response.data.message);
-            }
-          }
-        });
+        // Assign values from cbssData to this.model.Cbss
+        Object.assign(this.model.Cbss, cbssData);
+      } catch (error) {
+        if (error.response && error.response.status === 404) {
+          alert(error.response.data.message);
+        } else {
+          console.error(error);
+        }
+      }
     },
   },
 };

@@ -345,51 +345,50 @@ export default {
         a.click();
       });
     },
-    getHrArchive() {
-      axios.get(`${backendURL}/api/hrArchived`).then((res) => {
+    async getHrArchive() {
+      try {
+        const res = await axios.get(`${backendURL}/api/hrArchived`);
         this.hr = res.data.ArchivedHr;
         console.log(res);
-      });
+      } catch (error) {
+        console.error(error);
+      }
     },
-    restoreHr(HrID) {
-      this.$swal({
+    async restoreHr(HrID) {
+      const result = await this.$swal({
         title: "Are you sure?",
         text: "You want to restore this data?",
         icon: "warning",
         showCancelButton: true,
         confirmButtonText: "Yes, restore it!",
         cancelButtonText: "No, keep it",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          axios
-            .post(`${backendURL}/api/hrArchived/${HrID}/restore`)
-            .then((res) => {
-              return this.$swal({
-                icon: "success",
-                title: "Success!",
-                text: res.data.message,
-              });
-            })
-            .then(() => {
-              window.location.reload();
-            })
-            .catch((error) => {
-              if (error.response) {
-                if (error.response.status === 404) {
-                  this.$swal({
-                    icon: "error",
-                    title: "Error!",
-                    text: error.response.data.message,
-                  });
-                }
-              } else if (error.request) {
-                console.log(error.request);
-              } else {
-                console.log("error", error.message);
-              }
-            });
-        }
       });
+
+      if (result.isConfirmed) {
+        try {
+          const res = await axios.post(`${backendURL}/api/hrArchived/${HrID}/restore`);
+          
+          await this.$swal({
+            icon: "success",
+            title: "Success!",
+            text: res.data.message,
+          });
+
+          window.location.reload();
+        } catch (error) {
+          if (error.response && error.response.status === 404) {
+            await this.$swal({
+              icon: "error",
+              title: "Error!",
+              text: error.response.data.message,
+            });
+          } else if (error.request) {
+            console.log(error.request);
+          } else {
+            console.log("error", error.message);
+          }
+        }
+      }
     },
   },
 };

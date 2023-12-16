@@ -786,114 +786,57 @@ export default {
   },
   methods: {
     // The SwdaData() function is used to get the data of the SWDA with the given ID
-    SwdaData(SwdaID) {
-      axios
-        .get(`${backendURL}/api/swdalist/${SwdaID}/edit`)
-        .then((res) => {
-          const swdaData = res.data.Swda;
-          console.log(res.data.Swda);
+    async SwdaData(SwdaID) {
+      try {
+        const res = await axios.get(
+          `${backendURL}/api/swdalist/${SwdaID}/edit`
+        );
+        const swdaData = res.data.Swda;
+        console.log(swdaData);
 
-          // Check if swdaData is null or empty
-          this.model.Swda.Type = swdaData.Type;
-          this.model.Swda.Sector = swdaData.Sector;
-          this.model.Swda.Cluster = swdaData.Cluster;
-          this.model.Swda.Agency = swdaData.Agency;
-          this.model.Swda.Address = swdaData.Address;
-          this.model.Swda.Former_Name = swdaData.Former_Name;
-          this.model.Swda.Contact_Number = swdaData.Contact_Number;
-          this.model.Swda.Fax = swdaData.Fax;
-          this.model.Swda.Email = swdaData.Email;
-          this.model.Swda.Website = swdaData.Website;
-          this.model.Swda.Contact_Person = swdaData.Contact_Person;
-          this.model.Swda.Position = swdaData.Position;
-          this.model.Swda.Mobile_Number = swdaData.Mobile_Number;
-          this.model.Swda.Registered = swdaData.Registered;
-          this.model.Swda.Licensed = swdaData.Licensed;
-          this.model.Swda.Accredited = swdaData.Accredited;
-          this.model.Swda.Services_Offered = swdaData.Services_Offered;
-          this.model.Swda.Simplified_Services = swdaData.Simplified_Services;
-          this.model.Swda.Area_of_Operation = swdaData.Area_of_Operation;
-          this.model.Swda.Regional_Operation = swdaData.Regional_Operation;
-          this.model.Swda.Specified_Areas_of_Operation =
-            swdaData.Specified_Areas_of_Operation;
-          this.model.Swda.Mode_of_Delivery = swdaData.Mode_of_Delivery;
-          this.model.Swda.Clientele = swdaData.Clientele;
-          this.model.Swda.Registration_ID = swdaData.Registration_ID;
-          this.model.Swda.Registration_Date = swdaData.Registration_Date;
-          this.model.Swda.Registration_Expiration =
-            swdaData.Registration_Expiration;
-          this.model.Swda.Registration_Status = swdaData.Registration_Status;
-          this.model.Swda.Licensed_ID = swdaData.Licensed_ID;
-          this.model.Swda.License_Date_Issued = swdaData.License_Date_Issued;
-          this.model.Swda.License_Expiration = swdaData.License_Expiration;
-          this.model.Swda.License_Status = swdaData.License_Status;
-          this.model.Swda.Accreditation_ID = swdaData.Accreditation_ID;
-          this.model.Swda.Accreditation_Date_Issued =
-            swdaData.Accreditation_Date_Issued;
-          this.model.Swda.Accreditation_Expiration =
-            swdaData.Accreditation_Expiration;
-          this.model.Swda.Accreditation_Status = swdaData.Accreditation_Status;
-          this.model.Swda.Remarks = swdaData.Remarks;
-          this.model.Swda.License_Days_Left = swdaData.License_Days_Left;
-          this.model.Swda.Licensure_Overdue = swdaData.Licensure_Overdue;
-          this.model.Swda.Accreditation_Days_Left =
-            swdaData.Accreditation_Days_Left;
-          this.model.Swda.Accreditation_Overdue =
-            swdaData.Accreditation_Overdue;
-        })
-        // If the SWDA with the given ID is not found, an error message will be displayed
-        .catch(function (error) {
-          if (error.response) {
-            if (error.response.status === 404) {
-              alert(error.response.data.message);
-            }
-          }
-        });
+        // Check if swdaData is null or empty
+        if (swdaData) {
+          this.model.Swda = { ...swdaData };
+        }
+      } catch (error) {
+        if (error.response && error.response.status === 404) {
+          alert(error.response.data.message);
+        }
+      }
     },
-    // The updateSWDA() function is used to update the data of the SWDA with the given ID in the database using the backend API endpoint for updating SWDA data
-    updateSWDA(SwdaID) {
-      var mythis = this;
-      axios
-        .put(
-          `${backendURL}/api/swdalist/${SwdaID}/edit`,
-          // The data to be updated is passed as a parameter to the axios.put() function
-          // as the second parameter (the first parameter is the API endpoint) in the form of
-          // an object with the following properties: Swda (which contains the data to be updated)
-          // and _method (which is set to "PUT" to indicate that the data will be updated)
-          this.model.Swda
-        )
-        .then((res) => {
-          console.log(res.data);
-          // alert(res.data.message);
-          this.$swal({
-            icon: "success",
-            title: "Success!",
-            text: res.data.message,
-          })
-            .then(() => {
-              return this.$router.push("/adminswda");
-            })
-            .then(() => {
-              window.location.reload();
-            });
-          this.errorList = "";
 
-          // window.location.reload(); // reload the page after updating the data
-        })
-        .catch(function (error) {
-          if (error.response) {
-            if (error.response.status === 422) {
-              mythis.errorList = error.response.data.errors;
-            }
-            if (error.response.status === 404) {
-              alert(error.response.data.message);
-            }
-          } else if (error.request) {
-            console.log(error.request);
-          } else {
-            console.log("error", error.message);
-          }
+    async updateSWDA(SwdaID) {
+      try {
+        const res = await axios.put(
+          `${backendURL}/api/swdalist/${SwdaID}/edit`,
+          this.model.Swda
+        );
+        console.log(res.data);
+
+        await this.$swal({
+          icon: "success",
+          title: "Success!",
+          text: res.data.message,
         });
+
+        await this.$router.push("/adminswda");
+        window.location.reload();
+
+        this.errorList = "";
+      } catch (error) {
+        if (error.response) {
+          if (error.response.status === 422) {
+            this.errorList = error.response.data.errors;
+          }
+          if (error.response.status === 404) {
+            alert(error.response.data.message);
+          }
+        } else if (error.request) {
+          console.log(error.request);
+        } else {
+          console.log("error", error.message);
+        }
+      }
     },
   },
 };

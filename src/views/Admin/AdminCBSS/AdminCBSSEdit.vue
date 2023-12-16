@@ -302,79 +302,57 @@ export default {
     this.CbssData(this.$route.params.ID);
   },
   methods: {
-    CbssData(CbssID) {
-      axios
-        .get(`${backendURL}/api/cbsslist/${CbssID}/edit`)
-        .then((res) => {
-          const cbssData = res.data.Cbss;
-          console.log(res.data);
-          this.model.Cbss.ID = cbssData.ID;
-          this.model.Cbss.DATE = cbssData.DATE;
-          this.model.Cbss.NAME = cbssData.NAME;
-          this.model.Cbss.AGE = cbssData.AGE;
-          this.model.Cbss.SEX = cbssData.SEX;
-          this.model.Cbss.CASE_CATEGORY = cbssData.CASE_CATEGORY;
-          this.model.Cbss.SUB_CATEGORY = cbssData.SUB_CATEGORY;
-          this.model.Cbss.MODE_OF_ADMISSION = cbssData.MODE_OF_ADMISSION;
-          this.model.Cbss.ADDRESS = cbssData.ADDRESS;
-          this.model.Cbss.NON_MONETARY_SERVICES =
-            cbssData.NON_MONETARY_SERVICES;
-          this.model.Cbss.Purpose = cbssData.Purpose;
-          this.model.Cbss.AMOUNT = cbssData.AMOUNT;
-          this.model.Cbss.REMARKS = cbssData.REMARKS;
-          this.model.Cbss.REPONSIBLE_PERSON = cbssData.REPONSIBLE_PERSON;
-          this.model.Cbss.NUMBER_OF_SERVICES_AVAILED =
-            cbssData.NUMBER_OF_SERVICES_AVAILED;
-        })
-        .catch(function (error) {
-          if (error.response) {
-            if (error.response.status === 404) {
-              alert(error.response.data.message);
-            }
-          }
-        });
+    async CbssData(CbssID) {
+      try {
+        const res = await axios.get(
+          `${backendURL}/api/cbsslist/${CbssID}/edit`
+        );
+        const cbssData = res.data.Cbss;
+        console.log(res.data);
+
+        // Assign values from cbssData to this.model.Cbss
+        Object.assign(this.model.Cbss, cbssData);
+      } catch (error) {
+        if (error.response && error.response.status === 404) {
+          alert(error.response.data.message);
+        } else {
+          console.error(error);
+        }
+      }
     },
 
-    updateCbss(CbssID) {
-      var mythis = this;
-      axios
-        .put(
+    async updateCbss(CbssID) {
+      try {
+        const res = await axios.put(
           `${backendURL}/api/cbsslist/${CbssID}/edit`,
-          // The data to be updated is passed as a parameter to the axios.put() function
-          // as the second parameter (the first parameter is the API endpoint) in the form of
-          // an object with the following properties: Cbss (which contains the data to be updated)
-          // and _method (which is set to "PUT" to indicate that the data will be updated)
           this.model.Cbss
-        )
-        .then((res) => {
-          console.log(res.data);
-          this.$swal({
-            icon: "success",
-            title: "Success!",
-            text: res.data.message,
-          })
-            .then(() => {
-              return this.$router.push("/admincbss");
-            })
-            .then(() => {
-              window.location.reload(); // reload the page after updating the data
-            });
-          this.errorList = "";
-        })
-        .catch(function (error) {
-          if (error.response) {
-            if (error.response.status === 422) {
-              mythis.errorList = error.response.data.errors;
-            }
-            if (error.response.status === 404) {
-              alert(error.response.data.message);
-            }
-          } else if (error.request) {
-            console.log(error.request);
-          } else {
-            console.log("error", error.message);
-          }
+        );
+        console.log(res.data);
+
+        await this.$swal({
+          icon: "success",
+          title: "Success!",
+          text: res.data.message,
         });
+
+        await this.$router.push("/admincbss");
+        window.location.reload(); // reload the page after updating the data
+
+        this.errorList = "";
+      } catch (error) {
+        if (error.response) {
+          if (error.response.status === 422) {
+            this.errorList = error.response.data.errors;
+          }
+          if (error.response.status === 404) {
+            alert(error.response.data.message);
+          }
+        } else if (error.request) {
+          console.log(error.request);
+        } else {
+          console.log("error", error.message);
+        }
+      }
     },
   },
 };

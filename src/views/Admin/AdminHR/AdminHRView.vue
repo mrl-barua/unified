@@ -148,37 +148,19 @@ export default {
   },
   methods: {
     // The HrData() function is used to get the data of the HR with the given ID
-    HrData(HrID) {
-      axios
-        .get(`${backendURL}/api/hrlist/${HrID}/edit`)
-        .then((res) => {
-          const hrData = res.data.Hr;
-          console.log(res.data.Hr);
+    async HrData(HrID) {
+      try {
+        const res = await axios.get(`${backendURL}/api/hrlist/${HrID}/edit`);
+        const hrData = res.data.Hr;
+        console.log(hrData);
 
-          // Check if hrData is null or empty
-          this.model.Hr.id = hrData.id;
-          this.model.Hr.request_date = hrData.request_date;
-          this.model.Hr.requesting_employee_name =
-            hrData.requesting_employee_name;
-          this.model.Hr.employee_position = hrData.employee_position;
-          this.model.Hr.employment_status = hrData.employment_status;
-          this.model.Hr.office_unit = hrData.office_unit;
-          this.model.Hr.request_category = hrData.request_category;
-          this.model.Hr.brief_interview = hrData.brief_interview;
-          this.model.Hr.remarks = hrData.remarks;
-          this.model.Hr.assistance_provided = hrData.assistance_provided;
-
-          this.model.Hr.quantity_unit = hrData.quantity_unit;
-          this.model.Hr.date_received = hrData.date_received;
-        })
-        // If the HR with the given ID is not found, an error message will be displayed
-        .catch(function (error) {
-          if (error.response) {
-            if (error.response.status === 404) {
-              alert(error.response.data.message);
-            }
-          }
-        });
+        // Check if hrData is null or empty
+        this.model.Hr = { ...hrData };
+      } catch (error) {
+        if (error.response && error.response.status === 404) {
+          alert(error.response.data.message);
+        }
+      }
     },
   },
 };

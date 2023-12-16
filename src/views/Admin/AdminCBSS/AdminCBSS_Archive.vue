@@ -221,6 +221,7 @@ export default {
         a.click();
       });
     },
+    
     async getCbss() {
       try {
         const res = await axios.get(`${backendURL}/api/cbssArchived`);

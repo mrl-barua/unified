@@ -145,37 +145,38 @@ export default {
       return new Date(dateString).toLocaleDateString(undefined, options);
     },
 
-    getHrEditHistory(HrID) {
-      axios.get(`${backendURL}/api/hrVersion/${HrID}`).then((res) => {
+    async getHrEditHistory(HrID) {
+      try {
+        const res = await axios.get(`${backendURL}/api/hrVersion/${HrID}`);
         this.hr = res.data.HrEditHistory;
         console.log(res);
-      });
+      } catch (error) {
+        console.error(error);
+      }
     },
 
-    HrData(HrID) {
-      axios
-        .get(`${backendURL}/api/hrlist/${HrID}/edit`)
-        .then((res) => {
-          const hrData = res.data.Hr;
-          console.log(res.data.Hr);
+    async HrData(HrID) {
+      try {
+        const res = await axios.get(`${backendURL}/api/hrlist/${HrID}/edit`);
+        const hrData = res.data.Hr;
+        console.log(res.data.Hr);
 
-          // Check if hrData is null or empty
-          if (!hrData || Object.keys(hrData).length === 0) {
-            for (const key in this.model.Hr) {
-              this.model.Hr[key] = "No Data";
-            }
-          } else {
-            // Assign values from hrData to this.model.Hr
-            for (const key in hrData) {
-              this.model.Hr[key] = hrData[key];
-            }
+        // Check if hrData is null or empty
+        if (!hrData || Object.keys(hrData).length === 0) {
+          for (const key in this.model.Hr) {
+            this.model.Hr[key] = "No Data";
           }
-        })
-        .catch((error) => {
-          if (error.response && error.response.status === 404) {
-            alert(error.response.data.message);
-          }
-        });
+        } else {
+          // Assign values from hrData to this.model.Hr
+          Object.assign(this.model.Hr, hrData);
+        }
+      } catch (error) {
+        if (error.response && error.response.status === 404) {
+          alert(error.response.data.message);
+        } else {
+          console.error(error);
+        }
+      }
     },
   },
 };

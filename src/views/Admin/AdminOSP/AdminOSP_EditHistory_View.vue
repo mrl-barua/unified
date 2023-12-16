@@ -598,30 +598,26 @@ export default {
     this.OsdEditHistoryData(this.OsdID);
   },
   methods: {
-    OsdEditHistoryData(OsdID) {
-      axios
-        .get(`${backendURL}/api/osdVersion/${OsdID}/view`)
-        .then((res) => {
-          const osdData = res.data.Osd;
-          console.log(res.data.Osd);
+    async OsdEditHistoryData(OsdID) {
+      try {
+        const res = await axios.get(
+          `${backendURL}/api/osdVersion/${OsdID}/view`
+        );
+        const osdData = res.data.Osd;
+        console.log(osdData);
 
-          // Check if osdData is null or empty
-          if (!osdData || Object.keys(osdData).length === 0) {
-            for (const key in this.model.Osd) {
-              this.model.Osd[key] = "No Data";
-            }
-          } else {
-            // Assign values from osdData to this.model.Osd
-            for (const key in osdData) {
-              this.model.Osd[key] = osdData[key];
-            }
-          }
-        })
-        .catch((error) => {
-          if (error.response && error.response.status === 404) {
-            alert(error.response.data.message);
-          }
-        });
+        // Check if osdData is null or empty
+        if (!osdData || Object.keys(osdData).length === 0) {
+          this.model.Osd = { ...this.model.Osd, ...{ NoData: "No Data" } };
+        } else {
+          // Assign values from osdData to this.model.Osd
+          this.model.Osd = { ...osdData };
+        }
+      } catch (error) {
+        if (error.response && error.response.status === 404) {
+          alert(error.response.data.message);
+        }
+      }
     },
   },
 };

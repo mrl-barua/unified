@@ -602,109 +602,21 @@ export default {
   },
   methods: {
     // The OsdData() function is used to get the data of the HR with the given ID
-    OsdData(OsdID) {
-      axios
-        .get(`${backendURL}/api/osdlist/${OsdID}/edit`)
-        .then((res) => {
-          const osdData = res.data.Osd;
-          console.log(res.data.Osd);
+    async OsdData(OsdID) {
+      try {
+        const res = await axios.get(`${backendURL}/api/osdlist/${OsdID}/edit`);
+        const osdData = res.data.Osd;
+        console.log(osdData);
 
-          this.model.Osd.id = osdData.id;
-          this.model.Osd.division = osdData.division;
-          this.model.Osd.section_unit = osdData.section_unit;
-          this.model.Osd.office_location_official_station =
-            osdData.office_location_official_station;
-          this.model.Osd.item_number = osdData.item_number;
-          this.model.Osd.date_position_created = osdData.date_position_created;
-          this.model.Osd.position_title = osdData.position_title;
-          this.model.Osd.parenthetical_title = osdData.parenthetical_title;
-          this.model.Osd.position_level = osdData.position_level;
-          this.model.Osd.sg = osdData.sg;
-          this.model.Osd.salary_step_increment = osdData.salary_step_increment;
-          this.model.Osd.monthly_rate = osdData.monthly_rate;
-          this.model.Osd.designation_as_appropriate_based_on_so =
-            osdData.designation_as_appropriate_based_on_so;
-          this.model.Osd.date_of_designation = osdData.date_of_designation;
-          this.model.Osd.special_order_no = osdData.special_order_no;
-          this.model.Osd.office_bureau_service_program =
-            osdData.office_bureau_service_program;
-          this.model.Osd.fund_source_for_contractual =
-            osdData.fund_source_for_contractual;
-          this.model.Osd.employment_status = osdData.employment_status;
-          this.model.Osd.status_filled_unfilled =
-            osdData.status_filled_unfilled;
-          this.model.Osd.mode_of_accession_for_appointment_based_positions =
-            osdData.mode_of_accession_for_appointment_based_positions;
-          this.model.Osd.date_filled_up_assumption =
-            osdData.date_filled_up_assumption;
-          this.model.Osd.fullname = osdData.fullname;
-          this.model.Osd.lastname = osdData.lastname;
-          this.model.Osd.firstname = osdData.firstname;
-          this.model.Osd.middlename = osdData.middlename;
-          this.model.Osd.ext = osdData.ext;
-          this.model.Osd.date_of_original_appointment =
-            osdData.date_of_original_appointment;
-          this.model.Osd.date_of_last_promotion =
-            osdData.date_of_last_promotion;
-          this.model.Osd.entry_date_in_dswd = osdData.entry_date_in_dswd;
-          this.model.Osd.eligibility_csc_and_other_eligibilities =
-            osdData.eligibility_csc_and_other_eligibilities;
-          this.model.Osd.eligibility_license_ra_1080 =
-            osdData.eligibility_license_ra_1080;
-          this.model.Osd.license_ra_1080_let_rn_rs_etc =
-            osdData.license_ra_1080_let_rn_rs_etc;
-          this.model.Osd.highest_level_of_eligibility =
-            osdData.highest_level_of_eligibility;
-          this.model.Osd.highest_education_completed =
-            osdData.highest_education_completed;
-          this.model.Osd.degree_and_course_1st_vocational =
-            osdData.degree_and_course_1st_vocational;
-          this.model.Osd.degree_and_course_2nd_course =
-            osdData.degree_and_course_2nd_course;
-          this.model.Osd.other_courses = osdData.other_courses;
-          this.model.Osd.masters_or_doctoral_degree_specify =
-            osdData.masters_or_doctoral_degree_specify;
-          this.model.Osd.gender = osdData.gender;
-          this.model.Osd.date_of_birth = osdData.date_of_birth;
-          this.model.Osd.age = osdData.age;
-          this.model.Osd.civil_status = osdData.civil_status;
-          this.model.Osd.residential_address = osdData.residential_address;
-          this.model.Osd.permanent_address = osdData.permanent_address;
-          this.model.Osd.indicate_whether_solo_parent =
-            osdData.indicate_whether_solo_parent;
-          this.model.Osd.indicate_whether_senior_citizen =
-            osdData.indicate_whether_senior_citizen;
-          this.model.Osd.indicate_whether_pwd = osdData.indicate_whether_pwd;
-          this.model.Osd.type_of_disability = osdData.type_of_disability;
-          this.model.Osd.indicate_whether_member_of_indigenous_group =
-            osdData.indicate_whether_member_of_indigenous_group;
-          this.model.Osd.indigenous_group = osdData.indigenous_group;
-          this.model.Osd.citizenship = osdData.citizenship;
-          this.model.Osd.active_contact_numbers =
-            osdData.active_contact_numbers;
-          this.model.Osd.active_and_working_email_address =
-            osdData.active_and_working_email_address;
-          this.model.Osd.former_incumbent = osdData.former_incumbent;
-          this.model.Osd.mode_of_separation = osdData.mode_of_separation;
-          this.model.Osd.date_vacated = osdData.date_vacated;
-          this.model.Osd.remarks_status_of_vacant_position =
-            osdData.remarks_status_of_vacant_position;
-          this.model.Osd.employee_id_number = osdData.employee_id_number;
-          this.model.Osd.bir_tin_number = osdData.bir_tin_number;
-          this.model.Osd.philhealth_number = osdData.philhealth_number;
-          this.model.Osd.sss_number = osdData.sss_number;
-          this.model.Osd.pagibig_number = osdData.pagibig_number;
-          this.model.Osd.gsis_number = osdData.gsis_number;
-          this.model.Osd.blood_type = osdData.blood_type;
-        })
-        // If the HR with the given ID is not found, an error message will be displayed
-        .catch(function (error) {
-          if (error.response) {
-            if (error.response.status === 404) {
-              alert(error.response.data.message);
-            }
-          }
-        });
+        // Check if osdData is null or empty
+        if (osdData) {
+          this.model.Osd = { ...osdData };
+        }
+      } catch (error) {
+        if (error.response && error.response.status === 404) {
+          alert(error.response.data.message);
+        }
+      }
     },
   },
 };

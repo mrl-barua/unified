@@ -145,37 +145,38 @@ export default {
       return new Date(dateString).toLocaleDateString(undefined, options);
     },
 
-    getSwdaEditHistory(SwdaID) {
-      axios.get(`${backendURL}/api/swdaVersion/${SwdaID}`).then((res) => {
+    async getSwdaEditHistory(SwdaID) {
+      try {
+        const res = await axios.get(`${backendURL}/api/swdaVersion/${SwdaID}`);
         this.swda = res.data.SwdaEditHistory;
         console.log(res);
-      });
+      } catch (error) {
+        console.log(error);
+      }
     },
 
-    SwdaData(SwdaID) {
-      axios
-        .get(`${backendURL}/api/swdalist/${SwdaID}/edit`)
-        .then((res) => {
-          const swdaData = res.data.Swda;
-          console.log(res.data.Swda);
+    async SwdaData(SwdaID) {
+      try {
+        const res = await axios.get(
+          `${backendURL}/api/swdalist/${SwdaID}/edit`
+        );
+        const swdaData = res.data.Swda;
+        console.log(swdaData);
 
-          // Check if swdaData is null or empty
-          if (!swdaData || Object.keys(swdaData).length === 0) {
-            for (const key in this.model.Swda) {
-              this.model.Swda[key] = "No Data";
-            }
-          } else {
-            // Assign values from swdaData to this.model.Swda
-            for (const key in swdaData) {
-              this.model.Swda[key] = swdaData[key];
-            }
+        // Check if swdaData is null or empty
+        if (!swdaData || Object.keys(swdaData).length === 0) {
+          for (const key in this.model.Swda) {
+            this.model.Swda[key] = "No Data";
           }
-        })
-        .catch((error) => {
-          if (error.response && error.response.status === 404) {
-            alert(error.response.data.message);
-          }
-        });
+        } else {
+          // Assign values from swdaData to this.model.Swda
+          this.model.Swda = { ...swdaData };
+        }
+      } catch (error) {
+        if (error.response && error.response.status === 404) {
+          alert(error.response.data.message);
+        }
+      }
     },
   },
 };

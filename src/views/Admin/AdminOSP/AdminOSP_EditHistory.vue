@@ -150,37 +150,34 @@ export default {
       return new Date(dateString).toLocaleDateString(undefined, options);
     },
 
-    getOspEditHistory(OspID) {
-      axios.get(`${backendURL}/api/osdVersion/${OspID}`).then((res) => {
+    async getOspEditHistory(OspID) {
+      try {
+        const res = await axios.get(`${backendURL}/api/osdVersion/${OspID}`);
         this.osp = res.data.OsdEditHistory;
         console.log(res);
-      });
+      } catch (error) {
+        console.error(error);
+      }
     },
 
-    OspData(OspID) {
-      axios
-        .get(`${backendURL}/api/osdlist/${OspID}/edit`)
-        .then((res) => {
-          const ospData = res.data.Osd;
-          console.log(res.data.Osd);
+    async OspData(OspID) {
+      try {
+        const res = await axios.get(`${backendURL}/api/osdlist/${OspID}/edit`);
+        const ospData = res.data.Osd;
+        console.log(ospData);
 
-          // Check if ospData is null or empty
-          if (!ospData || Object.keys(ospData).length === 0) {
-            for (const key in this.model.Osp) {
-              this.model.Osp[key] = "No Data";
-            }
-          } else {
-            // Assign values from ospData to this.model.Osp
-            for (const key in ospData) {
-              this.model.Osp[key] = ospData[key];
-            }
-          }
-        })
-        .catch((error) => {
-          if (error.response && error.response.status === 404) {
-            alert(error.response.data.message);
-          }
-        });
+        // Check if ospData is null or empty
+        if (!ospData || Object.keys(ospData).length === 0) {
+          this.model.Osp = { ...this.model.Osp, ...{ NoData: "No Data" } };
+        } else {
+          // Assign values from ospData to this.model.Osp
+          this.model.Osp = { ...ospData };
+        }
+      } catch (error) {
+        if (error.response && error.response.status === 404) {
+          alert(error.response.data.message);
+        }
+      }
     },
   },
 };

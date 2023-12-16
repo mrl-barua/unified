@@ -12,7 +12,6 @@
               background-color: #133f5c;
               font-size: 12px; /* Adjust the font size as needed */
               padding: 10px 30px 10px 30px;
-              /* margin-left: 20px; */
             "
           >
             ADD NEW
@@ -127,54 +126,58 @@ export default {
     this.getSettings();
   },
   methods: {
-    getSettings() {
-      axios.get(`${backendURL}/api/getAdmin`).then((res) => {
+    async getSettings() {
+      try {
+        const res = await axios.get(`${backendURL}/api/getAdmin`);
         this.settings = res.data.Admin;
         console.log(res);
-      });
+      } catch (error) {
+        console.log(error);
+      }
     },
-    deleteSettings(SettingsID) {
-      this.$swal({
+
+    async deleteSettings(SettingsID) {
+      const result = await this.$swal({
         title: "Are you sure?",
         text: "You want to delete this data?",
         icon: "warning",
         showCancelButton: true,
         confirmButtonText: "Yes, delete it!",
         cancelButtonText: "No, keep it",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          axios
-            .delete(`${backendURL}/api/getAdmin/${SettingsID}/delete`)
-            .then((res) => {
-              this.$swal({
-                icon: "success",
-                title: "Success!",
-                text: res.data.message,
-              }).then(() => {
-                window.location.reload();
-              });
-            })
-            .catch((error) => {
-              // Use an arrow function here
-              if (error.response) {
-                if (error.response.status === 422) {
-                  this.errorList = error.response.data.errors;
-                }
-                if (error.response.status === 404) {
-                  this.$swal({
-                    icon: "error",
-                    title: "Error!",
-                    text: error.response.data.message,
-                  });
-                }
-              } else if (error.request) {
-                console.log(error.request);
-              } else {
-                console.log("error", error.message);
-              }
-            });
-        }
       });
+
+      if (result.isConfirmed) {
+        try {
+          const res = await axios.delete(
+            `${backendURL}/api/getAdmin/${SettingsID}/delete`
+          );
+
+          await this.$swal({
+            icon: "success",
+            title: "Success!",
+            text: res.data.message,
+          });
+
+          window.location.reload();
+        } catch (error) {
+          if (error.response) {
+            if (error.response.status === 422) {
+              this.errorList = error.response.data.errors;
+            }
+            if (error.response.status === 404) {
+              await this.$swal({
+                icon: "error",
+                title: "Error!",
+                text: error.response.data.message,
+              });
+            }
+          } else if (error.request) {
+            console.log(error.request);
+          } else {
+            console.log("error", error.message);
+          }
+        }
+      }
     },
   },
 };

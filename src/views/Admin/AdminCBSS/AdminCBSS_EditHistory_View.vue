@@ -146,7 +146,7 @@ export default {
       PageDetail: "View Edit Details",
       CbssID: "",
       errorList: "",
-      // The model for the form inputs  (the data that will be sent to the backend) is defined here as an empty object with the following properties: Osd
+      // The model for the form inputs  (the data that will be sent to the backend) is defined here as an empty object with the following properties: 
       model: {
         Cbss: {
           ID: "",
@@ -169,7 +169,6 @@ export default {
     };
   },
   mounted() {
-    //console.log(this.$route.params.ID);
     this.CbssID = this.$route.params.ID;
     //the CbssID is passed as a parameter to the CbssData() function  (which is defined below) to get the data of the CBSS with the given ID
     this.CbssEditHistoryData(this.$route.params.ID);

@@ -1045,50 +1045,39 @@ export default {
         });
     },
 
-    // The updateHR() function is used to update the data of the HR with the given ID in the database using the backend API endpoint for updating HR data
-    updateOsd(OsdID) {
-      var mythis = this;
-      axios
-        .put(
+    // The updateOSD() function is used to update the data of the HR with the given ID in the database using the backend API endpoint for updating HR data
+    async updateOsd(OsdID) {
+      try {
+        const res = await axios.put(
           `${backendURL}/api/osdlist/${OsdID}/edit`,
-          // The data to be updated is passed as a parameter to the axios.put() function
-          // as the second parameter (the first parameter is the API endpoint) in the form of
-          // an object with the following properties: Hr (which contains the data to be updated)
-          // and _method (which is set to "PUT" to indicate that the data will be updated)
           this.model.Osd
-        )
-        .then((res) => {
-          console.log(res.data);
-          // alert(res.data.message);
-          this.$swal({
-            icon: "success",
-            title: "Success!",
-            text: res.data.message,
-          })
-            .then(() => {
-              return this.$router.push("/adminosp");
-            })
-            .then(() => {
-              window.location.reload();
-            });
-          this.errorList = "";
+        );
+        console.log(res.data);
 
-          // window.location.reload(); // reload the page after updating the data
-        })
-        .catch(function (error) {
-          if (error.response) {
-            if (error.response.status === 422) {
-              mythis.errorList = error.response.data.errors;
-            }
-            if (error.response.status === 404) {
-              alert(error.response.data.message);
-            }
-          } else if (error.request) {
-            console.log(error.request);
-          } else {
-            console.log("error", error.message);
-          }
+        await this.$swal({
+          icon: "success",
+          title: "Success!",
+          text: res.data.message,
         });
+
+        await this.$router.push("/adminosp");
+        window.location.reload();
+
+        this.errorList = "";
+      } catch (error) {
+        if (error.response) {
+          if (error.response.status === 422) {
+            this.errorList = error.response.data.errors;
+          }
+          if (error.response.status === 404) {
+            alert(error.response.data.message);
+          }
+        } else if (error.request) {
+          console.log(error.request);
+        } else {
+          console.log("error", error.message);
+        }
+      }
     },
   },
 };

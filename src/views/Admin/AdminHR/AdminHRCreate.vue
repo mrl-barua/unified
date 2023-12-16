@@ -226,66 +226,56 @@ export default {
       }
       return format(parsedDate, "MMMM dd, yyyy");
     },
-    saveHr() {
-      var mythis = this;
+    async saveHr() {
       if (!this.model.Hr.request_date || !this.model.Hr.date_received) {
         throw new Error("Request date and date received are required");
       }
 
-      var hrCopy = Object.assign({}, this.model.Hr);
+      var hrCopy = { ...this.model.Hr };
 
       hrCopy.request_date = this.formatDate(this.model.Hr.request_date);
       hrCopy.date_received = this.formatDate(this.model.Hr.date_received);
-      // this.model.Hr.request_date = this.formatDate(this.model.Hr.request_date);
-      axios
-        .post(`${backendURL}/api/hrlist`, hrCopy)
-        .then((res) => {
-          console.log(res.data);
-          // alert(res.data.message);
-          // this.$swal(res.data.message);
-          this.$swal({
-            icon: "success",
-            title: "Success!",
-            text: res.data.message,
-          })
-            .then(() => {
-              this.$router.push("/adminhr");
-              // window.location.reload();
-            })
-            .then(() => {
-              window.location.reload();
-            });
 
-          this.model.Hr = {
-            request_date: "",
-            requesting_employee_name: "",
-            employee_position: "",
-            employment_status: "",
-            office_unit: "",
-            request_category: "",
-            brief_interview: "",
-            remarks: "",
-            assistance_provided: "",
-            quantity_unit: "",
-            date_received: "",
-          };
+      try {
+        const res = await axios.post(`${backendURL}/api/hrlist`, hrCopy);
+        console.log(res.data);
 
-          // window.location.reload(); // RELOAD THE PAGE TO REMOVE THE ERRORS
-        })
-        .catch(function (error) {
-          if (error.response) {
-            if (error.response.status === 422) {
-              mythis.errorList = error.response.data.errors;
-            }
-            console.log(error.response.data);
-            console.log(error.response.status);
-            console.log(error.response.headers);
-          } else if (error.request) {
-            console.log(error.request);
-          } else {
-            console.log("error", error.message);
-          }
+        await this.$swal({
+          icon: "success",
+          title: "Success!",
+          text: res.data.message,
         });
+
+        this.$router.push("/adminhr");
+        window.location.reload();
+
+        this.model.Hr = {
+          request_date: "",
+          requesting_employee_name: "",
+          employee_position: "",
+          employment_status: "",
+          office_unit: "",
+          request_category: "",
+          brief_interview: "",
+          remarks: "",
+          assistance_provided: "",
+          quantity_unit: "",
+          date_received: "",
+        };
+      } catch (error) {
+        if (error.response) {
+          if (error.response.status === 422) {
+            this.errorList = error.response.data.errors;
+          }
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          console.log(error.request);
+        } else {
+          console.log("error", error.message);
+        }
+      }
     },
   },
 };

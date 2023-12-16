@@ -381,47 +381,46 @@ export default {
       }
     },
 
-    deleteOsd(OsdID) {
-      this.$swal({
+    async deleteOsd(OsdID) {
+      const result = await this.$swal({
         title: "Are you sure?",
         text: "You want to archive this data?",
         icon: "warning",
         showCancelButton: true,
         confirmButtonText: "Yes, archive it!",
         cancelButtonText: "No, keep it",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          axios
-            .delete(`${backendURL}/api/osdlist/${OsdID}/delete`)
-            .then((res) => {
-              this.$swal({
-                icon: "success",
-                title: "Success!",
-                text: res.data.message,
-              }).then(() => {
-                window.location.reload();
-              });
-            })
-            .catch(function (error) {
-              if (error.response) {
-                if (error.response.status === 422) {
-                  mythis.errorList = error.response.data.errors;
-                }
-                if (error.response.status === 404) {
-                  this.$swal({
-                    icon: "error",
-                    title: "Error!",
-                    text: error.response.data.message,
-                  });
-                }
-              } else if (error.request) {
-                console.log(error.request);
-              } else {
-                console.log("error", error.message);
-              }
-            });
-        }
       });
+
+      if (result.isConfirmed) {
+        try {
+          const res = await axios.delete(
+            `${backendURL}/api/osdlist/${OsdID}/delete`
+          );
+          await this.$swal({
+            icon: "success",
+            title: "Success!",
+            text: res.data.message,
+          });
+          window.location.reload();
+        } catch (error) {
+          if (error.response) {
+            if (error.response.status === 422) {
+              this.errorList = error.response.data.errors;
+            }
+            if (error.response.status === 404) {
+              this.$swal({
+                icon: "error",
+                title: "Error!",
+                text: error.response.data.message,
+              });
+            }
+          } else if (error.request) {
+            console.log(error.request);
+          } else {
+            console.log("error", error.message);
+          }
+        }
+      }
     },
   },
 };

@@ -282,52 +282,51 @@ export default {
         a.click();
       });
     },
-    getSwdaArchive() {
-      axios.get(`${backendURL}/api/swdaArchived`).then((res) => {
+    async getSwdaArchive() {
+      try {
+        const res = await axios.get(`${backendURL}/api/swdaArchived`);
         this.swda = res.data.ArchivedSwda;
         console.log(res);
-      });
+      } catch (error) {
+        console.log(error);
+      }
     },
 
-    restoreSwda(SwdaID) {
-      this.$swal({
+    async restoreSwda(SwdaID) {
+      const result = await this.$swal({
         title: "Are you sure?",
         text: "You want to restore this data?",
         icon: "warning",
         showCancelButton: true,
         confirmButtonText: "Yes, restore it!",
         cancelButtonText: "No, keep it",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          axios
-            .post(`${backendURL}/api/swdaArchived/${SwdaID}/restore`)
-            .then((res) => {
-              return this.$swal({
-                icon: "success",
-                title: "Success!",
-                text: res.data.message,
-              });
-            })
-            .then(() => {
-              window.location.reload();
-            })
-            .catch((error) => {
-              if (error.response) {
-                if (error.response.status === 404) {
-                  this.$swal({
-                    icon: "error",
-                    title: "Error!",
-                    text: error.response.data.message,
-                  });
-                }
-              } else if (error.request) {
-                console.log(error.request);
-              } else {
-                console.log("error", error.message);
-              }
-            });
-        }
       });
+
+      if (result.isConfirmed) {
+        try {
+          const res = await axios.post(
+            `${backendURL}/api/swdaArchived/${SwdaID}/restore`
+          );
+          await this.$swal({
+            icon: "success",
+            title: "Success!",
+            text: res.data.message,
+          });
+          window.location.reload();
+        } catch (error) {
+          if (error.response && error.response.status === 404) {
+            this.$swal({
+              icon: "error",
+              title: "Error!",
+              text: error.response.data.message,
+            });
+          } else if (error.request) {
+            console.log(error.request);
+          } else {
+            console.log("error", error.message);
+          }
+        }
+      }
     },
   },
 };

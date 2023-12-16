@@ -782,103 +782,84 @@ export default {
       }
       return format(parsedDate, "MMMM dd, yyyy");
     },
-    saveSwda() {
-      var mythis = this;
-      var swdaCopy = Object.assign({}, this.model.Swda);
+    async saveSwda() {
+      try {
+        const dateFields = [
+          "Registration_Date",
+          "License_Date_Issued",
+          "Accreditation_Date_Issued",
+          "Registration_Expiration",
+          "License_Expiration",
+          "Accreditation_Expiration",
+        ];
 
-      swdaCopy.Registration_Date = this.model.Swda.Registration_Date
-        ? this.formatDate(this.model.Swda.Registration_Date)
-        : "";
-      swdaCopy.License_Date_Issued = this.model.Swda.License_Date_Issued
-        ? this.formatDate(this.model.Swda.License_Date_Issued)
-        : "";
-      swdaCopy.Accreditation_Date_Issued = this.model.Swda
-        .Accreditation_Date_Issued
-        ? this.formatDate(this.model.Swda.Accreditation_Date_Issued)
-        : "";
-      swdaCopy.Registration_Expiration = this.model.Swda.Registration_Expiration
-        ? this.formatDate(this.model.Swda.Registration_Expiration)
-        : "";
-      swdaCopy.License_Expiration = this.model.Swda.License_Expiration
-        ? this.formatDate(this.model.Swda.License_Expiration)
-        : "";
-      swdaCopy.Accreditation_Expiration = this.model.Swda
-        .Accreditation_Expiration
-        ? this.formatDate(this.model.Swda.Accreditation_Expiration)
-        : "";
-      axios
-        .post(`${backendURL}/api/swdalist`, swdaCopy)
-        .then((res) => {
-          console.log(res.data);
-          // alert(res.data.message);
-          // this.$swal(res.data.message);
-          this.$swal({
-            icon: "success",
-            title: "Success!",
-            text: res.data.message,
-          }).then(() => {
-            this.$router.push("/adminswda");
-            // window.location.reload();
-          });
-          this.model.Swda = {
-            Type: "",
-            Sector: "",
-            Cluster: "",
-            Agency: "",
-            Address: "",
-            Former_Name: "",
-            Contact_Number: "",
-            Fax: "",
-            Email: "",
-            Website: "",
-            Contact_Person: "",
-            Position: "",
-            Mobile_Number: "",
-            Registered: "",
-            Licensed: "",
-            Accredited: "",
-            Services_Offered: "",
-            Simplified_Services: "",
-            Area_of_Operation: "",
-            Regional_Operation: "",
-            Specified_Areas_of_Operation: "",
-            Mode_of_Delivery: "",
-            Clientele: "",
-            Registration_ID: "",
-            Registration_Date: "",
-            Registration_Expiration: "",
-            Registration_Status: "",
-            Licensed_ID: "",
-            License_Date_Issued: "",
-            License_Expiration: "",
-            License_Status: "",
-            Accreditation_ID: "",
-            Accreditation_Date_Issued: "",
-            Accreditation_Expiration: "",
-            Accreditation_Status: "",
-            Remarks: "",
-            License_Days_Left: "",
-            Licensure_Overdue: "",
-            Accreditation_Days_Left: "",
-            Accreditation_Overdue: "",
-          };
+        let swdaCopy = { ...this.model.Swda };
 
-          // window.location.reload(); // RELOAD THE PAGE TO REMOVE THE ERRORS
-        })
-        .catch(function (error) {
-          if (error.response) {
-            if (error.response.status === 422) {
-              mythis.errorList = error.response.data.errors;
-            }
-            console.log(error.response.data);
-            console.log(error.response.status);
-            console.log(error.response.headers);
-          } else if (error.request) {
-            console.log(error.request);
-          } else {
-            console.log("error", error.message);
-          }
+        dateFields.forEach((field) => {
+          swdaCopy[field] = this.model.Swda[field]
+            ? this.formatDate(this.model.Swda[field])
+            : "";
         });
+
+        const res = await axios.post(`${backendURL}/api/swdalist`, swdaCopy);
+        console.log(res.data);
+
+        await this.$swal({
+          icon: "success",
+          title: "Success!",
+          text: res.data.message,
+        });
+
+        this.$router.push("/adminswda");
+
+        this.model.Swda = {
+          Type: "",
+          Sector: "",
+          Cluster: "",
+          Agency: "",
+          Address: "",
+          Former_Name: "",
+          Contact_Number: "",
+          Fax: "",
+          Email: "",
+          Website: "",
+          Contact_Person: "",
+          Position: "",
+          Mobile_Number: "",
+          Registered: "",
+          Licensed: "",
+          Accredited: "",
+          Services_Offered: "",
+          Simplified_Services: "",
+          Area_of_Operation: "",
+          Regional_Operation: "",
+          Specified_Areas_of_Operation: "",
+          Mode_of_Delivery: "",
+          Clientele: "",
+          Registration_ID: "",
+          Registration_Date: "",
+          Registration_Expiration: "",
+          Registration_Status: "",
+          Licensed_ID: "",
+          License_Date_Issued: "",
+          License_Expiration: "",
+          License_Status: "",
+          Accreditation_ID: "",
+          Accreditation_Date_Issued: "",
+          Accreditation_Expiration: "",
+          Accreditation_Status: "",
+          Remarks: "",
+          License_Days_Left: "",
+          Licensure_Overdue: "",
+          Accreditation_Days_Left: "",
+          Accreditation_Overdue: "",
+        };
+      } catch (error) {
+        if (error.response && error.response.status === 422) {
+          this.errorList = error.response.data.errors;
+        }
+        console.log(error);
+      }
     },
   },
 };

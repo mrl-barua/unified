@@ -145,38 +145,36 @@ export default {
       return new Date(dateString).toLocaleDateString(undefined, options);
     },
 
-    getCbssEditHistory(CbssID) {
-      axios.get(`${backendURL}/api/cbssVersion/${CbssID}`).then((res) => {
+    async getCbssEditHistory(CbssID) {
+      try {
+        const res = await axios.get(`${backendURL}/api/cbssVersion/${CbssID}`);
         this.cbss = res.data.CbssEditHistory;
-
-        // console.log(res.data.CbssEditHistory);
-      });
+      } catch (error) {
+        console.error(error);
+      }
     },
 
-    CbssData(CbssID) {
-      axios
-        .get(`${backendURL}/api/cbsslist/${CbssID}/edit`)
-        .then((res) => {
-          const cbssData = res.data.Cbss;
-          console.log(res.data.Cbss);
+    async CbssData(CbssID) {
+      try {
+        const res = await axios.get(
+          `${backendURL}/api/cbsslist/${CbssID}/edit`
+        );
+        const cbssData = res.data.Cbss;
 
-          // Check if cbssData is null or empty
-          if (!cbssData || Object.keys(cbssData).length === 0) {
-            for (const key in this.model.Cbss) {
-              this.model.Cbss[key] = "No Data";
-            }
-          } else {
-            // Assign values from cbssData to this.model.Cbss
-            for (const key in cbssData) {
-              this.model.Cbss[key] = cbssData[key];
-            }
-          }
-        })
-        .catch((error) => {
-          if (error.response && error.response.status === 404) {
-            alert(error.response.data.message);
-          }
-        });
+        // Check if cbssData is null or empty
+        if (!cbssData || Object.keys(cbssData).length === 0) {
+          this.model.Cbss = this.model.Cbss.map(() => "No Data");
+        } else {
+          // Assign values from cbssData to this.model.Cbss
+          Object.assign(this.model.Cbss, cbssData);
+        }
+      } catch (error) {
+        if (error.response && error.response.status === 404) {
+          alert(error.response.data.message);
+        } else {
+          console.error(error);
+        }
+      }
     },
   },
 };
