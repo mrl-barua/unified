@@ -27,26 +27,47 @@ export default {
     },
     aspectRatio: {
       type: Number,
-      default: 30 / 10, // You can set a default value or leave it empty
+      default: 3,
     },
   },
-  data() {
-    return {
-      chartData: this.prepareChartData(this.data),
-      chartOptions: {
+  computed: {
+    chartData() {
+      return this.prepareChartData(this.data);
+    },
+    chartOptions() {
+      return {
         responsive: true,
-        aspectRatio: this.aspectRatio, // Use the aspectRatio prop here
-        indexAxis: "y", // Set to 'y' for horizontal bar chart
+        aspectRatio: this.aspectRatio,
+        indexAxis: "y",
         scales: {
           x: {
             beginAtZero: true,
+            grid: {
+              color: "rgba(0, 0, 1, 0.1)", // Set the color of the grid lines
+              borderColor: "rgba(0, 0, 0, 0.1)", // Set the color of the border
+              borderWidth: 1, // Set the width of the border
+            },
           },
           y: {
             beginAtZero: true,
+            grid: {
+              color: "rgba(0, 0, 0, 0.1)", // Set the color of the grid lines
+              borderColor: "rgba(0, 0, 0, 0.1)", // Set the color of the border
+              borderWidth: 1, // Set the width of the border
+            },
           },
         },
-      },
-    };
+        hover: {
+          onHover: function (event, chartElement) {
+            event.target.style.cursor = chartElement[0] ? "pointer" : "default";
+          },
+        },
+        animation: {
+          duration: 2000, // general animation time
+          easing: "easeOutQuart", // an animation easing
+        },
+      };
+    },
   },
   methods: {
     prepareChartData(data) {
@@ -57,6 +78,7 @@ export default {
             label: data.label,
             data: data.values,
             backgroundColor: data.backgroundColor,
+            barThickness: 15, // Set the width of each bar
           },
         ],
       };

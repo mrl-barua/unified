@@ -33,23 +33,29 @@ export default {
       type: Object,
       required: true,
     },
-    aspectRatio: {
-      type: Number,
-      default: 30 / 10, // You can set a default value or leave it empty
-    },
   },
-  data() {
-    return {
-      chartData: this.prepareChartData(this.data),
-      chartOptions: {
+  computed: {
+    chartData() {
+      return this.prepareChartData(this.data);
+    },
+    chartOptions() {
+      return {
         responsive: true,
-        maintainAspectRatio: false, // Use the aspectRatio prop here
-      },
-    };
+        maintainAspectRatio: false,
+        hover: {
+          onHover: function (event, chartElement) {
+            event.target.style.cursor = chartElement[0] ? "pointer" : "default";
+          },
+        },
+        animation: {
+          duration: 2000, // general animation time
+          easing: "easeOutQuart", // an animation easing
+        },
+      };
+    },
   },
   methods: {
     prepareChartData(data) {
-      // You can modify this function to format the data as needed for the chart.
       return {
         labels: data.labels,
         datasets: [
@@ -68,8 +74,8 @@ export default {
 <style scoped>
 .chart-container {
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+  justify-content: center;
+  align-items: center;
   height: 100%;
   width: 100%;
 }

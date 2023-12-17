@@ -33,6 +33,21 @@ export default {
         plugins: {
           legend: this.legendOptions, // Use the prop for legend options
         },
+        hover: {
+          onHover: (event, chartElement) => {
+            event.target.style.cursor = chartElement[0] ? "pointer" : "default";
+          },
+        },
+        animation: {
+          duration: 2000,
+          easing: "easeOutQuart",
+        },
+        elements: {
+          arc: {
+            borderWidth: 0,
+            borderColor: "#000",
+          },
+        },
       },
     };
   },

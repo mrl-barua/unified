@@ -21,21 +21,32 @@ export default {
     legendOptions: {
       type: Object, // Define a prop for legend options
       default: () => ({
-        position: "top", // Default legend position
+        position: "bottom", // Change legend position to bottom
       }),
     },
   },
-  data() {
-    return {
-      chartData: this.prepareChartData(this.data),
-      chartOptions: {
+  computed: {
+    chartData() {
+      return this.prepareChartData(this.data);
+    },
+    chartOptions() {
+      return {
         responsive: true,
         maintainAspectRatio: false,
         plugins: {
           legend: this.legendOptions, // Use the prop for legend options
         },
-      },
-    };
+        hover: {
+          onHover: function (event, chartElement) {
+            event.target.style.cursor = chartElement[0] ? "pointer" : "default";
+          },
+        },
+        animation: {
+          duration: 1000, // general animation time
+          easing: "easeOutSine", // an animation easing
+        },
+      };
+    },
   },
   methods: {
     prepareChartData(data) {
@@ -47,6 +58,8 @@ export default {
             label: data.label,
             data: data.values,
             backgroundColor: data.backgroundColor,
+            borderColor: "#000", // Add border color
+            borderWidth: 0, // Add border width
           },
         ],
       };

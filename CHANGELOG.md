@@ -506,3 +506,7 @@
 
 - Fix backendURL in config.js and update async/await syntax in multiple files in ADMIN PAGE
 - Update LoginForm.vue and AdminHREdit.vue
+
+### version 10.1 MARLO BARUA
+
+- Update chart options and styles

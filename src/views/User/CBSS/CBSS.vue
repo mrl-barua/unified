@@ -679,270 +679,241 @@ export default {
     },
 
     async getClientsServedPerQuarter() {
-      await axios
-        .get(`${backendURL}/api/clientsServedPerQuarter`)
-        .then((res) => {
-          const data = res.data.clientsServedPerQuarter;
+      try {
+        const res = await axios.get(
+          `${backendURL}/api/clientsServedPerQuarter`
+        );
+        const data = res.data.clientsServedPerQuarter;
 
-          const labels = Object.keys(data);
-          const values = Object.values(data);
+        const labels = Object.keys(data);
+        const values = Object.values(data);
 
-          const clientServedPerQuarterChart = {
-            labels,
-            label: ["Quarters"],
-            values,
-            backgroundColor: [
-              "rgba(255, 150, 136, 1)",
-              "rgba(255, 105, 97, 1)",
-              "rgba(248, 228, 75, 1)",
-              "rgba(106, 158, 218, 1)",
-              "rgba(178, 218, 250, 1)",
-              "rgba(238, 202, 6, 1)",
-            ],
-          };
-
-          this.clientServedPerQuarterChart = clientServedPerQuarterChart;
-        })
-        .catch((error) => {
-          console.error(error);
-          // Handle the error appropriately here
-          const clientServedPerQuarterChart = {
-            labels: [
-              "1st Quarter",
-              "2nd Quarter",
-              "3rd Quarter",
-              "4th Quarter",
-            ],
-            label: ["Quarters"],
-            values: [1, 1, 1, 1],
-            backgroundColor: [
-              "rgba(255, 150, 136, 1)",
-              "rgba(255, 105, 97, 1)",
-              "rgba(248, 228, 75, 1)",
-              "rgba(106, 158, 218, 1)",
-              "rgba(178, 218, 250, 1)",
-              "rgba(238, 202, 6, 1)",
-            ],
-          };
-
-          this.clientServedPerQuarterChart = clientServedPerQuarterChart;
-        });
+        this.clientServedPerQuarterChart = {
+          labels,
+          label: ["Quarters"],
+          values,
+          backgroundColor: [
+            "rgba(255, 150, 136, 1)",
+            "rgba(255, 105, 97, 1)",
+            "rgba(248, 228, 75, 1)",
+            "rgba(106, 158, 218, 1)",
+            "rgba(178, 218, 250, 1)",
+            "rgba(238, 202, 6, 1)",
+          ],
+        };
+      } catch (error) {
+        console.error(error);
+        this.clientServedPerQuarterChart = {
+          labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter"],
+          label: ["Quarters"],
+          values: [1, 1, 1, 1],
+          backgroundColor: [
+            "rgba(255, 150, 136, 1)",
+            "rgba(255, 105, 97, 1)",
+            "rgba(248, 228, 75, 1)",
+            "rgba(106, 158, 218, 1)",
+            "rgba(178, 218, 250, 1)",
+            "rgba(238, 202, 6, 1)",
+          ],
+        };
+      }
     },
     async getClientServedPerAgeAndSex() {
-      await axios
-        .get(`${backendURL}/api/clientServedPerAgeAndSex`)
-        .then((res) => {
-          const data = res.data.clientServedPerAgeAndSex;
+      try {
+        const res = await axios.get(
+          `${backendURL}/api/clientServedPerAgeAndSex`
+        );
+        const data = res.data.clientServedPerAgeAndSex;
 
-          const labels = Object.keys(data.MALE || data.FEMALE).map((ageKey) =>
-            ageKey.replace("AGE:", "")
-          );
-          const maleData = labels.map(
-            (label) => data.MALE[`AGE:${label}`] || 0
-          );
-          const femaleData = labels.map(
-            (label) => data.FEMALE[`AGE:${label}`] || 0
-          );
+        const labels = Object.keys(data.MALE || data.FEMALE).map((ageKey) =>
+          ageKey.replace("AGE:", "")
+        );
+        const maleData = labels.map((label) => data.MALE[`AGE:${label}`] || 0);
+        const femaleData = labels.map(
+          (label) => data.FEMALE[`AGE:${label}`] || 0
+        );
 
-          const clientServedPerAgeAndSex = {
-            labels,
-            datasets: [
-              {
-                label: "Female",
-                data: femaleData,
-                backgroundColor: "red",
-                fill: false, // for line chart
-                borderColor: "red", // for line chart
-              },
-              {
-                label: "Male",
-                data: maleData,
-                backgroundColor: "blue",
-                fill: false, // for line chart
-                borderColor: "blue", // for line chart
-              },
-            ],
-          };
-
-          this.clientServedPerAgeAndSex = clientServedPerAgeAndSex;
-        })
-        .catch((error) => {
-          console.error(error);
-          const clientServedPerAgeAndSex = {
-            datasets: [
-              {
-                label: "Female",
-                data: [1, 1, 1, 1, 1, 1],
-                backgroundColor: "red",
-                fill: false, // for line chart
-                borderColor: "red", // for line chart
-              },
-              {
-                label: "Male",
-                data: [1, 1, 1, 1, 1, 1],
-                backgroundColor: "blue",
-                fill: false, // for line chart
-                borderColor: "blue", // for line chart
-              },
-            ],
-          };
-
-          this.clientServedPerAgeAndSex = clientServedPerAgeAndSex;
-        });
+        this.clientServedPerAgeAndSex = {
+          labels,
+          datasets: [
+            {
+              label: "Female",
+              data: femaleData,
+              backgroundColor: "red",
+              fill: false, // for line chart
+              borderColor: "red", // for line chart
+            },
+            {
+              label: "Male",
+              data: maleData,
+              backgroundColor: "blue",
+              fill: false, // for line chart
+              borderColor: "blue", // for line chart
+            },
+          ],
+        };
+      } catch (error) {
+        console.error(error);
+        this.clientServedPerAgeAndSex = {
+          datasets: [
+            {
+              label: "Female",
+              data: [1, 1, 1, 1, 1, 1],
+              backgroundColor: "red",
+              fill: false, // for line chart
+              borderColor: "red", // for line chart
+            },
+            {
+              label: "Male",
+              data: [1, 1, 1, 1, 1, 1],
+              backgroundColor: "blue",
+              fill: false, // for line chart
+              borderColor: "blue", // for line chart
+            },
+          ],
+        };
+      }
     },
 
     async getFinancialAmountServe() {
-      await axios
-        .get(`${backendURL}/api/financialAmountServed`)
-        .then((res) => {
-          this.financialAmountServed = res.data.FinancialAmountServed;
+      try {
+        const res = await axios.get(`${backendURL}/api/financialAmountServed`);
+        this.financialAmountServed = res.data.FinancialAmountServed;
 
-          const sumsByCategory = this.financialAmountServed.reduce(
-            (sums, item) => {
-              if (!sums[item.CASE_CATEGORY]) {
-                sums[item.CASE_CATEGORY] = 0;
-              }
-              sums[item.CASE_CATEGORY] += item.AMOUNT || 0; // if AMOUNT is null, treat it as 0
-              return sums;
-            },
-            {}
-          );
+        const sumsByCategory = this.financialAmountServed.reduce(
+          (sums, item) => {
+            if (!sums[item.CASE_CATEGORY]) {
+              sums[item.CASE_CATEGORY] = 0;
+            }
+            sums[item.CASE_CATEGORY] += item.AMOUNT || 0; // if AMOUNT is null, treat it as 0
+            return sums;
+          },
+          {}
+        );
 
-          this.sumsByCategory = sumsByCategory;
-
-          // console.log(this.sumsByCategory);
-        })
-        .catch((error) => {
-          console.error(error);
-          // Handle the error appropriately here
-        });
+        this.sumsByCategory = sumsByCategory;
+      } catch (error) {
+        console.error(error);
+        // Handle the error appropriately here
+      }
     },
 
     async getSubCategoriesServedChart() {
-      await axios
-        .get(`${backendURL}/api/subCategoriesServedChart`)
-        .then((res) => {
-          this.SubCategoriesServedChart = res.data.SubCategoriesServedChart;
+      try {
+        const res = await axios.get(
+          `${backendURL}/api/subCategoriesServedChart`
+        );
+        this.SubCategoriesServedChart = res.data.SubCategoriesServedChart;
 
-          const countsBySubCategory = this.SubCategoriesServedChart.reduce(
-            (counts, item) => {
-              if (item.SUB_CATEGORY) {
-                if (!counts[item.SUB_CATEGORY]) {
-                  counts[item.SUB_CATEGORY] = 0;
-                }
-                counts[item.SUB_CATEGORY]++;
+        const countsBySubCategory = this.SubCategoriesServedChart.reduce(
+          (counts, item) => {
+            if (item.SUB_CATEGORY) {
+              if (!counts[item.SUB_CATEGORY]) {
+                counts[item.SUB_CATEGORY] = 0;
               }
-              return counts;
-            },
-            {}
-          );
+              counts[item.SUB_CATEGORY]++;
+            }
+            return counts;
+          },
+          {}
+        );
 
-          const subCategoriesChart = {
-            labels: Object.keys(countsBySubCategory),
-            label: ["Case Categories"],
-            values: Object.values(countsBySubCategory),
-            backgroundColor: [
-              "rgba(183, 154, 0, 1)",
-              "rgba(210, 178, 2, 1)",
-              "rgba(238, 202, 6, 1)",
-              "rgba(248, 228, 75, 1)",
-            ],
-          };
-
-          this.subCategoriesChart = subCategoriesChart;
-        })
-        .catch((error) => {
-          console.error(error);
-          const subCategoriesChart = {
-            labels: ["1", "2", "3", "4"],
-            label: ["Case Categories"],
-            values: [1, 1, 1, 1],
-            backgroundColor: [
-              "rgba(183, 154, 0, 1)",
-              "rgba(210, 178, 2, 1)",
-              "rgba(238, 202, 6, 1)",
-              "rgba(248, 228, 75, 1)",
-            ],
-          };
-
-          this.subCategoriesChart = subCategoriesChart;
-        });
+        this.subCategoriesChart = {
+          labels: Object.keys(countsBySubCategory),
+          label: ["Sub - Case Categories"],
+          values: Object.values(countsBySubCategory),
+          backgroundColor: [
+            "rgba(183, 154, 0, 1)",
+            "rgba(210, 178, 2, 1)",
+            "rgba(238, 202, 6, 1)",
+            "rgba(248, 228, 75, 1)",
+          ],
+        };
+      } catch (error) {
+        console.error(error);
+        this.subCategoriesChart = {
+          labels: ["1", "2", "3", "4"],
+          label: ["Sub - Case Categories"],
+          values: [1, 1, 1, 1],
+          backgroundColor: [
+            "rgba(183, 154, 0, 1)",
+            "rgba(210, 178, 2, 1)",
+            "rgba(238, 202, 6, 1)",
+            "rgba(248, 228, 75, 1)",
+          ],
+        };
+      }
     },
 
     async getSubCategoriesServed() {
-      await axios
-        .get(`${backendURL}/api/subCategoriesServed`)
-        .then((res) => {
-          this.subCategoriesServed = res.data.SubCategoriesServed;
-          console.log(res.data.SubCategoriesServed);
+      try {
+        const res = await axios.get(`${backendURL}/api/subCategoriesServed`);
+        this.subCategoriesServed = res.data.SubCategoriesServed;
+        console.log(res.data.SubCategoriesServed);
 
-          const countsByService = this.subCategoriesServed.reduce(
-            (counts, item) => {
-              if (!counts[item.NON_MONETARY_SERVICES]) {
-                counts[item.NON_MONETARY_SERVICES] = 0;
-              }
-              counts[item.NON_MONETARY_SERVICES]++;
-              return counts;
-            },
-            {}
-          );
+        const countsByService = this.subCategoriesServed.reduce(
+          (counts, item) => {
+            if (!counts[item.NON_MONETARY_SERVICES]) {
+              counts[item.NON_MONETARY_SERVICES] = 0;
+            }
+            counts[item.NON_MONETARY_SERVICES]++;
+            return counts;
+          },
+          {}
+        );
 
-          this.countsByService = countsByService;
-        })
-        .catch((error) => {
-          console.error(error);
-          // Handle the error appropriately here
-        });
+        this.countsByService = countsByService;
+      } catch (error) {
+        console.error(error);
+        // Handle the error appropriately here
+      }
     },
 
     async getTotalNumberOfClientServed() {
-      await axios
-        .get(`${backendURL}/api/totalNumberOfClientServed`)
-        .then((res) => {
-          this.totalNumberOfClientServed = res.data.TotalNumberOfClientServed;
-
-          const countsByPerson = this.totalNumberOfClientServed.reduce(
-            (counts, item) => {
-              if (!counts[item.REPONSIBLE_PERSON]) {
-                counts[item.REPONSIBLE_PERSON] = 0;
-              }
-              counts[item.REPONSIBLE_PERSON]++;
-              return counts;
-            },
-            {}
-          );
-
-          this.countsByPerson = countsByPerson;
-        })
-        .catch((error) => {
-          console.error(error);
-          // Handle the error appropriately here
-        });
+      try {
+        const response = await axios.get(
+          `${backendURL}/api/totalNumberOfClientServed`
+        );
+        this.totalNumberOfClientServed =
+          response.data.TotalNumberOfClientServed;
+        this.countsByPerson = this.getCountsByPerson(
+          this.totalNumberOfClientServed
+        );
+      } catch (error) {
+        console.error(error);
+        // Handle the error appropriately here
+      }
     },
 
+    getCountsByPerson(data) {
+      return data.reduce((counts, item) => {
+        counts[item.REPONSIBLE_PERSON] =
+          (counts[item.REPONSIBLE_PERSON] || 0) + 1;
+        return counts;
+      }, {});
+    },
     async getTotalNumberOfCategoriesServed() {
-      await axios
-        .get(`${backendURL}/api/totalNumberOfCategoriesServed`)
-        .then((res) => {
-          this.totalNumberOfCategoriesServed =
-            res.data.TotalNumberOfCategoriesServed;
+      try {
+        const response = await axios.get(
+          `${backendURL}/api/totalNumberOfCategoriesServed`
+        );
+        this.totalNumberOfCategoriesServed =
+          response.data.TotalNumberOfCategoriesServed;
+        this.countsByPersonAndCategory = this.getCountsByPersonAndCategory(
+          this.totalNumberOfCategoriesServed
+        );
+      } catch (error) {
+        console.error(error);
+        // Handle the error appropriately here
+      }
+    },
 
-          const countsByPersonAndCategory =
-            this.totalNumberOfCategoriesServed.reduce((counts, item) => {
-              const key = `${item.REPONSIBLE_PERSON}|${item.CASE_CATEGORY}`;
-              if (!counts[key]) {
-                counts[key] = 0;
-              }
-              counts[key]++;
-              return counts;
-            }, {});
-
-          this.countsByPersonAndCategory = countsByPersonAndCategory;
-        })
-        .catch((error) => {
-          console.error(error);
-          // Handle the error appropriately here
-        });
+    getCountsByPersonAndCategory(data) {
+      return data.reduce((counts, item) => {
+        const key = `${item.REPONSIBLE_PERSON}|${item.CASE_CATEGORY}`;
+        counts[key] = (counts[key] || 0) + 1;
+        return counts;
+      }, {});
     },
   },
   mounted() {
