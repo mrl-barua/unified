@@ -607,497 +607,393 @@ export default {
         });
     },
     // *ALREADY FUNCTIONAL
-    async RegionFetchData() {
-      try {
-        const response = await axios.get(`${backendURL}/api/regionaloperation`);
+    RegionFetchData() {
+      return axios
+        .get(`${backendURL}/api/regionaloperation`)
+        .then((response) => {
+          // Initialize data dictionary
+          const dataDict = {};
 
-        // Initialize data dictionary
-        const dataDict = {};
+          response.data.forEach((item) => {
+            const regionName = item.Regional_Operation || "Others";
 
-        response.data.forEach((item) => {
-          const regionName = item.Regional_Operation || "Others";
+            // If the region name is not in the dictionary, add it with a count of 1
+            // Otherwise, increment the count
+            if (!(regionName in dataDict)) {
+              dataDict[regionName] = 1;
+            } else {
+              dataDict[regionName]++;
+            }
+          });
 
-          // If the region name is not in the dictionary, add it with a count of 1
-          // Otherwise, increment the count
-          if (!(regionName in dataDict)) {
-            dataDict[regionName] = 1;
-          } else {
-            dataDict[regionName]++;
-          }
+          // Prepare and return data
+          const regiondata = {
+            labels: Object.keys(dataDict),
+            label: ["Regional Operation"],
+            values: Object.values(dataDict),
+            backgroundColor: ["rgba(19, 63, 92, 1)"],
+          };
+
+          // Set barChartData to the computed data
+          this.RegionData = regiondata;
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+
+          // Prepare and return data if in case there is an api catch error
+          const regiondata = {
+            labels: [
+              "Davao City",
+              "Davao del Sur",
+              "Davao del Norte",
+              "Others",
+              "Region XI",
+              "Davao Oriental",
+              "Davao de Oro",
+            ],
+            label: ["Regional Operation"],
+            values: [1, 1, 1, 1, 1, 1, 1],
+            backgroundColor: ["rgba(19, 63, 92, 1)"],
+          };
+
+          // Set catch error barChartData to the computed data
+          this.RegionData = regiondata;
         });
-
-        // Prepare and return data
-        const regiondata = {
-          labels: Object.keys(dataDict),
-          label: ["Regional Operation"],
-          values: Object.values(dataDict),
-          backgroundColor: ["rgba(19, 63, 92, 1)"],
-        };
-
-        // Set barChartData to the computed data
-        this.RegionData = regiondata;
-      } catch (error) {
-        console.error("Error fetching data:", error);
-
-        // Prepare and return data if in case there is an api catch error
-        const regiondata = {
-          labels: [
-            "Davao City",
-            "Davao del Sur",
-            "Davao del Norte",
-            "Others",
-            "Region XI",
-            "Davao Oriental",
-            "Davao de Oro",
-          ],
-          label: ["Regional Operation"],
-          values: [1, 1, 1, 1, 1, 1, 1],
-          backgroundColor: ["rgba(19, 63, 92, 1)"],
-        };
-
-        // Set catch error barChartData to the computed data
-        this.RegionData = regiondata;
-      }
     },
     // *ALREADY FUNCTIONAL
-    async AgencyFetchData() {
-      try {
-        const response = await axios.get(`${backendURL}/api/agencies`);
+    AgencyFetchData() {
+      return axios
+        .get(`${backendURL}/api/agencies`)
+        .then((response) => {
+          // Initialize arrays for active and expired agencies
+          const activeRegistered = [];
+          const activeLicensed = [];
+          const activeAccredited = [];
+          const expiredRegistered = [];
+          const expiredLicensed = [];
+          const expiredAccredited = [];
+          const expiredDelisted = [];
+          const communityBased = [];
+          const auxillarySWDA = [];
+          const residential = [];
+          const nonResidential = [];
 
-        // Initialize counters
-        let activeRegisteredCount = 0;
-        let activeLicensedCount = 0;
-        let activeAccreditedCount = 0;
-        let expiredRegisteredCount = 0;
-        let expiredLicensedCount = 0;
-        let expiredAccreditedCount = 0;
-        let expiredDelistedCount = 0;
-        let communityBasedCount = 0;
-        let auxillarySWDACount = 0;
-        let residentialCount = 0;
-        let nonResidentialCount = 0;
+          response.data.forEach((item) => {
+            // Categorize by Registration Status
+            if (item.Registration_Status === "Active/Valid") {
+              if (item.Registered === "Yes") activeRegistered.push(item);
+              if (item.Licensed === "Yes") activeLicensed.push(item);
+              if (item.Accredited === "Yes") activeAccredited.push(item);
+            } else if (item.Registration_Status === "Expired") {
+              if (item.Registered === "No") expiredRegistered.push(item);
+              if (item.Licensed === "No") expiredLicensed.push(item);
+              if (item.Accredited === "No") expiredAccredited.push(item);
+              if (item.Delisted === "No") expiredDelisted.push(item);
+            }
 
-        response.data.forEach((item) => {
-          // Categorize by Registration Status
-          if (item.Registration_Status === "Active/Valid") {
-            if (item.Registered === "Yes") activeRegisteredCount++;
-            if (item.Licensed === "Yes") activeLicensedCount++;
-            if (item.Accredited === "Yes") activeAccreditedCount++;
-          } else if (item.Registration_Status === "Expired") {
-            if (item.Registered === "No") expiredRegisteredCount++;
-            if (item.Licensed === "No") expiredLicensedCount++;
-            if (item.Accredited === "No") expiredAccreditedCount++;
-            if (item.Delisted === "No") expiredDelistedCount++;
-          }
+            // Check if Mode_of_Delivery is a string before splitting
+            if (typeof item.Mode_of_Delivery === "string") {
+              const modes = item.Mode_of_Delivery.split(", ");
+              modes.forEach((mode) => {
+                if (mode === "Community-based") communityBased.push(item);
+                if (mode === "Auxiliary SWDA") auxillarySWDA.push(item);
+                if (mode === "Center-based Residential") residential.push(item);
+                if (mode === "Center-based Non-Residential")
+                  nonResidential.push(item);
+              });
+            }
+          });
 
-          // Check if Mode_of_Delivery is a string before splitting
-          if (typeof item.Mode_of_Delivery === "string") {
-            const modes = item.Mode_of_Delivery.split(", ");
-            modes.forEach((mode) => {
-              switch (mode) {
-                case "Community-based":
-                  communityBasedCount++;
-                  break;
-                case "Auxiliary SWDA":
-                  auxillarySWDACount++;
-                  break;
-                case "Center-based Residential":
-                  residentialCount++;
-                  break;
-                case "Center-based Non-Residential":
-                  nonResidentialCount++;
-                  break;
-              }
-            });
-          }
+          // Calculate data lengths
+          const activeRegisteredCount = activeRegistered.length;
+          const activeLicensedCount = activeLicensed.length;
+          const activeAccreditedCount = activeAccredited.length;
+          const expiredRegisteredCount = expiredRegistered.length;
+          const expiredLicensedCount = expiredLicensed.length;
+          const expiredAccreditedCount = expiredAccredited.length;
+          const expiredDelistedCount = expiredDelisted.length;
+          const communityBasedCount = communityBased.length;
+          const auxillarySWDACount = auxillarySWDA.length;
+          const residentialCount = residential.length;
+          const nonResidentialCount = nonResidential.length;
+
+          //FOR TEMPLATE LITERAL
+          this.activeRegisteredCount = activeRegisteredCount;
+          this.activeLicensedCount = activeLicensedCount;
+          this.activeAccreditedCount = activeAccreditedCount;
+          this.expiredRegisteredCount = expiredRegisteredCount;
+          this.expiredLicensedCount = expiredLicensedCount;
+          this.expiredAccreditedCount = expiredAccreditedCount;
+          this.expiredDelistedCount = expiredDelistedCount;
+          this.communityBasedCount = communityBasedCount;
+          this.auxillarySWDACount = auxillarySWDACount;
+          this.residentialCount = residentialCount;
+          this.nonResidentialCount = nonResidentialCount;
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
         });
-
-        // Assign counts to this
-        this.activeRegisteredCount = activeRegisteredCount;
-        this.activeLicensedCount = activeLicensedCount;
-        this.activeAccreditedCount = activeAccreditedCount;
-        this.expiredRegisteredCount = expiredRegisteredCount;
-        this.expiredLicensedCount = expiredLicensedCount;
-        this.expiredAccreditedCount = expiredAccreditedCount;
-        this.expiredDelistedCount = expiredDelistedCount;
-        this.communityBasedCount = communityBasedCount;
-        this.auxillarySWDACount = auxillarySWDACount;
-        this.residentialCount = residentialCount;
-        this.nonResidentialCount = nonResidentialCount;
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
     },
     // *ALREADY FUNCTIONAL
-    async SectorFetchData() {
-      try {
-        const response = await axios.get(`${backendURL}/api/sector`);
+    SectorFetchData() {
+      return axios
+        .get(`${backendURL}/api/sector`)
+        .then((response) => {
+          // Initialize dictionary for sectors
+          const sectors = {};
 
-        // Initialize Map for sectors
-        const sectors = new Map();
+          response.data.forEach((item) => {
+            const sector = item.Sector;
+            if (!(sector in sectors)) {
+              sectors[sector] = 0;
+            }
+            sectors[sector]++;
+          });
 
-        response.data.forEach((item) => {
-          const sector = item.Sector;
-          if (!sectors.has(sector)) {
-            sectors.set(sector, 0);
-          }
-          sectors.set(sector, sectors.get(sector) + 1);
+          // Prepare and return data
+          const sectordata = {
+            labels: Object.keys(sectors),
+            label: ["Regional Operation"],
+            values: Object.values(sectors),
+            backgroundColor: [
+              "rgba(178, 218, 250, 1)",
+              "rgba(132, 182, 244, 1)",
+              "rgba(106, 158, 218, 1)",
+              "rgba(80, 134, 193, 1)",
+              "rgba(255, 150, 136, 1)",
+              "rgba(255, 105, 97, 1)",
+              "rgba(226, 80, 76, 1)",
+              "rgba(248, 228, 75, 1)",
+              "rgba(238, 202, 6, 1)",
+              "rgba(210, 178, 2, 1)",
+              "rgba(183, 154, 0, 1)",
+            ],
+          };
+          // Set barChartData to the computed data
+          this.SectorData = sectordata;
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+
+          // Prepare and return data
+          const sectordata = {
+            labels: [
+              "Children",
+              "Children and Youth",
+              "Families and Communities",
+              "Youth",
+              "Elderly",
+              "Persons with Disability",
+              "Women",
+              "Special Group",
+              "Women and Children",
+              "Indigenous Peoples",
+              "Drug Dependents",
+            ],
+            label: ["Regional Operation"],
+            values: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            backgroundColor: [
+              "rgba(19, 63, 92, 1)",
+              "rgba(255, 0, 0, 1)", // Red
+              "rgba(0, 255, 0, 1)", // Green
+              "rgba(0, 0, 255, 1)", // Blue
+              "rgba(255, 255, 0, 1)", // Yellow
+              "rgba(255, 0, 255, 1)", // Magenta
+              "rgba(0, 255, 255, 1)", // Cyan
+              "rgba(128, 128, 128, 1)", // Gray
+              "rgba(255, 165, 0, 1)", // Orange
+              "rgba(0, 128, 0, 1)", // Dark Green],
+            ],
+          };
+          // Set barChartData to the computed data
+          this.SectorData = sectordata;
         });
-
-        // Prepare and return data
-        const sectordata = {
-          labels: Array.from(sectors.keys()),
-          label: ["Regional Operation"],
-          values: Array.from(sectors.values()),
-          backgroundColor: [
-            "rgba(178, 218, 250, 1)",
-            "rgba(132, 182, 244, 1)",
-            "rgba(106, 158, 218, 1)",
-            "rgba(80, 134, 193, 1)",
-            "rgba(255, 150, 136, 1)",
-            "rgba(255, 105, 97, 1)",
-            "rgba(226, 80, 76, 1)",
-            "rgba(248, 228, 75, 1)",
-            "rgba(238, 202, 6, 1)",
-            "rgba(210, 178, 2, 1)",
-            "rgba(183, 154, 0, 1)",
-          ],
-        };
-
-        // Set barChartData to the computed data
-        this.SectorData = sectordata;
-      } catch (error) {
-        console.error("Error fetching data:", error);
-
-        // Prepare and return data
-        const sectordata = {
-          labels: [
-            "Children",
-            "Children and Youth",
-            "Families and Communities",
-            "Youth",
-            "Elderly",
-            "Persons with Disability",
-            "Women",
-            "Special Group",
-            "Women and Children",
-            "Indigenous Peoples",
-            "Drug Dependents",
-          ],
-          label: ["Regional Operation"],
-          values: new Array(11).fill(1),
-          backgroundColor: [
-            "rgba(19, 63, 92, 1)",
-            "rgba(255, 0, 0, 1)", // Red
-            "rgba(0, 255, 0, 1)", // Green
-            "rgba(0, 0, 255, 1)", // Blue
-            "rgba(255, 255, 0, 1)", // Yellow
-            "rgba(255, 0, 255, 1)", // Magenta
-            "rgba(0, 255, 255, 1)", // Cyan
-            "rgba(128, 128, 128, 1)", // Gray
-            "rgba(255, 165, 0, 1)", // Orange
-            "rgba(0, 128, 0, 1)", // Dark Green
-          ],
-        };
-
-        // Set barChartData to the computed data
-        this.SectorData = sectordata;
-      }
     },
 
-    // *ALREADY FUNCTIONAL
-    // ClienteleFetchData() {
-    //   return axios
-    //     .get(`${backendURL}/api/clientele`)
-    //     .then((response) => {
-    //       // Initialize arrays for active and expired agencies
-    //       const childrenclientele = [];
-    //       const familiesAndCommunitiesclientele = [];
-    //       const childrenAndYouthclientele = [];
-    //       const childrenYouthFamiliesCommunities = [];
-    //       const SeniorCitizensclientele = [];
-    //       const personsWithDisabilityclientele = [];
-    //       const indigenousPeoplesclientele = [];
-    //       const womenclientele = [];
-    //       const others = [];
+    // ! NEED FIXING BEFORE DEPLOYING
+    ClienteleFetchData() {
+      return axios
+        .get(`${backendURL}/api/clientele`)
+        .then((response) => {
+          // Initialize arrays for active and expired agencies
+          const childrenclientele = [];
+          const familiesAndCommunitiesclientele = [];
+          const childrenAndYouthclientele = [];
+          const childrenYouthFamiliesCommunities = [];
+          const SeniorCitizensclientele = [];
+          const personsWithDisabilityclientele = [];
+          const indigenousPeoplesclientele = [];
+          const womenclientele = [];
+          const others = [];
 
-    //       response.data.forEach((item) => {
-    //         const client = item.Clientele;
+          response.data.forEach((item) => {
+            const client = item.Clientele;
 
-    //         switch (client) {
-    //           case "Children":
-    //             childrenclientele.push(item);
-    //             break;
-    //           case "Children (0-6 years old Abandoned, orphaned, surrendered or temporary sheltered)":
-    //             childrenclientele.push(item);
-    //             break;
-    //           case "Children and Youth":
-    //           case "Children (3-7 years old abandoned, neglected, orphaned) Youth":
-    //           case "Children (Male abandoned and neglected)":
-    //           case "Children (0-12 years old abandoned, neglected, foundling)":
-    //           case "Children (Children In Need of Special Protection/ CNSP)":
-    //           case "Children (Abandoned, neglected, dependent, orphaned)":
-    //           case "Children (Critical and Chronically-ill patients both cancer and non-cancer)":
-    //           case "Children (Abandoned, Indigent, In-difficult situation)":
-    //           case "Children (0-5 years old dependent, neglected, foundling, abandoned, orphaned)":
-    //           case "Children (Street, Girls), Parents, Families, Communities":
-    //           case "Children diagnosed with cancer (0-18 y/old)":
-    //           case "Children (0-8 years old abandoned, orphaned, neglected)":
-    //           case "Children and Youth (Poor, Indigent, Neglected)":
-    //             childrenAndYouthclientele.push(item);
-    //             break;
-    //           case "Children (Disadvantaged) Youth (Out-of-School/OSY) Families and Communities":
-    //           case "Children (With Special Needs)":
-    //           case "Children (Street, Neglected)":
-    //           case "Children (4-13 years old) Families and Communities":
-    //           case "Children and Youth (Children In Need of Special Protection/CNSP)":
-    //           case "Children and Youth (Disadvantaged) (Out-of-School-Youth/OSY) Communities":
-    //             childrenYouthFamiliesCommunities.push(item);
-    //             break;
-    //           case "Families and Communities":
-    //           case "Families (Disadvantaged/displaced)":
-    //           case "Poor, vulnerable, marginalized, disadvantaged Children, Individuals, Families, and Communities":
-    //           case "Disadvantaged and marginalized Children, Youth, Indigenous Peoples, Families, and Communities":
-    //           case "Marginalized, Disadvantaged Individuals, Families and communities, Children, Youth Women, Victims-survivors of natural and human-induced calamities/disasters":
-    //             familiesAndCommunitiesclientele.push(item);
-    //             break;
-    //           case "Senior Citizens":
-    //             SeniorCitizensclientele.push(item);
-    //             break;
-    //           case "Persons with Disability":
-    //             personsWithDisabilityclientele.push(item);
-    //             break;
-    //           case "Indigenous Peoples":
-    //             indigenousPeoplesclientele.push(item);
-    //             break;
-    //           case "Women":
-    //           case "Women and Children":
-    //             womenclientele.push(item);
-    //             break;
-    //           case "Day Care Workers":
-    //           case "Drug Dependents":
-    //           case "Filipino seafarers, disadvantaged children, youth, families and communities":
-    //           case "N/A":
-    //             others.push(item);
-    //             break;
-    //           default:
-    //             others.push(item);
-    //             break;
-    //         }
-    //       });
+            switch (client) {
+              case "Children":
+                childrenclientele.push(item);
+                break;
+              case "Children (0-6 years old Abandoned, orphaned, surrendered or temporary sheltered)":
+                childrenclientele.push(item);
+                break;
+              case "Children and Youth":
+              case "Children (3-7 years old abandoned, neglected, orphaned) Youth":
+              case "Children (Male abandoned and neglected)":
+              case "Children (0-12 years old abandoned, neglected, foundling)":
+              case "Children (Children In Need of Special Protection/ CNSP)":
+              case "Children (Abandoned, neglected, dependent, orphaned)":
+              case "Children (Critical and Chronically-ill patients both cancer and non-cancer)":
+              case "Children (Abandoned, Indigent, In-difficult situation)":
+              case "Children (0-5 years old dependent, neglected, foundling, abandoned, orphaned)":
+              case "Children (Street, Girls), Parents, Families, Communities":
+              case "Children diagnosed with cancer (0-18 y/old)":
+              case "Children (0-8 years old abandoned, orphaned, neglected)":
+              case "Children and Youth (Poor, Indigent, Neglected)":
+                childrenAndYouthclientele.push(item);
+                break;
+              case "Children (Disadvantaged) Youth (Out-of-School/OSY) Families and Communities":
+              case "Children (With Special Needs)":
+              case "Children (Street, Neglected)":
+              case "Children (4-13 years old) Families and Communities":
+              case "Children and Youth (Children In Need of Special Protection/CNSP)":
+              case "Children and Youth (Disadvantaged) (Out-of-School-Youth/OSY) Communities":
+                childrenYouthFamiliesCommunities.push(item);
+                break;
+              case "Families and Communities":
+              case "Families (Disadvantaged/displaced)":
+              case "Poor, vulnerable, marginalized, disadvantaged Children, Individuals, Families, and Communities":
+              case "Disadvantaged and marginalized Children, Youth, Indigenous Peoples, Families, and Communities":
+              case "Marginalized, Disadvantaged Individuals, Families and communities, Children, Youth Women, Victims-survivors of natural and human-induced calamities/disasters":
+                familiesAndCommunitiesclientele.push(item);
+                break;
+              case "Senior Citizens":
+                SeniorCitizensclientele.push(item);
+                break;
+              case "Persons with Disability":
+                personsWithDisabilityclientele.push(item);
+                break;
+              case "Indigenous Peoples":
+                indigenousPeoplesclientele.push(item);
+                break;
+              case "Women":
+              case "Women and Children":
+                womenclientele.push(item);
+                break;
+              case "Day Care Workers":
+              case "Drug Dependents":
+              case "Filipino seafarers, disadvantaged children, youth, families and communities":
+              case "N/A":
+                others.push(item);
+                break;
+              default:
+                others.push(item);
+                break;
+            }
+          });
 
-    //       // Calculate data lengths
-    //       const childrenclienteleLength = childrenclientele.length;
-    //       const familiesAndCommunitiesclienteleLength =
-    //         familiesAndCommunitiesclientele.length;
-    //       const childrenAndYouthclienteleLength =
-    //         childrenAndYouthclientele.length;
-    //       const childrenYouthFamiliesCommunitiesLength =
-    //         childrenYouthFamiliesCommunities.length;
-    //       const SeniorCitizensclienteleLength = SeniorCitizensclientele.length;
-    //       const personsWithDisabilityclienteleLength =
-    //         personsWithDisabilityclientele.length;
-    //       const indigenousPeoplesclienteleGroupLength =
-    //         indigenousPeoplesclientele.length;
-    //       const womenclienteleLength = womenclientele.length;
-    //       const othersLength = others.length;
+          // Calculate data lengths
+          const childrenclienteleLength = childrenclientele.length;
+          const familiesAndCommunitiesclienteleLength =
+            familiesAndCommunitiesclientele.length;
+          const childrenAndYouthclienteleLength =
+            childrenAndYouthclientele.length;
+          const childrenYouthFamiliesCommunitiesLength =
+            childrenYouthFamiliesCommunities.length;
+          const SeniorCitizensclienteleLength = SeniorCitizensclientele.length;
+          const personsWithDisabilityclienteleLength =
+            personsWithDisabilityclientele.length;
+          const indigenousPeoplesclienteleGroupLength =
+            indigenousPeoplesclientele.length;
+          const womenclienteleLength = womenclientele.length;
+          const othersLength = others.length;
 
-    //       console.log("TEST START");
-    //       console.log(childrenclienteleLength);
-    //       console.log(familiesAndCommunitiesclienteleLength);
-    //       console.log(childrenAndYouthclienteleLength);
-    //       console.log(childrenYouthFamiliesCommunitiesLength);
-    //       console.log(SeniorCitizensclienteleLength);
-    //       console.log(personsWithDisabilityclienteleLength);
-    //       console.log(indigenousPeoplesclienteleGroupLength);
-    //       console.log(womenclienteleLength);
-    //       console.log(othersLength);
-    //       console.log("TEST END");
+          console.log("TEST START");
+          console.log(childrenclienteleLength);
+          console.log(familiesAndCommunitiesclienteleLength);
+          console.log(childrenAndYouthclienteleLength);
+          console.log(childrenYouthFamiliesCommunitiesLength);
+          console.log(SeniorCitizensclienteleLength);
+          console.log(personsWithDisabilityclienteleLength);
+          console.log(indigenousPeoplesclienteleGroupLength);
+          console.log(womenclienteleLength);
+          console.log(othersLength);
+          console.log("TEST END");
 
-    //       // Prepare and return data
-    //       const clientdata = {
-    //         labels: [
-    //           "Children",
-    //           "Families and Communities",
-    //           "Children and Youth",
-    //           "Children Youth and Families",
-    //           "Senior Citizens",
-    //           "Persons With Disability",
-    //           "Indigenous Peoples",
-    //           "Women",
-    //           "Others",
-    //         ],
-    //         label: ["Clientele"],
-    //         values: [
-    //           childrenclienteleLength,
-    //           familiesAndCommunitiesclienteleLength,
-    //           childrenAndYouthclienteleLength,
-    //           childrenYouthFamiliesCommunitiesLength,
-    //           SeniorCitizensclienteleLength,
-    //           personsWithDisabilityclienteleLength,
-    //           indigenousPeoplesclienteleGroupLength,
-    //           womenclienteleLength,
-    //           othersLength,
-    //         ],
-    //         backgroundColor: [
-    //           "rgba(210, 178, 2, 1)",
-    //           "rgba(238, 202, 6, 1)",
-    //           "rgba(248, 228, 75, 1)",
-    //           "rgba(226, 80, 76, 1)",
-    //           "rgba(255, 105, 97, 1)",
-    //           "rgba(255, 150, 136, 1)",
-    //           "rgba(106, 158, 218, 1)",
-    //           "rgba(132, 182, 244, 1)",
-    //           "rgba(178, 218, 250, 1)",
-    //           "rgba(221, 255, 255, 1)",
-    //         ],
-    //       };
-    //       // Set barChartData to the computed data
-    //       this.ClientData = clientdata;
-    //     })
-    //     .catch((error) => {
-    //       console.error("Error fetching data:", error);
+          // Prepare and return data
+          const clientdata = {
+            labels: [
+              "Children",
+              "Families and Communities",
+              "Children and Youth",
+              "Children Youth and Families",
+              "Senior Citizens",
+              "Persons With Disability",
+              "Indigenous Peoples",
+              "Women",
+              "Others",
+            ],
+            label: ["Clientele"],
+            values: [
+              childrenclienteleLength,
+              familiesAndCommunitiesclienteleLength,
+              childrenAndYouthclienteleLength,
+              childrenYouthFamiliesCommunitiesLength,
+              SeniorCitizensclienteleLength,
+              personsWithDisabilityclienteleLength,
+              indigenousPeoplesclienteleGroupLength,
+              womenclienteleLength,
+              othersLength,
+            ],
+            backgroundColor: [
+              "rgba(210, 178, 2, 1)",
+              "rgba(238, 202, 6, 1)",
+              "rgba(248, 228, 75, 1)",
+              "rgba(226, 80, 76, 1)",
+              "rgba(255, 105, 97, 1)",
+              "rgba(255, 150, 136, 1)",
+              "rgba(106, 158, 218, 1)",
+              "rgba(132, 182, 244, 1)",
+              "rgba(178, 218, 250, 1)",
+              "rgba(221, 255, 255, 1)",
+            ],
+          };
+          // Set barChartData to the computed data
+          this.ClientData = clientdata;
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
 
-    //       // Prepare and return data
-    //       const clientdata = {
-    //         labels: [
-    //           "Children",
-    //           "Families and Communities",
-    //           "Children and Youth",
-    //           "Children Youth and Families",
-    //           "Senior Citizens",
-    //           "Persons With Disability",
-    //           "Indigenous Peoples",
-    //           "Women",
-    //           "Others",
-    //         ],
-    //         label: ["Clientele"],
-    //         values: [1, 1, 1, 1, 1, 1, 1, 1, 1],
-    //         backgroundColor: [
-    //           "rgba(210, 178, 2, 1)",
-    //           "rgba(238, 202, 6, 1)",
-    //           "rgba(248, 228, 75, 1)",
-    //           "rgba(226, 80, 76, 1)",
-    //           "rgba(255, 105, 97, 1)",
-    //           "rgba(255, 150, 136, 1)",
-    //           "rgba(106, 158, 218, 1)",
-    //           "rgba(132, 182, 244, 1)",
-    //           "rgba(178, 218, 250, 1)",
-    //           "rgba(221, 255, 255, 1)",
-    //         ],
-    //       };
-    //       // Set barChartData to the computed data
-    //       this.ClientData = clientdata;
-    //     });
-    // },
-
-    async ClienteleFetchData() {
-      try {
-        const response = await axios.get(`${backendURL}/api/clientele`);
-
-        // Initialize object for clientele categories
-        const clienteleCategories = {
-          Children: 0,
-          "Families and Communities": 0,
-          "Children and Youth": 0,
-          "Children Youth and Families": 0,
-          "Senior Citizens": 0,
-          "Persons With Disability": 0,
-          "Indigenous Peoples": 0,
-          Women: 0,
-          Others: 0,
-        };
-
-        response.data.forEach((item) => {
-          const client = item.Clientele;
-
-          // Determine the category of the client
-          let category = "Others";
-          if (
-            client.includes("Children") &&
-            client.includes("Youth") &&
-            client.includes("Families")
-          ) {
-            category = "Children Youth and Families";
-          } else if (client.includes("Children") && client.includes("Youth")) {
-            category = "Children and Youth";
-          } else if (client.includes("Children")) {
-            category = "Children";
-          } else if (
-            client.includes("Families") &&
-            client.includes("Communities")
-          ) {
-            category = "Families and Communities";
-          } else if (client.includes("Senior Citizens")) {
-            category = "Senior Citizens";
-          } else if (client.includes("Persons with Disability")) {
-            category = "Persons With Disability";
-          } else if (client.includes("Indigenous Peoples")) {
-            category = "Indigenous Peoples";
-          } else if (client.includes("Women")) {
-            category = "Women";
-          }
-
-          // Increment the count for the determined category
-          clienteleCategories[category]++;
+          // Prepare and return data
+          const clientdata = {
+            labels: [
+              "Children",
+              "Families and Communities",
+              "Children and Youth",
+              "Children Youth and Families",
+              "Senior Citizens",
+              "Persons With Disability",
+              "Indigenous Peoples",
+              "Women",
+              "Others",
+            ],
+            label: ["Clientele"],
+            values: [1, 1, 1, 1, 1, 1, 1, 1, 1],
+            backgroundColor: [
+              "rgba(210, 178, 2, 1)",
+              "rgba(238, 202, 6, 1)",
+              "rgba(248, 228, 75, 1)",
+              "rgba(226, 80, 76, 1)",
+              "rgba(255, 105, 97, 1)",
+              "rgba(255, 150, 136, 1)",
+              "rgba(106, 158, 218, 1)",
+              "rgba(132, 182, 244, 1)",
+              "rgba(178, 218, 250, 1)",
+              "rgba(221, 255, 255, 1)",
+            ],
+          };
+          // Set barChartData to the computed data
+          this.ClientData = clientdata;
         });
-
-        // Prepare and return data
-        const clientdata = {
-          labels: Object.keys(clienteleCategories),
-          label: ["Clientele"],
-          values: Object.values(clienteleCategories),
-          backgroundColor: [
-            "rgba(210, 178, 2, 1)",
-            "rgba(238, 202, 6, 1)",
-            "rgba(248, 228, 75, 1)",
-            "rgba(226, 80, 76, 1)",
-            "rgba(255, 105, 97, 1)",
-            "rgba(255, 150, 136, 1)",
-            "rgba(106, 158, 218, 1)",
-            "rgba(132, 182, 244, 1)",
-            "rgba(178, 218, 250, 1)",
-            "rgba(221, 255, 255, 1)",
-          ],
-        };
-
-        // Set barChartData to the computed data
-        this.ClientData = clientdata;
-      } catch (error) {
-        console.error("Error fetching data:", error);
-
-        // Prepare and return data
-        const clientdata = {
-          labels: [
-            "Children",
-            "Families and Communities",
-            "Children and Youth",
-            "Children Youth and Families",
-            "Senior Citizens",
-            "Persons With Disability",
-            "Indigenous Peoples",
-            "Women",
-            "Others",
-          ],
-          label: ["Clientele"],
-          values: new Array(9).fill(1),
-          backgroundColor: [
-            "rgba(210, 178, 2, 1)",
-            "rgba(238, 202, 6, 1)",
-            "rgba(248, 228, 75, 1)",
-            "rgba(226, 80, 76, 1)",
-            "rgba(255, 105, 97, 1)",
-            "rgba(255, 150, 136, 1)",
-            "rgba(106, 158, 218, 1)",
-            "rgba(132, 182, 244, 1)",
-            "rgba(178, 218, 250, 1)",
-            "rgba(221, 255, 255, 1)",
-          ],
-        };
-
-        // Set barChartData to the computed data
-        this.ClientData = clientdata;
-      }
     },
   },
   mounted() {
