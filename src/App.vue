@@ -20,7 +20,7 @@ export default {
 
   mounted() {
     // // Event Listener to disable right-click mouse
-    // document.addEventListener('contextmenu', event => event.preventDefault());
+    // document.addEventListener("contextmenu", (event) => event.preventDefault());
     // // Event listener that prevents access to the dev tools for visitors
     // document.addEventListener("keydown", function (event) {
     //   if (event.ctrlKey) {
@@ -31,10 +31,10 @@ export default {
     //   }
     // });
     // // Event listener to disable screen capture
-    // document.addEventListener('keyup', (e) => {
-    //   if (e.key == 'PrintScreen') {
-    //     navigator.clipboard.writeText('');
-    //     alert('Screenshots disabled!');
+    // document.addEventListener("keyup", (e) => {
+    //   if (e.key == "PrintScreen") {
+    //     navigator.clipboard.writeText("");
+    //     alert("Screenshots disabled!");
     //   }
     // });
   },
