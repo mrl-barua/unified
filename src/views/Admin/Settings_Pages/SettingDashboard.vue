@@ -3,7 +3,37 @@
     <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
     <br /><br /><br /><br />
     <div class="container-fluid wrapper"></div>
+
     <div class="card card-margin">
+      <div
+        class="card-header"
+        style="display: flex; justify-content: center; align-items: center"
+      >
+        <router-link to="/adminSettings">
+          <button
+            class="btn btn-primary"
+            style="
+              background-color: #133f5c;
+              font-size: 12px; /* Adjust the font size as needed */
+              padding: 10px 30px 10px 30px;
+            "
+          >
+            MODIFY USER ROLES
+          </button>
+        </router-link>
+        <router-link to="/adminSettings">
+          <button
+            class="btn btn-primary ms-3"
+            style="
+              background-color: #135c1f;
+              font-size: 12px; /* Adjust the font size as needed */
+              padding: 10px 30px 10px 30px;
+            "
+          >
+            CHANGE BACKGROUND COVER
+          </button>
+        </router-link>
+      </div>
       <div class="card-header" style="display: flex">
         <router-link to="/adminSettings/addUserAccess">
           <button

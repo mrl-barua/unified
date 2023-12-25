@@ -29,7 +29,20 @@
               <router-link
                 to="/adminswda"
                 class="custom-link"
-                active-class="active"
+                :class="{
+                  active:
+                    $route.path === '/adminswda' ||
+                    $route.path === '/adminswda/archive' ||
+                    ($route.path.startsWith('/adminswda/') &&
+                      $route.path.endsWith('/view')) ||
+                    ($route.path.startsWith('/adminswda/') &&
+                      $route.path.endsWith('/edit')) ||
+                    ($route.path.startsWith('/adminswda/') &&
+                      $route.path.endsWith('/editHistory')) ||
+                    ($route.path.startsWith('/adminswda/') &&
+                      $route.path.endsWith('/editHistory/view')) ||
+                    $route.path === '/adminswda/create',
+                }"
               >
                 <li class="list">
                   <a href="#" class="nav-link">
@@ -42,6 +55,20 @@
               <router-link
                 to="/admincbss"
                 class="custom-link"
+                :class="{
+                  active:
+                    $route.path === '/admincbss' ||
+                    $route.path === '/admincbss/archive' ||
+                    ($route.path.startsWith('/admincbss/') &&
+                      $route.path.endsWith('/view')) ||
+                    ($route.path.startsWith('/admincbss/') &&
+                      $route.path.endsWith('/edit')) ||
+                    ($route.path.startsWith('/admincbss/') &&
+                      $route.path.endsWith('/editHistory')) ||
+                    ($route.path.startsWith('/admincbss/') &&
+                      $route.path.endsWith('/editHistory/view')) ||
+                    $route.path === '/admincbss/create',
+                }"
                 active-class="active"
               >
                 <li class="list">
@@ -55,6 +82,20 @@
               <router-link
                 to="/adminhr"
                 class="custom-link"
+                :class="{
+                  active:
+                    $route.path === '/adminhr' ||
+                    $route.path === '/adminhr/archive' ||
+                    ($route.path.startsWith('/adminhr/') &&
+                      $route.path.endsWith('/view')) ||
+                    ($route.path.startsWith('/adminhr/') &&
+                      $route.path.endsWith('/edit')) ||
+                    ($route.path.startsWith('/adminhr/') &&
+                      $route.path.endsWith('/editHistory')) ||
+                    ($route.path.startsWith('/adminhr/') &&
+                      $route.path.endsWith('/editHistory/view')) ||
+                    $route.path === '/adminhr/create',
+                }"
                 active-class="active"
               >
                 <li class="list">
@@ -67,6 +108,20 @@
               <router-link
                 to="/adminosp"
                 class="custom-link"
+                :class="{
+                  active:
+                    $route.path === '/adminosp' ||
+                    $route.path === '/adminosp/archive' ||
+                    ($route.path.startsWith('/adminosp/') &&
+                      $route.path.endsWith('/view')) ||
+                    ($route.path.startsWith('/adminosp/') &&
+                      $route.path.endsWith('/edit')) ||
+                    ($route.path.startsWith('/adminosp/') &&
+                      $route.path.endsWith('/editHistory')) ||
+                    ($route.path.startsWith('/adminosp/') &&
+                      $route.path.endsWith('/editHistory/view')) ||
+                    $route.path === '/adminosp/create',
+                }"
                 active-class="active"
               >
                 <li class="list">
