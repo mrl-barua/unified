@@ -3,6 +3,12 @@ import LoginForm from '../views/LoginForm.vue'
 import SettingDashboard from '../views/Admin/Settings_Pages/SettingDashboard'
 import AddSettingUsers from '../views/Admin/Settings_Pages/addUserAccess'
 import EditSettingUsers from '../views/Admin/Settings_Pages/editUserAccess'
+
+import cbss from '../views/User/CBSS/CBSS.vue'
+import hr from '../views/User/HR/HR.vue'
+import osp from '../views/User/OSP/OSP.vue'
+import swda from '../views/User/SWDA/SWDA.vue'
+
 import ERROR from '../views/404.vue' // Import the 404 Error Page
 import { userIsAuthenticated } from '../auth'; // Import the user authentication function
 import { adminIsAuthenticated } from '../auth'; // Import the admin authentication function
@@ -373,7 +379,7 @@ const routes = [
   {
     path: '/cbss',
     name: 'cbss',
-    component: () => import('../views/User/CBSS/CBSS.vue'),
+    component: cbss,
     beforeEnter: userRequireAuth,
   },
 
@@ -388,7 +394,7 @@ const routes = [
   {
     path: '/hr',
     name: 'hr',
-    component: () => import('../views/User/HR/HR.vue'),
+    component: hr,
     beforeEnter: userRequireAuth,
   },
 
@@ -405,7 +411,7 @@ const routes = [
   {
     path: '/osp',
     name: 'osp',
-    component: () => import('../views/User/OSP/OSP.vue'),
+    component: osp,
     beforeEnter: userRequireAuth,
   },
   // *USER OSP START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -421,7 +427,7 @@ const routes = [
   {
     path: '/swda',
     name: 'swda',
-    component: () => import('../views/User/SWDA/SWDA.vue'),
+    component: swda,
     beforeEnter: userRequireAuth,
   },
 
