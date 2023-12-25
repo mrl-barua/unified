@@ -218,9 +218,7 @@ export default {
       },
     },
   },
-  mounted() {
-    // this.updateData();
-  },
+
   methods: {
     async updateData() {
       this.isLoading = true;
@@ -386,10 +384,6 @@ export default {
         this.errorMessage = "Failed to get details of requesting employee";
       }
     },
-  },
-
-  mounted() {
-    // Automatically fetch data when the component is mounted
   },
 };
 </script>

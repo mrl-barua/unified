@@ -510,3 +510,7 @@
 ### version 10.1 MARLO BARUA
 
 - Update chart options and styles
+
+### version 10.2 MARLO BARUA
+
+- Optimize and bugfixes USER DASHBOARD

@@ -551,15 +551,28 @@ export default {
   created() {
     this.getGenderAndAge();
   },
-  mounted() {
-    this.getEmploymentStatus();
-    this.getPercentageOfRequestingEmployee();
-    this.getDivisionCount();
-    this.getStatusFilledUnfilled();
-    this.getCSSAndOthers();
-    this.getLicensed();
-    this.getHighestLevelOfEligibility();
-    this.getElegibility();
+  // mounted() {
+  //   this.getEmploymentStatus();
+  //   this.getPercentageOfRequestingEmployee();
+  //   this.getDivisionCount();
+  //   this.getStatusFilledUnfilled();
+  //   this.getCSSAndOthers();
+  //   this.getLicensed();
+  //   this.getHighestLevelOfEligibility();
+  //   this.getElegibility();
+  // },
+
+  async mounted() {
+    await Promise.all([
+      this.getEmploymentStatus(),
+      this.getPercentageOfRequestingEmployee(),
+      this.getDivisionCount(),
+      this.getStatusFilledUnfilled(),
+      this.getCSSAndOthers(),
+      this.getLicensed(),
+      this.getHighestLevelOfEligibility(),
+      this.getElegibility(),
+    ]);
   },
 };
 </script>

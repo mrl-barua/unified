@@ -996,15 +996,14 @@ export default {
         });
     },
   },
-  mounted() {
-    // Automatically fetch data when the component is mounted
-    this.ClusterFetchData();
-    this.RegionFetchData();
-    this.AgencyFetchData();
-    this.SectorFetchData();
-
-    // ! NEED FIXINGS BEFORE DEPLOYING
-    this.ClienteleFetchData();
+  async mounted() {
+    await Promise.all([
+      this.ClusterFetchData(),
+      this.RegionFetchData(),
+      this.AgencyFetchData(),
+      this.SectorFetchData(),
+      this.ClienteleFetchData(),
+    ]);
   },
 };
 </script>

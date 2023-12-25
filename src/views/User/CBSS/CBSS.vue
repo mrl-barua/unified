@@ -947,21 +947,22 @@ export default {
         });
     },
   },
-  mounted() {
-    // this.getCbss();
-    this.getTotalClientServed();
-    this.getFinancialAmountGiven();
-    this.getgenderClientServed();
-    this.getModeofAdmission();
-    this.getNumberCaseCategories();
-    this.getNumberNonMonetaryServices();
-    this.getClientsServedPerQuarter();
-    this.getClientServedPerAgeAndSex();
-    this.getFinancialAmountServe();
-    this.getSubCategoriesServed();
-    this.getTotalNumberOfClientServed();
-    this.getTotalNumberOfCategoriesServed();
-    this.getSubCategoriesServedChart();
+  async mounted() {
+    await Promise.all([
+      this.getTotalClientServed(),
+      this.getFinancialAmountGiven(),
+      this.getgenderClientServed(),
+      this.getModeofAdmission(),
+      this.getNumberCaseCategories(),
+      this.getNumberNonMonetaryServices(),
+      this.getClientsServedPerQuarter(),
+      this.getClientServedPerAgeAndSex(),
+      this.getFinancialAmountServe(),
+      this.getSubCategoriesServed(),
+      this.getTotalNumberOfClientServed(),
+      this.getTotalNumberOfCategoriesServed(),
+      this.getSubCategoriesServedChart(),
+    ]);
   },
 };
 </script>
