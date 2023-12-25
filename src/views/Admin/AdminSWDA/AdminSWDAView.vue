@@ -390,6 +390,28 @@
               </div>
             </div>
           </div>
+          <div class="col-12">
+            <div class="col-6">
+              <p class="agencyHeader">Accreditiation Days Left</p>
+              <p
+                class="agencyContent"
+                v-if="model.Swda && model.Swda.Accreditation_Days_Left"
+              >
+                {{ model.Swda.Accreditation_Days_Left }}
+              </p>
+              <p v-else class="agencyContent error">No Data</p>
+            </div>
+            <div class="col-6">
+              <p class="agencyHeader">License Days Left</p>
+              <p
+                class="agencyContent"
+                v-if="model.Swda && model.Swda.License_Days_Left"
+              >
+                {{ model.Swda.License_Days_Left }}
+              </p>
+              <p v-else class="agencyContent error">No Data</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

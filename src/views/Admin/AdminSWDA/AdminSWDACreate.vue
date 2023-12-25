@@ -594,7 +594,7 @@
             </div>
 
             <div class="col-3">
-              <div class="mb-3 col-12">
+              <!-- <div class="mb-3 col-12">
                 <div class="form-floating spaceBetween">
                   <input
                     type="number"
@@ -605,9 +605,9 @@
                   />
                   <label for="licenseDaysLeft">LICENSE DAYS LEFT</label>
                 </div>
-              </div>
+              </div> -->
 
-              <div class="mb-3 col-12">
+              <!-- <div class="mb-3 col-12">
                 <div class="form-floating spaceBetween">
                   <input
                     type="number"
@@ -620,7 +620,7 @@
                     >ACCREDITATION DAYS LEFT</label
                   >
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
 
@@ -670,7 +670,7 @@
               </div>
             </div>
 
-            <div class="mb-3 col-12">
+            <!-- <div class="mb-3 col-12">
               <div class="form-floating spaceBetween">
                 <input
                   type="number"
@@ -681,9 +681,9 @@
                 />
                 <label for="licensureOverdue">LICENSURE OVERDUE</label>
               </div>
-            </div>
+            </div> -->
 
-            <div class="mb-3 col-12">
+            <!-- <div class="mb-3 col-12">
               <div class="form-floating spaceBetween">
                 <input
                   type="number"
@@ -694,7 +694,7 @@
                 />
                 <label for="accreditationOverdue">ACCREDITATION OVERDUE</label>
               </div>
-            </div>
+            </div> -->
           </div>
         </section>
       </div>

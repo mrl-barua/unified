@@ -86,7 +86,7 @@
               <div class="linechart-container lineChart">
                 <LineChart
                   :data="clientServedPerQuarterChart"
-                  v-if="clientServedPerQuarterChart"
+                  v-if="clientServedPerQuarterChart && isDataReady"
                 />
               </div>
             </div>
@@ -97,7 +97,7 @@
               <div class="linechart-container lineChart">
                 <LineChart
                   :data="clientServedPerAgeAndSex"
-                  v-if="clientServedPerAgeAndSex"
+                  v-if="clientServedPerAgeAndSex && isDataReady"
                 />
               </div>
             </div>
@@ -110,7 +110,7 @@
               <div class="chart-container">
                 <BarChart
                   :data="caseCategoriesChart"
-                  v-if="caseCategoriesChart"
+                  v-if="caseCategoriesChart && isDataReady"
                 />
               </div>
             </div>
@@ -121,7 +121,7 @@
               <div class="chart-container">
                 <BarChart
                   :data="subCategoriesChart"
-                  v-if="subCategoriesChart"
+                  v-if="subCategoriesChart && isDataReady"
                 />
               </div>
             </div>
@@ -418,6 +418,7 @@ export default {
     return {
       PageTitle: "Community Based Services Section",
       PageDetail: "Main Dashboard",
+      isDataReady: false,
       totalClientServed: [],
       totalAmount: 0,
       male: [],
@@ -468,7 +469,28 @@ export default {
       },
     };
   },
+
+  async created() {
+    await this.loadChartData();
+    this.isDataReady = true;
+  },
   methods: {
+    async loadChartData() {
+      await this.getTotalClientServed();
+      await this.getFinancialAmountGiven();
+      await this.getgenderClientServed();
+      await this.getModeofAdmission();
+      await this.getNumberCaseCategories();
+      await this.getNumberNonMonetaryServices();
+      await this.getClientsServedPerQuarter();
+      await this.getClientServedPerAgeAndSex();
+      await this.getFinancialAmountServe();
+      await this.getSubCategoriesServed();
+      await this.getTotalNumberOfClientServed();
+      await this.getTotalNumberOfCategoriesServed();
+      await this.getSubCategoriesServedChart();
+    },
+
     async getTotalClientServed() {
       try {
         const res = await axios.get(`${backendURL}/api/totalClientServed`);
@@ -718,6 +740,7 @@ export default {
         };
       }
     },
+
     async getClientServedPerAgeAndSex() {
       try {
         const res = await axios.get(
@@ -885,13 +908,6 @@ export default {
       }
     },
 
-    getCountsByPerson(data) {
-      return data.reduce((counts, item) => {
-        counts[item.REPONSIBLE_PERSON] =
-          (counts[item.REPONSIBLE_PERSON] || 0) + 1;
-        return counts;
-      }, {});
-    },
     async getTotalNumberOfCategoriesServed() {
       try {
         const response = await axios.get(
@@ -906,6 +922,14 @@ export default {
         console.error(error);
         // Handle the error appropriately here
       }
+    },
+
+    getCountsByPerson(data) {
+      return data.reduce((counts, item) => {
+        counts[item.REPONSIBLE_PERSON] =
+          (counts[item.REPONSIBLE_PERSON] || 0) + 1;
+        return counts;
+      }, {});
     },
 
     getCountsByPersonAndCategory(data) {
