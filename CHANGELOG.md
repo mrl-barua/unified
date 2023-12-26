@@ -514,3 +514,7 @@
 ### version 10.2 MARLO BARUA
 
 - Optimize and bugfixes USER DASHBOARD
+
+### version 10.3 MARLO BARUA
+
+- Implemented Change Background Cover in LoginForm.vue

@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid" style="bac">
+  <div class="container-fluid" :style="{ backgroundImage: `url(${imageUrl})` }">
     <div class="images">
       <img src="/src/assets/DSWDLogo.png" alt="" />
     </div>
@@ -96,9 +96,19 @@ export default {
       loginLink: null,
       signupLink: null,
 
-      loginFormVisible: true, // Add this line
-      signupFormVisible: false, // Add this line
+      loginFormVisible: true,
+      signupFormVisible: false,
+
+      imageUrl: null,
     };
+  },
+  async created() {
+    try {
+      const response = await axios.get("http://127.0.0.1:8000/api/latest");
+      this.imageUrl = response.data.image; // Set imageUrl to the full URL returned by the API
+    } catch (error) {
+      console.error("Failed to fetch latest image:", error);
+    }
   },
   mounted() {
     this.loginForm = document.getElementById("login-form");
@@ -279,7 +289,7 @@ body {
   align-items: center;
   height: 100vh;
   margin-top: -60px;
-  background-image: url("../assets/dswd_background.png");
+  /* background-image: url("../assets/dswd_background.png"); */
   background-size: cover; /* Optional: adjust to your needs */
   background-repeat: no-repeat; /* Optional: adjust to your needs */
 }

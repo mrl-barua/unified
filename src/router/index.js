@@ -3,6 +3,7 @@ import LoginForm from '../views/LoginForm.vue'
 import SettingDashboard from '../views/Admin/Settings_Pages/SettingDashboard'
 import AddSettingUsers from '../views/Admin/Settings_Pages/addUserAccess'
 import EditSettingUsers from '../views/Admin/Settings_Pages/editUserAccess'
+import ChangeBackground from '../views/Admin/Settings_Pages/changeBackground'
 
 import cbss from '../views/User/CBSS/CBSS.vue'
 import hr from '../views/User/HR/HR.vue'
@@ -355,6 +356,14 @@ const routes = [
     path: '/adminSettings/:ID/editUserAccess',
     name: 'EditUserAccess',
     component: EditSettingUsers,
+    beforeEnter: adminRequireAuth,
+  },
+
+
+  {
+    path: '/adminSettings/ChangeBackground',
+    name: 'ChangeBackground',
+    component: ChangeBackground,
     beforeEnter: adminRequireAuth,
   },
 
