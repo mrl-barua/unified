@@ -104,7 +104,7 @@ export default {
   },
   async created() {
     try {
-      const response = await axios.get("http://127.0.0.1:8000/api/latest");
+      const response = await axios.get(`${backendURL}/api/latest`);
       this.imageUrl = response.data.image; // Set imageUrl to the full URL returned by the API
     } catch (error) {
       console.error("Failed to fetch latest image:", error);

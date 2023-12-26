@@ -117,7 +117,7 @@ export default {
   data() {
     return {
       PageTitle: "Settings",
-      PageDetail: "Add New User",
+      PageDetail: "Edit Existing User",
       showPassword: false,
       newErrors: [],
       AdminID: "",

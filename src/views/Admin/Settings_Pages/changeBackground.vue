@@ -36,7 +36,25 @@
       </div>
       <div class="card-header" style="display: flex">Change Background</div>
       <div class="card-body">
-        <input type="file" @change="uploadImage" />
+        <label
+          class="file-upload-wrapper"
+          style="
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #135c1f;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 12px;
+            transition: background-color 0.3s ease;
+          "
+          @mouseover="hoverUpload = true"
+          @mouseleave="hoverUpload = false"
+          :style="{ 'background-color': hoverUpload ? '#0f4a15' : '#135c1f' }"
+        >
+          Upload Image
+          <input type="file" @change="uploadImage" style="display: none" />
+        </label>
         <br />
       </div>
     </div>
@@ -50,7 +68,7 @@
 <script>
 import axios from "axios";
 import { backendURL } from "@/config.js";
-
+import Swal from "sweetalert2";
 import Footer from "@/components/Footer";
 import AdminSidebar from "@/components/AdminSidebar";
 
@@ -66,11 +84,12 @@ export default {
       PageDetail: "Change Background Cover",
       settings: [],
       imageUrl: null,
+      hoverUpload: false,
     };
   },
   async created() {
     try {
-      const response = await axios.get("http://127.0.0.1:8000/api/latest");
+      const response = await axios.get(`${backendURL}/api/latest`);
       this.imageUrl = response.data.image; // Set imageUrl to the full URL returned by the API
     } catch (error) {
       console.error("Failed to fetch latest image:", error);
@@ -84,8 +103,7 @@ export default {
 
       try {
         const response = await axios.post(
-          // Change this line
-          "http://127.0.0.1:8000/api/update",
+          `${backendURL}/api/update`,
           formData,
           {
             headers: {
@@ -97,13 +115,41 @@ export default {
         if (response.data.success) {
           console.log(formData.get("image"));
           console.log("Image uploaded successfully:", response.data.image);
-          this.imageUrl = "http://127.0.0.1:8000/assets/" + response.data.image;
-          window.location.reload();
+          this.imageUrl = `${backendURL}/assets/` + response.data.image;
+
+          // Add SweetAlert2 confirmation here
+          Swal.fire({
+            icon: "success",
+            title: "Success",
+            text: "Background image has been changed successfully.",
+          })
+            .then((result) => {
+              if (result.isConfirmed) {
+                window.location.reload();
+              }
+            })
+            .catch((error) => {
+              console.error("Failed to reload page:", error);
+            });
         } else {
           console.log("Failed to upload image:", response.data);
+
+          // Add SweetAlert2 error message here
+          Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "Failed to change background image.",
+          });
         }
       } catch (error) {
         console.error("Failed to upload image:", error.response.data);
+
+        // Add SweetAlert2 error message here
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Failed to upload image.",
+        });
       }
     },
   },
