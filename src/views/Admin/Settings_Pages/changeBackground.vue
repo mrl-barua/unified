@@ -13,7 +13,6 @@
           <button
             class="btn btn-outline-primary"
             style="
-              /* background-color: #133f5c; */
               font-size: 12px; /* Adjust the font size as needed */
               padding: 10px 30px 10px 30px;
             "
