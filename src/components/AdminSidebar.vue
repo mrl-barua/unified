@@ -46,7 +46,7 @@
               >
                 <li class="list">
                   <a href="#" class="nav-link">
-                    <i class="bx bx-message-rounded icon"></i>
+                    <i class="bx bx-bar-chart-alt-2 icon"></i>
                     <span class="link">ADMIN SWDA</span>
                   </a>
                 </li>
@@ -73,7 +73,7 @@
               >
                 <li class="list">
                   <a href="#" class="nav-link">
-                    <i class="bx bx-home-alt icon"></i>
+                    <i class="bx bx-bar-chart-alt icon"></i>
                     <span class="link">ADMIN CBSS</span>
                   </a>
                 </li>
@@ -100,7 +100,7 @@
               >
                 <li class="list">
                   <a href="#" class="nav-link">
-                    <i class="bx bx-bar-chart-alt-2 icon"></i>
+                    <i class="bx bx-chart icon"></i>
                     <span class="link">ADMIN HR</span>
                   </a>
                 </li>
@@ -126,7 +126,7 @@
               >
                 <li class="list">
                   <a href="#" class="nav-link">
-                    <i class="bx bx-bell icon"></i>
+                    <i class="bx bx-line-chart icon"></i>
                     <span class="link">ADMIN OSD</span>
                   </a>
                 </li>
