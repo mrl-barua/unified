@@ -169,8 +169,9 @@ export default {
         position: "bottom", // Set the legend position as needed
       },
 
-      selectedYear: new Date().getFullYear(), // Default to current year
-
+      // selectedYear: new Date().getFullYear(), // Default to current year
+      selectedYear:
+        new Date().getFullYear() > 2023 ? 2023 : new Date().getFullYear(),
       selectedMonth: "All",
       availableMonths: [
         "All",
