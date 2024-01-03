@@ -29,7 +29,7 @@
               <router-link to="/swda" class="custom-link" active-class="active">
                 <li class="list">
                   <a href="#" class="nav-link">
-                    <i class="bx bx-message-rounded icon"></i>
+                    <i class="bx bx-bar-chart-alt-2 icon"></i>
                     <span class="link">SWDA</span>
                   </a>
                 </li>
@@ -38,7 +38,7 @@
               <router-link to="/cbss" class="custom-link" active-class="active">
                 <li class="list">
                   <a href="#" class="nav-link">
-                    <i class="bx bx-home-alt icon"></i>
+                    <i class="bx bx-bar-chart-alt icon"></i>
                     <span class="link">CBSS</span>
                   </a>
                 </li>
@@ -47,7 +47,7 @@
               <router-link to="/hr" class="custom-link" active-class="active">
                 <li class="list">
                   <a href="#" class="nav-link">
-                    <i class="bx bx-bar-chart-alt-2 icon"></i>
+                    <i class="bx bx-chart icon"></i>
                     <span class="link">HR</span>
                   </a>
                 </li>
@@ -55,7 +55,7 @@
               <router-link to="/osp" class="custom-link" active-class="active">
                 <li class="list">
                   <a href="#" class="nav-link">
-                    <i class="bx bx-bell icon"></i>
+                    <i class="bx bx-line-chart icon"></i>
                     <span class="link">OSD</span>
                   </a>
                 </li>
