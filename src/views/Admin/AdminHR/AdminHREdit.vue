@@ -252,6 +252,12 @@ export default {
 
     async updateHR(HrID) {
       try {
+        // Get the name from localStorage
+        this.name = localStorage.getItem("name");
+
+        // Set RESPONSIBLE_ADMIN to the current value of this.name
+        this.model.Hr.responsible_admin = this.name;
+
         const res = await axios.put(
           `${backendURL}/api/hrlist/${HrID}/edit`,
           this.model.Hr

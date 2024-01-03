@@ -807,6 +807,12 @@ export default {
 
     async updateSWDA(SwdaID) {
       try {
+        // Get the name from localStorage
+        this.name = localStorage.getItem("name");
+
+        // Set RESPONSIBLE_ADMIN to the current value of this.name
+        this.model.Swda.responsible_admin = this.name;
+
         const res = await axios.put(
           `${backendURL}/api/swdalist/${SwdaID}/edit`,
           this.model.Swda

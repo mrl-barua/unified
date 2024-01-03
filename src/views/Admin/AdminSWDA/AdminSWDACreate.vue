@@ -784,6 +784,11 @@ export default {
     },
     async saveSwda() {
       try {
+        // Get the name from localStorage
+        this.name = localStorage.getItem("name");
+        // Set RESPONSIBLE_ADMIN to the current value of this.name
+        this.model.Swda.responsible_admin = this.name;
+
         const dateFields = [
           "Registration_Date",
           "License_Date_Issued",
@@ -853,6 +858,7 @@ export default {
           Licensure_Overdue: "",
           Accreditation_Days_Left: "",
           Accreditation_Overdue: "",
+          responsible_admin: "",
         };
       } catch (error) {
         if (error.response && error.response.status === 422) {
@@ -887,10 +893,6 @@ export default {
 .spaceBetween label {
   padding-left: 10px;
   font-weight: bold;
-}
-
-.custom-input {
-  /* height: 113px;  */
 }
 
 .btn {

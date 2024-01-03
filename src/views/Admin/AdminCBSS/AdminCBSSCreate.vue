@@ -255,6 +255,7 @@ export default {
       PageDetail: "Add New Record",
       CbssID: "",
       errorList: "",
+      name: null,
       // The model for the form inputs  (the data that will be sent to the backend) is defined here as an empty object with the following properties: Osd
       model: {
         Cbss: {
@@ -277,9 +278,14 @@ export default {
       },
     };
   },
+
   mounted() {},
   methods: {
     saveCbss() {
+      this.name = localStorage.getItem("name");
+      // console.log(this.name); // Logs the name to the console
+      // Set RESPONSIBLE_ADMIN to the current value of this.name
+      this.model.Cbss.RESPONSIBLE_ADMIN = this.name;
       var mythis = this;
       axios
         .post(`${backendURL}/api/cbsslist`, this.model.Cbss)
@@ -299,6 +305,7 @@ export default {
               // this.$router.push("/admincbss");
               window.location.reload();
             });
+
           this.model.Cbss = {
             ID: "",
             DATE: "",
@@ -315,6 +322,7 @@ export default {
             REMARKS: "",
             REPONSIBLE_PERSON: "",
             NUMBER_OF_SERVICES_AVAILED: "",
+            RESPONSIBLE_ADMIN: "",
           };
 
           // window.location.reload(); // RELOAD THE PAGE TO REMOVE THE ERRORS

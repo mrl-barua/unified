@@ -234,6 +234,11 @@ export default {
       return format(parsedDate, "MMMM dd, yyyy");
     },
     async saveHr() {
+      // Get the name from localStorage
+      this.name = localStorage.getItem("name");
+      // Set RESPONSIBLE_ADMIN to the current value of this.name
+      this.model.Hr.responsible_admin = this.name;
+
       if (!this.model.Hr.request_date || !this.model.Hr.date_received) {
         throw new Error("Request date and date received are required");
       }
@@ -268,6 +273,7 @@ export default {
           assistance_provided: "",
           quantity_unit: "",
           date_received: "",
+          responsible_admin: "",
         };
       } catch (error) {
         if (error.response) {
