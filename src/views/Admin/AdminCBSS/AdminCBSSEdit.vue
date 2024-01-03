@@ -323,6 +323,12 @@ export default {
 
     async updateCbss(CbssID) {
       try {
+        // Get the name from localStorage
+        this.name = localStorage.getItem("name");
+
+        // Set RESPONSIBLE_ADMIN to the current value of this.name
+        this.model.Cbss.RESPONSIBLE_ADMIN = this.name;
+
         const res = await axios.put(
           `${backendURL}/api/cbsslist/${CbssID}/edit`,
           this.model.Cbss

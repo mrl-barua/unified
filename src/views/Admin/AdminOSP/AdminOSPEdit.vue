@@ -1048,6 +1048,11 @@ export default {
     // The updateOSD() function is used to update the data of the HR with the given ID in the database using the backend API endpoint for updating HR data
     async updateOsd(OsdID) {
       try {
+        // Get the name from localStorage
+        this.name = localStorage.getItem("name");
+        // Set RESPONSIBLE_ADMIN to the current value of this.name
+        this.model.Osd.responsible_admin = this.name;
+
         const res = await axios.put(
           `${backendURL}/api/osdlist/${OsdID}/edit`,
           this.model.Osd
