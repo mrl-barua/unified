@@ -111,7 +111,7 @@
                     <option value="" disabled selected>Select an option</option>
                     <option value="Cluster 1">Cluster 1</option>
                     <option value="Cluster 2">Cluster 2</option>
-                    <option value="Unclustered 3">Unclustered</option>
+                    <option value="Unclustered">Unclustered</option>
                     <option value="South Cluster">South Cluster</option>
                     <option value="North Cluster">North Cluster</option>
                     <option value="Senior Citizens Center">
@@ -629,7 +629,7 @@
               <div class="form-floating spaceBetween">
                 <select
                   v-model="model.Swda.Registration_Status"
-                  class="form-control centered-placeholder"
+                  class="form-select centered-placeholder"
                   id="registrationtype"
                 >
                   <option value="" disabled selected>Select an option ⮟</option>
@@ -644,7 +644,7 @@
               <div class="form-floating spaceBetween">
                 <select
                   v-model="model.Swda.License_Status"
-                  class="form-control centered-placeholder"
+                  class="form-select centered-placeholder"
                   id="licensetype"
                 >
                   <option value="" disabled selected>Select an option</option>
@@ -659,7 +659,7 @@
               <div class="form-floating spaceBetween">
                 <select
                   v-model="model.Swda.Accreditation_Status"
-                  class="form-control centered-placeholder"
+                  class="form-select centered-placeholder"
                   id="accreditationtype"
                 >
                   <option value="" disabled selected>Select an option</option>
