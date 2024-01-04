@@ -6,7 +6,7 @@
 
     <div class="card card-margin">
       <div
-        class="card-header"
+        class="card-header visually-hidden"
         style="display: flex; justify-content: center; align-items: center"
       >
         <router-link to="/adminSettings">
