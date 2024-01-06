@@ -6,7 +6,7 @@
 
     <div class="card card-margin">
       <div
-        class="card-header visually-hidden"
+        class="card-header"
         style="display: flex; justify-content: center; align-items: center"
       >
         <router-link to="/adminSettings">
@@ -81,14 +81,43 @@
                 v-if="item.role == 'admin'"
                 style="background-color: rgb(255, 154, 154)"
               >
-                {{ item.role }}
+                Admin
               </td>
               <td
                 v-else-if="item.role == 'user'"
                 style="background-color: rgb(97, 179, 97)"
               >
-                {{ item.role }}
+                User
               </td>
+
+              <td
+                v-else-if="item.role == 'swdaAdmin'"
+                style="background-color: rgb(255, 255, 255)"
+              >
+                Swda Admin
+              </td>
+
+              <td
+                v-else-if="item.role == 'cbssAdmin'"
+                style="background-color: rgb(255, 255, 255)"
+              >
+                Cbss Admin
+              </td>
+
+              <td
+                v-else-if="item.role == 'hrAdmin'"
+                style="background-color: rgb(255, 255, 255)"
+              >
+                Hr Admin
+              </td>
+
+              <td
+                v-else-if="item.role == 'osdAdmin'"
+                style="background-color: rgb(255, 255, 255)"
+              >
+                Osd Admin
+              </td>
+
               <td class="actions">
                 <router-link
                   :to="{

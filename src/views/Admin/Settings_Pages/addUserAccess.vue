@@ -32,6 +32,10 @@
                   <option value="" disabled selected>Select an option</option>
                   <option value="admin">Admin</option>
                   <option value="user">User</option>
+                  <option value="swdaAdmin">Swda Admin</option>
+                  <option value="cbssAdmin">Cbss Admin</option>
+                  <option value="hrAdmin">Hr Admin</option>
+                  <option value="osdAdmin">Osd Admin</option>
                 </select>
                 <label for="floatingRole">Roles</label>
                 <p class="text-danger">
@@ -151,9 +155,9 @@ export default {
             .then(() => {
               this.$router.push("/adminSettings");
             })
-            .then(() => {
-              // window.location.reload();
-            });
+            .then(() => {});
+
+          // window.location.reload();
           this.model.Admin = {
             id: "",
             name: "",
@@ -162,19 +166,7 @@ export default {
             password: "",
           };
         })
-        // .catch((error) => {
-        //   if (error.response && error.response.status === 422) {
-        //     this.errors = error.response.data.errors;
-        //   } else {
-        //     // Handle other types of errors here
-        //     console.error(error);
-        //     this.$swal({
-        //       icon: "error",
-        //       title: "Error!",
-        //       text: "An unexpected error occurred.",
-        //     });
-        //   }
-        // });
+
         .catch((error) => {
           if (error.response) {
             if (error.response.status === 422) {
@@ -185,34 +177,13 @@ export default {
             // console.log(error.response.headers);
 
             this.newErrors = error.response.data.errors;
-            console.log(this.newErrors); // Changed from this.errorList to this.newErrors
+            console.log(this.newErrors);
           } else if (error.request) {
             console.log(error.request);
           } else {
             console.log("error", error.message);
           }
         });
-      // .catch((error) => {
-      //   // Use an arrow function here
-      //   if (error.response && error.response.status === 422) {
-      //     this.errorList = error.response.data.errors;
-      //   }
-
-      //   console.log(error.response?.data);
-      //   console.log(error.response?.status);
-      //   console.log(error.response?.headers);
-      //   console.log(error.request);
-      //   console.log("error", error.message);
-
-      //   this.$swal({
-      //     icon: "error",
-      //     title: "Error!",
-      //     text:
-      //       error.response?.data.error ||
-      //       error.response?.data.message ||
-      //       "An error occurred",
-      //   });
-      // });
     },
   },
 };

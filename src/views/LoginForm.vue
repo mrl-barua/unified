@@ -108,6 +108,7 @@ export default {
       this.imageUrl = response.data.image; // Set imageUrl to the full URL returned by the API
     } catch (error) {
       console.error("Failed to fetch latest image:", error);
+      this.imageUrl = "/src/assets/dswd_background.png"; // Set imageUrl to a local image
     }
   },
   mounted() {
@@ -195,10 +196,26 @@ export default {
           console.log("Name:", this.name);
           localStorage.setItem("name", this.name);
           setTimeout(() => {
+            // Handle successful login and user roles configuration
             if (response.data.Role === "admin") {
               sessionStorage.setItem("admin", "authenticated");
               this.$router.push("/adminswda");
-            } else if (this.email === "" && this.password === "") {
+            } else if (response.data.Role === "swdaAdmin") {
+              sessionStorage.setItem("swdaAdmin", "authenticated");
+              this.$router.push("/adminswda");
+            } else if (response.data.Role === "cbssAdmin") {
+              sessionStorage.setItem("cbssAdmin", "authenticated");
+              this.$router.push("/admincbss");
+            } else if (response.data.Role === "hrAdmin") {
+              sessionStorage.setItem("hrAdmin", "authenticated");
+              this.$router.push("/adminhr");
+            } else if (response.data.Role === "osdAdmin") {
+              sessionStorage.setItem("osdAdmin", "authenticated");
+              this.$router.push("/adminosp");
+            }
+
+            // Handle unexpected role or scenario
+            else if (this.email === "" && this.password === "") {
               this.error = "Please enter your credentials.";
             } else if (response.data.Role === "user") {
               sessionStorage.setItem("user", "authenticated");
