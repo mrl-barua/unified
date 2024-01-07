@@ -527,3 +527,8 @@
 - update selected icons in Sidebar for both ADMIN and USER VIEWS
 - update selectedYear logic in HR.vue
 - add user roles and authentication for SWDA, CBSS, HR, and OSD admins
+
+### version 10.5 MARLO BARUA
+
+- Refactor sidebar component in AdminSWDA views
+- Implemented SWDA ADMIN ONLY VIEW

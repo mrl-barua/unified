@@ -1,6 +1,15 @@
 <template>
   <div>
-    <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
+    <AdminSidebar
+      v-if="admin === 'authenticated'"
+      :iconText="PageTitle"
+      :iconDetails="PageDetail"
+    />
+    <SwdaSidebar
+      v-if="swdaAdmin === 'authenticated'"
+      iconText="PageTitle"
+      :iconDetails="PageDetail"
+    />
     <br /><br /><br /><br /><br />
     <div class="container-fluid wrapper">
       <div class="col-12 col-md-12">
@@ -420,6 +429,7 @@
 
 <script>
 import AdminSidebar from "@/components/AdminSidebar";
+import SwdaSidebar from "@/components/SwdaSidebar";
 import axios from "axios"; // Import Axios
 import { backendURL } from "@/config.js";
 
@@ -427,13 +437,15 @@ export default {
   name: "AdminSWDAView",
   components: {
     AdminSidebar,
+    SwdaSidebar,
   },
   data() {
     return {
       PageTitle:
         "List of Registration, Licensing, and Accreditation of Social Welfare and Development Agencies",
       PageDetail: "View Details",
-
+      swdaAdmin: null,
+      admin: null,
       model: {
         Swda: {
           Type: "",
@@ -484,6 +496,10 @@ export default {
   mounted() {
     this.SwdaID = this.$route.params.ID;
     this.SwdaData(this.SwdaID);
+    this.swdaAdmin = sessionStorage.getItem("swdaAdmin");
+    this.admin = sessionStorage.getItem("admin");
+    console.log(this.swdaAdmin); // Logs the name to the console
+    console.log(this.admin); // Logs the name to the console
   },
   methods: {
     async SwdaData(SwdaID) {

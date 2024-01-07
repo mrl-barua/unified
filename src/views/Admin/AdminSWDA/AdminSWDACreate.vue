@@ -1,6 +1,15 @@
 <template>
   <br /><br /><br /><br />
-  <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
+  <AdminSidebar
+    v-if="admin === 'authenticated'"
+    :iconText="PageTitle"
+    :iconDetails="PageDetail"
+  />
+  <SwdaSidebar
+    v-if="swdaAdmin === 'authenticated'"
+    iconText="PageTitle"
+    :iconDetails="PageDetail"
+  />
   <div>
     <div class="container-fluid">
       <div class="Header"></div>
@@ -714,18 +723,22 @@
 <script>
 import axios from "axios";
 import AdminSidebar from "@/components/AdminSidebar";
+import SwdaSidebar from "@/components/SwdaSidebar";
 import { backendURL } from "@/config.js";
 import { format, parse } from "date-fns";
 export default {
   name: "AdminSWDACreate",
   components: {
     AdminSidebar,
+    SwdaSidebar,
   },
   data() {
     return {
       PageTitle:
         "List of Registration, Licensing, and Accreditation of Social Welfare and Development Agencies",
       PageDetail: "Add New Record",
+      swdaAdmin: null,
+      admin: null,
       errorList: "",
       model: {
         Swda: {
@@ -772,6 +785,12 @@ export default {
         },
       },
     };
+  },
+  mounted() {
+    this.swdaAdmin = sessionStorage.getItem("swdaAdmin");
+    this.admin = sessionStorage.getItem("admin");
+    console.log(this.swdaAdmin); // Logs the name to the console
+    console.log(this.admin); // Logs the name to the console
   },
 
   methods: {
