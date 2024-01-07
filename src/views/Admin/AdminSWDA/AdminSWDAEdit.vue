@@ -1,6 +1,15 @@
 <template>
   <br /><br /><br /><br />
-  <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
+  <AdminSidebar
+    v-if="admin === 'authenticated'"
+    :iconText="PageTitle"
+    :iconDetails="PageDetail"
+  />
+  <SwdaSidebar
+    v-if="swdaAdmin === 'authenticated'"
+    iconText="PageTitle"
+    :iconDetails="PageDetail"
+  />
   <div>
     <div class="container-fluid">
       <div class="Header"></div>
@@ -718,17 +727,21 @@
 <script>
 import axios from "axios";
 import AdminSidebar from "@/components/AdminSidebar";
+import SwdaSidebar from "@/components/SwdaSidebar";
 import { backendURL } from "@/config.js";
 export default {
   name: "AdminSWDAEdit",
   components: {
     AdminSidebar,
+    SwdaSidebar,
   },
   data() {
     return {
       PageTitle:
         "List of Registration, Licensing, and Accreditation of Social Welfare and Development Agencies",
       PageDetail: "Edit Current Record",
+      swdaAdmin: null,
+      admin: null,
       SwdaID: "",
       errorList: "",
       // The model for the form inputs  (the data that will be sent to the backend) is defined here as an empty object with the following properties: Swda
@@ -783,6 +796,10 @@ export default {
     this.SwdaID = this.$route.params.ID;
     //the SwdaID is passed as a parameter to the SwdaData() function  (which is defined below) to get the data of the SWDA with the given ID
     this.SwdaData(this.$route.params.ID);
+    this.swdaAdmin = sessionStorage.getItem("swdaAdmin");
+    this.admin = sessionStorage.getItem("admin");
+    console.log(this.swdaAdmin); // Logs the name to the console
+    console.log(this.admin); // Logs the name to the console
   },
   methods: {
     // The SwdaData() function is used to get the data of the SWDA with the given ID

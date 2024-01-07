@@ -1,6 +1,15 @@
 <template>
   <div>
-    <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
+    <AdminSidebar
+      v-if="admin === 'authenticated'"
+      :iconText="PageTitle"
+      :iconDetails="PageDetail"
+    />
+    <SwdaSidebar
+      v-if="swdaAdmin === 'authenticated'"
+      iconText="PageTitle"
+      :iconDetails="PageDetail"
+    />
     <br /><br /><br /><br /><br />
     <div class="container-fluid wrapper">
       <p class="Header">Recent Edit</p>
@@ -103,7 +112,7 @@
 import axios from "axios"; // Import Axios
 import { backendURL } from "@/config.js";
 import AdminSidebar from "@/components/AdminSidebar";
-
+import SwdaSidebar from "@/components/SwdaSidebar";
 import DataTable from "datatables.net-vue3";
 import DataTablesCore from "datatables.net";
 import "datatables.net-responsive";
@@ -113,6 +122,7 @@ export default {
   name: "AdminEditHistory",
   components: {
     AdminSidebar,
+    SwdaSidebar,
     DataTable,
   },
   data() {
@@ -120,8 +130,9 @@ export default {
       PageTitle:
         "List of Registration, Licensing, and Accreditation of Social Welfare and Development Agencies",
       PageDetail: "Edit History Log",
+      swdaAdmin: null,
+      admin: null,
       swda: [],
-
       model: {
         Swda: { Agency: "" },
       },
@@ -131,6 +142,10 @@ export default {
     this.SwdaID = this.$route.params.ID;
     this.getSwdaEditHistory(this.SwdaID);
     this.SwdaData(this.SwdaID);
+    this.swdaAdmin = sessionStorage.getItem("swdaAdmin");
+    this.admin = sessionStorage.getItem("admin");
+    console.log(this.swdaAdmin); // Logs the name to the console
+    console.log(this.admin); // Logs the name to the console
   },
   methods: {
     formatDate(dateString) {

@@ -518,3 +518,17 @@
 ### version 10.3 MARLO BARUA
 
 - Implemented Change Background Cover in LoginForm.vue
+
+### version 10.4 MARLO BARUA
+
+- update changeBackground.vue. editUSerACcess.vue and LoginForm.vue
+- update gitIgnore
+- added htaccess file in the assets so that it can be copied to the dist folder for production
+- update selected icons in Sidebar for both ADMIN and USER VIEWS
+- update selectedYear logic in HR.vue
+- add user roles and authentication for SWDA, CBSS, HR, and OSD admins
+
+### version 10.5 MARLO BARUA
+
+- Refactor sidebar component in AdminSWDA views
+- Implemented SWDA ADMIN ONLY VIEW

@@ -34,6 +34,10 @@
                   <option value="" disabled selected>Select an option</option>
                   <option value="admin">Admin</option>
                   <option value="user">User</option>
+                  <option value="swdaAdmin">Swda Admin</option>
+                  <option value="cbssAdmin">Cbss Admin</option>
+                  <option value="hrAdmin">Hr Admin</option>
+                  <option value="osdAdmin">Osd Admin</option>
                 </select>
                 <label for="floatingRole">Roles</label>
                 <p class="text-danger">

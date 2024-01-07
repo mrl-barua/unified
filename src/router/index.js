@@ -13,19 +13,14 @@ import swda from '../views/User/SWDA/SWDA.vue'
 import ERROR from '../views/404.vue' // Import the 404 Error Page
 import { userIsAuthenticated } from '../auth'; // Import the user authentication function
 import { adminIsAuthenticated } from '../auth'; // Import the admin authentication function
+import { swdaAdminIsAuthenticated } from '../auth';
+import { cbssAdminIsAuthenticated } from '../auth';
+import { hrAdminIsAuthenticated } from '../auth';
+import { osdAdminIsAuthenticated } from '../auth';
 import { startAutoLogout, clearAutoLogout, logout } from '../auth';
 import Swal from 'sweetalert2'
 
-/**
- * Middleware function to check if the user is authenticated before accessing a route.
- * If the user is authenticated, it allows access to the route.
- * If the user is not authenticated, it redirects to the login page or handles it as needed.
- *
- * @param {Object} to - The target route object being navigated to.
- * @param {Object} from - The current route object being navigated away from.
- * @param {Function} next - A callback function to continue the navigation.
- * @returns {void}
- */
+
 const userRequireAuth = (to, from, next) => {
   if (userIsAuthenticated()) {
     // User is authenticated, allow access to the route
@@ -51,15 +46,6 @@ const userRequireAuth = (to, from, next) => {
 };
 
 
-/**
- * Middleware function to check if the user is authenticated as an admin.
- * If authenticated, allows access to the route. Otherwise, redirects to the login page.
- *
- * @param {Object} to - The target route object being navigated to.
- * @param {Object} from - The current route object being navigated away from.
- * @param {Function} next - A callback function to continue the navigation.
- * @returns {void}
- */
 const adminRequireAuth = (to, from, next) => {
   if (adminIsAuthenticated()) {
     // User is authenticated, allow access to the route
@@ -84,6 +70,100 @@ const adminRequireAuth = (to, from, next) => {
   }
 };
 
+
+const swdaAdminRequireAuth = (to, from, next) => {
+  if (adminIsAuthenticated() || swdaAdminIsAuthenticated()) {
+    // Either admin or swdaAdmin is authenticated, allow access to the route
+    next();
+    sessionStorage.removeItem('user');
+    clearAutoLogout();
+    startAutoLogout();
+  } else {
+    // Neither is authenticated, redirect to the login page or handle it as needed
+    Swal.fire({
+      icon: 'warning',
+      title: 'Warning',
+      text: 'You need to log in to access this page.',
+      width: 450,
+      padding: '3.5em',
+    });
+    next({
+      name: 'login',
+      query: { redirect: to.fullPath },
+    });
+  }
+};
+
+const cbssAdminRequireAuth = (to, from, next) => {
+  if (adminIsAuthenticated() || cbssAdminIsAuthenticated()) {
+    // Either admin or swdaAdmin is authenticated, allow access to the route
+    next();
+    sessionStorage.removeItem('user');
+    clearAutoLogout();
+    startAutoLogout();
+  } else {
+    // Neither is authenticated, redirect to the login page or handle it as needed
+    Swal.fire({
+      icon: 'warning',
+      title: 'Warning',
+      text: 'You need to log in to access this page.',
+      width: 450,
+      padding: '3.5em',
+    });
+    next({
+      name: 'login',
+      query: { redirect: to.fullPath },
+    });
+  }
+};
+
+
+const hrAdminRequireAuth = (to, from, next) => {
+  if (adminIsAuthenticated() || hrAdminIsAuthenticated()) {
+    // Either admin or swdaAdmin is authenticated, allow access to the route
+    next();
+    sessionStorage.removeItem('user');
+    clearAutoLogout();
+    startAutoLogout();
+  } else {
+    // Neither is authenticated, redirect to the login page or handle it as needed
+    Swal.fire({
+      icon: 'warning',
+      title: 'Warning',
+      text: 'You need to log in to access this page.',
+      width: 450,
+      padding: '3.5em',
+    });
+    next({
+      name: 'login',
+      query: { redirect: to.fullPath },
+    });
+  }
+};
+
+
+const osdAdminRequireAuth = (to, from, next) => {
+  if (adminIsAuthenticated() || osdAdminIsAuthenticated()) {
+    // Either admin or swdaAdmin is authenticated, allow access to the route
+    next();
+    sessionStorage.removeItem('user');
+    clearAutoLogout();
+    startAutoLogout();
+  } else {
+    // Neither is authenticated, redirect to the login page or handle it as needed
+    Swal.fire({
+      icon: 'warning',
+      title: 'Warning',
+      text: 'You need to log in to access this page.',
+      width: 450,
+      padding: '3.5em',
+    });
+    next({
+      name: 'login',
+      query: { redirect: to.fullPath },
+    });
+  }
+};
 const routes = [
   {
     path: '/',
@@ -100,6 +180,30 @@ const routes = [
       else if (adminIsAuthenticated()) {
         // Admin is authenticated, clear the token in localStorage
         sessionStorage.removeItem('admin');
+        // Allow access to the route
+        next();
+      }
+      else if (swdaAdminIsAuthenticated()) {
+        // Admin is authenticated, clear the token in localStorage
+        sessionStorage.removeItem('swdaAdmin');
+        // Allow access to the route
+        next();
+      }
+      else if (cbssAdminIsAuthenticated()) {
+        // Admin is authenticated, clear the token in localStorage
+        sessionStorage.removeItem('cbssAdmin');
+        // Allow access to the route
+        next();
+      }
+      else if (hrAdminIsAuthenticated()) {
+        // Admin is authenticated, clear the token in localStorage
+        sessionStorage.removeItem('hrAdmin');
+        // Allow access to the route
+        next();
+      }
+      else if (osdAdminIsAuthenticated()) {
+        // Admin is authenticated, clear the token in localStorage
+        sessionStorage.removeItem('osdAdmin');
         // Allow access to the route
         next();
       }
@@ -122,43 +226,43 @@ const routes = [
     path: '/admincbss',
     name: 'adminCBSS',
     component: () => import('../views/Admin/AdminCBSS/AdminCBSS.vue'),
-    beforeEnter: adminRequireAuth,
+    beforeEnter: cbssAdminRequireAuth,
   },
   {
     path: '/admincbss/archive',
     name: 'adminCBSSArchive',
     component: () => import('../views/Admin/AdminCBSS/AdminCBSS_Archive.vue'),
-    beforeEnter: adminRequireAuth,
+    beforeEnter: cbssAdminRequireAuth,
   },
   {
     path: '/admincbss/create',
     name: 'AdminCBSSCreate',
     component: () => import('../views/Admin/AdminCBSS/AdminCBSSCreate.vue'),
-    beforeEnter: adminRequireAuth,
+    beforeEnter: cbssAdminRequireAuth,
   },
   {
     path: '/admincbss/:ID/edit',
     name: 'AdminCBSSEdit',
     component: () => import('../views/Admin/AdminCBSS/AdminCBSSEdit.vue'),
-    beforeEnter: adminRequireAuth,
+    beforeEnter: cbssAdminRequireAuth,
   },
   {
     path: '/admincbss/:ID/view',
     name: 'AdminCBSSView',
     component: () => import('../views/Admin/AdminCBSS/AdminCBSSView.vue'),
-    beforeEnter: adminRequireAuth,
+    beforeEnter: cbssAdminRequireAuth,
   },
   {
     path: '/admincbss/:ID/editHistory',
     name: 'editCbssHistory',
     component: () => import('../views/Admin/AdminCBSS/AdminCBSS_EditHistory.vue'),
-    beforeEnter: adminRequireAuth,
+    beforeEnter: cbssAdminRequireAuth,
   },
   {
     path: '/admincbss/:ID/editHistory/view',
     name: 'editCbssHistoryView',
     component: () => import('../views/Admin/AdminCBSS/AdminCBSS_EditHistory_View.vue'),
-    beforeEnter: adminRequireAuth,
+    beforeEnter: cbssAdminRequireAuth,
   },
   // ! ADMIN CBSS END!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   // ! ADMIN CBSS END!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -171,44 +275,44 @@ const routes = [
     path: '/adminhr',
     name: 'adminhr',
     component: () => import('../views/Admin/AdminHR/AdminHR.vue'),
-    beforeEnter: adminRequireAuth,
+    beforeEnter: hrAdminRequireAuth,
   },
   {
     path: '/adminhr/archive',
     name: 'adminHRArchive',
     component: () => import('../views/Admin/AdminHR/AdminHR_Archive.vue'),
-    beforeEnter: adminRequireAuth,
+    beforeEnter: hrAdminRequireAuth,
   },
   {
     path: '/adminhr/create',
     name: 'AdminHRCreate',
     component: () => import('../views/Admin/AdminHR/AdminHRCreate.vue'),
-    beforeEnter: adminRequireAuth,
+    beforeEnter: hrAdminRequireAuth,
   },
   {
     path: '/adminhr/:ID/edit',
     name: 'AdminHREdit',
     component: () => import('../views/Admin/AdminHR/AdminHREdit.vue'),
-    beforeEnter: adminRequireAuth,
+    beforeEnter: hrAdminRequireAuth,
   },
   {
     path: '/adminhr/:ID/view',
     name: 'AdminHRView',
     component: () => import('../views/Admin/AdminHR/AdminHRView.vue'),
-    beforeEnter: adminRequireAuth,
+    beforeEnter: hrAdminRequireAuth,
   },
 
   {
     path: '/adminhr/:ID/editHistory',
     name: 'AdminHReditHistory',
     component: () => import('../views/Admin/AdminHR/AdminHR_EditHistory.vue'),
-    beforeEnter: adminRequireAuth,
+    beforeEnter: hrAdminRequireAuth,
   },
   {
     path: '/adminhr/:ID/editHistory/view',
     name: 'AdminHReditHistoryView',
     component: () => import('../views/Admin/AdminHR/AdminHR_EditHistory_View.vue'),
-    beforeEnter: adminRequireAuth,
+    beforeEnter: hrAdminRequireAuth,
   },
 
   //? TODO ADMIN HR END!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -236,31 +340,31 @@ const routes = [
     path: '/adminosp',
     name: 'adminosp',
     component: () => import('../views/Admin/AdminOSP/AdminOSP.vue'),
-    beforeEnter: adminRequireAuth,
+    beforeEnter: osdAdminRequireAuth,
   },
   {
     path: '/adminosp/archive',
     name: 'adminhrArchive',
     component: () => import('../views/Admin/AdminOSP/AdminOSP_Archive.vue'),
-    beforeEnter: adminRequireAuth,
+    beforeEnter: osdAdminRequireAuth,
   },
   {
     path: '/adminosp/create',
     name: 'AdminOSPCreate',
     component: () => import('../views/Admin/AdminOSP/AdminOSPCreate.vue'),
-    beforeEnter: adminRequireAuth,
+    beforeEnter: osdAdminRequireAuth,
   },
   {
     path: '/adminosp/:ID/edit',
     name: 'AdminOSPEdit',
     component: () => import('../views/Admin/AdminOSP/AdminOSPEdit.vue'),
-    beforeEnter: adminRequireAuth,
+    beforeEnter: osdAdminRequireAuth,
   },
   {
     path: '/adminosp/:ID/view',
     name: 'AdminOSPView',
     component: () => import('../views/Admin/AdminOSP/AdminOSPView.vue'),
-    beforeEnter: adminRequireAuth,
+    beforeEnter: osdAdminRequireAuth,
   },
 
 
@@ -268,13 +372,13 @@ const routes = [
     path: '/adminosp/:ID/editHistory',
     name: 'AdminOSPeditHistory',
     component: () => import('../views/Admin/AdminOSP/AdminOSP_EditHistory.vue'),
-    beforeEnter: adminRequireAuth,
+    beforeEnter: osdAdminRequireAuth,
   },
   {
     path: '/adminosp/:ID/editHistory/view',
     name: 'AdminOSPeditHistoryView',
     component: () => import('../views/Admin/AdminOSP/AdminOSP_EditHistory_View.vue'),
-    beforeEnter: adminRequireAuth,
+    beforeEnter: osdAdminRequireAuth,
   },
   // ! ADMIN OSP END!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   // ! ADMIN OSP END!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -287,43 +391,43 @@ const routes = [
     path: '/adminswda',
     name: 'adminswda',
     component: () => import('../views/Admin/AdminSWDA/AdminSWDA.vue'),
-    beforeEnter: adminRequireAuth,
+    beforeEnter: swdaAdminRequireAuth,
   },
   {
     path: '/adminswda/archive',
     name: 'adminswdaArchive',
     component: () => import('../views/Admin/AdminSWDA/AdminSWDA_Archive.vue'),
-    beforeEnter: adminRequireAuth,
+    beforeEnter: swdaAdminRequireAuth,
   },
   {
     path: '/adminswda/create',
     name: 'AdminSWDACreate',
     component: () => import('../views/Admin/AdminSWDA/AdminSWDACreate.vue'),
-    beforeEnter: adminRequireAuth,
+    beforeEnter: swdaAdminRequireAuth,
   },
   {
     path: '/adminswda/:ID/editHistory',
     name: 'editHistory',
     component: () => import('../views/Admin/AdminSWDA/AdminSWDA_EditHistory.vue'),
-    beforeEnter: adminRequireAuth,
+    beforeEnter: swdaAdminRequireAuth,
   },
   {
     path: '/adminswda/:ID/editHistory/view',
     name: 'editHistoryView',
     component: () => import('../views/Admin/AdminSWDA/AdminSWDA_EditHistory_View.vue'),
-    beforeEnter: adminRequireAuth,
+    beforeEnter: swdaAdminRequireAuth,
   },
   {
     path: '/adminswda/:ID/view',
     name: 'AdminSWDAView',
     component: () => import('../views/Admin/AdminSWDA/AdminSWDAView.vue'),
-    beforeEnter: adminRequireAuth,
+    beforeEnter: swdaAdminRequireAuth,
   },
   {
     path: '/adminswda/:ID/edit',
     name: 'AdminSWDAEdit',
     component: () => import('../views/Admin/AdminSWDA/AdminSWDAEdit.vue'),
-    beforeEnter: adminRequireAuth,
+    beforeEnter: swdaAdminRequireAuth,
   },
 
 

@@ -1,6 +1,15 @@
 <template>
   <div>
-    <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
+    <AdminSidebar
+      v-if="admin === 'authenticated'"
+      :iconText="PageTitle"
+      :iconDetails="PageDetail"
+    />
+    <SwdaSidebar
+      v-if="swdaAdmin === 'authenticated'"
+      iconText="PageTitle"
+      :iconDetails="PageDetail"
+    />
     <br /><br /><br /><br />
     <div class="container-fluid wrapper"></div>
     <div class="card card-margin">
@@ -141,6 +150,7 @@ import axios from "axios";
 import { backendURL } from "@/config.js";
 import Footer from "@/components/Footer";
 import AdminSidebar from "@/components/AdminSidebar";
+import SwdaSidebar from "@/components/SwdaSidebar";
 import BarChart from "@/components/ChartJS/Barchart";
 import ExcelJS from "exceljs";
 
@@ -154,6 +164,7 @@ export default {
   components: {
     Footer,
     AdminSidebar,
+    SwdaSidebar,
     BarChart,
     DataTable,
   },
@@ -162,12 +173,18 @@ export default {
       PageTitle:
         "List of Registration, Licensing, and Accreditation of Social Welfare and Development Agencies",
       PageDetail: "Inactive Admin Dashboard",
+      swdaAdmin: null,
+      admin: null,
       swda: [],
     };
   },
   computed: {},
   mounted() {
     this.getSwdaArchive();
+    this.swdaAdmin = sessionStorage.getItem("swdaAdmin");
+    this.admin = sessionStorage.getItem("admin");
+    console.log(this.swdaAdmin); // Logs the name to the console
+    console.log(this.admin); // Logs the name to the console
   },
   methods: {
     exportToExcel() {
