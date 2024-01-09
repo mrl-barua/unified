@@ -1,6 +1,15 @@
 <template>
   <div>
-    <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
+    <AdminSidebar
+      v-if="admin === 'authenticated'"
+      :iconText="PageTitle"
+      :iconDetails="PageDetail"
+    />
+    <CbssSidebar
+      v-if="cbssAdmin === 'authenticated'"
+      iconText="PageTitle"
+      :iconDetails="PageDetail"
+    />
     <br /><br /><br /><br /><br />
     <div class="container-fluid wrapper">
       <p class="Header">Recent Edit</p>
@@ -104,7 +113,7 @@
 import axios from "axios"; // Import Axios
 import { backendURL } from "@/config.js";
 import AdminSidebar from "@/components/AdminSidebar";
-
+import CbssSidebar from "@/components/CbssSidebar"; 
 import DataTable from "datatables.net-vue3";
 import DataTablesCore from "datatables.net";
 import "datatables.net-responsive";
@@ -114,12 +123,15 @@ export default {
   name: "AdminEditHistory",
   components: {
     AdminSidebar,
+    CbssSidebar,
     DataTable,
   },
   data() {
     return {
       PageTitle: "Community Based Services Section",
       PageDetail: "Edit History Log",
+      admin: null,
+      cbssAdmin: null,
       cbss: [],
 
       model: {
@@ -131,6 +143,8 @@ export default {
     this.CbssID = this.$route.params.ID;
     this.getCbssEditHistory(this.CbssID);
     this.CbssData(this.CbssID);
+    this.admin = sessionStorage.getItem("admin");
+    this.cbssAdmin = sessionStorage.getItem("cbssAdmin");
   },
   methods: {
     formatDate(dateString) {

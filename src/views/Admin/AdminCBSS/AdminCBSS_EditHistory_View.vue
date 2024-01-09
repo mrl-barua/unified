@@ -1,6 +1,15 @@
 <template>
   <div>
-    <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
+    <AdminSidebar
+      v-if="admin === 'authenticated'"
+      :iconText="PageTitle"
+      :iconDetails="PageDetail"
+    />
+    <CbssSidebar
+      v-if="cbssAdmin === 'authenticated'"
+      iconText="PageTitle"
+      :iconDetails="PageDetail"
+    />
     <br /><br /><br /><br /><br />
     <div class="container-fluid wrapper">
       <div class="col-12">
@@ -134,19 +143,24 @@
 <script>
 import axios from "axios";
 import AdminSidebar from "@/components/AdminSidebar";
+import CbssSidebar from "@/components/CbssSidebar";
 import { backendURL } from "@/config.js";
+import { i } from "dist/assets/index-5abe7116";
 export default {
   name: "AdminCBSSView",
   components: {
     AdminSidebar,
+    CbssSidebar,
   },
   data() {
     return {
       PageTitle: "Community Based Services Section",
       PageDetail: "View Edit Details",
+      admin: null,
+      cbssAdmin: null,
       CbssID: "",
       errorList: "",
-      // The model for the form inputs  (the data that will be sent to the backend) is defined here as an empty object with the following properties: 
+      // The model for the form inputs  (the data that will be sent to the backend) is defined here as an empty object with the following properties:
       model: {
         Cbss: {
           ID: "",
@@ -172,6 +186,8 @@ export default {
     this.CbssID = this.$route.params.ID;
     //the CbssID is passed as a parameter to the CbssData() function  (which is defined below) to get the data of the CBSS with the given ID
     this.CbssEditHistoryData(this.$route.params.ID);
+    this.admin = sessionStorage.getItem("admin");
+    this.cbssAdmin = sessionStorage.getItem("cbssAdmin");
   },
   methods: {
     async CbssEditHistoryData(CbssID) {
