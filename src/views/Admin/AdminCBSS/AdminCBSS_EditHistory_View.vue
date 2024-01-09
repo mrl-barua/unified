@@ -145,7 +145,6 @@ import axios from "axios";
 import AdminSidebar from "@/components/AdminSidebar";
 import CbssSidebar from "@/components/CbssSidebar";
 import { backendURL } from "@/config.js";
-import { i } from "dist/assets/index-5abe7116";
 export default {
   name: "AdminCBSSView",
   components: {
