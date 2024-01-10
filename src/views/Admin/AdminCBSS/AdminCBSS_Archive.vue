@@ -1,6 +1,15 @@
 <template>
   <div>
-    <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
+    <AdminSidebar
+      v-if="admin === 'authenticated'"
+      :iconText="PageTitle"
+      :iconDetails="PageDetail"
+    />
+    <CbssSidebar
+      v-if="cbssAdmin === 'authenticated'"
+      iconText="PageTitle"
+      :iconDetails="PageDetail"
+    />
     <br /><br /><br /><br />
     <div class="container-fluid wrapper"></div>
     <div class="card card-margin">
@@ -133,6 +142,7 @@ import axios from "axios";
 import { backendURL } from "@/config.js";
 import Footer from "@/components/Footer";
 import AdminSidebar from "@/components/AdminSidebar";
+import CbssSidebar from "@/components/CbssSidebar";
 import BarChart from "@/components/ChartJS/Barchart";
 import ExcelJS from "exceljs";
 
@@ -148,17 +158,24 @@ export default {
     AdminSidebar,
     BarChart,
     DataTable,
+    CbssSidebar,
   },
   data() {
     return {
       PageTitle: "Community Based Services Section",
       PageDetail: "Inactive Admin Dashboard",
       cbss: [],
+      admin: null,
+      cbssAdmin: null,
     };
   },
   computed: {},
   mounted() {
     this.getCbss();
+    this.admin = sessionStorage.getItem("admin");
+    this.cbssAdmin = sessionStorage.getItem("cbssAdmin");
+    console.log(this.admin);
+    console.log(this.cbssAdmin);
   },
   methods: {
     exportToExcel() {
@@ -221,7 +238,7 @@ export default {
         a.click();
       });
     },
-    
+
     async getCbss() {
       try {
         const res = await axios.get(`${backendURL}/api/cbssArchived`);

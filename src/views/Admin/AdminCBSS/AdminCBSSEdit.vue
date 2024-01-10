@@ -1,6 +1,15 @@
 <template>
   <br /><br /><br /><br />
-  <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
+  <AdminSidebar
+    v-if="admin === 'authenticated'"
+    :iconText="PageTitle"
+    :iconDetails="PageDetail"
+  />
+  <CbssSidebar
+    v-if="cbssAdmin === 'authenticated'"
+    iconText="PageTitle"
+    :iconDetails="PageDetail"
+  />
   <div>
     <div class="container-fluid">
       <div class="Header"></div>
@@ -247,16 +256,20 @@
 <script>
 import axios from "axios";
 import AdminSidebar from "@/components/AdminSidebar";
+import CbssSidebar from "@/components/CbssSidebar";
 import { backendURL } from "@/config.js";
 export default {
   name: "AdminCBSSEdit",
   components: {
     AdminSidebar,
+    CbssSidebar,
   },
   data() {
     return {
       PageTitle: "Community Based Services Section",
       PageDetail: "Edit Current Record",
+      admin: null,
+      cbssAdmin: null,
       CbssID: "",
       errorList: "",
       // The model for the form inputs  (the data that will be sent to the backend) is defined here as an empty object with the following properties: Hr
@@ -300,6 +313,8 @@ export default {
     this.CbssID = this.$route.params.ID;
     //the CbssID is passed as a parameter to the CbssData() function  (which is defined below) to get the data of the CBSS with the given ID
     this.CbssData(this.$route.params.ID);
+    this.admin = sessionStorage.getItem("admin");
+    this.cbssAdmin = sessionStorage.getItem("cbssAdmin");
   },
   methods: {
     async CbssData(CbssID) {

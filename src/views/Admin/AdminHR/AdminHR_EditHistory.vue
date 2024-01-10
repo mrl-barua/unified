@@ -1,6 +1,15 @@
 <template>
   <div>
-    <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
+    <AdminSidebar
+      v-if="admin === 'authenticated'"
+      :iconText="PageTitle"
+      :iconDetails="PageDetail"
+    />
+    <HrSidebar
+      v-if="hrAdmin === 'authenticated'"
+      iconText="PageTitle"
+      :iconDetails="PageDetail"
+    />
     <br /><br /><br /><br /><br />
     <div class="container-fluid wrapper">
       <p class="Header">Recent Edit</p>
@@ -104,7 +113,7 @@
 import axios from "axios"; // Import Axios
 import { backendURL } from "@/config.js";
 import AdminSidebar from "@/components/AdminSidebar";
-
+import HrSidebar from "@/components/HrSidebar";
 import DataTable from "datatables.net-vue3";
 import DataTablesCore from "datatables.net";
 import "datatables.net-responsive";
@@ -114,12 +123,15 @@ export default {
   name: "AdminEditHistory",
   components: {
     AdminSidebar,
+    HrSidebar,
     DataTable,
   },
   data() {
     return {
       PageTitle: "EMPLOYEE WELFARE AND RELATIONS",
       PageDetail: "Edit History Logs",
+      admin: null,
+      hrAdmin: null,
       hr: [],
 
       model: {
@@ -131,6 +143,8 @@ export default {
     this.HrID = this.$route.params.ID;
     this.getHrEditHistory(this.HrID);
     this.HrData(this.HrID);
+    this.admin = sessionStorage.getItem("authenticated");
+    this.hrAdmin = sessionStorage.getItem("authenticated");
   },
   methods: {
     formatDate(dateString) {

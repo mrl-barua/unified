@@ -1,6 +1,15 @@
 <template>
   <div>
-    <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
+    <AdminSidebar
+      v-if="admin === 'authenticated'"
+      :iconText="PageTitle"
+      :iconDetails="PageDetail"
+    />
+    <HrSidebar
+      v-if="hrAdmin === 'authenticated'"
+      iconText="PageTitle"
+      :iconDetails="PageDetail"
+    />
     <br /><br /><br /><br />
     <div class="container-fluid wrapper"></div>
     <div class="card card-margin">
@@ -200,6 +209,7 @@ import { backendURL } from "@/config.js";
 
 import Footer from "@/components/Footer";
 import AdminSidebar from "@/components/AdminSidebar";
+import HrSidebar from "@/components/HrSidebar";
 import BarChart from "@/components/ChartJS/Barchart";
 import ExcelJS from "exceljs";
 
@@ -212,6 +222,7 @@ export default {
   components: {
     Footer,
     AdminSidebar,
+    HrSidebar,
     BarChart,
     DataTable,
   },
@@ -219,12 +230,16 @@ export default {
     return {
       PageTitle: "EMPLOYEE WELFARE AND RELATIONS",
       PageDetail: "Active Main Dashboard",
+      admin: null,
+      hrAdmin: null,
       hr: [],
     };
   },
   computed: {},
   mounted() {
     this.getHr();
+    this.admin = sessionStorage.getItem("admin");
+    this.hrAdmin = sessionStorage.getItem("hrAdmin");
   },
   methods: {
     exportToExcel() {

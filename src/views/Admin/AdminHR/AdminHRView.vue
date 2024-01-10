@@ -1,6 +1,15 @@
 <template>
   <div>
-    <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
+    <AdminSidebar
+      v-if="admin === 'authenticated'"
+      :iconText="PageTitle"
+      :iconDetails="PageDetail"
+    />
+    <HrSidebar
+      v-if="hrAdmin === 'authenticated'"
+      iconText="PageTitle"
+      :iconDetails="PageDetail"
+    />
     <br /><br /><br /><br />
     <div class="container-fluid wrapper">
       <div class="col-12 page-border">
@@ -108,17 +117,21 @@
 <script>
 import axios from "axios";
 import AdminSidebar from "@/components/AdminSidebar";
+import HrSidebar from "@/components/HrSidebar";
 import { backendURL } from "@/config.js";
 
 export default {
   name: "AdminHRView",
   components: {
     AdminSidebar,
+    HrSidebar,
   },
   data() {
     return {
       PageTitle: "EMPLOYEE WELFARE AND RELATIONS",
       PageDetail: "View Details",
+      admin: null,
+      hrAdmin: null,
       HrID: "",
       errorList: "",
       // The model for the form inputs  (the data that will be sent to the backend) is defined here as an empty object with the following properties: Hr
@@ -145,6 +158,8 @@ export default {
     this.HrID = this.$route.params.ID;
     //the HrID is passed as a parameter to the HrData() function  (which is defined below) to get the data of the HR with the given ID
     this.HrData(this.$route.params.ID);
+    this.admin = sessionStorage.getItem("authenticated");
+    this.hrAdmin = sessionStorage.getItem("hrAdmin");
   },
   methods: {
     // The HrData() function is used to get the data of the HR with the given ID

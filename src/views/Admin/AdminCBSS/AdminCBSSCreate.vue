@@ -1,6 +1,15 @@
 <template>
   <br /><br /><br /><br />
-  <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
+  <AdminSidebar
+    v-if="admin === 'authenticated'"
+    :iconText="PageTitle"
+    :iconDetails="PageDetail"
+  />
+  <CbssSidebar
+    v-if="cbssAdmin === 'authenticated'"
+    iconText="PageTitle"
+    :iconDetails="PageDetail"
+  />
   <div>
     <div class="container-fluid">
       <div class="Header"></div>
@@ -243,16 +252,20 @@
 <script>
 import axios from "axios";
 import AdminSidebar from "@/components/AdminSidebar";
+import CbssSidebar from "@/components/CbssSidebar";
 import { backendURL } from "@/config.js";
 export default {
   name: "AdminCBSSCreate",
   components: {
     AdminSidebar,
+    CbssSidebar,  
   },
   data() {
     return {
       PageTitle: "Community Based Services Section",
       PageDetail: "Add New Record",
+      admin: null,
+      cbssAdmin: null,
       CbssID: "",
       errorList: "",
       name: null,
@@ -279,7 +292,10 @@ export default {
     };
   },
 
-  mounted() {},
+  mounted() {
+    this.admin = sessionStorage.getItem("admin");
+    this.cbssAdmin = sessionStorage.getItem("cbssAdmin");
+  },
   methods: {
     saveCbss() {
       this.name = localStorage.getItem("name");

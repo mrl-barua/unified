@@ -1,6 +1,15 @@
 <template>
   <div>
-    <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
+    <AdminSidebar
+      v-if="admin === 'authenticated'"
+      :iconText="PageTitle"
+      :iconDetails="PageDetail"
+    />
+    <HrSidebar
+      v-if="hrAdmin === 'authenticated'"
+      iconText="PageTitle"
+      :iconDetails="PageDetail"
+    />
     <br /><br /><br /><br /><br />
     <div class="container-fluid wrapper">
       <div class="col-12 page-border">
@@ -107,17 +116,21 @@
 
 <script>
 import AdminSidebar from "@/components/AdminSidebar";
+import HrSidebar from "@/components/HrSidebar";
 import axios from "axios"; // Import Axios
 import { backendURL } from "@/config.js";
 export default {
   name: "AdminHREditHistoryView",
   components: {
     AdminSidebar,
+    HrSidebar,
   },
   data() {
     return {
       PageTitle: "EMPLOYEE WELFARE AND RELATIONS",
       PageDetail: "View Edit Details",
+      admin: null,
+      hrAdmin: null,
       model: {
         Hr: {
           id: "",
@@ -139,6 +152,8 @@ export default {
   mounted() {
     this.HrID = this.$route.params.ID;
     this.HrEditHistoryData(this.HrID);
+    this.admin = sessionStorage.getItem("admin");
+    this.hrAdmin = sessionStorage.getItem("hrAdmin");
   },
   methods: {
     async HrEditHistoryData(HrID) {

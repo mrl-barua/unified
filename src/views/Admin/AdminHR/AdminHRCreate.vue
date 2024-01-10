@@ -1,6 +1,15 @@
 <template>
   <br /><br /><br /><br />
-  <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
+  <AdminSidebar
+    v-if="admin === 'authenticated'"
+    :iconText="PageTitle"
+    :iconDetails="PageDetail"
+  />
+  <HrSidebar
+    v-if="hrAdmin === 'authenticated'"
+    iconText="PageTitle"
+    :iconDetails="PageDetail"
+  />
   <div>
     <div class="container-fluid">
       <div class="Header"></div>
@@ -191,6 +200,7 @@
 <script>
 import axios from "axios";
 import AdminSidebar from "@/components/AdminSidebar";
+import HrSidebar from "@/components/HrSidebar";
 import { backendURL } from "@/config.js";
 import { format, parse } from "date-fns";
 export default {
@@ -198,13 +208,15 @@ export default {
 
   components: {
     AdminSidebar,
+    HrSidebar,
   },
 
   data() {
     return {
       PageTitle: "EMPLOYEE WELFARE AND RELATIONS",
       PageDetail: "Add New Record",
-
+      admin: null,
+      hrAdmin: null,
       errorList: "",
 
       model: {
@@ -223,6 +235,10 @@ export default {
         },
       },
     };
+  },
+  mounted() {
+    this.admin = sessionStorage.getItem("admin");
+    this.hrAdmin = sessionStorage.getItem("hrAdmin");
   },
 
   methods: {
