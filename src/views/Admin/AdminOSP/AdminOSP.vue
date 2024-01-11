@@ -1,6 +1,15 @@
 <template>
   <div>
-    <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
+    <AdminSidebar
+      v-if="admin === 'authenticated'"
+      :iconText="PageTitle"
+      :iconDetails="PageDetail"
+    />
+    <OsdSidebar
+      v-if="osdAdmin === 'authenticated'"
+      iconText="PageTitle"
+      :iconDetails="PageDetail"
+    />
     <br /><br /><br /><br />
     <div class="container-fluid wrapper"></div>
     <div class="card card-margin">
@@ -186,6 +195,7 @@ import { backendURL } from "@/config.js";
 
 import Footer from "@/components/Footer";
 import AdminSidebar from "@/components/AdminSidebar";
+import OsdSidebar from "@/components/OsdSidebar";
 import BarChart from "@/components/ChartJS/Barchart";
 import ExcelJS from "exceljs";
 
@@ -198,6 +208,7 @@ export default {
   components: {
     Footer,
     AdminSidebar,
+    OsdSidebar,
     BarChart,
     DataTable,
   },
@@ -205,13 +216,16 @@ export default {
     return {
       PageTitle: "OPERATIONAL STAFF DATABASE",
       PageDetail: "Active Main Dashboard",
-
+      admin: null,
+      osdAdmin: null,
       osd: [],
     };
   },
   computed: {},
   mounted() {
     this.getOsd();
+    this.admin = sessionStorage.getItem("admin");
+    this.osdAdmin = sessionStorage.getItem("osdAdmin");
   },
   methods: {
     exportToExcel() {

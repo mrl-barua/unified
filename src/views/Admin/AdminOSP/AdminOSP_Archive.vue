@@ -1,6 +1,15 @@
 <template>
   <div>
-    <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
+    <AdminSidebar
+      v-if="admin === 'authenticated'"
+      :iconText="PageTitle"
+      :iconDetails="PageDetail"
+    />
+    <OsdSidebar
+      v-if="osdAdmin === 'authenticated'"
+      iconText="PageTitle"
+      :iconDetails="PageDetail"
+    />
     <br /><br /><br /><br />
     <div class="container-fluid wrapper"></div>
     <div class="card card-margin">
@@ -132,6 +141,7 @@ import axios from "axios";
 import { backendURL } from "@/config.js";
 import Footer from "@/components/Footer";
 import AdminSidebar from "@/components/AdminSidebar";
+import OsdSidebar from "@/components/OsdSidebar";
 import BarChart from "@/components/ChartJS/Barchart";
 import ExcelJS from "exceljs";
 
@@ -145,6 +155,7 @@ export default {
   components: {
     Footer,
     AdminSidebar,
+    OsdSidebar,
     BarChart,
     DataTable,
   },
@@ -152,12 +163,16 @@ export default {
     return {
       PageTitle: "OPERATIONAL STAFF DATABASE",
       PageDetail: "Inactive Main Dashboard",
+      admin: null,
+      osdAdmin: null,
       Osd: [],
     };
   },
   computed: {},
   mounted() {
     this.getOsdArchive();
+    this.admin = sessionStorage.getItem("admin");
+    this.osdAdmin = sessionStorage.getItem("osdAdmin");
   },
   methods: {
     exportToExcel() {
@@ -339,7 +354,9 @@ export default {
 
       if (result.isConfirmed) {
         try {
-          const res = await axios.post(`${backendURL}/api/osdArchived/${OsdID}/restore`);
+          const res = await axios.post(
+            `${backendURL}/api/osdArchived/${OsdID}/restore`
+          );
           await this.$swal({
             icon: "success",
             title: "Success!",

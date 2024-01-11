@@ -1,6 +1,15 @@
 <template>
   <div>
-    <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
+    <AdminSidebar
+      v-if="admin === 'authenticated'"
+      :iconText="PageTitle"
+      :iconDetails="PageDetail"
+    />
+    <OsdSidebar
+      v-if="osdAdmin === 'authenticated'"
+      iconText="PageTitle"
+      :iconDetails="PageDetail"
+    />
     <br /><br /><br /><br /><br />
     <div class="container-fluid wrapper">
       <p class="Header">Recent Edit</p>
@@ -109,7 +118,7 @@
 import axios from "axios"; // Import Axios
 import { backendURL } from "@/config.js";
 import AdminSidebar from "@/components/AdminSidebar";
-
+import OsdSidebar from "@/components/OsdSidebar";
 import DataTable from "datatables.net-vue3";
 import DataTablesCore from "datatables.net";
 import "datatables.net-responsive";
@@ -119,12 +128,15 @@ export default {
   name: "AdminEditHistory",
   components: {
     AdminSidebar,
+    OsdSidebar,
     DataTable,
   },
   data() {
     return {
       PageTitle: "OPERATIONAL STAFF DATABASE",
       PageDetail: "Edit History Logs",
+      admin: null,
+      osdAdmin: null,
       osp: [],
 
       model: {
@@ -136,6 +148,8 @@ export default {
     this.OspID = this.$route.params.ID;
     this.getOspEditHistory(this.OspID);
     this.OspData(this.OspID);
+    this.admin = sessionStorage.getItem("admin");
+    this.osdAdmin = sessionStorage.getItem("osdAdmin");
   },
   methods: {
     formatDate(dateString) {

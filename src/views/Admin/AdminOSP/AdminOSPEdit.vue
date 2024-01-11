@@ -1,6 +1,15 @@
 <template>
   <br /><br /><br /><br />
-  <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
+  <AdminSidebar
+    v-if="admin === 'authenticated'"
+    :iconText="PageTitle"
+    :iconDetails="PageDetail"
+  />
+  <OsdSidebar
+    v-if="osdAdmin === 'authenticated'"
+    iconText="PageTitle"
+    :iconDetails="PageDetail"
+  />
   <div>
     <div class="container-fluid">
       <div class="Header"></div>
@@ -849,16 +858,20 @@
 <script>
 import axios from "axios";
 import AdminSidebar from "@/components/AdminSidebar";
+import OsdSidebar from "@/components/OsdSidebar";
 import { backendURL } from "@/config.js";
 export default {
   name: "AdminOSDEdit",
   components: {
     AdminSidebar,
+    OsdSidebar,
   },
   data() {
     return {
       PageTitle: "OPERATIONAL STAFF DATABASE",
       PageDetail: "Edit Current Record",
+      admin: null,
+      osdAdmin: null,
       OsdID: "",
       errorList: "",
       // The model for the form inputs  (the data that will be sent to the backend) is defined here as an empty object with the following properties: Osd
@@ -937,6 +950,8 @@ export default {
     this.OsdID = this.$route.params.ID;
     //the OsdID is passed as a parameter to the OsdData() function  (which is defined below) to get the data of the HR with the given ID
     this.OsdData(this.$route.params.ID);
+    this.admin = sessionStorage.getItem("admin");
+    this.osdAdmin = sessionStorage.getItem("osdAdmin");
   },
   methods: {
     // The OsdData() function is used to get the data of the HR with the given ID
