@@ -1,6 +1,15 @@
 <template>
   <div>
-    <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
+    <AdminSidebar
+      v-if="admin === 'authenticated'"
+      :iconText="PageTitle"
+      :iconDetails="PageDetail"
+    />
+    <OsdSidebar
+      v-if="osdAdmin === 'authenticated'"
+      iconText="PageTitle"
+      :iconDetails="PageDetail"
+    />
     <br /><br /><br /><br /><br />
     <div class="container-fluid wrapper">
       <div class="col-12">
@@ -510,6 +519,7 @@
 
 <script>
 import AdminSidebar from "@/components/AdminSidebar";
+import OsdSidebar from "@/components/OsdSidebar";
 import axios from "axios"; // Import Axios
 import { backendURL } from "@/config.js";
 
@@ -517,12 +527,14 @@ export default {
   name: "AdminOSDEditHistoryView",
   components: {
     AdminSidebar,
+    OsdSidebar,
   },
   data() {
     return {
       PageTitle: "OPERATIONAL STAFF DATABASE",
       PageDetail: "View Edit Details",
-
+      admin: null,
+      osdAdmin: null,
       model: {
         Osd: {
           id: "",
@@ -596,6 +608,8 @@ export default {
   mounted() {
     this.OsdID = this.$route.params.ID;
     this.OsdEditHistoryData(this.OsdID);
+    this.admin = sessionStorage.getItem("admin");
+    this.osdAdmin = sessionStorage.getItem("osdAdmin");
   },
   methods: {
     async OsdEditHistoryData(OsdID) {

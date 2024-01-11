@@ -1,6 +1,15 @@
 <template>
   <br /><br /><br /><br />
-  <AdminSidebar :iconText="PageTitle" :iconDetails="PageDetail" />
+  <AdminSidebar
+    v-if="admin === 'authenticated'"
+    :iconText="PageTitle"
+    :iconDetails="PageDetail"
+  />
+  <OsdSidebar
+    v-if="osdAdmin === 'authenticated'"
+    iconText="PageTitle"
+    :iconDetails="PageDetail"
+  />
   <div>
     <div class="container-fluid">
       <div class="Header"></div>
@@ -848,16 +857,20 @@
 <script>
 import axios from "axios";
 import AdminSidebar from "@/components/AdminSidebar";
+import OsdSidebar from "@/components/OsdSidebar";
 import { backendURL } from "@/config.js";
 export default {
   name: "AdminOSDCreate",
   components: {
     AdminSidebar,
+    OsdSidebar,
   },
   data() {
     return {
       PageTitle: "OPERATIONAL STAFF DATABASE",
       PageDetail: "Add New Record",
+      admin: null,
+      osdAdmin: null,
       OsdID: "",
       errorList: "",
       // The model for the form inputs  (the data that will be sent to the backend) is defined here as an empty object with the following properties: Osd
@@ -931,7 +944,10 @@ export default {
       },
     };
   },
-  mounted() {},
+  mounted() {
+    this.admin = sessionStorage.getItem("admin");
+    this.osdAdmin = sessionStorage.getItem("osdAdmin");
+  },
   methods: {
     async saveOsd() {
       // Get the name from localStorage
